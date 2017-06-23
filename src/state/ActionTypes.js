@@ -1,0 +1,4 @@
+export const ADD_FLASH_MESSAGE = "ADD_FLASH_MESSAGE";
+
+export const SET_AUTH_USER = 'SET_AUTH_USER';
+export const UPDATE_AUTH_USER = 'UPDATE_AUTH_USER';
