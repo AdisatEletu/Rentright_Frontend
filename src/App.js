@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-
+import requireAuth from './utils/requireAuth';
 
 import Home from '../src/components/pages/Home';
 import Login from '../src/components/pages/auth/Login';
@@ -18,7 +18,7 @@ class App extends Component {
                   <Route exact path="/" component={Home}/>
                   <Route path={"/register"} component={Register}/>
                   <Route path="/sign-in" component={Login}/>
-                  <Route path="/account" component={Account}/>
+                  <Route path="/account" component={requireAuth(Account)}/>
               </switch>
           </Router>
       );

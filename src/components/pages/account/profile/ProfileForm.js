@@ -12,8 +12,8 @@ export default class ProfileForm extends Component{
             first_name: user.first_name,
             last_name: user.last_name,
             email: user.email,
-            phone: user.phone_number,
-            about:""
+            phone_number: user.phone_number,
+            about:user.about,
         };
     }
 
@@ -38,7 +38,7 @@ export default class ProfileForm extends Component{
             <div className="col-md-9 col-sm-9">
                 <form onSubmit={this.onSubmit.bind(this)} id="form-account-profile" >
                     <Contact onChange={this.onChange.bind(this)} user={this.state}/>
-                    <About onChange={this.onChange.bind(this)}/>
+                    <About onChange={this.onChange.bind(this)} user={this.state}/>
                     <div className="form-group clearfix">
                         <button disabled={isLoading} type="submit" className="btn btn-block pull-right btn-default" id="account-submit">{isLoading ? <i className="fa fa-spinner fa-spin"/> : 'Save Changes'}</button>
                     </div>
@@ -50,8 +50,6 @@ export default class ProfileForm extends Component{
 
 function Contact(props){
     const {onChange,user} = props;
-
-    console.log(props);
 
     return <section id="contact">
         <h3>Contact</h3>
@@ -77,7 +75,7 @@ function Contact(props){
             <dt><label htmlFor="form-account-phone">Phone:</label></dt>
             <dd>
                 <div className="form-group">
-                    <input onChange={onChange} type="text" className="form-control" id="form-account-phone" name="phone_no" value={user.phone} />
+                    <input onChange={onChange} type="text" className="form-control" id="form-account-phone" name="phone_number" value={user.phone_number} />
                 </div>{/* /.form-group */}
             </dd>
         </dl>
@@ -86,11 +84,11 @@ function Contact(props){
 
 function About(props){
 
-    const {onChange} = props;
+    const {onChange,user} = props;
     return <section id="about-me">
         <h3>About Me</h3>
         <div className="form-group">
-            <textarea onChange={onChange} className="form-control" id="form-contact-agent-message" rows={5} name="about" defaultValue={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus.\nPhasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum."} />
+            <textarea onChange={onChange} className="form-control" id="form-contact-agent-message" rows={5} name="about" value={user.about} />
         </div>{/* /.form-group */}
     </section>;
 }

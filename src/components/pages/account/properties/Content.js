@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import isEmpty from "lodash/isEmpty";
 import NewUnit from "./NewUnit";
 import Units from "./Units";
+import PropertyEditor from './PropertyEditor';
+import {Switch,Route} from 'react-router-dom';
+
 
 export default class Content extends Component{
 
@@ -14,7 +17,10 @@ export default class Content extends Component{
                     <header><h1>Properties</h1></header>
                     <div className="account-profile">
                         <div className="row">
-                            {isEmpty(properties) ? <NewUnit/> : <Units/>}
+                            <Switch>
+                                <Route exact path='/account/properties' component={isEmpty(properties) ? NewUnit : Units}/>
+                                <Route path='/account/properties/:id' component={PropertyEditor}/>
+                            </Switch>
                         </div>
                     </div>
                 </section>

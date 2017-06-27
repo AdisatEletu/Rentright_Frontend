@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux';
-import auth from './reducers/authReducer';
+import userReducer from './reducers/userReducer';
 import flashMessages from './reducers/flashMessages';
 import { loadingBarReducer } from 'react-redux-loading-bar';
 import {reducer as toastrReducer} from 'react-redux-toastr';
+import propertReducer from './reducers/propertyReducer';
 
 const combinedReducers = combineReducers({
-    auth: auth,
+    user: userReducer,
     loadingBar: loadingBarReducer,
     flashMessages: flashMessages,
     toastr: toastrReducer,
+    property: propertReducer
 });
 
 export default combinedReducers;

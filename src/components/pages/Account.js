@@ -4,6 +4,7 @@ import Profile from './account/Profile';
 import Properties from './account/Properties';
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
+import PropertyEditor from './account/properties/PropertyEditor';
 
 class Account extends Component{
     render (){
@@ -18,6 +19,7 @@ class Account extends Component{
                                 <Route exact path='/account' component={Profile}/>
                                 <Route path='/account/profile' component={Profile}/>
                                 <Route path='/account/properties' component={Properties}/>
+                                <Route path='/account/properties/:id' component={PropertyEditor}/>
                             </Switch>
                         </div>
                     </div>

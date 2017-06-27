@@ -23,6 +23,9 @@ class Form extends Component{
         });
 
         this.setState({isLoading: false});
+        if(params.type === 'success'){
+            this.context.router.history.replace('/account/profile');
+        }
     }
 
     onSubmit(e){

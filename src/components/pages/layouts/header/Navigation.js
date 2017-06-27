@@ -23,7 +23,7 @@ class Navigation extends Component{
 
 export function mapStateToProps(state){
     return {
-        auth: state.auth,
+        auth: state.user.auth,
     }
 }
 

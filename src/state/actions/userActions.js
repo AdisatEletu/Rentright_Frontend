@@ -1,11 +1,18 @@
 import axios from 'axios';
-import {UPDATE_AUTH_USER} from '../ActionTypes';
-import {toastr} from 'react-redux-toastr'
+import {UPDATE_AUTH_USER,SET_ACTIVE_PROPERTY} from '../ActionTypes';
+import {toastr} from 'react-redux-toastr';
 
 export function updateCurrentUser(user){
     return {
         type: UPDATE_AUTH_USER,
         user: user,
+    }
+}
+
+export function setActiveProperty(property){
+    return {
+        type: SET_ACTIVE_PROPERTY,
+        property: property,
     }
 }
 
@@ -34,5 +41,15 @@ export function update(data,callback){
             callback();
         });
 
+    }
+}
+
+
+function addProperty(property,callback){
+    return dispatch => {
+
+        //perform server call to create new property
+
+        //dispatch the set new property to this newly created property
     }
 }
