@@ -31,7 +31,7 @@ class Profile extends Component {
 
 function matchStateToProps(state){
     return {
-        auth: state.auth,
+        auth: state.user.auth,
     }
 }
 

@@ -13,7 +13,7 @@ export default class ProfileForm extends Component{
             last_name: user.last_name,
             email: user.email,
             phone_number: user.phone_number,
-            about:user.about,
+            about_me:user.about_me,
         };
     }
 
@@ -88,7 +88,7 @@ function About(props){
     return <section id="about-me">
         <h3>About Me</h3>
         <div className="form-group">
-            <textarea onChange={onChange} className="form-control" id="form-contact-agent-message" rows={5} name="about" value={user.about} />
+            <textarea onChange={onChange} className="form-control" id="form-contact-agent-message" rows={5} name="about_me" value={user.about_me} />
         </div>{/* /.form-group */}
     </section>;
 }
