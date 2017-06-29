@@ -5,7 +5,7 @@ import requireAuth from './utils/requireAuth';
 import Home from '../src/components/pages/Home';
 import Login from '../src/components/pages/auth/Login';
 import Register from '../src/components/pages/auth/Register';
-import Account from "../src/components/pages/Account";
+import LandLord from "./components/pages/LandLord";
 
 
 
@@ -18,7 +18,7 @@ class App extends Component {
                   <Route exact path="/" component={Home}/>
                   <Route path={"/register"} component={Register}/>
                   <Route path="/sign-in" component={Login}/>
-                  <Route path="/account" component={requireAuth(Account)}/>
+                  <Route path="/landlord" component={requireAuth(LandLord)}/>
               </switch>
           </Router>
       );

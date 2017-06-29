@@ -31,7 +31,7 @@ class UserArea extends Component{
 
         const userLinks = (
             <div>
-                <Link to="/account/profile" className="promoted">{first_name} {last_name}</Link>
+                <Link to="/landlord/profile" className="promoted">{first_name} {last_name}</Link>
                 <Link to="/sign-in" onClick={this.logout.bind(this)}>Log Out</Link>
             </div>
         );

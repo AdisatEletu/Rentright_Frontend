@@ -18,8 +18,8 @@ export default class Content extends Component{
                     <div className="account-profile">
                         <div className="row">
                             <Switch>
-                                <Route exact path='/account/properties' component={isEmpty(properties) ? NewUnit : Units}/>
-                                <Route path='/account/properties/:id' component={PropertyEditor}/>
+                                <Route exact path='/landlord/properties' component={isEmpty(properties) ? NewUnit : Units}/>
+                                <Route path='/landlord/properties/:id' component={PropertyEditor}/>
                             </Switch>
                         </div>
                     </div>

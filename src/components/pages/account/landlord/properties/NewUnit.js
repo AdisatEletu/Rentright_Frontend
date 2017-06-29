@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import PlacesAutocomplete, {geocodeByAddress} from 'react-places-autocomplete'
 import isEmpty from 'lodash/isEmpty';
 import Address from "./Address";
+import {connect} from 'react-redux';
+import {addProperty} from '../../../../../state/actions/userActions';
+import PropTypes from 'prop-types';
 
 class NewUnit extends Component {
 
@@ -12,7 +15,9 @@ class NewUnit extends Component {
             address: "",
             address_components:[],
             fetched: false,
+            loading: false,
         }
+
         this.onChange = this.onChange.bind(this);
     }
 
@@ -39,6 +44,25 @@ class NewUnit extends Component {
     }
     onEnterPressed(address){
         this.setState({address,fetched: true});
+    }
+
+    onSaveClick(){
+
+        const address_components = {
+            address: this.state.address,
+            house_number: this.state.address_components[0].long_name,
+            street_name: this.state.address_components[1].long_name,
+            community: this.state.address_components[2].long_name,
+            state: this.state.address_components[5].long_name,
+            country: this.state.address_components[6].long_name,
+        }
+
+        this.props.addProperty(address_components, this.submitCallback.bind(this));
+
+    }
+
+    submitCallback(){
+
     }
 
     render() {
@@ -75,7 +99,7 @@ class NewUnit extends Component {
             </div>
         );
 
-        const {fetched,address_components} = this.state;
+        const {fetched,loading,address_components} = this.state;
 
         return(
             <div className="col-lg-12">
@@ -95,7 +119,7 @@ class NewUnit extends Component {
                 {fetched ? <Address components={address_components} onClose={this.onCloseClick.bind(this)}/> : ''}
                 <br/>
 
-                <button disabled={!fetched} className="btn btn-default btn-block  center-block">Save & Continue</button>
+                <button onClick={this.onSaveClick.bind(this)} disabled={!fetched || loading} className="btn btn-default btn-block  center-block">Save & Continue</button>
                 <br/>
                 <div className="center-block" style={{width: '50%'}}>
                     <p className="center"><b>P.S</b> We sent you a mail telling you a little more about our services, when you have a free minute, check it out. Thanks!</p>
@@ -106,5 +130,9 @@ class NewUnit extends Component {
     }
 }
 
-export default NewUnit;
+NewUnit.propTypes = {
+    addProperty: PropTypes.func.isRequired,
+}
+
+export default connect(null,{addProperty})(NewUnit);
 

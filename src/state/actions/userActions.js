@@ -45,10 +45,17 @@ export function update(data,callback){
 }
 
 
-function addProperty(property,callback){
+export function addProperty(property,callback){
     return dispatch => {
 
         //perform server call to create new property
+        return axios.patch("https://rentright-api-gateway.herokuapp.com/user/update",property).then(res => {
+
+            callback({});
+        }).catch(err => {
+
+            callback({});
+        });
 
         //dispatch the set new property to this newly created property
     }
