@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {UPDATE_AUTH_USER,SET_ACTIVE_PROPERTY} from '../ActionTypes';
+import {UPDATE_AUTH_USER,SET_ACTIVE_PROPERTY,SET_USER_FUNCTION} from '../ActionTypes';
 import {toastr} from 'react-redux-toastr';
 
 export function updateCurrentUser(user){
@@ -8,6 +8,14 @@ export function updateCurrentUser(user){
         user: user,
     }
 }
+
+export function setUserFunction(func){
+    return {
+        type: SET_USER_FUNCTION,
+        text: func
+    }
+}
+
 
 export function setActiveProperty(property){
     return {
@@ -44,19 +52,30 @@ export function update(data,callback){
     }
 }
 
-
 export function addProperty(property,callback){
     return dispatch => {
 
         //perform server call to create new property
-        return axios.patch("https://rentright-api-gateway.herokuapp.com/user/update",property).then(res => {
+        return axios.post("https://rentright-api-gateway.herokuapp.com/property",property).then(res => {
 
-            callback({});
+            console.log(res.data);
+
+            const status = res.data.status;
+            if(!status){
+                toastr.error(res.data.error.message, res.data.error.details);
+                callback(res.data);
+                return;
+            }
+
+            dispatch(setActiveProperty(res.data.data.property));
+
+            callback(res.data);
+
         }).catch(err => {
-
-            callback({});
+            console.log(err);
+            toastr.error('This is Embarrassing','Oops! An error occurred while trying to update your info.');
+            callback(false);
         });
 
-        //dispatch the set new property to this newly created property
     }
 }
