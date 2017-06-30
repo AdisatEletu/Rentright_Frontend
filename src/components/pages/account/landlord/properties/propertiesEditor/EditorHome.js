@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import EditorBar from "./shared/EditorBar";
-import ProgressBar,{Line} from 'react-progressbar.js';
+import {Line} from 'react-progressbar.js';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 class EditorHome extends Component {
 
@@ -40,15 +42,18 @@ class EditorHome extends Component {
             height: '20px'
         };
 
+        const {activeProperty} = this.props;
+        const addy = activeProperty.properties.address.house_number+" "+ activeProperty.properties.address.street_name;
+
         return (
             <div>
-                <EditorBar active="home" uuid={this.props.match.params.id}/>
+                <EditorBar active="home" uuid={this.props.match.params.id} address={addy}/>
                 <div className="grey-back col-lg-12">
                     <div className="center-block card-like" style={{width:'500px'}}>
                         <div className="contain" style={{backgroundColor: '#ffffff'}}>
                             <div className="row" style={{paddingTop: '10px', paddingBottom:'10px'}}>
                                 <div className=" col-lg-6">
-                                    <h4><b>No 17 Omorinre Johnson Street.</b></h4>
+                                    <h4><b>{activeProperty.properties.address.house_number} {activeProperty.properties.address.street_name}</b></h4>
                                 </div>
                                 <div className="col-lg-6">
                                     <Line
@@ -96,5 +101,14 @@ class EditorHome extends Component {
 
 }
 
-export default EditorHome;
+function mapStateToProps(state){
+    return {
+        activeProperty: state.user.activeProperty,
+    }
+}
+
+EditorHome.propTypes = {
+    activeProperty: PropTypes.object.isRequired,
+}
+export default connect(mapStateToProps)(EditorHome);
 

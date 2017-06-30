@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom';
 class EditorBar extends Component {
 
     render() {
-        const {active,uuid} = this.props;
+        const {active,uuid,address} = this.props;
 
         return (
             <div className="cont" >
-                <div className="header_address">No 17 Omorinre johnson street.</div>
+                <div className="header_address">{address}</div>
                 <ul className="tabs  primary-nav">
                     <li className="tabs__item">
                         <Link to={'/landlord/properties/'+uuid+'/'} className={active === 'home' ? "active tabs__link": "tabs__link"}><i className="fa fa-home"/></Link>

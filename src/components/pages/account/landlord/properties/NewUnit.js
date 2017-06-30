@@ -43,7 +43,8 @@ class NewUnit extends Component {
         this.setState({address, placeId ,isEmpty: isEmpty(address)});
         geocodeByAddress(address)
             .then(results => {
-                console.log('results', results[0].address_components);
+                console.log('results', results);
+                console.log('results components', results[0].address_components);
 
                 getLatLng(results[0]).then(latLng => {
 
