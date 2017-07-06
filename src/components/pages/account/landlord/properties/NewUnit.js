@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
-import PlacesAutocomplete, {geocodeByAddress} from 'react-places-autocomplete'
+import PlacesAutocomplete, {geocodeByAddress,getLatLng} from 'react-places-autocomplete'
 import isEmpty from 'lodash/isEmpty';
 import Address from "./Address";
+import {connect} from 'react-redux';
+import {addProperty} from '../../../../../state/actions/userActions';
+import PropTypes from 'prop-types';
+import {toastr} from 'react-redux-toastr'
 
 class NewUnit extends Component {
 
@@ -12,7 +16,11 @@ class NewUnit extends Component {
             address: "",
             address_components:[],
             fetched: false,
+            loading: false,
+            latitude: '',
+            longitude: ''
         }
+
         this.onChange = this.onChange.bind(this);
     }
 
@@ -24,7 +32,10 @@ class NewUnit extends Component {
         this.setState({
             address: "",
             fetched: false,
-            address_components:[]
+            loading:false,
+            address_components:[],
+            latitude: '',
+            longitude: '',
         });
     }
 
@@ -32,13 +43,57 @@ class NewUnit extends Component {
         this.setState({address, placeId ,isEmpty: isEmpty(address)});
         geocodeByAddress(address)
             .then(results => {
-                console.log('results', results[0].address_components)
+                console.log('results', results);
+                console.log('results components', results[0].address_components);
 
-                this.setState({fetched:true, address_components: results[0].address_components});
-            })
+                getLatLng(results[0]).then(latLng => {
+
+                    console.log('Success', latLng);
+                    this.setState({
+                        fetched:true,
+                        address_components: results[0].address_components,
+                        latitude: latLng.lat,
+                        longitude: latLng.lng
+                    });
+                })
+
+
+            });
     }
     onEnterPressed(address){
         this.setState({address,fetched: true});
+    }
+
+    onSaveClick(){
+
+        this.setState({loading:true});
+        const address_components = {
+            address: this.state.address,
+            house_number: this.state.address_components[0].long_name,
+            street_name: this.state.address_components[1].long_name,
+            community: this.state.address_components[2].long_name,
+            state: this.state.address_components[5].long_name,
+            country: this.state.address_components[6].long_name,
+            longitude: this.state.longitude,
+            latitude: this.state.latitude
+        }
+
+        console.log('property', address_components);
+        this.props.addProperty(address_components, this.onSubmitCallback.bind(this));
+
+    }
+
+    onSubmitCallback(data){
+
+        this.setState({loading: false});
+
+            if(!data.status){
+                toastr.error('Error','An error occurred while trying to create your property.');
+                this.onCloseClick();
+            }else{
+                toastr.success('Done','Property successfully created');
+                this.context.router.history.replace('/landlord/properties/'+data.data.property.uuid);
+            }
     }
 
     render() {
@@ -75,7 +130,7 @@ class NewUnit extends Component {
             </div>
         );
 
-        const {fetched,address_components} = this.state;
+        const {fetched,loading,address_components} = this.state;
 
         return(
             <div className="col-lg-12">
@@ -95,7 +150,7 @@ class NewUnit extends Component {
                 {fetched ? <Address components={address_components} onClose={this.onCloseClick.bind(this)}/> : ''}
                 <br/>
 
-                <button disabled={!fetched} className="btn btn-default btn-block  center-block">Save & Continue</button>
+                <button onClick={this.onSaveClick.bind(this)} disabled={!fetched || loading} className="btn btn-default btn-block  center-block"> {loading ? <span>Creating <i className="fa fa-spinner fa-spin"/></span> :"Save & Continue"}</button>
                 <br/>
                 <div className="center-block" style={{width: '50%'}}>
                     <p className="center"><b>P.S</b> We sent you a mail telling you a little more about our services, when you have a free minute, check it out. Thanks!</p>
@@ -106,5 +161,15 @@ class NewUnit extends Component {
     }
 }
 
-export default NewUnit;
+NewUnit.propTypes = {
+    addProperty: PropTypes.func.isRequired,
+    activePropertyId: PropTypes.string.isRequired,
+}
+
+NewUnit.contextTypes = {
+    router: PropTypes.object.isRequired,
+}
+
+
+export default connect(null,{addProperty})(NewUnit);
 

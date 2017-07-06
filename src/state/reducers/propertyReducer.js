@@ -1,17 +1,78 @@
-import {ADD_NEW_PROPERTY} from '../ActionTypes';
+import { combineReducers } from 'redux'
+import {RECEIVE_PROPERTIES_PAGE,REQUEST_PROPERTIES_PAGE} from '../ActionTypes';
 
-const initialState = []
+const initialMeta = {
+    currentPage: 1
+}
 
-export default (state=initialState,action) => {
+const initialProperties = {
+    fetched: false,
+    fetching: true,
+    paging: false,
+}
 
-    switch (action.type){
 
-        case ADD_NEW_PROPERTY:
+const pages = (pages = {}, action = {}) => {
+    switch (action.type) {
+        case REQUEST_PROPERTIES_PAGE:
             return {
-                isNew: true,
-                property: action.property,
-            };
+                ...pages,
+                [action.payload.page]: {
+                    ids: [],
+                    fetching: true,
+                }
+            }
 
-        default: return state;
+        case RECEIVE_PROPERTIES_PAGE:
+            return {
+                ...pages,
+                [action.payload.pageMeta.currentPage]: {
+                    ids: [action.payload.properties.map(property => property.id)],
+                    fetching: false
+                }
+            }
+        default:
+            return pages
     }
 }
+
+const meta = (meta = initialMeta, action = {}) => {
+return action.type == RECEIVE_PROPERTIES_PAGE ? action.payload.pageMeta : meta
+}
+
+const properties = (properties = initialProperties , action = {}) => {
+    switch (action.type) {
+        case RECEIVE_PROPERTIES_PAGE:
+            let _properties = {fetched:true, fetching:false, paging: false}
+            for (let property of action.payload.properties) {
+                _properties = {
+                    ..._properties,
+                    [property.id]: property
+                }
+            }
+            return {
+                ...properties,
+                ..._properties,
+            }
+
+        case REQUEST_PROPERTIES_PAGE:
+            let _propertiesFetch = {fetching:!properties.fetched, paging: properties.fetched }
+            return {
+                ...properties,
+                ..._propertiesFetch,
+            }
+
+        default:
+            return properties
+    }
+}
+
+const pagination = combineReducers({
+    pages,
+    meta
+})
+
+export default combineReducers({
+    properties,
+    pagination
+})

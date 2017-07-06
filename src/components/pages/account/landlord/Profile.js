@@ -4,7 +4,7 @@ import SideMenu from "./shared/SideMenu";
 import Content from "./profile/Content";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {update} from '../../../state/actions/userActions';
+import {update} from '../../../../state/actions/userActions';
 
 class Profile extends Component {
 

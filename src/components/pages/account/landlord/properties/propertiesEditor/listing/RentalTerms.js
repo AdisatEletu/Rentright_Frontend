@@ -1,6 +1,7 @@
+
 import React, {Component} from 'react';
 
-class EditorHome extends Component {
+class RentalTerms extends Component {
 
     render() {
         return (
@@ -10,5 +11,5 @@ class EditorHome extends Component {
 
 }
 
-export default EditorHome;
+export default RentalTerms;
 
