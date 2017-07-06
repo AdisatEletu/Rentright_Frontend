@@ -8,6 +8,7 @@ const initialMeta = {
 const initialProperties = {
     fetched: false,
     fetching: true,
+    paging: false,
 }
 
 
@@ -42,7 +43,7 @@ return action.type == RECEIVE_PROPERTIES_PAGE ? action.payload.pageMeta : meta
 const properties = (properties = initialProperties , action = {}) => {
     switch (action.type) {
         case RECEIVE_PROPERTIES_PAGE:
-            let _properties = {fetched:true, fetching:action.payload.fetching}
+            let _properties = {fetched:true, fetching:false, paging: false}
             for (let property of action.payload.properties) {
                 _properties = {
                     ..._properties,
@@ -55,7 +56,7 @@ const properties = (properties = initialProperties , action = {}) => {
             }
 
         case REQUEST_PROPERTIES_PAGE:
-            let _propertiesFetch = {fetching:true}
+            let _propertiesFetch = {fetching:!properties.fetched, paging: properties.fetched }
             return {
                 ...properties,
                 ..._propertiesFetch,

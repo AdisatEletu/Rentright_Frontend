@@ -112,6 +112,8 @@ class Units extends Component {
                         </tbody>
                     </table><br/>
                     {properties.fetching ? <Loader/> : ''}
+                    {properties.paging ? <Overlay/> : ''}
+
                 </div>
                 <div className="center">
                     <ul className="pagination">
