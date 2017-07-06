@@ -6,6 +6,7 @@ import Home from '../src/components/pages/Home';
 import Login from '../src/components/pages/auth/Login';
 import Register from '../src/components/pages/auth/Register';
 import LandLord from "./components/pages/LandLord";
+import StepForm from "./components/pages/StepForm";
 
 
 
@@ -18,7 +19,8 @@ class App extends Component {
                   <Route exact path="/" component={Home}/>
                   <Route path={"/register"} component={Register}/>
                   <Route path="/sign-in" component={Login}/>
-                  <Route path="/landlord" component={requireAuth(LandLord)}/>
+                  <Route path="/landlord" component={LandLord}/>
+                  <Route path="/form" component={StepForm}/>
               </switch>
           </Router>
       );

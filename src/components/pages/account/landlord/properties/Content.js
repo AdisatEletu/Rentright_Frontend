@@ -13,12 +13,12 @@ export default class Content extends Component{
         const {properties} = this.props;
         return(
             <div className="col-md-9 col-sm-10">
-                <section id="profile">
+                <section id="my-properties">
                     <header><h1>Properties</h1></header>
-                    <div className="account-profile">
+                    <div className="my-properties">
                         <div className="row">
                             <Switch>
-                                <Route exact path='/landlord/properties' component={isEmpty(properties) ? NewUnit : Units}/>
+                                <Route exact path='/landlord/properties' component={Units}/>
                                 <Route path='/landlord/properties/:id' component={PropertyEditor}/>
                             </Switch>
                         </div>

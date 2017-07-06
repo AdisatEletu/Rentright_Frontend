@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
-import {ADD_NEW_PROPERTY,SET_ACTIVE_PROPERTY,SET_USER_FUNCTION} from '../ActionTypes';
+import {SET_ACTIVE_PROPERTY,SET_USER_FUNCTION} from '../ActionTypes';
+import propertyReducer from './propertyReducer';
 
 
  const userReducer = combineReducers({
      access: setAccess,
      auth: authReducer,
      activeProperty: activeProperty,
-     property: addProperty,
+     myProperties: propertyReducer,
 });
 
 export function setAccess (state={access:'guest'}, action={}){
@@ -20,19 +21,6 @@ export function setAccess (state={access:'guest'}, action={}){
         default: return state;
     }
 }
-
- export function addProperty(state=[],action={}){
-     switch(action.type){
-         case ADD_NEW_PROPERTY:
-             return [
-                 ...state,
-                    action.property
-             ];
-
-         default:
-             return state;
-     }
- }
 
  export function activeProperty(state={},action={}){
         switch(action.type){
