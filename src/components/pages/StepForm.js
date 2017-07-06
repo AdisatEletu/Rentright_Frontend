@@ -18,13 +18,8 @@ class StepForm extends Component {
         }
     }
 
-    firstNext(){
-        const el = findDOMNode(this.refs.next);
-        this.next(el);
-    }
-
-    secondNext(){
-        const el = findDOMNode(this.refs.third);
+    next(e){
+        const el = findDOMNode(e.ref());
         this.next(el);
     }
 
@@ -35,10 +30,6 @@ class StepForm extends Component {
         if(animating) return false;
 
         this.setState({animating: false});
-
-        this.setState({current_fs: $(el).parent()});
-
-        this.setState({ next_fs: $(el).parent().next()});
 
         const context = this;
 
@@ -74,20 +65,22 @@ class StepForm extends Component {
         });
     }
 
-    previous(){
-        if(animating) return false;
-        let animating = true;
+    previous(el){
+        const {animating} = this.state;
 
-        let current_fs = $(this).parent();
-        let previous_fs = $(this).parent().prev();
+        if(animating) return false;
+
+        this.setState({animating: false});
+
+        const context = this;
 
         //de-activate current step on progressbar
-        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+        $("#progressbar li").eq($("fieldset").index($(el).parent())).removeClass("active");
 
         //show the previous fieldset
-        previous_fs.show();
+        $(el).parent().prev().show();
         //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
+        $(el).parent().animate({opacity: 0}, {
             step: function(now, mx) {
                 //as the opacity of current_fs reduces to 0 - stored in "now"
                 //1. scale previous_fs from 80% to 100%
@@ -96,16 +89,16 @@ class StepForm extends Component {
                 let left = ((1-now) * 50)+"%";
                 //3. increase opacity of previous_fs to 1 as it moves in
                 let opacity = 1 - now;
-                current_fs.css({'left': left});
-                previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+                $(el).parent().css({'left': left});
+                $(el).parent().prev().css({'transform': 'scale('+scale+')', 'opacity': opacity});
             },
             duration: 800,
             complete: function(){
-                current_fs.hide();
-                animating = false;
+                $(el).parent().prev().hide();
+                context.setState({animating: false})
             },
             //this comes from the custom easing plugin
-            easing: 'easeInOutBack'
+            // easing: 'easeInOutBack'
         });
     }
 
@@ -130,7 +123,7 @@ class StepForm extends Component {
                         <input type="text" name="email" placeholder="Email" />
                         <input type="password" name="pass" placeholder="Password" />
                         <input type="password" name="cpass" placeholder="Confirm Password" />
-                        <input type="button" ref="next" className="next action-button" value="Next" onClick={this.firstNext.bind(this)}/>
+                        <input type="button" ref="next" className="next action-button" value="Next" onClick={this.next.bind(this)}/>
                     </fieldset>
                     <fieldset>
                         <h2 className="fs-title">Social Profiles</h2>
@@ -139,7 +132,7 @@ class StepForm extends Component {
                         <input type="text" name="facebook" placeholder="Facebook" />
                         <input type="text" name="gplus" placeholder="Google Plus" />
                         <input type="button" name="previous" className="previous action-button" value="Previous" />
-                        <input type="button" name="next" ref="third" onClick={this.secondNext.bind(this)} className="next action-button" value="Next" />
+                        <input type="button" name="next" ref="third" onClick={this.next.bind(this)} className="next action-button" value="Next" />
                     </fieldset>
                     <fieldset>
                         <h2 className="fs-title">Personal Details</h2>
