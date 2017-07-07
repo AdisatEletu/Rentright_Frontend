@@ -67,11 +67,75 @@ class PropertyInfo extends Component {
     render() {
         return (
             <fieldset>
-                <h2 className="fs-title">Create your account</h2>
-                <h3 className="fs-subtitle">This is step 1</h3>
-                <input type="text" name="email" placeholder="Email" />
-                <input type="password" name="pass" placeholder="Password" />
-                <input type="password" name="cpass" placeholder="Confirm Password" />
+                <h2 className="fs-title">Are you ready to list your property?</h2>
+                <h3 className="fs-subtitle">Lets get some basic details out of the way</h3><br/>
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="bedroom-field">How many bedrooms?</label>
+                            <input type="text" className="form-control" id="bedroom-field" name="title" required placeholder="How many bedrooms?"/>
+                        </div>{/* /.form-group */}
+                    </div>
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="bathroom-field">How many bathrooms?</label>
+                            <input type="text" className="form-control" id="bathroom-field" name="title" required placeholder="How many bathrooms?"/>
+                        </div>{/* /.form-group */}
+                    </div>
+                </div><br/>
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="property-type">What type of property is this?</label>
+                            <select name="type" id="property-type" style={{width:'100%'}}>
+                                <option value={1}>Apartment</option>
+                                <option value={2}>Single Family House</option>
+                                <option value={3}>Flat</option>
+                                <option value={4}>Office Space</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="bathroom-field">What's the square footage?</label>
+                            <input type="text" className="form-control" id="bathroom-field" name="title" required placeholder="Whats the square footage?"/>
+                        </div>{/* /.form-group */}
+                    </div>
+                </div><br/>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <label htmlFor="property-type">What parking is available?</label>
+                            <select name="type" id="property-type" style={{width:'100%'}}>
+                                <option value={1}>Garage</option>
+                                <option value={2}>Carport</option>
+                            </select>
+                        </div>
+                    </div>
+                </div><br/>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div>
+                            <label>What are your policies</label>
+                            <ul className="submit-features">
+                                <li><div className="cntr">
+                                    <input className="hidden hidden-xs-up" id="cbx" type="checkbox" /><label className="cbx" htmlFor="cbx" /><label className="lbl" htmlFor="cbx">Smoking not allowed</label>
+                                </div></li>
+                                <li><div className="cntr">
+                                    <input className="hidden hidden-xs-up" id="cbx_pets" type="checkbox" /><label className="cbx" htmlFor="cbx_pets" /><label className="lbl" htmlFor="cbx_pets">Pets not allowed</label>
+                                </div></li>
+                            </ul>
+                            <ul className="submit-features">
+                                <li><div className="cntr">
+                                    <input className="hidden hidden-xs-up" id="cbx" type="checkbox" /><label className="cbx" htmlFor="cbx" /><label className="lbl" htmlFor="cbx">Smoking not allowed</label>
+                                </div></li>
+                                <li><div className="cntr">
+                                    <input className="hidden hidden-xs-up" id="cbx_pets" type="checkbox" /><label className="cbx" htmlFor="cbx_pets" /><label className="lbl" htmlFor="cbx_pets">Pets not allowed</label>
+                                </div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <input type="button" ref="details_next" name="next" className="next action-button" value="Next" onClick={this.detailsNext.bind(this)}/>
             </fieldset>
         );
