@@ -75,25 +75,10 @@
 /*custom font*/
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
-/*basic reset*/
-* {margin: 0; padding: 0;}
-
-html {
-    height: 100%;
-    /*Image only BG fallback*/
-    background: url('http://thecodeplayer.com/uploads/media/gs.png');
-    /*background = gradient + image pattern combo*/
-    background:
-            linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)),
-            url('http://thecodeplayer.com/uploads/media/gs.png');
-}
-
-body {
-    font-family: montserrat, arial, verdana;
-}
 /*form styles*/
 #msform {
-    width: 400px;
+    font-family: montserrat, arial, verdana;
+    width: 700px;
     margin: 50px auto;
     text-align: center;
     position: relative;
@@ -102,7 +87,7 @@ body {
     background: white;
     border: 0 none;
     border-radius: 3px;
-    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
     padding: 20px 30px;
 
     box-sizing: border-box;
@@ -110,7 +95,7 @@ body {
     margin: 0 10%;
 
     /*stacking fieldsets above each other*/
-    position: absolute;
+    /*position: absolute;*/
 }
 /*Hide all except first fieldset*/
 #msform fieldset:not(:first-of-type) {
@@ -165,10 +150,10 @@ body {
 }
 #progressbar li {
     list-style-type: none;
-    color: white;
+    color: #000000;
     text-transform: uppercase;
     font-size: 9px;
-    width: 33.33%;
+    width: 8.33%;
     float: left;
     position: relative;
 }

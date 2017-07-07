@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
-import {SET_ACTIVE_PROPERTY,SET_USER_FUNCTION} from '../ActionTypes';
+import activeProperty from './activePropertyReducer';
+import {SET_USER_FUNCTION} from '../ActionTypes';
 import propertyReducer from './propertyReducer';
 
 
@@ -22,16 +23,5 @@ export function setAccess (state={access:'guest'}, action={}){
     }
 }
 
- export function activeProperty(state={},action={}){
-        switch(action.type){
-            case SET_ACTIVE_PROPERTY:
-                return{
-                    active: true,
-                    properties: action.property,
-                }
-
-            default: return state;
-        }
- }
 
 export default userReducer;

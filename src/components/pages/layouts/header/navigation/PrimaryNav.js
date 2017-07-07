@@ -37,7 +37,7 @@ function AddProperty(){
     return (
 
         <div className="add-your-property">
-            <a href="submit.html" className="btn btn-default"><i className="fa fa-plus" /><span className="text">Add Your Property</span></a>
+            <Link to="/landlord/properties/new" className="btn btn-default"><i className="fa fa-plus" /><span className="text">Add Your Property</span></Link>
         </div>
     );
 }

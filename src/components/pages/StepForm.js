@@ -18,9 +18,33 @@ class StepForm extends Component {
         }
     }
 
-    next(e){
-        const el = findDOMNode(e.ref());
-        this.next(el);
+    detailsNext(){
+        this.next(findDOMNode(this.refs.details_next));
+    }
+    termsPrevious(){
+        this.previous(findDOMNode(this.refs.terms_prev));
+    }
+
+    termsNext(){
+        this.next(findDOMNode(this.refs.terms_next));
+    }
+    amenitiesNext(){
+        this.next(findDOMNode(this.refs.amenities_next));
+    }
+    utilitiesNext(){
+        this.next(findDOMNode(this.refs.utilities_next));
+    }
+    contactNext(){
+        this.next(findDOMNode(this.refs.contact_next));
+    }
+    descriptionNext(){
+        this.next(findDOMNode(this.refs.description_next));
+    }
+    titleNext(){
+        this.next(findDOMNode(this.refs.title_next));
+    }
+    photosNext(){
+        this.next(findDOMNode(this.refs.photos_next));
     }
 
     next(el){
@@ -34,7 +58,7 @@ class StepForm extends Component {
         const context = this;
 
         //activate next step on progressbar using the index of next_fs
-        $("#progressbar li").eq($("fieldset").index(this.state.next_fs)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index($(el).parent().next())).addClass("active");
 
         //show the next fieldset
         $(el).parent().next().show();
@@ -94,7 +118,7 @@ class StepForm extends Component {
             },
             duration: 800,
             complete: function(){
-                $(el).parent().prev().hide();
+                $(el).parent().hide();
                 context.setState({animating: false})
             },
             //this comes from the custom easing plugin
@@ -123,7 +147,7 @@ class StepForm extends Component {
                         <input type="text" name="email" placeholder="Email" />
                         <input type="password" name="pass" placeholder="Password" />
                         <input type="password" name="cpass" placeholder="Confirm Password" />
-                        <input type="button" ref="next" className="next action-button" value="Next" onClick={this.next.bind(this)}/>
+                        <input type="button" ref="details_next" name="next" className="next action-button" value="Next" onClick={this.detailsNext.bind(this)}/>
                     </fieldset>
                     <fieldset>
                         <h2 className="fs-title">Social Profiles</h2>
@@ -131,8 +155,8 @@ class StepForm extends Component {
                         <input type="text" name="twitter" placeholder="Twitter" />
                         <input type="text" name="facebook" placeholder="Facebook" />
                         <input type="text" name="gplus" placeholder="Google Plus" />
-                        <input type="button" name="previous" className="previous action-button" value="Previous" />
-                        <input type="button" name="next" ref="third" onClick={this.next.bind(this)} className="next action-button" value="Next" />
+                        <input type="button" name="previous" ref="terms_prev" onClick={this.termsPrevious.bind(this)} className="previous action-button" value="Previous" />
+                        <input type="button" name="next" ref="terms_next" onClick={this.termsNext.bind(this)} className="next action-button" value="Next" />
                     </fieldset>
                     <fieldset>
                         <h2 className="fs-title">Personal Details</h2>

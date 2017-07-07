@@ -3,8 +3,23 @@ import EditorBar from "./shared/EditorBar";
 import {Line} from 'react-progressbar.js';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {getProperty} from "../.././../../../../state/actions/userActions";
+import Overlay from "../../../../../shared/Overlay";
 
 class EditorHome extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            isSet: false,
+            property: null,
+        }
+    }
+
+
+    getAddress(){
+        return this.props.activeProperty.property.property.address.house_number+" "+ this.props.activeProperty.property.property.address.street_name;
+    }
 
     render() {
         const options = {
@@ -42,18 +57,18 @@ class EditorHome extends Component {
             height: '20px'
         };
 
-        const {activeProperty} = this.props;
-        const addy = activeProperty.properties.address.house_number+" "+ activeProperty.properties.address.street_name;
+        //this.setProperty(this.props);
 
         return (
             <div>
-                <EditorBar active="home" uuid={this.props.match.params.id} address={addy}/>
+                <EditorBar active="home" uuid={this.props.match.params.id} address={this.props.activeProperty.property.isSet ? this.getAddress() : ''}/>
                 <div className="grey-back col-lg-12">
+                    {this.props.activeProperty.property.isSet ?
                     <div className="center-block card-like" style={{width:'500px'}}>
                         <div className="contain" style={{backgroundColor: '#ffffff'}}>
                             <div className="row" style={{paddingTop: '10px', paddingBottom:'10px'}}>
                                 <div className=" col-lg-6">
-                                    <h4><b>{activeProperty.properties.address.house_number} {activeProperty.properties.address.street_name}</b></h4>
+                                    <h4><b>{this.props.activeProperty.property.property.address.house_number} {this.props.activeProperty.property.property.address.street_name}</b></h4>
                                 </div>
                                 <div className="col-lg-6">
                                     <Line
@@ -80,20 +95,22 @@ class EditorHome extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="col-lg-12">
-                                        <div><span className="pull-right" style={
+                                        <div><span className="pull-right capitalise" style={
                                             {
                                                 backgroundColor: 'white',
-                                                border: '1px solid #e53935',
+                                                border: this.props.activeProperty.property.property.status === 'published' ? '1px solid #2e7d32' : '1px solid #e53935',
                                                 padding: '3',
+                                                textTransform: 'capitalize',
                                                 fontSize: '10px',
                                                 borderRadius: '2px'
                                             }
-                                        }>Unpublished</span></div>
+                                        }>{this.props.activeProperty.property.property.status}</span></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> : <b><i className="fa fa-spinner fa-spin"/> Loading.....</b>}
+                    {this.props.activeProperty.property.fetching ? <Overlay/> : ''}
                 </div>
             </div>
         );
@@ -110,5 +127,6 @@ function mapStateToProps(state){
 EditorHome.propTypes = {
     activeProperty: PropTypes.object.isRequired,
 }
+
 export default connect(mapStateToProps)(EditorHome);
 

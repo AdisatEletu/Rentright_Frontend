@@ -135,7 +135,7 @@ class NewUnit extends Component {
         return(
             <div className="col-lg-12">
                 <div className="center">
-                    <h3><b>Start By Adding Your First Unit:</b></h3>
+                    <h3><b>Start By Adding Your Unit Address:</b></h3>
                 </div>
 
                 <div className="">

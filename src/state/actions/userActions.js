@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {UPDATE_AUTH_USER,SET_ACTIVE_PROPERTY,REQUEST_PROPERTIES_PAGE,RECEIVE_PROPERTIES_PAGE} from '../ActionTypes';
+import {UPDATE_AUTH_USER,RECEIVE_ACTIVE_PROPERTY,REQUEST_ACTIVE_PROPERTY,REQUEST_PROPERTIES_PAGE,RECEIVE_PROPERTIES_PAGE} from '../ActionTypes';
 
 import {toastr} from 'react-redux-toastr';
 
@@ -12,8 +12,13 @@ export function updateCurrentUser(user){
 
 export function setActiveProperty(property){
     return {
-        type: SET_ACTIVE_PROPERTY,
+        type: RECEIVE_ACTIVE_PROPERTY,
         property: property,
+    }
+}
+export function requestActiveProperty(){
+    return {
+        type: REQUEST_ACTIVE_PROPERTY,
     }
 }
 
@@ -116,5 +121,19 @@ export function getProperties(meta){
             .catch(err => {
                 console.log('properties error',err);
             });
+    }
+}
+
+export function getProperty(params){
+    return dispatch =>{
+        dispatch(requestActiveProperty());
+        return axios.get('https://rentright-api-gateway.herokuapp.com/user/property/'+params.uuid).then(
+            (res) => {
+                console.log(res);
+                dispatch(setActiveProperty(res.data.data.properties));
+            }
+        ).catch(
+            (err) => {}
+        );
     }
 }

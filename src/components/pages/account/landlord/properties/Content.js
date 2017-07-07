@@ -19,6 +19,7 @@ export default class Content extends Component{
                         <div className="row">
                             <Switch>
                                 <Route exact path='/landlord/properties' component={Units}/>
+                                <Route exact path='/landlord/properties/new' component={NewUnit}/>
                                 <Route path='/landlord/properties/:id' component={PropertyEditor}/>
                             </Switch>
                         </div>

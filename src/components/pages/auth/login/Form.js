@@ -61,7 +61,7 @@ class Form extends Component{
                 {/* /.form-group */}
                 <div className="form-group clearfix">
                     <button disabled={isLoading} type="submit" className="btn pull-right btn-default" id="account-submit">
-                        {isLoading ? <i className="fa fa-spinner fa-spin"/> :"Sign In to My Account"}
+                        {isLoading ? <span><i className="fa fa-spinner fa-spin"/> Logging in....</span> :"Sign In to My Account"}
                     </button>
                 </div>
                 {/* /.form-group */}
