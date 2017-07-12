@@ -125,18 +125,10 @@ class PropertyInfo extends Component {
                                     <input className="hidden hidden-xs-up" id="cbx_pets" type="checkbox" /><label className="cbx" htmlFor="cbx_pets" /><label className="lbl" htmlFor="cbx_pets">Pets not allowed</label>
                                 </div></li>
                             </ul>
-                            <ul className="submit-features">
-                                <li><div className="cntr">
-                                    <input className="hidden hidden-xs-up" id="cbx" type="checkbox" /><label className="cbx" htmlFor="cbx" /><label className="lbl" htmlFor="cbx">Smoking not allowed</label>
-                                </div></li>
-                                <li><div className="cntr">
-                                    <input className="hidden hidden-xs-up" id="cbx_pets" type="checkbox" /><label className="cbx" htmlFor="cbx_pets" /><label className="lbl" htmlFor="cbx_pets">Pets not allowed</label>
-                                </div></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
-                <input type="button" ref="details_next" name="next" className="next action-button" value="Next" onClick={this.detailsNext.bind(this)}/>
+                <input type="button" ref="details_next" name="next" className="next action-button center" value="Save & Continue" onClick={this.detailsNext.bind(this)}/>
             </fieldset>
         );
     }

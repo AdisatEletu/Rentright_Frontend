@@ -7,6 +7,7 @@ import Login from '../src/components/pages/auth/Login';
 import Register from '../src/components/pages/auth/Register';
 import LandLord from "./components/pages/LandLord";
 import StepForm from "./components/pages/StepForm";
+import AccountLayout from "./components/pages/layouts/AccountLayout";
 
 
 
@@ -21,6 +22,7 @@ class App extends Component {
                   <Route path="/sign-in" component={Login}/>
                   <Route path="/landlord" component={LandLord}/>
                   <Route path="/form" component={StepForm}/>
+                  <Route path="/account" component={AccountLayout}/>
               </switch>
           </Router>
       );

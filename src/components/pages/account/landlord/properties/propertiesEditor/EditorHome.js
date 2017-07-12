@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getProperty} from "../.././../../../../state/actions/userActions";
 import Overlay from "../../../../../shared/Overlay";
+import Loader from "../../../../../shared/Loader";
 
 class EditorHome extends Component {
     constructor(props){
@@ -109,7 +110,7 @@ class EditorHome extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div> : <b><i className="fa fa-spinner fa-spin"/> Loading.....</b>}
+                    </div> : <Loader/>}
                     {this.props.activeProperty.property.fetching ? <Overlay/> : ''}
                 </div>
             </div>

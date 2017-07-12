@@ -109,14 +109,39 @@ class RentalTerms extends Component {
         return (
 
             <fieldset>
-                <h2 className="fs-title">Social Profiles</h2>
+                <h2 className="fs-title">The Rental Terms</h2>
                 <h3 className="fs-subtitle">Your presence on the social network</h3>
-                <input type="text" name="twitter" placeholder="Twitter" />
-                <input type="text" name="facebook" placeholder="Facebook" />
-                <input type="text" name="gplus" placeholder="Google Plus" />
-                <input type="button" name="previous" ref="terms_prev" onClick={this.termsPrevious.bind(this)} className="previous action-button" value="Previous" />
-                <input type="button" name="next" ref="terms_next" onClick={this.termsNext.bind(this)} className="next action-button" value="Next" />
-            </fieldset>
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="bedroom-field">Whats the monthly rent amount?</label>
+                            <input type="text" className="form-control" id="monthly-rent" name="title" required placeholder="125000.00"/>
+                        </div>{/* /.form-group */}
+                    </div>
+                    <div className="col-md-6">
+                        <div className="form-group">
+                            <label htmlFor="bathroom-field">Whats the security deposit?</label>
+                            <input type="text" className="form-control" id="bathroom-field" name="title" required placeholder="0.00"/>
+                        </div>{/* /.form-group */}
+                    </div>
+                </div><br/>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <label htmlFor="bedroom-field">Whats the move-in fee?</label>
+                            <input type="text" className="form-control" id="bedroom-field" name="title" required placeholder="0.00"/>
+                        </div>{/* /.form-group */}
+                    </div>
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <label htmlFor="bathroom-field">Whats the minimum lease term in months?</label>
+                            <input type="text" className="form-control" id="bathroom-field" name="title" required placeholder="The minimum lease term in months? 12?"/>
+                        </div>{/* /.form-group */}
+                    </div>
+                </div><br/>
+                    <input type="button" name="previous" ref="terms_prev" onClick={this.termsPrevious.bind(this)} className="previous action-button" value="Previous" />
+                    <input type="button" name="next" ref="terms_next" onClick={this.termsNext.bind(this)} className="next action-button pull-right" value="Next" />
+                </fieldset>
         );
     }
 

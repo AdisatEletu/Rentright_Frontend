@@ -1,3 +1,139 @@
+body{
+    margin: 0
+}
+
+h1.d-header-tag, h2.d-header-tag, h3.d-header-tag, h4.d-header-tag, h5.d-header-tag, h6.d-header-tag {
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+h3.d-header-tag {
+    font-size: 2.42rem;
+    margin: 1.46rem 0 1.168rem
+}
+
+main.d-main{
+    display: block;
+    padding-left: 300px;
+}
+
+
+ul.side-nav.fixed li.logo {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+ul.side-nav.fixed li.logo #logo-container:hover, ul.side-nav.fixed li.logo:hover {
+    background-color: transparent
+}
+
+ul.side-nav.fixed {
+    overflow: hidden
+}
+
+ul.side-nav.fixed li {
+    line-height: 44px;
+}
+
+ul.side-nav.fixed li.active {
+    background-color: #0A3b61; /*rgba(0, 0, 0, .05)*/
+}
+
+ul.side-nav.fixed li a {
+    font-size: 23px;
+    height: 44px;
+    padding: 0 30px
+}
+
+
+ul.side-nav.fixed:hover {
+    overflow-y: auto
+}
+
+#logo-container {
+    height: 57px;
+    margin-bottom: 32px
+}
+
+
+.d-collapsible {
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    margin: .5rem 0 1rem
+}
+
+ul.d-collapsible {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.side-nav.fixed .d-collapsible {
+    padding-bottom: 50px
+}
+
+.side-nav.fixed .collapsible-body > ul:not(.d-collapsible) > li a.active {
+    color: #fff;
+    background-color: #38435a;
+}
+
+ul.d-collapsible li:hover{
+    background-color: #0A3b61;
+    border-radius: 5px;
+}
+ul.d-collapsible li a i.material-icons{
+    float: none !important;
+    margin-right: 10px;
+}
+
+ul.d-collapsible li:hover > a,
+ul.d-collapsible li:hover > a i{
+    color: #ffffff;
+}
+
+.d-container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%
+}
+
+
+#index-banner {
+    background-color: #0A3b61;
+}
+
+#index-banner .d-container {
+    position: relative
+}
+
+#index-banner .d-header {
+    color: #fff;
+}
+
+#index-banner, .side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body li.active, footer.page-footer, nav {
+    background-color: #0A3b61;
+}
+
+a.button-collapse.top-nav.full {
+    line-height: 80px
+}
+
+
+.svg-wrap{
+    width: 80px;
+    height: 80px;
+    margin: auto auto;
+}
+
+.svg-wrap svg {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    display: inline;
+    float: none;
+}
+
 @keyframes placeHolderShimmer{
     0%{
         background-position: -468px 0
@@ -111,7 +247,7 @@
 }
 /*buttons*/
 #msform .action-button {
-    width: 100px;
+    width:40%;
     background: #27AE60;
     font-weight: bold;
     color: white;
@@ -119,7 +255,7 @@
     border-radius: 1px;
     cursor: pointer;
     padding: 10px 5px;
-    margin: 10px 5px;
+    margin: 10px auto;
 }
 #msform .action-button:hover, #msform .action-button:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
@@ -327,4 +463,55 @@
     to {
         transform: scale(1, 1);
     }
+}
+
+
+.header_address{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.tabs {
+    margin:  0;
+    padding: 0;
+    list-style: none;
+    display: table; /* [1] */
+    table-layout: fixed; /* [2] */
+    background-color: #0A3b61;
+    width: 100%; /* [3] */
+}
+
+.tabs__item {
+    display: table-cell; /* [4] */
+}
+
+.tabs__link {
+    display: block; /* [5] */
+}
+
+
+/**
+ * Primary nav. Extends `.tabs`.
+ *
+ * 1. Stop tabs’ corners leaking out beyond our 4px round.
+ */
+.primary-nav {
+    text-align: center;
+    overflow: hidden; /* [1] */
+}
+
+.primary-nav a {
+    padding: 1em;
+    background-color: #0A3b61;
+    color: #f5f5f5;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.primary-nav a:hover,
+.primary-nav a.active {
+    background-color: rgba(19,150,226,.5);
+    border-bottom: 3px solid #1396e2;
+    font-weight: bolder;
 }

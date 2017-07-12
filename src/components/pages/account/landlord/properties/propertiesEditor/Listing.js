@@ -13,6 +13,7 @@ import RentalTerms from "./listing/RentalTerms";
 import Amenities from "./listing/Amenities";
 import Review from "./listing/Review";
 import Overlay from "../../../../../shared/Overlay";
+import Loader from "../../../../../shared/Loader";
 
 class Listing extends Component {
 
@@ -141,10 +142,11 @@ class Listing extends Component {
                                 <li>.</li>
                                 <li>.</li>
                             </ul>
-                                <PropertyInfo onNext={this.detailsNext.bind(this)}/>
-                                <RentalTerms onPrev={this.termsPrevious.bind(this)} onNext={this.termsNext.bind(this)}/>
+                            <PropertyInfo onNext={this.detailsNext.bind(this)}/>
+                            <RentalTerms onPrev={this.termsPrevious.bind(this)} onNext={this.termsNext.bind(this)}/>
+                            <Amenities onPrev="" onNext=""/>
 
-                        </form> : <b><i className="fa fa-spinner fa-spin"/> Loading.....</b>}
+                        </form> : <Loader/>}
                         {this.props.activeProperty.property.fetching ? <Overlay/> : ''}
                         <script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"/>
 
