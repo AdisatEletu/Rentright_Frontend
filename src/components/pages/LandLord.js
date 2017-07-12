@@ -20,6 +20,7 @@ class LandLord extends Component{
                                 <Route path='/landlord/profile' component={Profile}/>
                                 <Route path='/landlord/properties' component={Properties}/>
                                 <Route path='/landlord/properties/:id' component={PropertyEditor}/>
+                                
                             </Switch>
                         </div>
                     </div>
