@@ -12,7 +12,7 @@ function Header(){
                 <span className="icon-bar" />
             </button>
             <div className="navbar-brand nav" id="brand">
-                <a href="index-google-map-fullscreen.html"><h3><b>Rent Right</b></h3></a>
+                <a href="index-google-map-fullscreen.html"><h3><b>RentRight</b></h3></a>
             </div>
         </div>
     );
