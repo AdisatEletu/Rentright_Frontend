@@ -6,7 +6,7 @@ import React, {Component} from 'react';
 //import PropTypes from 'prop-types';
 //import appRoot from 'app-root-path';
 
-function PopularSearches (){
+    function PopularSearches (){
     return (
         <div className="section white  mtop">
             <div className="row">
@@ -20,7 +20,7 @@ function PopularSearches (){
     );
 }
 
-function Adeniran () {
+    function Adeniran () {
     return (
 
         <div className="views ">
@@ -197,6 +197,53 @@ function Adeniran () {
         );
 
     }
+
+    function Partners () {
+        return(
+            <div>
+                <div className="container">
+                    <div className="row">
+                        <div className="partner-margin">
+                            <h4 className="colo">Our Partners</h4>
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+                <div className="container">
+                    <div className="row">
+                      <div className="col m3">
+                          <img src="CSS/img/ibm2.jpg" alt="Logo" ></img>
+
+                      </div>
+                        <div className="col m3">
+                          <img src="CSS/img/ibm.jpg" alt="Logo" ></img>
+
+                      </div>
+                        <div className="col m3">
+                          <img src="CSS/img/ibm3.jpg" alt="Logo" ></img>
+
+                      </div>
+                        <div className="col m3">
+                            <img src="CSS/img/ibm.jpg" alt="Logo" ></img>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        );
+
+    }
+
+    function  testimonial() {
+        return(
+            <div>
+                <span><i class="material-icons">comment</i></span>
+            </div>
+        );
+
+    }
 export default class NewSecondaryNav extends Component{
 
     render(){
@@ -220,6 +267,8 @@ export default class NewSecondaryNav extends Component{
                                 <Landlord/>
                             </div>
                             <Dualpicture/>
+                            <testimonial/>
+                           <Partners/>
                         </div>
 
 

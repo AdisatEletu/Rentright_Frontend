@@ -1,12 +1,12 @@
-body, html {margin:0px; height:100%; width:100%; margin:0px;  } *:hover{text-decoration:none!important; color:default!important;}
+body, html {margin:0px; height:100%; width:100%; margin:0px; font-size: 16px;  } *:hover{text-decoration:none!important; color:default!important;}
 * {  -webkit-transition: all 0.3s ease;  -moz-transition:    all 0.3s ease;  -ms-transition:     all 0.3s ease;  -o-transition:      all 0.3s ease;}
 input:focus, *:focus{outline:none;}
 .fullheight{height:200%;} .nopadding{padding:0; margin:0;}
 .white{background:#fff;  }
 .topbar{box-sizing:border-box; padding:0px 10px; }
 nav{background-color:#0d47a1; background-color:#d2d2d2; color:#333; box-shadow:0px 0px 0px rgba(0,0,0,0);  }
-nav li{ font-weight:500; font-size:18px;  font-size:20px;}
-.topbar .iconic{height:40px; width:120px;  margin-top:10%;  background-size:contain; background-position:center;  background-repeat:no-repeat; background-image:url('img/rentright-logo-300.png');}
+nav li{ font-weight:300; font-size:20rem;}
+.topbar .iconic{height:40px; width:80px;  margin-top:10%;  background-color: #fff; background-size:contain; background-position:center;  background-repeat:no-repeat; background-image:url('img/rentright-logo-3000.png');}
 .topbarwhite{background:rgba(0,0,0,0)!important; opacity:1;} .topbarcolorblack{}
 .nobx{ box-shadow:transparent!important; box-shadow:none!important;} .zeropadding{ padding:0!important;}
 .prebottom{height:650px; position:absolute;  width:100%; margin-top:-100px;  background-size:cover; background-repeat:no-repeat; background-position:center; overflow:hidden; box-sizing:border-box;   background-image:url('img/vec1.jpg');  }
@@ -16,7 +16,7 @@ nav li{ font-weight:500; font-size:18px;  font-size:20px;}
 .toppicture{top:0px; }
 .bottompicture{bottom:0px; }
 .picture{background-size:cover; background-position:center; }
-.house1{background-image:url('img/house2.jpg');} .house2{background-image:url('img/house1.jpg');}  .house3{background-image:url('img/house3.jpg');}
+.house1{background-image:url('img/house1.jpg');} .house2{background-image:url('img/house2.jpg');}  .house3{background-image:url('img/house3.jpg');}
 .interior1{background-image:url('img/interior1.jpg');} .interior2{background-image:url('img/interior2.jpg');} .interior3{background-image:url('img/interior3.jpg');}
  .interior4{background-image:url('img/interior4.jpg');} .interior5{background-image:url('img/interior5.jpg');}
 .hybridcover{background-color:rgba(0,0,0,0.6); width:100%; height:100%; } .corporate{background-image:url('img/coorporate.jpg');}
@@ -112,9 +112,10 @@ border:solid 1px rgba(0,0,0,0.04)!important;
 border-radius:0px;
  }
 
-.footer-copyright{background-color: #073855!important; height: 50px;} .page-footer{background-color:#f3f3f3!important; color:#5a5a5a!important;}  .property-info{padding-left:110px;}
-.rtext{color:#2a2a2a; font-weight:normal;}
+.footer-copyright{background-color: #00030B!important; height: 50px;} .page-footer{background-color:#073855!important; color:#CACACA!important;}  .property-info{padding-left:110px;}
+.rtext{color:#fff; font-weight:normal;}
 .property{overflow-x: hidden; overflow-y:hidden; position: relative; width:100%;} .small{font-size: 85%;} .property-image{width:75px; height:75px; float:left;}
 .tag{font-size: 12px;} .price{text-shadow: 0px 1px 1px rgba(0,0,0,0.3); border-radius: 2px; background-color: #1396e2; color: #fff; font-weight: bold;}
 
 .sign-in-margin{margin-top:75px; margin-bottom: 20px; margin-left: 0px; margin-right: 0px;}
+.partner-margin{margin-top: 75px; margin-bottom: 10px; } .colo{color: #073855;}
