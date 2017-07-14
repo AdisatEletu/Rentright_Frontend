@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import Slider from "./layouts/header/Slider";
 
-import Header from './layouts/Header';
+//import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 
 function Banner(){
@@ -22,7 +22,7 @@ export default class Home extends Component{
         return(
         <div className="page-homepage navigation-fixed-top page-slider" id="page-top" data-spy="scroll" data-target=".navigation" data-offset={90}>
             <div className="wrapper" >
-                <Header/>
+               {/*--<Header/>--*/}
                 <Slider/>
                 <div id="page-content">
                     <Banner/>

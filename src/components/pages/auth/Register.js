@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Header from "../layouts/Header";
+//import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import PropTypes from 'prop-types'
 import {register} from '../../../state/actions/authAction';
@@ -133,7 +133,7 @@ class Register extends Component {
             <div className="page-sub-page page-create-account page-account" id="page-top" data-spy="scroll"
                  data-target=".navigation" data-offset={90}>
                 <div className="wrapper">
-                    <Header/>
+                    {/*<Header/>*/}
                     <div className="page-content">
                         <BreadCrumbs/>
                         <SignUp register={register}/>

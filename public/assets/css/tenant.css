@@ -1,8 +1,9 @@
 /*global all tenant specific style are prefixed with a t-, used in conjuction with materialize.css*/
 /*All width's are not set but if set it is temprorary grid style of materialized is used */
 /*generalstyles **margin **padding **floats **flex etc */
+
 *, a, Link{text-decoration:none; text-decoration-style:inherit; color:inherit; } 
-html,body{width:100%; height:100%; overflow-x:hidden; background:#fff; font-size:12px; padding:0; margin:0;font-family:Roboto;}
+html,body, #root{width:100%; height:100%!important; overflow-x:hidden; background:#fff; font-size:12px; padding:0; margin:0;font-family:Roboto;}
 .t-zeropadding-margin{padding:0px; margin:0px;}
 .t-zero-font{font-size:0px; }
 .t-left-fl{float:left;} .t-right-fl{float:right;}.t-overflow{overflow:hidden;}
@@ -10,6 +11,7 @@ html,body{width:100%; height:100%; overflow-x:hidden; background:#fff; font-size
 .t-white-f{color:#fff;} .t-white{background:#fff;}
 .t-gray-f{color:#ededed;}  .t-gray{background:#ededed;}
 .t-green-f{ color:#b2d234; } .t-green{ background:#b2d234; }
+.t-orange-f{color:#FAA61A; } .t-orange{background-color:#FAA61A;}
 .t-gray-lighten-1-f{ color:#bdbdbd; } .t-gray-lighten-1{ background:#bdbdbd; }
 .t-gray-lighten-2-f{ color:#e0e0e0; } .t-gray-lighten-2{ background:#e0e0e0; }
 .t-gray-lighten-3-f{ color:#eeeeee; } .t-gray-lighten-3{ background:#eeeeee; }
@@ -22,23 +24,26 @@ html,body{width:100%; height:100%; overflow-x:hidden; background:#fff; font-size
 .t-top{margin-top:5vh;}
 /* boxmodel display positions */
 
-.t-block{display:block;} .t-inline{display:inline;} .t-inline-block{display:inline-block;}
+.t-block{display:block; width:100%;} .t-inline{display:inline;} .t-inline-block{display:inline-block;}
 /* flex  display positions */
 .t-flex{display:flex;} .t-flex-row{flex-direction:row;} .t-flex-column{flex-direction:column;}
+.t-flex-wrap{flex-wrap:wrap;}
 /*.t-flex-flow-flstart{flex}*/
 /* fonts */
 .t-center-f{text-align:center;} .t-left-f{text-align:left;} .t-right-f{text-align:right;}
 .dosis{font-family:Dosis; } .open-sans{font-family:Open Sans;} .lato{font-family:Lato;} .roboto{font-family:Roboto;}
-.thin{font-weight:300;}  .semi-thin{font-weight:400;}.mid{font-weight:500;} .postmid{font-weight:700;} .semi-bold{font-weight:800;} .bold{font-weight:900;}
-.t-space-1{letter-spacing:1px;} .t-space-2{letter-spacing:2pxx;} .t-uppercase{text-transform:uppercase;} .t-capitalize{text-transform:capitalize;}
+.thin{font-weight:300;}  .semi-thin{font-weight:400;}.mid{font-weight:500;} .t-postmid, .postmid{font-weight:600;} .semi-bold{font-weight:800;} .bold{font-weight:900;}
+.t-space-1{letter-spacing:1px;} .t-space-2{letter-spacing:2px;} .t-uppercase{text-transform:uppercase;} .t-capitalize{text-transform:capitalize;}
 .t-sup-h1{font-size:6.5rem; line-height:8.5rem; }
 .t-sup-h2{font-size:4.5rem; line-height:6.5rem; }
 .t-sup-h3{font-size:2.8rem; line-height:4.5rem; }
 .t-h1{font-size:2.2rem; line-height:2.2rem; }
 .t-h2{font-size:1.8rem; line-height:2.2rem; }
-.t-h3{font-size:1.4rem; line-height:1.8rem; } .t-lh-h2{line-height:2.2rem!important;}
+.t-h3{font-size:1.2rem; line-height:1.8rem; } .t-lh-h2{line-height:2.2rem!important;}
 .t-h4{font-size:1rem; line-height:1.4rem; }
 .t-h5{font-size:0.6rem; line-height:1rem; }
+.t-capitalize{text-transform:capitalize;}
+
 /*horrizontal-flow*/
 .t-justify-left{justify-content:flex-start;}/*for horrizontal alignment all items are pushed to the left */
 .t-justify-right{justify-content:flex-end;}/*for horrizontal alignment all items are pushed to the right */
@@ -46,6 +51,8 @@ html,body{width:100%; height:100%; overflow-x:hidden; background:#fff; font-size
 .t-justify-space-between{justify-content:space-between;}/*for items to have equispaces between however edge element start from the edge*/
 .t-justify-space-around{justify-content:space-around;}/*for items to be justifiably spaced with equidistance */
 .t-fullheight{height:100%; } .t-fullwidth{width:100%; }
+.t-align-self-right{align-self:flex-end;}
+.t-align-self-left{align-self:flex-start;}
 /*vertical-flow align for single line items*/
 .t-align-top{align-items:flex-start;}/*for vertical alignment all items are pushed to the top */
 .t-align-bottom{align-items:flex-end;}/*for vertical alignment all items are pushed to the bottom */
@@ -85,6 +92,7 @@ html,body{width:100%; height:100%; overflow-x:hidden; background:#fff; font-size
 /* midmain panel full miainpanel */
 .t-midmain{ padding-top:45px; z-index:1; background:rgba(0,0,0,0.1);   /* temprorary*/ width:84vw;} /* <-- should always contain t-subnav element as the first element  --> */
 .t-midmain{padding-left:4vw; padding-right:4vw; box-sizing:border-box;}
+.t-midmain{overflow-y:auto;}
 
 /* ........................ * /
 
@@ -102,7 +110,7 @@ html,body{width:100%; height:100%; overflow-x:hidden; background:#fff; font-size
 .t-flex-15{width:15vw;} .t-flex-25{width:25vw;} .t-flex-35{width:35vw;} .t-flex-45{width:45vw;} .t-flex-55{width:55vw;} .t-flex-65{width:65vw;}
 .t-flex-75{width:75vw;} .t-flex-85{width:85vw;} .t-flex-95{width:95vw;}
 
-.t-md-1{width:10%;} .t-md-2{width:20%;} .t-md-3{width:30%;} .t-md-4{width:40%;} .t-md-5{width:5%;} .t-md-6{width:60%;}
+.t-md-1{width:10%;} .t-md-2{width:20%;} .t-md-3{width:30%;} .t-md-4{width:40%;} .t-md-5{width:50%;} .t-md-6{width:60%;}
 .t-md-7{width:70%;} .t-md-8{width:80%;} .t-md-9{width:90%;} .t-md-10{width:100%;} 
 
 /*.....................................*/

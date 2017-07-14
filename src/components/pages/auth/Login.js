@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Form from './login/Form';
-import Header from "../layouts/Header";
+//import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types'
@@ -30,7 +30,7 @@ class Login extends Component{
 
         <div className="page-sub-page page-sign-in page-account" id="page-top" data-spy="scroll" data-target=".navigation" data-offset={90}>
             <div className="wrapper" >
-                <Header/>
+               {/* <Header/>*/}
 
                 <FlashMessagesList/>
                 <div className="page-content">

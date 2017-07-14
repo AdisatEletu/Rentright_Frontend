@@ -13,6 +13,7 @@ class Profile extends Component {
         this.state = {
             active: this.props.active,
         }
+       
     }
 
     render() {
