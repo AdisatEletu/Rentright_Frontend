@@ -13,7 +13,7 @@ class PropertyShimmer extends Component {
                 <div className="background-masker subheader-bottom" />
                 <div className="background-masker subheader-right" />
             </div>
-                <hr/>
+                <div className="divider" style={{marginTop: '10px', marginBottom: '10px'}}/>
             </div>
         );
     }

@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import BreadCrumbs from "./shared/BreadCrumbs";
-import SideMenu from "./shared/SideMenu";
 import Content from "./profile/Content";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {update} from '../../../../state/actions/userActions';
+import {setHeader} from '../../../../state/actions/uiAction';
 
 class Profile extends Component {
 
@@ -15,14 +14,17 @@ class Profile extends Component {
         }
     }
 
-    render() {
-        const trail = ["Home", "Account"];
+    componentWillMount(){
+        this.props.setHeader({
+            text: 'Account Setting',
+            hasBar: false,
+        });
+    }
 
+    render() {
         const {auth,update} = this.props;
         return (
             <div>
-                <BreadCrumbs trails={trail} active="Profile"/>
-                <SideMenu active="profile"/>
                 <Content auth={auth} update={update}/>
             </div>
         );
@@ -38,5 +40,7 @@ function matchStateToProps(state){
 Profile.propTypes = {
     auth: PropTypes.object.isRequired,
     update: PropTypes.func.isRequired,
+    setHeader: PropTypes.func.isRequired,
 }
-export default connect(matchStateToProps,{update})(Profile)
+
+export default connect(matchStateToProps,{update,setHeader})(Profile)

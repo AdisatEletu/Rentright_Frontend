@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import EditorBar from "./shared/EditorBar";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
-import { findDOMNode } from 'react-dom';
+import {findDOMNode} from 'react-dom';
 import {getProperty} from "../.././../../../../state/actions/userActions";
 
 
@@ -17,38 +16,36 @@ import Loader from "../../../../../shared/Loader";
 
 class Listing extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             current_fs: '',
             next_fs: '',
             previous_fs: '',
-            left:'',
+            left: '',
             opacity: '',
-            scale:'',
+            scale: '',
             animating: '',
         }
     }
 
-    getAddress(){
-        return this.props.activeProperty.property.property.address.house_number+" "+ this.props.activeProperty.property.property.address.street_name;
-    }
-
-    detailsNext(){
+    detailsNext() {
         this.next(findDOMNode(this.refs.details_next));
     }
-    termsPrevious(){
+
+    termsPrevious() {
         this.previous(findDOMNode(this.refs.terms_prev));
     }
-    termsNext(){
+
+    termsNext() {
         this.next(findDOMNode(this.refs.terms_next));
     }
 
-    next(el){
+    next(el) {
 
         const {animating} = this.state;
 
-        if(animating) return false;
+        if (animating) return false;
 
         this.setState({animating: false});
 
@@ -61,23 +58,23 @@ class Listing extends Component {
         $(el).parent().next().show();
         //hide the current fieldset with style
         $(el).parent().animate({opacity: 0}, {
-            step: function(now, mx) {
+            step: function (now, mx) {
                 //as the opacity of current_fs reduces to 0 - stored in "now"
                 //1. scale current_fs down to 80%
                 let scale = 1 - (1 - now) * 0.2;
-                context.setState({scale:scale});
+                context.setState({scale: scale});
                 //2. bring next_fs from the right(50%)
-                let left = (now * 50)+"%";
+                let left = (now * 50) + "%";
                 context.setState({left});
                 //3. increase opacity of next_fs to 1 as it moves in
                 let opacity = 1 - now;
                 context.setState({opacity});
 
-                $(el).parent().css({'transform': 'scale('+scale+')'});
+                $(el).parent().css({'transform': 'scale(' + scale + ')'});
                 $(el).parent().next().css({'left': left, 'opacity': opacity});
             },
             duration: 800,
-            complete: function(){
+            complete: function () {
                 $(el).parent().hide();
                 context.setState({animating: false})
             },
@@ -86,10 +83,10 @@ class Listing extends Component {
         });
     }
 
-    previous(el){
+    previous(el) {
         const {animating} = this.state;
 
-        if(animating) return false;
+        if (animating) return false;
 
         this.setState({animating: false});
 
@@ -102,19 +99,19 @@ class Listing extends Component {
         $(el).parent().prev().show();
         //hide the current fieldset with style
         $(el).parent().animate({opacity: 0}, {
-            step: function(now, mx) {
+            step: function (now, mx) {
                 //as the opacity of current_fs reduces to 0 - stored in "now"
                 //1. scale previous_fs from 80% to 100%
                 let scale = 0.8 + (1 - now) * 0.2;
                 //2. take current_fs to the right(50%) - from 0%
-                let left = ((1-now) * 50)+"%";
+                let left = ((1 - now) * 50) + "%";
                 //3. increase opacity of previous_fs to 1 as it moves in
                 let opacity = 1 - now;
                 $(el).parent().css({'left': left});
-                $(el).parent().prev().css({'transform': 'scale('+scale+')', 'opacity': opacity});
+                $(el).parent().prev().css({'transform': 'scale(' + scale + ')', 'opacity': opacity});
             },
             duration: 800,
-            complete: function(){
+            complete: function () {
                 $(el).parent().hide();
                 context.setState({animating: false})
             },
@@ -126,32 +123,24 @@ class Listing extends Component {
     render() {
 
         return (
-            <div>
-                <EditorBar active="listing" uuid={this.props.match.params.id} address={this.props.activeProperty.property.isSet ? this.getAddress() : ''}/>
-                <div className="grey-back col-lg-12">
-                    <div>
-                        {this.props.activeProperty.property.isSet ?
+            <div className="row">
+                <div className="col m12">
+                    {this.props.property.isSet ?
                         <form id="msform">
-                            <ul id="progressbar">
-                                <li className="active">.</li>
-                                <li>.</li>
-                                <li>.</li>
-                                <li>.</li>
-                                <li>.</li>
-                                <li>.</li>
-                                <li>.</li>
-                                <li>.</li>
-                            </ul>
+                            <div className="row">
+                                <div className="col m12">
+                                    <ul id="progressbar">
+                                        <li className="active">profile</li>
+                                        <li>social</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
                             <PropertyInfo onNext={this.detailsNext.bind(this)}/>
                             <RentalTerms onPrev={this.termsPrevious.bind(this)} onNext={this.termsNext.bind(this)}/>
-                            <Amenities onPrev="" onNext=""/>
-
                         </form> : <Loader/>}
-                        {this.props.activeProperty.property.fetching ? <Overlay/> : ''}
-                        <script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"/>
-
-                        <script src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript"/>
-                    </div>
+                    {this.props.property.fetching ? <Overlay/> : ''}
                 </div>
             </div>
         );
@@ -159,15 +148,15 @@ class Listing extends Component {
 
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
-        activeProperty: state.user.activeProperty,
+        property: state.user.activeProperty.property,
     }
 }
 
 Listing.propTypes = {
-    activeProperty: PropTypes.object.isRequired,
+    property: PropTypes.object.isRequired,
 }
 
-export default connect(mapStateToProps,{getProperty})(Listing);
+export default connect(mapStateToProps, {getProperty})(Listing);
 

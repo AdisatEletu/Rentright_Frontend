@@ -1,5 +1,33 @@
 body{
-    margin: 0
+    margin: 0;
+    background-color: #eeeeee;
+}
+
+
+.primary-color{
+    background-color: #0A3b61 !important;
+}
+.primary-color-text{
+    color: #0A3b61;
+}
+.secondary-color{
+    background-color: #faa61a;
+}
+.secondary-color-text{
+    color: #faa61a;
+}
+
+.tertiary-color-text{
+    color: #1396e2;
+}
+
+.big-text{
+    font-size: 20px;
+}
+
+.btn.primary-color:hover,
+a.primary-color-text{
+background-color: rgba(10, 59, 97, .8) !important;
 }
 
 h1.d-header-tag, h2.d-header-tag, h3.d-header-tag, h4.d-header-tag, h5.d-header-tag, h6.d-header-tag {
@@ -15,6 +43,7 @@ h3.d-header-tag {
 main.d-main{
     display: block;
     padding-left: 300px;
+    background-color: #eeeeee;
 }
 
 
@@ -69,6 +98,14 @@ ul.d-collapsible {
     padding-right: 10px;
 }
 
+ul.d-collapsible li{
+    margin:0; padding:0;
+}
+
+ul.d-collapsible li a{
+    display: block;
+}
+
 .side-nav.fixed .d-collapsible {
     padding-bottom: 50px
 }
@@ -100,7 +137,11 @@ ul.d-collapsible li:hover > a i{
 
 
 #index-banner {
+    position: fixed;
+    //width: 100%;
+    z-index:10;
     background-color: #0A3b61;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2);
 }
 
 #index-banner .d-container {
@@ -208,6 +249,17 @@ a.button-collapse.top-nav.full {
     height: 28px;
 }
 
+.caret{
+    display:inline-block;
+    width:0;
+    height:0;
+    margin-left:2px;
+    vertical-align:middle;
+    border-top:4px solid;
+    border-right:4px solid transparent;
+    border-left:4px solid transparent
+}
+
 /*custom font*/
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
@@ -219,6 +271,7 @@ a.button-collapse.top-nav.full {
     position: relative;
 }
 #msform fieldset {
+    position: absolute;
     background: white;
     border: 0 none;
     border-radius: 3px;
@@ -372,6 +425,39 @@ a.button-collapse.top-nav.full {
     left: 0;
     width: 100%;
 }
+
+.property-list tr.property-item td.image,
+.property-list tr.property-item td.image img {
+    height: 100px;
+    width: 125px;
+}
+
+.property-list tr.property-item .inner{
+    display: inline-block;
+}
+
+.property-list tr.property-item td.inner-td{
+    vertical-align: top !important;
+}
+.property-list tr.property-item td.actions{
+    padding: 5px;
+    text-align: right;
+}
+
+.property-list tr.property-item .inner a h2{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0 0px 5px 0;
+    padding: 0;
+}
+
+.property-list tr.property-item .inner figure{
+    margin: 0;
+    margin-bottom: 5px !important;
+    margin-top: 10px !important;
+}
+
+
 @-moz-keyframes jelly {
     from {
         transform: scale(1, 1);
@@ -472,14 +558,14 @@ a.button-collapse.top-nav.full {
     margin-bottom: 10px;
 }
 
-.tabs {
+.d-tabs {
     margin:  0;
     padding: 0;
     list-style: none;
     display: table; /* [1] */
     table-layout: fixed; /* [2] */
     background-color: #0A3b61;
-    width: 100%; /* [3] */
+    width: 90%; /* [3] */
 }
 
 .tabs__item {
@@ -514,4 +600,14 @@ a.button-collapse.top-nav.full {
     background-color: rgba(19,150,226,.5);
     border-bottom: 3px solid #1396e2;
     font-weight: bolder;
+}
+
+.full-width{
+    width: 100% !important;
+    display: table; /* [1] */
+    table-layout: fixed; /* [2] */
+}
+
+.hover:hover {
+    box-shadow:0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 4px 2px -1px rgba(0,0,0,0.2);
 }

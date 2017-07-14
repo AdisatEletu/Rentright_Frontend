@@ -8,17 +8,29 @@ import Lease from "./propertiesEditor/Lease";
 import Maintenance from "./propertiesEditor/Maintenance";
 import Payments from "./propertiesEditor/Payments";
 import {getProperty} from "../../../../../state/actions/userActions";
+import {setHeader, resetHeader} from '../../../../../state/actions/uiAction';
 import PropTypes from 'prop-types';
 
 
 class PropertyEditor extends Component {
 
-    componentDidMount(){
+    componentWillMount(){
+        this.props.resetHeader();
         const uuid = this.props.match.params.id;
         this.props.getProperty({uuid:uuid});
     }
 
     render() {
+        const property = this.props.property;
+
+        if(property.isSet){
+            this.props.setHeader({
+                text: property.property.address.house_number+" "+property.property.address.street_name,
+                hasBar:true,
+                uuid: this.props.match.params.id,
+            });
+        }
+
         return (
             <div style={{paddingLeft: '15px', paddingRight: '15px'}}>
                 <Switch>
@@ -35,9 +47,18 @@ class PropertyEditor extends Component {
 
 }
 
-PropertyEditor.propTypes = {
-    getProperty: PropTypes.func.isRequired,
+function mapStateToProps(state){
+    return {
+        property: state.user.activeProperty.property,
+    }
 }
 
-export default connect(null,{getProperty})(PropertyEditor);
+PropertyEditor.propTypes = {
+    getProperty: PropTypes.func.isRequired,
+    property: PropTypes.object.isRequired,
+    setHeader: PropTypes.func.isRequired,
+    resetHeader: PropTypes.func.isRequired,
+}
+
+export default connect(mapStateToProps,{getProperty,setHeader,resetHeader})(PropertyEditor);
 
