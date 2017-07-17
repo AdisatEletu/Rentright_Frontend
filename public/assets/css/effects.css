@@ -566,7 +566,8 @@ a.button-collapse.top-nav.full {
     padding: 0 0 50px;
 }
 
-#sidebar-menu a.item{
+#sidebar-menu a.item,
+#propertyMenu a.prop-item{
     height: auto !important;
     padding: 10px;
     margin-bottom: 15px;
@@ -581,7 +582,8 @@ a.button-collapse.top-nav.full {
     color: #ffffff;
 }
 
-#sidebar-menu a.item i.fa{
+#sidebar-menu a.item i.fa,
+#propertyMenu a.prop-item i.fa{
     padding-right: 10px;
     font-size: 25px;
 }
@@ -599,17 +601,22 @@ a.button-collapse.top-nav.full {
 }
 
 #propertyMenu{
-    padding-right: 10px;
-    padding-left: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
-#propertyMenu .item{
+#propertyMenu .prop-item{
     padding-top: 3px !important;
     padding-bottom: 3px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-#propertyMenu .item:hover,
-#propertyMenu .item .active{
+#propertyMenu .prop-item:hover,
+#propertyMenu .prop-item.active{
+    background-color: #0A3b61;
+    color: #ffffff;
     border: 2px solid #faa61a !important;
     border-radius: 5px;
     box-shadow:0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 4px 2px -1px rgba(0,0,0,0.2);

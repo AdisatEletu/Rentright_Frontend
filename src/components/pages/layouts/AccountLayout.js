@@ -49,7 +49,7 @@ function AccountHeader(props) {
                 <li className="no-padding">
                     <div id="sidebar-menu">
                         <NavLink to="/landlord/dashboard" activeClassName={"active"} className="item"><i className="fa fa-desktop" aria-hidden="true"/> Dashboard</NavLink>
-                        <NavLink to="/landlord/properties" activeClassName={"active"} className="item"><i className="fa fa-building-o" aria-hidden="true"/> My Properties</NavLink>
+                        {/*<NavLink to="/landlord/properties" activeClassName={"active"} className="item"><i className="fa fa-building-o" aria-hidden="true"/> My Properties</NavLink>*/}
                         <NavLink to="/landlord/rent-analysis" activeClassName={"active"} className="item"><i className="fa fa-area-chart" aria-hidden="true"/> Rent Analysis</NavLink>
                         <NavLink to="/landlord/reports" activeClassName={"active"} className="item"><i className="fa fa-file-text-o" aria-hidden="true"/> Reports</NavLink>
                         <NavLink to="/landlord/my-team" activeClassName={"active"} className="item"><i className="fa fa-users" aria-hidden="true"/> My Team</NavLink>

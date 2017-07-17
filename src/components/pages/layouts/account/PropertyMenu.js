@@ -12,11 +12,13 @@ class PropertyMenu extends Component {
 
     getMenu(){
         if(this.props.properties.fetched){
-            //const menu = this.props.properties.map((property) => {
-                console.log(this.props.properties);
-           // });
+            const menu = this.props.properties.prop.map((property) =>
+                <NavLink to={"/landlord/properties/"+property.uuid} activeClassName={"active"} className="prop-item"><i className="fa fa-building-o" aria-hidden="true"/> {property.name}</NavLink>
+            );
+            return menu;
         }
     }
+
     render() {
         return (
             <div id="propertyMenu">
@@ -24,8 +26,7 @@ class PropertyMenu extends Component {
                 {this.props.properties.fetched
                     ? <div>
                         {this.getMenu()}
-                        <NavLink to="/landlord/my-team" activeClassName={"active"} className="item"><i className="fa fa-building-o" aria-hidden="true"/> 17 Omorinre johnson</NavLink>
-                      </div>
+                        </div>
                     : ''
                 }
                 {!this.props.properties.fetching && !this.props.properties.fetched ? 'Problem getting your properties' : ''}
