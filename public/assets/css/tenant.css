@@ -13,8 +13,8 @@ html,body, #root{width:100%; height:100%!important; overflow-x:hidden; backgroun
 .t-green-f{ color:#b2d234; } .t-green{ background:#b2d234; }
 .t-orange-f{color:#FAA61A; } .t-orange{background-color:#FAA61A;}
 .t-gray-lighten-1-f{ color:#bdbdbd; } .t-gray-lighten-1{ background:#bdbdbd; }
-.t-gray-lighten-2-f{ color:#e0e0e0; } .t-gray-lighten-2{ background:#e0e0e0; }
-.t-gray-lighten-3-f{ color:#eeeeee; } .t-gray-lighten-3{ background:#eeeeee; }
+.t-gray-lighten-2-f{ color:#e0e0e0!important; } .t-gray-lighten-2{ background:#e0e0e0; }
+.t-gray-lighten-3-f{ color:#eeeeee!important; } .t-gray-lighten-3{ background:#eeeeee; }
 .t-gray-lighten-4-f{ color:#f5f5f5; } .t-gray-lighten-4{ background:#f5f5f5; }
 .t-gray-lighten-1-5{ color:#fafafa; } .t-gray-lighten-5{ background:#fafafa; }
 .t-gray-darken-1-f{ color:#757575; } .t-gray-darken-1{ background:#757575; }
@@ -83,21 +83,25 @@ html,body, #root{width:100%; height:100%!important; overflow-x:hidden; backgroun
 .t-container{width:100%; height:100%; font-size:0px; margin:0px; padding:0px; padding:0px; }
 /* let panel full left panel */
 
-.t-left{  z-index:1; background:#fff;   box-sizing:border-box; padding:1vw 0vw;   /* temprorary*/ width:16vw; }
+.t-left{  z-index:4; background:#fff;   box-sizing:border-box; padding:1vw 0vw;   /* temprorary*/ width:16vw; }
 
 
 /**************** **/
 
 
 /* midmain panel full miainpanel */
-.t-midmain{ padding-top:45px; z-index:1; background:rgba(0,0,0,0.1);   /* temprorary*/ width:84vw;} /* <-- should always contain t-subnav element as the first element  --> */
-.t-midmain{padding-left:4vw; padding-right:4vw; box-sizing:border-box;}
+.t-midmain{ padding-top:10vh; z-index:1; background:#E8F4F6;   /* temprorary*/ width:84vw;} /* <-- should always contain t-subnav element as the first element  --> */
+
+.t-midmain{padding-left:4vw; padding-right:5vw; padding-top:15 vh; box-sizing:border-box;}
+
 .t-midmain{overflow-y:auto;}
+.t-dash{width:80%;  padding:4vh 5vh; box-sizing:border-box; padding-top:5vh;} 
+.t-advert{width:15vw; position:fixed; z-index:4; top:0px;padding:1.5vw; padding-top:13vh; height:100%; right:0px;  background-color:rgba(255,255,255,0.8);}
 
 /* ........................ * /
 
 /*navpanel full navpanel */
-.t-nav{height:45px; position:fixed; margin:0px; padding:0px; left:0px; overflow-x:hidden;  top:0px; z-index:3;   /* temprorary*/ width:100%;}
+.t-nav{ position:fixed; margin:0px; padding:0px; left:0px; overflow-x:hidden;  top:0px; z-index:3;   /* temprorary*/ width:100%;}
 .t-subnav{height:100px; height:100%;   /* temprorary*/  width:100%; }
 /*..................................*/
 
@@ -112,6 +116,7 @@ html,body, #root{width:100%; height:100%!important; overflow-x:hidden; backgroun
 
 .t-md-1{width:10%;} .t-md-2{width:20%;} .t-md-3{width:30%;} .t-md-4{width:40%;} .t-md-5{width:50%;} .t-md-6{width:60%;}
 .t-md-7{width:70%;} .t-md-8{width:80%;} .t-md-9{width:90%;} .t-md-10{width:100%;} 
+
 
 /*.....................................*/
 

@@ -7,6 +7,7 @@ import Login from '../src/components/pages/auth/Login';
 import Register from '../src/components/pages/auth/Register';
 import LandLord from "./components/pages/LandLord";
 import Tenant from "./components/pages/Tenant";
+import TenantProfile from "./components/pages/layouts/TenantProfile";
 import StepForm from "./components/pages/StepForm";
 
 
@@ -21,7 +22,8 @@ class App extends Component {
                   <Route path={"/register"} component={Register}/>
                   <Route path="/sign-in" component={Login}/>
                   <Route path="/landlord" component={LandLord}/>
-                  <Route path="/tenant/profile/:id" component={Tenant}/>                 
+                  <Route path="/tenant/:id" component={Tenant}/>   
+                        
                   <Route path="/form" component={StepForm}/>
               </switch>
           </Router>

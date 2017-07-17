@@ -90,20 +90,20 @@ export function loadSpecificTenant(path) {
         dispatch(setTenantImmigration(tenant_immigration));
         dispatch(setTenantResidence(tenant_residence));
         dispatch(listTenantGeneral(tenant_data_structure));
-        dispatch(listTenantBio(tenant_data_structure.tenant_bio));
-        if (tenant_data_structure.tenant_employment_history){
+        dispatch(listTenantBio(tenant_bio));
+        try{
            dispatch(listTenantEmployment(tenant_data_structure.tenant_employment_history));
          
-        }else{        
+        }catch(err){        
            dispatch(listTenantEmployment({}));
         } 
-         if (tenant_data_structure.tenant_immigration_history){
+    try{
            dispatch(listTenantImmigration(tenant_data_structure.tenant_immigration_history));
-        }else{
+        }catch(err){
             dispatch(listTenantImmigration({}));
-        } if (tenant_data_structure.tenant_residence_history){
+        } try{
           dispatch(listTenantResidence(tenant_data_structure.tenant_residence_history));
-        }else{
+        }catch(err){
          dispatch(listTenantResidence({}));
         }
 
@@ -145,7 +145,7 @@ export function deleteSpecificTenant(path,obj) {
 }
 
 export function loadTenantSuccess(tenants) {  
-  return {type: types.LOAD_TENANT_SUCCESS  , tenants:tenants};
+  return {type: types.LOAD_TENANT_SUCCESS  , tenants:tenants.results};
 }
 export function loadSpecificTenantSuccess(tenants) {  
   return {type: types.LOAD_SPCIFIC_TENANT_SUCCESS , tenants:tenants.results};
