@@ -21,7 +21,7 @@ class TopBar extends Component {
                     <div className="row full-width">
                         <div className="col s8">
                             <h3 className="d-header d-header-tag" style={{marginTop:0, marginBottom:0}}>
-                                {!header.isSet ? <i className="fa fa-spinner fa-spin"/> : header.text}
+                                {!header.isSet ? <i className="fa fa-circle-o-notch fa-spin"/> : header.text}
                                 </h3>
                         </div>
                         <div className="col s4">

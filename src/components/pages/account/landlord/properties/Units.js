@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Overlay from "../../../../shared/Overlay";
 import PropertyShimmer from "./PropertyShimmer";
 import {getProperties} from "../../../../../state/actions/userActions";
+import {resetHeader,setHeader} from "../../../../../state/actions/uiAction";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
@@ -17,7 +18,15 @@ class Units extends Component {
         }
     }
 
+    componentWillMount(){
+        this.props.resetHeader();
+    }
+
     componentDidMount() {
+        this.props.setHeader({
+            text: 'My Properties',
+            hasBar: false,
+        });
         const query = this.props.location.search ? queryString.parse(this.props.location.search) : {page: 1};
         this.props.getProperties(query);
     }
@@ -160,11 +169,13 @@ function mapStateToProps(state) {
 Units.propTypes = {
     myProperties: PropTypes.object.isRequired,
     getProperties: PropTypes.func.isRequired,
+    resetHeader: PropTypes.func.isRequired,
+    setHeader: PropTypes.func.isRequired,
 }
 
 Units.contextTypes = {
     router: PropTypes.object.isRequired,
 }
 
-export default connect(mapStateToProps, {getProperties})(Units);
+export default connect(mapStateToProps, {getProperties,resetHeader,setHeader})(Units);
 

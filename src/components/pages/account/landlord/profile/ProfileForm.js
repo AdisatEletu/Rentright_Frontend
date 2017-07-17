@@ -48,13 +48,13 @@ export default class ProfileForm extends Component {
                                 <input onChange={this.onChange.bind(this)} type="text" className="validate"
                                        id="form-account-first-name"
                                        name="first_name" required value={this.state.first_name}/>
-                                <label htmlFor="form-account-first-name">First Name</label>
+                                <label className="active" htmlFor="form-account-first-name">First Name</label>
                             </div>
                             <div className="input-field col s6">
                                 <input onChange={this.onChange.bind(this)} type="text" className="validate"
                                        id="form-account-last-name"
                                        name="last_name" required value={this.state.last_name}/>
-                                <label htmlFor="form-account-last-name">Last Name</label>
+                                <label className="active" htmlFor="form-account-last-name">Last Name</label>
                             </div>
                         </div>
                         <div className="row">
@@ -63,7 +63,7 @@ export default class ProfileForm extends Component {
                                 <input onChange={this.onChange.bind(this)} type="email" className="validate"
                                        id="form-account-email"
                                        name="email" value={this.state.email}/>
-                                <label htmlFor="form-account-email" data-error="wrong">Email</label>
+                                <label className="active" htmlFor="form-account-email" data-error="wrong">Email</label>
                             </div>
                         </div>
                     </div>
@@ -74,14 +74,14 @@ export default class ProfileForm extends Component {
                         <input onChange={this.onChange.bind(this)} type="text" className="validate"
                                id="form-account-phone"
                                name="phone_number" value={this.state.phone_number}/>
-                        <label htmlFor="form-account-phone" data-error="wrong">Phone</label>
+                        <label className="active" htmlFor="form-account-phone" data-error="wrong">Phone</label>
                     </div>
                     <div className="input-field col s6">
                         <i className="material-icons prefix">call</i>
                         <input  type="text" className="validate"
                                id="form-account-alternate-phone"
                                name="alternate_phone_number"/>
-                        <label htmlFor="form-account-alternate-phone" data-error="wrong">Alternate Phone</label>
+                        <label className="active" htmlFor="form-account-alternate-phone" data-error="wrong">Alternate Phone</label>
                     </div>
                 </div>
                 <div className="row">
@@ -98,7 +98,7 @@ export default class ProfileForm extends Component {
                     <button disabled={isLoading} type="submit"
                             className="btn col s4 right waves-effect waves-light primary-color"
                             id="account-submit">{isLoading ?
-                        <span><i className="fa fa-spinner fa-spin"/> Saving</span> : 'Save Changes'}</button>
+                        <span><i  className="fa fa-spinner fa-spin"/> Saving</span> : 'Save Changes'}</button>
                 </div>
             </form>
         );

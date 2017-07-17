@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import TopBar from "../account/landlord/TopBar";
+import {NavLink} from 'react-router-dom';
+import PropertyMenu from './account/PropertyMenu';
 
 export default class AccountLayout extends Component {
 
@@ -8,10 +10,18 @@ export default class AccountLayout extends Component {
             <div>
                 <AccountHeader/>
                 <main className="d-main">
-                    <TopBar address="No 17 Raymond njoku Street." uuid="ksadbkuhfip8asd67856f" active="home"/>
+                    <TopBar/>
                     <div className="d-container">
-                        <div style={{paddingTop: '120px'}}>
+                        <div style={{paddingTop: '120px', paddingBottom:'60px'}}>
                             {this.props.children}
+                        </div>
+                        <div className="fixed-action-btn horizontal">
+                            <a className="btn-floating btn-large secondary-color">
+                                <i className="large material-icons">info_outline</i>
+                            </a>
+                            <ul>
+                                <li><a className="btn-floating red tooltipped" data-position="top" data-delay="20" data-tooltip="Help"><i className="fa fa-question-circle-o"/></a></li>
+                            </ul>
                         </div>
                     </div>
                 </main>
@@ -29,7 +39,7 @@ function AccountHeader(props) {
                     <i className="material-icons">menu</i>
                 </a>
             </div>
-            <ul id="nav-mobile" className="side-nav fixed">
+            <ul id="nav-mobile" className="side-nav fixed  blue-grey lighten-4">
                 <li className="logo">
                     <a className="active brand-logo" title="RentRight Logo" id="logo-container" href="#/">
                         <img src="http://localhost:3000/images/rentright-logo-100.png"
@@ -37,9 +47,16 @@ function AccountHeader(props) {
                     </a>
                 </li>
                 <li className="no-padding">
-                    <ul className="d-collapsible" data-collapsible="expandable">
-
-                    </ul>
+                    <div id="sidebar-menu">
+                        <NavLink to="/landlord/dashboard" activeClassName={"active"} className="item"><i className="fa fa-desktop" aria-hidden="true"/> Dashboard</NavLink>
+                        <NavLink to="/landlord/properties" activeClassName={"active"} className="item"><i className="fa fa-building-o" aria-hidden="true"/> My Properties</NavLink>
+                        <NavLink to="/landlord/rent-analysis" activeClassName={"active"} className="item"><i className="fa fa-area-chart" aria-hidden="true"/> Rent Analysis</NavLink>
+                        <NavLink to="/landlord/reports" activeClassName={"active"} className="item"><i className="fa fa-file-text-o" aria-hidden="true"/> Reports</NavLink>
+                        <NavLink to="/landlord/my-team" activeClassName={"active"} className="item"><i className="fa fa-users" aria-hidden="true"/> My Team</NavLink>
+                        <NavLink to="/landlord/guide" activeClassName={"active"} className="item"><i className="fa fa-book" aria-hidden="true"/> Landlord Guide</NavLink>
+                        <div className="section-header">Properties <i className="fa fa-plus pull-right"/></div>
+                        <PropertyMenu/>
+                    </div>
                 </li>
             </ul>
         </header>

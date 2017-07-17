@@ -7,7 +7,7 @@ const initialMeta = {
 
 const initialProperties = {
     fetched: false,
-    fetching: true,
+    fetching: false,
     paging: false,
 }
 
