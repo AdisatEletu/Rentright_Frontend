@@ -25,13 +25,15 @@ export default class apiActions {
   };
    patchurl  = (api_path,obj) =>{
      api_path = api_path + '/';
+  console.log(this.url + api_path);
+  console.log(obj);
   return fetch(this.url+ api_path, {
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
-  },
-  method: 'patch',                                                              
-  body: JSON.stringify( { obj } )                                        
+   },
+  method: 'PATCH',                                                              
+  body: JSON.stringify(obj)                                        
 }).then(response =>{
   return response.json();  
 }).catch(error => {

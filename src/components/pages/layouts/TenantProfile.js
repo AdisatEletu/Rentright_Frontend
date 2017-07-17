@@ -58,8 +58,8 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
               </div>
 
             <div className = "m-step">
-                  <NavLink className = "m-balls-hold" to = {"/tenant/profile/generalinfo" + this.uuid} uuid = {this.uuid} myProfile = {this.props.myProfile}><div className = "m-balls">1</div><div className = "m-balls-text">General Info</div></NavLink>
-                   <div className = "m-balls-hold"><div className = "m-balls">2</div><div className = "m-balls-text">Bio info</div></div>
+                  <NavLink className = "m-balls-hold" to = {"/tenant/profile/generalinfo" + this.uuid} ><div className = "m-balls">1</div><div className = "m-balls-text">General Info</div></NavLink>
+                     <NavLink className = "m-balls-hold" to = {"/tenant/profile/bioinfo" + this.uuid} ><div className = "m-balls">2</div><div className = "m-balls-text">Bio info</div></NavLink>
                     <div className = "m-balls-hold"><div className = "m-balls">3</div><div className = "m-balls-text">Employment Info</div></div>
                      <div className = "m-balls-hold"><div className = "m-balls">4</div><div className = "m-balls-text">Residential Info </div></div>
                       <div className = "m-balls-hold"><div className = "m-balls">5</div><div className = "m-balls-text">Immigration Info</div></div>

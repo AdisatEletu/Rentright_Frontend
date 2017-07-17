@@ -6,6 +6,7 @@ import T_left from "./layouts/T-left";
 import TenantProfile from "./layouts/TenantProfile";
 import GeneralForm from "./layouts/GeneralForm";
 import {NavLink} from 'react-router-dom';
+import BioForm from "./layouts/BioForm";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';  
 import PropTypes from 'prop-types';
@@ -19,10 +20,12 @@ class Tenant extends Component{
         this.sta
         console.log(this.props) 
        this.uuid = '/'+this.props.match.params.id;
+     
     }
     componentDidMount(){        
     try{
        this.uuid = this.props.match.params.id;
+  
      }catch(err){
     console.log(err)
 }
@@ -104,8 +107,9 @@ loadprofile = ()=>{
 
         <div  className = "t-dash t-flex t-flex-column">
             <Switch>
-           <Route  path="/tenant/:id/profile" loadprofile = {this.loadprofile} profile = {this.props.myProfile} component={TenantProfile}/>  
-              <Route  path="/tenant/profile/generalinfo/:id" loadprofile = {this.loadprofile} profile = {this.props.myProfile} component={GeneralForm}/>                      
+           <Route  path="/tenant/:id/profile"  component={TenantProfile}/>  
+              <Route  path="/tenant/profile/generalinfo/:id"  component={GeneralForm}/>       
+              <Route  path="/tenant/profile/bioinfo/:id"  component={BioForm}/>                  
                 </Switch>
           </div>
                 <div className = "t-flex t-flex-column t-advert t-flex t-flex-column">
