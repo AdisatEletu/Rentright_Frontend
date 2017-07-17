@@ -1,0 +1,25 @@
+
+.m-prf{width:7vw; height:7vw; border:solid 8px #eaeaea; box-sizing:border-box; overflow:hidden; }
+* {  -webkit-transition: all 0.3s ease;  -moz-transition:    all 0.3s ease;  -ms-transition:     all 0.3s ease;  -o-transition:      all 0.3s ease;}
+.m-logo{background-image:url('img/logo.png'); height:10vh; margin-bottom:5vh; }
+.m-cover{background-color:rgba(0,0,0,0); color:rgba(0,0,0,0); font-size:15px; cursor:pointer;  text-align:center;}
+.m-cover:hover{background-color:rgba(255,255,255,0.6); color:#b2d234; font-size:15px;}
+.m-me{background-image:url('img/me.jpg'); text-align:center; }
+.m-top-sm{margin-top:2vh;} .m-top-med{margin-top:8vh;}
+.m-bluish-f{color:#ABBCC5;}
+.m-nav-li{height:4vh; border-right:solid 4px rgba(0,0,0,0); font-family:Roboto;  padding:0px 2vw; box-sizing:border-box;   display:flex; flex-direction:row; justify-content:space-between;  align-items:center;} 
+.m-nav-li {font-size:1rem; font-weight:500;  color:#8CA4AF;  cursor:pointer; overflow:hidden; }
+.m-nav-li i{padding:0px 0px; padding-left:0px;  font-size:1.1rem; }
+.m-nav-li:hover{border-right:solid 4px #FF782D; background:rgba(0,0,0,0.1); color:#666;  } 
+.m-active-nav{border-right:solid 4px #093A60;  color:#222; }
+.m-ellispis, .m-ellipses{white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis;}
+.t-bullet{text-align:center; border-radius:8px;  line-height:14px;  padding:4px;  font-size:9px;  letter-spacing:0px; color:#fff; background:#ABBCC5; opacity:0; width:30px; white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis; }
+.m-activate{opacity:1;}
+.m-round-btn{display:flex; align-items:center; text-transform:uppercase; background-color:#FF782D;  justify-content:space-around; color:#fff; font-size:1.1rem; letter-spacing:1px; padding:12px 25px; border-radius:25px;  cursor:pointer; }
+.m-round-btn:hover, .m-plus-btn:hover{background:rgba(255,255,255,1); color:#093A60;}
+.m-padbox{padding:2rem 0px; border-bottom:solid 1px #d2d2d2; padding-bottom:0.5rem;} .m-pad-right{padding-right:10px;}
+.m-align-self-right{align-self:right;} .m-plus-btn{width:2vw; align-self:flex-end;  height:2vw; border-radius:50%;  cursor:pointer; background-color:#fff; display:flex; align-items:center; justify-content:center; text-align:center; font-size:1.2rem; color:#fff; background:#FF782D; }
+.m-drop-down-content{width:8wv; height:auto; display:none; font-size:1.3rem; display:none; color: #666; font-weight:600; text-align:left; padding:10px 15px;}
+.m-drop-down-items{border-bottom:solid 1px #d2d2d2; }
+.m-drop-down:hover .m-drop-down-content{display:block;}
+

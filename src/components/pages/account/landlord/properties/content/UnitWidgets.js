@@ -5,11 +5,8 @@ class UnitWidgets extends Component {
     render() {
         return (
             <div>
-                <div className="row">
-                    <div className="col m9"> <h</div>
-                    <div className="col m3"></div>
-                </div>
-                <table>
+                    <div> <span className="card-panel-header">Units</span></div>
+                <table className="highlight">
                     <thead>
                     <tr>
                         <th>Unit</th>
@@ -20,19 +17,19 @@ class UnitWidgets extends Component {
 
                     <tbody>
                     <tr>
-                        <td>Alvin</td>
-                        <td>Eclair</td>
-                        <td>$0.87</td>
+                        <td style={{color: '#424242'}}><i className="fa fa-home"/> 17 Omorinre johnson, Unit 1A East.</td>
+                        <td><span className="chip red darken-2 white-text">unpublished</span></td>
+                        <td><a href="/landlord/properties/nothing"><i className="fa fa-cog"/> <span className="secondary-color-text">Manage</span></a></td>
                     </tr>
                     <tr>
-                        <td>Alan</td>
-                        <td>Jellybean</td>
-                        <td>$3.76</td>
+                        <td style={{color: '#424242'}}><i className="fa fa-home"/> 17 Omorinre johnson, Unit 2B West.</td>
+                        <td><span className="chip  blue darken-2 white-text">published</span></td>
+                        <td><a><i className="fa fa-cog"/> <span className="secondary-color-text">Manage</span></a></td>
                     </tr>
                     <tr>
-                        <td>Jonathan</td>
-                        <td>Lollipop</td>
-                        <td>$7.00</td>
+                        <td style={{color: '#424242'}}><i className="fa fa-home"/> 17 Omorinre johnson, Unit 1A West.</td>
+                        <td><span className="chip  blue darken-2 white-text">published</span></td>
+                        <td><a><i className="fa fa-cog"/> <span className="secondary-color-text">Manage</span></a></td>
                     </tr>
                     </tbody>
                 </table>

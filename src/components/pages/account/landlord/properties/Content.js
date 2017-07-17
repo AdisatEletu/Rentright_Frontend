@@ -5,6 +5,7 @@ import {resetHeader} from '../../../../../state/actions/uiAction';
 import {setHeader} from '../../../../../state/actions/uiAction';
 import {getProperty} from '../../../../../state/actions/userActions';
 import Loader from "../../../../shared/Loader";
+import UnitWidgets from "./content/UnitWidgets";
 
 class Content extends Component {
 
@@ -32,7 +33,7 @@ class Content extends Component {
                 <div className="row">
                     <div className="col m8">
                         <div className="card-panel">
-
+                            <UnitWidgets/>
                         </div>
                     </div>
                     <div className="col m4">
