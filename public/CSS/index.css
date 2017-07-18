@@ -277,7 +277,6 @@ h5 {
     flex-direction: row;
     width: 100%;
     margin-left: 0%;
-    align-content: space-between;
     justify-content: space-between;
     overflow: hidden;
 }
@@ -388,7 +387,9 @@ h5 {
     padding: 0px;
     display: flex;
     flex-direction: column;
+    align-content:stretch;
     overflow: hidden;
+    box-shadow:transparent;
     background: #fff;
     border: solid 1px rgba(0, 0, 0, 0.1);
 }
@@ -399,7 +400,27 @@ h5 {
     background-size: cover;
     background-position: center;
 }
+.add-basey{
+    display:flex; flex-direction:column;  height:50%!important; width:100%; padding:20px 5px; box-sizing:border-box; overflow:hidden;
+    align-content:space-between; justify-content:center; font-family:Roboto;
+}
 
+.add-base-step-1{
+    width:100%; text-align:center; height:25%; text-transform:uppercase; padding:2px 5px; box-sizing:border-box; overflow:hidden; font-size:1.4rem; font-weight:500; color: #F1760C;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.add-base-step-2{
+    width:100%; text-align:center; height:50%; display:flex; align-items:flex-start; word-wrap:break-word; line-height:1.1rem;
+    display:-webkit-box; -webkit-line-clamp:3; text-overflow:ellipsis; font-weight:400;  -webkit-box-orient:vertical; padding:0px 20px; padding-bottom:10px; box-sizing:border-box; overflow:hidden;
+    font-family:Roboto; font-size:0.8rem;
+}
+.add-base-step-3{
+    width:100%; text-align:center; height:30%;  padding:10px 10px; box-sizing:border-box; overflow:hidden; font-family:Open Sans; font-size:1rem; font-weight:600;
+    display:flex; align-content:center; justify-content:center;
+}
+.add-btn{padding:6px 12px; color:#fff; background:#666; font-weight:500; border-radius:4px; font-family:Dosis;  font-size:1rem; text-align:left;}
+.truncate { width: 98%;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.add-btn:hover{background-color: #b71c1c;}
 .thepanel {
     width: 100%;
     height: 90%;
@@ -484,16 +505,21 @@ h5 {
 
 .subbtn {
     text-align: center;
-    font-weight: 400;
+    font-weight: 300;
     color: #fff;
     text-transform: uppercase;
     height: 40px;
     line-height: 40px;
     margin: 0 auto;
     background: #424242;
+    font-size: 14px!important;
     border-radius: 2px;
 }
 
+.bttn-size{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 .subbtn:hover {
     background-color: #b71c1c;
 }
@@ -781,21 +807,21 @@ h5 {
     color: #fff;
     font-weight: 300;
     margin-top: 120px;
-    font-size: 3.2rem;
+    font-size: 2.2rem;
     font-weight: 400;
 }
 
 .h2s {
-    font-size: 1.0rem;
+    font-size: 0.9rem;
     font-weight: 300;
-    line-height: 1.5rem;
+    line-height: 1.0rem;
     text-align: center;
     display: block;
 }
 
 .h2s i {
-    line-height: 1.5rem;
-    font-size: 40px;
+    line-height: 1.2rem;
+    font-size: 20px;
 }
 
 .h2s {
@@ -855,7 +881,7 @@ h5 {
     background-color: #e8eaf6;
 }
 
-.card {
+/*.card {
     cursor: pointer;
     box-sizing: border-box;
     border-radius: 8px;
@@ -863,7 +889,7 @@ h5 {
     overflow: hidden;
     position: relative;
     padding: 2.4375em;
-}
+}*/
 
 .text-center {
     text-align: center;
@@ -875,12 +901,14 @@ h5 {
     font-size: 2.5rem;
 }
 
-.card-margin {
-    margin-top: 20px;
-}
-
-.card-margiin {
-    margin-top: 0px;
+.crd {
+    border-radius: 5px;
+    height: 300px;
+    width: 300px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .btn--primary {
@@ -933,7 +961,7 @@ h5 {
 }
 
 .card:hover {
-    transform: scale(1.2);
+    transform: scale(1.01);
     -webkit-box-shadow: 10px 15px 37px -17px rgba(0, 0, 0, 0.53);
     -moz-box-shadow: 10px 15px 37px -17px rgba(0, 0, 0, 0.53);
     box-shadow: 10px 15px 37px -17px rgba(0, 0, 0, 0.53);
@@ -1003,4 +1031,39 @@ h5 {
 
 .colo {
     color: #073855;
+}
+
+.sizze{
+    height: 500px;
+}
+
+.block-with-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow:ellipsis;
+
+}
+
+.image-size{
+    height:200px;
+}
+
+.content-size{
+    height: 200px!important;
+    line-height:30px!important;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+
+}
+.address-text{
+    text-align: left;
+    font-weight: 300;
+    color: #8a6d3b!important;
+    font-size: 40px;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    line-height: 30px;
 }

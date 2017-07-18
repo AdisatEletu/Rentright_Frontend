@@ -23,114 +23,85 @@ import React, {Component} from 'react';
     function Adeniran () {
     return (
 
-        <div className="views ">
-            <div className="viewschild ">
-                <div className="basex interior1">
-                    <div className="cc">
-                        <div className="hold"><i className="material-icons md-48 ">favorite</i></div>
-                        <div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div>
-                    </div>
-                    <div />
-                </div>
-                <div className="row basey">
-                    <div className="col s12 negative">
-                        <a className="btn btn-floating pulse"><i className="material-icons">favorite</i></a>
-                        <div className="col s12 centertext grey-text  text-darken-4"><h4>Adeniran Ogunsanya</h4></div>
-                        <div className="section">
-                            <div className="row">
-                                <div className="col s12 centertext subtext grey-text  text-darken-3">Lorem Ipsum somas
-                                    present ideas tenants with the best landlord, please check out the offers available
-                                    with this apartment
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="subbtn col s4 offset-s4">explore</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div className="views"><div className="viewschild"> <div className="basex interior5"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
+            <div className="add-basey">
+                <div className=" add-base-step-1"> Adeniran Ogunsanya</div>
+
+                <div className="add-base-step-2"><span> Lorem Ipsum somas present ideas tenants with the best landlord,
+                                please check out the offers available with this apartment</span></div>
+
+                <div className="add-base-step-3"><div className="add-btn">Explore</div> </div>
             </div>
         </div>
-
-
+        </div>
     );
 }
     function IbejuLekki() {
         return (
 
-            <div className="views"><div className="viewschild"> <div className="basex interior2"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
-                <div className="row basey">
-                    <div className="col s12 negative">
-                        <a className="btn btn-floating pulse"><i className="material-icons">favorite</i></a>
-                        <div className="col s12 centertext grey-text  text-darken-4"><h4>Ibeju Lekki</h4></div>
-                        <div className="section">
-                            <div className="row"><div className="col s12 centertext subtext grey-text  text-darken-3">Lorem Ipsum somas present ideas tenants with the best landlord, please check out the offers available with this apartment</div>
-                            </div>
-                            <div className="row"><div className="subbtn col s4 offset-s4">explore</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div></div>
+            <div className="views"><div className="viewschild"> <div className="basex interior4"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
+                <div className="add-basey">
+                    <div className=" add-base-step-1"> Ibeju Lekki</div>
 
+                    <div className="add-base-step-2"><span> Lorem Ipsum somas present ideas tenants with the best landlord,
+                                please check out the offers available with this apartment</span></div>
+
+                    <div className="add-base-step-3"><div className="add-btn">Explore</div> </div>
+                </div>
+            </div>
+            </div>
         );
 
     }
 
     function Ikoyi (){
         return (
-            <div className="views"><div className="viewschild"> <div className="basex interior4"><div className="cc"><div className="hold"><i className="material-icons md-48 ">favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
-                <div className="row basey">
-                    <div className="col s12 negative">
-                        <a className="btn btn-floating pulse red darken-1"><i className="material-icons">favorite</i></a>
-                        <div className="col s12 centertext grey-text  text-darken-4"><h4>Ikoyi</h4></div>
-                        <div className="section">
-                            <div className="row"><div className="col s12 centertext subtext grey-text  text-darken-3">Lorem Ipsum somas present ideas tenants with the best landlord, please check out the offers available with this apartment</div>
-                            </div>
-                            <div className="row"><div className="subbtn col s4 offset-s4">explore</div></div>
-                        </div>
-                    </div>
+            <div className="views"><div className="viewschild"> <div className="basex interior3"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
+                <div className="add-basey">
+                    <div className=" add-base-step-1"> Ikoyi</div>
+
+                    <div className="add-base-step-2"><span> Lorem Ipsum somas present ideas tenants with the best landlord,
+                                please check out the offers available with this apartment</span></div>
+
+                    <div className="add-base-step-3"><div className="add-btn">Explore</div> </div>
                 </div>
-            </div></div>
-
+            </div>
+            </div>
         );
-
-
     }
 
     function BananaIsland() {
         return (
-            <div className="views"><div className="viewschild"> <div className="basex interior4"><div className="cc"><div className="hold"><i className="material-icons md-48 ">favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
-                <div className="row basey">
-                    <div className="col s12 negative">
-                        <a className="btn btn-floating pulse red darken-1"><i className="material-icons">favorite</i></a>
-                        <div className="col s12 centertext grey-text  text-darken-4"><h4>Banana Island</h4></div>
-                        <div className="section">
-                            <div className="row"><div className="col s12 centertext subtext grey-text  text-darken-3">Lorem Ipsum somas present ideas tenants with the best landlord, please check out the offers available with this apartment</div>
-                            </div>
-                            <div className="row"><div className="subbtn col s4 offset-s4">explore</div></div>
-                        </div>
-                    </div>
+            <div className="views"><div className="viewschild"> <div className="basex interior2"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
+                <div className="add-basey">
+                    <div className=" add-base-step-1"> Banana Island</div>
+
+                    <div className="add-base-step-2"><span> Lorem Ipsum somas present ideas tenants with the best landlord,
+                                please check out the offers available with this apartment</span></div>
+
+                    <div className="add-base-step-3"><div className="add-btn">Explore</div> </div>
                 </div>
-            </div></div>
+            </div>
+            </div>
+
         );
 
     }
     
     function BodeThomas () {
         return(
-            <div className="views"><div className="viewschild"> <div className="basex interior5"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
-                <div className="row basey">
-                    <div className="col s12 negative">
-                        <a className="btn btn-floating pulse"><i className="material-icons">favorite</i></a>
-                        <div className="col s12 centertext grey-text  text-darken-4"><h4>Bode Thomas</h4></div>
-                        <div className="section">
-                            <div className="row"><div className="col s12 centertext subtext grey-text  text-darken-3">Lorem Ipsum somas present ideas tenants with the best landlord, please check out the offers available with this apartment</div>
-                            </div>
-                            <div className="row"><div className="subbtn col s4 offset-s4">explore</div></div>
-                        </div>
+            <div className="views"><div className="viewschild"> <div className="basex interior1"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
+                <div className="add-basey">
+                        <div className=" add-base-step-1"> Bode Thomas</div>
+
+                            <div className="add-base-step-2"><span> Lorem Ipsum somas present ideas tenants with the best landlord,
+                                please check out the offers available with this apartment</span></div>
+
+                                <div className="add-base-step-3"><div className="add-btn">Explore</div> </div>
+                </div>
                     </div>
                 </div>
-            </div></div>
+
         );
         
     }

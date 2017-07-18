@@ -24,15 +24,15 @@ function Rntt () {
     return(
         <div className="container">
             <div className="row">
-                <div className="col m12 s12 l12">
-                    <div className="col s6 m6 l6">
+                <div className="col m12">
+                    <div className="col m6 s12">
                         <div className="button-margin">
                             <div className="center-align">
                                 <a href="#" className="btn btn--primary"> Take a Tour </a>
                             </div>
                         </div>
                     </div>
-                    <div className="col s6 m6 l6">
+                    <div className="col m6">
                         <div className="button-margin">
                             <div className="left-align">
                                 <a href="#" className="btn btn--default"> Get it on the App Store </a>
@@ -59,8 +59,8 @@ function Rntt () {
  
  function ContinueASLa() {
      return(
-         <div className="col s4 l4 m4">
-             <Link to="/landlord/account_settings"> <div className="card card-margin">
+         <div className="col s12 m4">
+             <Link to="/landlord/account_settings"> <div className="card crd">
                  <div className="card-color">
                      <span className="card-title"><b>Landlord</b></span>
                      <ul>
@@ -78,8 +78,8 @@ function Rntt () {
 
  function ContinueAsTe() {
      return(
-         <div className="col s4 l4 m4">
-             <div className="card card-margin">
+         <div className="col m4 s12">
+             <div className="card crd">
                  <div className="card-color">
                      <span className="card-title"><b>Tenant</b></span>
                      <ul>
@@ -96,8 +96,8 @@ function Rntt () {
  }
  function ContinueAsAg() {
      return(
-         <div className="col s4 l4 m4">
-             <div className="card card-margiin">
+         <div className="col m4 s12 ">
+             <div className="card crd">
                  <div className="card-color">
                      <span className="card-title"><b>Agent</b></span>
                      <ul>
@@ -121,7 +121,7 @@ export default class LandingPage extends Component{
                  <PhoneImage/>
                  <div className="container">
                      <div className="row">
-                         <div className="col m12 s12 l12">
+                         <div className="col m12">
                              <ContinueASLa/>
                              <ContinueAsTe/>
                              <ContinueAsAg/>
