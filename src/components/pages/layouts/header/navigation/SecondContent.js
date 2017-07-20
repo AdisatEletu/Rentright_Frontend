@@ -5,105 +5,22 @@ import React, {Component} from 'react';
 //import {Link} from 'react-router-dom';
 //import PropTypes from 'prop-types';
 //import appRoot from 'app-root-path';
+import PopularLocation from "./views/PopularLocation";
 
-    function PopularSearches (){
-    return (
-        <div className="section white  mtop">
-            <div className="row">
-                <div className="left-align padleft">
-                    <h3 className="header h33  self-orange">Popular Searches</h3>
-                    <div className="left-align grey-text text-darken-3 sc">Check out recent searches by people in Lagos...</div>
-                </div>
-
-            </div>
-        </div>
-    );
-}
-
-    function Adeniran () {
-    return (
-
-        <div className="views"><div className="viewschild"> <div className="basex interior5"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
-            <div className="add-basey">
-                <div className=" add-base-step-1"> Adeniran Ogunsanya</div>
-
-                <div className="add-base-step-2"><span> Lorem Ipsum somas present ideas tenants with the best landlord,
-                                please check out the offers available with this apartment</span></div>
-
-                <div className="add-base-step-3"><div className="add-btn">Explore</div> </div>
-            </div>
-        </div>
-        </div>
-    );
-}
-    function IbejuLekki() {
+    function PopularSearches () {
         return (
-
-            <div className="views"><div className="viewschild"> <div className="basex interior4"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
-                <div className="add-basey">
-                    <div className=" add-base-step-1"> Ibeju Lekki</div>
-
-                    <div className="add-base-step-2"><span> Lorem Ipsum somas present ideas tenants with the best landlord,
-                                please check out the offers available with this apartment</span></div>
-
-                    <div className="add-base-step-3"><div className="add-btn">Explore</div> </div>
-                </div>
-            </div>
-            </div>
-        );
-
-    }
-
-    function Ikoyi (){
-        return (
-            <div className="views"><div className="viewschild"> <div className="basex interior3"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
-                <div className="add-basey">
-                    <div className=" add-base-step-1"> Ikoyi</div>
-
-                    <div className="add-base-step-2"><span> Lorem Ipsum somas present ideas tenants with the best landlord,
-                                please check out the offers available with this apartment</span></div>
-
-                    <div className="add-base-step-3"><div className="add-btn">Explore</div> </div>
-                </div>
-            </div>
-            </div>
-        );
-    }
-
-    function BananaIsland() {
-        return (
-            <div className="views"><div className="viewschild"> <div className="basex interior2"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
-                <div className="add-basey">
-                    <div className=" add-base-step-1"> Banana Island</div>
-
-                    <div className="add-base-step-2"><span> Lorem Ipsum somas present ideas tenants with the best landlord,
-                                please check out the offers available with this apartment</span></div>
-
-                    <div className="add-base-step-3"><div className="add-btn">Explore</div> </div>
-                </div>
-            </div>
-            </div>
-
-        );
-
-    }
-    
-    function BodeThomas () {
-        return(
-            <div className="views"><div className="viewschild"> <div className="basex interior1"><div className="cc"><div className="hold"><i className="material-icons md-48 "> favorite</i></div><div className="explain "><h6>A terrace with two bath</h6>Lorem ipsum msomas ipsum lorax</div></div></div>
-                <div className="add-basey">
-                        <div className=" add-base-step-1"> Bode Thomas</div>
-
-                            <div className="add-base-step-2"><span> Lorem Ipsum somas present ideas tenants with the best landlord,
-                                please check out the offers available with this apartment</span></div>
-
-                                <div className="add-base-step-3"><div className="add-btn">Explore</div> </div>
-                </div>
+            <div className="section white  mtop">
+                <div className="row">
+                    <div className="left-align padleft">
+                        <h3 className="header h33  self-orange">Popular Searches</h3>
+                        <div className="left-align grey-text text-darken-3 sc">Check out recent searches by people in
+                            Lagos...
+                        </div>
                     </div>
-                </div>
 
+                </div>
+            </div>
         );
-        
     }
 
     function Tenant () {
@@ -207,14 +124,7 @@ import React, {Component} from 'react';
 
     }
 
-    function  testimonial() {
-        return(
-            <div>
-                <span><i class="material-icons">comment</i></span>
-            </div>
-        );
 
-    }
 export default class NewSecondaryNav extends Component{
 
     render(){
@@ -225,11 +135,11 @@ export default class NewSecondaryNav extends Component{
                     <PopularSearches/>
                 <div className = "section white hideoverflow">
                     <div className = " viewhold ">
-                        <Adeniran/>
-                        <IbejuLekki/>
-                        <Ikoyi/>
-                        <BananaIsland/>
-                        <BodeThomas/>
+                        <PopularLocation name="Adeniran Ogunsanya" text="lorem ipsum dolor sit Adeniran Ogunsanya" img="interior1"/>
+                        <PopularLocation name="Ikoyi" text="lorem ipsum dolor sit Ikoyi" img="interior2"/>
+                        <PopularLocation name="Banana Island" text="lorem ipsum dolor sit Banana Island " img="interior3"/>
+                        <PopularLocation name="Bode Thomas" text="lorem ipsum dolor sit Bode Thomas" img="interior4"/>
+                        <PopularLocation name="Ibeju Lekki" text="lorem ipsum dolor sit Ibeju Lekki" img="interior5"/>
                     </div>
                     <div className ="row center-align mbottom"><i className = "self-orange lpt fa fa-circle"></i><i className = "lpt fa fa-circle"></i><i className = "lpt fa fa-circle"></i></div>
                         <div className= "section white ">
