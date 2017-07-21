@@ -13,8 +13,7 @@ function Iphone () {
 function ComingSoon () {
     return(
         <div className="t-fullheight t-align-top t-flex">
-            <div className="t-flex h-half-height t-align-center t-justify-left"><img className="a-logo" src="CSS/img/coming-soon-iphone.png" /> </div>
-        <div className="t-flex h-half-height t-align-center t-justify-left"><img className="a-logo" src="CSS/img/coming-soon-and.png" /> </div>
+            <div className="t-flex h-half-height t-align-center pad-left"><img className="a-logo" src="CSS/img/coming-soon.png" /> </div>
         </div>
             );
 

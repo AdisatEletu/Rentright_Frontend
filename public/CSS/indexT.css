@@ -131,8 +131,4 @@ html,body, #root{width:100%; height:100%!important; overflow-x:hidden; backgroun
 .t-right-bx{-webkit-box-shadow: 3px 0px 64px -9px rgba(0,0,0,0.27);-moz-box-shadow: 3px 0px 64px -9px rgba(0,0,0,0.27);box-shadow: 3px 0px 64px -9px rgba(0,0,0,0.27);}
 /*artistic */
 .t-b-bottom{border:solid 1px  #424242;}
-[data-reactroot]{height:100%!important;}
-
-
-
 

@@ -37,5 +37,9 @@ background: linear-gradient(135deg, rgba(24,49,116,0.72) 0%,rgba(36,107,153,0.77
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8183174', endColorstr='#d4287ca0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	
 }
-.home{height: 80%; background-size:contain; background-repeat:repeat-x; background-position:bottom; background-image:url('img/vec4.jpg');}
+.home{background-size:contain; background-repeat:repeat-x; background-position:bottom; background-image:url('img/vec4.jpg');}
 .t-hr{color:rgba(255,255,255,1); background-color:rgba(255,255,255,1); margin-top:5vh; margin-bottom:4vh; height:3px; border-radius:2px; width:40%; } .h-half-height{height:50vh;}
+.t-seventyfive{height: 90vh;} .l-pad{padding-top: 5%;} .r-blue{color:#0A3b61;} .r-black{color:#000000;} .r-line-height{line-height:30px;}
+.r-i-size{margin-top: 20px; margin-bottom: 30px; height: 5vh; width: 50%; cursor:pointer;} .t-hr2{color:#000; margin-top:5vh; margin-bottom:4vh; height:3px; border-radius:2px; width:40%; }
+.sign-in-button{height:5vh; width: 100%; border-radius:5px; background-color:#0A3b61; color:#ffffff; font-size: 1.5rem;}
+.form-text{font-size: 1.5rem; color:#0A3b61;} .s-pad{padding-bottom:10px;}
