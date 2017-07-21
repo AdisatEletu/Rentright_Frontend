@@ -53,15 +53,15 @@ export function listTenantEmployment(obj){
     }
 
 
-export function showLoading(){
-  return {type: types.SHOW_LOADING, action:{ message: "Loading from server please waith", Loading :true } }
+export function showLoading(){ 
+  return {type: types.SHOW_LOADING, payload:{ message:"Loading", Loading:true } }
 }
 export function hideLoading(){
-  return {type: types.HIDE_LOADING, action:{ message: "Loaded from server", Loading :false } }
+  return {type: types.HIDE_LOADING, payload:{ message:"Loaded", Loading:false } }
 }
 
 export function errorLoading(){
-  return {type: types.ERROR_LOADING, action:{ message: "Error loading from server", Loading :false } }
+  return {type: types.ERROR_LOADING, payload:{ message:"Error", Loading:false } }
 }
 export function loadAllTenants() {  
   return function(dispatch) {
@@ -77,11 +77,13 @@ export function loadAllTenants() {
   };
 }
 
+
+
 export function loadSpecificTenant(path) {  
-  return function(dispatch) {
+
+ return function(dispatch) {
     dispatch(showLoading());
     return api.geturl(path).then(tenants => {
-      console.log(tenants.results)
         dispatch(hideLoading());
         let tenant_data_structure = tenants.results;
         dispatch(setTenantGeneral(tenant_general));
@@ -106,14 +108,16 @@ export function loadSpecificTenant(path) {
         }catch(err){
          dispatch(listTenantResidence({}));
         }
-
+      
       dispatch(loadSpecificTenantSuccess(tenants));
+    
     }).catch(error => {
         dispatch(errorLoading());     
       console.log(error);
       throw(error);
     });
-  };
+ };
+  //});
 }
 export function patchSpecificTenant(path,obj) {  
   return function(dispatch) {
@@ -155,4 +159,9 @@ export function patchSpecificTenantSuccess(tenants) {
 }
 export function deleteSpecificTenantSuccess(tenants) {  
   return {type: types.DELETE_SPCIFIC_TENANT_SUCCESS , tenants:tenants.results};
+}
+
+export function abstractdispatchfunctions(){
+
+
 }

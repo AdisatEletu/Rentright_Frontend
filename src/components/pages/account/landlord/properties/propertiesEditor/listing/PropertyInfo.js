@@ -1,32 +1,32 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
-import { findDOMNode } from 'react-dom';
+import {findDOMNode} from 'react-dom';
 
 class PropertyInfo extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             current_fs: '',
             next_fs: '',
             previous_fs: '',
-            left:'',
+            left: '',
             opacity: '',
-            scale:'',
+            scale: '',
             animating: '',
         }
     }
 
-    detailsNext(){
+    detailsNext() {
         this.next(findDOMNode(this.refs.details_next));
     }
 
-    next(el){
+    next(el) {
 
         const {animating} = this.state;
 
-        if(animating) return false;
+        if (animating) return false;
 
         this.setState({animating: false});
 
@@ -39,23 +39,23 @@ class PropertyInfo extends Component {
         $(el).parent().next().show();
         //hide the current fieldset with style
         $(el).parent().animate({opacity: 0}, {
-            step: function(now, mx) {
+            step: function (now, mx) {
                 //as the opacity of current_fs reduces to 0 - stored in "now"
                 //1. scale current_fs down to 80%
                 let scale = 1 - (1 - now) * 0.2;
-                context.setState({scale:scale});
+                context.setState({scale: scale});
                 //2. bring next_fs from the right(50%)
-                let left = (now * 50)+"%";
+                let left = (now * 50) + "%";
                 context.setState({left});
                 //3. increase opacity of next_fs to 1 as it moves in
                 let opacity = 1 - now;
                 context.setState({opacity});
 
-                $(el).parent().css({'transform': 'scale('+scale+')'});
+                $(el).parent().css({'transform': 'scale(' + scale + ')'});
                 $(el).parent().next().css({'left': left, 'opacity': opacity});
             },
             duration: 800,
-            complete: function(){
+            complete: function () {
                 $(el).parent().hide();
                 context.setState({animating: false})
             },
@@ -67,76 +67,94 @@ class PropertyInfo extends Component {
     render() {
         return (
             <fieldset>
-                <h2 className="fs-title">Are you ready to list your property?</h2>
+                <h2 className="fs-title"><b>Are you ready to list your property?</b></h2>
                 <h3 className="fs-subtitle">Lets get some basic details out of the way</h3><br/>
                 <div className="row">
-                    <div className="col-md-6">
-                        <div className="form-group">
-                            <label htmlFor="bedroom-field">How many bedrooms?</label>
-                            <input type="text" className="form-control" id="bedroom-field" name="title" required placeholder="How many bedrooms?"/>
-                        </div>{/* /.form-group */}
-                    </div>
-                    <div className="col-md-6">
-                        <div className="form-group">
-                            <label htmlFor="bathroom-field">How many bathrooms?</label>
-                            <input type="text" className="form-control" id="bathroom-field" name="title" required placeholder="How many bathrooms?"/>
-                        </div>{/* /.form-group */}
-                    </div>
-                </div><br/>
-                <div className="row">
-                    <div className="col-md-6">
-                        <div className="form-group">
-                            <label htmlFor="property-type">What type of property is this?</label>
-                            <select name="type" id="property-type" style={{width:'100%'}}>
-                                <option value={1}>Apartment</option>
-                                <option value={2}>Single Family House</option>
-                                <option value={3}>Flat</option>
-                                <option value={4}>Office Space</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="form-group">
-                            <label htmlFor="bathroom-field">What's the square footage?</label>
-                            <input type="text" className="form-control" id="bathroom-field" name="title" required placeholder="Whats the square footage?"/>
-                        </div>{/* /.form-group */}
-                    </div>
-                </div><br/>
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="form-group">
-                            <label htmlFor="property-type">What parking is available?</label>
-                            <select name="type" id="property-type" style={{width:'100%'}}>
-                                <option value={1}>Garage</option>
-                                <option value={2}>Carport</option>
-                            </select>
-                        </div>
-                    </div>
-                </div><br/>
-                <div className="row">
-                    <div className="col-md-12">
-                        <div>
-                            <label>What are your policies</label>
-                            <ul className="submit-features">
-                                <li><div className="cntr">
-                                    <input className="hidden hidden-xs-up" id="cbx" type="checkbox" /><label className="cbx" htmlFor="cbx" /><label className="lbl" htmlFor="cbx">Smoking not allowed</label>
-                                </div></li>
-                                <li><div className="cntr">
-                                    <input className="hidden hidden-xs-up" id="cbx_pets" type="checkbox" /><label className="cbx" htmlFor="cbx_pets" /><label className="lbl" htmlFor="cbx_pets">Pets not allowed</label>
-                                </div></li>
-                            </ul>
-                            <ul className="submit-features">
-                                <li><div className="cntr">
-                                    <input className="hidden hidden-xs-up" id="cbx" type="checkbox" /><label className="cbx" htmlFor="cbx" /><label className="lbl" htmlFor="cbx">Smoking not allowed</label>
-                                </div></li>
-                                <li><div className="cntr">
-                                    <input className="hidden hidden-xs-up" id="cbx_pets" type="checkbox" /><label className="cbx" htmlFor="cbx_pets" /><label className="lbl" htmlFor="cbx_pets">Pets not allowed</label>
-                                </div></li>
-                            </ul>
-                        </div>
+                    <div className="input-field col s12">
+                        <input placeholder="How many bedrooms?" id="bedrooms" type="number" className="validate"/>
+                        <label htmlFor="bedrooms" className="active">How many bedrooms?</label>
                     </div>
                 </div>
-                <input type="button" ref="details_next" name="next" className="next action-button" value="Next" onClick={this.detailsNext.bind(this)}/>
+                <div className="row">
+                    <div className="input-field col s12">
+                        <input placeholder="How many bathrooms?" id="bedrooms" type="number" className="validate"/>
+                        <label htmlFor="bathrooms" className="active">How many bathrooms?</label>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="input-field col s12">
+                        <select className="browser-default">
+                            <option value="1" selected>Apartment</option>
+                            <option value="2">Single family house</option>
+                            <option value="3">Flat</option>
+                            <option value="4">Self contained</option>
+                            <option value="5">Office Space</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="input-field col s10">
+                        <input placeholder="Whats the square footage?" id="footage" type="number"
+                               className="validate"/>
+                        <label htmlFor="footage" className="active">whats the square footage?</label>
+                    </div>
+                    <div className="col s2">
+                        <div>
+                        <input selected name="groupFootage" type="radio" id="sqm"/>
+                        <label htmlFor="sqm">m<sup>2</sup></label>
+                        </div>
+                        <div><input name="groupFootage" type="radio" id="feet"/>
+                            <label htmlFor="feet">ft<sup>2</sup></label>
+                        </div>
+
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="input-field col s12">
+                        <select className="browser-default">
+                            <option disabled selected>Whats the parking like?</option>
+                            <option value="1" selected>Garage</option>
+                            <option value="2">Carport</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col s12">
+                        <label><b>What are your policies</b></label>
+                        <ul className="submit-features">
+                            <li>
+                                <div className="switch">
+                                    <label>
+
+                                        <input type="checkbox"/>
+                                        <span className="lever"/>
+                                        Smoking not allowed.
+                                    </label>
+                                </div>
+                            </li>
+                            <li style={{marginTop: '10px'}}>
+                                <div className="switch">
+                                    <label>
+                                        <input type="checkbox"/>
+                                        <span className="lever"/>
+                                        Pets not allowed.
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col s6">
+                        <input style={{width: '100%'}} disabled type="button" ref="details_next" name="next" className="btn primary-color"
+                               value="Previous"/>
+                    </div>
+                    <div className="col s6">
+                        <input style={{width: '100%'}} type="button" ref="details_prev" name="next" className="btn primary-color"
+                               value="Next" onClick={this.detailsNext.bind(this)}/>
+                    </div>
+                </div>
+
             </fieldset>
         );
     }

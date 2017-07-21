@@ -4,8 +4,10 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 import TenantCard from '../tenantCard';
+import CircleLinks from '../tenantlayouts/circle_links';
+import CompletenessBar  from '../tenantlayouts/completeness_bar';
 import {bindActionCreators} from 'redux';  
-import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant } from '../../../state/actions/tenantAction';
+import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant, showLoading, hideLoading, errorLoading } from '../../../state/actions/tenantAction';
 
 
  class TenantProfile extends Component{
@@ -42,28 +44,14 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
             <div className = "t-gray-darken-3-f mid t-h1  "><span className = "">Please update your profile</span> </div> 
             <span className = "t-gray-darken-1-f thin t-h2 t-lh-h2  m-topp">You can quickly add missing profile information here</span>
             </div>
-       
-         <div className = "m-heading m-med-topp t-flex t-flex-row t-align-left"><span>Profile completeness</span>  <span className = "lbl">{this.props.myProfile.tenants.completed}%</span></div>
-        
-    
-            <div className = "t-flex  t-md-10 t-justify-left t-flex-row ">
-              <div className = "t-flex t-md-10 t-align-top t-justify-center">
-                  <div className = "t-flex t-flex-column t-md-10  t-justify-center t-sup-h3 t-gray-darken-3-f Roboto t-center-f  thin t-align-top">
-                      <div className = "t-flex t-flex-row   t-md-8">
-                          <div className = "m-total-bar" style={style}></div>
-                      <div className = "m-total-barw"  style={style2}></div>
-                      </div>
-                      </div>
-                  </div>
-              </div>
-
+               <CompletenessBar completeness = {this.props.myProfile.tenants.completed} label = "Profile completeness" />
             <div className = "m-step">
-                  <NavLink className = "m-balls-hold" to = {"/tenant/profile/generalinfo" + this.uuid} ><div className = "m-balls">1</div><div className = "m-balls-text">General Info</div></NavLink>
-                     <NavLink className = "m-balls-hold" to = {"/tenant/profile/bioinfo" + this.uuid} ><div className = "m-balls">2</div><div className = "m-balls-text">Bio info</div></NavLink>
-                    <div className = "m-balls-hold"><div className = "m-balls">3</div><div className = "m-balls-text">Employment Info</div></div>
-                     <div className = "m-balls-hold"><div className = "m-balls">4</div><div className = "m-balls-text">Residential Info </div></div>
-                      <div className = "m-balls-hold"><div className = "m-balls">5</div><div className = "m-balls-text">Immigration Info</div></div>
-
+                <CircleLinks linkTo = {"/tenant" + this.uuid + "/profile"} scale = {true} childLabel = "Overview" label = "A" isActive = {true}/>
+                 <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "1" isActive = {false}/>
+                 <CircleLinks linkTo = {"/tenant/profile/bioinfo" + this.uuid} scale = {false} childLabel = "Bio Info" label = "2" isActive = {false}/>
+                 <CircleLinks linkTo = {"/tenant/profile/employmentinfo" + this.uuid} scale = {false} childLabel = "Employment Info" label = "3" isActive = {false}/>
+                  <CircleLinks linkTo = {"/tenant/profile/residentialinfo" + this.uuid} scale = {false} childLabel = "Residential Info" label = "4" isActive = {false}/>
+                <CircleLinks linkTo = {"/tenant/profile/immigrationinfo" + this.uuid} scale = {false} childLabel = "Immigrantion Info" label = "5" isActive = {false}/>
     
 
               </div>
@@ -109,7 +97,7 @@ TenantProfile.PropTypes = {
     loadTenant: PropTypes.func.isRequired,
     loadprofile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-   myProfile: PropTypes.object.isRequired
+    myProfile: PropTypes.object.isRequired
 
 
 }
