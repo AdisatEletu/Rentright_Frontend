@@ -33,7 +33,7 @@ function Drop(){
 function Header(){
     return (
 
-        <div className="navbar-fixed ">
+        <div className="navbar-fixed">
 
             <nav className = " topbar " >
                 <div className="nav-wrapper row">
@@ -47,7 +47,7 @@ function Header(){
                             <li><a className="dropdown-button" href="#!" data-activates="dropdown1">Institutions<i className="material-icons md-24 right">arrow_drop_down</i></a></li>
                             <li><a className="dropdown-button" href="#!" data-activates="dropdown2">Professionals<i className="material-icons  md-24 right">arrow_drop_down</i></a></li>
                             <li><i className="material-icons  md-24 self-orange ">supervisor_account</i></li>
-                            <li><Link to ={"/sign-in"}>Sign in</Link></li>
+                            <li><Link to ={"/login"}>Sign in</Link></li>
                         </ul>
 
                     </div>

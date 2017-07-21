@@ -22,4 +22,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-src/components/pages/home/
+
+/.idea/misc.xml
+/.idea/rent_right.iml
+/.idea/vcs.xml
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/dictionaries/
