@@ -5,6 +5,11 @@ import React,{Component} from 'react';
 import NewForm from './login/NewForm';
 import PrimaryNav from '../layouts/header/navigation/PrimaryNav';
 import Copyright from '../layouts/footer/Copyright';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {login} from '../../../state/actions/authAction';
+import {addFlashMessage} from '../../../state/actions/flashMessageActions';
+
 function SignIn () {
     return(
         <div className="t-flex t-md-10 t-center-f t-margin-left">
@@ -40,7 +45,7 @@ function Gif() {
 }
 
 
-export default class NewLogin extends Component{
+class NewLogin extends Component{
     render(){
         return(
 
@@ -50,7 +55,7 @@ export default class NewLogin extends Component{
                     <div className="  t-flex  t-seventyfive l-pad t-flex-column t-align-content-center t-md-4 t-margin-right padding">
                         <SignIn/>
                         <Social/>
-                        <NewForm/>
+                        <NewForm login={this.props.login} addFlashMessage={this.props.addFlashMessage}/>
                     </div>
                         <Gif/>
                 </div>
@@ -59,3 +64,10 @@ export default class NewLogin extends Component{
         );
     }
 }
+
+NewLogin.propTypes = {
+    login: PropTypes.func.isRequired,
+    addFlashMessage: PropTypes.func.isRequired,
+}
+
+export default connect(null, {login, addFlashMessage})(NewLogin)
