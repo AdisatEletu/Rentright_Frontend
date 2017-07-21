@@ -80,22 +80,22 @@ function Tab(props){
         <div className="cont" >
             <ul className="d-tabs  primary-nav">
                 <li className="tabs__item">
-                    <NavLink exact to={'/landlord/properties/'+props.uuid+'/'} activeClassName="active" className={"tabs__link"}><i className="fa fa-home"/></NavLink>
+                    <NavLink exact to={'/landlord/units/'+props.uuid+'/'} activeClassName="active" className={"tabs__link"}><i className="fa fa-home"/></NavLink>
                 </li>
                 <li className="tabs__item">
-                    <NavLink to={'/landlord/properties/'+props.uuid+'/listing'} className={"tabs__link"}>Listing</NavLink>
+                    <NavLink to={'/landlord/units/'+props.uuid+'/listing'} className={"tabs__link"}>Listing</NavLink>
                 </li>
                 <li className="tabs__item">
-                    <NavLink to={'/landlord/properties/'+props.uuid+'/applications'} className={"tabs__link"}>Applications</NavLink>
+                    <NavLink to={'/landlord/units/'+props.uuid+'/applications'} className={"tabs__link"}>Applications</NavLink>
                 </li>
                 <li className="tabs__item">
-                    <NavLink to={'/landlord/properties/'+props.uuid+'/lease'} className={"tabs__link"}>Leases</NavLink>
+                    <NavLink to={'/landlord/units/'+props.uuid+'/lease'} className={"tabs__link"}>Leases</NavLink>
                 </li>
                 <li className="tabs__item">
-                    <NavLink to={'/landlord/properties/'+props.uuid+'/payments'} className={"tabs__link"}>Payments</NavLink>
+                    <NavLink to={'/landlord/units/'+props.uuid+'/payments'} className={"tabs__link"}>Payments</NavLink>
                 </li>
                 <li className="tabs__item">
-                    <NavLink to={'/landlord/properties/'+props.uuid+'/maintenance'} className={"tabs__link"}>Maintenance</NavLink>
+                    <NavLink to={'/landlord/units/'+props.uuid+'/maintenance'} className={"tabs__link"}>Maintenance</NavLink>
                 </li>
             </ul>
         </div>

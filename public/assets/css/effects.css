@@ -1,7 +1,7 @@
 body{
     margin: 0;
     background-color: #eeeeee;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 
@@ -9,17 +9,27 @@ body{
     background-color: #0A3b61 !important;
 }
 .primary-color-text{
-    color: #0A3b61;
+    color: #0A3b61 !important;
 }
 .secondary-color{
     background-color: #faa61a !important;
 }
 .secondary-color-text{
-    color: #faa61a;
+    color: #faa61a !important;
 }
 
 .tertiary-color-text{
-    color: #1396e2;
+    color: #1396e2 !important;
+}.tertiary-color{
+    background-color: #1396e2 !important;
+}
+
+.alternate-color{
+    background-color: #85929e !important;
+}
+
+.alternate-color-text{
+    color: #85929e !important;
 }
 
 .big-text{
@@ -27,7 +37,6 @@ body{
 }
 
 .card-panel-header{
-    color: #85929e !important;
     font-weight: bold !important;
     font-size: 1.5em !important;
 }
@@ -216,47 +225,9 @@ a.button-collapse.top-nav.full {
     border-left:4px solid transparent
 }
 
-/*custom font*/
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
-
-/*form styles*/
-#msform {
-    font-family: montserrat, arial, verdana;
-    width: 700px;
-    margin: 50px auto;
-    position: relative;
-}
-#msform fieldset {
-    position: absolute;
-    background: white;
-    border: 0 none;
-    border-radius: 3px;
-    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.4);
-    padding: 20px 30px;
-
-    box-sizing: border-box;
-    width: 80%;
-    margin: 0 10%;
-
-    /*stacking fieldsets above each other*/
-    /*position: absolute;*/
-}
-/*Hide all except first fieldset*/
-#msform fieldset:not(:first-of-type) {
-    display: none;
-}
-/*inputs*/
-#msform input[type="text"], #msform textarea , #msform select{
-    padding: 15px;
-    margin-bottom: 10px;
-    width: 100%;
-    font-family: montserrat;
-    color: #2C3E50;
-    font-size: 13px;
-}
 /*buttons*/
-#msform .action-button {
-    width:40%;
+#listingForm .action-button {
+    width: 100%;
     background: #27AE60;
     font-weight: bold;
     color: white;
@@ -266,20 +237,22 @@ a.button-collapse.top-nav.full {
     padding: 10px 5px;
     margin: 10px auto;
 }
-#msform .action-button:hover, #msform .action-button:focus {
+
+#listingForm .action-button:hover, #listingForm .action-button:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
 /*headings*/
 .fs-title {
-    font-size: 15px;
+    font-size: 19px;
+    font-weight: bold;
     text-transform: uppercase;
     color: #2C3E50;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 .fs-subtitle {
     font-weight: normal;
-    font-size: 13px;
+    font-size: 14px;
     color: #666;
     text-align: center;
     margin-bottom: 20px;
@@ -413,101 +386,6 @@ a.button-collapse.top-nav.full {
     margin-top: 10px !important;
 }
 
-
-@-moz-keyframes jelly {
-    from {
-        transform: scale(1, 1);
-    }
-    30% {
-        transform: scale(1.25, 0.75);
-    }
-    40% {
-        transform: scale(0.75, 1.25);
-    }
-    50% {
-        transform: scale(1.15, 0.85);
-    }
-    65% {
-        transform: scale(0.95, 1.05);
-    }
-    75% {
-        transform: scale(1.05, 0.95);
-    }
-    to {
-        transform: scale(1, 1);
-    }
-}
-@-webkit-keyframes jelly {
-    from {
-        transform: scale(1, 1);
-    }
-    30% {
-        transform: scale(1.25, 0.75);
-    }
-    40% {
-        transform: scale(0.75, 1.25);
-    }
-    50% {
-        transform: scale(1.15, 0.85);
-    }
-    65% {
-        transform: scale(0.95, 1.05);
-    }
-    75% {
-        transform: scale(1.05, 0.95);
-    }
-    to {
-        transform: scale(1, 1);
-    }
-}
-@-o-keyframes jelly {
-    from {
-        transform: scale(1, 1);
-    }
-    30% {
-        transform: scale(1.25, 0.75);
-    }
-    40% {
-        transform: scale(0.75, 1.25);
-    }
-    50% {
-        transform: scale(1.15, 0.85);
-    }
-    65% {
-        transform: scale(0.95, 1.05);
-    }
-    75% {
-        transform: scale(1.05, 0.95);
-    }
-    to {
-        transform: scale(1, 1);
-    }
-}
-@keyframes jelly {
-    from {
-        transform: scale(1, 1);
-    }
-    30% {
-        transform: scale(1.25, 0.75);
-    }
-    40% {
-        transform: scale(0.75, 1.25);
-    }
-    50% {
-        transform: scale(1.15, 0.85);
-    }
-    65% {
-        transform: scale(0.95, 1.05);
-    }
-    75% {
-        transform: scale(1.05, 0.95);
-    }
-    to {
-        transform: scale(1, 1);
-    }
-}
-
-
 .header_address{
     font-weight: bold;
     font-size: 20px;
@@ -627,4 +505,76 @@ a.button-collapse.top-nav.full {
     border: 2px solid #faa61a !important;
     border-radius: 5px;
     box-shadow:0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 4px 2px -1px rgba(0,0,0,0.2);
+}
+
+#rentNotification{
+    border: 10px solid #b0bec5 !important;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -1px rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+#rentNotification div.inner-div{
+    border-radius: 3px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#rentNotification div.inner-div img{
+    border-radius: 3px;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -1px rgba(0,0,0,0.2);
+}
+
+.line-button{
+    font-size: 18px;
+    background: transparent;
+    padding: 10px;
+    border: 1px solid #546e7a;
+    border-radius: 4px;
+}
+
+.line-button.hover:hover{
+    background-color: #eceff1;
+}
+
+.img-checkbox{
+    cursor: pointer;
+    opacity: 0.4;
+}
+
+.img-checkbox.checked{
+    opacity: 1;
+}
+
+
+.img-checkbox img.img-check{
+    opacity: 0.5;
+    height: 70px;
+    width: 70px;
+    margin: 0 auto;
+    display: block;
+    background-color: #CCCCCC;
+    border-radius: 50%;
+}
+
+.img-checkbox.checked img.img-check{
+    opacity: 1 !important;
+}
+
+.floating-badge {
+    position:relative;
+}
+.floating-badge[data-badge]:after {
+    content:"\f00c";
+    font-family: FontAwesome;
+    position:absolute;
+    top:0;
+    right: 0;
+    font-size:.7em;
+    background:green;
+    color:white;
+    width:18px;height:18px;
+    text-align:center;
+    line-height:18px;
+    border-radius:50%;
+    box-shadow:0 0 1px #333;
 }

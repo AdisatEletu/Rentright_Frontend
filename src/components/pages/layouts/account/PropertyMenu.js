@@ -12,10 +12,9 @@ class PropertyMenu extends Component {
 
     getMenu(){
         if(this.props.properties.fetched){
-            const menu = this.props.properties.prop.map((property) =>
-                <NavLink to={"/landlord/properties/"+property.uuid} activeClassName={"active"} className="prop-item"><i className="fa fa-building-o" aria-hidden="true"/> {property.name}</NavLink>
+            return this.props.properties.prop.map((property) =>
+                <NavLink key={property.uuid} to={"/landlord/properties/"+property.uuid} activeClassName={"active"} className="prop-item"><i className="fa fa-building-o" aria-hidden="true"/> {property.name}</NavLink>
             );
-            return menu;
         }
     }
 

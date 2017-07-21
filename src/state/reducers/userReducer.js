@@ -13,7 +13,7 @@ import propertyReducer from './propertyReducer';
      units: units
 });
 
-export function units(state={fetching:false,fetched:false},action){
+export function units(state={fetching:false,fetched:false,units:[]},action){
 
     switch(action.type){
         case REQUEST_UNITS:
