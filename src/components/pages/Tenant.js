@@ -8,6 +8,7 @@ import Advert from "./tenantlayouts/advert";
 import GeneralForm from "./layouts/GeneralForm";
 import ResidentialForm from "./layouts/ResidentialForm";
 import EmploymentForm from "./layouts/EmploymentForm";
+import PublicProfile from "./layouts/PublicProfile";
 import {NavLink} from 'react-router-dom';
 import BioForm from "./layouts/BioForm";
 import {connect} from 'react-redux';
@@ -24,7 +25,8 @@ class Tenant extends Component{
         this.sta
         console.log(this.props) 
        this.uuid = '/'+this.props.match.params.id;
-     
+       this.first_name = this.props.auth.user.first_name;
+       this.last_name =  this.props.auth.user.last_name;     
     }
     componentDidMount(){        
     try{
@@ -96,8 +98,8 @@ loadprofile = ()=>{
 
 <div className = "t-flex t-flex-column m-top-med">
          <NavLink className = "m-nav-li t-md-10" to = "/tenant/profile" activeClassName ="m-active-nav"><i className = "fa fa-user-circle lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Complete Profile</span> <div className = "t-bullet m-activate">30 %</div> </NavLink>
-                <NavLink className = "m-nav-li t-md-10" to = "/tenant/applications/:id"  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Applications</span><div className = "t-bullet"></div> </NavLink>
-                    <NavLink className = "m-nav-li t-md-10"  to = "/tenant/serviceproviders/:id" activeClassName = "m-active-nav"><i className = "fa fa-handshake-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Service Providers</span> <div className = "t-bullet"></div> </NavLink>
+        <NavLink className = "m-nav-li t-md-10" to = {"/tenant/publicprofile/" + this.first_name +'/' + this.last_name + '/' + this.uuid +'/'}  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Public Profile</span><div className = "t-bullet"></div> </NavLink>
+    <NavLink className = "m-nav-li t-md-10"  to = "/tenant/serviceproviders/:id" activeClassName = "m-active-nav"><i className = "fa fa-handshake-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Service Providers</span> <div className = "t-bullet"></div> </NavLink>
                         <NavLink className = "m-nav-li t-md-10"  to = "/tenant/messages/:id"  activeClassName = "m-active-nav"><i className = "fa fa-envelope-open-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses ">Messages</span> <div className = "t-bullet"></div> </NavLink>
                             <NavLink className = "m-nav-li t-md-10"  to = "/tenant/propertysearch/:id" activeClassName = "m-active-nav"><i className = "fa fa-building-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses"> Find Properties</span> <div className = "t-bullet m-activate">10 new</div> </NavLink>
 
@@ -115,7 +117,8 @@ loadprofile = ()=>{
               <Route  path="/tenant/profile/generalinfo/:id"  component={GeneralForm}/>       
               <Route  path="/tenant/profile/bioinfo/:id"  component={BioForm}/>     
               <Route  path="/tenant/profile/residentialinfo/:id"  component={ResidentialForm}/>   
-                <Route  path="/tenant/profile/employmentinfo/:id"  component={EmploymentForm}/>           
+                <Route  path="/tenant/profile/employmentinfo/:id"  component={EmploymentForm}/>    
+            <Route  path="/tenant/publicprofile/:first_name/:last_name/:id"  component={PublicProfile}/>  
                 </Switch>
           </div>
                

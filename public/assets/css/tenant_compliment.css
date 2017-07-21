@@ -140,3 +140,21 @@ box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.49);
 .m-pad-x{box-sizing:border-box; padding:30px 40px;}
 .clickable{cursor:pointer;}
 .clickable:hover{background-color:rgba(0,0,0,0.1);} .lbluef{color:#1FCEFC;}
+/*profile specific*/
+.profilebar{ min-height:30vh;padding:20px 15px; 
+background: rgba(48,57,90,1);
+background-image:url('img/logo.png');background-size:100px; background-repeat:no-repeat; background-position-x:90%; background-position-y: 80%;
+} .p-group{margin-bottom:2vh; background-repeat:no-repeat;}
+.p-thumbnail{width:120px; height:120px; border:solid 4px rgba(255,255,255,0.7); border-radius:50%;  background-color:#fff; background-size:contain; background-position:center; background-image:url('img/me.jpg')}
+.p-small-thumbnail{width:5vw; height:5vwh; border-radius:50%;  background-image:url('img/me.jpg') }
+ .p-desc, .list{font-family:Roboto; font-size:1.2rem; font-weight:300; line-height:2.2rem; color:#fff; letter-spacing:1px;   }
+.p-profile-name{font-size:3.3rem; line-height:4.5rem; color:#fff; letter-spacing:2px; font-weight:200; } .p-highlight{ color:#749FF5;} .p-dim{color:#ededed;}
+.p-widget{border-radius:5px; margin-top:3vh;  background:#fff;  -webkit-box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37);-moz-box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37);
+box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37); min-height:45vh; background-color:#fff; box-sizing:border-box; padding:20px 40px; }
+.list{padding:5px 10px; width:100%; } .p-bolden{font-weight:500;} .p-widgets i{color:#666;}
+.pre-hack{line-height:45px; } .common i{font-size:1.5rem; cursor:pointer; padding:5px; margin:3px;}
+
+
+
+
+

@@ -186,7 +186,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
   </div>
 
    </div>
-    <ListElements  onSelect =  {this.onSelect.bind(this)}  label = "Past Employment" lists = {this.state.value}  fromlabel = "Worked  here From" tolabel = "Worked here To" main = "Past Employment" from = "employment_start" to = "employment_ends" />   
+    <ListElements  onSelect =  {this.onSelect.bind(this)}  label = "Past Employment" lists = {this.props.myProfile.tenants.tenant_employment_history}  fromlabel = "Worked  here From" tolabel = "Worked here To" main = "Past Employment" from = "employment_start" to = "employment_ends" />   
         
    </div>
         

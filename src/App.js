@@ -6,6 +6,7 @@ import Home from '../src/components/pages/Home';
 import Login from '../src/components/pages/auth/Login';
 import Register from '../src/components/pages/auth/Register';
 import LandLord from "./components/pages/LandLord";
+import PublicProfile from "./components/pages/layouts/PublicProfile";
 import Tenant from "./components/pages/Tenant";
 import TenantProfile from "./components/pages/layouts/TenantProfile";
 import StepForm from "./components/pages/StepForm";
@@ -26,6 +27,7 @@ class App extends Component {
                   <Route path="/account" component={requireAuth(LandingPage)}/>
                   <Route path="/landlord" component={requireAuth(LandLord)}/>
                   <Route path="/form" component={StepForm}/>
+                  <Route  path="/tenant/publicprofile/:first_name/:last_name/:id"  component={PublicProfile}/>    
               </switch>
           </Router>
                 );

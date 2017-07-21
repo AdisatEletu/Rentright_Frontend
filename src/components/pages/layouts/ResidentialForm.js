@@ -172,7 +172,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
   </div>
 
    </div>
-    <ListElements  onSelect =  {this.onSelect.bind(this)}  label = "Past Residence" lists = {this.state.value}  fromlabel = "Lived From" tolabel = "Lived To" main = "Past Residence" from = "residence_start" to = "residence_ends"/>   
+    <ListElements  onSelect =  {this.onSelect.bind(this)}  label = "Past Residence" lists = {this.props.myProfile.tenants.tenant_residence_history}  fromlabel = "Lived From" tolabel = "Lived To" main = "Past Residence" from = "residence_start" to = "residence_ends"/>   
         
    </div>
         
