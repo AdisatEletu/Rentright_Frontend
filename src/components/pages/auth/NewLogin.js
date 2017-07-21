@@ -5,7 +5,6 @@ import React,{Component} from 'react';
 import NewForm from './login/NewForm';
 import PrimaryNav from '../layouts/header/navigation/PrimaryNav';
 import Copyright from '../layouts/footer/Copyright';
-
 function SignIn () {
     return(
         <div className="t-flex t-md-10 t-center-f t-margin-left">
@@ -17,7 +16,7 @@ function SignIn () {
     );
 
 }
-function SocialLogin() {
+function Social() {
     return(
 
         <div className="t-flex t-md-10 t-margin-left ">
@@ -50,7 +49,7 @@ export default class NewLogin extends Component{
                 <div className="t-fullheight  t-flex t-flex-row t-justify-space-between font-size-zero">
                     <div className="  t-flex  t-seventyfive l-pad t-flex-column t-align-content-center t-md-4 t-margin-right padding">
                         <SignIn/>
-                        <SocialLogin/>
+                        <Social/>
                         <NewForm/>
                     </div>
                         <Gif/>

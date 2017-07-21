@@ -13,7 +13,7 @@ const responseFacebook = (response) => {
 
 
 
-export default class PhoneContainer extends Component{
+export default class Social_Login extends Component{
     render(){
         return(
 
@@ -21,7 +21,6 @@ export default class PhoneContainer extends Component{
                 appId="112618779343581"
                 autoLoad={true}
                 fields="name,email,picture"
-                onClick={componentClicked}
                 callback={responseFacebook} />
 
         );
