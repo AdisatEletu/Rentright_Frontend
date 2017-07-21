@@ -33,7 +33,7 @@ function Drop(){
 function Header(){
     return (
 
-        <div className="navbar-fixed t-fullwidth ">
+        <div className="navbar-fixed">
 
             <nav className = " topbar " >
                 <div className="nav-wrapper row">

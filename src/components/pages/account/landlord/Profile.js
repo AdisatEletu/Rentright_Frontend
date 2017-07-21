@@ -16,7 +16,7 @@ class Profile extends Component {
 
     componentWillMount(){
         this.props.setHeader({
-            text: 'Account Setting',
+            text: 'Account Settings',
             hasBar: false,
         });
     }

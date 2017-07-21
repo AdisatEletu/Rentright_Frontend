@@ -1,6 +1,7 @@
 body{
     margin: 0;
     background-color: #eeeeee;
+    font-size: 20px;
 }
 
 
@@ -11,7 +12,7 @@ body{
     color: #0A3b61;
 }
 .secondary-color{
-    background-color: #faa61a;
+    background-color: #faa61a !important;
 }
 .secondary-color-text{
     color: #faa61a;
@@ -25,6 +26,12 @@ body{
     font-size: 20px;
 }
 
+.card-panel-header{
+    color: #85929e !important;
+    font-weight: bold !important;
+    font-size: 1.5em !important;
+}
+
 .btn.primary-color:hover,
 a.primary-color-text{
 background-color: rgba(10, 59, 97, .8) !important;
@@ -36,7 +43,7 @@ h1.d-header-tag, h2.d-header-tag, h3.d-header-tag, h4.d-header-tag, h5.d-header-
 }
 
 h3.d-header-tag {
-    font-size: 2.42rem;
+    font-size: 26px;
     margin: 1.46rem 0 1.168rem
 }
 
@@ -61,21 +68,6 @@ ul.side-nav.fixed {
     overflow: hidden
 }
 
-ul.side-nav.fixed li {
-    line-height: 44px;
-}
-
-ul.side-nav.fixed li.active {
-    background-color: #0A3b61; /*rgba(0, 0, 0, .05)*/
-}
-
-ul.side-nav.fixed li a {
-    font-size: 23px;
-    height: 44px;
-    padding: 0 30px
-}
-
-
 ul.side-nav.fixed:hover {
     overflow-y: auto
 }
@@ -93,42 +85,6 @@ ul.side-nav.fixed:hover {
     margin: .5rem 0 1rem
 }
 
-ul.d-collapsible {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-ul.d-collapsible li{
-    margin:0; padding:0;
-}
-
-ul.d-collapsible li a{
-    display: block;
-}
-
-.side-nav.fixed .d-collapsible {
-    padding-bottom: 50px
-}
-
-.side-nav.fixed .collapsible-body > ul:not(.d-collapsible) > li a.active {
-    color: #fff;
-    background-color: #38435a;
-}
-
-ul.d-collapsible li:hover{
-    background-color: #0A3b61;
-    border-radius: 5px;
-}
-ul.d-collapsible li a i.material-icons{
-    float: none !important;
-    margin-right: 10px;
-}
-
-ul.d-collapsible li:hover > a,
-ul.d-collapsible li:hover > a i{
-    color: #ffffff;
-}
-
 .d-container {
     margin: 0 auto;
     max-width: 1280px;
@@ -138,7 +94,7 @@ ul.d-collapsible li:hover > a i{
 
 #index-banner {
     position: fixed;
-    //width: 100%;
+    /*width: 100%;*/
     z-index:10;
     background-color: #0A3b61;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2);
@@ -609,5 +565,66 @@ a.button-collapse.top-nav.full {
 }
 
 .hover:hover {
+    box-shadow:0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 4px 2px -1px rgba(0,0,0,0.2);
+}
+
+#sidebar-menu{
+    margin-top: 70px;
+    padding: 0 0 50px;
+}
+
+#sidebar-menu a.item,
+#propertyMenu a.prop-item{
+    height: auto !important;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #616161;
+}
+
+#sidebar-menu a.item:hover,
+#sidebar-menu a.item.active{
+    background-color: #0A3b61;
+    border-right: 5px solid #faa61a;
+    color: #ffffff;
+}
+
+#sidebar-menu a.item i.fa,
+#propertyMenu a.prop-item i.fa{
+    padding-right: 10px;
+    font-size: 25px;
+}
+
+#sidebar-menu .section-header{
+    display: block;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+#sidebar-menu .section-header i{
+    line-height: 2.5;
+    color: #0A3b61;
+    cursor: pointer;
+}
+
+#propertyMenu{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#propertyMenu .prop-item{
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#propertyMenu .prop-item:hover,
+#propertyMenu .prop-item.active{
+    background-color: #0A3b61;
+    color: #ffffff;
+    border: 2px solid #faa61a !important;
+    border-radius: 5px;
     box-shadow:0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 4px 2px -1px rgba(0,0,0,0.2);
 }

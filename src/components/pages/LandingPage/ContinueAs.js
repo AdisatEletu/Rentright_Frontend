@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import SideText from './SideText';
 import PhoneContainer from "./PhoneContainer";
 import PrimaryNav from '../layouts/header/navigation/PrimaryNav';
-import Footer from '../layouts/Footer'
+import Copyright from '../layouts/footer/Copyright'
 
 export default class ContinueAs extends Component{
     render(){
@@ -18,7 +18,7 @@ export default class ContinueAs extends Component{
                         <PhoneContainer/>
                     </div>
                 </div>
-                <Footer/>
+                <Copyright/>
             </div>
         );
     }

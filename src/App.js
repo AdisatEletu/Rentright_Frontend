@@ -6,8 +6,8 @@ import Home from '../src/components/pages/Home';
 import Login from '../src/components/pages/auth/Login';
 import Register from '../src/components/pages/auth/Register';
 import LandLord from "./components/pages/LandLord";
+import Tenant from "./components/pages/Tenant";
 import StepForm from "./components/pages/StepForm";
-import AccountLayout from "./components/pages/layouts/AccountLayout";
 import LandingPage from "./components/pages/account/LandingPage";
 import ContinueAs from './components/pages/LandingPage/ContinueAs';
 
@@ -24,6 +24,7 @@ class App extends Component {
                   <Route path="/ContinueAs" component={ContinueAs}/>
                   <Route path="/account" component={requireAuth(LandingPage)}/>
                   <Route path="/landlord" component={requireAuth(LandLord)}/>
+                  <Route path="/tenant" component={Tenant}/>
                   <Route path="/form" component={StepForm}/>
               </switch>
           </Router>
