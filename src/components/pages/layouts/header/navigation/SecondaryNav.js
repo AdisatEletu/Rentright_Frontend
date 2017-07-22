@@ -22,7 +22,7 @@ class UserArea extends Component{
 
         const guestLinks = (
             <div>
-                <Link to="/register" className="promoted">Register</Link>
+                <Link to="/register"  className="promoted">Register</Link>
                 <Link to="/sign-in">Sign In</Link>
             </div>
         );

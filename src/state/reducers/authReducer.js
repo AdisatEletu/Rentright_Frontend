@@ -1,7 +1,7 @@
 import {SET_AUTH_USER,UPDATE_AUTH_USER} from '../ActionTypes';
 import isEmpty from 'lodash/isEmpty';
 
-const initialState = {
+export const initialState = {
     isAuthenticated:false,
     user: {}
 }
