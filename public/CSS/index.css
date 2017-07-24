@@ -1,11 +1,11 @@
-body, html {margin:0px; height:100%; width:100%; margin:0px;  } *:hover{text-decoration:none!important; color:default!important;}
+.home-body {margin:0px; height:100%; width:100%; margin:0px;  } *:hover{text-decoration:none!important; color:default!important;}
 * {  -webkit-transition: all 0.3s ease;  -moz-transition:    all 0.3s ease;  -ms-transition:     all 0.3s ease;  -o-transition:      all 0.3s ease;}
 input:focus, *:focus{outline:none;}
 .fullheight{height:200%;} .nopadding{padding:0; margin:0;}
 .white{background:#fff;  }
 .topbar{box-sizing:border-box; padding:0px 10px; }
-nav{background-color:#0d47a1; background-color:#d2d2d2; color:#333; box-shadow:0px 0px 0px rgba(0,0,0,0);  }
-nav li{ font-weight:500; font-size:18px;  font-size:20px;}
+.hove-nav{background-color:#0d47a1; background-color:#d2d2d2; color:#333; box-shadow:0px 0px 0px rgba(0,0,0,0);  }
+.home-nav li{ font-weight:500; font-size:18px;  font-size:20px;}
 .topbar .iconic{height:40px; width:120px;  margin-top:10%;  background-size:contain; background-position:center;  background-repeat:no-repeat; background-image:url('img/logo.png');}
 .topbarwhite{background:rgba(0,0,0,0)!important; opacity:1;} .topbarcolorblack{}
 .nobx{ box-shadow:transparent!important; box-shadow:none!important;} .zeropadding{ padding:0!important;}
