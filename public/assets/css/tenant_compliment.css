@@ -176,9 +176,8 @@ box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37); min-height:15vh; background-color
 .t-scroll{ overflow-y:auto!important; overflow-x:hidden; min-height:100%!important;}
 .personalize{height:50vh;} .deeper{background:rgba(0,0,0,0); padding:5px; box-shadow:0px 0px 0px rgba(0,0,0,0);}
  .tr-highlightw:hover{padding:6px 30px; border:solid 2px #4CAF50;  background:#4CAF50; color:#fff; font-size:1rem; font-weight:500; border-radius:4px; cursor:pointer; }
-.itemlist{padding:4px 10px; box-sizing:border-box; height:60px; border-bottom:solid 1px #eaeaea; align-items:center; display:flex; justify-content:space-between;}
-.key{font-size:1.1rem; font-weight:600; width:60%; white-space:break-word;    } .item{font-size:1rem; font-weight:400; width:40%; color:#4CAF50;  text-align:right; white-space:break-word;}
-
+.t-itemlist{padding:4px 10px; box-sizing:border-box; height:60px; border-bottom:solid 1px #eaeaea; align-items:center; display:flex; justify-content:space-between;}
+.t-key{font-size:1.1rem; font-weight:600; width:60%; white-space:break-word;    } .t-item{font-size:1rem; font-weight:400; width:40%; color:#4CAF50;  text-align:right; white-space:break-word;}
 .m-green-f{ color:#4CAF50;} .widget-padding{padding-bottom:30px;  box-shadow:0px 0px 0px rgba(0,0,0,0); box-sizing:border-box; background:rgba(255,255,255,0.3);}
 
 

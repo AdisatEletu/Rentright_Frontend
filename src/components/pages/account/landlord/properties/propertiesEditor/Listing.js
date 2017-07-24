@@ -1,147 +1,217 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import $ from 'jquery';
-import {findDOMNode} from 'react-dom';
-import {getProperty} from "../.././../../../../state/actions/userActions";
+import {VelocityTransitionGroup} from 'velocity-react';
+import {getProperty,updateSingleUnit} from "../.././../../../../state/actions/userActions";
+import 'sweetalert/dist/sweetalert.css';
+import isEqual from 'lodash/isEqual';
+import {toastr} from 'react-redux-toastr';
+import * as swal from 'sweetalert/dist/sweetalert.min';
 
 
 import PropertyInfo from "./listing/PropertyInfo";
-import PropertyMarketing from "./listing/PropertyMarketing";
 import RentalTerms from "./listing/RentalTerms";
 import Amenities from "./listing/Amenities";
-import Review from "./listing/Review";
-import Overlay from "../../../../../shared/Overlay";
-import Loader from "../../../../../shared/Loader";
+import Utilities from "./listing/Utilities";
+import ContactInfo from "./listing/ContactInfo";
+import Description from "./listing/Description";
+import Title from "./listing/Title";
+import Photos from "./listing/Photos";
 
 class Listing extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
-            current_fs: '',
-            next_fs: '',
-            previous_fs: '',
-            left: '',
-            opacity: '',
-            scale: '',
-            animating: '',
+            current_step:1,
+
+            initial:{
+                info: {
+                    section: 'info',
+                    bedrooms: props.unit.bedrooms,
+                    bathrooms: props.unit.bathrooms,
+                    unit_type: props.unit_type,
+                    square_footage: props.unit.square_footage,
+                    parking_type: props.unit.parking_type,
+                    smoking: false,
+                    pets: false,
+                },
+                terms: {
+                    section: 'terms',
+                    monthly_rent: props.unit.monthly_rent,
+                    security_deposit: props.unit.security_deposit,
+                    minimum_lease_term: props.unit.minimum_lease_term,},
+                amenities: {},
+                utilities:{},
+                contact: {},
+                description: {},
+                title: {},
+                photo: {}
+            },
+
+            present:{
+                info: {
+                    section: 'info',
+                    bedrooms: props.unit.bedrooms,
+                    bathrooms: props.unit.bathrooms,
+                    unit_type: props.unit_type,
+                    square_footage: props.unit.square_footage,
+                    parking_type: props.unit.parking_type,
+                    smoking: false,
+                    pets: false,
+                },
+                terms: {
+                    section: 'terms',
+                    monthly_rent: props.unit.monthly_rent,
+                    security_deposit: props.unit.security_deposit,
+                    minimum_lease_term: props.unit.minimum_lease_term,
+                },
+                amenities: {},
+                utilities:{},
+                contact: {},
+                description: {},
+                title: {},
+                photo: {}
+            },
         }
     }
 
-    detailsNext() {
-        this.next(findDOMNode(this.refs.details_next));
+    onChange(e){
+        const present = {
+            ...this.state.present,
+        }
+
+        switch(this.state.current_step){
+            case 1:
+                if(e.target.name === 'smoking' || e.target.name === 'pets'){
+                    present.info[e.target.name] = e.target.checked;
+                }else{
+                    present.info[e.target.name] = e.target.value;
+                }
+                break;
+            case 2:
+                present.terms[e.target.name] = e.target.value;
+                break;
+        }
+        console.log(this.state.present)
+        this.setState({present});
     }
 
-    termsPrevious() {
-        this.previous(findDOMNode(this.refs.terms_prev));
+    onUpdateCallback(status){
+        toastr.removeByType('info');
+        if(status){
+            toastr.success('Saved','Update Successful');
+            //this.setState({initial: this.state.present});
+        }else{
+            toastr.error('Error','Error updating your info');
+        }
+
     }
 
-    termsNext() {
-        this.next(findDOMNode(this.refs.terms_next));
+    formChange(){
+        let equal = true;
+        let data = null;
+
+        switch (this.state.current_step){
+            case 1:
+                console.log('case 1');
+                if(!isEqual(this.state.initial.info,this.state.present.info)){
+                    equal = false;
+                   data = this.state.present.info;
+                }
+                break;
+            case 2:
+                if(!isEqual(this.state.initial.terms,this.state.present.terms)){
+                    equal = false;
+                    data = this.state.present.terms;
+                }
+                break;
+        }
+
+        if(!equal){
+            const toastrOptions = {
+                timeOut: 0,
+                showCloseButton: false,
+                removeOnHover: false,
+                position: 'top-right'
+            }
+            toastr.info('Saving your changes....', toastrOptions)
+
+            this.props.updateSingleUnit(
+                this.props.match.params.id,
+                data,
+                this.onUpdateCallback.bind(this)
+            );
+        }
     }
 
-    next(el) {
+    next(e){
+        e.preventDefault();
+        this.formChange();
 
-        const {animating} = this.state;
+        //swal("Here's a message!");
 
-        if (animating) return false;
+        let current = this.state.current_step;
+        current = current+1;
 
-        this.setState({animating: false});
-
-        const context = this;
-
-        //activate next step on progressbar using the index of next_fs
-        $("#progressbar li").eq($("fieldset").index($(el).parent().next())).addClass("active");
-
-        //show the next fieldset
-        $(el).parent().next().show();
-        //hide the current fieldset with style
-        $(el).parent().animate({opacity: 0}, {
-            step: function (now, mx) {
-                //as the opacity of current_fs reduces to 0 - stored in "now"
-                //1. scale current_fs down to 80%
-                let scale = 1 - (1 - now) * 0.2;
-                context.setState({scale: scale});
-                //2. bring next_fs from the right(50%)
-                let left = (now * 50) + "%";
-                context.setState({left});
-                //3. increase opacity of next_fs to 1 as it moves in
-                let opacity = 1 - now;
-                context.setState({opacity});
-
-                $(el).parent().css({'transform': 'scale(' + scale + ')'});
-                $(el).parent().next().css({'left': left, 'opacity': opacity});
-            },
-            duration: 800,
-            complete: function () {
-                $(el).parent().hide();
-                context.setState({animating: false})
-            },
-            //this comes from the custom easing plugin
-            //easing: 'easeInOutBack'
-        });
+        if(current <= 8){
+            this.setState({current_step: current});
+        }
     }
 
-    previous(el) {
-        const {animating} = this.state;
+    previous(e){
+        e.preventDefault();
+        this.formChange();
 
-        if (animating) return false;
+        let current = this.state.current_step;
+        current = current-1;
 
-        this.setState({animating: false});
-
-        const context = this;
-
-        //de-activate current step on progressbar
-        $("#progressbar li").eq($("fieldset").index($(el).parent())).removeClass("active");
-
-        //show the previous fieldset
-        $(el).parent().prev().show();
-        //hide the current fieldset with style
-        $(el).parent().animate({opacity: 0}, {
-            step: function (now, mx) {
-                //as the opacity of current_fs reduces to 0 - stored in "now"
-                //1. scale previous_fs from 80% to 100%
-                let scale = 0.8 + (1 - now) * 0.2;
-                //2. take current_fs to the right(50%) - from 0%
-                let left = ((1 - now) * 50) + "%";
-                //3. increase opacity of previous_fs to 1 as it moves in
-                let opacity = 1 - now;
-                $(el).parent().css({'left': left});
-                $(el).parent().prev().css({'transform': 'scale(' + scale + ')', 'opacity': opacity});
-            },
-            duration: 800,
-            complete: function () {
-                $(el).parent().hide();
-                context.setState({animating: false})
-            },
-            //this comes from the custom easing plugin
-            // easing: 'easeInOutBack'
-        });
+        if(current >= 1){
+            this.setState({current_step: current});
+        }
     }
 
     render() {
+        const {current_step} = this.state;
 
         return (
-            <div className="row">
-                <div className="col m12">
-                    {this.props.property.isSet ?
-                        <form id="msform">
-                            <div className="row">
-                                <div className="col m12">
-                                    <ul id="progressbar">
-                                        <li className="active">profile</li>
-                                        <li>social</li>
-
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <PropertyInfo onNext={this.detailsNext.bind(this)}/>
-                            <RentalTerms onPrev={this.termsPrevious.bind(this)} onNext={this.termsNext.bind(this)}/>
-                        </form> : <Loader/>}
-                    {this.props.property.fetching ? <Overlay/> : ''}
+            <div className="row" style={{marginTop: '50px'}}>
+                <div  id="listingForm" className="col s12 m8">
+                    <div className="row">
+                        <div className="col m12">
+                            <ul className="progress-indicator">
+                                <li className={current_step>=1 ? "completed" : undefined}> <span className="bubble" /> Step 1. </li>
+                                <li className={current_step>=2 ? "completed" : undefined}> <span className="bubble" /> Step 2. </li>
+                                <li className={current_step>=3 ? "completed" : undefined}> <span className="bubble" /> Step 3. </li>
+                                <li className={current_step>=4 ? "completed" : undefined}> <span className="bubble" /> Step 4. </li>
+                                <li className={current_step>=5 ? "completed" : undefined}> <span className="bubble" /> Step 5. </li>
+                                <li className={current_step>=6 ? "completed" : undefined}> <span className="bubble" /> Step 6. </li>
+                                <li className={current_step>=7 ? "completed" : undefined}> <span className="bubble" /> Step 7. </li>
+                                <li className={current_step>=8 ? "completed" : undefined}> <span className="bubble" /> Step 8. </li>
+                            </ul>
+                        </div>
+                        <div className="col m12" style={{padding: '0'}}>
+                            <form className="card-panel">
+                            <VelocityTransitionGroup enter={{animation: "fadeIn"}} leave={{animation: "fadeOut"}}>
+                                {this.state.current_step===1 ? <PropertyInfo info={this.state.present.info} onChange={this.onChange.bind(this)}/> : undefined}
+                                {this.state.current_step===2 ? <RentalTerms terms={this.state.present.terms} onChange={this.onChange.bind(this)}/>: undefined}
+                                {this.state.current_step===3 ? <Amenities/>: undefined}
+                                {this.state.current_step===4 ? <Utilities/>: undefined}
+                                {this.state.current_step===5 ? <ContactInfo/>: undefined}
+                                {this.state.current_step===6 ? <Description/>: undefined}
+                                {this.state.current_step===7 ? <Title/>: undefined}
+                                {this.state.current_step===8 ? <Photos/>: undefined}
+                            </VelocityTransitionGroup>
+                        </form>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col m6"><button className="action-button primary-color" onClick={this.previous.bind(this)}>previous</button></div>
+                        <div className="col m6"><button className="action-button primary-color" onClick={this.next.bind(this)}>next</button></div>
+                    </div>
                 </div>
+                <div className="col s12 m6"/>
             </div>
         );
     }
@@ -150,13 +220,14 @@ class Listing extends Component {
 
 function mapStateToProps(state) {
     return {
-        property: state.user.activeProperty.property,
+        unit: state.user.activeUnit.unit,
     }
 }
 
 Listing.propTypes = {
-    property: PropTypes.object.isRequired,
+    unit: PropTypes.object.isRequired,
+    updateSingleUnit: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps, {getProperty})(Listing);
+export default connect(mapStateToProps, {getProperty,updateSingleUnit})(Listing);
 

@@ -8,14 +8,16 @@ import AccountLayout from "./layouts/AccountLayout";
 class LandLord extends Component{
     render (){
         return(
+            <div className = "t-fullheight t-fullwidth l-body">
             <AccountLayout>
                 <Switch>
                     <Route exact path='/landlord' component={Profile}/>
                     <Route path='/landlord/account_settings' component={Profile}/>
                     <Route path='/landlord/properties' component={Properties}/>
-                    <Route path='/landlord/properties/:id' component={PropertyEditor}/>
+                    <Route path='/landlord/units/:id' component={PropertyEditor}/>
                 </Switch>
             </AccountLayout>
+            </div>
         );
     }
 }

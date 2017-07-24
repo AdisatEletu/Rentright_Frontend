@@ -45,6 +45,7 @@ loadprofile = ()=>{
 
     render (){
     return(
+<div className = "t-body">
  <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-align-stretch t-justify-space-between">
             <TenantNav first_name = {this.props.user.first_name} />  
           <div className = "t-left t-gray  t-flex  t-align-content-space-between t-right-bx t-right-bx t-flex-column">
@@ -96,6 +97,7 @@ loadprofile = ()=>{
                
     </div>
 <Advert/>
+</div>
 </div>
 
 

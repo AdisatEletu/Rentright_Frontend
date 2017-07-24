@@ -186,15 +186,16 @@ null
    <div className ="t-md-10 p-widget t-flex t-flex-column ">
 <div className = "m-heading increase">General Information</div>
  <div className ="m-sub margin-htop ">Check this board to confirm your current information</div> 
-<div className = "itemlist"><div className = "key">Next Of Kin</div><div className = "item">{this.props.myProfile.tenants.next_of_kin}</div></div>
-<div className = "itemlist"><div className = "key">Telephone Number(Next of Kin)</div><div className = "item">{this.props.myProfile.tenants.next_of_kin_number}</div></div>
-<div className = "itemlist"><div className = "key">Are You A Smoker?</div><div className = "item">{this.props.myProfile.tenants.smoking_status ? "Yes im a Smoker": "No i dont smoke"}</div></div>
-<div className = "itemlist"><div className = "key">Do you have pets?</div><div className = "item">{this.props.myProfile.tenants.pet_status ? "Yes I have pets": "No i dont have pets"}</div></div>
-<div className = "itemlist"><div className = "key">Are you an immigrant</div><div className = "item">{this.props.myProfile.tenants.immigration_status ? "Yes im an immigrant": "No i am a citezin"}</div></div>
-<div className = "itemlist"><div className = "key">Have You ever being convicted of a crime?</div><div className = "item">{this.props.myProfile.tenants.convicted_status? "Yes i have being Convicted": "No my records are clean"}</div></div>
-<div className = "itemlist"><div className = "key">Do you Own your Business?</div><div className = "item">{this.props.myProfile.tenants.enterpreneural_status ? "Yes i own my business": "I am employed"}</div></div>
-<div className = "itemlist"><div className = "key">Are you emploed?</div><div className = "item">{this.props.myProfile.tenants.employment_status ? "Yes i am emploed" : "No i am unemployed"}</div></div>
-<div className = "itemlist"><div className = "key"> ?Are you a student</div><div className = "item">{this.props.myProfile.tenants.student_status? "Yes i am a student" : "No  i am not a student"}</div></div>
+
+<div className = "t-itemlist"><div className = "t-key">Next Of Kin</div><div className = "t-item">{this.props.myProfile.tenants.next_of_kin}</div></div>
+<div className = "t-itemlist"><div className = "t-key">Telephone Number(Next of Kin)</div><div className = "t-item">{this.props.myProfile.tenants.next_of_kin_number}</div></div>
+<div className = "t-itemlist"><div className = "t-key">Are You A Smoker?</div><div className = "t-item">{this.props.myProfile.tenants.smoking_status ? "Yes im a Smoker": "No i dont smoke"}</div></div>
+<div className = "t-itemlist"><div className = "t-key">Do you have pets?</div><div className = "t-item">{this.props.myProfile.tenants.pet_status ? "Yes I have pets": "No i dont have pets"}</div></div>
+<div className = "t-itemlist"><div className = "t-key">Are you an immigrant</div><div className = "t-item">{this.props.myProfile.tenants.immigration_status ? "Yes im an immigrant": "No i am a citezin"}</div></div>
+<div className = "t-itemlist"><div className = "t-key">Have You ever being convicted of a crime?</div><div className = "t-item">{this.props.myProfile.tenants.convicted_status? "Yes i have being Convicted": "No my records are clean"}</div></div>
+<div className = "t-itemlist"><div className = "t-key">Do you Own your Business?</div><div className = "t-item">{this.props.myProfile.tenants.enterpreneural_status ? "Yes i own my business": "I am employed"}</div></div>
+<div className = "t-itemlist"><div className = "t-key">Are you emploed?</div><div className = "t-item">{this.props.myProfile.tenants.employment_status ? "Yes i am emploed" : "No i am unemployed"}</div></div>
+<div className = "t-itemlist"><div className = "t-key"> ?Are you a student</div><div className = "t-item">{this.props.myProfile.tenants.student_status? "Yes i am a student" : "No  i am not a student"}</div></div>
 </div>
 
 

@@ -11,6 +11,7 @@ class Login extends Component {
 
         const {login, addFlashMessage} = this.props
         return (
+
             <Form login={login} addFlashMessage={addFlashMessage}/>
 
         );
