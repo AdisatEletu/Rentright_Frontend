@@ -19,8 +19,8 @@ import {NavLink} from 'react-router-dom';
         render (){
 return (
         <NavLink className = {"m-balls-hold " + (this.props.scale ? 'm-small-scale' : "" ) }  to = {this.props.linkTo} >
-        <div className = {"m-balls " +(this.props.scale ? 'm-balls-active' : "" )}  >{this.props.label}</div>
-        <div className = "m-balls-text">{this.props.childLabel}</div>
+        <div className = {"m-balls m-ellipses " +(this.props.scale ? 'm-balls-active' : "" )}  >{this.props.label}</div>
+        <div className = "m-balls-text m-ellipses">{this.props.childLabel}</div>
         </NavLink>         
          
         );//return

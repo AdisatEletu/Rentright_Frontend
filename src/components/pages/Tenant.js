@@ -11,6 +11,7 @@ import EmploymentForm from "./layouts/EmploymentForm";
 import PublicProfile from "./layouts/PublicProfile";
 import {NavLink} from 'react-router-dom';
 import BioForm from "./layouts/BioForm";
+import TenantNav from './tenantlayouts/tenant_nav';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';  
 import PropTypes from 'prop-types';
@@ -45,36 +46,7 @@ loadprofile = ()=>{
     render (){
     return(
  <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-align-stretch t-justify-space-between">
-    <div className = "m-nav-container t-nav">
-     <div className = "m-primary-nav  ">
-          <span className = "t-sup-h3 thin">Rent-Right by Algorism LTD </span>
-        
-        <div className = "m-profile-info">
-        <i className ="material-icons tiny">list</i>
-         <span>{this.props.user.first_name}</span>
-         <span>Log out</span>
-         <span>Switch</span>  
-      
-        <div className = "t-rounded m-prf2 t-white t-cover m-me">  
-             <div className = "m-cover t-flex t-align-center t-fullheight t-fullwidth t-justify-center"> <i className = "material-icons  md-12 right">linked_camera</i> </div>           
-          </div>
-     </div>
-     </div>
-     <div className = "m-links">
-         <div className = "div t-flex t-align-center  t-justify-center t-justify-space-between  t-align-baseline">
-             <i className = "material-icons small">view_quilt</i>
-             <i className = "material-icons small">business</i>
-              <i className = "material-icons small">location_on</i>
-               <i className = "material-icons small">person_pin</i>
-         </div>
-         <div className = "m-search">
-             <div className = "m-btn"><i className = "fa fa-search"></i></div>
-        
-             </div>
- 
-     </div>
-    </div>
-  
+            <TenantNav first_name = {this.props.user.first_name} />  
           <div className = "t-left t-gray  t-flex  t-align-content-space-between t-right-bx t-right-bx t-flex-column">
       
           <div className = "t-justify-left t-flex">
@@ -99,9 +71,9 @@ loadprofile = ()=>{
 <div className = "t-flex t-flex-column m-top-med">
          <NavLink className = "m-nav-li t-md-10" to = "/tenant/profile" activeClassName ="m-active-nav"><i className = "fa fa-user-circle lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Complete Profile</span> <div className = "t-bullet m-activate">30 %</div> </NavLink>
         <NavLink className = "m-nav-li t-md-10" to = {"/tenant/publicprofile/" + this.first_name +'/' + this.last_name + '/' + this.uuid +'/'}  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Public Profile</span><div className = "t-bullet"></div> </NavLink>
-    <NavLink className = "m-nav-li t-md-10"  to = "/tenant/serviceproviders/:id" activeClassName = "m-active-nav"><i className = "fa fa-handshake-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Service Providers</span> <div className = "t-bullet"></div> </NavLink>
-                        <NavLink className = "m-nav-li t-md-10"  to = "/tenant/messages/:id"  activeClassName = "m-active-nav"><i className = "fa fa-envelope-open-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses ">Messages</span> <div className = "t-bullet"></div> </NavLink>
-                            <NavLink className = "m-nav-li t-md-10"  to = "/tenant/propertysearch/:id" activeClassName = "m-active-nav"><i className = "fa fa-building-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses"> Find Properties</span> <div className = "t-bullet m-activate">10 new</div> </NavLink>
+        <NavLink className = "m-nav-li t-md-10"  to = "/tenant/serviceproviders/:id" activeClassName = "m-active-nav"><i className = "fa fa-handshake-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Service Providers</span> <div className = "t-bullet"></div> </NavLink>
+         <NavLink className = "m-nav-li t-md-10"  to = "/tenant/messages/:id"  activeClassName = "m-active-nav"><i className = "fa fa-envelope-open-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses ">Messages</span> <div className = "t-bullet"></div> </NavLink>
+        <NavLink className = "m-nav-li t-md-10"  to = "/tenant/propertysearch/:id" activeClassName = "m-active-nav"><i className = "fa fa-building-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses"> Find Properties</span> <div className = "t-bullet m-activate">10 new</div> </NavLink>
 
 </div>
 
