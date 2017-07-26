@@ -132,6 +132,63 @@ export function patchSpecificTenant(path,obj) {
     });
   };
 }
+export function getProfileStruct(path) {  
+  return function(dispatch) {
+    dispatch(showLoading());
+    return api.geturl(path, true).then(structure => {
+        dispatch(hideLoading());
+      dispatch(StructureLoadSuccess(structure));
+    }).catch(error => {
+        dispatch(errorLoading());
+      console.log(error);
+      throw(error);
+    });
+  };
+}
+export function uploadFile ( file, api_url, uuid) {  
+  return function (dispatch){
+  let data = new FormData();
+  console.log(file)
+  data.append( 'profile_picture', file );
+  data.append('uuid', uuid)
+
+  dispatch(showLoading());
+  return  api.postimage(api_url, data)
+      .then(response =>{ 
+        console.log(response);
+          console.log('stand out .....................................................................................................................................')
+        dispatch(uploadSuccess(response))
+         dispatch(hideLoading());         
+      
+    })
+      
+      .catch( error => {
+        console.log(error);
+          console.log('stand out .....................................................................................................................................')
+        dispatch(uploadFail(error))
+        dispatch(hideLoading());
+    })
+  }
+  };
+export function readThis (inputValue, api_url, uuid ) {
+  return function (dispatch){
+  let th = this;
+  let img;
+  var file = inputValue.target.files[0];
+  //dispatch(uploadFile(file, api_url,uuid ))    
+ var reader = new FileReader();
+  reader.onload = ()=>{
+    dispatch(imageready(reader.result, message))
+    var message = "File Loaded successfully"
+    dispatch(uploadFile(file, api_url ))
+    dispatch(imageready(reader.result, message))
+  }
+  reader.readAsDataURL(file) 
+  }
+}
+//}
+
+
 export function deleteSpecificTenant(path,obj) {  
   return function(dispatch) {
     dispatch(showLoading());
@@ -160,8 +217,40 @@ export function patchSpecificTenantSuccess(tenants) {
 export function deleteSpecificTenantSuccess(tenants) {  
   return {type: types.DELETE_SPCIFIC_TENANT_SUCCESS , tenants:tenants.results};
 }
+export  function StructureLoadSuccess(structure){
+    return {type: types.STRUCTURE_LOAD_SUCCESS , structure:structure.results.values};
+}
 
 export function abstractdispatchfunctions(){
 
 
+}
+export function imageready(item,message){
+  if (item){
+    return{
+      type: types.IMAGE_READY_SUCCESS,
+      content:item,
+      message
+    }
+  }else{
+    return{
+      type : types.IMAGE_READY_FAIL,
+      message
+
+    }
+  }
+}
+export function uploadSuccess({ data }) {
+  return {
+    type: types.UPLOAD_DOCUMENT_SUCCESS,
+    data,
+  };
+}
+
+
+export function uploadFail(error) {
+  return {
+    type: types.UPLOAD_DOCUMENT_FAIL,
+    error,
+  };
 }

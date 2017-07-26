@@ -9,6 +9,7 @@ import GeneralForm from "./layouts/GeneralForm";
 import ResidentialForm from "./layouts/ResidentialForm";
 import EmploymentForm from "./layouts/EmploymentForm";
 import PublicProfile from "./layouts/PublicProfile";
+import ImageUpdate from "./layouts/ImageUpdate";
 import {NavLink} from 'react-router-dom';
 import BioForm from "./layouts/BioForm";
 import TenantNav from './tenantlayouts/tenant_nav';
@@ -22,16 +23,17 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
 class Tenant extends Component{
     uuid;
     constructor(props) {                  
-        super(props)
-        this.sta
+        super(props)  
         console.log(this.props) 
-       this.uuid = '/'+this.props.match.params.id;
-       this.first_name = this.props.auth.user.first_name;
-       this.last_name =  this.props.auth.user.last_name;     
+       //this.uuid = '/'+this.props.match.params.id 
+        this.first_name = this.props.auth.user.first_name;
+        this.last_name =  this.props.auth.user.last_name;   
+        this.uuid = this.props.auth.user.uuid;  
     }
     componentDidMount(){        
     try{
-       this.uuid = this.props.match.params.id;
+       //this.uuid = this.props.match.params.id;
+        this.context.router.history.push("/tenant/profile/" + this.uuid);
   
      }catch(err){
     console.log(err)
@@ -57,9 +59,9 @@ loadprofile = ()=>{
 
          <div className = " t-justify-center t-flex">   
  
-         <div className = "t-rounded m-prf t-white t-cover m-me">  
+         <NavLink className = "t-rounded m-prf t-white t-cover m-me" to = {"/tenant/profilepicture/" + this.uuid +"/"}  >  
              <div className = "m-cover t-flex t-align-center t-fullheight t-fullwidth t-justify-center"> <i className = "material-icons  md-12 right">linked_camera</i> </div>           
-          </div>
+          </NavLink>
         
           </div>
  
@@ -75,9 +77,7 @@ loadprofile = ()=>{
         <NavLink className = "m-nav-li t-md-10"  to = "/tenant/serviceproviders/:id" activeClassName = "m-active-nav"><i className = "fa fa-handshake-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Service Providers</span> <div className = "t-bullet"></div> </NavLink>
          <NavLink className = "m-nav-li t-md-10"  to = "/tenant/messages/:id"  activeClassName = "m-active-nav"><i className = "fa fa-envelope-open-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses ">Messages</span> <div className = "t-bullet"></div> </NavLink>
         <NavLink className = "m-nav-li t-md-10"  to = "/tenant/propertysearch/:id" activeClassName = "m-active-nav"><i className = "fa fa-building-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses"> Find Properties</span> <div className = "t-bullet m-activate">10 new</div> </NavLink>
-
-</div>
-
+     </div>
       </div>
 
  
@@ -86,12 +86,13 @@ loadprofile = ()=>{
 
         <div  className = "t-dash t-flex t-flex-column">
             <Switch>
-           <Route  path="/tenant/:id/profile"  component={TenantProfile}/>  
-              <Route  path="/tenant/profile/generalinfo/:id"  component={GeneralForm}/>       
-              <Route  path="/tenant/profile/bioinfo/:id"  component={BioForm}/>     
-              <Route  path="/tenant/profile/residentialinfo/:id"  component={ResidentialForm}/>   
-                <Route  path="/tenant/profile/employmentinfo/:id"  component={EmploymentForm}/>    
-            <Route  path="/tenant/publicprofile/:first_name/:last_name/:id"  component={PublicProfile}/>  
+              <Route  exact path="/tenant/profile/:id"  component={TenantProfile}/>  
+              <Route  exact path="/tenant/profile/generalinfo/:id"  component={GeneralForm}/>       
+              <Route  exact path="/tenant/profile/bioinfo/:id"  component={BioForm}/>     
+              <Route  exact path="/tenant/profile/residentialinfo/:id"  component={ResidentialForm}/>   
+              <Route  exact path="/tenant/profile/employmentinfo/:id"  component={EmploymentForm}/>    
+             <Route  path="/tenant/publicprofile/:first_name/:last_name/:id"  component={PublicProfile}/> 
+              <Route  path="/tenant/profilepicture/:id"  component={ImageUpdate}/> 
                 </Switch>
           </div>
                
@@ -132,6 +133,10 @@ Tenant.PropTypes = {
     auth: PropTypes.object.isRequired,
     //tenantProfile: PropTypes.object.isRequired
 }
+
+Tenant.contextTypes = {
+        router: PropTypes.object.isRequired,
+    }
 
 export default connect(matchStateToProps,{loadSpecificTenant})(Tenant)
 

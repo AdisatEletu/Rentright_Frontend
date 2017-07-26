@@ -31,6 +31,8 @@ html, body{font-size:12px!important;}
 /* flex  display positions */
 .t-flex{display:flex;} .t-flex-row{flex-direction:row;} .t-flex-column{flex-direction:column;}
 .t-flex-wrap{flex-wrap:wrap;}
+.t-sm-padding{padding:1vh; box-sizing:border-box;}
+.t-md-padding{padding:4vh; box-sizing:border-box;}
 /*.t-flex-flow-flstart{flex}*/
 /* fonts */
 .t-center-f{text-align:center;} .t-left-f{text-align:left;} .t-right-f{text-align:right;}

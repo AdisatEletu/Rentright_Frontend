@@ -30,7 +30,7 @@ class ListElements extends Component{
     return (
         this.props.lists.length < 1  ?
     <div className = "m-profile-setup">
-            <div className = "t-flex t-flex-column t-md-10 t-justify-center m-pad-x ">
+        <div className = "t-flex t-flex-column t-md-10 t-justify-center m-pad-x ">
         <div className = "t-gray-darken-3-f thin t-sup-h2 t-center-f"><span className = "">You have not updated any {this.props.label} yet</span> </div> 
         <span className = " thin t-h1 t-greem-f  thin t-lh-h2  t-center-f m-topp">Please fill in the form above to update {this.props.label} information</span>
         </div>  

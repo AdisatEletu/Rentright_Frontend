@@ -6,11 +6,15 @@ export default class apiActions {
   constructor(url = ""){    
     this.url = url
   };
-   geturl = (api_path = null) =>{
+   geturl = (api_path = null, append = false) =>{
      console.log(api_path)
     let path;
     if (api_path){ 
+      if (append){
+       api_path =api_path
+      }else{
       api_path = api_path + '/';
+      }
       path =  this.url + api_path
       
     }else{
@@ -57,7 +61,21 @@ console.log(error)
   return error;
 })
   }
-  posteurl = (api_path, obj) =>{
+ postimage = (api_path, obj) =>{
+   api_path =  'https://rentright.herokuapp.com/api/rentright/' + api_path + '/';
+    return fetch(api_path, {
+   headers: {
+    'Content-Type': 'multipart/form-data'
+  },
+  method: 'PATCH',                                                              
+  body: JSON.stringify( { obj } )
+    }).then(response =>{
+  return response.json();  
+}).catch(error => {
+  return error;
+})
+  }
+  posturl = (api_path, obj) =>{
    api_path = api_path + '/';
     return fetch(this.url + api_path, {
         headers: {
