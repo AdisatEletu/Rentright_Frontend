@@ -1,4 +1,4 @@
-body{
+.l-body{
     margin: 0;
     background-color: #eeeeee;
     font-size: 16px !important;
@@ -13,27 +13,17 @@ a{
     background-color: #0A3b61 !important;
 }
 .primary-color-text{
-    color: #0A3b61 !important;
+    color: #0A3b61;
 }
 .secondary-color{
     background-color: #faa61a !important;
 }
 .secondary-color-text{
-    color: #faa61a !important;
+    color: #faa61a;
 }
 
 .tertiary-color-text{
-    color: #1396e2 !important;
-}.tertiary-color{
-    background-color: #1396e2 !important;
-}
-
-.alternate-color{
-    background-color: #85929e !important;
-}
-
-.alternate-color-text{
-    color: #85929e !important;
+    color: #1396e2;
 }
 
 .big-text{
@@ -60,6 +50,7 @@ d-npd{
     padding-bottom: 0 !important;
 }
 .card-panel-header{
+    color: #85929e !important;
     font-weight: bold !important;
     font-size: 1.5em !important;
 }
@@ -248,9 +239,47 @@ a.button-collapse.top-nav.full {
     border-left:4px solid transparent
 }
 
-/*buttons*/
-#listingForm .action-button {
+/*custom font*/
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+/*form styles*/
+#msform {
+    font-family: montserrat, arial, verdana;
+    width: 700px;
+    margin: 50px auto;
+    position: relative;
+}
+#msform fieldset {
+    position: absolute;
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+
+    /*stacking fieldsets above each other*/
+    /*position: absolute;*/
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+/*inputs*/
+#msform input[type="text"], #msform textarea , #msform select{
+    padding: 15px;
+    margin-bottom: 10px;
     width: 100%;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+}
+/*buttons*/
+#msform .action-button {
+    width:40%;
     background: #27AE60;
     font-weight: bold;
     color: white;
@@ -260,22 +289,20 @@ a.button-collapse.top-nav.full {
     padding: 10px 5px;
     margin: 10px auto;
 }
-
-#listingForm .action-button:hover, #listingForm .action-button:focus {
+#msform .action-button:hover, #msform .action-button:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
 /*headings*/
 .fs-title {
-    font-size: 19px;
-    font-weight: bold;
+    font-size: 15px;
     text-transform: uppercase;
     color: #2C3E50;
     text-align: center;
-    margin-bottom: 0;
+    margin-bottom: 10px;
 }
 .fs-subtitle {
     font-weight: normal;
-    font-size: 14px;
+    font-size: 13px;
     color: #666;
     text-align: center;
     margin-bottom: 20px;
@@ -408,6 +435,101 @@ a.button-collapse.top-nav.full {
     margin-bottom: 5px !important;
     margin-top: 10px !important;
 }
+
+
+@-moz-keyframes jelly {
+    from {
+        transform: scale(1, 1);
+    }
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+@-webkit-keyframes jelly {
+    from {
+        transform: scale(1, 1);
+    }
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+@-o-keyframes jelly {
+    from {
+        transform: scale(1, 1);
+    }
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+@keyframes jelly {
+    from {
+        transform: scale(1, 1);
+    }
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+
 
 .header_address{
     font-weight: bold;
@@ -634,3 +756,5 @@ a.button-collapse.top-nav.full {
 .block{
     width: 100%;
 }
+
+[data-reactroot], #root, html, body{height:100%; overflow-y:auto;}

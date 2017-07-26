@@ -22,10 +22,9 @@ class App extends Component {
                   <Route path={"/register"} component={Register}/>
                   <Route path="/account" component={requireAuth(ContinueAs)}/>
                   <Route path="/landlord" component={requireAuth(LandLord)}/>
-                  <Route path="/tenant" component={Tenant}/>
                   <Route path="/sign-in" component={NewLogin}/>
-                  <Route path="/tenant/:id" component={Tenant}/>
-                  <Route  path="/tenant/publicprofile/:first_name/:last_name/:id"  component={PublicProfile}/>
+                  <Route path="/tenant" component={requireAuth(Tenant)}/>
+                         
               </switch>
           </Router>
       );

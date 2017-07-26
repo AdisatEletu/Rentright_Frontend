@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
 import userReducer from './reducers/userReducer';
 import tenantReducer from './reducers/tenantReducer';
+import structureReducer from './reducers/structureReducer';
 import loaderReducer from './reducers/loaderReducer';
+import imageUploadReducer from './reducers/imageUploadReducer';
+import fileToServerReducer from './reducers/fileToServerReducer';
 import tenantInfoReducer from './reducers/tenantInfoReducer';
 import tenantInfoContentReducer from './reducers/tenantInfoContentReducer';
 import flashMessages from './reducers/flashMessages';
@@ -19,7 +22,11 @@ const combinedReducers = combineReducers({
     tenantReducer: tenantReducer,
     tenantProfileLoader:loaderReducer,
     tenantInfoStruct : tenantInfoReducer,
-    tenantInfoLists :tenantInfoContentReducer
+    tenantInfoLists :tenantInfoContentReducer,
+    structure:structureReducer,
+    imageUpload: imageUploadReducer,
+    fileToServer: fileToServerReducer
+
 
 
 });

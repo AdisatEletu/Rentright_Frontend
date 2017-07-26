@@ -8,7 +8,7 @@ export default class NewHome extends Component{
 
     render(){
         return(
-            <div className= "row fullheight nopadding">
+            <div className= "row fullheight nopadding home-body">
                 <Header/>
                 <Footer/>
             </div>

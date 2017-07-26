@@ -1,45 +1,219 @@
-.centermain{
-height:100vh;
-border-radius:4px;
--webkit-box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.19);
--moz-box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.19);
-box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.19);
-background-color:rgba(255,255,255,0.7);
+.centermain {
+    height: 100vh;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 1px 21px -8px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0px 1px 21px -8px rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 1px 21px -8px rgba(0, 0, 0, 0.19);
+    background-color: rgba(255, 255, 255, 0.7);
 }
-.main{
-	background-size:cover;
-	background-position:center;
+
+.main {
+    background-size: cover;
+    background-position: center;
 }
-.cover{width:100%; height:100%; background-color:rgba(0,0,0,0.2); background-size:contain; background-position:0px 0px; background-repeat:no-repeat; );}
-.central{height:60%; background-color:rgba(255,255,255,0.7);}
 
-
-.h-height{height:100%;} .h-width{ width:50%;}
-.font-size-zero{font-size:0px;} .t-right{text-align:right;} 
-.padding{box-sizng:border-box; overflow:hidden; padding-top:10px; padding-bottom:10px; padding-left:200px; padding-right:0px; }
-.vec4{background-image:url('img/vec4.jpg'); background-size:contain; background-repeat:no-repeat;}
-.h-sup-h1 {font-size: 6.5rem; line-height: 5rem;}
-.h-btn{background-color:#F72900;} .h-blue-darken-f{color:#1a237e;} .h-black-f{color:#000;}
-.h-button{border-radius:15px; margin-right:2vw; cursor:pointer; padding:0px 30px;  height:35px; line-height:35px; background-color:#52e2be;   text-align:left; font-size:1.2rem; font-weight:300; color:#fff;}
-.h-margins{margin-top:2vh; height:40px; } .h-button:hover{opacity:0.7;} .highlight{border:solid 1px rgba(255,255,255, 0.7); background:transparent;}
-.blue1{background-color:#183174;}
-.blue2{background-color:#2798AA;} .highlight:hover{border-color:#333;} .a-logo{cursor:pointer; height:50px; width: 50%wh;}
-
-.h-button-1{border-radius:20px; cursor:pointer; padding:10px 35px; text-align:left; font-size:1.2rem; font-weight:300; color:#fff;}
-
-.grad{
-	
-width:100%; height:100%;
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#183174+0,246b99+43,287ca0+73,287ca0+100&0.72+0,0.83+100 */
-background: -moz-linear-gradient(-45deg, rgba(24,49,116,0.72) 0%, rgba(36,107,153,0.77) 73%, rgba(40,124,160,0.8) 73%, rgba(40,124,160,0.83) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg, rgba(24,49,116,0.72) 0%,rgba(36,107,153,0.77) 43%,rgba(40,124,160,0.8) 73%,rgba(40,124,160,0.83) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg, rgba(24,49,116,0.72) 0%,rgba(36,107,153,0.77) 43%,rgba(40,124,160,0.8) 73%,rgba(40,124,160,0.83) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8183174', endColorstr='#d4287ca0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-	
+.home-cover {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-size: contain;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
 }
-.home{background-size:contain; background-repeat:repeat-x; background-position:bottom; background-image:url('img/vec4.jpg');}
-.t-hr{color:rgba(255,255,255,1); background-color:rgba(255,255,255,1); margin-top:5vh; margin-bottom:4vh; height:3px; border-radius:2px; width:40%; } .h-half-height{height:50vh;}
-.t-seventyfive{height: 90vh;} .l-pad{padding-top: 5%;} .r-blue{color:#0A3b61;} .r-black{color:#000000;} .r-line-height{line-height:30px;}
-.r-i-size{margin-top: 20px; margin-bottom: 30px; height: 5vh; width: 50%; cursor:pointer;} .t-hr2{color:#000; margin-top:5vh; margin-bottom:4vh; height:3px; border-radius:2px; width:40%; }
-.sign-in-button{height:5vh; width: 100%; border-radius:5px; background-color:#0A3b61; color:#ffffff; font-size: 1.5rem;}
-.form-text{font-size: 1.5rem; color:#0A3b61;} .s-pad{padding-bottom:10px;}
+
+.central {
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.h-height {
+    height: 100%;
+}
+
+.h-width {
+    width: 50%;
+}
+
+.font-size-zero {
+    font-size: 0px;
+}
+
+.t-right {
+    text-align: right;
+}
+
+.padding {
+    box-sizng: border-box;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 200px;
+    padding-right: 0px;
+}
+
+.vec4 {
+    background-image: url('img/vec4.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.h-sup-h1 {
+    font-size: 6.5rem;
+    line-height: 5rem;
+}
+
+.h-btn {
+    background-color: #F72900;
+}
+
+.h-blue-darken-f {
+    color: #1a237e;
+}
+
+.h-black-f {
+    color: #000;
+}
+
+.h-button {
+    border-radius: 15px;
+    margin-right: 2vw;
+    cursor: pointer;
+    padding: 0px 30px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #52e2be;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #fff;
+}
+
+.h-margins {
+    margin-top: 2vh;
+    height: 40px;
+}
+
+.h-button:hover {
+    opacity: 0.7;
+}
+
+.m-highlight {
+    border: solid 1px rgba(255, 255, 255, 0.7);
+    background: transparent;
+}
+
+.blue1 {
+    background-color: #183174;
+}
+
+.blue2 {
+    background-color: #2798AA;
+}
+
+.highlight:hover {
+    border-color: #333;
+}
+
+.a-logo {
+    cursor: pointer;
+    height: 50px;
+    width: 50% wh;
+}
+
+.h-button-1 {
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 10px 35px;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #fff;
+}
+
+.grad {
+
+    width: 100%;
+    height: 100%;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#183174+0,246b99+43,287ca0+73,287ca0+100&0.72+0,0.83+100 */
+    background: -moz-linear-gradient(-45deg, rgba(24, 49, 116, 0.72) 0%, rgba(36, 107, 153, 0.77) 73%, rgba(40, 124, 160, 0.8) 73%, rgba(40, 124, 160, 0.83) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(24, 49, 116, 0.72) 0%, rgba(36, 107, 153, 0.77) 43%, rgba(40, 124, 160, 0.8) 73%, rgba(40, 124, 160, 0.83) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(24, 49, 116, 0.72) 0%, rgba(36, 107, 153, 0.77) 43%, rgba(40, 124, 160, 0.8) 73%, rgba(40, 124, 160, 0.83) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b8183174', endColorstr='#d4287ca0', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.home {
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-image: url('img/vec4.jpg');
+}
+
+.t-hr {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 1);
+    margin-top: 5vh;
+    margin-bottom: 4vh;
+    height: 3px;
+    border-radius: 2px;
+    width: 40%;
+}
+
+.h-half-height {
+    height: 50vh;
+}
+
+.t-seventyfive {
+    height: 90vh;
+}
+
+.l-pad {
+    padding-top: 5%;
+}
+
+.r-blue {
+    color: #0A3b61;
+}
+
+.r-black {
+    color: #000000;
+}
+
+.r-line-height {
+    line-height: 30px;
+}
+
+.r-i-size {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    height: 5vh;
+    width: 50%;
+    cursor: pointer;
+}
+
+.t-hr2 {
+    color: #000;
+    margin-top: 5vh;
+    margin-bottom: 4vh;
+    height: 3px;
+    border-radius: 2px;
+    width: 40%;
+}
+
+.sign-in-button {
+    height: 5vh;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #0A3b61;
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.form-text {
+    font-size: 1.5rem;
+    color: #0A3b61;
+}
+
+.s-pad {
+    padding-bottom: 10px;
+}

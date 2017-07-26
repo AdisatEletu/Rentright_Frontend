@@ -13,7 +13,7 @@ render(){
    let style2 = {width : 100 - this.props.completeness + '%'};
     return ( 
         <div className = "t-md-10">          
-            <div className = "m-heading m-med-topp t-flex t-flex-row t-align-left"><span>{this.props.label}</span><span className = "lbl">{this.props.completeness} %</span></div>     
+            <div className = "m-heading2 m-med-topp t-flex t-flex-row t-align-left"><span>{this.props.label}</span><span className = "lbl">{this.props.completeness} %</span></div>     
             <div className = "t-flex  t-md-10 t-justify-left t-flex-row ">
               <div className = "t-flex t-md-10 t-align-top t-justify-center">
                   <div className = "t-flex t-flex-column t-md-10  t-justify-center t-sup-h3 t-gray-darken-3-f Roboto t-center-f  thin t-align-top">
