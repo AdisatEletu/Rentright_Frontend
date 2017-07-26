@@ -5,6 +5,8 @@ import {SET_AUTH_USER} from '../ActionTypes';
 import {addFlashMessage} from './flashMessageActions';
 
 export function setCurrentUser(user){
+
+    localStorage.setItem('user',JSON.stringify(user));
     return {
         type: SET_AUTH_USER,
         user: user
@@ -34,7 +36,6 @@ export function login(data,callback){
             const user = res.data.data.user;
             // add token to local storage
             localStorage.setItem('rs_token',token);
-            localStorage.setItem('user',JSON.stringify(user));
             //add token to request header
             setAuthorisationToken(token);
             //dispatch the user into the store

@@ -3,10 +3,6 @@ import ImageCheckBox from "../shared/ImageCheckBox";
 
 class Utilities extends Component {
 
-    onCheck(e){
-        this.setState({[e.target.name]: e.target.checked});
-    }
-
     render() {
         return (
             <div>
@@ -20,28 +16,32 @@ class Utilities extends Component {
                             src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Running.png"
                             name="security"
                             label="Security"
-                            onCheck={this.onCheck.bind(this)}/>
+                            checked={this.props.utilities.includes("security")}
+                            onCheck={this.props.onChange}/>
                     </div>
                     <div className="col s2 center">
                         <ImageCheckBox
                             src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Running.png"
                             name="power_supply"
                             label="Power Supply"
-                            onCheck={this.onCheck.bind(this)}/>
+                            checked={this.props.utilities.includes("power_supply")}
+                            onCheck={this.props.onChange}/>
                     </div>
                     <div className="col s2 center">
                         <ImageCheckBox
                             src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Running.png"
                             name="sanitation"
                             label="Sanitation"
-                            onCheck={this.onCheck.bind(this)}/>
+                            checked={this.props.utilities.includes("sanitation")}
+                            onCheck={this.props.onChange}/>
                     </div>
                     <div className="col s2 center">
                         <ImageCheckBox
                             src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Running.png"
                             name="water"
                             label="Water"
-                            onCheck={this.onCheck.bind(this)}/>
+                            checked={this.props.utilities.includes("water")}
+                            onCheck={this.props.onChange}/>
                     </div>
                     <div className="col s2"/>
                 </div>

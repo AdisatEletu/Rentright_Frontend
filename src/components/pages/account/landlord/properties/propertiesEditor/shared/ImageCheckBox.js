@@ -16,6 +16,9 @@ class ImageCheckBox extends Component {
         this.props.onCheck(e);
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({checked: nextProps.checked});
+    }
 
     render() {
         return (
@@ -24,7 +27,7 @@ class ImageCheckBox extends Component {
                 <img
                     src={this.props.src}
                     alt="..." className="img-check"/>
-                <input type="checkbox" name={this.props.name} checked={this.state.checked} onChange={this.onCheck.bind(this)} id="item4" defaultValue="val1" className="hidden"
+                <input type="checkbox" name={this.props.name} checked={this.state.checked} onChange={this.onCheck.bind(this)} id="item4" className="hidden"
                        autoComplete="off"/>
                 {this.props.label}
             </label>
