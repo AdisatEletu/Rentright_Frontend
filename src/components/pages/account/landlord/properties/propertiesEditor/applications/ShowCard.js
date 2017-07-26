@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Card, Button, Avatar, Steps, Collapse} from 'antd'
+import {Modal} from 'react-materialize'
 
 class ShowCard extends Component {
     handleViewFormClick = (e) => {
-        e.preventDefault();
-        alert ('view clicked');
+        alert('click');
     }
 
     render() {
@@ -17,7 +17,13 @@ class ShowCard extends Component {
 
         const collapseHeader = <span className="alternate-color-text"><b className="tertiary-color-text">Status:</b> Form completed 3 days ago</span>;
 
-        const applicationForm = <a href="/application/form" onClick={this.handleViewFormClick}>View application from</a>
+        const applicationForm = <Modal
+                header='Modal Header'
+                trigger={
+                    <a href="/application/form" onClick={this.handleViewFormClick}>View application from</a>
+                }>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore est laborum</p>
+            </Modal>
 
         return (
             <Card title="Application" extra={topAction}>
@@ -37,7 +43,7 @@ class ShowCard extends Component {
                     </div>
 
                     <div className="application-details">
-                        <Collapse bordered={false} defaultActiveKey={['1']}>
+                        <Collapse bordered={false}>
                             <Panel header={collapseHeader} key="1">
                                 <div className="row">
                                     <div className="col s12">
