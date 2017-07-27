@@ -65,10 +65,11 @@ console.log(error)
    api_path =  'https://rentright.herokuapp.com/api/rentright/' + api_path + '/';
     return fetch(api_path, {
    headers: {
-    'Content-Type': 'multipart/form-data'
+   // 'Content-Type': 'multipart/form-data'
+    //'Content-Disposition': 'attachment; filename=upload.jpg'
   },
   method: 'PATCH',                                                              
-  body: JSON.stringify( { obj } )
+  body: obj
     }).then(response =>{
   return response.json();  
 }).catch(error => {

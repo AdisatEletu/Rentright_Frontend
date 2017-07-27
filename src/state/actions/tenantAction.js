@@ -149,14 +149,13 @@ export function uploadFile ( file, api_url, uuid) {
   return function (dispatch){
   let data = new FormData();
   console.log(file)
-  data.append( 'profile_picture', file );
-  data.append('uuid', uuid)
-
+  data.append( 'file', file );
+  data.append('uuid', uuid);
   dispatch(showLoading());
   return  api.postimage(api_url, data)
       .then(response =>{ 
         console.log(response);
-          console.log('stand out .....................................................................................................................................')
+          console.log('Succes .....................................................................................................................................')
         dispatch(uploadSuccess(response))
          dispatch(hideLoading());         
       
@@ -164,7 +163,7 @@ export function uploadFile ( file, api_url, uuid) {
       
       .catch( error => {
         console.log(error);
-          console.log('stand out .....................................................................................................................................')
+          console.log('Erro .....................................................................................................................................')
         dispatch(uploadFail(error))
         dispatch(hideLoading());
     })
@@ -175,15 +174,19 @@ export function readThis (inputValue, api_url, uuid ) {
   let th = this;
   let img;
   var file = inputValue.target.files[0];
+  var name = inputValue.target.files[0].name;
+  api_url = api_url +  '/' + name;
+  console.log(file.name);
   //dispatch(uploadFile(file, api_url,uuid ))    
  var reader = new FileReader();
   reader.onload = ()=>{
-    dispatch(imageready(reader.result, message))
+    dispatch(imageready(file, message))
     var message = "File Loaded successfully"
-    dispatch(uploadFile(file, api_url ))
+    dispatch(uploadFile(reader.result, api_url, uuid ))
     dispatch(imageready(reader.result, message))
   }
   reader.readAsDataURL(file) 
+  
   }
 }
 //}

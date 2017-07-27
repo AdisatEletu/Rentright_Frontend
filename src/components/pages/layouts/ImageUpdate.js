@@ -27,7 +27,7 @@ import $ from 'jquery'
      }
 
      handleFiles = (event) =>{
-       this.props.readThis (event, 'users/profilepicture/' + this.uuid, this.uuid );       
+       this.props.readThis (event, 'users/profilepicture/'+this.uuid, this.uuid );       
      }
 
        componentWillMount(){
