@@ -145,12 +145,13 @@ export function getProfileStruct(path) {
     });
   };
 }
-export function uploadFile ( file, api_url, uuid) {  
+export function uploadFile ( file, api_url, uuid, name) {  
   return function (dispatch){
   let data = new FormData();
   console.log(file)
   data.append( 'file', file );
   data.append('uuid', uuid);
+  data.append('filename', name)
   dispatch(showLoading());
   return  api.postimage(api_url, data)
       .then(response =>{ 
@@ -175,17 +176,17 @@ export function readThis (inputValue, api_url, uuid ) {
   let img;
   var file = inputValue.target.files[0];
   var name = inputValue.target.files[0].name;
-  api_url = api_url +  '/' + name;
+  api_url = api_url;
   console.log(file.name);
   //dispatch(uploadFile(file, api_url,uuid ))    
  var reader = new FileReader();
   reader.onload = ()=>{
     dispatch(imageready(file, message))
     var message = "File Loaded successfully"
-    dispatch(uploadFile(reader.result, api_url, uuid ))
+    dispatch(uploadFile(reader.result, api_url, uuid, name ))
     dispatch(imageready(reader.result, message))
   }
-  reader.readAsDataURL(file) 
+  reader.readAsArrayBuffer(file) 
   
   }
 }
