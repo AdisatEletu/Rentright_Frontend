@@ -110,7 +110,6 @@ loadprofile = ()=>{
 }
 
 function matchStateToProps(state){
-    console.log( state.tenantProfile)
     return   {
         auth:state.user.auth,
        // myProfile : state.tenantProfile,

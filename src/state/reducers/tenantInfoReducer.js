@@ -2,7 +2,6 @@ import * as types from '../ActionTypes';
 import initialState from  './authReducer';
 
 export default function tenantInfoReducer(state = {}, action) {  
-      console.log(action)
     switch (action.type) {   
 
    case   types.SET_TENANT_GENERAL:  

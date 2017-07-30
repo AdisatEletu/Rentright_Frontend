@@ -10,7 +10,7 @@ import ProfileContent from '../tenantlayouts/profile_content';
 import CompletenessBar  from '../tenantlayouts/completeness_bar';
 import {bindActionCreators} from 'redux';  
 import {findDOMNode} from 'react-dom'
-import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant, showLoading, hideLoading, errorLoading,  getProfileStruct,uploadFile, readThis } from '../../../state/actions/tenantAction';
+import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant, showLoading, hideLoading, errorLoading, imageready,  getProfileStruct,uploadFile, readThis } from '../../../state/actions/tenantAction';
 import $ from 'jquery'
 
  class ImageUpdate extends Component{
@@ -31,9 +31,10 @@ import $ from 'jquery'
      }
 
        componentWillMount(){
-        console.log(this.props.profile);
+        console.log(this.props.myProfile);
         this.uuid = this.props.auth.user.uuid;  
         this.props.loadTenant('/'+this.uuid);  
+        this.props.imageready(null)
         this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true);    
        }
     componentWillReceiveProps(nexprops){
@@ -64,40 +65,43 @@ import $ from 'jquery'
         return(
         <div className = "t-flex t-flex-column t-align-content-space-between t-jestify-center t-sm-padding t-full-height t-md-10 il-contain">
            <input type="file" className = "hide"  ref = "buttonj" onChange={this.handleFiles}/>
-          <div className = "t-md-10 t-flex t-justify-center t-flex-column">
-          <div className = "il-m-heading t-col-10 t-center-f ">Upload your profile images here please</div>
-          <div className = "il-m-sub t-col-10 t-center-f ">Please select a clear picture of your self as this may help determine the acceptibility and judge of character. </div>
+          <div className = "t-md-10 t-flex t-justify-left t-flex-column m-padbox">
+          <div className = "il-m-heading t-col-10  t-capitalize mid ">Upload your profile images here please</div>
+          <div className = "il-m-sub t-col-10  ">Please select a clear picture of your self as this may help determine the acceptibility and judge of character. </div>
           
           </div>{/*first texthold*/}
           <div className = "t-flex t-flex-row t-justify-space-between t-md-10">
-          <div className = "p-widget t-md-6 t-flex t-flex-column il-image-cont">
-           <div className = "il-top t-md-10 t-flex t-align-center t-justify-center" style = { this.props.fileToServer ? {backgroundImage : this.props.fileToServer.content } : null } ><div className = "il-image " >
-             <div className = {"il-cover t-flex t-align-center t-align-contet-center t-flex-column t-justify-center " + this.props.loader.loading ? "active" : null  } >
+          <div className = "p-widget t-md-6 t-flex t-flex-column il-image-cont">            
+           <div className = "il-top t-md-10 t-flex t-align-center t-justify-center">
+             <div className = "il-image "  style =   { !this.props.myProfile.tenants.tenant_bio.profile_picture ? {backgroundImage:'url('+this.props.fileToServer.content+')'} : {backgroundImage:'url('+this.props.myProfile.tenants.tenant_bio.profile_picture+')'}  }     >
+             <div className =  "il-cover t-flex t-align-center t-align-contet-center t-flex-column t-justify-center t-fullheight "  >
                {  
-                 this.props.loader.loading
+                 this.props.loader.Loading
                   ? 
                <div className = "t-fullheight t-md-10 t-flex t-flex-column">
                 <i className = "fa fa-spinner fa-spin fa-3x fa-fw il-icons"></i>
-                 <a className = "tr-button push-down il-tr">Loading please wait</a> 
+                                  <div className = "m-bottom-control  push-down t-flex t-align-right t-md-10"><a className = "tr-highlight il-tr"><i className = "fa fa-submit"></i>&nbsb; Loading please wait</a> </div>
                  </div> 
                  :              
               <div className = "t-fullheight t-md-10 t-flex t-flex-column">
-              <i className = "material-icons il-icons">account_circle</i>                        
-               <a className = "tr-button push-down il-tr"  onClick = {this.runjquery}> Upload Image</a>         
+              {! this.props.fileToServer ?
+              <i className = "material-icons il-icons">account_circle</i>    
+              :
+              null
+                 }                    
+               <div className = "m-bottom-control  push-down t-flex t-align-right t-md-10"><a className = "tr-highlight il-tr"  onClick = {this.runjquery}><i className = "fa fa-submit"></i>&nbsb; Upload Image</a> </div>        
                </div>               
 
-               } 
-
-
-                    
+               }                     
 
            </div></div></div>
-            <div className = "il-bottm t-md-10 t-flex t-flex-column t-align-left t-justify-center">
-              <div className = "il-m-heading-2 il-green">Please select ypur prefered image </div>
-              <div className = "t-h3">You have currently Not selected any image, Your prodfile is incomplete </div>
+           <div className = "t-flex t-justify-center t-column t-md-10">
+            <div className = "il-bottm t-md-7 t-flex t-flex-column t-align-left t-justify-center">
+              <div className = "il-m-heading-2 il-green">Please select your prefered ID Picture </div>
+              <div className = "t-h3 Montserrat">You have currently not selected any image, Your prodfile is incomplete </div>
               <div className = "h2">{this.props.fileToServer ? this.props.fileToServer.error ? "Sorry could not load encountered error on the server" : "Data Loaded Successfully" : "" }</div>
-              
-              
+                          
+              </div>
               </div>
 
           </div>
@@ -139,7 +143,8 @@ function mapDispatchToProps(dispatch) {
     loadTenant: loadSpecificTenant,
     loadStructure: getProfileStruct,
     uploadFile :uploadFile,
-    readThis :readThis 
+    readThis :readThis ,
+    imageready:imageready
 
     
   }, dispatch);

@@ -113,7 +113,6 @@ export function loadSpecificTenant(path) {
     
     }).catch(error => {
         dispatch(errorLoading());     
-      console.log(error);
       throw(error);
     });
  };
@@ -158,7 +157,8 @@ export function uploadFile ( file, api_url, uuid, name) {
         console.log(response);
           console.log('Succes .....................................................................................................................................')
         dispatch(uploadSuccess(response))
-         dispatch(hideLoading());         
+         dispatch(hideLoading());   
+         dispatch(loadSpecificTenant('/'+uuid) );     
       
     })
       
@@ -181,12 +181,12 @@ export function readThis (inputValue, api_url, uuid ) {
   //dispatch(uploadFile(file, api_url,uuid ))    
  var reader = new FileReader();
   reader.onload = ()=>{
-    dispatch(imageready(file, message))
     var message = "File Loaded successfully"
-    dispatch(uploadFile(reader.result, api_url, uuid, name ))
     dispatch(imageready(reader.result, message))
+    dispatch(uploadFile(file, api_url, uuid, name ))
+    
   }
-  reader.readAsArrayBuffer(file) 
+  reader.readAsDataURL(file);
   
   }
 }
@@ -229,17 +229,18 @@ export function abstractdispatchfunctions(){
 
 
 }
-export function imageready(item,message){
+export function imageready(item,message = ""){
   if (item){
     return{
       type: types.IMAGE_READY_SUCCESS,
       content:item,
-      message
+      message:message
     }
   }else{
+    console.log(item + '   this is the returned item to show fuction runs')
     return{
       type : types.IMAGE_READY_FAIL,
-      message
+      message:message
 
     }
   }
