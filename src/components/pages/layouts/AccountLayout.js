@@ -7,7 +7,7 @@ export default class AccountLayout extends Component {
 
     render() {
         return (
-            <div>
+            <div className="landlord">
                 <AccountHeader/>
                 <main className="d-main">
                     <TopBar/>

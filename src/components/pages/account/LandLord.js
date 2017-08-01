@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Switch,Route} from 'react-router-dom';
-import Profile from './account/landlord/Profile';
-import Properties from './account/landlord/Properties';
-import PropertyEditor from './account/landlord/properties/PropertyEditor';
-import AccountLayout from "./layouts/AccountLayout";
+import Profile from './landlord/Profile';
+import Properties from './landlord/Properties';
+import PropertyEditor from './landlord/properties/PropertyEditor';
+import AccountLayout from "../layouts/AccountLayout";
 
 class LandLord extends Component{
     render (){

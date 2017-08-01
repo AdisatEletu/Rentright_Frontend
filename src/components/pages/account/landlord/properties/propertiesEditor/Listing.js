@@ -331,7 +331,7 @@ class Listing extends Component {
 
                     </div>
             </div>
-            <div className="row" style={{marginTop: '50px'}}>
+            <div id="msform" className="row" style={{marginTop: '50px'}}>
                 <div  id="listingForm" className="col s12 m8">
                     <div className="row">
                         <div className="col m12">

@@ -1,10 +1,24 @@
 import React, {Component} from 'react';
 import {Card, Button, Avatar, Steps, Collapse} from 'antd'
 import {Modal} from 'react-materialize'
+import ApplicationForm from "./ApplicationForm";
+import * as swal from 'sweetalert';
 
 class ShowCard extends Component {
-    handleViewFormClick = (e) => {
-        alert('click');
+    handleStartClick = () => {
+        swal({
+                title: "Start lease",
+                text: "Are you sure you want to start a lease with this prospect?",
+                type: "warning",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true,
+            },
+            function(){
+                setTimeout(function(){
+                    swal("Lease Started!", "You have successfully started a lease with Odaibo Amadosi!", "success");
+                }, 2000);
+            });
     }
 
     render() {
@@ -18,11 +32,11 @@ class ShowCard extends Component {
         const collapseHeader = <span className="alternate-color-text"><b className="tertiary-color-text">Status:</b> Form completed 3 days ago</span>;
 
         const applicationForm = <Modal
-                header='Modal Header'
+                header=''
                 trigger={
-                    <a href="/application/form" onClick={this.handleViewFormClick}>View application from</a>
+                    <a href="/application/form">View application from</a>
                 }>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore est laborum</p>
+                <ApplicationForm/>
             </Modal>
 
         return (
@@ -63,7 +77,7 @@ class ShowCard extends Component {
                     <div className="application-footer">
                         <div className="row" style={{marginBottom: '8px'}}>
                             <div className="col s12">
-                                <button className="btn block green darken-2">Start new lease</button>
+                                <button onClick={this.handleStartClick.bind(this)} className="btn block green darken-2">Start new lease</button>
                             </div>
                         </div>
                     </div>
