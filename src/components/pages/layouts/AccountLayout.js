@@ -11,6 +11,7 @@ export default class AccountLayout extends Component {
         <div className="application">
             <Helmet>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet"/>
+                <link href="http://localhost:3000/assets/css/effects.css" rel="stylesheet" type="text/css"/>
             </Helmet>
             <div className="landlord">
                 <AccountHeader/>
