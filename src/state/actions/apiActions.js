@@ -78,6 +78,17 @@ console.log(error)
   return error;
 })
   }
+ gettenantform = ()=>{
+    var api_h = 'https://rentright.herokuapp.com/api/rentright/tenant/profile/form/';
+    return fetch(api_h,{
+      method:'get',
+    }).then(response =>{
+      return response.json();
+    }).catch(error =>{
+      return error
+    })
+    
+  }
   posturl = (api_path, obj) =>{
    api_path = api_path + '/';
     return fetch(this.url + api_path, {

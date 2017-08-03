@@ -3,8 +3,6 @@ import initialState from  './authReducer';
 var initial = {content:'https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600088/29213190-businessman-silhouette-avatar-profile-picture.jpg?ver=6', message:'Not initialized'};
 
 export default function ImageUploadReducer(state = initial, action) {  
-    console.log(action)
-    console.log('imageupload')
     switch (action.type) {
     case types.IMAGE_READY_SUCCESS:    
       return Object.assign({}, state, {

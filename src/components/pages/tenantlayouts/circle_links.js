@@ -3,7 +3,8 @@ import {Switch,Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
-
+import Steps  from  'antd/lib/steps';
+import Icon  from  'antd/lib/icon';
 //required props  
 //linkTo:string
 //scale:boolean
@@ -20,7 +21,7 @@ import {NavLink} from 'react-router-dom';
 return (
         <NavLink className = {"m-balls-hold " + (this.props.scale ? 'm-small-scale' : "" ) }  to = {this.props.linkTo} >
         <div className = {"m-balls m-ellipses " +(this.props.scale ? 'm-balls-active' : "" )}  >{this.props.label}</div>
-        <div className = "m-balls-text m-ellipses">{this.props.childLabel}</div>
+        <div className = "m-balls-text  m-ellipses"><span>{this.props.childLabel}</span></div>
         </NavLink>         
          
         );//return

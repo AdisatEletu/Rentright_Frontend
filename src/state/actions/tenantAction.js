@@ -144,6 +144,22 @@ export function getProfileStruct(path) {
     });
   };
 }
+
+export function getFormStruct() {  
+  return function(dispatch) {
+    dispatch(showLoading());
+    return api.gettenantform().then(data => {
+        dispatch(hideLoading());
+      dispatch(FormLoadSuccess(data));
+    }).catch(error => {
+        dispatch(errorLoading());
+      console.log(error);
+      throw(error);
+    });
+  };
+}
+
+
 export function uploadFile ( file, api_url, uuid, name) {  
   return function (dispatch){
   let data = new FormData();
@@ -224,6 +240,9 @@ export function deleteSpecificTenantSuccess(tenants) {
 export  function StructureLoadSuccess(structure){
     return {type: types.STRUCTURE_LOAD_SUCCESS , structure:structure.results.values};
 }
+export  function FormLoadSuccess(data){
+    return {type: types.FORM_LOAD_SUCCESS , data:data.results.values};
+}
 
 export function abstractdispatchfunctions(){
 
@@ -258,4 +277,98 @@ export function uploadFail(error) {
     type: types.UPLOAD_DOCUMENT_FAIL,
     error,
   };
+}
+export function formBreakDown(data) {
+  return {
+    type: types.FORM_BREAKDOWN_SUCCESS,
+    data:data,
+  };
+}
+
+export function breakFormToComponents(formdatal){
+  return function(dispatch){
+      dispatch(showLoading());
+   let groupforms; 
+    let controlled; 
+    let controllervalues;  
+    let dateforms;
+    let selectforms;  
+   let textareaforms;
+  let phoneforms;
+  let textforms; let intforms;
+  let switchforms;
+  let allform = {};
+  let formdata = formdatal[0]
+  let formkeys = Object.keys(formdata); 
+
+            selectforms = formkeys.filter((i)=>{
+               let instance = formdata[i];
+               if (instance.datatype == "select"){
+                  return i
+               }
+             })
+             groupforms = formkeys.filter((i)=>{
+               let instance = formdata[i] 
+               let check =  instance.groupinfo;  
+               if (check.groupdata){
+                 return i 
+               };
+             })
+            controlled = formkeys.filter((i)=>{
+               let instance =  formdata[i];
+               let stat  = instance.dependent_stat        
+               if (stat.is_dependant){   
+                 if (! controllervalues){
+                 controllervalues = [];
+                 }              
+              controllervalues.push({key:instance.key, keyname:instance.keyname, provider_name:stat.provider_name})
+                 return i
+               }
+             })
+           dateforms = formkeys.filter((i)=>{
+               let instance = formdata[i];
+               if (instance.datatype == "date"){
+                  return i
+               }
+             })
+              textareaforms = formkeys.filter((i)=>{
+               let instance = formdata[i];
+               if (instance.datatype == "textarea"){
+                  return i
+               }
+             })
+           textforms = formkeys.filter((i)=>{
+               let instance = formdata[i];
+               if (instance.datatype == "text"){
+                  return i
+               }
+             })
+           intforms = formkeys.filter((i)=>{
+               let instance = formdata[i];
+               if (instance.datatype == "number"){
+                  return i
+               }
+             })
+         phoneforms = formkeys.filter((i)=>{
+               let instance = formdata[i];
+               if (instance.datatype == "phone"){
+                  return i
+               }
+             })
+         switchforms = formkeys.filter((i)=>{
+               let instance = formdata[i];
+               if (instance.datatype == "switch"){
+                  return i
+               }
+             })
+       allform = { radiogroup:groupforms, controlled:controlled,  controllervalue: controllervalues, 
+                           date: dateforms, select:selectforms, textarea:textareaforms, 
+                            phone:phoneforms,  text:textforms,  int:intforms,  switch:switchforms
+                          };
+            console.log(allform);
+        dispatch(formBreakDown(allform));
+          dispatch(hideLoading());
+  }
+
+
 }
