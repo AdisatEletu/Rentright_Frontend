@@ -157,7 +157,7 @@ import Spin from  'antd/lib/spin';
                 <div className = "double-container"> 
                   {this.props.formBreakDownData.textarea.map((item,index) =>{
                   return(  
-                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"textarea"}  label =  {this.props.form.general_info[0]} ownstate = {this.state} options = {this.props.form.general_info[0][item].options}  keyname = {this.props.form.general_info[0][item].keyname}  data = {this.props.formBreakDownData.text}    />
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"textarea"}  label =  {this.props.form.general_info[0]} ownstate = {this.state} options = {this.props.form.general_info[0][item].options}  keyname = {this.props.form.general_info[0][item].keyname}  data = {this.props.formBreakDownData.textarea}    />
                   )
                  
                   }) 

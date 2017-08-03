@@ -16,7 +16,7 @@ import Switch from 'antd/lib/switch';
 //import Select from 'antd/lib/select'
 const InputGroup = Input.Group;
 //const Option = Select.Option;
-
+const { TextArea } = Input;
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
 const { Option, OptGroup } = Select;
@@ -26,7 +26,7 @@ class NewForm extends Component{
         this.state = Object.assign({},this.props.ownstate)    
         this.sendobj = {}
         this.radiogroup = false;
-        this.text = false; this.switch = false; this.select = false;
+        this.text = false; this.switch = false; this.select = false; this.textarea;
         console.log(this.props.label)
        this.handleInputChange = this.handleInputChange.bind(this);
        this.handleSwitchChange = this.handleSwitchChange.bind(this);   
@@ -42,6 +42,9 @@ class NewForm extends Component{
     }
     else if (this.props.datatype == "select"){ 
         this.select = true; 
+    }
+    else if (this.props.datatype == "textarea"){ 
+        this.textarea = true; 
     }
     this.sendobj = {};
     console.log(this.props.data)
@@ -120,7 +123,7 @@ class NewForm extends Component{
          
        
             :
-            this.text ?
+            this.text || this.textarea ?
         
         <div className = "new-form-item2 t-flex-left">   
             <div className = "new-form-label m-ellispis">
@@ -128,7 +131,11 @@ class NewForm extends Component{
              </div> 
              <div className = "new-form-form t-md-45"> 
             <Col span={24}>
+            {this.text ?
             <Input  prefix={<Icon type="tag" />} defaultValue={this.state[this.props.name] } placeholder = {this.props.keyname}    onChange = {this.handleInputChange} />  
+            :
+            <TextArea  rows={10}  prefix={<Icon type="tag" />} defaultValue={this.state[this.props.name] }  placeholder = {this.props.keyname}    onChange = {this.handleInputChange} /> 
+            } 
            </Col>
             </div>   
         </div> 
@@ -150,6 +157,7 @@ class NewForm extends Component{
                 {this.props.keyname}
              </div> 
              <div className = "new-form-form t-md-45"> 
+           { this.props.options ?
              <Select defaultChecked = {this.state[this.props.name]}  onChange = { (e,label)=> this.handleSwitchChange(e,this.props.field) } placeholder =  {this.props.keyname} >
                  <OptGroup label = "Select one">
                     {this.props.options.map((item, index)=>{
@@ -162,7 +170,9 @@ class NewForm extends Component{
 
 
                  </Select>
-
+                 :
+                 null
+           }
             </div>   
         </div> 
              :
