@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import {addFlashMessage} from './flashMessageActions';
+import axios from 'axios';
 export default class apiActions {  
 
   constructor(url = ""){    
@@ -63,17 +64,30 @@ console.log(error)
   }
  postimage = (api_path, obj) =>{
    api_path =  'https://rentright.herokuapp.com/api/rentright/' + api_path + '/';
-    return fetch(api_path, {
-   headers: {
-    'Content-Type': 'multipart/form-data'
-  },
-  method: 'PATCH',                                                              
-  body: JSON.stringify( { obj } )
+   console.log(api_path)
+    return axios({
+     url:api_path,
+     headers: {    
+     'content-type': 'multipart/form-data'  
+     },
+   method: 'PATCH',                                                              
+   data: obj
     }).then(response =>{
   return response.json();  
 }).catch(error => {
   return error;
 })
+  }
+ gettenantform = ()=>{
+    var api_h = 'https://rentright.herokuapp.com/api/rentright/tenant/profile/form/';
+    return fetch(api_h,{
+      method:'get',
+    }).then(response =>{
+      return response.json();
+    }).catch(error =>{
+      return error
+    })
+    
   }
   posturl = (api_path, obj) =>{
    api_path = api_path + '/';

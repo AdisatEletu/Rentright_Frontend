@@ -7,7 +7,7 @@ import TenantCard from '../tenantCard';
 import CircleLinks from '../tenantlayouts/circle_links';
 import CompletenessBar  from '../tenantlayouts/completeness_bar';
 import {bindActionCreators} from 'redux';  
-import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant, showLoading, hideLoading, errorLoading } from '../../../state/actions/tenantAction';
+import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant, showLoading, hideLoading, errorLoading,getFormStruct } from '../../../state/actions/tenantAction';
 
 
  class TenantProfile extends Component{
@@ -15,7 +15,8 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
         super(props) 
         this.state = {};
 
-        this.props.loadTenant('/'+this.props.match.params.id);          
+        this.props.loadTenant('/'+this.props.match.params.id); 
+        this.props.getFormStruct();         
            this.uuid = '/'+this.props.match.params.id;
 
     }
@@ -161,7 +162,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
             <div className = "t-gray-darken-3-f mid t-h2  "><span className = "">Please update your profile</span> </div> 
             <span className = "t-gray-darken-1-f thin t-h3 t-lh-h2  m-topp">You can quickly add missing profile information here</span>
             </div>
-               <CompletenessBar completeness = {this.props.myProfile.tenants.completed} label = "Profile completeness" />
+               <CompletenessBar completeness = {this.props.myProfile.tenants.completed} withinform = {false} label = "Profile completeness" />
             <div className = "m-step">
                 <CircleLinks linkTo = {"/tenant" + this.uuid + "/profile"} scale = {true} childLabel = "Overview" label = "A" isActive = {true}/>
                  <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "1" isActive = {false}/>
@@ -216,7 +217,8 @@ function matchStateToProps(state){
         myProfile : state.tenantProfile,
         tenantStruct:state.tenantInfoStruct,
         tenantInfoList:state.tenantInfoLists,
-        user:state.user.auth.user                
+        user:state.user.auth.user,
+        form:state.getform.data               
         
  
     }      
@@ -224,7 +226,8 @@ function matchStateToProps(state){
 }
 function mapDispatchToProps(dispatch) {  
   return bindActionCreators({
-    loadTenant: loadSpecificTenant
+    loadTenant: loadSpecificTenant,
+    getFormStruct: getFormStruct
   }, dispatch);
 }
 

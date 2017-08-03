@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Switch,Route} from 'react-router-dom';
-import Profile from './account/landlord/Profile';
+import React, {Component} from "react";
+import {Switch,Route} from "react-router-dom";
+import Profile from "./account/landlord/Profile";
 import T_left from "./layouts/T-left";
 
 import TenantProfile from "./layouts/TenantProfile";
@@ -10,14 +10,14 @@ import ResidentialForm from "./layouts/ResidentialForm";
 import EmploymentForm from "./layouts/EmploymentForm";
 import PublicProfile from "./layouts/PublicProfile";
 import ImageUpdate from "./layouts/ImageUpdate";
-import {NavLink} from 'react-router-dom';
+import {NavLink} from "react-router-dom";
 import BioForm from "./layouts/BioForm";
-import TenantNav from './tenantlayouts/tenant_nav';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';  
-import PropTypes from 'prop-types';
+import TenantNav from "./tenantlayouts/tenant_nav";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";  
+import PropTypes from "prop-types";
 import {getProperty} from "../../state/actions/userActions";
-import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant } from '../../state/actions/tenantAction'
+import { loadAllTenants, loadSpecificTenant,imageready, patchSpecificTenant, deleteSpecificTenant, showLoading, hideLoading, errorLoading } from '../../state/actions/tenantAction';
 
 
 class Tenant extends Component{
@@ -25,14 +25,19 @@ class Tenant extends Component{
     constructor(props) {                  
         super(props)  
         console.log(this.props) 
-       //this.uuid = '/'+this.props.match.params.id 
+       //this.uuid = "/"+this.props.match.params.id 
         this.first_name = this.props.auth.user.first_name;
         this.last_name =  this.props.auth.user.last_name;   
         this.uuid = this.props.auth.user.uuid;  
+        this.props.loadTenant("/"+this.uuid);
+ 
     }
-    componentDidMount(){        
+    componentDidMount(){    
+ 
     try{
        //this.uuid = this.props.match.params.id;
+        
+      
         this.context.router.history.push("/tenant/profile/" + this.uuid);
   
      }catch(err){
@@ -42,14 +47,15 @@ class Tenant extends Component{
 
     }
 loadprofile = ()=>{
-    this.props.loadTenant('/'+this.props.match.params.id);
+    this.props.loadTenant("/"+this.props.match.params.id);
    } 
-
+   
     render (){
+   if(this.props.myProfile.tenants){
     return(
 <div className = "t-body">
  <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-align-stretch t-justify-space-between">
-            <TenantNav first_name = {this.props.user.first_name} />  
+           {this.props.myProfile.tenants.tenant_bio ? <TenantNav first_name = {this.props.user.first_name}  myProfile = {this.props.myProfile}/>  : <TenantNav first_name = {this.props.user.first_name}/> }
           <div className = "t-left t-gray  t-flex  t-align-content-space-between t-right-bx t-right-bx t-flex-column">
       
           <div className = "t-justify-left t-flex">
@@ -59,7 +65,13 @@ loadprofile = ()=>{
 
          <div className = " t-justify-center t-flex">   
  
-         <NavLink className = "t-rounded m-prf t-white t-cover m-me" to = {"/tenant/profilepicture/" + this.uuid +"/"}  >  
+         <NavLink className = "t-rounded m-prf t-white t-cover m-me"    
+         style = { ! this.props.myProfile.tenants.tenant_bio ?
+          {backgroundImage:"url("+this.props.fileToServer.content+")"} :  this.props.myProfile.tenants.tenant_bio.profile_picture ?
+           {backgroundImage:"url("+this.props.myProfile.tenants.tenant_bio.profile_picture+")"} : 
+            {backgroundImage:"url("+this.props.fileToServer.content+")"} 
+           }
+            to = {"/tenant/profilepicture/" + this.uuid +"/"}   >  
              <div className = "m-cover t-flex t-align-center t-fullheight t-fullwidth t-justify-center"> <i className = "material-icons  md-12 right">linked_camera</i> </div>           
           </NavLink>
         
@@ -73,7 +85,7 @@ loadprofile = ()=>{
 
 <div className = "t-flex t-flex-column m-top-med">
          <NavLink className = "m-nav-li t-md-10" to = "/tenant/profile" activeClassName ="m-active-nav"><i className = "fa fa-user-circle lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Complete Profile</span> <div className = "t-bullet m-activate">30 %</div> </NavLink>
-        <NavLink className = "m-nav-li t-md-10" to = {"/tenant/publicprofile/" + this.first_name +'/' + this.last_name + '/' + this.uuid +'/'}  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Public Profile</span><div className = "t-bullet"></div> </NavLink>
+        <NavLink className = "m-nav-li t-md-10" to = {"/tenant/publicprofile/" + this.first_name +"/" + this.last_name + "/" + this.uuid +"/"}  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Public Profile</span><div className = "t-bullet"></div> </NavLink>
         <NavLink className = "m-nav-li t-md-10"  to = "/tenant/serviceproviders/:id" activeClassName = "m-active-nav"><i className = "fa fa-handshake-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Service Providers</span> <div className = "t-bullet"></div> </NavLink>
          <NavLink className = "m-nav-li t-md-10"  to = "/tenant/messages/:id"  activeClassName = "m-active-nav"><i className = "fa fa-envelope-open-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses ">Messages</span> <div className = "t-bullet"></div> </NavLink>
         <NavLink className = "m-nav-li t-md-10"  to = "/tenant/propertysearch/:id" activeClassName = "m-active-nav"><i className = "fa fa-building-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses"> Find Properties</span> <div className = "t-bullet m-activate">10 new</div> </NavLink>
@@ -103,20 +115,31 @@ loadprofile = ()=>{
 
 
     );
+  
+}
+else{
 
+     return (
+          
+     <div>  Loading..  </div>
+
+     )
+    
+     
+}
 
 
     }
 }
 
 function matchStateToProps(state){
-    console.log( state.tenantProfile)
     return   {
         auth:state.user.auth,
-       // myProfile : state.tenantProfile,
+        myProfile : state.tenantProfile,
         tenantStruct:state.tenantInfoStruct,
         tenantInfoList:state.tenantInfoLists,
-        user:state.user.auth.user          
+        user:state.user.auth.user,
+       fileToServer:state.fileToServer      
         
  
     }      
@@ -124,12 +147,13 @@ function matchStateToProps(state){
 }
 function mapDispatchToProps(dispatch) {  
   return bindActionCreators({
-    loadTenant: loadSpecificTenant
+    loadTenant: loadSpecificTenant,
+         imageready:imageready        
   }, dispatch);
 }
 
 Tenant.PropTypes = {
-    loadSpecificTenant: PropTypes.func.isRequired,
+    loadTenant: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     //tenantProfile: PropTypes.object.isRequired
 }
@@ -138,6 +162,6 @@ Tenant.contextTypes = {
         router: PropTypes.object.isRequired,
     }
 
-export default connect(matchStateToProps,{loadSpecificTenant})(Tenant)
+export default connect(matchStateToProps, mapDispatchToProps)(Tenant)
 
 //export default Tenant ;

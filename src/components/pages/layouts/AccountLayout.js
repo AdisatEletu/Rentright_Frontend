@@ -10,8 +10,6 @@ export default class AccountLayout extends Component {
         return (
         <div className="application">
             <Helmet>
-                <meta charSet="utf-8" />
-                <title>My Title</title>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet"/>
             </Helmet>
             <div className="landlord">

@@ -24,8 +24,6 @@ class FormElements extends Component{
         this.sendobj = {}
         this.handleInputChange = this.handleInputChange.bind(this);   
         this.handleRadioChange = this.handleRadioChange.bind(this);  
-     console.log("passsed in size");
-    console.log(this.props.size)
             }
  handleInputChange = (event)=> {
    this.sendobj = {};
@@ -64,7 +62,7 @@ class FormElements extends Component{
           this.props.type == "textbox" || this.props.type =="date" ||this.props.type == "textarea" ?
               <div className =  {"m-self-form "+ this.props.size  } >  
      
-                     <label for={"st_" +this.props.name} className = "active" >{this.props.label}</label>         
+                     <label htmlFor = {"st_" +this.props.name} className = "active" >{this.props.label}</label>         
                     <div>
                      <i className="material-icons small">{this.props.icons}</i>   
                      {    this.props.type == "textbox" ?               
@@ -83,7 +81,7 @@ class FormElements extends Component{
           <div className="m-form-hold-check t-flex-column"> 
        <div className = "m-form-check">
       <div className = "t-md-4 t-flex t-align-top">
-       <span className = "m-heading text-wrap" htmlFor={this.props.name + "_yes"} >{this.props.label}</span>
+       <span className = "m-heading text-wrap" htmlFor =  {this.props.name + "_yes"} >{this.props.label}</span>
     </div>
     <div className = "t-md-1  t-flex t-flex-column  t-align-content-space-between">
         <span className ="t-h3" >Yes</span>      

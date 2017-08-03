@@ -47,7 +47,7 @@ html, body{font-size:12px!important;}
 .t-h3{font-size:1.2rem; line-height:1.8rem; } .t-lh-h2{line-height:2.2rem!important;}
 .t-h4{font-size:1rem; line-height:1.4rem; }
 .t-h5{font-size:0.6rem; line-height:1rem; }
-.t-capitalize{text-transform:capitalize;}
+.t-capitalize{text-transform:capitalize!important;}
 
 /*horrizontal-flow*/
 .t-justify-left{justify-content:flex-start;}/*for horrizontal alignment all items are pushed to the left */
@@ -149,4 +149,5 @@ html, body{font-size:12px!important;}
 :-ms-input-placeholder {  
    color: #d2d2d2;  text-align:left; font-size:15px!important;
 }
+.Montserrat{font-family:Montserrat;}
 

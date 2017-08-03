@@ -9,6 +9,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {login} from '../../../state/actions/authAction';
 import {addFlashMessage} from '../../../state/actions/flashMessageActions';
+import {Helmet} from 'react-helmet';
+
 
 function SignIn () {
     return(
@@ -50,6 +52,9 @@ class NewLogin extends Component{
         return(
 
             <div className=" t-fullheight t-fullwidth">
+                <Helmet>
+                    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet"/>
+                </Helmet>
                 <PrimaryNav/>
                 <div className="t-fullheight  t-flex t-flex-row t-justify-space-between font-size-zero">
                     <div className="  t-flex  t-seventyfive l-pad t-flex-column t-align-content-center t-md-4 t-margin-right padding">
