@@ -77,7 +77,7 @@ class ShowCard extends Component {
                     <div className="application-footer">
                         <div className="row" style={{marginBottom: '8px'}}>
                             <div className="col s12">
-                                <button onClick={this.handleStartClick.bind(this)} className="btn block green darken-2">Start new lease</button>
+                                <button onClick={this.handleStartClick.bind(this)} className="btn block green darken-2">Accept application</button>
                             </div>
                         </div>
                     </div>

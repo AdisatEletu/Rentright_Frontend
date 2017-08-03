@@ -198,17 +198,17 @@ export function updateSingleUnit(uuid,params,callback){
     return dispatch => {
         return axios.patch(getUnitUrl(uuid),params).then(
             (res) => {
-                console.log(res)
-
                 if(params.section !== 'contact'){
                     dispatch(receiveSingleUnit(res.data.data.unit))
                 }else{
                     dispatch(setCurrentUser(res.data.data.user));
                 }
+                callback(true);
             }
         ).catch(
             (err) => {
-                console.log(err)
+                console.log(err);
+                callback(false);
             }
         );
     }
