@@ -2,12 +2,17 @@ import React, {Component} from 'react';
 import TopBar from "../account/landlord/TopBar";
 import {NavLink} from 'react-router-dom';
 import PropertyMenu from './account/PropertyMenu';
+import {Helmet} from "react-helmet";
 
 export default class AccountLayout extends Component {
 
     render() {
         return (
-            <div>
+        <div className="application">
+            <Helmet>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet"/>
+            </Helmet>
+            <div className="landlord">
                 <AccountHeader/>
                 <main className="d-main">
                     <TopBar/>
@@ -27,6 +32,8 @@ export default class AccountLayout extends Component {
                 </main>
                 {/*<AccountFooter/>*/}
             </div>
+        </div>
+
         );
     }
 }

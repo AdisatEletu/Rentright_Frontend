@@ -1,7 +1,11 @@
 .l-body{
     margin: 0;
     background-color: #eeeeee;
-    font-size: 20px;
+    font-size: 18px !important;
+}
+
+.landlord a{
+    text-decoration: none !important;
 }
 
 
@@ -19,13 +23,32 @@
 }
 
 .tertiary-color-text{
-    color: #1396e2;
+    color: #1396e2 !important;
 }
 
 .big-text{
     font-size: 20px;
 }
 
+d-npd{
+    padding: 0 !important;
+}
+
+.d-npd-left{
+    padding-left: 0 !important;
+}
+
+.d-npd-right{
+    padding-right: 0 !important;
+}
+
+.d-npd-top{
+    padding-top: 0 !important;
+}
+
+.d-npd-bottom{
+    padding-bottom: 0 !important;
+}
 .card-panel-header{
     color: #85929e !important;
     font-weight: bold !important;
@@ -205,58 +228,8 @@ a.button-collapse.top-nav.full {
     height: 28px;
 }
 
-.caret{
-    display:inline-block;
-    width:0;
-    height:0;
-    margin-left:2px;
-    vertical-align:middle;
-    border-top:4px solid;
-    border-right:4px solid transparent;
-    border-left:4px solid transparent
-}
-
-/*custom font*/
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
-
-/*form styles*/
-#msform {
-    font-family: montserrat, arial, verdana;
-    width: 700px;
-    margin: 50px auto;
-    position: relative;
-}
-#msform fieldset {
-    position: absolute;
-    background: white;
-    border: 0 none;
-    border-radius: 3px;
-    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.4);
-    padding: 20px 30px;
-
-    box-sizing: border-box;
-    width: 80%;
-    margin: 0 10%;
-
-    /*stacking fieldsets above each other*/
-    /*position: absolute;*/
-}
-/*Hide all except first fieldset*/
-#msform fieldset:not(:first-of-type) {
-    display: none;
-}
-/*inputs*/
-#msform input[type="text"], #msform textarea , #msform select{
-    padding: 15px;
-    margin-bottom: 10px;
-    width: 100%;
-    font-family: montserrat;
-    color: #2C3E50;
-    font-size: 13px;
-}
-/*buttons*/
 #msform .action-button {
-    width:40%;
+    width:100%;
     background: #27AE60;
     font-weight: bold;
     color: white;
@@ -266,7 +239,7 @@ a.button-collapse.top-nav.full {
     padding: 10px 5px;
     margin: 10px auto;
 }
-#msform .action-button:hover, #msform .action-button:focus {
+#msform .action-button:hover{
     box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
 /*headings*/
@@ -284,57 +257,6 @@ a.button-collapse.top-nav.full {
     text-align: center;
     margin-bottom: 20px;
 }
-/*progressbar*/
-#progressbar {
-    margin-bottom: 30px;
-    overflow: hidden;
-    /*CSS counters to number the steps*/
-    counter-reset: step;
-}
-#progressbar li {
-    list-style-type: none;
-    color: #000000;
-    text-transform: uppercase;
-    font-size: 9px;
-    width: 8.33%;
-    text-align: center;
-    float: left;
-    position: relative;
-}
-#progressbar li:before {
-    content: counter(step);
-    counter-increment: step;
-    width: 20px;
-    line-height: 20px;
-    display: block;
-    font-size: 10px;
-    color: #333;
-    background: white;
-    border-radius: 3px;
-    margin: 0 auto 5px auto;
-}
-/*progressbar connectors*/
-#progressbar li:after {
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: white;
-    position: absolute;
-    left: -50%;
-    top: 9px;
-    z-index: -1; /*put it behind the numbers*/
-}
-#progressbar li:first-child:after {
-    /*connector not needed before the first step*/
-    content: none;
-}
-/*marking active/completed steps green*/
-/*The number of the step and the connector before it = green*/
-#progressbar li.active:before,  #progressbar li.active:after{
-    background: #27AE60;
-    color: white;
-}
-
 
 .cbx {
     position: relative;
@@ -628,4 +550,126 @@ a.button-collapse.top-nav.full {
     border-radius: 5px;
     box-shadow:0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 4px 2px -1px rgba(0,0,0,0.2);
 }
+
+#rentNotification{
+    border: 10px solid #b0bec5 !important;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -1px rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+#rentNotification div.inner-div{
+    border-radius: 3px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#rentNotification div.inner-div img{
+    border-radius: 3px;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -1px rgba(0,0,0,0.2);
+}
+
+.line-button{
+    font-size: 18px;
+    background: transparent;
+    padding: 10px;
+    border: 1px solid #546e7a;
+    border-radius: 4px;
+}
+
+.line-button.hover:hover{
+    background-color: #eceff1;
+}
+
+.img-checkbox{
+    cursor: pointer;
+    opacity: 0.4;
+}
+
+.img-checkbox.checked{
+    opacity: 1;
+}
+
+
+.img-checkbox img.img-check{
+    opacity: 0.5;
+    height: 70px;
+    width: 70px;
+    margin: 0 auto;
+    display: block;
+    background-color: #CCCCCC;
+    border-radius: 50%;
+}
+
+.img-checkbox.checked img.img-check{
+    opacity: 1 !important;
+}
+
+.floating-badge {
+    position:relative;
+}
+.floating-badge[data-badge]:after {
+    content:"\f00c";
+    font-family: FontAwesome;
+    position:absolute;
+    top:0;
+    right: 0;
+    font-size:.7em;
+    background:green;
+    color:white;
+    width:18px;height:18px;
+    text-align:center;
+    line-height:18px;
+    border-radius:50%;
+    box-shadow:0 0 1px #333;
+}
+
+.alert{
+    padding:20px;
+    border-right: 5px solid #faa61a !important;
+    width: 100%;
+}
+
+.alert.alert-info{
+    border: 1px #0A3b61 solid ;
+}
+
+.d-underline{
+    border-bottom: 1px solid #546e7a;
+}
+
+.application-card-body{
+    padding-bottom: 10px;
+}
+
+.application-card-body .application-head,
+.application-card-body .application-footer{
+    padding-top: 10px;
+    padding-bottom: 2px;
+    background-color: #eeeeee;
+}
+
+.application-card-body .application-details{
+    /*background-color: #CCCCCC;*/
+}
+
+.block{
+    width: 100%;
+}
+
+.modal{
+    max-height: 100%;
+    width: 75%;
+    top: 0 !important;
+}
+
+.modal .modal-content{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.application-form .form-row{
+    border-bottom: 1px solid #CCCCCC;
+    padding: 20px 15%;
+}
+
 [data-reactroot], #root, html, body{height:100%; overflow-y:auto;}

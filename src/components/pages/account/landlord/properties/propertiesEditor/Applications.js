@@ -1,18 +1,37 @@
 import React, {Component} from 'react';
-import EditorBar from "./shared/EditorBar";
-
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import ShowCard from "./applications/ShowCard";
 
 class Applications extends Component {
 
     render() {
-        const {activeProperty} = this.props;
-        const addy = activeProperty.properties.address.house_number+" "+ activeProperty.properties.address.street_name;
+
         return (
-            <div>
-                <EditorBar active="application" uuid={this.props.match.params.id} address={addy}/>
-                <div className="grey-back col-lg-12"/>
+            <div style={{marginTop: '50px'}}>
+                <div className="row">
+                    <div className="col s12 d-underline" style={{paddingBottom: '10px'}}>
+                        <h5 className="alternate-color-text">Rental Applications</h5>
+                    </div>
+
+                </div>
+                <div className="row">
+                    <div className="col m4" style={{marginBottom: '20px'}}>
+                        <ShowCard title="dosi"/>
+                    </div>
+                    <div className="col m4" style={{marginBottom: '20px'}}>
+                        <ShowCard title="dosi"/>
+                    </div>
+                    <div className="col m4" style={{marginBottom: '20px'}}>
+                        <ShowCard title="dosi"/>
+                    </div>
+                    <div className="col m4" style={{marginBottom: '20px'}}>
+                        <ShowCard title="dosi"/>
+                    </div>
+                    <div className="col m4" style={{marginBottom: '20px'}}>
+                        <ShowCard title="dosi"/>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -22,7 +41,7 @@ class Applications extends Component {
 
 function mapStateToProps(state){
     return {
-        activeProperty: state.user.activeProperty,
+        activeUnit: state.user.activeProperty,
     }
 }
 

@@ -1,24 +1,29 @@
 import React, {Component} from 'react';
-import EditorBar from "./shared/EditorBar";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {Button} from 'antd';
 
 class Lease extends Component {
 
     render() {
-        const {activeProperty} = this.props;
-        const addy = activeProperty.properties.address.house_number+" "+ activeProperty.properties.address.street_name;
+
         return (
-            <div>
-                <EditorBar active="lease" uuid={this.props.match.params.id} address={addy}/>
-                <div className="grey-back col-lg-12"/>
+            <div style={{marginTop: '50px'}}>
+                <div className="row">
+                    <div className="col m4">
+                        <Button icon={"delete"} type="danger" ghost>Delete</Button>
+                        <Button icon={"edit"} type="primary" ghost>Edit</Button>
+                        <Button icon={"download"} type={"primary"} ghost>Download</Button>
+                    </div>
+                    <div className="col m6"></div>
+                </div>
             </div>
         );
     }
 
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         activeProperty: state.user.activeProperty,
     }

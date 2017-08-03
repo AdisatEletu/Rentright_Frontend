@@ -21,7 +21,7 @@ class RentalTerms extends Component {
                     <div className="col-md-6">
                         <div className="form-group">
                             <label htmlFor="security-deposit">Whats the security deposit?</label>
-                            <input type="text" className="form-control" id="security-deposit" name="security_deposit" value={this.props.terms.security_deposit} onChange={this.props.onChange} placeholder="0.00"/>
+                            <input type="text" className="form-control" id="security-deposit" name="security_deposits" value={this.props.terms.security_deposits} onChange={this.props.onChange} placeholder="0.00"/>
                         </div>{/* /.form-group */}
                     </div>
                 </div><br/>

@@ -2,8 +2,9 @@ import axios from 'axios';
 import {UPDATE_AUTH_USER,RECEIVE_ACTIVE_PROPERTY,REQUEST_ACTIVE_PROPERTY,
     REQUEST_PROPERTIES_PAGE,RECEIVE_PROPERTIES_PAGE,REQUEST_UNITS,
     RECEIVE_UNITS,REQUEST_ACTIVE_UNIT,RECEIVE_ACTIVE_UNIT} from '../ActionTypes';
-import {getUnitUrl} from '../../utils/ApiManager';
+import {getUnitUrl,unitImageUrl} from '../../utils/ApiManager';
 import {toastr} from 'react-redux-toastr';
+import {setCurrentUser} from './authAction';
 
 export function updateCurrentUser(user){
     return {
@@ -180,12 +181,11 @@ export function getUnits(params,callback){
     }
 }
 
-export function getUnit(params,callback){
+export function getUnit(params){
     return dispatch => {
         dispatch(requestSingleUnit());
         return axios.get(getUnitUrl(params.uuid)).then(
             (res) => {
-                console.log(res)
                 dispatch(receiveSingleUnit(res.data.data.unit))
             }
         ).catch(
@@ -198,14 +198,43 @@ export function updateSingleUnit(uuid,params,callback){
     return dispatch => {
         return axios.patch(getUnitUrl(uuid),params).then(
             (res) => {
-                console.log(res)
-                dispatch(receiveSingleUnit(res.data.data.unit))
+                if(params.section !== 'contact'){
+                    dispatch(receiveSingleUnit(res.data.data.unit))
+                }else{
+                    dispatch(setCurrentUser(res.data.data.user));
+                }
                 callback(true);
             }
         ).catch(
             (err) => {
+                console.log(err);
                 callback(false);
-                console.log(err)
+            }
+        );
+    }
+}
+
+export function deleteUnitImage(params){
+    return dispatch => {
+        return axios.delete(unitImageUrl(params.id)).then(
+            (res) => {
+                dispatch(updateSingleUnit(params.unit_id,params,null))
+            }
+        );
+
+    }
+}
+
+export function publishUnit(params,callback){
+    return dispatch => {
+        return axios.patch(getUnitUrl(params.uuid),params).then(
+            (res) => {
+                dispatch(receiveSingleUnit(res.data.data.unit))
+                callback();
+            }
+        ).catch(
+            (err) => {
+                return false;
             }
         );
     }

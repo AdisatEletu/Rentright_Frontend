@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {VelocityTransitionGroup} from 'velocity-react';
-import {getProperty,updateSingleUnit} from "../.././../../../../state/actions/userActions";
+import {getProperty,updateSingleUnit,publishUnit} from "../.././../../../../state/actions/userActions";
 import 'sweetalert/dist/sweetalert.css';
 import isEqual from 'lodash/isEqual';
 import {toastr} from 'react-redux-toastr';
@@ -40,13 +40,17 @@ class Listing extends Component {
                 terms: {
                     section: 'terms',
                     monthly_rent: props.unit.monthly_rent,
-                    security_deposit: props.unit.security_deposit,
+                    security_deposits: props.unit.security_deposits,
                     minimum_lease_term: props.unit.minimum_lease_term,},
-                amenities: {},
-                utilities:{},
-                contact: {},
-                description: {},
-                title: {},
+                amenity: props.unit.facilities.filter((fac)=> {return fac.type === "amenity"}).map((amen) => {return amen.name}),
+                utility:props.unit.facilities.filter((fac)=> {return fac.type === "utility"}).map((amen) => {return amen.name}),
+                contact: {...props.user},
+                description: {
+                    description: props.unit.description,
+                },
+                title: {
+                    title: props.unit.title,
+                },
                 photo: {}
             },
 
@@ -64,15 +68,25 @@ class Listing extends Component {
                 terms: {
                     section: 'terms',
                     monthly_rent: props.unit.monthly_rent,
-                    security_deposit: props.unit.security_deposit,
+                    security_deposits: props.unit.security_deposits,
                     minimum_lease_term: props.unit.minimum_lease_term,
                 },
-                amenities: {},
-                utilities:{},
-                contact: {},
-                description: {},
-                title: {},
-                photo: {}
+                amenity: props.unit.facilities.filter((fac)=> {return fac.type === "amenity"}).map((amen) => {return amen.name}),
+                utility:props.unit.facilities.filter((fac)=> {return fac.type === "utility"}).map((amen) => {return amen.name}),
+                contact: {...props.user},
+                description: {
+                    description: props.unit.description,
+                },
+                title: {
+                    title: props.unit.title,
+                },
+                photo: props.unit.images.map((image)=>{ return {
+                    uid: 0-image.id,
+                    unit_id: props.unit.uuid,
+                    name: image.id+'.png',
+                    status: 'done',
+                    id: image.id,
+                    url: 'https://rentright-api-gateway.herokuapp.com/user/units/image/'+image.id+'?token='+localStorage.getItem('rs_token'),}})
             },
         }
     }
@@ -93,8 +107,41 @@ class Listing extends Component {
             case 2:
                 present.terms[e.target.name] = e.target.value;
                 break;
+
+            case 3:
+                if(e.target.checked){
+                    present.amenity.push(e.target.name);
+                    console.log(present.amenity);
+                }else{
+                    const index = present.amenity.indexOf(e.target.name);
+                    present.amenity.splice(index, 1);
+                    console.log(present.amenity);
+                }
+                break;
+
+            case 4:
+                if(e.target.checked){
+                    present.utility.push(e.target.name);
+                    console.log(present.utility);
+                }else{
+                    const index = present.utility.indexOf(e.target.name);
+                    present.utility.splice(index, 1);
+                    console.log(present.utility);
+                }
+                break;
+
+            case 5:
+                present.contact[e.target.name] = e.target.value;
+                break;
+
+            case 6:
+                present.description[e.target.name] = e.target.value;
+                break;
+
+            case 7:
+                present.title[e.target.name] = e.target.value;
+                break;
         }
-        console.log(this.state.present)
         this.setState({present});
     }
 
@@ -115,7 +162,6 @@ class Listing extends Component {
 
         switch (this.state.current_step){
             case 1:
-                console.log('case 1');
                 if(!isEqual(this.state.initial.info,this.state.present.info)){
                     equal = false;
                    data = this.state.present.info;
@@ -125,6 +171,55 @@ class Listing extends Component {
                 if(!isEqual(this.state.initial.terms,this.state.present.terms)){
                     equal = false;
                     data = this.state.present.terms;
+                }
+                break;
+            case 3:
+                if(!isEqual(this.state.initial.amenity,this.state.present.amenity)){
+                    equal = false;
+                    data = {
+                        section: 'amenity',
+                        amenity: this.state.present.amenity,
+                    }
+                }
+                break;
+
+            case 4:
+                if(!isEqual(this.state.initial.utility,this.state.present.utility)){
+                    equal = false;
+                    data = {
+                        section: 'utility',
+                        utility: this.state.present.utility,
+                    }
+                }
+                break;
+
+            case 5:
+                if(!isEqual(this.state.initial.contact,this.state.present.contact)){
+                    equal = false;
+                    data = {
+                        section: 'contact',
+                        contact: this.state.present.contact,
+                    }
+                }
+                break;
+
+            case 6:
+                if(!isEqual(this.state.initial.description,this.state.present.description)){
+                    equal = false;
+                    data = {
+                        section: 'description',
+                        description: this.state.present.description.description,
+                    }
+                }
+                break;
+
+            case 7:
+                if(!isEqual(this.state.initial.title,this.state.present.title)){
+                    equal = false;
+                    data = {
+                        section: 'title',
+                       title: this.state.present.title.title,
+                    }
                 }
                 break;
         }
@@ -172,11 +267,71 @@ class Listing extends Component {
         }
     }
 
+    listingAction(e){
+            e.preventDefault();
+            const context = this;
+
+            switch (e.target.name){
+                case 'preview': break;
+                case 'publish':
+                    swal({
+                            title: "Publish Listing",
+                            text: "Click ok to publish your listing and make it available to prospects.",
+                            type: "info",
+                            showCancelButton: true,
+                            closeOnConfirm: false,
+                            showLoaderOnConfirm: true,
+                        },
+                        function(){
+                            context.props.publishUnit({
+                                            uuid: context.props.unit.uuid,
+                                            section: "publish",
+                                            status: "published"
+                                        },()=>{swal('Listing Published','Your listing has been successfully published','success')});
+
+                        });
+                    break;
+                case 'unpublish':
+                    swal({
+                            title: "Un-Publish Listing",
+                            text: "Click ok to un-publish your listing and make it in accessible to the public.",
+                            type: "warning",
+                            showCancelButton: true,
+                            closeOnConfirm: false,
+                            showLoaderOnConfirm: true,
+                        },
+                        function(){
+                            context.props.publishUnit({
+                                            uuid: context.props.unit.uuid,
+                                            section: "publish",
+                                            status: "unpublished"
+                                        },()=>{swal('Listing Un-Published','Your listing has been successfully un-published','success')});
+
+                        });
+                    break;
+            }
+    }
+
     render() {
         const {current_step} = this.state;
 
         return (
-            <div className="row" style={{marginTop: '50px'}}>
+        <div style={{marginTop: '50px'}}>
+            <div className="row">
+                <div className="col s6">
+                    <button name="preview" className="btn primary-color white-text"> Preview Listing</button>
+                </div>
+                <div className="col s6">
+                    {this.props.unit.status === "unpublished"
+                        ?
+                        <button name="publish" onClick={this.listingAction.bind(this)} className="btn green darken-1 right white-text"> Publish Listing</button>
+                        :
+                        <button name="unpublish" onClick={this.listingAction.bind(this)} className="btn red darken-1 right white-text"> UnPublish Listing</button>
+                    }
+
+                    </div>
+            </div>
+            <div id="msform" className="row" style={{marginTop: '50px'}}>
                 <div  id="listingForm" className="col s12 m8">
                     <div className="row">
                         <div className="col m12">
@@ -193,17 +348,17 @@ class Listing extends Component {
                         </div>
                         <div className="col m12" style={{padding: '0'}}>
                             <form className="card-panel">
-                            <VelocityTransitionGroup enter={{animation: "fadeIn"}} leave={{animation: "fadeOut"}}>
-                                {this.state.current_step===1 ? <PropertyInfo info={this.state.present.info} onChange={this.onChange.bind(this)}/> : undefined}
-                                {this.state.current_step===2 ? <RentalTerms terms={this.state.present.terms} onChange={this.onChange.bind(this)}/>: undefined}
-                                {this.state.current_step===3 ? <Amenities/>: undefined}
-                                {this.state.current_step===4 ? <Utilities/>: undefined}
-                                {this.state.current_step===5 ? <ContactInfo/>: undefined}
-                                {this.state.current_step===6 ? <Description/>: undefined}
-                                {this.state.current_step===7 ? <Title/>: undefined}
-                                {this.state.current_step===8 ? <Photos/>: undefined}
-                            </VelocityTransitionGroup>
-                        </form>
+                                <VelocityTransitionGroup enter={{animation: "fadeIn"}} leave={{animation: "fadeOut"}}>
+                                    {this.state.current_step===1 ? <PropertyInfo info={this.state.present.info} onChange={this.onChange.bind(this)}/> : undefined}
+                                    {this.state.current_step===2 ? <RentalTerms terms={this.state.present.terms} onChange={this.onChange.bind(this)}/>: undefined}
+                                    {this.state.current_step===3 ? <Amenities amenity={this.state.present.amenity} onChange={this.onChange.bind(this)}/>: undefined}
+                                    {this.state.current_step===4 ? <Utilities utilities={this.state.present.utility} onChange={this.onChange.bind(this)}/>: undefined}
+                                    {this.state.current_step===5 ? <ContactInfo contact={this.state.present.contact} onChange={this.onChange.bind(this)}/>: undefined}
+                                    {this.state.current_step===6 ? <Description description={this.state.present.description} onChange={this.onChange.bind(this)}/>: undefined}
+                                    {this.state.current_step===7 ? <Title title={this.state.present.title} onChange={this.onChange.bind(this)}/>: undefined}
+                                    {this.state.current_step===8 ? <Photos uuid={this.props.unit.uuid} images={this.state.present.photo}/>: undefined}
+                                </VelocityTransitionGroup>
+                            </form>
                         </div>
                     </div>
                     <div className="row">
@@ -213,6 +368,8 @@ class Listing extends Component {
                 </div>
                 <div className="col s12 m6"/>
             </div>
+        </div>
+
         );
     }
 
@@ -221,13 +378,16 @@ class Listing extends Component {
 function mapStateToProps(state) {
     return {
         unit: state.user.activeUnit.unit,
+        user: state.user.auth.user,
     }
 }
 
 Listing.propTypes = {
+    user: PropTypes.object.isRequired,
     unit: PropTypes.object.isRequired,
     updateSingleUnit: PropTypes.func.isRequired,
+    publishUnit: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps, {getProperty,updateSingleUnit})(Listing);
+export default connect(mapStateToProps, {getProperty,updateSingleUnit,publishUnit})(Listing);
 

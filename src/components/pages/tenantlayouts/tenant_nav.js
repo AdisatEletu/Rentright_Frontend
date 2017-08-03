@@ -19,7 +19,7 @@ return (
          <span>{this.props.first_name}</span>
          <span>Log out</span>
          <span>Switch</span>        
-        <div className = "t-rounded m-prf2 t-white t-cover m-me"   style =   { !this.props.myProfile.tenants.tenant_bio.profile_picture ? {backgroundImage:'url('+this.props.fileToServer.content+')'} : {backgroundImage:'url('+this.props.myProfile.tenants.tenant_bio.profile_picture+')'}}>  
+        <div className = "t-rounded m-prf2 t-white t-cover m-me"  >
              <div className = "m-cover t-flex t-align-center t-fullheight t-fullwidth t-justify-center"> <i className = "material-icons  md-12 right">linked_camera</i> </div>           
           </div>
      </div>
