@@ -7,8 +7,8 @@ import * as swal from 'sweetalert';
 class ShowCard extends Component {
     handleStartClick = () => {
         swal({
-                title: "Start lease",
-                text: "Are you sure you want to start a lease with this prospect?",
+                title: "Accept application?",
+                text: "Are you sure you want to accept the application of this tenant?",
                 type: "warning",
                 showCancelButton: true,
                 closeOnConfirm: false,
@@ -16,7 +16,7 @@ class ShowCard extends Component {
             },
             function(){
                 setTimeout(function(){
-                    swal("Lease Started!", "You have successfully started a lease with Odaibo Amadosi!", "success");
+                    swal("Application Accepted!", "You have accepted the application of Odaibo Amadosi!", "success");
                 }, 2000);
             });
     }
