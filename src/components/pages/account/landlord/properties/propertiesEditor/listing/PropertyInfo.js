@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Row,Input} from 'react-materialize'
 import PropTypes from 'prop-types';
-import $ from 'jquery';
-import {findDOMNode} from 'react-dom';
 
 class PropertyInfo extends Component {
 

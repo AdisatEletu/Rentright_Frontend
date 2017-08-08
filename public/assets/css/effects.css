@@ -49,6 +49,33 @@ d-npd{
 .d-npd-bottom{
     padding-bottom: 0 !important;
 }
+
+.d-mrgn-right{
+    margin-right: 5px;
+}
+.d-mrgn-left{
+    margin-left: 5px;
+}
+.d-mrgn-top{
+    margin-top: 5px;
+}
+.d-mrgn-bottom{
+    margin-bottom: 5px;
+}
+
+.d-no-mrgn-right{
+    margin-right: 0;
+}
+.d-no-mrgn-left{
+    margin-left: 0;
+}
+.d-no-mrgn-top{
+    margin-top: 0;
+}
+.d-no-mrgn-bottom{
+    margin-bottom: 0;
+}
+
 .card-panel-header{
     color: #85929e !important;
     font-weight: bold !important;
@@ -228,7 +255,7 @@ a.button-collapse.top-nav.full {
     height: 28px;
 }
 
-#msform .action-button {
+.msform .action-button {
     width:100%;
     background: #27AE60;
     font-weight: bold;
@@ -239,12 +266,13 @@ a.button-collapse.top-nav.full {
     padding: 10px 5px;
     margin: 10px auto;
 }
-#msform .action-button:hover{
+.msform .action-button:hover{
     box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
 /*headings*/
-.fs-title {
-    font-size: 15px;
+.fs-title, .fs-header {
+    font-size: 18px;
+    font-weight: bold;
     text-transform: uppercase;
     color: #2C3E50;
     text-align: center;
@@ -252,10 +280,15 @@ a.button-collapse.top-nav.full {
 }
 .fs-subtitle {
     font-weight: normal;
-    font-size: 13px;
+    font-size: 15px;
     color: #666;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.fs-header{
+    font-size: 17px;
+    text-align: left;
 }
 
 .cbx {
@@ -287,15 +320,6 @@ a.button-collapse.top-nav.full {
     margin-left: 5px;
     vertical-align: middle;
     cursor: pointer;
-}
-#cbx:checked ~ .cbx, #cbx_pets:checked ~ .cbx {
-    border-color: transparent;
-    background: #6871f1;
-    animation: jelly 0.6s ease;
-}
-#cbx:checked ~ .cbx:after, #cbx_pets:checked ~ .cbx:after {
-    opacity: 1;
-    transform: rotate(45deg) scale(1);
 }
 .cntr {
     /*position: absolute;*/
@@ -334,101 +358,6 @@ a.button-collapse.top-nav.full {
     margin-bottom: 5px !important;
     margin-top: 10px !important;
 }
-
-
-@-moz-keyframes jelly {
-    from {
-        transform: scale(1, 1);
-    }
-    30% {
-        transform: scale(1.25, 0.75);
-    }
-    40% {
-        transform: scale(0.75, 1.25);
-    }
-    50% {
-        transform: scale(1.15, 0.85);
-    }
-    65% {
-        transform: scale(0.95, 1.05);
-    }
-    75% {
-        transform: scale(1.05, 0.95);
-    }
-    to {
-        transform: scale(1, 1);
-    }
-}
-@-webkit-keyframes jelly {
-    from {
-        transform: scale(1, 1);
-    }
-    30% {
-        transform: scale(1.25, 0.75);
-    }
-    40% {
-        transform: scale(0.75, 1.25);
-    }
-    50% {
-        transform: scale(1.15, 0.85);
-    }
-    65% {
-        transform: scale(0.95, 1.05);
-    }
-    75% {
-        transform: scale(1.05, 0.95);
-    }
-    to {
-        transform: scale(1, 1);
-    }
-}
-@-o-keyframes jelly {
-    from {
-        transform: scale(1, 1);
-    }
-    30% {
-        transform: scale(1.25, 0.75);
-    }
-    40% {
-        transform: scale(0.75, 1.25);
-    }
-    50% {
-        transform: scale(1.15, 0.85);
-    }
-    65% {
-        transform: scale(0.95, 1.05);
-    }
-    75% {
-        transform: scale(1.05, 0.95);
-    }
-    to {
-        transform: scale(1, 1);
-    }
-}
-@keyframes jelly {
-    from {
-        transform: scale(1, 1);
-    }
-    30% {
-        transform: scale(1.25, 0.75);
-    }
-    40% {
-        transform: scale(0.75, 1.25);
-    }
-    50% {
-        transform: scale(1.15, 0.85);
-    }
-    65% {
-        transform: scale(0.95, 1.05);
-    }
-    75% {
-        transform: scale(1.05, 0.95);
-    }
-    to {
-        transform: scale(1, 1);
-    }
-}
-
 
 .header_address{
     font-weight: bold;
@@ -672,4 +601,29 @@ a.button-collapse.top-nav.full {
     padding: 20px 15%;
 }
 
-[data-reactroot], #root, html, body{height:100%; overflow-y:auto;}
+.sign-div .ant-card-head,
+.content-div .ant-card-head{
+    background: #6a1b9a !important;
+}
+
+.sign-div .sign-head,
+.content-div .content-head{
+    color: #ffffff !important;
+}
+
+#lease-term .input-field{
+    margin-top: 10px !important;
+}
+
+#lease-term .input-field input{
+    margin-bottom: 0 !important;
+    padding-bottom: 5px;
+    height: 1rem;
+}
+
+.clause{
+    background-color: #eeeeee;
+    color: #000;
+    padding: 10px;
+    margin-bottom: 20px;
+}

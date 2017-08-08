@@ -24,7 +24,6 @@ class App extends Component {
                   <Route path="/landlord" component={requireAuth(LandLord)}/>
                   <Route path="/sign-in" component={NewLogin}/>
                   <Route path="/tenant" component={requireAuth(Tenant)}/>
-                         
               </switch>
           </Router>
       );
