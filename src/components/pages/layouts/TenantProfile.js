@@ -164,12 +164,12 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
             </div>
                <CompletenessBar completeness = {this.props.myProfile.tenants.completed} withinform = {false} label = "Profile completeness" />
             <div className = "m-step">
-                <CircleLinks linkTo = {"/tenant" + this.uuid + "/profile"} scale = {true} childLabel = "Overview" label = "A" isActive = {true}/>
-                 <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "1" isActive = {false}/>
-                 <CircleLinks linkTo = {"/tenant/profile/bioinfo" + this.uuid} scale = {false} childLabel = "Bio Info" label = "2" isActive = {false}/>
-                 <CircleLinks linkTo = {"/tenant/profile/employmentinfo" + this.uuid} scale = {false} childLabel = "Employment Info" label = "3" isActive = {false}/>
-                  <CircleLinks linkTo = {"/tenant/profile/residentialinfo" + this.uuid} scale = {false} childLabel = "Residential Info" label = "4" isActive = {false}/>
-                <CircleLinks linkTo = {"/tenant/profile/immigrationinfo" + this.uuid} scale = {false} childLabel = "Immigrantion Info" label = "5" isActive = {false}/>
+                <CircleLinks linkTo = {"/tenant/profile" + this.uuid } scale = {true} childLabel = "Overview" label = "A" isActive = {true}/>     
+                 <CircleLinks linkTo = {"/tenant/profile/bioinfo" + this.uuid} scale = {false} childLabel = "Bio Info" label = "1" isActive = {false}/>
+                 <CircleLinks linkTo = {"/tenant/profile/employmentinfo" + this.uuid} scale = {false} childLabel = "Employment Info" label = "2" isActive = {false}/>
+                  <CircleLinks linkTo = {"/tenant/profile/residentialinfo" + this.uuid} scale = {false} childLabel = "Residential Info" label = "3" isActive = {false}/>
+                <CircleLinks linkTo = {"/tenant/profile/immigrationinfo" + this.uuid} scale = {false} childLabel = "Immigration Info" label = "4" isActive = {false}/>
+                <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "5" isActive = {false}/>
     
 
               </div>
@@ -188,7 +188,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
              <div className = "t-md-10 p-widget margin-below  btransp  m-padding-zero">
                  <div className = "btrcover">
                      <div className = ""></div>
-                     <div className = "m-marg-top t-flex t-flex-row t-justify-center  t-md-10"><div className = "tr-button">Get Started</div><div className = "tr-highlight">Find A Home</div></div>
+                     <div className = "m-marg-top t-flex t-flex-row t-justify-center  t-md-10"><NavLink  to = {"/tenant/profile/"  + this.uuid +"/"}  className = "tr-button">Get Started </NavLink ><div className = "tr-highlight">Find A Home</div></div>
 
                  </div>
                  </div>

@@ -19,7 +19,7 @@ import Progress from 'antd/lib/progress';
 var _ = require('lodash');
 
 
- class EmploymentForm extends Component{
+ class ImmigrationForm extends Component{
     constructor(props) {           
        super(props) 
       this.state = {obj2:{}};       
@@ -52,7 +52,7 @@ var _ = require('lodash');
              this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true).then(()=>{
                        console.log(this.props.structure)
                        console.log('structure')
-                   this.props.breakFormToComponents(this.props.form.tenant_employment_history)
+                   this.props.breakFormToComponents(this.props.form.tenant_immigration_history)
              }).catch((err)=>{
                console.log(err)
              }) 
@@ -105,8 +105,8 @@ var _ = require('lodash');
    
      try{
       let key = Object.keys(data)[0]
-      if( this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0] &&  this.props.form.tenant_employment_history[0][key].dependent_stat && this.props.form.tenant_employment_history[0][key].dependent_stat.have_dependents){
-        this.props.form.tenant_employment_history[0][key].dependent_stat.dependent_name.map((item)=>{
+      if( this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0] &&  this.props.form.tenant_immigration_history[0][key].dependent_stat && this.props.form.tenant_immigration_history[0][key].dependent_stat.have_dependents){
+        this.props.form.tenant_immigration_history[0][key].dependent_stat.dependent_name.map((item)=>{
          let   keystroke = item.dependent_name ;
       
           if (data[key] &&  item.calling_value){  
@@ -176,7 +176,7 @@ var _ = require('lodash');
     this.setState({showModal:true});
     console.log(this.props.loader)
     console.log('loaging value of loading')
-    let newobj = {uuid:this.props.match.params.id, tenant_employment_history:[this.sendobj]}
+    let newobj = {uuid:this.props.match.params.id, tenant_immigration_history:[this.sendobj]}
     this.props.update( '/'+this.props.match.params.id,newobj).then((data)=>{
     //   this.context.router.history.push("/tenant/profile/bioinfo/" + this.props.match.params.id);
     this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true)
@@ -186,54 +186,54 @@ var _ = require('lodash');
 
     render(){                  
            return(     
-  this.props.myProfile.tenants && this.props.form &&  this.props.myProfile.tenants.tenant_employment_history  && this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0] ?
+  this.props.myProfile.tenants && this.props.form &&  this.props.myProfile.tenants.tenant_immigration_history  && this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0] ?
 
      <div className = "t-md-10 t-flex t-justify-space-between m-bottomx ">
         <div className = "t-md-6 t-fullheight p-widget deeper" >
          <div className= "m-profile-setup t-flex t-flex-column">
              <div className= "t-flex t-flex-column t-md-10 t-justify-left ">
             <div className= "t-gray-darken-3-f mid t-h3 t-flex t-flex-column t-justify-space-between t-align-top p-widget m-padding ">
-                 <span className= "t-uppercase t-h2 ">Update Employment Information</span>
+                 <span className= "t-uppercase t-h2 ">Update Immigration Information</span>
                  <span className= "t-gray-darken-1-f thin t-h3 t-lh-h3  m-half-top">Please provide accurate information</span>
                  <div className= "t-md-10  t-flex t-justify-right t-flex-row t-align-top">
-                <CircleLinks linkTo = {"/tenant/profile" + this.uuid } scale = {false} childLabel = "Overview" label = "A" isActive = {true}/>     
+                <CircleLinks linkTo = {"/tenant/profile" + this.uuid } scale = {false} childLabel = "Overview" label = "A" isActive = {false}/>     
                  <CircleLinks linkTo = {"/tenant/profile/bioinfo" + this.uuid} scale = {false} childLabel = "Bio Info" label = "1" isActive = {false}/>
-                 <CircleLinks linkTo = {"/tenant/profile/employmentinfo" + this.uuid} scale = {true} childLabel = "Employment Info" label = "2" isActive = {false}/>
+                 <CircleLinks linkTo = {"/tenant/profile/immigrationinfo" + this.uuid} scale = {true} childLabel = "Immigration Info" label = "2" isActive = {true}/>
                   <CircleLinks linkTo = {"/tenant/profile/residentialinfo" + this.uuid} scale = {false} childLabel = "Residential Info" label = "3" isActive = {false}/>
                   {this.props.myProfile.tenants ? this.props.myProfile.tenants.are_you_an_immigrant ? 
                 <span>
                 <CircleLinks linkTo = {"/tenant/profile/immigrationinfo" + this.uuid} scale = {false} childLabel = "Immigration Info" label = "4" isActive = {false}/>
-                 <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "5" isActive = {true}/>
+                 <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "5" isActive = {false}/>
                  </span>
                 :
-                 <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "4" isActive = {true}/>
+                 <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "4" isActive = {false}/>
                 :null}
                 </div>
 
              </div> 
            
             </div>
-             {this.state.tenant_employment_history ?
+             {this.state.tenant_immigration_history ?
               <CompletenessBar completeness = {this.state.completed}  withinform = {true} label = "Genral Form Info completeness" />
               :
              <Spin size = "large" />
              }
              <div className="p-widget m-padding t-md-10">   
-               <div className = "m-heading increase">Your Employment History</div>
+               <div className = "m-heading increase">Your Immigration History</div>
              <div className ="m-sub ">Please fill in the following data with accurate information</div>     
                <div className = "t-flex t-flex-column t-md-10">
              { this.props.formBreakDownData ?
                   <div className = "t-md-10">
-              {  this.props.formBreakDownData.text.length  > 0 && this.props.form.tenant_employment_history ? 
+              {  this.props.formBreakDownData.text.length  > 0 && this.props.form.tenant_immigration_history ? 
                 <div className = "double-container"> 
                   {this.props.formBreakDownData.text.map((item,index) =>{
-                  if(this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0]) {     
+                  if(this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0]) {     
                   return(  
-                 this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0] &&  this.props.form.tenant_employment_history[0][item] && this.props.form.tenant_employment_history[0][item].dependent_stat && ! this.props.form.tenant_employment_history[0][item].dependent_stat.is_dependent  ?      
-                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"text"}  label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state} name = {this.props.form.tenant_employment_history[0][item].key}  keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.text}    />
+                 this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0] &&  this.props.form.tenant_immigration_history[0][item] && this.props.form.tenant_immigration_history[0][item].dependent_stat && ! this.props.form.tenant_immigration_history[0][item].dependent_stat.is_dependent  ?      
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"text"}  label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state} name = {this.props.form.tenant_immigration_history[0][item].key}  keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.text}    />
                      : 
                     this.state.obj2 && this.state.obj2[item] ? 
-                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"text"}  label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state}  name = {this.props.form.tenant_employment_history[0][item].key}   keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.text}    />
+                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"text"}  label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state}  name = {this.props.form.tenant_immigration_history[0][item].key}   keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.text}    />
                       :
                       null
            
@@ -250,14 +250,14 @@ var _ = require('lodash');
                {  this.props.formBreakDownData.phone.length  > 0 ? 
                 <div className = "double-container"> 
                   {this.props.formBreakDownData.phone.map((item,index) =>{
-                  if (this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0] &&  this.props.form.tenant_employment_history[0][item] )  {  
+                  if (this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0] &&  this.props.form.tenant_immigration_history[0][item] )  {  
                   return(  
-                 this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0] &&  this.props.form.tenant_employment_history[0][item] &&   this.props.form.tenant_employment_history[0][item].dependent_stat && ! this.props.form.tenant_employment_history[0][item].dependent_stat.is_dependent  ?      
-                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"phone"}  label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state} name = {this.props.form.tenant_employment_history[0][item].key}  keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.phone}    />
+                 this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0] &&  this.props.form.tenant_immigration_history[0][item] &&   this.props.form.tenant_immigration_history[0][item].dependent_stat && ! this.props.form.tenant_immigration_history[0][item].dependent_stat.is_dependent  ?      
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"phone"}  label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state} name = {this.props.form.tenant_immigration_history[0][item].key}  keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.phone}    />
                      : 
-                    this.props.form.tenant_employment_history[0][item].dependent_stat ?
+                    this.props.form.tenant_immigration_history[0][item].dependent_stat ?
                     this.state.obj2 && this.state.obj2[item] ? 
-                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"phone"}  label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state}  name = {this.props.form.tenant_employment_history[0][item].key}   keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.phone}    />
+                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"phone"}  label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state}  name = {this.props.form.tenant_immigration_history[0][item].key}   keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.phone}    />
                      :
                      null
                       :
@@ -277,13 +277,13 @@ var _ = require('lodash');
                   {  this.props.formBreakDownData.date.length  > 0 ? 
                 <div className = "double-container"> 
                   {this.props.formBreakDownData.date.map((item,index) =>{
-                   if(this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0]) {         
+                   if(this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0]) {         
                   return(  
-                   this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0] &&  this.props.form.tenant_employment_history[0][item] && this.props.form.tenant_employment_history[0][item].dependent_stat && ! this.props.form.tenant_employment_history[0][item].dependent_stat.is_dependent  ?      
-                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"date"}  label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state} name = {this.props.form.tenant_employment_history[0][item].key}  keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.date}    />
+                   this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0] &&  this.props.form.tenant_immigration_history[0][item] && this.props.form.tenant_immigration_history[0][item].dependent_stat && ! this.props.form.tenant_immigration_history[0][item].dependent_stat.is_dependent  ?      
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"date"}  label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state} name = {this.props.form.tenant_immigration_history[0][item].key}  keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.date}    />
                      : 
                     this.state.obj2 && this.state.obj2[item] ? 
-                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"date"}  label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state}  name = {this.props.form.tenant_employment_history[0][item].key}   keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.date}    />
+                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"date"}  label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state}  name = {this.props.form.tenant_immigration_history[0][item].key}   keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.date}    />
                       :
                       null
            
@@ -303,13 +303,13 @@ var _ = require('lodash');
               this.props.formBreakDownData.select.length  > 0 ? 
                 <div className = "double-container"> 
                   {this.props.formBreakDownData.select.map((item,index) =>{
-                   if(this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0]) {   
+                   if(this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0]) {   
                   return(  
-                  this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0] &&  this.props.form.tenant_employment_history[0][item] && this.props.form.tenant_employment_history[0][item].dependent_stat &&  ! this.props.form.tenant_employment_history[0][item].dependent_stat.is_dependent  ?   
-                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"select"}  label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state} name = {this.props.form.tenant_employment_history[0][item].key}  options = {this.props.form.tenant_employment_history[0][item].options}  keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.select}    />
+                  this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0] &&  this.props.form.tenant_immigration_history[0][item] && this.props.form.tenant_immigration_history[0][item].dependent_stat &&  ! this.props.form.tenant_immigration_history[0][item].dependent_stat.is_dependent  ?   
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"select"}  label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state} name = {this.props.form.tenant_immigration_history[0][item].key}  options = {this.props.form.tenant_immigration_history[0][item].options}  keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.select}    />
                    :
                    this.state.obj2 && this.state.obj2[item] ? 
-                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"select"}  label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state} options = {this.props.form.tenant_employment_history[0][item].options}  keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.select}    />
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"select"}  label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state} options = {this.props.form.tenant_immigration_history[0][item].options}  keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.select}    />
                    :
                    null
                   )
@@ -327,13 +327,13 @@ var _ = require('lodash');
                  this.props.formBreakDownData.textarea && this.props.formBreakDownData.textarea.length  > 0 ? 
                 <div className = "double-container"> 
                   {this.props.formBreakDownData.textarea.map((item,index) =>{
-                   if(this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0] && this.props.form.tenant_employment_history[0][item] ) {   
+                   if(this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0] && this.props.form.tenant_immigration_history[0][item] ) {   
                   return(  
-                  this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0] &&  this.props.form.tenant_employment_history[0][item] && this.props.form.tenant_employment_history[0][item].dependent_stat && this.props.form.tenant_employment_history[0][item].dependent_stat.is_dependent  ?   
-                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"textarea"} name = {this.props.form.tenant_employment_history[0][item].key}   label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state} options = {this.props.form.tenant_employment_history[0][item].options}  keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.textarea}    />
+                  this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0] &&  this.props.form.tenant_immigration_history[0][item] && this.props.form.tenant_immigration_history[0][item].dependent_stat && this.props.form.tenant_immigration_history[0][item].dependent_stat.is_dependent  ?   
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"textarea"} name = {this.props.form.tenant_immigration_history[0][item].key}   label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state} options = {this.props.form.tenant_immigration_history[0][item].options}  keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.textarea}    />
                  :
                   this.state ? 
-                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"textarea"}  name = {this.props.form.tenant_employment_history[0][item].key}   label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state} options = {this.props.form.tenant_employment_history[0][item].options}  keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.textarea}    />
+                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"textarea"}  name = {this.props.form.tenant_immigration_history[0][item].key}   label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state} options = {this.props.form.tenant_immigration_history[0][item].options}  keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.textarea}    />
                  :
                    null
                   )
@@ -402,9 +402,9 @@ var _ = require('lodash');
 <div className = "m-heading increase">Past Residence</div>
  <div className ="m-sub margin-htop ">Check this board to confirm your current information</div> 
  
- {   this.props.myProfile ? this.props.myProfile.tenants.tenant_employment_history.length > 0  ?  
-          this.props.myProfile.tenants.tenant_employment_history.map ( (item, index)=>{ 
-            if (this.props.myProfile.tenants.tenant_employment_history && item) {                           
+ {   this.props.myProfile ? this.props.myProfile.tenants.tenant_immigration_history.length > 0  ?  
+          this.props.myProfile.tenants.tenant_immigration_history.map ( (item, index)=>{ 
+            if (this.props.myProfile.tenants.tenant_immigration_history && item) {                           
           return(      
             <div className = "t-itemlistlist t-flex-column"  key = {index} ><div className = "t-keylistone "><span className = "one-el">{item.address.address}</span> <span className = "one-right one-el t-right-f one-right">{item.when_did_you_start_living_here} - {item.when_did_you_relocate ? item.when_did_you_relocate :item.is_this_your_current_residence ? "Curent Residence" :  "No defined Date"}</span> </div><div className = "t-itemlistone">{item.reasons_for_living} </div>
                    
@@ -429,9 +429,9 @@ var _ = require('lodash');
                   this.props.formBreakDownData  &&  this.props.formBreakDownData.switch.length  > 0 ? 
                 <div className = "double-container nobg"> 
                   {this.props.formBreakDownData.switch.map((item,index) =>{
-                    if(this.props.form.tenant_employment_history && this.props.form.tenant_employment_history[0] && this.props.form.tenant_employment_history[0][item] ) {   
+                    if(this.props.form.tenant_immigration_history && this.props.form.tenant_immigration_history[0] && this.props.form.tenant_immigration_history[0][item] ) {   
                   return(  
-                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"switch"}  label =  {this.props.form.tenant_employment_history[0]} ownstate = {this.state} field = {item}  keyname = {this.props.form.tenant_employment_history[0][item].keyname}  data = {this.props.formBreakDownData.switch}    />
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"switch"}  label =  {this.props.form.tenant_immigration_history[0]} ownstate = {this.state} field = {item}  keyname = {this.props.form.tenant_immigration_history[0][item].keyname}  data = {this.props.formBreakDownData.switch}    />
                   )
                     }
                   }) 
@@ -520,7 +520,7 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-EmploymentForm.PropTypes = {
+ImmigrationForm .PropTypes = {
     loadTenant: PropTypes.func.isRequired,
     loadprofile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
@@ -528,8 +528,8 @@ EmploymentForm.PropTypes = {
 
 
 }
-EmploymentForm.contextTypes = {
+ImmigrationForm .contextTypes = {
         router: PropTypes.object.isRequired,
     }
 
-export default connect(matchStateToProps, mapDispatchToProps)(EmploymentForm)
+export default connect(matchStateToProps, mapDispatchToProps)(ImmigrationForm )

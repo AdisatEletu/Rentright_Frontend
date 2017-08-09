@@ -118,12 +118,53 @@ export function loadSpecificTenant(path) {
  };
   //});
 }
+
+export function load_my_applications(path){
+  return ((dispatch)=>{
+    //send only uuid
+    dispatch(loading_applications('loading'))
+      let api = new apiActions('https://rentright.herokuapp.com/api/rentright/tenants/applications/');
+      let uri = api + path
+      return api.geturl(uri, true).then((applications)=>{
+        dispatch(loading_applications('hideloading'));
+        dispatch(load_my_applications_success(applications))
+      }).catch((err)=>{
+        dispatch(loading_applications('errorloading'));
+      })
+     
+    
+  })
+
+}
+
+
+export function load_my_query(path){
+  return ((dispatch)=>{
+    //send only uuid
+    dispatch(loading_query('loading'))
+      let api = new apiActions('https://rentright.herokuapp.com/api/rentright/units/query/?');
+      let uri = api + path //this should be query parameers
+      return api.geturl(uri, true).then((results)=>{
+        dispatch(loading_query('hideloading'));
+        dispatch(load_my_query_success(results))
+      }).catch((err)=>{
+        dispatch(loading_query('errorloading'));
+      })
+     
+    
+  })
+
+}
+
+
 export function patchSpecificTenant(path,obj) {  
   return function(dispatch) {
     dispatch(showLoading());
     return api.patchurl(path,obj).then(tenants => {
         dispatch(hideLoading());
-      dispatch(patchSpecificTenantSuccess(tenants));
+        // dispatch(getProfileStruct(path));
+         dispatch(patchSpecificTenantSuccess(tenants));
+
     }).catch(error => {
         dispatch(errorLoading());
       console.log(error);
@@ -132,15 +173,20 @@ export function patchSpecificTenant(path,obj) {
   };
 }
 export function getProfileStruct(path) {  
+  console.log(path)
   return function(dispatch) {
     dispatch(showLoading());
     return api.geturl(path, true).then(structure => {
+      console.log(structure);
+      console.log('Structure');
         dispatch(hideLoading());
+      if (structure){
       dispatch(StructureLoadSuccess(structure));
+      }
     }).catch(error => {
         dispatch(errorLoading());
       console.log(error);
-      throw(error);
+  
     });
   };
 }
@@ -225,6 +271,15 @@ export function deleteSpecificTenant(path,obj) {
   };
 }
 
+export function load_my_applications_success(applications){
+  return  {type: types.TENANT_APPLICATIONS_LOAD, applications:applications.results }
+  
+}
+export function load_my_query_success(results){
+   return  {type: types.TENANT_QUERY_LOAD, results :results.results } 
+
+}
+
 export function loadTenantSuccess(tenants) {  
   return {type: types.LOAD_TENANT_SUCCESS  , tenants:tenants.results};
 }
@@ -285,12 +340,75 @@ export function formBreakDown(data) {
   };
 }
 
+
+export function loading_applications(context){
+  switch(context){
+    case 'loading' :
+    return{
+      type: types.SHOW_LOADING_APPLICATIONS,
+      Loading: true,
+      Error: false
+    };
+    case  'hideloading':
+    return{
+      type: types.HIDE_LOADING_APPLICATIONS,
+      Loading: true,
+      Error: false
+    }
+    case 'errorloading':
+    return {
+      type:types.ERROR_LOADING_APPLICATIONS,
+      Loading: true,
+      Error: true
+    }
+     default: 
+     return  {
+       type: types.SHOW_LOADING_APPLICATIONS,
+       Loading: true,
+      Error: false
+     
+    
+  }
+  }
+
+}
+export function loading_query(context){
+  switch(context){
+    case 'loading' :
+    return{
+      type: types.SHOW_LOADING_QUERY,
+      Loading: true,
+      Error: false
+    };
+    case  'hideloading':
+    return{
+      type: types.HIDE_LOADING_QUERY,
+       Loading: true,
+      Error: false
+    }
+    case 'errorloading':
+    return {
+      type:types.ERROR_LOADING_QUERY,
+       Loading: true,
+        Error: true,
+    }
+     default: 
+     return  {
+       type: types.SHOW_LOADING_QUERY,
+        Loading: true,
+        Error: false
+     
+    }
+  }
+
+}
+
 export function breakFormToComponents(formdatal){
   return function(dispatch){
       dispatch(showLoading());
    let groupforms; 
-    let controlled; 
-    let controllervalues;  
+    let controlled = []; 
+    let controllervalues = [];  
     let dateforms;
     let selectforms;  
    let textareaforms;
@@ -300,66 +418,87 @@ export function breakFormToComponents(formdatal){
   let allform = {};
   let formdata = formdatal[0]
   let formkeys = Object.keys(formdata); 
-
+             
+            
             selectforms = formkeys.filter((i)=>{
                let instance = formdata[i];
+              if( i != 'completed' && i != 'uuid' && i != 'id' && i != null){
                if (instance.datatype == "select"){
                   return i
                }
+               }
              })
              groupforms = formkeys.filter((i)=>{
-               let instance = formdata[i] 
-               let check =  instance.groupinfo;  
+                          
+              if( i != 'completed' && i != 'uuid' && i != 'id' && i != null){
+                  let instance = formdata[i] 
+                  let check =  instance.groupinfo;  
                if (check.groupdata){
                  return i 
                };
+              }
              })
             controlled = formkeys.filter((i)=>{
+               if( i != 'completed' && i != 'uuid' && i != 'id' && i != null){
                let instance =  formdata[i];
-               let stat  = instance.dependent_stat        
+               let stat  = instance.dependent_stat; 
+       
                if (stat.is_dependant){   
                  if (! controllervalues){
                  controllervalues = [];
-                 }              
+                } 
+               }             
               controllervalues.push({key:instance.key, keyname:instance.keyname, provider_name:stat.provider_name})
                  return i
                }
              })
            dateforms = formkeys.filter((i)=>{
-               let instance = formdata[i];
+              if( i != 'completed' && i != 'uuid' && i != 'id' && i != null){
+               let instance = formdata[i];     
                if (instance.datatype == "date"){
                   return i
                }
+            }
              })
               textareaforms = formkeys.filter((i)=>{
-               let instance = formdata[i];
+               if( i != 'completed' && i != 'uuid' && i != 'id' && i != null){
+               let instance = formdata[i];      
                if (instance.datatype == "textarea"){
                   return i
                }
+              }
              })
            textforms = formkeys.filter((i)=>{
-               let instance = formdata[i];
+              if( i != 'completed' && i != 'uuid' && i != 'id' && i != null){
+               let instance = formdata[i]; 
                if (instance.datatype == "text"){
                   return i
                }
+            }
              })
            intforms = formkeys.filter((i)=>{
-               let instance = formdata[i];
+              if( i != 'completed' && i != 'uuid' && i != 'id' && i != null){
+               let instance = formdata[i];       
                if (instance.datatype == "number"){
                   return i
                }
+            }
              })
          phoneforms = formkeys.filter((i)=>{
+               if( i != 'completed' && i != 'uuid' && i != 'id'){
                let instance = formdata[i];
-               if (instance.datatype == "phone"){
+                  if (instance.datatype == "phone"){
                   return i
                }
+            }
              })
          switchforms = formkeys.filter((i)=>{
-               let instance = formdata[i];
+             if( i != 'completed' && i != 'uuid' && i != 'id'){
+               let instance = formdata[i];          
                if (instance.datatype == "switch"){
                   return i
                }
+              }
              })
        allform = { radiogroup:groupforms, controlled:controlled,  controllervalue: controllervalues, 
                            date: dateforms, select:selectforms, textarea:textareaforms, 

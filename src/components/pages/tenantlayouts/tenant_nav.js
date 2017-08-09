@@ -11,8 +11,8 @@ import {NavLink} from 'react-router-dom';
         render (){
 return (
    <div className = "m-nav-container t-nav">
-     <div className = "m-primary-nav  ">
-          <span className = "t-sup-h3 thin">Rent-Right by Algorism LTD </span>
+     <div className = "m-primary-nav t-align-content-center t-flex  ">
+          <span className = "t-md-h333 thin t-flex t-align-content-center">Rent-Right by Algorism LTD </span>
         
         <div className = "m-profile-info">
         <i className ="material-icons tiny">list</i>

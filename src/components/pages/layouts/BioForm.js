@@ -5,197 +5,473 @@ import PropTypes from 'prop-types';
 import TenantCard from '../tenantCard';
 import {NavLink} from 'react-router-dom';
 import CircleLinks from '../tenantlayouts/circle_links';
-import {bindActionCreators} from 'redux';
+import {bindActionCreators} from 'redux';  
+import CompletenessBar  from '../tenantlayouts/completeness_bar';
 import FormElements  from '../tenantlayouts/form_elements';
-import CompletenessBar  from '../tenantlayouts/completeness_bar';  
-import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant } from '../../../state/actions/tenantAction';
+import NewForm  from '../tenantlayouts/new_form';
+import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct, hideLoading, errorLoading, breakFormToComponents,  getProfileStruct  } from '../../../state/actions/tenantAction';
+import Spin from  'antd/lib/spin';
+import Icon from 'antd/lib/icon';
+import Button from'antd/lib/button';
+import ProfileContent from '../tenantlayouts/profile_content';
+import Modal from 'antd/lib/modal';
+import Progress from 'antd/lib/progress';
+var _ = require('lodash');
 
 
  class BioForm extends Component{
-  constructor(props) {           
-      super(props) 
-      this.state = {};           
-      this.state = this.props.myProfile.tenants.tenant_bio;
+    constructor(props) {           
+       super(props) 
+      this.state = {obj2:{}};       
+      this.props.getFormStruct();       
+      this.state = Object.assign({obj2:{},filled:false, ishighlighting:'', showModal:false},{});
        this.handleInputChange = this.handleInputChange.bind(this);    
-       this.handleSubmit = this.handleSubmit.bind(this);   
+       this.handleSubmit = this.handleSubmit.bind(this); 
+        this.uuid = this.props.auth.user.uuid;   
+        console.log(this.uuid);
+        this.hideModal = this.hideModal.bind(this);   
        this.sendobj = {};
-       Object.assign(this.sendobj,  this.props.myProfile.tenants.tenant_bio)
+       //.then(()=>{
+
     }
        componentWillMount(){
+        this.style = {
+              width:this.state.completed + '%' 
+        }
+         this.style2 = {
+               width:100 - (this.state.completed) + '%'
+        }
+       this.props.loadTenant('/'+this.uuid).then(()=>{
+          this.setState(this.props.myProfile.tenants)
+           })
+
+     if (this.props.myProfile){
+
+           this.props.getFormStruct().then(()=>{         
+             this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true).then(()=>{
+                   this.props.breakFormToComponents(this.props.form.tenant_bio)
+             }).catch((err)=>{
+               console.log(err)
+             }) 
+           }).catch((err)=>{
+              console.log(err)
+           })  
        }
+      
+     }
     componentDidMount(){  
-        
+        if (this.props.formBreakDownData){
+          this.setState({obj2:{}})
+
+        }
 
      }
-     onUpdate(data){
-      console.log(data);  
+     componentDidUpdate(prevProps, prevState) {
+    
+        this.style = {
+              width:this.state.completed + '%' 
+        }
+         this.style2 = {
+               width:100 - (this.state.completed) + '%'
+        }
+       if (this.props.myProfile.tenants && this.state ){
+       if(  _.isEqual(this.props.myProfile.tenants, this.state)){
+      
+       }else{
+        
+       }
+       }
+     }
+    onUpdate =(data)=>{
 
       if ( 'address' in data ){
          console.log(data);
          console.log('this is data')
          data['house_number'] = '';
-          Object.assign(this.sendobj, {'address' : data} );
-          this.setState(this.sendobj);
-          console.log(this.state)
-
+          Object.assign(this.sendobj, {'address' : data} );        
+          console.log(this.sendobj)
       } else{
-      console.log(this.state)
-       this.setState(data);
+      
       Object.assign(this.sendobj, data);
       console.log(this.sendobj)
       }
 
-  }
+     this.setState(data);
+
+
+   
+     try{
+      let key = Object.keys(data)[0]
+      if( this.props.form.tenant_bio && this.props.form.tenant_bio[0] &&  this.props.form.tenant_bio[0][key].dependent_stat && this.props.form.tenant_bio[0][key].dependent_stat.have_dependents){
+        this.props.form.tenant_bio[0][key].dependent_stat.dependent_name.map((item)=>{
+         let   keystroke = item.dependent_name ;
+      
+          if (data[key] &&  item.calling_value){  
+           let obj = {}
+           obj[keystroke] = true
+           this.setState(Object.assign(this.state.obj2,obj) );
+          }
+        else if (!data[key] && item.calling_value){
+             let obj = {}
+           obj[keystroke] = false;
+             this.setState(Object.assign(this.state.obj2,obj) );
+        }
+        else if (data[key] && !item.calling_value){
+          let obj = {}
+         obj[keystroke] = false;
+          this.setState(Object.assign(this.state.obj2,obj) );
+
+        }
+        else if(!data[key] && !item.calling_value ){
+            let obj = {}
+           obj[keystroke] = true
+            this.setState(Object.assign(this.state.obj2,obj) );
+          }
+        
+             
+        })
+   console.log(this.state); 
+      }
+
+      }catch(e){
+     
+     }
     
+  }
+
+   hideModal(){
+     this.setState({showModal:false});
+     if (this.state.ishighlighting != 'time-highlight'){
+     this.setState({ishighlighting:'time-highlight'})
+     setTimeout(()=>{
+       this.setState({ishighlighting:''})
+      },
+      5000);
+     }else{
+  
+     }
+   } 
    handleInputChange(event) {
     var th = this;
     const target = event.target;
-    const value = target.type === 'radiobutton' ? target.selected : target.value;
-    const name = target.name;
+    const value = target.type === 'radio' ? target.selected : target.value;
+    const name = target.value;
     if (value && value != ''){
-      th.sendobj[name]  = value   
-
+      th.sendobj[name]  = value ;
     }
     console.log(name);
     this.setState({
       [name]: value
     });
   } 
-  handleSubmit(){
-    var th = this;
- 
+  handleSubmit = ()=>{
+    var th = this; 
     th.sendobj.uuid = this.props.match.params.id;
-      console.log(this.sendobj);
-    this.returnobj = { 'uuid':this.props.match.params.id, 'tenant_bio':this.sendobj};
-    console.log(this.returnobj) 
-    this.props.update( '/'+this.props.match.params.id, this.returnobj).then((data)=>{
-      console.log(data);
-      this.context.router.history.push("/tenant/profile/residentialinfo/" + this.props.match.params.id);
-    });
+    console.log(this.sendobj);
+    console.log( '/'+this.props.match.params.id);
+    this.props.showLoading();
+    this.setState({showModal:true});
+    console.log(this.props.loader)
+    console.log('loaging value of loading')
+    let newobj = {uuid:this.props.match.params.id, tenant_bio:this.sendobj}
+    this.props.update( '/'+this.props.match.params.id,newobj).then((data)=>{
+    //   this.context.router.history.push("/tenant/profile/bioinfo/" + this.props.match.params.id);
+    this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true)
+   
+    })
   }
 
-    render(){
-        if(this.props.myProfile.tenants){
-            let style = {
-               width:this.state.completed + '%' 
-        }
-         let style2 = {
-               width:100 - (this.state.completed) + '%'
-        }
-           return(
-      this.props.loader.Loading   ? 
-    <div className = "t-flex t-flex-row t-md-10  t-padtop "> 
-      <div className = "t-sup-h1 t-green-f"><i className = "fa fa-spin fa-cog"></i> </div>
-    <div className = "t-flex t-flex-column">
-     <span className = "span t-uppercase ">Loading</span>
-      <span> We are currently loading information from the server..</span>
-  </div>
-  </div>
-  :
+    render(){                  
+           return(     
+  this.props.myProfile.tenants && this.props.form &&  this.props.myProfile.tenants.tenant_bio  && this.props.form.tenant_bio && this.props.form.tenant_bio[0] ?
+
      <div className = "t-md-10 t-flex t-justify-space-between m-bottomx ">
         <div className = "t-md-6 t-fullheight p-widget deeper" >
          <div className= "m-profile-setup t-flex t-flex-column">
              <div className= "t-flex t-flex-column t-md-10 t-justify-left ">
-            <div className= "t-gray-darken-3-f mid t-h1 t-flex t-flex-row t-justify-space-between t-align-top "><span className= "">Update Bio Information</span>
-                 <div className= "t-md-5  t-flex t-justify-right t-flex-row t-align-top">                  
-                  <CircleLinks linkTo =  {"/tenant/" +  this.props.match.params.id + "/profile"} scale = {true} childLabel = "Overview" label = "A" isActive = {false}/>
-                  <CircleLinks linkTo = {"/tenant/profile/generalinfo/" + this.props.match.params.id} scale = {true} childLabel = "General Info" label = "1" isActive = {false}/>
-                   <CircleLinks linkTo = {"/tenant/profile/bioinfo/" + this.props.match.params.id} scale = {false} childLabel = "Bio Info" label = "2" isActive = {true}/>
-                         <CircleLinks linkTo = {"/tenant/profile/residentialinfo/" + this.props.match.params.id} scale = {true} childLabel = "Residential Info" label = "3" isActive = {false}/>
-                                  <CircleLinks linkTo = {"/tenant/profile/employmentinfo" + this.props.match.params.id} scale = {true} childLabel = "Employment Info" label = "4" isActive = {false}/>
+            <div className= "t-gray-darken-3-f mid t-h3 t-flex t-flex-column t-justify-space-between t-align-top p-widget m-padding ">
+                 <span className= "t-uppercase t-h2 ">UpdateBio Information</span>
+                 <span className= "t-gray-darken-1-f thin t-h3 t-lh-h3  m-half-top">Please provide accurate information</span>
+                 <div className= "t-md-10  t-flex t-justify-right t-flex-row t-align-top">
+                  <CircleLinks linkTo =  {"/tenant/" +  this.props.match.params.id + "/profile"} scale = {true} childLabel = "Overview" label = "A" isActive = {false}/>               
+                   <CircleLinks  linkTo = {"/tenant/profile/bioinfo/" + this.props.match.params.id} scale = {false} childLabel = "Bio Info" label = "2" isActive = {true}/>
+                     <CircleLinks linkTo = {"/tenant/profile/residentialinfo/" + this.props.match.params.id} scale = {true} childLabel = "Residential Info" label = "3" isActive = {false}/>
+                              <CircleLinks linkTo = {"/tenant/profile/employmentinfo/" + this.props.match.params.id} scale = {true} childLabel = "Employment Info" label = "4" isActive = {false}/>
+                                 <CircleLinks linkTo = {"/tenant/profile/generalinfo/" + this.props.match.params.id} scale = {true} childLabel = "General Info" label = "5" isActive = {false}/>
                 </div>
-             </div> 
 
-            <span className= "t-gray-darken-1-f thin t-h2 t-lh-h2  m-topp">Pelase provide accurate information</span>
+             </div> 
+           
             </div>
-       <CompletenessBar completeness = {this.state.completed} label = "Bio Info completeness" />
-          <div className ="t-md-10 p-widget widget-padding">
-      <div className="m-form-hold">
-      <FormElements  onUpdate = {this.onUpdate.bind(this)} type = "textbox" size = "t-md-4" ownstate = {this.state} name = "first_name"  initialvalue = {this.state.first_name} icons = "" label = "First Name"/>
-      <FormElements  onUpdate = {this.onUpdate.bind(this)} type = "textbox" size = "t-md-4" ownstate = {this.state} name = "last_name"  initialvalue = {this.state.last_name} icons = "" label = "Last Name"/>
-      </div>
-      <div className="m-form-hold">
-      <FormElements  onUpdate = {this.onUpdate.bind(this)} type = "textbox" size = "t-md-4" ownstate = {this.state} name = "state_of_origin"  initialvalue = {this.state.state_of_origin} icons = "" label = "State Of Origin"/>
-      <FormElements  onUpdate = {this.onUpdate.bind(this)} type = "textbox" size = "t-md-4" ownstate = {this.state} name = "educational_level"  initialvalue = {this.state.educational_level} icons = "" label = "Educational Level"/>
-      </div>
-      </div>
-       <div className=" p-widget t-md-10 widget-padding ">
-        <div className="m-form-hold">
-      <FormElements  onUpdate = {this.onUpdate.bind(this)} type = "textbox" size = "t-md-9" ownstate = {this.state} name = "preferences"  initialvalue = {this.state.preferences} icons = "" label = "preferences"/>
-      </div>
-        <div className="m-form-hold">
-      <FormElements  onUpdate = {this.onUpdate.bind(this)} type = "textbox" size = "t-md-4" ownstate = {this.state} name = "about_me"  initialvalue = {this.state.about_me} icons = "" label = "Short Biography"/>
-      <FormElements  onUpdate = {this.onUpdate.bind(this)} type = "textbox" size = "t-md-4" ownstate = {this.state} name = "phone_number"  initialvalue = {this.state.phone_number} icons = "" label = "Phone Number"/>
-      </div>
-     <div className="m-form-hold">
-      <FormElements  onUpdate = {this.onUpdate.bind(this)} type = "textbox" size = "t-md-4" ownstate = {this.state} name = "email"  initialvalue = {this.state.email} icons = "" label = "e-mail"/>
-      <FormElements  onUpdate = {this.onUpdate.bind(this)} type = "textbox" size = "t-md-4" ownstate = {this.state} name = "address"  initialvalue = { this.state.address ? this.state.address.address : ''} icons = "" label = "Address"/>
-        </div>
-     
-       <div className="m-form-hold">
-      <FormElements  onUpdate = {this.onUpdate.bind(this)} type = "date" size = "t-md-9" ownstate = {this.state} name = "date_of_birth"  initialvalue = {this.state.date_of_birth} icons = "" label = "Date Of Birth"/>
-   </div>
-        </div>
-   <div className ="t-md-10 p-widget ">
-<div className = "major-padding col-md-10 space">
-<div className = "m-heading increase">Social Questions</div>
- <div className ="m-sub ">Please select any of the below options that applies to you</div> 
-<div  className = "t-flex t-flex-column t-justify-space-around t-align-top t-md-10">
-<FormElements  onUpdate = {this.onUpdate.bind(this)} type = "radio" size = "s4" ownstate = {this.state}  name = "have_children"  initialvalue = {this.state.have_children} icons = "verified_user" label = "Do you have dependants(kids)? "/>
-<FormElements  onUpdate = {this.onUpdate.bind(this)} type = "radio" size = "s4" ownstate = {this.state}  name = "live_with_children"  initialvalue = {this.state.live_with_children} icons = "verified_user" label = "Do you live with your kids? "/>
-<FormElements  onUpdate = {this.onUpdate.bind(this)} type = "radio" size = "s4" ownstate = {this.state} name = " marital_status"  initialvalue = {this.state.marital_status} icons = "verified_user" label = "Are you married?"/>
-<FormElements  onUpdate = {this.onUpdate.bind(this)} type = "radio" size = "s4" ownstate = {this.state} name = "live_with_spouse"  initialvalue = {this.state.live_with_spouse} icons = "verified_user" label = "Do you live with your spouse?"/>
-</div>
-</div>
-</div>{/* form wrapper*/} 
- <div className="m-formhold t-flex t-justify-right t-md-10">
-  {! this.props.loader.Loading ?  <a className="waves-effect waves-light btn-large" onClick = {this.handleSubmit}><i className="material-icons left">cloud</i>Submit</a> : 
-  <a className = "waves-effect waves-light btn-large"><i className = "fa fa-spin fa-cog "></i> &nbsp;Loading</a>
-  }
+             {this.state.tenant_bio ?
+              <CompletenessBar completeness = {this.state.tenant_bio.completed}  withinform = {true} label = "Bio Info completeness" />
+              :
+             <Spin size = "large" />
+             }
+             <div className="p-widget m-padding t-md-10">   
+               <div className = "m-heading increase">Bio Information Formfields</div>
+             <div className ="m-sub ">Please fill in the following data with accurate information</div>     
+               <div className = "t-flex t-flex-column t-md-10">
+             { this.props.formBreakDownData ?
+                  <div className = "t-md-10">
+              {  this.props.formBreakDownData.text.length  > 0 && this.props.form.tenant_bio ? 
+                <div className = "double-container"> 
+                  {this.props.formBreakDownData.text.map((item,index) =>{
+                  if(this.props.form.tenant_bio && this.props.form.tenant_bio[0]) {     
+                  return(  
+                 this.props.form.tenant_bio && this.props.form.tenant_bio[0] &&  this.props.form.tenant_bio[0][item] && this.props.form.tenant_bio[0][item].dependent_stat && ! this.props.form.tenant_bio[0][item].dependent_stat.is_dependent  ?      
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"text"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state} name = {this.props.form.tenant_bio[0][item].key}  keyname = {this.props.form.tenant_bio[0][item].keyname}  data = {this.props.formBreakDownData.text}    />
+                     : 
+                    this.state.obj2 && this.state.obj2[item] ? 
+                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"text"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state}  name = {this.props.form.tenant_bio[0][item].key}   keyname = {this.props.form.tenant_bio[0][item].keyname}  data = {this.props.formBreakDownData.text}    />
+                      :
+                      null
+           
+                         )
+
+                  }
+                  }) 
+                  }
+    
+                </div>
+                
+                 :<div></div>
+                } 
+               {  this.props.formBreakDownData.phone.length  > 0 ? 
+                <div className = "double-container"> 
+                  {this.props.formBreakDownData.phone.map((item,index) =>{
+                  if (this.props.form.tenant_bio && this.props.form.tenant_bio[0] &&  this.props.form.tenant_bio[0][item] )  {  
+                  return(  
+                 this.props.form.tenant_bio && this.props.form.tenant_bio[0] &&  this.props.form.tenant_bio[0][item] &&   this.props.form.tenant_bio[0][item].dependent_stat && ! this.props.form.tenant_bio[0][item].dependent_stat.is_dependent  ?      
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"phone"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state} name = {this.props.form.tenant_bio[0][item].key}  keyname = {this.props.form.tenant_bio[0][item].keyname}  data = {this.props.formBreakDownData.phone}    />
+                     : 
+                    this.props.form.tenant_bio[0][item].dependent_stat ?
+                    this.state.obj2 && this.state.obj2[item] ? 
+                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"phone"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state}  name = {this.props.form.tenant_bio[0][item].key}   keyname = {this.props.form.tenant_bio[0][item].keyname}  data = {this.props.formBreakDownData.phone}    />
+                     :
+                     null
+                      :
+                      null
+           
+                        )
+                  }
+
+                   
+                  }) 
+                  }
+    
+                </div>
+                
+                 :<div></div>
+                } 
+                  {  this.props.formBreakDownData.date.length  > 0 ? 
+                <div className = "double-container"> 
+                  {this.props.formBreakDownData.date.map((item,index) =>{
+                   if(this.props.form.tenant_bio && this.props.form.tenant_bio[0]) {         
+                  return(  
+                   this.props.form.tenant_bio && this.props.form.tenant_bio[0] &&  this.props.form.tenant_bio[0][item] && this.props.form.tenant_bio[0][item].dependent_stat && ! this.props.form.tenant_bio[0][item].dependent_stat.is_dependent  ?      
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"date"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state} name = {this.props.form.tenant_bio[0][item].key}  keyname = {this.props.form.tenant_bio[0][item].keyname}  data = {this.props.formBreakDownData.date}    />
+                     : 
+                    this.state.obj2 && this.state.obj2[item] ? 
+                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"date"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state}  name = {this.props.form.tenant_bio[0][item].key}   keyname = {this.props.form.tenant_bio[0][item].keyname}  data = {this.props.formBreakDownData.date}    />
+                      :
+                      null
+           
+                         )
+
+                   }
+                  }) 
+                  }
+    
+                </div>
+                
+                 :<div></div>
+                } 
+
+
+              {
+              this.props.formBreakDownData.select.length  > 0 ? 
+                <div className = "double-container"> 
+                  {this.props.formBreakDownData.select.map((item,index) =>{
+                   if(this.props.form.tenant_bio && this.props.form.tenant_bio[0]) {   
+                  return(  
+                  this.props.form.tenant_bio && this.props.form.tenant_bio[0] &&  this.props.form.tenant_bio[0][item] && this.props.form.tenant_bio[0][item].dependent_stat &&  ! this.props.form.tenant_bio[0][item].dependent_stat.is_dependent  ?   
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"select"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state} name = {this.props.form.tenant_bio[0][item].key}  options = {this.props.form.tenant_bio[0][item].options}  keyname = {this.props.form.tenant_bio[0][item].keyname}  data = {this.props.formBreakDownData.select}    />
+                   :
+                   this.state.obj2 && this.state.obj2[item] ? 
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"select"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state} options = {this.props.form.tenant_bio[0][item].options}  keyname = {this.props.form.tenant_bio[0][item].keyname}  data = {this.props.formBreakDownData.select}    />
+                   :
+                   null
+                  )
+                   }
+                  }) 
+                  }
+    
+                </div>
+                
+                 :<div></div>
+
+                  }
+                 
+               {
+                 this.props.formBreakDownData.textarea && this.props.formBreakDownData.textarea.length  > 0 ? 
+                <div className = "double-container"> 
+                  {this.props.formBreakDownData.textarea.map((item,index) =>{
+                   if(this.props.form.tenant_bio && this.props.form.tenant_bio[0] && this.props.form.tenant_bio[0][item] ) {   
+                  return(  
+                  this.props.form.tenant_bio && this.props.form.tenant_bio[0] &&  this.props.form.tenant_bio[0][item] && this.props.form.tenant_bio[0][item].dependent_stat && this.props.form.tenant_bio[0][item].dependent_stat.is_dependent  ?   
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"textarea"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state} options = {this.props.form.tenant_bio[0][item].options}   keyname = {this.props.form.tenant_bio[0][item].keyname}  name = {this.props.form.tenant_bio[0][item].key}  data = {this.props.formBreakDownData.textarea}    />
+                 :
+                  this.state ? 
+                  <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"textarea"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state} options = {this.props.form.tenant_bio[0][item].options} name = {this.props.form.tenant_bio[0][item].key}   keyname = {this.props.form.tenant_bio[0][item].keyname}  data = {this.props.formBreakDownData.textarea}    />
+                 :
+                   null
+                  )
+                   }
+                  }) 
+                  }
+    
+                </div>
+                
+                 :<div></div>
+
+                  }                
  
 
 
-  </div>
+              
+               </div>
+              
+               :
+               <div className = "m-loader-container  t-flex-column t-justify-center t-align-center">
+                     <Spin size="large" />
+                     <span className = "m-loader-text t-left-f">
+                       Loading content please wait...
+                       </span>
+                      <span className ="m-sub t-left-f">While this information loads please ensure your internet access is working</span> 
+                 </div>
+               }
+               
+              
+                   { ! this.props.loader.Loading   ? 
+                   <div className = "p-button-container t-flex t-align-center t-justify-space-between">
+                     <Button type="primary" icon="download" size="large" onClick = {this.handleSubmit}>Submit</Button>
+                   <NavLink to = {"/tenant/profile/residentialinfo/" + this.props.match.params.id}><Button type="primary"  size="large"  >Next<Icon type="right" /> </Button></NavLink>
+                      </div>
+                    :
+                    <div className = "p-button-container t-flex t-align-center t-justify-space-between">
+                    <Button type="primary" icon="download" loading = {true} size="large">Submit</Button>
+                    <Button type="primary" loading = {true}>Next<Icon type="right"  size="large"  /> </Button> 
+                    </div>             
+                   }
+              
+   
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              </div>
+              </div>
    </div>
-       
-     </div>   
+  
+   </div>
 <div className = "full-height t-md-35">
      <div className ="t-md-10 p-widget t-flex t-flex-column ">
     <div className = "m-heading m-green-f"> <i className = "material-icons small">group</i>&nbsp;&nbsp;Get Noticed</div>
  <div className ="m-sub margin-htop m-green-f">Share your profile with landlords</div> 
  
      </div>
-   <div className ="t-md-10 p-widget t-flex t-flex-column ">
+   <div className ={"t-md-10 p-widget t-flex t-flex-column " + this.state.ishighlighting   } >
 <div className = "m-heading increase">General Information</div>
  <div className ="m-sub margin-htop ">Check this board to confirm your current information</div> 
-<div className = "itemlist"><div className = "key">First Name</div><div className = "item">{this.props.myProfile.tenants.next_of_kin}</div></div>
-<div className = "itemlist"><div className = "key">Last Name</div><div className = "item">{this.props.myProfile.tenants.next_of_kin_number}</div></div>
-<div className = "itemlist"><div className = "key">Educational Level</div><div className = "item">{this.props.myProfile.tenants.smoking_status ? "Yes im a Smoker": "No i dont smoke"}</div></div>
-<div className = "itemlist"><div className = "key">Your special Preference in apartment</div><div className = "item">{this.props.myProfile.tenants.pet_status ? "Yes I have pets": "No i dont have pets"}</div></div>
-<div className = "itemlist"><div className = "key">Short bio</div><div className = "item">{this.props.myProfile.tenants.immigration_status ? "Yes im an immigrant": "No i am a citezin"}</div></div>
-<div className = "itemlist"><div className = "key">Telephone number</div><div className = "item">{this.props.myProfile.tenants.convicted_status? "Yes i have being Convicted": "No my records are clean"}</div></div>
-<div className = "itemlist"><div className = "key">E-mail</div><div className = "item">{this.props.myProfile.tenants.enterpreneural_status ? "Yes i own my business": "I am employed"}</div></div>
-<div className = "itemlist"><div className = "key">Address</div><div className = "item">{this.props.myProfile.tenants.employment_status ? "Yes i am emploed" : "No i am unemployed"}</div></div>
-<div className = "itemlist"><div className = "key"> State Of Origin</div><div className = "item">{this.props.myProfile.tenants.student_status? "Yes i am a student" : "No  i am not a student"}</div></div>
-
-<div className = "itemlist"><div className = "key">Date Of Birth</div><div className = "item">{this.props.myProfile.tenants.immigration_status ? "Yes im an immigrant": "No i am a citezin"}</div></div>
-<div className = "itemlist"><div className = "key">Do You Have Children ?</div><div className = "item">{this.props.myProfile.tenants.convicted_status? "Yes i have being Convicted": "No my records are clean"}</div></div>
-<div className = "itemlist"><div className = "key">Do You Live with your Children ?</div><div className = "item">{this.props.myProfile.tenants.enterpreneural_status ? "Yes i own my business": "I am employed"}</div></div>
-<div className = "itemlist"><div className = "key">Are you married</div><div className = "item">{this.props.myProfile.tenants.employment_status ? "Yes i am emploed" : "No i am unemployed"}</div></div>
-<div className = "itemlist"><div className = "key"> Do You Live with your spouse? </div><div className = "item">{this.props.myProfile.tenants.student_status? "Yes i am a student" : "No  i am not a student"}</div></div>
+ {   this.props.structure.structure ? this.props.structure.structure.tenant_bio.length > 0  ?  
+          this.props.structure.structure.tenant_bio.map ( (item, index)=>{                             
+          return(      
+            <div className = "t-itemlist"  key = {item.key} ><div className = "t-key">{item.keyname} </div><div className = "t-item">{item.value} </div></div>                   
+              )
+             })
+             :
+             <div className = "profile-key">No information provided for this section</div>
+             :
+             null        
+           }
 </div>
 
 
+   <div className ="t-md-10 p-widget t-flex t-flex-column ">
+<div className = "m-heading increase">Optional Properties</div>
+ <div className ="m-sub margin-htop ">We will like quick answers to this questions so we can find best suiting accommodation for you.</div> 
+             <div className = "t-flex t-flex-column t-md-10">
+                 {
+                  this.props.formBreakDownData  &&  this.props.formBreakDownData.switch.length  > 0 ? 
+                <div className = "double-container nobg"> 
+                  {this.props.formBreakDownData.switch.map((item,index) =>{
+                    if(this.props.form.tenant_bio && this.props.form.tenant_bio[0] && this.props.form.tenant_bio[0][item] ) {   
+                  return(  
+                    <NewForm key = {index} onUpdate = {this.onUpdate.bind(this)} datatype = {"switch"}  label =  {this.props.form.tenant_bio[0]} ownstate = {this.state} field = {item}  keyname = {this.props.form.tenant_bio[0][item].keyname}  data = {this.props.formBreakDownData.switch}    />
+                  )
+                    }
+                  }) 
+                  }
+    
+                </div>
+                
+                 :
+                 <div className = "m-loader-container  t-flex-column t-justify-center t-align-center">
+                     <Spin size="large" />
+                     <span className = "m-loader-text t-left-f">
+                       Loading content please wait...
+                       </span>
+                      <span className ="m-sub t-left-f">While this information loads please ensure your internet access is working</span> 
+                 </div>
+
+                 } 
+
+                 
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    </div>
+<Modal  title="Submitting your data please wait" visible={this.state.showModal}  onOk={this.hideModal}   onCancel={this.hideModal}    okText="Click to close"  cancelText="Uploading"    >
+           <div className = "t-md-10 t-fullheight t-flex t-align-center t-justify-center">
+             {this.props.loader.Loading ? 
+             <Spin size="large" /> 
+             :
+              <Progress percent= {100} status="active" type = "circle" />
+             }
+             </div>
+        </Modal>
+
    </div>
-        
+        :
+         <div>Laoding...</div>
         );
-    }else{
-        return <div>Loading..</div>
-    }
+    
+    
+   
+	}
     
     }
-}
+
 function matchStateToProps(state){
     return   {
         auth:state.user.auth,
@@ -203,7 +479,10 @@ function matchStateToProps(state){
         tenantStruct:state.tenantInfoStruct,
         tenantInfoList:state.tenantInfoLists,
         user:state.user.auth.user,
-         loader: state.tenantProfileLoader
+        loader: state.tenantProfileLoader,
+        form:state.getform.data,
+        formBreakDownData:state.formBreakDownData.content,
+        structure:state.structure,
 
         
  
@@ -214,6 +493,12 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     loadTenant: loadSpecificTenant,
     update: patchSpecificTenant,
+    showLoading:showLoading,
+    errorLoading:errorLoading,
+    hideLoading:hideLoading,
+    getFormStruct: getFormStruct, 
+     loadStructure: getProfileStruct,
+    breakFormToComponents:breakFormToComponents
   }, dispatch);
 }
 
