@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Clause} from "../Lease";
 
 class LeaseClauses extends Component {
 
@@ -23,16 +24,6 @@ class LeaseClauses extends Component {
         );
     }
 
-}
-
-function Clause(props){
-    return (
-        <div className="clause">
-            <p>
-                <b>{props.title}: </b> {props.content}
-            </p>
-        </div>
-    );
 }
 
 export default LeaseClauses;

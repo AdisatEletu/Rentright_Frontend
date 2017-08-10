@@ -3,13 +3,17 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Button, Card, Avatar, Steps, Affix} from 'antd';
 import {VelocityTransitionGroup} from 'velocity-react';
-import LeaseDoc from "./lease/LeaseDoc";
 import LeaseTerm from "./lease/LeaseTerm";
 import LeaseClauses from "./lease/LeaseClauses";
 import LeasePermissions from "./lease/LeasePermissions";
+import AdvancedWarnings from "./lease/AdvancedWarnings";
+import LeaseContact from "./lease/LeaeseContact";
+import * as SmoothScroll from 'smooth-scroll';
+import Lessees from "./lease/Lessees";
 
 
 const Step = Steps.Step;
+const scroll = new SmoothScroll();
 
 class Lease extends Component {
 
@@ -29,6 +33,8 @@ class Lease extends Component {
         if(current <= 6){
             this.setState({current_step: current});
         }
+
+        scroll.animateScroll( 0 );
     }
 
     previous = () => {
@@ -38,6 +44,7 @@ class Lease extends Component {
         if(current >= 1){
             this.setState({current_step: current});
         }
+        scroll.animateScroll( 0 );
     }
 
     render() {
@@ -63,6 +70,9 @@ class Lease extends Component {
                                 {this.state.current_step===1 ? <LeaseTerm onChange={this.onChange.bind(this)}/> : undefined}
                                 {this.state.current_step===2 ? <LeaseClauses onChange={this.onChange.bind(this)}/> : undefined}
                                 {this.state.current_step===3 ? <LeasePermissions onChange={this.onChange.bind(this)}/> : undefined}
+                                {this.state.current_step===4 ? <AdvancedWarnings onChange={this.onChange.bind(this)}/> : undefined}
+                                {this.state.current_step===5? <LeaseContact onChange={this.onChange.bind(this)}/> : undefined}
+                                {this.state.current_step===6? <Lessees onChange={this.onChange.bind(this)}/> : undefined}
                             </VelocityTransitionGroup>
                         </div>
                         <div className="row">
@@ -142,6 +152,19 @@ function TableOfContent(props) {
             </p>
         </div>
     );
+}
+
+export class Clause extends Component{
+    render(){
+        return (
+        <div className="clause">
+            <p>
+                <b>{this.props.title}: </b> {this.props.content}
+            </p>
+        </div>
+    );
+    }
+
 }
 
 
