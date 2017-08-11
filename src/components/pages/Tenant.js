@@ -19,7 +19,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";  
 import PropTypes from "prop-types";
 import {getProperty} from "../../state/actions/userActions";
-import { loadAllTenants, loadSpecificTenant,imageready, patchSpecificTenant, deleteSpecificTenant, showLoading, hideLoading, errorLoading } from '../../state/actions/tenantAction';
+import { loadAllTenants, loadSpecificTenant,imageready, patchSpecificTenant,connectToSocket, deleteSpecificTenant, showLoading, hideLoading, errorLoading } from '../../state/actions/tenantAction';
 
 
 class Tenant extends Component{
@@ -32,6 +32,7 @@ class Tenant extends Component{
         this.last_name =  this.props.auth.user.last_name;   
         this.uuid = this.props.auth.user.uuid;  
         this.props.loadTenant("/"+this.uuid);
+      
  
     }
     componentDidMount(){    
@@ -39,7 +40,7 @@ class Tenant extends Component{
     try{
        //this.uuid = this.props.match.params.id;
         
-      
+         this.props.connectToSocket(this.uuid);
         this.context.router.history.push("/tenant/profile/" + this.uuid);
   
      }catch(err){
@@ -152,7 +153,8 @@ function matchStateToProps(state){
 function mapDispatchToProps(dispatch) {  
   return bindActionCreators({
     loadTenant: loadSpecificTenant,
-         imageready:imageready        
+         imageready:imageready ,
+         connectToSocket:connectToSocket     
   }, dispatch);
 }
 

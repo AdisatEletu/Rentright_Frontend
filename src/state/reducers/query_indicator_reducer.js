@@ -6,7 +6,7 @@ export const initialState = {
 }
 
 export default function query_indicator_reducer(state=initialState,action) {
-
+    console.log(action)
     switch (action.type){
         case SHOW_LOADING_QUERY:
         return {

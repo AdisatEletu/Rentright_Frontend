@@ -25,6 +25,7 @@ export default class apiActions {
     return fetch(path).then(response => {
       return response.json();
     }).catch(error => {
+      throw error
       return error;
     }); 
   };

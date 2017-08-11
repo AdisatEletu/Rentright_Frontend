@@ -2,7 +2,7 @@ import apiActions from './apiActions';
 import {toastr} from 'react-redux-toastr';
 //import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import * as types from '../ActionTypes';
-
+import SocketService from '../../services/socket.service';
 export const dispatchmessage = {   
   success : toastr.success('Request Successful', 'your request was successful'),
   error  : toastr.error('Request Failed', 'Sorry we couldnt process your request')
@@ -77,6 +77,14 @@ export function loadAllTenants() {
   };
 }
 
+export function connectToSocket(uuid){
+  let socket = new SocketService(uuid);
+  console.log(socket);
+  socket.initialize().then((val)=>{
+    console.log(val);
+  })
+
+}
 
 
 export function loadSpecificTenant(path) {  
@@ -143,11 +151,19 @@ export function load_my_query(path){
     //send only uuid
     dispatch(loading_query('loading'))
       let api = new apiActions('https://rentright.herokuapp.com/api/rentright/units/query/?');
-      let uri = api + path //this should be query parameers
+      
+      let uri = path;
+      console.log(path)
       return api.geturl(uri, true).then((results)=>{
+        if (results.error){
+          console.log(results);
+          dispatch(loading_query('errorloading'));
+        }else{
         dispatch(loading_query('hideloading'));
         dispatch(load_my_query_success(results))
+        }
       }).catch((err)=>{
+        console.log(err)
         dispatch(loading_query('errorloading'));
       })
      
@@ -383,13 +399,13 @@ export function loading_query(context){
     case  'hideloading':
     return{
       type: types.HIDE_LOADING_QUERY,
-       Loading: true,
+       Loading: false,
       Error: false
     }
     case 'errorloading':
     return {
       type:types.ERROR_LOADING_QUERY,
-       Loading: true,
+       Loading: false,
         Error: true,
     }
      default: 
@@ -401,6 +417,9 @@ export function loading_query(context){
     }
   }
 
+}
+export  function runitem(item){
+  console.log(item);
 }
 
 export function breakFormToComponents(formdatal){
