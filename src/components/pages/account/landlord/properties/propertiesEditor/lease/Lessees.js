@@ -53,14 +53,14 @@ class Lessees extends Component {
 
 }
 
-class Tenants extends Component{
+export class Tenants extends Component{
     render(){
         return(
             <div className="row">
-                <div className="col s12 m1">
+                <div className="col m1">
                     <Avatar size="large" icon="user" />
                 </div>
-                <div className="col s10 m10">
+                <div className="col m10">
                     <b>{this.props.name}</b><br/>
                     {this.props.email}
                 </div>

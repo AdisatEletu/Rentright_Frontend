@@ -2,42 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4846936-5bd9-4061-8338-97cecc35918a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/agent.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/agent1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/agent2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/couple.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/girl_pic3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/girl_pics22.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/girl_picture.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/girl_picture2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/girlpicture.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior10.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior11.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior12.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior13.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior14.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior16.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior17.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior18.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior19.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior20.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior21.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/whatsapp.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/home.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/tenant.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/smooth-scroll.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaeseContact.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Lessees.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/CSS/img/rentright-logo-3000.png" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/effects.css" afterPath="$PROJECT_DIR$/public/assets/css/effects.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/Home.js" afterPath="$PROJECT_DIR$/src/components/pages/Home.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Lease.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Lease.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/AdvancedWarnings.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/AdvancedWarnings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeasePermissions.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeasePermissions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Lessees.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Lessees.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/TenantLease.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/TenantLease.js" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -52,12 +24,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="effects.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assets/css/effects.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="644" column="18" lean-forward="true" selection-start-line="644" selection-start-column="18" selection-end-line="644" selection-end-column="18" />
+            <state relative-caret-position="214">
+              <caret line="674" column="1" lean-forward="false" selection-start-line="674" selection-start-column="1" selection-end-line="674" selection-end-column="1" />
               <folding>
                 <element signature="e#2925#3062#0" expanded="false" />
                 <element signature="e#3085#3453#0" expanded="false" />
@@ -70,16 +42,59 @@
       <file leaf-file-name="Lease.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Lease.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            <state relative-caret-position="17">
+              <caret line="4" column="42" lean-forward="false" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#4020#5166#0" expanded="false" />
-                <element signature="e#4121#4813#0" expanded="false" />
-                <element signature="n#!!block;n#CardContent#0" expanded="false" />
-                <element signature="n#!!block;n#TableOfContent#0" expanded="false" />
                 <element signature="n#Clause#0" expanded="false" />
                 <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LeaseEditHome.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dashboard.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="51" column="21" lean-forward="true" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Form.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/auth/login/Form.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="80" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Lessees.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Lessees.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="48" column="22" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="48" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,6 +134,7 @@
       <find>fs</find>
       <find>home-sli</find>
       <find>login</find>
+      <find>under</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;Clause</replace>
@@ -135,10 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/PropertyEditor.js" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/components/pages/LandingPage/Button.js" />
         <option value="$PROJECT_DIR$/public/CSS/indexT.css" />
         <option value="$PROJECT_DIR$/src/components/pages/Tenant.js" />
         <option value="$PROJECT_DIR$/src/components/pages/tenantCard.js" />
@@ -169,13 +181,11 @@
         <option value="$PROJECT_DIR$/src/components/pages/LandingPage/ContinueAs.js" />
         <option value="$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/TenantLease.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseDoc.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/PropertyInfo.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseTerm.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeasePermissions.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/AdvancedWarnings.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaeseContact.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Lesses.js" />
@@ -183,8 +193,14 @@
         <option value="F:/New home/index.html" />
         <option value="$PROJECT_DIR$/src/components/pages/Home.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/public/assets/css/effects.css" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Lessees.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/auth/login/Form.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/TenantLease.js" />
+        <option value="$PROJECT_DIR$/public/assets/css/effects.css" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Lease.js" />
       </list>
     </option>
@@ -375,6 +391,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="shared" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rentright_Frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Rentright_Frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="account" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="landlord" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="properties" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -414,67 +464,12 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="propertiesEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Rentright_Frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Rentright_Frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="account" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="landlord" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="properties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="propertiesEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lease" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Rentright_Frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Rentright_Frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Changed Files">
           <PATH>
@@ -501,7 +496,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -683,12 +677,13 @@
       <workItem from="1501835251472" duration="38612000" />
       <workItem from="1502182919649" duration="16485000" />
       <workItem from="1502268888319" duration="18363000" />
-      <workItem from="1502322076985" duration="15429000" />
+      <workItem from="1502322076985" duration="18021000" />
+      <workItem from="1502382790324" duration="29039000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1016212000" />
+    <option name="totallyTimeSpent" value="1047843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1370" height="735" extended-state="0" />
@@ -697,13 +692,13 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16291292" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.320598" sideWeight="0.503003" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886191" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.320598" sideWeight="0.496997" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -733,42 +728,11 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="29" />
+      <option name="time" value="30" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/CSS/working.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="105" column="29" lean-forward="true" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/EditorHome.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/StepForm.js" />
-    <entry file="file://$PROJECT_DIR$/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/LandingPage.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/pages/tenantCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/Loginpage.js" />
     <entry file="file://$PROJECT_DIR$/src/logo.svg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -910,18 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="32" lean-forward="true" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-            <element signature="e#472#982#0" expanded="false" />
-            <element signature="e#999#1509#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeasePermissions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -950,9 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="22" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -984,14 +933,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://F:/New home/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://F:/New home/index.html" />
     <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
@@ -1010,19 +952,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/TenantLease.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/state/actions/flashMessageActions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1030,9 +963,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1040,7 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="49" lean-forward="true" selection-start-line="0" selection-start-column="49" selection-end-line="1" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1048,41 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/effects.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="644" column="18" lean-forward="true" selection-start-line="644" selection-start-column="18" selection-end-line="644" selection-end-column="18" />
-          <folding>
-            <element signature="e#2925#3062#0" expanded="false" />
-            <element signature="e#3085#3453#0" expanded="false" />
-            <element signature="e#3474#3523#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="82" column="64" lean-forward="false" selection-start-line="82" selection-start-column="64" selection-end-line="82" selection-end-column="64" />
-          <folding>
-            <element signature="n#!!block;n#onChange#0;n#Listing#0" expanded="false" />
-            <element signature="e#5966#8181#0" expanded="false" />
-            <element signature="n#!!block;n#previous#0;n#Listing#0" expanded="false" />
-            <element signature="n#!!block;n#listingAction#0;n#Listing#0" expanded="false" />
-            <element signature="n#!!block;n#render#0;n#Listing#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1090,23 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="26" column="26" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="26" selection-end-column="26" />
-          <folding>
-            <element signature="e#1491#1864#0" expanded="false" />
-            <element signature="e#1881#2281#0" expanded="false" />
-            <element signature="e#2505#2913#0" expanded="false" />
-            <element signature="e#2930#3298#0" expanded="false" />
-            <element signature="e#3315#3801#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Lessees.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="59" lean-forward="true" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1114,7 +991,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
           <caret line="48" column="52" lean-forward="false" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1126,16 +1002,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Lease.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+            <element signature="e#472#982#0" expanded="false" />
+            <element signature="e#999#1509#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/Content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Lessees.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="48" column="22" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="48" selection-end-column="22" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#4020#5166#0" expanded="false" />
-            <element signature="e#4121#4813#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/auth/login/Form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="80" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="51" column="21" lean-forward="true" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/effects.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="674" column="1" lean-forward="false" selection-start-line="674" selection-start-column="1" selection-end-line="674" selection-end-column="1" />
+          <folding>
+            <element signature="e#2925#3062#0" expanded="false" />
+            <element signature="e#3085#3453#0" expanded="false" />
+            <element signature="e#3474#3523#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/TenantLease.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="21" column="36" lean-forward="false" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+          <folding>
+            <element signature="e#1158#1767#0" expanded="false" />
+            <element signature="n#!!block;n#CardContent#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1343">
+          <caret line="2" column="35" lean-forward="true" selection-start-line="2" selection-start-column="35" selection-end-line="3" selection-end-column="56" />
+          <folding>
+            <element signature="e#3988#5134#0" expanded="false" />
+            <element signature="e#4089#4781#0" expanded="false" />
             <element signature="n#!!block;n#CardContent#0" expanded="false" />
             <element signature="n#!!block;n#TableOfContent#0" expanded="false" />
+            <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="22" column="23" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#Listing#0" expanded="false" />
+            <element signature="n#!!block;n#onChange#0;n#Listing#0" expanded="false" />
+            <element signature="n#!!block;n#onUpdateCallback#0;n#Listing#0" expanded="false" />
+            <element signature="e#5966#8181#0" expanded="false" />
+            <element signature="n#!!block;n#previous#0;n#Listing#0" expanded="false" />
+            <element signature="n#!!block;n#listingAction#0;n#Listing#0" expanded="false" />
+            <element signature="n#!!block;n#render#0;n#Listing#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/PropertyEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="41" column="45" lean-forward="false" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/Units.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="51" lean-forward="true" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="96" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Lease.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="42" lean-forward="false" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+          <folding>
             <element signature="n#Clause#0" expanded="false" />
             <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
           </folding>
