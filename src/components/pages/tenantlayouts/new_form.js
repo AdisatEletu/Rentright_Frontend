@@ -5,29 +5,38 @@ import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 import Radio from  'antd/lib/radio';
 import  Input from 'antd/lib/input';
+import moment from 'moment';
 import Col from 'antd/lib/col';
-import  Select from 'antd/lib/select';
 import InputNumber from 'antd/lib/input-number';
 import  DatePicker from 'antd/lib/date-picker'; 
 import  AutoComplete from 'antd/lib/auto-complete';
 import  Cascader from 'antd/lib/cascader';
 import Icon from 'antd/lib/icon';
 import Switch from 'antd/lib/switch';
-//import Select from 'antd/lib/select'
-const InputGroup = Input.Group;
-//const Option = Select.Option;
+import Select from 'antd/lib/select'
+import 'moment/locale/en-gb';
+import { LocaleProvider } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
 
+moment.locale('en');
+const InputGroup = Input.Group;
+const Option = Select.Option;
+const { TextArea } = Input;
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
-const { Option, OptGroup } = Select;
+const { OptGroup } = Select;
+const { MonthPicker, RangePicker } = DatePicker;
+const  dateFormat = 'YYYY-MM-DD';
 class NewForm extends Component{
     constructor(props){
         super(props)  
-        this.state = Object.assign({},this.props.ownstate)    
+        this.state = Object.assign({options:[]},this.props.ownstate)    
         this.sendobj = {}
+        this.options;
         this.radiogroup = false;
-        this.text = false; this.switch = false; this.select = false;
-        console.log(this.props.label)
+        this.text = false; this.switch = false; this.select = false; this.textarea; this.phone = false; this.date = false;
+        console.log(this.props.options)
+         console.log('Option Vlues')
        this.handleInputChange = this.handleInputChange.bind(this);
        this.handleSwitchChange = this.handleSwitchChange.bind(this);   
        this.handleRadioChange = this.handleRadioChange.bind(this);
@@ -43,19 +52,87 @@ class NewForm extends Component{
     else if (this.props.datatype == "select"){ 
         this.select = true; 
     }
+    else if (this.props.datatype == "textarea"){ 
+        this.textarea = true; 
+    }
+     else if (this.props.datatype == "phone"){ 
+        this.phone = true; 
+        console.log(this.props.datatype);
+        console.log('phone was successfully passed')
+    }
+    else { 
+        this.date = true; 
+    }
     this.sendobj = {};
     console.log(this.props.data)
      }
- handleInputChange = (event)=> {
+   componentWillMount(){
+    if ( this.props.options){
+      let opo= this.props.options.map((item) => { 
+        return <Option key={item} value = {item}>{item}</Option>;
+      });
+     this.setState({options : opo});
+     console.log(this.state);
+     console.log('new form state')
+
+    }
+    }
+
+
+ handleSelectChange = (value,name)=> {
+    console.log(value)
+    console.log('select event')
+   this.sendobj = {};
+    var th = this;
+    console.log(name) 
+    if (value != ''){
+      let newshi = {};
+      newshi[name] = value;
+      this.setState(newshi);
+      Object.assign(th.sendobj, newshi) ;
+    }
+    this.setState({
+    [name]: value
+    });
+    this.props.onUpdate(th.sendobj)
+  } 
+
+handleDateChange = (values,name)=> {
+   let value =   moment(value).format('YYYY-MM-DD');
+       console.log(value)
+    console.log('date event')
+   this.sendobj = {};
+    var th = this;
+    console.log(name) 
+    if (value != ''){
+      let newshi = {};
+      newshi[name] = value;
+      this.setState(newshi);
+      Object.assign(th.sendobj, newshi) ;
+    }
+    this.setState({
+    [name]: value
+    });
+    this.props.onUpdate(th.sendobj)
+  } 
+
+
+
+
+
+
+ handleInputChange = (event,name)=> {
+    console.log(event)
+    console.log('select event')
    this.sendobj = {};
     var th = this;
     const target = event.target;    
-    console.log(target.value)
-    const name = target.value;  
+    //console.log(target)
+    //const name = target.name;  
     const value = target.value;  
     if (value != ''){
       let newshi = {};
-      newshi[target.name] = value;
+      newshi[name] = value;
       this.setState(newshi);
       Object.assign(th.sendobj, newshi) ;
     }
@@ -120,16 +197,31 @@ class NewForm extends Component{
          
        
             :
-            this.text ?
+            this.text || this.textarea || this.phone || this.date ?
         
         <div className = "new-form-item2 t-flex-left">   
             <div className = "new-form-label m-ellispis">
                 {this.props.keyname}
              </div> 
-             <div className = "new-form-form t-md-45"> 
-            <Col span={24}>
-            <Input  prefix={<Icon type="tag" />} defaultValue={this.state[this.props.name] } placeholder = {this.props.keyname}    onChange = {this.handleInputChange} />  
-           </Col>
+             <div className = "new-form-form t-md-9"> 
+           
+            {this.text ?
+            <Input  prefix={<Icon type="tag" />} defaultValue={this.state[this.props.name] } placeholder = {this.props.keyname}  size = "large"   onChange = {(e) => this.handleInputChange(e,this.props.name)} />  
+            :
+            this.textarea ?
+            <TextArea  rows={7}  prefix={<Icon type="tag" />} defaultValue={this.state[this.props.name] }  placeholder = {this.props.keyname}    onChange = {(e) => this.handleInputChange(e,this.props.name)} /> 
+            :
+            this.phone ?
+         <InputGroup size="large"> 
+         <Col span={4}>
+            <Input defaultValue="234" /> </Col> <Col span={15}> <Input defaultValue="" placeholder = {this.props.keyname}   onChange = {(e)=> this.handleInputChange(e,this.props.name)}  /> </Col> </InputGroup>
+            :
+            this.date ?
+            <DatePicker size="large"  onChange = {(e)=> this.handleDateChange(e,this.props.name)} format={dateFormat} placeholder = {this.props.keyname}  />
+            :
+            null
+            } 
+      
             </div>   
         </div> 
              :  
@@ -138,8 +230,8 @@ class NewForm extends Component{
          <div className = "new-form-label m-ellispis">
                 {this.props.keyname}
              </div> 
-             <div className = "new-form-form t-md-45"> 
-             <Switch checkedChildren={<Icon type="check" />}  size="small"  unCheckedChildren={<Icon type="cross" />} defaultChecked = {this.state[this.props.name]}  onChange = { (e)=> this.handleSwitchChange(e,this.props.field) }/>
+             <div className = "new-form-form t-md-9"> 
+             <Switch checkedChildren={<Icon type="check" />}  size="large"  unCheckedChildren={<Icon type="cross" />} defaultChecked = {this.state[this.props.name]}  onChange = { (e)=> this.handleSwitchChange(e,this.props.field) }/>
 
             </div>   
         </div> 
@@ -150,19 +242,16 @@ class NewForm extends Component{
                 {this.props.keyname}
              </div> 
              <div className = "new-form-form t-md-45"> 
-             <Select defaultChecked = {this.state[this.props.name]}  onChange = { (e,label)=> this.handleSwitchChange(e,this.props.field) } placeholder =  {this.props.keyname} >
-                 <OptGroup label = "Select one">
-                    {this.props.options.map((item, index)=>{
-                        return(<Option key ={index} value = "item">item</Option>)
-                    })
-                    
-                    }
-
-                 </OptGroup>
-
-
+           { this.props.options ?
+             <Select defaultChecked = {this.state[this.props.name]}  style = {{width:280}} onChange = { (e,label)=> this.handleSelectChange(e,this.props.name) } placeholder = {this.props.keyname}  >
+                        {
+                      this.state.options
+             
+                        }
                  </Select>
-
+                 :
+                 null
+           }
             </div>   
         </div> 
              :

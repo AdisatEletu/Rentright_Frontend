@@ -9,13 +9,15 @@ import LandLord from "./components/pages/account/LandLord";
 import PublicProfile from "./components/pages/layouts/PublicProfile";
 import Tenant from "./components/pages/Tenant";
 import ContinueAs from './components/pages/LandingPage/ContinueAs';
-
+import { LocaleProvider } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
 
 
 class App extends Component {
   render() {
 
       return(
+           <LocaleProvider locale={enUS}>
           <Router>
               <switch>
                   <Route exact path="/" component={Home}/>
@@ -26,6 +28,7 @@ class App extends Component {
                   <Route path="/tenant" component={requireAuth(Tenant)}/>
               </switch>
           </Router>
+          </LocaleProvider>
       );
 
   }

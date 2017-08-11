@@ -9,6 +9,10 @@ import breakDownReducer from './reducers/breakDownReducer';
 import formReducer from './reducers/formReducer';
 import tenantInfoContentReducer from './reducers/tenantInfoContentReducer';
 import tenantInfoReducer from './reducers/tenantInfoReducer';
+import applications_tenant_reducer from './reducers/applications_tenant_reducer';
+import query_tenant_reducer from './reducers/query_tenant_reducer';
+import applications_indicator_reducer from './reducers/applications_indicator_reducer';
+import query_indicator_reducer from './reducers/query_indicator_reducer';
 import flashMessages from './reducers/flashMessages';
 import { loadingBarReducer } from 'react-redux-loading-bar';
 import {reducer as toastrReducer} from 'react-redux-toastr';
@@ -29,7 +33,11 @@ const combinedReducers = combineReducers({
     imageUpload: imageUploadReducer,
     fileToServer: fileToServerReducer,
     getform:formReducer,
-    formBreakDownData: breakDownReducer
+    formBreakDownData: breakDownReducer,
+    applications_indicator: applications_indicator_reducer,
+    query_indicator: query_indicator_reducer,
+    applications_result: applications_tenant_reducer,
+    query_result : query_tenant_reducer
 
 });
 
