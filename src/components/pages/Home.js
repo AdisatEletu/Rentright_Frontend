@@ -1,18 +1,22 @@
 import React,{Component} from 'react';
-
+import {Helmet} from "react-helmet";
 
 export default class NewHome extends Component{
 
     render(){
         return(
             <div className="home-mainbody t-flex t-align-content-stretch t-fullwidth  t-flex-column">
-                <div className="home-firstnav t-flex t-justify-space-between t-align-center nav-pad-left-right">
+                <Helmet>
+                    <link href="http://localhost:3000/CSS/tenant.css" rel="stylesheet" type="text/css"/>
+                    <link href="http://localhost:3000/CSS/home.css" rel="stylesheet" type="text/css"/>
+                </Helmet>
+                <div className="home-firstnav t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
                     <div className=" t-flex  t-fullheight t-justify-right t-right-f home-firstnav-innerdiv-left">
                         <span> The Ultimate Insider to the RentRight </span>
                     </div>
                     <div className="home-firstnav-innerdiv-right t-flex t-justify-center t-flex-row t-center-f t-fullheight">
-                        <span className="home-breadcrumbs white-text"><i className="material-icons ">person_add</i><a style={{color:'#ffffff'}} href="/register"> Register</a></span>
-                        <span className="home-breadcrumbs home-active white-text"><i className="material-icons ">supervisor_account</i><a style={{color:'#ffffff'}} href="/sign-in"> Login</a></span>
+                        <span className="home-breadcrumbs"><i className="material-icons ">person_add</i><a href="#"> Register</a></span>
+                        <span className="home-breadcrumbs home-active"><i className="material-icons ">supervisor_account</i><a href="/sign-in" style={{color: '#ffffff'}}> Login</a></span>
                     </div>
                 </div>
                 <div className="home-second-div t-flex t-justify-space-between t-align-center  t-flex-row nav-pad-left-right ">
@@ -46,7 +50,9 @@ export default class NewHome extends Component{
                         </div>
                     </div>
                 </div>
-                <div className="picture-div t-flex t-fullwidth interior1 home-slider home-bxshadow "><div className="home-cover" /></div>
+                <div className="picture-div t-flex t-fullwidth interior1 home-slider t-fullheight home-bxshadow ">
+                    <div className="home-cover">
+                    </div></div>
                 <div className="home-body-search t-flex t-align-center nav-pad-left-right t-justify-center ">
                     <div className="home-search t-flex t-md-10 t-flex-column home-pad">
                         <div className="t-flex t-fullheight t-flex-row t-md-10 t-justify-space-between t-align-top home-top-pad ">
@@ -220,7 +226,7 @@ export default class NewHome extends Component{
                         </div>
                         <div className="home-agents-pics t-flex t-justify-space-between t-md-10">
                             <div className="home-agents-photo t-flex  t-md-5 ">
-                                <div className="home-agents-pics1 t-flex t-justify-left" />
+                                <div className="home-agents-pics1 t-flex t-justify-left t-md-4 " />
                                 <div className="t-flex home-agent-phone-name t-md-6 t-flex-column">
                                     <div className="home-agents-name t-flex t-md-10">Dee Newton
                                     </div>
@@ -229,7 +235,7 @@ export default class NewHome extends Component{
                                 </div>
                             </div>
                             <div className="home-agents-photo t-flex  t-md-5 ">
-                                <div className="home-agents-pics2 t-flex t-justify-right" />
+                                <div className="home-agents-pics2 t-flex t-justify-right t-md-4 " />
                                 <div className="t-flex home-agent-phone-name t-md-6 t-flex-column">
                                     <div className="home-agents-name t-flex t-md-10">Helen Green
                                     </div>
@@ -277,6 +283,7 @@ export default class NewHome extends Component{
                             </div>
                             <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-center">
                                 <div className="home-newest-address t-flex t-align-left t-md-7 "><i className="material-icons ">place</i> 722rd Festac town, Lagos.</div>
+                                <br /><br />
                                 <div className="home-newest-size t-flex t-md-10 t-justify-space-between ">
                                     <div className="home-square-size t-flex t-md-32">
                                         <span><i className="material-icons ">home</i> 450 Sq m</span>
@@ -313,6 +320,7 @@ export default class NewHome extends Component{
                             </div>
                             <div className="home-newest-location t-flex t-flex-column t-md-10 t-align-content-space-between  t-justify-center">
                                 <div className="home-newest-address t-flex t-align-left t-md-7 "><i className="material-icons ">place</i> 722rd Festac town, Lagos.</div>
+                                <br /><br />
                                 <div className="home-newest-size t-flex t-md-10 t-justify-space-between ">
                                     <div className="home-square-size t-flex t-md-32">
                                         <span><i className="material-icons ">home</i> 450 Sq m</span>
@@ -353,7 +361,7 @@ export default class NewHome extends Component{
                             </div>
                             <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-center">
                                 <div className="home-newest-address t-flex t-align-left t-md-7 "><i className="material-icons ">place</i> 722rd Festac town, Lagos.</div>
-                                <br />
+                                <br /><br />
                                 <div className="home-newest-size t-flex t-md-10 t-justify-space-between ">
                                     <div className="home-square-size t-flex t-md-32">
                                         <span><i className="material-icons ">home</i> 450 Sq m</span>
@@ -420,10 +428,12 @@ export default class NewHome extends Component{
                             Highly recommended.
                         </div>
                         <div className="home-tes-picture-holder t-flex t-md-6 t-justify-center t-align-center">
-                            <div className="home-tes-picture t-flex t-justify-left" />
-                            <div className="home-tes-dts t-flex t-flex-column">
-                                <div className="home-tes-name t-flex t-align-center ">Adeola Abioye</div>
-                                <span className="home-tes-prof t-flex">Laywer</span></div>
+                            <div className="t-justify-space-between t-flex t-md-2">
+                                <div className="home-tes-picture t-flex t-md-10 t-justify-left" />
+                                <div className="home-tes-dts t-flex t-flex-column t-justify-center">
+                                    <div className="home-tes-name t-flex t-justify-center">Adeola Abioye</div>
+                                    <span className="home-tes-prof t-flex ">Laywer</span></div>
+                            </div>
                         </div>
                         <div className="home-carousel t-flex t-md-05 t-justify-space-between">
                             <div className="home-carousel1 t-flex t-md-10" />
@@ -433,7 +443,66 @@ export default class NewHome extends Component{
                     </div>
                 </div>
                 </div>
-                <div className>
+                <div className="home-contact-us-div t-flex t-md-10 t-flex-column ">
+                    <div className="home-contact-us-holder t-fullheight t-flex t-md-10 t-flex-column nav-pad-left-right">
+                        <div className="contactus t-flex t-center-f t-justify-center"> Everything you need in one place </div>
+                        <div className="home-sub-text t-flex t-center-f t-justify-center">
+                            Managing your rental property is easier when everything is in one place.
+                            Property listings, tenant screening, leasing, rent collection and even maintenance tracking all on one screen.</div>
+                        <div className=" t-flex t-justify-center t-md-10 home-imgg"><img src="css/img/macbook.png" /></div>
+                        <div className="home-sub-text t-flex t-center-f t-justify-center ">All the tools you need, designed specifically
+                            for do-it-yourself landlords. With our online landlord software,
+                            you can manage your property in just clicks and not hours!</div>
+                    </div>
+                </div>
+                <div className="home-footer t-flex t-md-10 ">
+                    <div className="footer-items-holder t-md-10 t-fullheight t-flex nav-pad-left-right t-justify-space-between">
+                        <div className=" t-flex t-md-22 t-flex-column  ">
+                            <div className="rentright-logo t-flex t-md-10" />
+                            <div className="home-rentright-about t-flex t-left-f t-md-10"> RentRight is a platform for everybody involved in property-renting business
+                                landlords, tenants, agents, arbitrators, preventing issues and saving time.</div>
+                            <div className="home-footer-social t-flex t-md-10 ">
+                                <span><i className="fa fa-twitter home-twit t-flex t-md-3" /></span>
+                                <span><i className="fa fa-facebook home-twit t-flex t-md-3 " /></span>
+                                <span><i className="fa fa-linkedin home-twit t-flex t-md-3" /></span>
+                            </div>
+                        </div>
+                        <div className="t-flex t-md-22 t-flex-column  t-align-content-center ">
+                            <span className="most-commented t-flex t-md-10 "> Most Commented</span>
+                            <div className="footer-img-holder t-flex t-md-10  ">
+                                <div className="footer-img1 t-flex"> </div>
+                                <div className=" t-flex t-flex-column footer-img1-details t-justify-center ">
+                                    <div className="home-new-post">New Post with image </div>
+                                    <span className="home-tes-prof ">March 13, 2017</span></div>
+                            </div>
+                            <div className="footer-img-holder t-flex t-md-10  ">
+                                <div className="footer-img2 t-flex"> </div>
+                                <div className=" t-flex footer-img2-details t-flex-column  ">
+                                    <div className="home-new-post t-justify-center">Video Post </div>
+                                    <span className="home-tes-prof ">March 13, 2017</span></div>
+                            </div>
+                        </div>
+                        <div className="home-useful-links t-flex t-md-22  t-flex-column">
+                            <div className="t-flex t-justify-space-between t-flex-column">
+                                <div className="most-commented t-flex t-md-10 ">Useful Links</div>
+                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i> <span className="footer-a">For Landlord</span></div>
+                                <div className="footer-hr" />
+                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i><span className="footer-a">For Tenant</span></div>
+                                <div className="footer-hr" />
+                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i> <span className="footer-a">Landlord </span></div>
+                                <div className="footer-hr" />
+                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i><span className="footer-a"> Landlord</span></div>
+                                <div className="footer-hr" />
+                            </div>
+                        </div>
+                        <div className="most-commented t-flex t-md-22 ">Twitter Feeds</div>
+                    </div>
+                </div>
+                <div className="footer-copyright home-primary-color t-md-10 t-justify-space-between t-align-center t-flex-column ">
+                    <div className="t-flex t-flex nav-pad-left-right  ">
+                        <div className="copyright t-flex t-md-5">RentRight © 2017. All Rights Reserved. <div className="copyright-a t-flex home-secondary-color-f">Terms Of Use</div> and <div className="copyright-a t-flex home-secondary-color-f"> Privacy Policy</div></div>
+                        <div className="copyright-top t-flex t-md-5  t-justify-right">Top.</div>
+                    </div>
                 </div>
             </div>
         );
