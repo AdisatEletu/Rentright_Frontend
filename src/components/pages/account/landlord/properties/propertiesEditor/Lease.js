@@ -1,27 +1,38 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Button} from 'antd';
+import {Switch, Route} from 'react-router-dom';
+import Dashboard from "./lease/Dashboard";
+import LeaseEditHome from "./lease/LeaseEditHome";
 
 class Lease extends Component {
 
     render() {
-
         return (
             <div style={{marginTop: '50px'}}>
-                <div className="row">
-                    <div className="col m4">
-                        <Button icon={"delete"} type="danger" ghost>Delete</Button>
-                        <Button icon={"edit"} type="primary" ghost>Edit</Button>
-                        <Button icon={"download"} type={"primary"} ghost>Download</Button>
-                    </div>
-                    <div className="col m6"></div>
-                </div>
+                <Switch>
+                    <Route exact path='/landlord/units/:id/lease' component={Dashboard}/>
+                    <Route exact path='/landlord/units/:id/lease/:leaseId/edit' component={LeaseEditHome}/>
+                </Switch>
             </div>
         );
     }
 
 }
+
+export class Clause extends Component{
+    render(){
+        return (
+        <div className="clause">
+            <p>
+                <b>{this.props.title}: </b> {this.props.content}
+            </p>
+        </div>
+    );
+    }
+
+}
+
 
 function mapStateToProps(state) {
     return {
