@@ -167,17 +167,17 @@ var _ = require('lodash');
             <span className= "t-uppercase t-h2 ">Update General Information</span>
             <span className= "t-gray-darken-1-f thin t-h3 t-lh-h3  m-half-top">Pelase provide accurate information</span>
             <div className= "t-md-10  t-flex t-justify-right t-flex-row t-align-top">
-                <CircleLinks linkTo = {"/tenant/profile" + this.uuid } scale = {true} childLabel = "Overview" label = "A" isActive = {false}/>     
-                 <CircleLinks linkTo = {"/tenant/profile/bioinfo" + this.uuid} scale = {true} childLabel = "Bio Info" label = "1" isActive = {false}/>
-                 <CircleLinks linkTo = {"/tenant/profile/employmentinfo" + this.uuid} scale = {true} childLabel = "Employment Info" label = "2" isActive = {false}/>
-                  <CircleLinks linkTo = {"/tenant/profile/residentialinfo" + this.uuid} scale = {true} childLabel = "Residential Info" label = "3" isActive = {false}/>
+                <CircleLinks linkTo = {"/tenant/profile/" + this.uuid } scale = {true} childLabel = "Overview" label = "A" isActive = {false}/>     
+                 <CircleLinks linkTo = {"/tenant/profile/bioinfo/" + this.uuid} scale = {true} childLabel = "Bio Info" label = "1" isActive = {false}/>
+                 <CircleLinks linkTo = {"/tenant/profile/employmentinfo/" + this.uuid} scale = {true} childLabel = "Employment Info" label = "2" isActive = {false}/>
+                  <CircleLinks linkTo = {"/tenant/profile/residentialinfo/" + this.uuid} scale = {true} childLabel = "Residential Info" label = "3" isActive = {false}/>
                   {this.props.myProfile.tenants ? this.props.myProfile.tenants.are_you_an_immigrant ? 
                 <span>
-                <CircleLinks linkTo = {"/tenant/profile/immigrationinfo" + this.uuid} scale = {true} childLabel = "Immigration Info" label = "4" isActive = {false}/>
-                 <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "5" isActive = {true}/>
+                <CircleLinks linkTo = {"/tenant/profile/immigrationinfo/" + this.uuid} scale = {true} childLabel = "Immigration Info" label = "4" isActive = {false}/>
+                 <CircleLinks linkTo = {"/tenant/profile/generalinfo/" + this.uuid} scale = {false} childLabel = "General Info" label = "5" isActive = {true}/>
                  </span>
                 :
-                 <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "4" isActive = {true}/>
+                 <CircleLinks linkTo = {"/tenant/profile/generalinfo/" + this.uuid} scale = {false} childLabel = "General Info" label = "4" isActive = {true}/>
                 :null}
            
                 </div>
@@ -343,12 +343,12 @@ var _ = require('lodash');
                    <div className = "p-button-container t-flex t-align-center t-justify-space-between"> 
                     <div className = "t-flex t-md-3 t-justify-space-around" >  
                     {this.props.myProfile.tenants.general_info ? this.props.myProfile.tenants.general_info.are_you_an_immigrant ? 
-                    <NavLink to = {"/tenant/profile/immigrationinfo" + this.props.match.params.id}><Button type="default"  size="large">Back to immigration Form<Icon type="right" /> </Button></NavLink> 
+                    <NavLink to = {"/tenant/profile/immigrationinfo/" + this.props.match.params.id}><Button type="default"  size="large">Back to immigration Form<Icon type="right" /> </Button></NavLink> 
                     :
-                    <NavLink to = {"/tenant/profile/residentialinfo" + this.props.match.params.id}><Button type="default"  size="large">Back to Residential Form<Icon type="right" /> </Button></NavLink> 
+                    <NavLink to = {"/tenant/profile/residentialinfo/" + this.props.match.params.id}><Button type="default"  size="large">Back to Residential Form<Icon type="right" /> </Button></NavLink> 
                      : null}  
                                
-                   <NavLink to = {"/tenant/profile/profile" + this.props.match.params.id}><Button type="default"  size="large">Back to registerations<Icon type="right" /> </Button></NavLink>
+                   <NavLink to = {"/tenant/profile/" + this.props.match.params.id}><Button type="default"  size="large">Back to registerations<Icon type="home" /> </Button></NavLink>
                    </div>
                       <Button type="primary" icon="download" size="large" onClick = {this.handleSubmit}>Submit</Button>
                       </div>
