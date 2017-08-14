@@ -81,9 +81,9 @@ loadprofile = ()=>{
           </div>
  
          <div className = " t-justify-center t-flex t-center-f  t-flex-column t-justify-center m-top-sm ">        
-            <span className = "roboto t-h4 t-space-1 mid t-uppercase  m-bluish-f block">{this.props.user.first_name} {this.props.user.last_name}</span>
-            <span className = "open-sans t-h5 mid semi-bold t-uppercase m-bluish-f block">{this.props.user.email}</span>
-            <div className = "t-center-f  t-gray-lighten-1-f t-flex m-top t-h6  t-justify-center t-md-10"><i className="material-icons">bubble_chart</i></div>
+            <span className = "roboto t-h4 t-space-1 mid t-uppercase  m-bluish-f block m-ellipses">{this.props.user.first_name} {this.props.user.last_name}</span>
+            <span className = "open-sans t-h5 mid semi-bold t-uppercase m-bluish-f block m-ellipses">{this.props.user.email}</span>
+            <div className = "t-center-f  t-gray-lighten-1-f t-flex m-top t-h6  t-justify-center t-md-10 m-ellipses"><i className="material-icons">bubble_chart</i></div>
           </div>
 
 <div className = "t-flex t-flex-column m-top-med">

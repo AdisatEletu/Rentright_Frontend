@@ -97,11 +97,11 @@ html, body{font-size:12px!important;}
 /* midmain panel full miainpanel */
 .t-midmain{ padding-top:10vh; z-index:1; background:#E8F4F6;   /* temprorary*/ width:84vw;} /* <-- should always contain t-subnav element as the first element  --> */
 
-.t-midmain{padding-left:4vw; padding-right:5vw; padding-top:15 vh; box-sizing:border-box;}
+.t-midmain{padding-left:4vw; padding-right:5vw; padding-top:6%; box-sizing:border-box; height:100%!important; overflow-y:scroll!important;}
 
 .t-midmain{overflow-y:auto;}
-.t-dash{width:80%;  padding:2vh 3vh; box-sizing:border-box; padding-top:5vh;} 
-.t-advert{width:15vw; position:fixed; z-index:4; top:0px;padding:1.5vw; padding-top:13vh; height:100%; right:0px;  background-color:rgba(255,255,255,0.8);}
+.t-dash{width:90%;  padding:3% 5%; box-sizing:border-box; padding-top:2%;} 
+.t-advert{width:15vw; position:fixed; z-index:4; top:0px;padding:1.5vw; padding-top:10vh; height:100%; right:0px;  background-color:rgba(255,255,255,0.8);}
 
 /* ........................ * /
 
