@@ -138,10 +138,11 @@ const  dateFormat = 'YYYY-MM-DD';
     }
 
   }
- render(){     
+ render(){  
+  /*if (!this.state)  */ 
 
-         return (
-<div className = "t-flex t-md-10 t-flex-column t-fullheight t-white please-dont-shrink">
+   return (
+<div className = "t-flex t-md-9 t-flex-column t-fullheight t-white please-dont-shrink">
 <div className = "q-head  t-flex-column t-justify-left q-sub">
     <div className = "q-h1 t-left-f">Are you ready to find your home ? </div>
     <div className = "q-h2 t-lfet-f">Please use the options provided below and select a query parameter..</div>
@@ -244,9 +245,9 @@ this.props.queryResult.results ?
   {this.props.queryResult.results.units.map((itemm,i)=>{
      return(
       <div key= {i}className = "q-results"> 
-       {/* <div className = "q-image" style = {{backgroundImage:"url("+item.unit_images[0].source+ ")"}}></div>*/}
-       <div className = "q-image" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}>
-       <div className= "q-image-cover t-md-10 t-fullheight"><div className = "btn"> <Icon type = "export"/>&nbsp;Explore Property</div></div>
+       <div className = "q-image" style = {{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+itemm.unit_images[0].id+ ")"}}>
+       {/* <div className = "q-image" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}>*/}
+      <div className= "q-image-cover t-md-10 t-fullheight"><div className = "btn"> <Icon type = "export"/>&nbsp;Explore Property</div></div>
        </div>
         <div className = "q-exp t-flex t-flex-column">
           <div className = "q-header">{itemm.description}</div>
@@ -266,11 +267,13 @@ this.props.queryResult.results ?
                and total of {itemm.bathrooms} bathrooms.
                </div>
                  <div className = "t-md-3 q-show">
-                   <div className = "q-pics" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}></div>
-                   <div className = "q-pics" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}></div>
-                   <div className = "q-pics" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}></div>
-                   <div className = "q-pics" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}></div>
-                   <div className = "q-pics" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}></div>
+                   { itemm.unit_images.map((me, kin)=>{
+                     return(
+                   <div className = "q-pics"  key = {kin} style = {{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+me.id+ ")"}}></div>
+                     )
+                   })
+                   }
+
                    </div>
 
               
