@@ -65,7 +65,7 @@ class TopBar extends Component {
                         </div>
                     </div>
 
-                    {header.hasBar ? <Tab uuid={header.uuid}/> : ''}
+                    {/*{header.hasBar ? <Tab uuid={header.uuid}/> : ''}*/}
 
                 </div>
             </div>

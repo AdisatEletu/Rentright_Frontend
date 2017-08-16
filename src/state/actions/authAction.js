@@ -23,12 +23,7 @@ export function login(data,callback){
 
             if(!status){
                 dispatch(hideLoading());
-
-                callback({
-                    type: 'error',
-                    title: res.data.error.message,
-                    text: res.data.error.details
-                });
+                callback(false);
                 return;
             }
 
@@ -42,19 +37,11 @@ export function login(data,callback){
             dispatch(setCurrentUser(res.data.data.user));
 
             dispatch(hideLoading());
-            callback({
-                type: 'success',
-                title: 'Logged In',
-                text: 'Log in Successful.'
-            });
+            callback(true);
         }).catch(
             err => {
                 dispatch(hideLoading());
-                callback({
-                    type: 'error',
-                    title: 'Login Failed',
-                    text: 'Oops! An error occured while trying to log you in.'
-                });
+                callback(false);
             }
         );
     }

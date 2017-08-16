@@ -181,15 +181,18 @@ export function getUnits(params,callback){
     }
 }
 
-export function getUnit(params){
+export function getUnit(params,callback){
     return dispatch => {
         dispatch(requestSingleUnit());
         return axios.get(getUnitUrl(params.uuid)).then(
             (res) => {
                 dispatch(receiveSingleUnit(res.data.data.unit))
+                callback(true,res.data.data.unit);
             }
         ).catch(
-            (err) => {}
+            (err) => {
+                callback(false);
+            }
         );
     }
 }
