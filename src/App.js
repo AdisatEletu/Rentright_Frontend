@@ -3,10 +3,9 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import requireAuth from './utils/requireAuth';
 
 import Home from '../src/components/pages/Home';
-import NewLogin from '../src/components/pages/auth/NewLogin';
+import Login from '../src/components/pages/auth/Login';
 import Register from '../src/components/pages/auth/Register';
 import LandLord from "./components/pages/account/LandLord";
-import PublicProfile from "./components/pages/layouts/PublicProfile";
 import Tenant from "./components/pages/Tenant";
 import ContinueAs from './components/pages/LandingPage/ContinueAs';
 import { LocaleProvider } from 'antd';
@@ -24,7 +23,7 @@ class App extends Component {
                   <Route path={"/register"} component={Register}/>
                   <Route path="/account" component={requireAuth(ContinueAs)}/>
                   <Route path="/landlord" component={requireAuth(LandLord)}/>
-                  <Route path="/sign-in" component={NewLogin}/>
+                  <Route path="/sign-in" component={Login}/>
                   <Route path="/tenant" component={requireAuth(Tenant)}/>
               </switch>
           </Router>

@@ -18,16 +18,15 @@ class PropertyEditor extends Component {
     componentWillMount() {
         this.props.resetHeader();
         const uuid = this.props.match.params.id;
-        this.props.getUnit({uuid: uuid});
+        this.props.getUnit({uuid: uuid}, this.getUnitCallBack);
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
-        if (nextProps.unit.fetched) {
-            nextProps.setHeader({
-                text: nextProps.unit.unit.properties.name + ", Unit " + nextProps.unit.unit.number,
+    getUnitCallBack = (status,unit=null) => {
+        if (status) {
+            this.props.setHeader({
+                text: unit.properties.name + ", Unit " + unit.number,
                 hasBar: true,
-                uuid: nextProps.match.params.id,
+                uuid: unit.uuid,
             });
         }
     }

@@ -3,12 +3,17 @@ import TopBar from "../account/landlord/TopBar";
 import {NavLink} from 'react-router-dom';
 import PropertyMenu from './account/PropertyMenu';
 import {Helmet} from "react-helmet";
+import LoadingBar from 'react-redux-loading-bar'
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
-export default class AccountLayout extends Component {
+class AccountLayout extends Component {
 
     render() {
+        const {header} = this.props;
         return (
         <div className="application">
+            <LoadingBar style={{ backgroundColor: '#faa61a', height: '2px'}}/>
             <Helmet>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet"/>
                 <link href="http://localhost:3000/assets/css/effects.css" rel="stylesheet" type="text/css"/>
@@ -17,8 +22,14 @@ export default class AccountLayout extends Component {
                 <AccountHeader/>
                 <main className="d-main">
                     <TopBar/>
+                    {header.hasBar ?
+                        <div className="other-nav">
+                            <Tab uuid={header.uuid}/>
+                        </div>
+                        : undefined}
+
                     <div className="d-container">
-                        <div style={{paddingTop: '120px', paddingBottom:'60px'}}>
+                        <div style={{paddingLeft: '300px' ,paddingTop: '120px', paddingBottom:'60px'}}>
                             {this.props.children}
                         </div>
                         <div className="fixed-action-btn horizontal">
@@ -71,6 +82,35 @@ function AccountHeader(props) {
     );
 }
 
+
+function Tab(props){
+    return (
+
+        <div className="cont">
+            <ul className="d-tabs  primary-nav">
+                <li className="tabs__item">
+                    <NavLink exact to={'/landlord/units/'+props.uuid+'/'} activeClassName="active" className={"tabs__link"}><i className="fa fa-home"/></NavLink>
+                </li>
+                <li className="tabs__item">
+                    <NavLink to={'/landlord/units/'+props.uuid+'/listing'} className={"tabs__link"}><span data-text="Listing"  className="text"/><i className="icon fa fa-pencil-square"/></NavLink>
+                </li>
+                <li className="tabs__item">
+                    <NavLink to={'/landlord/units/'+props.uuid+'/applications'} className={"tabs__link"}><span data-text="Applications" className="text"/><i className="icon fa fa-id-card"/></NavLink>
+                </li>
+                <li className="tabs__item">
+                    <NavLink to={'/landlord/units/'+props.uuid+'/lease'} className={"tabs__link"}><span data-text="Leases" className="text"/> <i className="icon fa fa-folder-open"/></NavLink>
+                </li>
+                <li className="tabs__item">
+                    <NavLink to={'/landlord/units/'+props.uuid+'/payments'} className={"tabs__link"}><span data-text="Payments" className="text"/> <i className="icon fa fa-credit-card"/></NavLink>
+                </li>
+                <li className="tabs__item">
+                    <NavLink to={'/landlord/units/'+props.uuid+'/maintenance'} className={"tabs__link"}><span data-text="Maintenance" className="text"/> <i className="icon fa fa-gears"/></NavLink>
+                </li>
+            </ul>
+        </div>
+    );
+}
+
 function AccountFooter(props) {
     return (
         <footer className="page-footer">
@@ -102,3 +142,15 @@ function AccountFooter(props) {
             </div>
         </footer>);
 }
+
+function mapStateToProps(state){
+    return{
+        header: state.ui.header,
+    }
+}
+
+AccountLayout.propTypes = {
+    header: PropTypes.object,
+}
+
+export default connect(mapStateToProps)(AccountLayout)
