@@ -156,6 +156,7 @@ ul.side-nav.fixed:hover {
 
 .other-nav{
     background-color: #ffffff;
+    width: 80%;
     margin-left: 300px;
     padding-left: 0;
     z-index:9;

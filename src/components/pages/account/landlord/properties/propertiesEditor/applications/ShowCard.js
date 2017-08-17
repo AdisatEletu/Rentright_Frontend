@@ -29,7 +29,7 @@ class ShowCard extends Component {
             <Button shape="circle" icon="close-square" type={"danger"} style={{marginLeft: '5px'}}/>
         </div>;
 
-        const collapseHeader = <span className="alternate-color-text"><b className="tertiary-color-text">Status:</b> Form completed 3 days ago</span>;
+        const collapseHeader = <span className="alternate-color-text"><b className="tertiary-color-text">Status:</b> Updated 3 days ago</span>;
 
         const applicationForm = <Modal
                 header=''
@@ -49,8 +49,8 @@ class ShowCard extends Component {
                             </div>
                             <div className="col s10">
                           <span className="black-text">
-                              <b>Odaibo Amadosi</b><br/>
-                              <span className="tertiary-color-text">Odaiboamadosi@gmail.com.</span>
+                              <b>{this.props.application.tenant.data.last_name} {this.props.application.tenant.data.first_name}</b><br/>
+                              <span className="tertiary-color-text">{this.props.application.tenant.data.email}</span>
                           </span>
                             </div>
                         </div>
@@ -62,7 +62,7 @@ class ShowCard extends Component {
                                 <div className="row">
                                     <div className="col s12">
                                         <Steps direction="vertical" size="small" current={2}>
-                                            <Step title="Application Requested" description="1 week ago."/>
+                                            <Step title="Application Requested" description={this.props.application.created_at}/>
                                             <Step title="Application Started" description="1 week ago."/>
                                             <Step title="Application Complete" description={applicationForm}/>
                                             <Step title="Credit check available"/>
