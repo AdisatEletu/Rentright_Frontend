@@ -58,11 +58,7 @@ loadprofile = ()=>{
    if(this.props.myProfile.tenants){
     return(
 <div className = "t-body">
-    <Helmet>
 
-        <link href="http://localhost:3000/assets/css/tenant.css" rel="stylesheet" type="text/css"/>
-         <link href="http://localhost:3000/assets/css/tenant_compliment.css" rel="stylesheet" type="text/css"/>
-    </Helmet>
  <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-align-stretch t-justify-space-between">
            {this.props.myProfile.tenants.tenant_bio ? <TenantNav first_name = {this.props.user.first_name}  myProfile = {this.props.myProfile}/>  : <TenantNav first_name = {this.props.user.first_name}/> }
           <div className = "t-left t-gray  t-flex  t-align-content-space-between t-right-bx t-right-bx t-flex-column">

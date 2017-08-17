@@ -15,7 +15,7 @@ export default class NewHome extends Component{
                         <span> The Ultimate Insider to the RentRight </span>
                     </div>
                     <div className="home-firstnav-innerdiv-right t-flex t-justify-center t-flex-row t-center-f t-fullheight">
-                        <span className="home-breadcrumbs"><i className="material-icons ">person_add</i><a href="#"> Register</a></span>
+                        <span className="home-breadcrumbs"><a href="/Register"><i className="material-icons ">person_add</i> Register</a></span>
                         <span className="home-breadcrumbs home-active"><i className="material-icons ">supervisor_account</i><a href="/sign-in" style={{color: '#ffffff'}}> Login</a></span>
                     </div>
                 </div>

@@ -19,7 +19,7 @@ function Text2 () {
     return(
         <div>
             <div className="t-md-10">
-                <div className="t-hr" />
+                <div className="c-hr" />
             </div>
             <div className="t-h3 t-md-10 sef  t-white-f thin t-left-f t-justify-left  t-flex t-align-top t-justify-left">
                 <div className="t-md-7">

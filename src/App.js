@@ -4,7 +4,7 @@ import requireAuth from './utils/requireAuth';
 
 import Home from '../src/components/pages/Home';
 import Login from '../src/components/pages/auth/Login';
-import Register from '../src/components/pages/auth/Register';
+import Register from '../src/components/pages/Register';
 import LandLord from "./components/pages/account/LandLord";
 import Tenant from "./components/pages/Tenant";
 import ContinueAs from './components/pages/LandingPage/ContinueAs';
