@@ -99,7 +99,7 @@ html, body{font-size:12px!important;}
 
 
 /* midmain panel full miainpanel */
-.t-midmain{ padding-top:10vh; z-index:1; background:#E8F4F6;   /* temprorary*/ width:84vw;} /* <-- should always contain t-subnav element as the first element  --> */
+.t-midmain{ padding-top:10vh; z-index:1; background:#E9EBEE;   /* temprorary*/ width:84vw;} /* <-- should always contain t-subnav element as the first element  --> */
 
 .t-midmain{padding-left:4vw; padding-right:5vw; padding-top:15 vh; box-sizing:border-box;}
 

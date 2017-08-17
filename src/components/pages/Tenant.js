@@ -57,7 +57,7 @@ loadprofile = ()=>{
    if(this.props.myProfile.tenants){
     return(
 <div className = "t-body">
- <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-align-stretch t-justify-space-between">
+ <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-align-stretch t-justify-left">
            {this.props.myProfile.tenants.tenant_bio ? <TenantNav first_name = {this.props.user.first_name}  myProfile = {this.props.myProfile}/>  : <TenantNav first_name = {this.props.user.first_name}/> }
           <div className = "t-left t-gray  t-flex  t-align-content-space-between t-right-bx t-right-bx t-flex-column">
       
@@ -96,10 +96,10 @@ loadprofile = ()=>{
       </div>
 
  
-    <div className = "t-midmain t-flex t-flex-row t-align-stretch">
+    <div className = "t-midmain t-flex t-jusify-center t-flex-row">
 
 
-        <div  className = "t-dash t-flex t-flex-column">
+        <div  className = "t-dash t-flex  t-justify-center t-flex-column">
             <Switch>
               <Route  exact path="/tenant/profile/:id/"  component={TenantProfile}/>  
               <Route  exact path="/tenant/profile/generalinfo/:id"  component={GeneralForm}/>       
