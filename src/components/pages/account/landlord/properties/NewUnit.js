@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PlacesAutocomplete, {geocodeByAddress,getLatLng} from 'react-places-autocomplete'
+import PlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-places-autocomplete'
 import isEmpty from 'lodash/isEmpty';
 import Address from "./Address";
 import {connect} from 'react-redux';
@@ -9,12 +9,12 @@ import {toastr} from 'react-redux-toastr'
 
 class NewUnit extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
             address: "",
-            address_components:[],
+            address_components: [],
             fetched: false,
             loading: false,
             latitude: '',
@@ -24,23 +24,23 @@ class NewUnit extends Component {
         this.onChange = this.onChange.bind(this);
     }
 
-    onChange(address){
+    onChange(address) {
         this.setState({address});
     }
 
-    onCloseClick(){
+    onCloseClick() {
         this.setState({
             address: "",
             fetched: false,
-            loading:false,
-            address_components:[],
+            loading: false,
+            address_components: [],
             latitude: '',
             longitude: '',
         });
     }
 
-    onSelect(address,placeId){
-        this.setState({address, placeId ,isEmpty: isEmpty(address)});
+    onSelect(address, placeId) {
+        this.setState({address, placeId, isEmpty: isEmpty(address)});
         geocodeByAddress(address)
             .then(results => {
                 console.log('results', results);
@@ -50,7 +50,7 @@ class NewUnit extends Component {
 
                     console.log('Success', latLng);
                     this.setState({
-                        fetched:true,
+                        fetched: true,
                         address_components: results[0].address_components,
                         latitude: latLng.lat,
                         longitude: latLng.lng
@@ -60,13 +60,14 @@ class NewUnit extends Component {
 
             });
     }
-    onEnterPressed(address){
-        this.setState({address,fetched: true});
+
+    onEnterPressed(address) {
+        this.setState({address, fetched: true});
     }
 
-    onSaveClick(){
+    onSaveClick() {
 
-        this.setState({loading:true});
+        this.setState({loading: true});
         const address_components = {
             address: this.state.address,
             house_number: this.state.address_components[0].long_name,
@@ -83,79 +84,86 @@ class NewUnit extends Component {
 
     }
 
-    onSubmitCallback(data){
+    onSubmitCallback(data) {
 
         this.setState({loading: false});
 
-            if(!data.status){
-                toastr.error('Error','An error occurred while trying to create your property.');
-                this.onCloseClick();
-            }else{
-                toastr.success('Done','Property successfully created');
-                this.context.router.history.replace('/landlord/properties/'+data.data.property.uuid);
-            }
+        if (!data.status) {
+            toastr.error('Error', 'An error occurred while trying to create your property.');
+            this.onCloseClick();
+        } else {
+            toastr.success('Done', 'Property successfully created');
+            this.context.router.history.replace('/landlord/properties/' + data.data.property.uuid);
+        }
     }
 
     render() {
         const myStyles = {
-            root: { position: 'relative' , paddingLeft: '25%', paddingRight: '25%'},
-            input: {     boxShadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
-                        border: 'honeydew',
-                        display: 'block',
-                        width: '100%',
-                        padding: '16px',
-                        fontSize: '16px',
-                        borderRadius: '2px',
-                        outline: 'none' },
+            root: {position: 'relative', paddingLeft: '25%', paddingRight: '25%'},
+            input: {
+                boxShadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
+                border: 'honeydew',
+                display: 'block',
+                width: '100%',
+                padding: '16px',
+                fontSize: '16px',
+                borderRadius: '2px',
+                outline: 'none'
+            },
 
             autocompleteContainer: {
                 position: 'relative',
                 border: '1px solid #ccc',
                 backgroundColor: 'green',
                 boxShadow: '0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
-                borderRadius: '2px',},
+                borderRadius: '2px',
+            },
 
-            autocompleteItem: { color: '#757575' },
-            autocompleteItemActive: { color: '#757575' }
+            autocompleteItem: {color: '#757575'},
+            autocompleteItemActive: {color: '#757575'}
         }
         const inputProps = {
             value: this.state.address,
             onChange: this.onChange,
             placeholder: 'Enter the street address',
         }
-        const AutocompleteItem = ({ formattedSuggestion }) => (
+        const AutocompleteItem = ({formattedSuggestion}) => (
             <div>
                 <strong><i className="fa fa-map-marker"/> { formattedSuggestion.mainText }</strong>{' '}
                 <small>{ formattedSuggestion.secondaryText }</small>
             </div>
         );
 
-        const {fetched,loading,address_components} = this.state;
+        const {fetched, loading, address_components} = this.state;
 
-        return(
-            <div className="col-lg-12">
-                <div className="center">
-                    <h3><b>Start By Adding Your First Unit:</b></h3>
-                </div>
+        return (
+            <div className="row">
+                <div className="col s12">
+                    <div className="center">
+                        <h4><b>Start By Adding Your Unit Address</b></h4>
+                    </div>
 
-                <div className="">
+                    <div className="center">
                         <PlacesAutocomplete
                             inputProps={inputProps}
-                            onEnterKeyDown ={this.onEnterPressed.bind(this)}
-                            onSelect = {this.onSelect.bind(this)}
+                            onEnterKeyDown={this.onEnterPressed.bind(this)}
+                            onSelect={this.onSelect.bind(this)}
                             autocompleteItem={AutocompleteItem}
                             styles={myStyles}/>
-                </div>
-                <br/>
-                {fetched ? <Address components={address_components} onClose={this.onCloseClick.bind(this)}/> : ''}
-                <br/>
+                    </div>
+                    <br/>
+                    {fetched ? <Address components={address_components} onClose={this.onCloseClick.bind(this)}/> : ''}
+                    <br/>
 
-                <button onClick={this.onSaveClick.bind(this)} disabled={!fetched || loading} className="btn btn-default btn-block  center-block"> {loading ? <span>Creating <i className="fa fa-spinner fa-spin"/></span> :"Save & Continue"}</button>
-                <br/>
-                <div className="center-block" style={{width: '50%'}}>
-                    <p className="center"><b>P.S</b> We sent you a mail telling you a little more about our services, when you have a free minute, check it out. Thanks!</p>
+                    <button onClick={this.onSaveClick.bind(this)} disabled={!fetched || loading}
+                            className="btn btn-default btn-block  center-block"> {loading ?
+                        <span>Creating <i className="fa fa-spinner fa-spin"/></span> : "Save & Continue"}</button>
+                    <br/>
+                    <div className="center-block" style={{width: '50%'}}>
+                        <p className="center"><b>P.S</b> We sent you a mail telling you a little more about our
+                            services, when you have a free minute, check it out. Thanks!</p>
+                    </div>
                 </div>
-
             </div>
         );
     }
@@ -171,5 +179,5 @@ NewUnit.contextTypes = {
 }
 
 
-export default connect(null,{addProperty})(NewUnit);
+export default connect(null, {addProperty})(NewUnit);
 

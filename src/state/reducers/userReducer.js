@@ -1,37 +1,62 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
-import {SET_ACTIVE_PROPERTY,SET_USER_FUNCTION} from '../ActionTypes';
+import activeProperty from './activePropertyReducer';
+import {SET_USER_FUNCTION,REQUEST_ACTIVE_UNIT,RECEIVE_ACTIVE_UNIT,REQUEST_UNITS,RECEIVE_UNITS} from '../ActionTypes';
 import propertyReducer from './propertyReducer';
 
 
  const userReducer = combineReducers({
-     access: setAccess,
      auth: authReducer,
      activeProperty: activeProperty,
+     activeUnit: activeUnit,
      myProperties: propertyReducer,
+     units: units
 });
 
-export function setAccess (state={access:'guest'}, action={}){
-    switch (action.type){
-        case SET_USER_FUNCTION:
-            return{
-                access: action.text,
+export function units(state={fetching:false,fetched:false,units:[]},action){
+
+    switch(action.type){
+        case REQUEST_UNITS:
+            return {
+                ...state,
+                fetching:true,
+                fetched:false,
             }
             break;
+
+        case RECEIVE_UNITS:
+            return {
+                ...state,
+                fetching:false,
+                fetched:true,
+                units: action.payload.units
+            }
+            break;
+
         default: return state;
     }
 }
 
- export function activeProperty(state={},action={}){
-        switch(action.type){
-            case SET_ACTIVE_PROPERTY:
-                return{
-                    active: true,
-                    properties: action.property,
-                }
+export function activeUnit(state={fetching:false,fetched:false},action){
 
-            default: return state;
-        }
- }
+    switch (action.type){
+        case REQUEST_ACTIVE_UNIT:
+            return{
+                ...state,
+                fetching: true,
+                fetched:false,
+            }
+
+        case RECEIVE_ACTIVE_UNIT:
+            return {
+                ...state,
+                fetching: false,
+                fetched:true,
+                unit: action.payload.unit,
+            }
+        default: return state;
+    }
+}
+
 
 export default userReducer;

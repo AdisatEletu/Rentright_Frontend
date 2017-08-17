@@ -1,0 +1,153 @@
+/*global all tenant specific style are prefixed with a t-, used in conjuction with materialize.css*/
+/*All width's are not set but if set it is temprorary grid style of materialized is used */
+/*generalstyles **margin **padding **floats **flex etc */
+
+html, body{font-size:12px!important;}
+
+*, a, Link{text-decoration:none; text-decoration-style:inherit; color:inherit; } 
+.t-body{width:100%; height:100%!important; overflow-x:hidden; background:#fff; font-size:12px!important; padding:0; margin:0;font-family:Roboto!important;}
+ #root{ height:100%!important; overflow-x:hidden;}
+.t-zeropadding-margin{padding:0px; margin:0px;}
+.t-zero-font{font-size:0px; }
+.t-left-fl{float:left;} .t-right-fl{float:right;}.t-overflow{overflow:hidden;}
+/*colors */
+.t-white-f{color:#fff;} .t-white{background:#fff;}
+.t-gray-f{color:#ededed;}  .t-gray{background:#ededed;}
+.t-green-f{ color:#b2d234; } .t-green{ background:#b2d234; }
+.t-orange-f{color:#FAA61A; } .t-orange{background-color:#FAA61A;}
+.t-gray-lighten-1-f{ color:#bdbdbd; } .t-gray-lighten-1{ background:#bdbdbd; }
+.t-gray-lighten-2-f{ color:#e0e0e0!important; } .t-gray-lighten-2{ background:#e0e0e0; }
+.t-gray-lighten-3-f{ color:#eeeeee!important; } .t-gray-lighten-3{ background:#eeeeee; }
+.t-gray-lighten-4-f{ color:#f5f5f5; } .t-gray-lighten-4{ background:#f5f5f5; }
+.t-gray-lighten-1-5{ color:#fafafa; } .t-gray-lighten-5{ background:#fafafa; }
+.t-gray-darken-1-f{ color:#757575; } .t-gray-darken-1{ background:#757575; }
+.t-gray-darken-2-f{ color:#616161; } .t-gray-darken-2{ background:#616161; }
+.t-gray-darken-3-f{ color:#424242; } .t-gray-darken-3{ background:#424242; }
+.t-gray-darken-4-f{ color:#212121 ; } .t-gray-darken-4{ background:#212121 ; }
+.t-top{margin-top:5vh;}
+/* boxmodel display positions */
+
+.t-block{display:block; width:100%;} .t-inline{display:inline;} .t-inline-block{display:inline-block;}
+/* flex  display positions */
+.t-flex{display:flex;} .t-flex-row{flex-direction:row;} .t-flex-column{flex-direction:column;}
+.t-flex-wrap{flex-wrap:wrap;}
+.t-sm-padding{padding:1vh; box-sizing:border-box;}
+.t-md-padding{padding:4vh; box-sizing:border-box;}
+/*.t-flex-flow-flstart{flex}*/
+/* fonts */
+.t-center-f{text-align:center;} .t-left-f{text-align:left;} .t-right-f{text-align:right;}
+.dosis{font-family:Dosis; } .open-sans{font-family:Open Sans;} .lato{font-family:Lato;} .roboto{font-family:Roboto;}
+.thin{font-weight:300;}  .semi-thin{font-weight:400;}.mid{font-weight:500;} .t-postmid, .postmid{font-weight:600;} .semi-bold{font-weight:800;} .bold{font-weight:900;}
+.t-space-1{letter-spacing:1px;} .t-space-2{letter-spacing:2px;} .t-uppercase{text-transform:uppercase;} .t-capitalize{text-transform:capitalize;}
+.t-sup-h1{font-size:6.5rem; line-height:8.5rem; }
+.t-sup-h2{font-size:4.5rem; line-height:6.5rem; }
+.t-sup-h3{font-size:2.8rem; line-height:4.5rem; }
+.t-h1{font-size:2.2rem; line-height:2.2rem; }
+.t-h2{font-size:1.8rem; line-height:2.2rem; }
+.t-h3{font-size:1.2rem; line-height:1.8rem; } .t-lh-h2{line-height:2.2rem!important;}
+.t-h4{font-size:1rem; line-height:1.4rem; }
+.t-h5{font-size:0.6rem; line-height:1rem; }
+.t-capitalize{text-transform:capitalize!important;}
+
+/*horrizontal-flow*/
+.t-justify-left{justify-content:flex-start;}/*for horrizontal alignment all items are pushed to the left */
+.t-justify-right{justify-content:flex-end;}/*for horrizontal alignment all items are pushed to the right */
+.t-justify-center{ justify-content:center;}/*for items to be pushed in the center */
+.t-justify-space-between{justify-content:space-between;}/*for items to have equispaces between however edge element start from the edge*/
+.t-justify-space-around{justify-content:space-around;}/*for items to be justifiably spaced with equidistance */
+.t-fullheight{height:100%; } .t-fullwidth{width:100%; }
+.t-align-self-right{align-self:flex-end;}
+.t-align-self-left{align-self:flex-start;}
+/*vertical-flow align for single line items*/
+.t-align-top{align-items:flex-start;}/*for vertical alignment all items are pushed to the top */
+.t-align-bottom{align-items:flex-end;}/*for vertical alignment all items are pushed to the bottom */
+.t-align-center{ align-items:center;}/*for vertical alignment all items are pushed to the center */
+.t-align-stretch{align-items:stretch;}/*for vertical alignment all items are stretched accross the screen*/
+.t-align-baseline{align-items:baseline;}/*All items are aligned such that text are on the same baseline */
+
+/*vertical-flow align for multiple line items*/
+.t-align-content-top{align-content:flex-start;}/*for vertical alignment all items are pushed to the top */
+.t-align-content-bottom{align-content:flex-end;}/*for vertical alignment all items are pushed to the bottom */
+.t-align-content-center{ align-content:center;}/*for vertical alignment all items are pushed to the center */
+.t-align-content-stretch{align-content:stretch;}/*for vertical alignment all items are stretched accross the screen multiple*/
+.t-align-content-space-between{align-content:space-between;}/*All items are aligned such that equispace is available around */
+.t-align-content-space-around{align-content:space-around;}/*All items are aligned such thatequispace available with first item pushed to the top and last item pushed to the bottom */
+
+/*images background-images styles */
+.t-cover{background-size:cover; background-position:center;}
+.t-contain{background-size:contain; background-position:center; background-repeat:no-repeat;}
+.t-img-align-left{background-position:left;}
+/*t-rounded */
+.t-rounded{border-radius:50%;} .t-small-rounded{border-radius:2px;} .t-mid-rounded{border-radius:4px; }
+ .t-major-rounded-static{border-radius:12px; }.t-major-rounded-dynamic{border-radius:25%;}
+/* ...............positions .............*/
+.t-fixed{position:fixed;} .t-absolute{position:absolute;} .t-default{position:initial;}
+.t-margin-top{margin-top:4vh;}
+/*..................................*/
+/*container overall container set to font-size:0px; so that there wont be spaces between positioner divs should be at the root position immidately after body */
+.t-container{width:100%; height:100%; font-size:0px; margin:0px; padding:0px; padding:0px; }
+/* let panel full left panel */
+
+.t-left{  z-index:10; background:#fff;   box-sizing:border-box; padding:1vw 0vw;   /* temprorary*/ width:16vw; }
+
+
+/**************** **/
+
+
+/* midmain panel full miainpanel */
+.t-midmain{ padding-top:10vh; z-index:1; background:#E8F4F6;   /* temprorary*/ width:84vw;} /* <-- should always contain t-subnav element as the first element  --> */
+
+.t-midmain{padding-left:4vw; padding-right:5vw; padding-top:15 vh; box-sizing:border-box;}
+
+.t-midmain{overflow-y:auto;}
+.t-dash{width:80%;  padding:2vh 3vh; box-sizing:border-box; padding-top:5vh;} 
+.t-advert{width:15vw; position:fixed; z-index:4; top:0px;padding:1.5vw; padding-top:13vh; height:100%; right:0px;  background-color:rgba(255,255,255,0.8);}
+
+/* ........................ * /
+
+/*navpanel full navpanel */
+.t-nav{ position:fixed; margin:0px; padding:0px; left:0px; overflow-x:hidden;  top:0px; z-index:5;   /* temprorary*/ width:100%;}
+.t-subnav{height:100px; height:100%;   /* temprorary*/  width:100%; }
+/*..................................*/
+
+/* footerpanel full footer panel */
+/*footer panel will use flex properties to push elements to the base 8 */
+.t-footer{}
+.t-flex-1{width:10vw;} .t-flex-2{width:20vw;} .t-flex-3{width:30vw;} .t-flex-4{width:40vw;} .t-flex-5{width:50vw;} .t-flex-6{width:60vw;}
+.t-flex-5{width:50vw;} .t-flex-6{width:60vw;}
+.t-flex-7{width:70vw;} .t-flex-8{width:80vw;} .t-flex-9{width:90vw;} .t-flex-10{width:100vw;} 
+.t-flex-15{width:15vw;} .t-flex-25{width:25vw;} .t-flex-35{width:35vw;} .t-flex-45{width:45vw;} .t-flex-55{width:55vw;} .t-flex-65{width:65vw;}
+.t-flex-75{width:75vw;} .t-flex-85{width:85vw;} .t-flex-95{width:95vw;}
+
+.t-md-1{width:10%;} .t-md-2{width:20%;} .t-md-3{width:30%;} .t-md-4{width:40%;} .t-md-5{width:50%;} .t-md-6{width:60%;}
+.t-md-7{width:70%;} .t-md-8{width:80%;} .t-md-9{width:90%;} .t-md-10{width:100%;} 
+.t-md-65{width:65%;} .t-md-35{width:35%;} .t-md-45{width:48%;}
+
+
+/*.....................................*/
+
+
+/*................box-shadows .......................  */
+.t-down-bx{-webkit-box-shadow: -1px 1px 20px -1px rgba(0,0,0,0.65);-moz-box-shadow: -1px 1px 20px -1px rgba(0,0,0,0.65);box-shadow: -1px 1px 20px -1px rgba(0,0,0,0.65);}/*downaward facing boxshadows */
+.t-right-bx{-webkit-box-shadow: 3px 0px 14px -6px rgba(0,0,0,0.53);-moz-box-shadow: 3px 0px 14px -6px rgba(0,0,0,0.53);box-shadow: 3px 0px 14px -6px rgba(0,0,0,0.53);}/*right facing boxshadows */
+.t-right-bx{-webkit-box-shadow: 3px 0px 64px -9px rgba(0,0,0,0.27);-moz-box-shadow: 3px 0px 64px -9px rgba(0,0,0,0.27);box-shadow: 3px 0px 64px -9px rgba(0,0,0,0.27);}
+/*artistic */
+.t-b-bottom{border:solid 1px  #424242;}
+
+::-webkit-input-placeholder {
+  color: #d2d2d2; text-align:left; font-size:15px!important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #d2d2d2;   text-align:left; font-size:15px!important; 
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #d2d2d2;  text-align:left; font-size:15px!important;
+}
+
+:-ms-input-placeholder {  
+   color: #d2d2d2;  text-align:left; font-size:15px!important;
+}
+.Montserrat{font-family:Montserrat;}
+

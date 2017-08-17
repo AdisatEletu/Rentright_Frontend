@@ -2,33 +2,32 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import requireAuth from './utils/requireAuth';
 
-import NewHome from '../src/components/pages/NewHome';
-import NewLogin from '../src/components/pages/auth/NewLogin';
-import Register from '../src/components/pages/auth/Register';
-import LandLord from "./components/pages/LandLord";
-import StepForm from "./components/pages/StepForm";
-import LandlordInfo from "./components/pages/LandlordInfo";
-import TenantInfo from "./components/pages/TenantInfo";
-import LandingPage from "./components/pages/LandingPage";
+import Home from '../src/components/pages/Home';
+import Login from '../src/components/pages/auth/Login';
+import Register from '../src/components/pages/Register';
+import LandLord from "./components/pages/account/LandLord";
+import Tenant from "./components/pages/Tenant";
+import ContinueAs from './components/pages/LandingPage/ContinueAs';
+import { LocaleProvider } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
 
 
 class App extends Component {
   render() {
 
       return(
+           <LocaleProvider locale={enUS}>
           <Router>
               <switch>
-                  <Route exact path="/" component={NewHome}/>
+                  <Route exact path="/" component={Home}/>
                   <Route path={"/register"} component={Register}/>
-                  <Route path="/sign-in" component={NewLogin}/>
-                  <Route path="/landlord" component={LandLord}/>
-                  <Route path="/form" component={StepForm}/>
-                  <Route path="/LandlordInfo" component={LandlordInfo} />
-                  <Route path="/TenantInfo" component={TenantInfo} />
-                  <Route path="/LandingPage" component={LandingPage}/>
-
+                  <Route path="/account" component={requireAuth(ContinueAs)}/>
+                  <Route path="/landlord" component={requireAuth(LandLord)}/>
+                  <Route path="/sign-in" component={Login}/>
+                  <Route path="/tenant" component={requireAuth(Tenant)}/>
               </switch>
           </Router>
+          </LocaleProvider>
       );
 
   }

@@ -1,24 +1,40 @@
 import React, {Component} from 'react';
-import EditorBar from "./shared/EditorBar";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {Switch, Route} from 'react-router-dom';
+import Dashboard from "./lease/Dashboard";
+import LeaseEditHome from "./lease/LeaseEditHome";
 
 class Lease extends Component {
 
     render() {
-        const {activeProperty} = this.props;
-        const addy = activeProperty.properties.address.house_number+" "+ activeProperty.properties.address.street_name;
         return (
-            <div>
-                <EditorBar active="lease" uuid={this.props.match.params.id} address={addy}/>
-                <div className="grey-back col-lg-12"/>
+            <div style={{marginTop: '50px'}}>
+                <Switch>
+                    <Route exact path='/landlord/units/:id/lease' component={Dashboard}/>
+                    <Route exact path='/landlord/units/:id/lease/:leaseId/edit' component={LeaseEditHome}/>
+                </Switch>
             </div>
         );
     }
 
 }
 
-function mapStateToProps(state){
+export class Clause extends Component{
+    render(){
+        return (
+        <div className="clause">
+            <p>
+                <b>{this.props.title}: </b> {this.props.content}
+            </p>
+        </div>
+    );
+    }
+
+}
+
+
+function mapStateToProps(state) {
     return {
         activeProperty: state.user.activeProperty,
     }

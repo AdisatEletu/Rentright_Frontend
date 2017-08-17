@@ -1,14 +1,6 @@
-import axios from 'axios';
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'https://rentright-api-gateway.herokuapp.com/';
 
-export function BaseUrl(){
-    return BASE_URL;
-}
 
-export function setAuthorisationToken(token){
-    if(token){
-        axios.defaults.headers.common['Authorization'] = 'Bearer '+token;
-    }else{
-        delete axios.defaults.headers.common['Authorization'];
-    }
-}
+export const getUnitUrl = (uuid) =>{ return BASE_URL+'user/units/'+uuid}
+export const unitImageUrl = (id) => {return BASE_URL+'user/units/image/'+id}
+

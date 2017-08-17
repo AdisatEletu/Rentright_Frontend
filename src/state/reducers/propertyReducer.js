@@ -7,7 +7,7 @@ const initialMeta = {
 
 const initialProperties = {
     fetched: false,
-    fetching: true,
+    fetching: false,
     paging: false,
 }
 
@@ -43,13 +43,14 @@ return action.type == RECEIVE_PROPERTIES_PAGE ? action.payload.pageMeta : meta
 const properties = (properties = initialProperties , action = {}) => {
     switch (action.type) {
         case RECEIVE_PROPERTIES_PAGE:
-            let _properties = {fetched:true, fetching:false, paging: false}
-            for (let property of action.payload.properties) {
-                _properties = {
-                    ..._properties,
-                    [property.id]: property
-                }
-            }
+            //let _properties = {fetched:true, fetching:false, paging: false}
+            let _properties = {fetched:true, fetching:false, paging: false,prop: action.payload.properties};
+            // for (let property of action.payload.properties) {
+            //     _properties = {
+            //         ..._properties,
+            //         [property.id]: property
+            //     }
+            // }
             return {
                 ...properties,
                 ..._properties,
@@ -74,5 +75,5 @@ const pagination = combineReducers({
 
 export default combineReducers({
     properties,
-    pagination
+    //pagination
 })

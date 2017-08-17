@@ -1,34 +1,24 @@
 import React, {Component} from 'react';
-import BreadCrumbs from "./shared/BreadCrumbs";
-import SideMenu from "./shared/SideMenu";
-import Content from "./properties/Content";
-import PropTypes from "prop-types";
-import {connect} from "react-redux";
+import NewUnit from "./properties/NewUnit";
+import Units from "./properties/Units";
+import PropertyEditor from './properties/PropertyEditor';
+import Content from './properties/Content';
+
+import {Switch, Route} from 'react-router-dom';
 
 class Properties extends Component{
+
     render (){
-        const trail = ["Home", "Account"];
-        const {properties} =  this.props;
 
         return (
-            <div>
-                <BreadCrumbs trails={trail} active="Profile"/>
-                <SideMenu active="properties"/>
-                <Content properties={properties}/>
-            </div>
+            <Switch>
+                <Route exact path='/landlord/properties' component={Units}/>
+                <Route path='/landlord/properties/new' component={NewUnit}/>
+                <Route exact path='/landlord/properties/:id' component={Content}/>
+                <Route path='/landlord/properties/:id/units' component={PropertyEditor}/>
+            </Switch>
         );
     }
 }
 
-
-function mapStateToProps(state){
-    return {
-        properties: state.properties,
-    }
-
-}
-
-Properties.propTypes = {
-    properties: PropTypes.object.isRequired,
-}
-export default connect(mapStateToProps)(Properties);
+export default Properties;

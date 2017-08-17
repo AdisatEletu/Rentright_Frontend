@@ -1,82 +1,78 @@
 /**
- * Created by Adizat on 13/07/2017.
+ * Created by Adizat on 21/07/2017.
  */
-import React, {Component} from 'react';
-import Form from './login/Form';
-import Header from "../layouts/Header";
-
-import Copyright from "../layouts/footer/Copyright";
-import NewPrimaryNav from "../layouts/header/navigation/NewPrimaryNav"
+import React,{Component} from 'react';
+import NewForm from './login/NewForm';
+import PrimaryNav from '../layouts/header/navigation/PrimaryNav';
+import Copyright from '../layouts/footer/Copyright';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types'
-import FlashMessagesList from '../../shared/FlashMessagesList';
-
 import {login} from '../../../state/actions/authAction';
 import {addFlashMessage} from '../../../state/actions/flashMessageActions';
+import {Helmet} from 'react-helmet';
 
-function loginForm () {
+
+function SignIn () {
     return(
-        <div>
-            <div className="row">
-                <div className="input-field col s12">
-                    <input id="password" className="validate" type="password" />
-                    <label htmlFor="password">Password</label>
-                </div>
+        <div className="t-flex t-md-10 t-center-f t-margin-left">
+            <div className="t-sup-h3 r-blue r-line-height"> Sign In to RentRight <br />
+                <span className="t-h2  r-black"> New on RentRight? <a className="t-orange-f" href="#">  Sign Up</a></span>
+                <p className="t-h3 t-gray-darken-3-f"> By signing in, you agree to the RentRight's <a className="t-orange-f" href> Terms of service</a> and <a className="t-orange-f" href>Privacy policy</a></p>
             </div>
-            <div className="row">
-                <div className="input-field col s12">
-                    <input id="email" className="validate" type="email" />
-                    <label htmlFor="email">Email</label>
-                </div>
+        </div>
+    );
+
+}
+function Social() {
+    return(
+
+        <div className="t-flex t-md-10 t-margin-left ">
+            <img className="r-i-size" src="CSS/img/f-login.png"/>
+            <img className="r-i-size" src="CSS/img/Linkedin.png"/>
+        </div>
+    );
+
+}
+function Gif() {
+    return(
+
+        <div className = "t-md-5  t-fullheight t-justify-left t-flex t-fullheight" >
+            <div className="image t-flex t-align-center"> <img src="http://www.onerent.co/images/twenty-sixteen/home/free-tenant-placement.gif" />
             </div>
+
+
         </div>
     );
 
 }
 
 
-
-class Login extends Component{
-
+class NewLogin extends Component{
     render(){
+        return(
 
-        return (
-
-            <div className= "row fullheight nopadding ">
-                <NewPrimaryNav/>
-                <div className="container">
-                     <div className="sign-in-margin">
-                         <h3>Sign In</h3>
-                          <hr/>
-                     </div>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col m6 s3">
-                        <ul className="tabs">
-                            <li className="tab col s3"><a href="#">Home</a></li>
-                            <li className="tab col s3"><a className="active" href="#">Sign In</a></li>
-                        </ul>
-
-                         </div>
-                              </div>
-
-
-                                <loginForm/>
-
+            <div className=" t-fullheight t-fullwidth">
+                <Helmet>
+                    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet"/>
+                </Helmet>
+                <PrimaryNav/>
+                <div className="t-fullheight  t-flex t-flex-row t-justify-space-between font-size-zero">
+                    <div className="  t-flex  t-seventyfive l-pad t-flex-column t-align-content-center t-md-4 t-margin-right padding">
+                        <SignIn/>
+                        <Social/>
+                        <NewForm login={this.props.login} addFlashMessage={this.props.addFlashMessage}/>
                     </div>
+                        <Gif/>
                 </div>
-            <Copyright/>
+                <Copyright/>
             </div>
-
-
-
         );
     }
 }
 
-Login.propTypes = {
+NewLogin.propTypes = {
     login: PropTypes.func.isRequired,
     addFlashMessage: PropTypes.func.isRequired,
 }
 
-export default connect(null,{login,addFlashMessage})(Login)
+export default connect(null, {login, addFlashMessage})(NewLogin)

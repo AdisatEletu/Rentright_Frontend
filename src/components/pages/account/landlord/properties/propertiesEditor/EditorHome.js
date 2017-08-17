@@ -3,112 +3,127 @@ import EditorBar from "./shared/EditorBar";
 import {Line} from 'react-progressbar.js';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {getProperty} from "../.././../../../../state/actions/userActions";
+import Overlay from "../../../../../shared/Overlay";
+import Loader from "../../../../../shared/Loader";
 
 class EditorHome extends Component {
 
     render() {
-        const options = {
-            strokeWidth: 2,
-            easing: 'easeInOut',
-            duration: 2000,
-            color: '#FFEA82',
-            trailColor: '#eee',
-            trailWidth: 1,
-            svgStyle: {width: '100%', height: '50%'},
-            text: {
-                style: {
-                    // Text color.
-                    // Default: same as stroke color (options.color)
-                    color: '#999',
-                    right: '0',
-                    top: '10px',
-                    padding: 0,
-                    margin: 0,
-                    transform: null
-                },
-                autoStyleContainer: false
-            },
-            from: {color: '#FFEA82'},
-            to: {color: '#ED6A5A'},
-            step: (state, bar) => {
-                bar.setText(Math.round(bar.value() * 100) + ' % Complete');
-            }
-        };
-
-        // For demo purposes so the container has some dimensions.
-        // Otherwise progress bar won't be shown
-        const containerStyle = {
-            width: '200px',
-            height: '20px'
-        };
-
-        const {activeProperty} = this.props;
-        const addy = activeProperty.properties.address.house_number+" "+ activeProperty.properties.address.street_name;
-
+        const isSet = this.props.unit.fetched;
         return (
             <div>
-                <EditorBar active="home" uuid={this.props.match.params.id} address={addy}/>
-                <div className="grey-back col-lg-12">
-                    <div className="center-block card-like" style={{width:'500px'}}>
-                        <div className="contain" style={{backgroundColor: '#ffffff'}}>
-                            <div className="row" style={{paddingTop: '10px', paddingBottom:'10px'}}>
-                                <div className=" col-lg-6">
-                                    <h4><b>{activeProperty.properties.address.house_number} {activeProperty.properties.address.street_name}</b></h4>
-                                </div>
-                                <div className="col-lg-6">
-                                    <Line
-                                        progress={0.17}
-                                        text={'test'}
-                                        options={options}
-                                        initialAnimate={true}
-                                        containerStyle={containerStyle}
-                                        containerClassName={'.progressbar'} />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="center col-lg-12" style={{paddingTop: '20px',paddingBottom: '20px',backgroundColor: '#f3f3f3'}}>
-                                        <div style={{marginBottom: '20px'}}><h4>Do you need help in getting started?</h4></div>
-                                    <div style={{marginBottom: '20px'}}><h4>Let us help direct you in the right path. Just click get started to continue.</h4></div>
-                                    <div><button className="center-block btn btn-success">Get Started</button></div>
-                                </div>
-                            </div>
-                            <div style={{paddingTop: '10px', paddingBottom: '10px'}}>
+                {isSet ?
+                    <div>
+                        <div className="row" style={{marginTop: '40px', marginBottom: '0'}}>
+                            <div className="col m12">
+                                <h2 className="center  grey-text lighten-1"><b>Lets get started. What do you want to do?</b>
+                                </h2><br/>
                                 <div className="row">
-                                    <div className="col-lg-12">
-                                        <div className="right"><span className="pull-right">Status</span></div>
+                                <div className="col m3">
+                                    <div onClick={() => {
+                                        this.context.router.history.push('/landlord/units/' + this.props.match.params.id + '/listing')
+                                    }} className="card-panel valign-wrapper hover"
+                                         style={{height: '200px', cursor: 'pointer'}}>
+                                        <div className="center" style={{width: '100%', fontSize: '18px'}}>
+                                            <div><i className="material-icons primary-color-text">business</i></div>
+                                            <div className="blue-grey-text lighten-3"><b>List my unit</b></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="row">
-                                    <div className="col-lg-12">
-                                        <div><span className="pull-right" style={
-                                            {
-                                                backgroundColor: 'white',
-                                                border: '1px solid #e53935',
-                                                padding: '3',
-                                                fontSize: '10px',
-                                                borderRadius: '2px'
-                                            }
-                                        }>Unpublished</span></div>
+                                <div className="col m3">
+                                    <div className="card-panel valign-wrapper hover"
+                                         style={{height: '200px', cursor: 'pointer'}}>
+                                        <div className="center" style={{width: '100%', fontSize: '18px'}}>
+                                            <div><i className="material-icons primary-color-text">assignment</i></div>
+                                            <div className="blue-grey-text lighten-3"><b>Check applications</b></div>
+                                        </div>
                                     </div>
+                                </div>
+                                <div className="col m3">
+                                    <div className="card-panel valign-wrapper hover"
+                                         style={{height: '200px', cursor: 'pointer'}}>
+                                        <div className="center" style={{width: '100%', fontSize: '18px'}}>
+                                            <div><i className="material-icons primary-color-text">payment</i></div>
+                                            <div className="blue-grey-text lighten-3"><b>Collect rent</b></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col m3">
+                                    <div className="card-panel valign-wrapper hover"
+                                         style={{height: '200px', cursor: 'pointer'}}>
+                                        <div className="center" style={{width: '100%', fontSize: '18px'}}>
+                                            <div><i
+                                                className="material-icons primary-color-text">settings_input_component</i>
+                                            </div>
+                                            <div className="blue-grey-text lighten-3"><b>Maintain property</b></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div className="row" style={{marginTop:'0'}}>
+                            <div className="col m7">
+                                <div className="card-panel" style={{height: '410px'}}>
+                                    <h5 className="center">About {this.props.unit.unit.properties.name}, Unit {this.props.unit.unit.number}</h5>
+                                    <br/>
+                                    <div className="row" style={{ marginTop:'10px'}}>
+                                        <div className="col m11" style={{ padding: '0 0 0 0'}}>
+                                            {this.props.unit.unit.properties.name}, Unit {this.props.unit.unit.number}<br/>
+                                            {this.props.unit.unit.properties.address.state}, {this.props.unit.unit.properties.address.country}
+                                        </div>
+                                        <div className="col m1">
+                                            <a className="right tertiary-color-text">Edit</a>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div className="row" style={{ marginTop:'10px'}}>
+                                        <div className="col m9" style={{ padding: '0 0 0 0'}}>
+                                            A Rent Analysis report, for just ₦1500.00,<br/>
+                                            will give you the confidence to set a competitive price.
+                                        </div>
+                                        <div className="col m3">
+                                            <a className="right tertiary-color-text">Get estimate</a>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div><br/>
+                                        <button className="btn red darken-2">Delete Unit</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="col m5">
+                                <div className="card-panel" style={{height: '410px'}}>
+                                    <h5 className="center">Lets Find Great Renters</h5>
+                                    <img style={{width:'100%'}} src="https://www.rentalutions.com/assets/new_ui/applications/landlord-applications-index-onboarding/05-01-get-started.png"/>
+                                    <h6 className="center"><b>Have a renter already?</b></h6><br/>
+                                    <button className="btn secondary-color white-text" style={{width:'100%'}}>Request Application</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>:
+                    <Loader/>
+                }
             </div>
         );
     }
 
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
-        activeProperty: state.user.activeProperty,
+        unit: state.user.activeUnit,
     }
 }
 
 EditorHome.propTypes = {
-    activeProperty: PropTypes.object.isRequired,
+    unit: PropTypes.object.isRequired,
+}
+
+EditorHome.contextTypes = {
+    router: PropTypes.object.isRequired,
 }
 export default connect(mapStateToProps)(EditorHome);
 
