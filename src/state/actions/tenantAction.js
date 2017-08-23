@@ -83,7 +83,6 @@ export function connectToSocket(uuid){
   socket.initialize().then((val)=>{
     console.log(val);
   })
-
 }
 
 
@@ -143,6 +142,19 @@ export function load_my_applications(path){
     
   })
 
+}
+export function post_my_application(obj){
+  let path = 'https://rentright.herokuapp.com/api/rentright/applications/';
+  return((dispatch)=>{
+  dispatch(loading_post_applications('loading_post'))
+  return api.postrealurl(path, obj).then((applications)=>{
+          dispatch(loading_post_applications('hideloading_post'));
+        dispatch(post_my_applications_success(applications))
+  })
+      .catch((err)=>{
+        dispatch(loading_post_applications('errorloading_post'));
+      });
+  })
 }
 
 
@@ -291,11 +303,14 @@ export function load_my_applications_success(applications){
   return  {type: types.TENANT_APPLICATIONS_LOAD, applications:applications.results }
   
 }
+export function post_my_applications_success(applications){
+  return  {type: types.TENANT_APPLY, applications:applications }
+  
+}
 export function load_my_query_success(results){
    return  {type: types.TENANT_QUERY_LOAD, results :results.results } 
 
 }
-
 export function loadTenantSuccess(tenants) {  
   return {type: types.LOAD_TENANT_SUCCESS  , tenants:tenants.results};
 }
@@ -388,6 +403,37 @@ export function loading_applications(context){
   }
 
 }
+
+export function loading_post_applications(context){
+  switch(context){
+    case 'loading_post' :
+    return{
+      type: types.SHOW_LOADING_POST_APPLICATIONS,
+      Loading: true,
+      Error: false
+    };
+    case  'hideloading_post':
+    return{
+      type: types.HIDE_LOADING_POST_APPLICATIONS,
+      Loading: true,
+      Error: false
+    }
+    case 'errorloading_post':
+    return {
+      type:types.ERROR_LOADING_POST_APPLICATIONS,
+      Loading: true,
+      Error: true
+    }
+     default: 
+     return  {
+       type: types.SHOW_LOADING_POST_APPLICATIONS,
+       Loading: true,
+      Error: false   
+    
+  }
+  }
+
+}
 export function loading_query(context){
   switch(context){
     case 'loading' :
@@ -436,8 +482,7 @@ export function breakFormToComponents(formdatal){
   let switchforms;
   let allform = {};
   let formdata = formdatal[0]
-  let formkeys = Object.keys(formdata); 
-             
+  let formkeys = Object.keys(formdata);             
             
             selectforms = formkeys.filter((i)=>{
                let instance = formdata[i];

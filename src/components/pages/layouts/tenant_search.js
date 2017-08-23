@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux';
 import CompletenessBar  from '../tenantlayouts/completeness_bar';
 import FormElements  from '../tenantlayouts/form_elements';
 import NewForm  from '../tenantlayouts/new_form';
-import { loadAllTenants, loadSpecificTenant, load_my_query, load_my_applications, patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct, hideLoading, errorLoading, breakFormToComponents,  getProfileStruct  } from '../../../state/actions/tenantAction';
+import { loadAllTenants, loadSpecificTenant,post_my_application,  load_my_query, load_my_applications, patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct, hideLoading, errorLoading, breakFormToComponents,  getProfileStruct  } from '../../../state/actions/tenantAction';
 import Spin from  'antd/lib/spin';
 import Button from'antd/lib/button';
 import ProfileContent from '../tenantlayouts/profile_content';
@@ -33,7 +33,7 @@ import enUS from 'antd/lib/locale-provider/en_US';
 import { Slider, Row } from 'antd';
 import TenantModal from './Tenant_Modal';
 import $ from 'jquery';
-
+import { notification } from 'antd';
 var _ = require('lodash');
 const InputGroup = Input.Group;
 const Option = Select.Option;
@@ -53,6 +53,7 @@ const  dateFormat = 'YYYY-MM-DD';
       this.listimage = [];
 
        this.handleInputChange = this.handleInputChange.bind(this);    
+       this.postApplications = this.postApplications.bind(this);
        this.handleSubmit = this.handleSubmit.bind(this); 
        this.showModal = this.showModal.bind(this);
        this.hideModal = this.hideModal.bind(this);
@@ -73,7 +74,23 @@ const  dateFormat = 'YYYY-MM-DD';
 
      }
    
+  postApplications(obj){
+    console.log(obj);
+    this.props.post_my_application(obj).then((it)=>{
+      console.log(it)
+        notification["success"]({
+          message: 'You applied for a property',
+         description: 'Your appliction for an apartment on rentright was successful we will alert you once iportant events occour we will notify you.',
+  });
+    }).catch((err)=>{
+          notification["error"]({
+          message: 'Failed to apply',
+         description: 'Your appliction was not successful please try again later or check your internet settings.',
+  });
+    });
 
+
+  }
    hideModal(){
      $('.t-midmain').css('z-index', '10');
      this.setState({showModal:false});
@@ -134,26 +151,23 @@ const  dateFormat = 'YYYY-MM-DD';
 
 
   handleSubmit = ()=>{
-    var th = this; 
-    
+    var th = this;     
     if (this.state !== {}) {
       let path = ""
       let keys = Object.keys(this.state)
-
       let lis = keys.map((item)=>{
         console.log(item)
         if (path == ""){
           path = item + "="+this.state[item];
         }else{
           path  += "&" +item + "="  + this.state[item] 
-        }
-      this.setState({showModal:false}); 
-        
-        
+        }   
+      this.setState({showModal:false});       
       })
+       path += "&" +"uuid="+this.props.auth.user.uuid;
       console.log(path);
       this.props.loadMyQuery(path).then((res)=>{
-        console.log(res)
+        console.log(res);
       })
 
     }
@@ -282,7 +296,11 @@ this.props.queryResult.results ?
       <div key= {i}className = "q-results" > 
        <div className = "q-image"  style = {{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+itemm.unit_images[0].id+ ")"}}>
        {/* <div className = "q-image" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}>*/}
-      <div className= "q-image-cover t-md-10 t-fullheight"><div className = "btn" onClick = { ()=> this.showModal(itemm.unit_images[0].id , itemm.unit_images, itemm) }> <Icon type = "export"/>&nbsp;Explore Property</div></div>
+
+      <div className= "q-image-cover t-md-10 t-fullheight"><div className = "btn" onClick = { ()=> this.showModal(itemm.unit_images[0].id , itemm.unit_images, itemm) }>
+        
+
+         <Icon type = "export"/>&nbsp;Explore Property</div></div>
        </div>
         <div className = "q-exp t-flex t-flex-column">
           <div className = "q-header">{itemm.description}</div>
@@ -331,9 +349,45 @@ this.props.queryResult.results ?
             <div className = "q-border-right  t-flex t-align-center t-justify-space-around f-q ">
                      Explore&nbsp; <Icon type = "switcher"/>
                      </div>
-                   <div className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr">
-                     Apply&nbsp; <Icon type = "export"/>
-                     </div>
+       {  
+
+        itemm  ?   
+         !this.props.applicationsPostIndicator.Loading &&  !this.props.applicationsPostIndicator.Error && !itemm.applied &&  this.props.applicationsPost &&  !this.props.applicationsPost.success 
+        ? 
+        <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr"
+          onClick = {(e)=>{this.postApplications({units:itemm.id, unit_tenant:this.props.auth.user.id, unit_manager:itemm.unit_manager})}}>
+           Apply&nbsp; <Icon type = "export"/>
+            </div>
+         :        
+         itemm.applied  ||  this.props.applicationsPost && this.props.applicationsPost.success
+        ? 
+          <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-success" >
+            Application Sent <Icon type = "export"/>
+            </div>
+          :      
+         this.props.applicationsPostIndicator && this.props.applicationsPostIndicator.Loading 
+         ?         
+           <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-working" >
+            Applying ... <Icon type = "loading"/>
+            </div>         
+          : 
+         this.props.applicationsPostIndicator && !this.props.applicationsPostIndicator.Loading && this.props.applicationsPost.Error
+         ?
+              <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-danger"
+              onClick = {(e)=>{this.postApplications({units:itemm.id, unit_tenant:this.props.auth.user.id, unit_manager:itemm.unit_manager})}}>
+                Not Complete Try Again &nbsp; 
+                <Icon type = "export"/>
+                </div>
+            :
+            null
+            :
+        <NavLink to = {'/sign-in'}   className = "q-border-right  q-act t-flex t-align-center t-justify-space-around f-q fr qbdiv q-danger">
+                   Sign in&nbsp; <Icon type = "export"/>              
+               </NavLink>      
+          
+       
+       }
+
 
                </div>
                 </div>
@@ -387,8 +441,10 @@ function matchStateToProps(state){
         structure:state.structure,
         queryIndicator:state.query_indicator,
         applicationsIndicator:state.applications_indicator,
+        applicationsPostIndicator:state.applications_post_indicator,
         queryResult:state.query_result,
-        applicationsResult: state.applications_result        
+        applicationsResult: state.applications_result,
+        applicationsPost: state.tenant_post_applications,       
  
     }      
     
@@ -404,7 +460,8 @@ function mapDispatchToProps(dispatch) {
      loadStructure: getProfileStruct,
     breakFormToComponents:breakFormToComponents,
     loadMyQuery: load_my_query,
-    loadMyApplications: load_my_applications
+    loadMyApplications: load_my_applications,
+    post_my_application:post_my_application
   }, dispatch);
 }
 

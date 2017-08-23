@@ -48,6 +48,21 @@ console.log(error)
   return error;
 })
  }
+  postrealurl = (api_path, obj) =>{
+  
+    return fetch(api_path, {
+        headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  method: 'post',                                                              
+  body: JSON.stringify(  obj  )
+    }).then(response =>{
+  return response.json();  
+}).catch(error => {
+  return error;
+})
+  }
   deleteurl = (api_path, obj) =>{
    api_path =  api_path + '/';
     return fetch(this.url + api_path, {
