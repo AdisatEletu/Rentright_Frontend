@@ -1,8 +1,22 @@
 import React,{Component} from 'react';
 import {Helmet} from "react-helmet";
+import {connect} from 'react-redux';
+import FooterMain from './layouts/footer/FooterMain';
 
-export default class NewHome extends Component{
 
+class NewHome extends Component{
+   constructor(props){
+       super(props)
+       this.state = {}
+   }
+
+  componentDidMount(){
+     console.log(this.state);
+     this.setState(this.props.auth.user)
+  }
+componentDidUpdate(prevProps, prevState){
+console.log(this.state);
+}
     render(){
         return(
             <div className="home-mainbody t-flex t-align-content-stretch t-fullwidth  t-flex-column">
@@ -15,8 +29,17 @@ export default class NewHome extends Component{
                         <span> The Ultimate Insider to the RentRight </span>
                     </div>
                     <div className="home-firstnav-innerdiv-right t-flex t-justify-center t-flex-row t-center-f t-fullheight">
-                        <span className="home-breadcrumbs"><a href="/Register"><i className="material-icons ">person_add</i> Register</a></span>
-                        <span className="home-breadcrumbs home-active"><i className="material-icons ">supervisor_account</i><a href="/sign-in" style={{color: '#ffffff'}}> Login</a></span>
+                        <span className="home-breadcrumbs"><a href="/Register"><i className="fa fa-user-plus" /> <span>Register</span></a></span>
+                        {this.props.auth.user ?
+                            <span className="home-breadcrumbs"><a href="#"><i className="fa fa-user hom-icons" />{this.props.auth.user.first_name} {this.props.auth.user.last_name}</a></span>
+                        :
+                            null
+                        }
+                        <span className="home-breadcrumbs home-active"><i className="fa fa-sign-out" />
+                            {this.props.auth.user ?  <a href="/sign-out" style={{color: '#ffffff'}}> Logout</a> :<a href="/sign-in" style={{color: '#ffffff'}}> Login</a>}
+
+
+                        </span>
                     </div>
                 </div>
                 <div className="home-second-div t-flex t-justify-space-between t-align-center  t-flex-row nav-pad-left-right ">
@@ -40,7 +63,7 @@ export default class NewHome extends Component{
                     <div className="bar-box t-flex t-align-center t-justify-space-between t-md-10 ">
                         <div className="t-flex t-flex-row t-align-center t-justify-left t-md-6">
                             <span className="bar-breadcrumbs bar-tabs  bar-tabs-active">LANDLORD</span>
-                            <span className="bar-breadcrumbs bar-tabs ">TENANT</span>
+                            <span className="bar-breadcrumbs bar-tabs "><a href="/tenant-guide">TENANT</a></span>
                             <span className="bar-breadcrumbs bar-tabs "><span>INSTITUTIONS</span><i className="material-icons ">keyboard_arrow_down</i></span>
                             <span className="bar-breadcrumbs bar-tabs "> PROFESSIONALS<i className="material-icons">keyboard_arrow_down</i></span>
                         </div>
@@ -50,7 +73,7 @@ export default class NewHome extends Component{
                         </div>
                     </div>
                 </div>
-                <div className="picture-div t-flex t-fullwidth interior1 home-slider t-fullheight home-bxshadow ">
+                <div className="picture-div t-flex t-fullwidth interior1 home-slider parallax t-fullheight home-bxshadow ">
                     <div className="home-cover">
                     </div></div>
                 <div className="home-body-search t-flex t-align-center nav-pad-left-right t-justify-center ">
@@ -414,7 +437,7 @@ export default class NewHome extends Component{
                         </div>
                     </div>
                 </div>
-                <div className="t-flex home-testimonial"><div className="home-testimonial-cover t-flex t-fullheight t-fullwidth">
+                <div className="t-flex home-testimonial parallax"><div className="home-testimonial-cover t-flex t-fullheight t-fullwidth">
                     <div className="home-testimonial-text-holder t-fullheight t-flex t-justify-center t-flex-column t-md-10  t-align-center">
                         <div className="home-tes t-flex t-md-8 t-justify-center "> Testimonials</div>
                         <div className="home-tes2 t-flex t-md-7 t-justify-center"> We're Proud of Our Work</div>
@@ -455,56 +478,15 @@ export default class NewHome extends Component{
                             you can manage your property in just clicks and not hours!</div>
                     </div>
                 </div>
-                <div className="home-footer t-flex t-md-10 ">
-                    <div className="footer-items-holder t-md-10 t-fullheight t-flex nav-pad-left-right t-justify-space-between">
-                        <div className=" t-flex t-md-22 t-flex-column  ">
-                            <div className="rentright-logo t-flex t-md-10" />
-                            <div className="home-rentright-about t-flex t-left-f t-md-10"> RentRight is a platform for everybody involved in property-renting business
-                                landlords, tenants, agents, arbitrators, preventing issues and saving time.</div>
-                            <div className="home-footer-social t-flex t-md-10 ">
-                                <span><i className="fa fa-twitter home-twit t-flex t-md-3" /></span>
-                                <span><i className="fa fa-facebook home-twit t-flex t-md-3 " /></span>
-                                <span><i className="fa fa-linkedin home-twit t-flex t-md-3" /></span>
-                            </div>
-                        </div>
-                        <div className="t-flex t-md-22 t-flex-column  t-align-content-center ">
-                            <span className="most-commented t-flex t-md-10 "> Most Commented</span>
-                            <div className="footer-img-holder t-flex t-md-10  ">
-                                <div className="footer-img1 t-flex"> </div>
-                                <div className=" t-flex t-flex-column footer-img1-details t-justify-center ">
-                                    <div className="home-new-post">New Post with image </div>
-                                    <span className="home-tes-prof ">March 13, 2017</span></div>
-                            </div>
-                            <div className="footer-img-holder t-flex t-md-10  ">
-                                <div className="footer-img2 t-flex"> </div>
-                                <div className=" t-flex footer-img2-details t-flex-column  ">
-                                    <div className="home-new-post t-justify-center">Video Post </div>
-                                    <span className="home-tes-prof ">March 13, 2017</span></div>
-                            </div>
-                        </div>
-                        <div className="home-useful-links t-flex t-md-22  t-flex-column">
-                            <div className="t-flex t-justify-space-between t-flex-column">
-                                <div className="most-commented t-flex t-md-10 ">Useful Links</div>
-                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i> <span className="footer-a">For Landlord</span></div>
-                                <div className="footer-hr" />
-                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i><span className="footer-a">For Tenant</span></div>
-                                <div className="footer-hr" />
-                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i> <span className="footer-a">Landlord </span></div>
-                                <div className="footer-hr" />
-                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i><span className="footer-a"> Landlord</span></div>
-                                <div className="footer-hr" />
-                            </div>
-                        </div>
-                        <div className="most-commented t-flex t-md-22 ">Twitter Feeds</div>
-                    </div>
-                </div>
-                <div className="footer-copyright home-primary-color t-md-10 t-justify-space-between t-align-center t-flex-column ">
-                    <div className="t-flex t-flex nav-pad-left-right  ">
-                        <div className="copyright t-flex t-md-5">RentRight © 2017. All Rights Reserved. <div className="copyright-a t-flex home-secondary-color-f">Terms Of Use</div> and <div className="copyright-a t-flex home-secondary-color-f"> Privacy Policy</div></div>
-                        <div className="copyright-top t-flex t-md-5  t-justify-right">Top.</div>
-                    </div>
-                </div>
+                <FooterMain/>
             </div>
         );
     }
 }
+function matchStateToProps(state){
+    return {
+        auth:state.user.auth
+    }
+}
+
+export default connect(matchStateToProps,{})(NewHome)

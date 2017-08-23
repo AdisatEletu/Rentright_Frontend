@@ -8,6 +8,7 @@ import Register from '../src/components/pages/Register';
 import LandLord from "./components/pages/account/LandLord";
 import Tenant from "./components/pages/Tenant";
 import ContinueAs from './components/pages/LandingPage/ContinueAs';
+import TenantInfo from './components/pages/TenantInfo';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 
@@ -24,6 +25,7 @@ class App extends Component {
                   <Route path="/account" component={requireAuth(ContinueAs)}/>
                   <Route path="/landlord" component={requireAuth(LandLord)}/>
                   <Route path="/sign-in" component={Login}/>
+                  <Route path="/tenant-guide" component={TenantInfo}/>
                   <Route path="/tenant" component={requireAuth(Tenant)}/>
               </switch>
           </Router>

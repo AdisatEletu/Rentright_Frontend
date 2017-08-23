@@ -18,7 +18,7 @@ class Facebook extends Component {
     render() {
         return (
             <FacebookLogin
-                appId="1088597931155576"
+                appId=" 112618779343581"
                 autoLoad={true}
                 fields="name,email,picture"
                 callback={responseFacebook}
@@ -150,7 +150,7 @@ export class SignupForm extends Component{
                     <div className="t-flex  login-logo t-justify-center t-md-2" />
                     <div className="t-flex login-header  t-flex-column t-md-8 t-justify-center home-primary-color-f t-center-f">
                         <div className="login-h1 t-center-f">Welcome to RentRight</div>
-                        <div className="login-h2 t-center-f ">Already on RentRight? <span className="login-a">Sign In</span> </div>
+                        <div className="login-h2 t-center-f ">Already on RentRight? <span className="login-a">< a href="/sign-in">Sign In</a></span> </div>
                     </div>
 
 
