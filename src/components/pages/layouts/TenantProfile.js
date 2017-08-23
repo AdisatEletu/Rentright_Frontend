@@ -155,9 +155,9 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
 
         
            return(
-        <div className = "t-md-10 t-fullheight t-scroll t-flex t-flex-column " >
+        <div className = "t-md-10 t-fullheight t-scroll t-flex t-flex-column t-align-content-space-between" >
         <div className = "t-md-10 t-flex t-justify-space-between m-bottomx ">
-         <div className = "p-widget t-md-65 t-white personalize  m-bottomx ">
+         <div className = "p-widget t-md-65 t-white personalize2  m-bottomx ">
              <div className = "t-flex t-flex-column t-md-10 t-justify-left ">
             <div className = "t-gray-darken-3-f mid t-h2  "><span className = "">Please update your profile</span> </div> 
             <span className = "t-gray-darken-1-f thin t-h3 t-lh-h2  m-topp">You can quickly add missing profile information here</span>

@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {Switch,Route} from "react-router-dom";
 import Profile from "./account/landlord/Profile";
 import T_left from "./layouts/T-left";
-import {Helmet} from "react-helmet";
 
 import TenantProfile from "./layouts/TenantProfile";
 import Advert from "./tenantlayouts/advert";
@@ -58,11 +57,7 @@ loadprofile = ()=>{
    if(this.props.myProfile.tenants){
     return(
 <div className = "t-body">
-    <Helmet>
-        <link href="http://localhost:3000/assets/css/tenant_compliment.css" rel="stylesheet" type="text/css"/>
-        <link href="http://localhost:3000/assets/css/tenant.css" rel="stylesheet" type="text/css"/>
-    </Helmet>
- <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-align-stretch t-justify-space-between">
+ <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-align-stretch t-justify-left">
            {this.props.myProfile.tenants.tenant_bio ? <TenantNav first_name = {this.props.user.first_name}  myProfile = {this.props.myProfile}/>  : <TenantNav first_name = {this.props.user.first_name}/> }
           <div className = "t-left t-gray  t-flex  t-align-content-space-between t-right-bx t-right-bx t-flex-column">
       
@@ -86,9 +81,9 @@ loadprofile = ()=>{
           </div>
  
          <div className = " t-justify-center t-flex t-center-f  t-flex-column t-justify-center m-top-sm ">        
-            <span className = "roboto t-h4 t-space-1 mid t-uppercase  m-bluish-f block">{this.props.user.first_name} {this.props.user.last_name}</span>
-            <span className = "open-sans t-h5 mid semi-bold t-uppercase m-bluish-f block">{this.props.user.email}</span>
-            <div className = "t-center-f  t-gray-lighten-1-f t-flex m-top t-h6  t-justify-center t-md-10"><i className="material-icons">bubble_chart</i></div>
+            <span className = "roboto t-h4 t-space-1 mid t-uppercase  m-bluish-f block m-ellipses">{this.props.user.first_name} {this.props.user.last_name}</span>
+            <span className = "open-sans t-h5 mid semi-bold t-uppercase m-bluish-f block m-ellipses">{this.props.user.email}</span>
+            <div className = "t-center-f  t-gray-lighten-1-f t-flex m-top t-h6  t-justify-center t-md-10 m-ellipses"><i className="material-icons">bubble_chart</i></div>
           </div>
 
 <div className = "t-flex t-flex-column m-top-med">
@@ -101,10 +96,10 @@ loadprofile = ()=>{
       </div>
 
  
-    <div className = "t-midmain t-flex t-flex-row t-align-stretch">
+    <div className = "t-midmain t-flex t-jusify-center t-flex-row">
 
 
-        <div  className = "t-dash t-flex t-flex-column">
+        <div  className = "t-dash t-flex  t-justify-center t-flex-column">
             <Switch>
               <Route  exact path="/tenant/profile/:id/"  component={TenantProfile}/>  
               <Route  exact path="/tenant/profile/generalinfo/:id"  component={GeneralForm}/>       

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link, NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import {Dropdown,NavItem} from 'react-materialize';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';

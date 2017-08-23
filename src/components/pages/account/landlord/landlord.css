@@ -1,0 +1,744 @@
+.l-body{
+    margin: 0;
+    background-color: #eeeeee;
+    font-size: 18px !important;
+}
+
+.landlord a{
+    text-decoration: none !important;
+}
+
+
+.primary-color{
+    background-color: #0A3b61 !important;
+}
+.primary-color-text{
+    color: #0A3b61;
+}
+.secondary-color{
+    background-color: #faa61a !important;
+}
+.secondary-color-text{
+    color: #faa61a;
+}
+
+.tertiary-color-text{
+    color: #1396e2 !important;
+}
+
+.big-text{
+    font-size: 20px;
+}
+
+d-npd{
+    padding: 0 !important;
+}
+
+.d-npd-left{
+    padding-left: 0 !important;
+}
+
+.d-npd-right{
+    padding-right: 0 !important;
+}
+
+.d-npd-top{
+    padding-top: 0 !important;
+}
+
+.d-npd-bottom{
+    padding-bottom: 0 !important;
+}
+
+.d-mrgn-right{
+    margin-right: 5px;
+}
+.d-mrgn-left{
+    margin-left: 5px;
+}
+.d-mrgn-top{
+    margin-top: 5px;
+}
+.d-mrgn-bottom{
+    margin-bottom: 5px;
+}
+
+.d-no-mrgn-right{
+    margin-right: 0;
+}
+.d-no-mrgn-left{
+    margin-left: 0;
+}
+.d-no-mrgn-top{
+    margin-top: 0;
+}
+.d-no-mrgn-bottom{
+    margin-bottom: 0;
+}
+
+.card-panel-header{
+    color: #85929e !important;
+    font-weight: bold !important;
+    font-size: 1.5em !important;
+}
+
+.btn.primary-color:hover,
+a.primary-color-text{
+background-color: rgba(10, 59, 97, .8) !important;
+}
+
+h1.d-header-tag, h2.d-header-tag, h3.d-header-tag, h4.d-header-tag, h5.d-header-tag, h6.d-header-tag {
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+h3.d-header-tag {
+    font-size: 26px;
+    margin: 1.46rem 0 1.168rem
+}
+
+main.d-main{
+    display: block;
+    padding-left: 0;
+    background-color: #eeeeee;
+}
+
+
+ul.side-nav.fixed li.logo {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: static;
+}
+
+ul.side-nav.fixed li.logo #logo-container:hover, ul.side-nav.fixed li.logo:hover {
+    background-color: transparent
+}
+
+ul.side-nav.fixed {
+    margin-top: 80px;
+    z-index: 9;
+    overflow: hidden
+}
+
+ul.side-nav.fixed:hover {
+    overflow-y: auto
+}
+
+#logo-container {
+    height: 57px;
+    margin-bottom: 32px
+}
+
+
+.d-collapsible {
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    margin: .5rem 0 1rem
+}
+
+.d-container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%
+}
+
+
+#index-banner,.other-nav {
+    position: fixed;
+    width: 100%;
+    z-index:10;
+    padding-left: 0;
+    background-color: #0A3b61;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2);
+}
+
+.other-nav{
+    background-color: #ffffff;
+    width: 80%;
+    margin-left: 300px;
+    padding-left: 0;
+    z-index:9;
+    top: 80px;
+}
+
+#index-banner .d-container {
+    position: relative
+}
+
+#index-banner .d-header {
+    color: #fff;
+}
+
+#index-banner, .side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body li.active, footer.page-footer, nav {
+    background-color: #0A3b61;
+}
+
+a.button-collapse.top-nav.full {
+    line-height: 80px
+}
+
+
+.svg-wrap{
+    width: 80px;
+    height: 80px;
+    margin: auto auto;
+}
+
+.svg-wrap svg {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    display: inline;
+    float: none;
+}
+
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+
+.animated-background {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 800px 104px;
+    height: 86px;
+    position: relative;
+}
+
+.background-masker {
+    background: #fff;
+    position: absolute;
+}
+
+/* Every thing below this is just positioning */
+
+.background-masker.header-left,
+.background-masker.header-right {
+    top: 0;
+    left: 100px;
+    height: 25px;
+    width: 10px;
+}
+
+.background-masker.header-right {
+    width: auto;
+    left: 300px;
+    right: 0;
+}
+
+.background-masker.header-bottom {
+    top: 25px;
+    height: 8px;
+    width: auto;
+    left: 100px;
+    right:0;
+}
+
+
+.background-masker.subheader-left{
+    top: 33px;
+    left: 100px;
+    height: 53px;
+    width: 10px;
+}
+
+.background-masker.subheader-bottom {
+    top: 48px;
+    height: 10px;
+    left: 100px;
+    right: 0;
+}
+
+.background-masker.subheader-right {
+    top: 58px;
+    left: 240px;
+    width: auto;
+    right: 0;
+    height: 28px;
+}
+
+.msform .action-button {
+    width:100%;
+    background: #27AE60;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px auto;
+}
+.msform .action-button:hover{
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+/*headings*/
+.fs-title, .fs-header {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #2C3E50;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.fs-subtitle {
+    display: block;
+    width: 100%;
+    font-weight: normal;
+    font-size: 15px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.fs-subtitle.to-left{
+    text-align: left !important;
+}
+
+.fs-header{
+    font-size: 17px;
+    text-align: left;
+}
+
+.cbx {
+    position: relative;
+    top: 1px;
+    width: 17px;
+    height: 17px;
+    border: 1px solid #c8ccd4;
+    border-radius: 3px;
+    vertical-align: middle;
+    transition: background 0.1s ease;
+    cursor: pointer;
+}
+.cbx:after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 5px;
+    width: 5px;
+    height: 11px;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transition: all 0.3s ease;
+    transition-delay: 0.15s;
+}
+.lbl {
+    margin-left: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.cntr {
+    /*position: absolute;*/
+    top: 50%;
+    left: 0;
+    width: 100%;
+}
+
+.property-list tr.property-item td.image,
+.property-list tr.property-item td.image img {
+    height: 100px;
+    width: 125px;
+}
+
+.property-list tr.property-item .inner{
+    display: inline-block;
+}
+
+.property-list tr.property-item td.inner-td{
+    vertical-align: top !important;
+}
+.property-list tr.property-item td.actions{
+    padding: 5px;
+    text-align: right;
+}
+
+.property-list tr.property-item .inner a h2{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0 0px 5px 0;
+    padding: 0;
+}
+
+.property-list tr.property-item .inner figure{
+    margin: 0;
+    margin-bottom: 5px !important;
+    margin-top: 10px !important;
+}
+
+.header_address{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/*.d-tabs {*/
+    /*margin:  0;*/
+    /*padding: 0;*/
+    /*list-style: none;*/
+    /*display: table; !* [1] *!*/
+    /*table-layout: fixed; !* [2] *!*/
+    /*background-color: #0A3b61;*/
+    /*width: 90%; !* [3] *!*/
+/*}*/
+
+/*.tabs__item {*/
+    /*display: table-cell; !* [4] *!*/
+/*}*/
+
+/*.tabs__link {*/
+    /*display: block; !* [5] *!*/
+/*}*/
+
+
+/*!***/
+ /** Primary nav. Extends `.tabs`.*/
+ /***/
+ /** 1. Stop tabs’ corners leaking out beyond our 4px round.*/
+ /**!*/
+/*.primary-nav {*/
+    /*text-align: center;*/
+    /*overflow: hidden; !* [1] *!*/
+/*}*/
+
+/*.primary-nav a {*/
+    /*padding: 1em;*/
+    /*background-color: #0A3b61;*/
+    /*color: #f5f5f5;*/
+    /*font-weight: normal;*/
+    /*text-decoration: none;*/
+/*}*/
+
+/*.primary-nav a:hover,*/
+/*.primary-nav a.active {*/
+    /*background-color: rgba(19,150,226,.5);*/
+    /*border-bottom: 3px solid #1396e2;*/
+    /*font-weight: bolder;*/
+/*}*/
+
+
+.d-tabs {
+    margin:  0;
+    padding: 0;
+    list-style: none;
+    display: table; /* [1] */
+    table-layout: fixed; /* [2] */
+    background-color: #ffffff;
+    width: 90%; /* [3] */
+}
+
+.tabs__item {
+    display: table-cell; /* [4] */
+}
+
+.tabs__link {
+    display: block; /* [5] */
+}
+
+
+/**
+ * Primary nav. Extends `.tabs`.
+ *
+ * 1. Stop tabs’ corners leaking out beyond our 4px round.
+ */
+.primary-nav {
+    text-align: center;
+    overflow: hidden; /* [1] */
+}
+
+.primary-nav a {
+    padding: 1em;
+    background-color: #ffffff;
+    color: grey;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.primary-nav a:hover,
+.primary-nav a.active {
+    background-color: #0A3b61;
+    border-bottom: 3px solid #faa61a;
+    font-weight: bolder;
+    color: #ffffff;
+}
+
+
+.primary-nav a:hover i.icon,
+.primary-nav a.active i.icon{
+    display:none;
+}
+.primary-nav a:hover span.text:after,
+.primary-nav a.active span.text:after{
+    content: attr(data-text);
+}
+
+.full-width{
+    width: 100% !important;
+    display: table; /* [1] */
+    table-layout: fixed; /* [2] */
+}
+
+.hover:hover {
+    box-shadow:0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 4px 2px -1px rgba(0,0,0,0.2);
+}
+
+#sidebar-menu{
+    margin-top: 70px;
+    padding: 0 0 50px;
+}
+
+#sidebar-menu a.item,
+#propertyMenu a.prop-item{
+    height: auto !important;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #616161;
+}
+
+#sidebar-menu a.item:hover,
+#sidebar-menu a.item.active{
+    background-color: #0A3b61;
+    border-right: 5px solid #faa61a;
+    color: #ffffff;
+}
+
+#sidebar-menu a.item i.fa,
+#propertyMenu a.prop-item i.fa{
+    padding-right: 10px;
+    font-size: 25px;
+}
+
+#sidebar-menu .section-header{
+    display: block;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+#sidebar-menu .section-header i{
+    line-height: 2.5;
+    color: #0A3b61;
+    cursor: pointer;
+}
+
+#propertyMenu{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#propertyMenu .prop-item{
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#propertyMenu .prop-item:hover,
+#propertyMenu .prop-item.active{
+    background-color: #0A3b61;
+    color: #ffffff;
+    border: 2px solid #faa61a !important;
+    border-radius: 5px;
+    box-shadow:0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 4px 2px -1px rgba(0,0,0,0.2);
+}
+
+#rentNotification{
+    border: 10px solid #b0bec5 !important;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -1px rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+#rentNotification div.inner-div{
+    border-radius: 3px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#rentNotification div.inner-div img{
+    border-radius: 3px;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -1px rgba(0,0,0,0.2);
+}
+
+.line-button{
+    font-size: 18px;
+    background: transparent;
+    padding: 10px;
+    border: 1px solid #546e7a;
+    border-radius: 4px;
+}
+
+.line-button.hover:hover{
+    background-color: #eceff1;
+}
+
+.img-checkbox{
+    cursor: pointer;
+    opacity: 0.4;
+}
+
+.img-checkbox.checked{
+    opacity: 1;
+}
+
+
+.img-checkbox img.img-check{
+    opacity: 0.5;
+    height: 70px;
+    width: 70px;
+    margin: 0 auto;
+    display: block;
+    background-color: #CCCCCC;
+    border-radius: 50%;
+}
+
+.img-checkbox.checked img.img-check{
+    opacity: 1 !important;
+}
+
+.floating-badge {
+    position:relative;
+}
+.floating-badge[data-badge]:after {
+    content:"\f00c";
+    font-family: FontAwesome;
+    position:absolute;
+    top:0;
+    right: 0;
+    font-size:.7em;
+    background:green;
+    color:white;
+    width:18px;height:18px;
+    text-align:center;
+    line-height:18px;
+    border-radius:50%;
+    box-shadow:0 0 1px #333;
+}
+
+.alert{
+    padding:20px;
+    border-right: 5px solid #faa61a !important;
+    width: 100%;
+}
+
+.alert.alert-info{
+    border: 1px #0A3b61 solid ;
+}
+
+.d-underline{
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 15px;
+}
+
+.application-card-body{
+    padding-bottom: 10px;
+}
+
+.application-card-body .application-head,
+.application-card-body .application-footer{
+    padding-top: 10px;
+    padding-bottom: 2px;
+    background-color: #eeeeee;
+}
+
+.application-card-body .application-details{
+    /*background-color: #CCCCCC;*/
+}
+
+.block{
+    width: 100%;
+}
+
+.modal{
+    max-height: 100%;
+    width: 75%;
+    top: 0 !important;
+}
+
+.modal .modal-content{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.application-form .form-row{
+    border-bottom: 1px solid #CCCCCC;
+    padding: 20px 15%;
+}
+
+.sign-div .ant-card-head,
+.content-div .ant-card-head{
+    background: #6a1b9a !important;
+}
+
+.sign-div .sign-head,
+.content-div .content-head{
+    color: #ffffff !important;
+}
+
+#lease-term .input-field{
+    margin-top: 10px !important;
+}
+
+#lease-term .input-field input{
+    margin-bottom: 0 !important;
+    padding-bottom: 5px;
+    height: 1rem;
+}
+
+.clause{
+    background-color: #eeeeee;
+    color: #000;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.close:hover{
+    color: red;
+    cursor: pointer;
+}
+
+.add-tenant{
+    padding: 10px;
+    background: #EEEEEE;
+    margin-bottom: 20px;
+}
+
+#lease-help{
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    height: 10px;
+}
+
+#lease-help ul.help{
+    float: right;
+}
+
+#lease-help ul.help li:last-child{
+border-right: none !important;
+}
+
+
+#lease-help ul.help li{
+    font-size: 13px;
+    color: #0A3b61 !important;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 2px #CCCCCC solid;
+    cursor: pointer;
+}

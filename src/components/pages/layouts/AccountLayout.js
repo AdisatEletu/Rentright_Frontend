@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import TopBar from "../account/landlord/TopBar";
 import {NavLink} from 'react-router-dom';
 import PropertyMenu from './account/PropertyMenu';
-import {Helmet} from "react-helmet";
 import LoadingBar from 'react-redux-loading-bar'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import Helmet from 'react-helmet';
 
 class AccountLayout extends Component {
 
@@ -15,7 +15,7 @@ class AccountLayout extends Component {
         <div className="application">
             <LoadingBar style={{ backgroundColor: '#faa61a', height: '2px'}}/>
             <Helmet>
-                <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet"/>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet" type="text/css"/>
                 <link href="http://localhost:3000/assets/css/effects.css" rel="stylesheet" type="text/css"/>
             </Helmet>
             <div className="landlord">

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import {login} from '../../../state/actions/authAction';
 import {Helmet} from "react-helmet";
 import LoadingBar from 'react-redux-loading-bar';
+// import './auth.css';
 
 class Login extends Component {
 

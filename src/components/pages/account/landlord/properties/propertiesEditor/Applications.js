@@ -20,7 +20,7 @@ class Applications extends Component {
 
     componentDidMount() {
         const {uuid} = this.props.activeUnit.unit;
-        this.props.getApplications({
+        getApplications({
                 uuid, include: 'tenant'
             },
             this.onApplicationsCallback.bind(this))
@@ -78,8 +78,7 @@ function mapStateToProps(state) {
 
 Applications.propTypes = {
     activeUnit: PropTypes.object,
-    getApplications: PropTypes.func,
 }
 
-export default connect(mapStateToProps, {getApplications})(Applications);
+export default connect(mapStateToProps,)(Applications);
 
