@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
-import EditorBar from "./shared/EditorBar";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {Route, Switch} from "react-router-dom";
+import PaymentLanding from "./payments/PaymentLanding";
 
 class Payments extends Component {
 
     render() {
-        const {activeProperty} = this.props;
-        const addy = activeProperty.properties.address.house_number+" "+ activeProperty.properties.address.street_name;
-        return (
-            <div>
-                <EditorBar active="payments" uuid={this.props.match.params.id} address={addy}/>
-                <div className="grey-back col-lg-12"/>
-            </div>
+       return (
+           <div style={{marginTop: '80px'}}>
+               <Switch>
+                   <Route exact path='/landlord/units/:unit_id/payments' component={PaymentLanding}/>
+               </Switch>
+           </div>
         );
     }
 
@@ -25,7 +25,7 @@ function mapStateToProps(state){
 }
 
 Payments.propTypes = {
-    activeProperty: PropTypes.object.isRequired,
+    activeProperty: PropTypes.object,
 }
 
 export default connect(mapStateToProps)(Payments);

@@ -30,7 +30,7 @@ h1,h2,h3,h4,h5,h6{
     margin-bottom: 10px;
 }
 
-@keyframes blink {
+@keyframes "blink" {
     from, to {
         color: transparent;
 
@@ -164,7 +164,7 @@ h1,h2,h3,h4,h5,h6{
     width: 60%;
     height: 100%;
     float: left;
-    background:url("https://images.pexels.com/photos/373548/pexels-photo-373548.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
+    background:url("https://images.pexels.com/photos/373548/pexels-photo-373548.jpeg?w=940&h=650&auto=compress&cs=tinysrgb") no-repeat;
 
 }
 

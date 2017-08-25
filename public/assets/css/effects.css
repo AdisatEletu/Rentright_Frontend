@@ -742,3 +742,13 @@ border-right: none !important;
     border-right: 2px #CCCCCC solid;
     cursor: pointer;
 }
+
+#root,
+div[data-reactroot],
+.t-fullheight,
+.landlord,
+.application,
+main,
+.d-container.body,.d-container.body .child{
+    min-height: 100vh;
+}

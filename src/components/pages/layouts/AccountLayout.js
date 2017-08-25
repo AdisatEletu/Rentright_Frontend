@@ -28,8 +28,8 @@ class AccountLayout extends Component {
                         </div>
                         : undefined}
 
-                    <div className="d-container">
-                        <div style={{paddingLeft: '300px' ,paddingTop: '120px', paddingBottom:'60px'}}>
+                    <div className="d-container body">
+                        <div className="child" style={{paddingLeft: '300px' ,paddingTop: '120px', paddingBottom:'60px'}}>
                             {this.props.children}
                         </div>
                         <div className="fixed-action-btn horizontal">

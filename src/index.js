@@ -29,7 +29,7 @@ if(localStorage.rs_token){
 
 ReactDOM.render(
     <Provider store={store} >
-        <div>
+        <div style={{minHeight:'100vh'}}>
             <App/>
             <ReduxToastr
                 timeOut={5000}

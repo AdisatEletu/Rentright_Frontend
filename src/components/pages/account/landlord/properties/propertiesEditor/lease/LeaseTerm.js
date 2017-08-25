@@ -22,7 +22,7 @@ class LeaseTerm extends Component {
                 <h2 className="fs-header"><b>Lease Terms</b></h2>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Start Date<span className="red-text">*</span></div>
-                    <Input className={"right-align"} m={6} name='start_date' type='date' onChange={function(e, value) {}} />
+                    <Input className={"right-align"} m={6} name='start_date' type='date' onChange={function(e, value) { alert(e.target.value)}} />
                 </div>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '10px'}}>End Date<span className="red-text">*</span></div>
@@ -70,7 +70,7 @@ function mapStateToProps(state){
 
 LeaseTerm.propTypes = {
     unit: PropsTypes.object,
-}
+};
 
 export default connect(mapStateToProps) (LeaseTerm);
 
