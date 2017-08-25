@@ -9,7 +9,8 @@ export const dispatchmessage = {
 
 }
 
-
+let socket;
+let socketObs;
 export const api = new apiActions('https://rentright.herokuapp.com/api/rentright/tenant');
 export const tenant_employment = ['curent_employment','uuid', 'salary','employment_start', 'employment_ends', 'reasons_for_living', 'address', 'employer_telephone', 'employer_email', 'employer', 'title', 'others', 'completed' ]
 export const tenant_immigration = ['years_resident', 'country','uuid','proposed_years', 'current_resident', 'resident_from', 'resident_to', 'visa_ends', 'visa_start', 'resident_reason',  'have_work_permit', 'others','completed' ]
@@ -78,12 +79,38 @@ export function loadAllTenants() {
 }
 
 export function connectToSocket(uuid){
-  let socket = new SocketService(uuid);
-  console.log(socket);
-  socket.initialize().then((val)=>{
-    console.log(val);
-  })
+  socket = new SocketService(uuid); 
 
+  return function(dispatch){
+  socketObs = socket.koler.subscribe( (item) => {  dispatch(receivedKoler(item))})
+  console.log(socketObs);
+  socket.initialize().then((val)=>{  
+    if(val){
+    dispatch(connectedToSocket(true));
+    }else{
+    dispatch(connectedToSocket(false));
+    }  
+  }).catch((err)=>{
+   return function (dispatch){
+   dispatch(connectedToSocket(false));
+   }
+  })
+}
+  }
+export function sendSocketPost(data){
+  socket.postmessage(data);
+  return function(dispatch){
+  dispatch(postMessage(data));
+ 
+  }
+}
+
+export function recieiveSocketPost(data){
+  console.log('stream data recieved')
+  console.log(data);
+  return function(dispatch){
+    dispatch(receivedKoler(data));
+  }
 }
 
 
@@ -143,6 +170,19 @@ export function load_my_applications(path){
     
   })
 
+}
+export function post_my_application(obj){
+  let path = 'https://rentright.herokuapp.com/api/rentright/applications/';
+  return((dispatch)=>{
+  dispatch(loading_post_applications('loading_post'))
+  return api.postrealurl(path, obj).then((applications)=>{
+          dispatch(loading_post_applications('hideloading_post'));
+        dispatch(post_my_applications_success(applications))
+  })
+      .catch((err)=>{
+        dispatch(loading_post_applications('errorloading_post'));
+      });
+  })
 }
 
 
@@ -291,11 +331,28 @@ export function load_my_applications_success(applications){
   return  {type: types.TENANT_APPLICATIONS_LOAD, applications:applications.results }
   
 }
+export function connectedToSocket(val){
+  if (val){
+   return {type : types.USER_CONNECTED}
+  }else{
+   return {type : types.USER_LEFT}
+  }
+}
+export function postMessage(data){
+  return {type:types.POST_SENT}
+}
+export function receivedKoler(datad){
+  console.log('post recieved subscribe is working');
+  return {type : types.POST_RECIEVED, data:datad}
+}
+export function post_my_applications_success(applications){
+  return  {type: types.TENANT_APPLY, applications:applications }
+  
+}
 export function load_my_query_success(results){
    return  {type: types.TENANT_QUERY_LOAD, results :results.results } 
 
 }
-
 export function loadTenantSuccess(tenants) {  
   return {type: types.LOAD_TENANT_SUCCESS  , tenants:tenants.results};
 }
@@ -388,6 +445,37 @@ export function loading_applications(context){
   }
 
 }
+
+export function loading_post_applications(context){
+  switch(context){
+    case 'loading_post' :
+    return{
+      type: types.SHOW_LOADING_POST_APPLICATIONS,
+      Loading: true,
+      Error: false
+    };
+    case  'hideloading_post':
+    return{
+      type: types.HIDE_LOADING_POST_APPLICATIONS,
+      Loading: true,
+      Error: false
+    }
+    case 'errorloading_post':
+    return {
+      type:types.ERROR_LOADING_POST_APPLICATIONS,
+      Loading: true,
+      Error: true
+    }
+     default: 
+     return  {
+       type: types.SHOW_LOADING_POST_APPLICATIONS,
+       Loading: true,
+      Error: false   
+    
+  }
+  }
+
+}
 export function loading_query(context){
   switch(context){
     case 'loading' :
@@ -436,8 +524,7 @@ export function breakFormToComponents(formdatal){
   let switchforms;
   let allform = {};
   let formdata = formdatal[0]
-  let formkeys = Object.keys(formdata); 
-             
+  let formkeys = Object.keys(formdata);             
             
             selectforms = formkeys.filter((i)=>{
                let instance = formdata[i];

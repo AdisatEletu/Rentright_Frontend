@@ -3,7 +3,7 @@
 /*generalstyles **margin **padding **floats **flex etc */
 
 *, a, Link{text-decoration:none; text-decoration-style:inherit; color:inherit; } 
-.home-body{width:100%; height:100%!important; overflow-x:hidden; background:#fff; padding:0; margin:0;font-family:Roboto;}
+body, html{width:100%; height:100%!important; overflow-x:hidden; background:#fff; padding:0; margin:0;font-family:Roboto;}
 .t-zeropadding-margin{padding:0px; margin:0px;} .t-flex{ }
 .t-zero-font{font-size:0px; }
 .t-left-fl{float:left;} .t-right-fl{float:right;}.t-overflow{overflow:hidden;}

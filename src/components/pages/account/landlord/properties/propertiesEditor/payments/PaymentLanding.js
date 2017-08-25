@@ -6,7 +6,7 @@ class PaymentLanding extends Component {
         return (
             <div className="row">
                 <div className="card-panel col s12 m7" style={{paddingBottom: '30px'}}>
-                    <h2 className="center  grey-text lighten-1"><b>Its Payday.</b></h2>
+                    <h2 className="center  grey-text lighten-1"><b>Its Payday</b></h2>
                     <br/>
                     <div className="center">
                         Give Your tenants the flexibility of online rent payment.

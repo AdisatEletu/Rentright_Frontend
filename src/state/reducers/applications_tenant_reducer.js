@@ -9,7 +9,7 @@ export default  function applications_tenant_reducer (state=initialState,action)
         return {
            applications: action.applications,
            }
-        
+       
         default: return state;
     }
 }
