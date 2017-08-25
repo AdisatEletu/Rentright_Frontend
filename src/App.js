@@ -18,19 +18,17 @@ class App extends Component {
         super(props);
         try{
           let uuid = this.props.auth.user.id;  
-          console.log(uuid + "app uuid")
+
           this.props.connectToSocket(uuid)
         }catch(err){
-          console.log(err)
-          console.log('Not Logged in')  
+
         }
 
 
          }
     componentWillReceiveProps(newprops){
-        console.log(newprops)
         if (this.props.socketState.joined && this.props.socketState.data.length > 0 ){
-           notification["success"]({
+         notification["success"]({
           message: 'New Application',
          description:this.props.socketState.data[this.props.socketState.data.length-1].message
            });

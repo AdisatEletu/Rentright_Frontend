@@ -27,7 +27,6 @@ class Tenant extends Component{
     uuid;
     constructor(props) {                  
         super(props)  
-        console.log(this.props) 
        //this.uuid = "/"+this.props.match.params.id 
         this.first_name = this.props.auth.user.first_name;
         this.last_name =  this.props.auth.user.last_name;   
@@ -45,7 +44,7 @@ class Tenant extends Component{
         //this.context.router.history.push("/tenant/profile/" + this.uuid);
   
      }catch(err){
-    console.log(err)
+
 }
  
 

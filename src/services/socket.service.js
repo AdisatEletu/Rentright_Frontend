@@ -18,13 +18,10 @@ usersonlinedata;
 messagefromclient = [];
 constructor(uuid) {
 this.uuid = uuid;
-console.log(this.uuid +"uuid")
 this.socketService = Observable.create(observer => {
 this.socketObserver = observer; 
  });
 this.koler = this.kolerstream.asObservable();
-console.log("this is koler")
-console.log(this.koler)
 this.socket = io.connect(socketurl);
 this.login();
 }
@@ -39,17 +36,13 @@ initialize(){
 let peer_uuid = this.id;
  let th = this;
   return new Promise(resolve=>{
-   th.socket.on('connect', function(socket){
-     console.log(socket);   
+   th.socket.on('connect', function(socket){     
      th.login(); 
      resolve(true);    
    });
   th.socket.on('currentusers',function(data){    
-    console.log(data); 
-    console.log('data from koler');   
     th.usersonline = data.length;
     th.usersonlinedata = data;
-    console.log('data from users');
   });
   this.socket.on('postsent', function(data){
    th.onPost(data ); 
@@ -59,15 +52,12 @@ let peer_uuid = this.id;
    th.onPost(data ); 
   });
   this.socket.on('disconnect',function(data){
-    console.log('userleft');
     th.activeclient =   th.activeclient - 1;
   });
   this.socket.on('login', function(data){ 
      this.socketObserver.next(()=>{
-       console.log("logged in");
       th.activeclient =   th.activeclient + 1;
-      console.log('this.activeclient ' + th.activeclient);
-      
+       
       
   });
   }); 
@@ -82,8 +72,6 @@ postmessage(data){
 }
 onPost(data){
    this.messagefromclient.unshift(data);
-   //this.messagefromclient.push(data);
-   console.log( this.messagefromclient);
    this.kolerstream.next(data);
 }
 

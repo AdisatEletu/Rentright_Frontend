@@ -72,7 +72,6 @@ export function loadAllTenants() {
       dispatch(loadTenantSuccess(tenants));
     }).catch(error => {
         dispatch(errorLoading());
-      console.log(error);
       throw(error);
     });
   };
@@ -83,7 +82,6 @@ export function connectToSocket(uuid){
 
   return function(dispatch){
   socketObs = socket.koler.subscribe( (item) => {  dispatch(receivedKoler(item))})
-  console.log(socketObs);
   socket.initialize().then((val)=>{  
     if(val){
     dispatch(connectedToSocket(true));
@@ -106,8 +104,6 @@ export function sendSocketPost(data){
 }
 
 export function recieiveSocketPost(data){
-  console.log('stream data recieved')
-  console.log(data);
   return function(dispatch){
     dispatch(receivedKoler(data));
   }
@@ -193,18 +189,16 @@ export function load_my_query(path){
       let api = new apiActions('https://rentright.herokuapp.com/api/rentright/units/query/?');
       
       let uri = path;
-      console.log(path)
       return api.geturl(uri, true).then((results)=>{
         if (results.error){
-          console.log(results);
+ 
           dispatch(loading_query('errorloading'));
         }else{
         dispatch(loading_query('hideloading'));
         dispatch(load_my_query_success(results))
         }
       }).catch((err)=>{
-        console.log(err)
-        dispatch(loading_query('errorloading'));
+            dispatch(loading_query('errorloading'));
       })
      
     
@@ -223,26 +217,21 @@ export function patchSpecificTenant(path,obj) {
 
     }).catch(error => {
         dispatch(errorLoading());
-      console.log(error);
       throw(error);
     });
   };
 }
 export function getProfileStruct(path) {  
-  console.log(path)
   return function(dispatch) {
     dispatch(showLoading());
     return api.geturl(path, true).then(structure => {
-      console.log(structure);
-      console.log('Structure');
         dispatch(hideLoading());
       if (structure){
       dispatch(StructureLoadSuccess(structure));
       }
     }).catch(error => {
         dispatch(errorLoading());
-      console.log(error);
-  
+    
     });
   };
 }
@@ -255,8 +244,7 @@ export function getFormStruct() {
       dispatch(FormLoadSuccess(data));
     }).catch(error => {
         dispatch(errorLoading());
-      console.log(error);
-      throw(error);
+         throw(error);
     });
   };
 }
@@ -265,15 +253,12 @@ export function getFormStruct() {
 export function uploadFile ( file, api_url, uuid, name) {  
   return function (dispatch){
   let data = new FormData();
-  console.log(file)
   data.append( 'file', file );
   data.append('uuid', uuid);
   data.append('filename', name)
   dispatch(showLoading());
   return  api.postimage(api_url, data)
       .then(response =>{ 
-        console.log(response);
-          console.log('Succes .....................................................................................................................................')
         dispatch(uploadSuccess(response))
          dispatch(hideLoading());   
          dispatch(loadSpecificTenant('/'+uuid) );     
@@ -281,8 +266,6 @@ export function uploadFile ( file, api_url, uuid, name) {
     })
       
       .catch( error => {
-        console.log(error);
-          console.log('Erro .....................................................................................................................................')
         dispatch(uploadFail(error))
         dispatch(hideLoading());
     })
@@ -295,7 +278,6 @@ export function readThis (inputValue, api_url, uuid ) {
   var file = inputValue.target.files[0];
   var name = inputValue.target.files[0].name;
   api_url = api_url;
-  console.log(file.name);
   //dispatch(uploadFile(file, api_url,uuid ))    
  var reader = new FileReader();
   reader.onload = ()=>{
@@ -321,8 +303,7 @@ export function deleteSpecificTenant(path,obj) {
     }).catch(error => {
         dispatch(errorLoading());
        dispatchmessage.error();
-      console.log(error);
-      throw(error);
+          throw(error);
     });
   };
 }
@@ -342,7 +323,6 @@ export function postMessage(data){
   return {type:types.POST_SENT}
 }
 export function receivedKoler(datad){
-  console.log('post recieved subscribe is working');
   return {type : types.POST_RECIEVED, data:datad}
 }
 export function post_my_applications_success(applications){
@@ -384,7 +364,6 @@ export function imageready(item,message = ""){
       message:message
     }
   }else{
-    console.log(item + '   this is the returned item to show fuction runs')
     return{
       type : types.IMAGE_READY_FAIL,
       message:message
@@ -507,7 +486,6 @@ export function loading_query(context){
 
 }
 export  function runitem(item){
-  console.log(item);
 }
 
 export function breakFormToComponents(formdatal){
@@ -610,7 +588,6 @@ export function breakFormToComponents(formdatal){
                            date: dateforms, select:selectforms, textarea:textareaforms, 
                             phone:phoneforms,  text:textforms,  int:intforms,  switch:switchforms
                           };
-            console.log(allform);
         dispatch(formBreakDown(allform));
           dispatch(hideLoading());
   }
