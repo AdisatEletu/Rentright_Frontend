@@ -12,7 +12,7 @@ import tenantInfoReducer from './reducers/tenantInfoReducer';
 import applications_tenant_reducer from './reducers/applications_tenant_reducer';
 import post_applications_tenant_reducer from './reducers/post_application_tenant_reducer';
 import query_tenant_reducer from './reducers/query_tenant_reducer';
-
+import socketReducer from './reducers/socketReducer'
 import applications_indicator_reducer from './reducers/applications_indicator_reducer';
 import applications_post_indicator_reducer from './reducers/applications_post_indicator_reducer';
 import query_indicator_reducer from './reducers/query_indicator_reducer';
@@ -42,7 +42,8 @@ const combinedReducers = combineReducers({
     applications_result: applications_tenant_reducer,
     tenant_post_applications: post_applications_tenant_reducer,
     query_result : query_tenant_reducer,
-    applications_post_indicator: applications_post_indicator_reducer
+    applications_post_indicator: applications_post_indicator_reducer,
+    socketReducer : socketReducer
 
 
 });

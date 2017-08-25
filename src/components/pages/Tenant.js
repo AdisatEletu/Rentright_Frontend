@@ -41,8 +41,8 @@ class Tenant extends Component{
     try{
        //this.uuid = this.props.match.params.id;
         
-         this.props.connectToSocket(this.uuid);
-        this.context.router.history.push("/tenant/profile/" + this.uuid);
+        // this.props.connectToSocket(this.uuid);
+        //this.context.router.history.push("/tenant/profile/" + this.uuid);
   
      }catch(err){
     console.log(err)
