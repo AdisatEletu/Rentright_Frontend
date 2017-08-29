@@ -2,8 +2,44 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import ShowCard from "./applications/ShowCard";
+import {getApplications} from '../../../../../../state/actions/applicationActions';
+import Loader from "../../../../../shared/Loader";
+import shortid from 'shortid';
 
 class Applications extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            fetching: true,
+            fetched: false,
+            applications: [],
+        }
+    }
+
+    componentDidMount() {
+        const {uuid} = this.props.activeUnit.unit;
+        this.props.getApplications({
+                uuid, include: 'tenant'
+            },
+            this.onApplicationsCallback.bind(this))
+    }
+
+    onApplicationsCallback(data) {
+        if (data.status) {
+            this.setState({
+                fetching: false,
+                fetched: true,
+                applications: data.data
+            });
+        } else {
+            this.setState({
+                fetching: false,
+                fetched: false,
+            });
+        }
+    }
 
     render() {
 
@@ -15,23 +51,18 @@ class Applications extends Component {
                     </div>
 
                 </div>
-                <div className="row">
-                    <div className="col m4" style={{marginBottom: '20px'}}>
-                        <ShowCard title="dosi"/>
+                {this.state.fetching ? <Loader/> : undefined}
+                {!this.state.fetching && this.state.fetched ? <div>
+                    <div className="row">
+                        {this.state.applications.map((application) =>
+                            <div key={shortid.generate()} className="col m4" style={{marginBottom: '20px'}}>
+                                <ShowCard title="dosi" application={application}/>
+                            </div>
+                        )}
                     </div>
-                    <div className="col m4" style={{marginBottom: '20px'}}>
-                        <ShowCard title="dosi"/>
-                    </div>
-                    <div className="col m4" style={{marginBottom: '20px'}}>
-                        <ShowCard title="dosi"/>
-                    </div>
-                    <div className="col m4" style={{marginBottom: '20px'}}>
-                        <ShowCard title="dosi"/>
-                    </div>
-                    <div className="col m4" style={{marginBottom: '20px'}}>
-                        <ShowCard title="dosi"/>
-                    </div>
-                </div>
+                </div> : undefined}
+                {!this.state.fetching && !this.state.fetched ? 'error' : undefined}
+
             </div>
         );
     }
@@ -39,14 +70,16 @@ class Applications extends Component {
 }
 
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
-        activeUnit: state.user.activeProperty,
+        activeUnit: state.user.activeUnit,
     }
 }
 
 Applications.propTypes = {
-    activeProperty: PropTypes.object.isRequired,
+    activeUnit: PropTypes.object,
+    getApplications: PropTypes.func,
 }
-export default connect(mapStateToProps)(Applications);
+
+export default connect(mapStateToProps, {getApplications})(Applications);
 

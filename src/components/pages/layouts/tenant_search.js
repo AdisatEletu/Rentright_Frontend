@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux';
 import CompletenessBar  from '../tenantlayouts/completeness_bar';
 import FormElements  from '../tenantlayouts/form_elements';
 import NewForm  from '../tenantlayouts/new_form';
-import { loadAllTenants, loadSpecificTenant, load_my_query, load_my_applications, patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct, hideLoading, errorLoading, breakFormToComponents,  getProfileStruct  } from '../../../state/actions/tenantAction';
+import { loadAllTenants, loadSpecificTenant,post_my_application,  load_my_query, load_my_applications, patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct, hideLoading, errorLoading, breakFormToComponents,  getProfileStruct  } from '../../../state/actions/tenantAction';
 import Spin from  'antd/lib/spin';
 import Button from'antd/lib/button';
 import ProfileContent from '../tenantlayouts/profile_content';
@@ -18,6 +18,7 @@ import Radio from  'antd/lib/radio';
 import  Input from 'antd/lib/input';
 import moment from 'moment';
 import Col from 'antd/lib/col';
+
 import InputNumber from 'antd/lib/input-number';
 import  DatePicker from 'antd/lib/date-picker'; 
 import  AutoComplete from 'antd/lib/auto-complete';
@@ -30,8 +31,9 @@ import 'moment/locale/en-gb';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 import { Slider, Row } from 'antd';
-
-
+import TenantModal from './Tenant_Modal';
+import $ from 'jquery';
+import { notification } from 'antd';
 var _ = require('lodash');
 const InputGroup = Input.Group;
 const Option = Select.Option;
@@ -44,46 +46,79 @@ const  dateFormat = 'YYYY-MM-DD';
 
  class TenantSearch extends Component{
     constructor(props) {           
-       super(props) 
-     // this.state = {obj2:{}};       
-      ////this.props.getFormStruct();       
+      super(props) 
       this.k;
-      this.state ={}
+      this.state ={ showModal:false }
+      this.frontimage = null;
+      this.listimage = [];
+
        this.handleInputChange = this.handleInputChange.bind(this);    
+       this.postApplications = this.postApplications.bind(this);
        this.handleSubmit = this.handleSubmit.bind(this); 
+       this.showModal = this.showModal.bind(this);
+       this.hideModal = this.hideModal.bind(this);
         this.uuid = this.props.auth.user.uuid;   
         console.log(this.uuid);
         this.hideModal = this.hideModal.bind(this);   
-       this.sendobj = {};
-       
-       //.then(()=>{
+        this.css = {'transform': 'scale(0.2, 0.2)' }
 
+       this.sendobj = {};
     }
-       componentWillMount(){ 
-       
+       componentWillMount(){        
       
      }
-    componentDidMount(){  
-
+    componentDidMount(){ 
 
      }
      componentDidUpdate(prevProps, prevState) {
 
      }
    
+  postApplications(obj){
+    console.log(obj);
+    this.props.post_my_application(obj).then((it)=>{
+      console.log(it)
+        notification["success"]({
+          message: 'You applied for a property',
+         description: 'Your appliction for an apartment on rentright was successful we will alert you once iportant events occour we will notify you.',
+  });
+    }).catch((err)=>{
+          notification["error"]({
+          message: 'Failed to apply',
+         description: 'Your appliction was not successful please try again later or check your internet settings.',
+  });
+    });
 
+
+  }
    hideModal(){
+     $('.t-midmain').css('z-index', '10');
      this.setState({showModal:false});
+     this.setState({'css': null});
      if (this.state.ishighlighting != 'time-highlight'){
      this.setState({ishighlighting:'time-highlight'})
      setTimeout(()=>{
        this.setState({ishighlighting:''})
       },
       5000);
-     }else{
-  
      }
-   } 
+   }
+    showModal= (frontimage, listimage, item)=> {
+     $('.t-midmain').css('z-index', '30');
+     this.frontimage = frontimage;
+     this.listimage = listimage;
+      var th = this;
+      console.log(th)
+      console.log(th.state)
+      this.setState(this.css);
+      th.setState({showModal :true, item});
+      setTimeout(()=>{
+        this.css = {'transform':'scale(1,1)' };
+        this.setState(this.css);
+        console.log(this.css);
+      }, 100);
+
+    }
    handleInputChange(event, name = null) {
   
     var th = this;
@@ -116,7 +151,7 @@ const  dateFormat = 'YYYY-MM-DD';
 
 
   handleSubmit = ()=>{
-    var th = this; 
+    var th = this;     
     if (this.state !== {}) {
       let path = ""
       let keys = Object.keys(this.state)
@@ -126,22 +161,34 @@ const  dateFormat = 'YYYY-MM-DD';
           path = item + "="+this.state[item];
         }else{
           path  += "&" +item + "="  + this.state[item] 
-        }
-        
-        
+        }   
+      this.setState({showModal:false});       
       })
+       path += "&" +"uuid="+this.props.auth.user.uuid;
       console.log(path);
       this.props.loadMyQuery(path).then((res)=>{
-        console.log(res)
+        console.log(res);
       })
 
     }
 
   }
- render(){     
+ render(){  
 
-         return (
-<div className = "t-flex t-md-10 t-flex-column t-fullheight t-white please-dont-shrink">
+
+   return (
+  
+
+  
+<div className = "t-flex t-md-9 t-flex-column t-fullheight t-white please-dont-shrink">
+  { this.state.showModal ?
+
+        <TenantModal  css = {this.state.css} hideModal = {this.hideModal.bind(this)} unit = {this.state.item}  frontimage = {this.frontimage} listimage = {this.listimage}  />
+     :
+     null
+  }
+    
+
 <div className = "q-head  t-flex-column t-justify-left q-sub">
     <div className = "q-h1 t-left-f">Are you ready to find your home ? </div>
     <div className = "q-h2 t-lfet-f">Please use the options provided below and select a query parameter..</div>
@@ -230,23 +277,30 @@ this.props.queryResult.results ?
       <span className = "t-h3">Results&nbsp;&nbsp;&nbsp;&nbsp;</span>
     {
          Object.keys(this.state).map((item, k)=>{
+          if(typeof(this.state[item]) !== 'object'){
           return(
            <span key = {item}>&nbsp;&nbsp;<strong className = "open-sans">{item}</strong> : {this.state[item]}</span>
           )
+          }
             })
 
-
+         
     }
     </div>
     </div>
 
   </div>
   {this.props.queryResult.results.units.map((itemm,i)=>{
+
      return(
-      <div key= {i}className = "q-results"> 
-       {/* <div className = "q-image" style = {{backgroundImage:"url("+item.unit_images[0].source+ ")"}}></div>*/}
-       <div className = "q-image" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}>
-       <div className= "q-image-cover t-md-10 t-fullheight"><div className = "btn"> <Icon type = "export"/>&nbsp;Explore Property</div></div>
+      <div key= {i}className = "q-results" > 
+       <div className = "q-image"  style = {{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+itemm.unit_images[0].id+ ")"}}>
+       {/* <div className = "q-image" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}>*/}
+
+      <div className= "q-image-cover t-md-10 t-fullheight"><div className = "btn" onClick = { ()=> this.showModal(itemm.unit_images[0].id , itemm.unit_images, itemm) }>
+        
+
+         <Icon type = "export"/>&nbsp;Explore Property</div></div>
        </div>
         <div className = "q-exp t-flex t-flex-column">
           <div className = "q-header">{itemm.description}</div>
@@ -266,11 +320,13 @@ this.props.queryResult.results ?
                and total of {itemm.bathrooms} bathrooms.
                </div>
                  <div className = "t-md-3 q-show">
-                   <div className = "q-pics" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}></div>
-                   <div className = "q-pics" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}></div>
-                   <div className = "q-pics" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}></div>
-                   <div className = "q-pics" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}></div>
-                   <div className = "q-pics" style = {{backgroundImage:"url(https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"}}></div>
+                   { itemm.unit_images.map((me, kin)=>{
+                     return(
+                   <div className = "q-pics"  key = {kin} style = {{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+me.id+ ")"}}></div>
+                     )
+                   })
+                   }
+
                    </div>
 
               
@@ -293,9 +349,45 @@ this.props.queryResult.results ?
             <div className = "q-border-right  t-flex t-align-center t-justify-space-around f-q ">
                      Explore&nbsp; <Icon type = "switcher"/>
                      </div>
-                   <div className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr">
-                     Apply&nbsp; <Icon type = "export"/>
-                     </div>
+       {  
+
+        itemm  ?   
+         !this.props.applicationsPostIndicator.Loading &&  !this.props.applicationsPostIndicator.Error && !itemm.applied &&  this.props.applicationsPost &&  !this.props.applicationsPost.success 
+        ? 
+        <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr"
+          onClick = {(e)=>{this.postApplications({units:itemm.id, unit_tenant:this.props.auth.user.id, unit_manager:itemm.unit_manager})}}>
+           Apply&nbsp; <Icon type = "export"/>
+            </div>
+         :        
+         itemm.applied  ||  this.props.applicationsPost && this.props.applicationsPost.success
+        ? 
+          <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-success" >
+            Application Sent <Icon type = "export"/>
+            </div>
+          :      
+         this.props.applicationsPostIndicator && this.props.applicationsPostIndicator.Loading 
+         ?         
+           <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-working" >
+            Applying ... <Icon type = "loading"/>
+            </div>         
+          : 
+         this.props.applicationsPostIndicator && !this.props.applicationsPostIndicator.Loading && this.props.applicationsPost.Error
+         ?
+              <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-danger"
+              onClick = {(e)=>{this.postApplications({units:itemm.id, unit_tenant:this.props.auth.user.id, unit_manager:itemm.unit_manager})}}>
+                Not Complete Try Again &nbsp; 
+                <Icon type = "export"/>
+                </div>
+            :
+            null
+            :
+        <NavLink to = {'/sign-in'}   className = "q-border-right  q-act t-flex t-align-center t-justify-space-around f-q fr qbdiv q-danger">
+                   Sign in&nbsp; <Icon type = "export"/>              
+               </NavLink>      
+          
+       
+       }
+
 
                </div>
                 </div>
@@ -324,6 +416,11 @@ this.props.queryResult.results ?
       
       
          )
+  /*}else{
+    return(
+   
+    );
+  }*/
               
                  
         
@@ -344,8 +441,10 @@ function matchStateToProps(state){
         structure:state.structure,
         queryIndicator:state.query_indicator,
         applicationsIndicator:state.applications_indicator,
+        applicationsPostIndicator:state.applications_post_indicator,
         queryResult:state.query_result,
-        applicationsResult: state.applications_result        
+        applicationsResult: state.applications_result,
+        applicationsPost: state.tenant_post_applications,       
  
     }      
     
@@ -361,7 +460,8 @@ function mapDispatchToProps(dispatch) {
      loadStructure: getProfileStruct,
     breakFormToComponents:breakFormToComponents,
     loadMyQuery: load_my_query,
-    loadMyApplications: load_my_applications
+    loadMyApplications: load_my_applications,
+    post_my_application:post_my_application
   }, dispatch);
 }
 

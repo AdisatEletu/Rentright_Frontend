@@ -13,7 +13,7 @@ export default class TenantInfo extends Component {
                     <link href="http://localhost:3000/CSS/tenant.css" rel="stylesheet" type="text/css"/>
                     <link href="http://localhost:3000/CSS/home.css" rel="stylesheet" type="text/css"/>
                 </Helmet>
-                <div className="home-firstnav t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
+                <div className="home-firstnav t-flex t-justify-space-between home-primary-color t-fullwidth t-align-center nav-pad-left-right">
                     <div className=" t-flex  t-fullheight t-justify-right t-right-f home-firstnav-innerdiv-left">
                         <span> The Ultimate Insider to the RentRight </span>
                     </div>
@@ -25,7 +25,7 @@ export default class TenantInfo extends Component {
 
                     </div>
                 </div>
-                <div className="t-md-10 t-flex tg-fst ">
+                <div className="t-md-10 t-flex tg-fst parallax ">
                     <div className="t-flex tg-cover t-md-10 ">
                         <div className="tenant-guide-header t-md-5 t-flex t-flex-column t-justify-center t-align-content-center ">
                             <span className="t-header t-flex m-ellipses">
@@ -41,9 +41,10 @@ export default class TenantInfo extends Component {
                         </div>
 
                         <div className="tenant-guide-tes t-md-5 t-flex t-flex-column t-justify-center t-align-content-center ">
+                            <div className="tenant-guide-video t-flex t-md-7">
 
                         </div>
-
+                        </div>
 
                     </div>
 

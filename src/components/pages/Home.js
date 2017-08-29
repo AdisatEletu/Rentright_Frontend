@@ -24,7 +24,7 @@ console.log(this.state);
                     <link href="http://localhost:3000/CSS/tenant.css" rel="stylesheet" type="text/css"/>
                     <link href="http://localhost:3000/CSS/home.css" rel="stylesheet" type="text/css"/>
                 </Helmet>
-                <div className="home-firstnav t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
+                <div className="home-firstnav t-fullwidth t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
                     <div className=" t-flex  t-fullheight t-justify-right t-right-f home-firstnav-innerdiv-left">
                         <span> The Ultimate Insider to the RentRight </span>
                     </div>
@@ -62,7 +62,7 @@ console.log(this.state);
                 <div className="home-third-div t-flex t-align-center  t-flex-row nav-pad-left-right">
                     <div className="bar-box t-flex t-align-center t-justify-space-between t-md-10 ">
                         <div className="t-flex t-flex-row t-align-center t-justify-left t-md-6">
-                            <span className="bar-breadcrumbs bar-tabs  bar-tabs-active">LANDLORD</span>
+                            <span className="bar-breadcrumbs bar-tabs  bar-tabs-active"><a href="/account">LANDLORD</a></span>
                             <span className="bar-breadcrumbs bar-tabs "><a href="/tenant-guide">TENANT</a></span>
                             <span className="bar-breadcrumbs bar-tabs "><span>INSTITUTIONS</span><i className="material-icons ">keyboard_arrow_down</i></span>
                             <span className="bar-breadcrumbs bar-tabs "> PROFESSIONALS<i className="material-icons">keyboard_arrow_down</i></span>
@@ -73,7 +73,7 @@ console.log(this.state);
                         </div>
                     </div>
                 </div>
-                <div className="picture-div t-flex t-fullwidth interior1 home-slider parallax t-fullheight home-bxshadow ">
+                <div className="picture-div t-flex t-fullwidth interior1 home-slider t-fullheight home-bxshadow ">
                     <div className="home-cover">
                     </div></div>
                 <div className="home-body-search t-flex t-align-center nav-pad-left-right t-justify-center ">
@@ -437,7 +437,7 @@ console.log(this.state);
                         </div>
                     </div>
                 </div>
-                <div className="t-flex home-testimonial parallax"><div className="home-testimonial-cover t-flex t-fullheight t-fullwidth">
+                <div className="t-flex home-testimonial "><div className="home-testimonial-cover t-flex t-fullheight t-fullwidth">
                     <div className="home-testimonial-text-holder t-fullheight t-flex t-justify-center t-flex-column t-md-10  t-align-center">
                         <div className="home-tes t-flex t-md-8 t-justify-center "> Testimonials</div>
                         <div className="home-tes2 t-flex t-md-7 t-justify-center"> We're Proud of Our Work</div>
@@ -454,8 +454,8 @@ console.log(this.state);
                             <div className="t-justify-space-between t-flex t-md-2">
                                 <div className="home-tes-picture t-flex t-md-10 t-justify-left" />
                                 <div className="home-tes-dts t-flex t-flex-column t-justify-center">
-                                    <div className="home-tes-name t-flex t-justify-center">Adeola Abioye</div>
-                                    <span className="home-tes-prof t-flex ">Laywer</span></div>
+                                    <div className="home-tes-name t-flex t-justify-center"> Adeola Abioye</div>
+                                    <span className="home-tes-prof t-flex "> Laywer</span></div>
                             </div>
                         </div>
                         <div className="home-carousel t-flex t-md-05 t-justify-space-between">

@@ -94,7 +94,7 @@ class Login extends Component {
     render() {
         return (
             <div id="login-page">
-                <LoadingBar style={{ backgroundColor: '#faa61a', height: '2px'}}/>
+                <LoadingBar style={{ background: 'linear-gradient(to bottom right, red, yellow)', height: '4px'}}/>
                 <Helmet>
                     <link href="http://localhost:3000/CSS/auth.css" rel="stylesheet" type="text/css"/>
                 </Helmet>

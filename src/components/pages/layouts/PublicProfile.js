@@ -90,8 +90,8 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
         <div className = "m-sub">Tenant's rental profile</div>
       {   this.props.structure.structure ? this.props.structure.structure.tenant_residence_history.length > 0  ?  
           this.props.structure.structure.tenant_residence_history.map ( (item, index)=>{                             
-          return(          
-            <ProfileContent keyName = {item.keyname} value = {item.value}   key = {item.key}  />         
+          return(               
+            <ProfileContent keyName = {item.keyname} value = {item.value}   key = {index + item.key }  />         
               )
              })
              :
@@ -101,7 +101,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
            }
              </div>
             </div> 
-    <div className = "t-flex t-flex-column t-md-45 t-justify-space-between">
+    <div className = "t-flex t-flex-column t-md-45 t-align-top">
     <div className = "t-md-10 p-widget m-padding-zerox">
          <div className = "m-heading">Employment History</div>
         <div className = "m-sub">Tenant's Employment Portfolio</div>
