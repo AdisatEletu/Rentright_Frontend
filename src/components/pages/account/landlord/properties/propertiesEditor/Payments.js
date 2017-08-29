@@ -8,9 +8,10 @@ class Payments extends Component {
 
     render() {
        return (
-           <div style={{marginTop: '80px'}}>
+           <div style={{marginTop: '30px'}}>
                <Switch>
                    <Route exact path='/landlord/units/:unit_id/payments' component={PaymentLanding}/>
+                   <Route exact path='/landlord/units/:unit_id/lease/:lease_id/payments' component={PaymentLanding}/>
                </Switch>
            </div>
         );

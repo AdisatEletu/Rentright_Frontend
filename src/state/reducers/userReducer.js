@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
 import activeProperty from './activePropertyReducer';
-import {SET_USER_FUNCTION,REQUEST_ACTIVE_UNIT,RECEIVE_ACTIVE_UNIT,REQUEST_UNITS,RECEIVE_UNITS} from '../ActionTypes';
+import {RECEIVE_NOTIFICATIONS,REQUEST_NOTIFICATIONS,REQUEST_ACTIVE_UNIT,RECEIVE_ACTIVE_UNIT,REQUEST_UNITS,RECEIVE_UNITS} from '../ActionTypes';
 import propertyReducer from './propertyReducer';
 
 
  const userReducer = combineReducers({
      auth: authReducer,
+     notifications: notifications,
      activeProperty: activeProperty,
      activeUnit: activeUnit,
      myProperties: propertyReducer,
@@ -58,5 +59,23 @@ export function activeUnit(state={fetching:false,fetched:false},action){
     }
 }
 
+export function notifications(state = {fetching:false,notifications:[]},action){
+    switch (action.type){
+        case REQUEST_NOTIFICATIONS:
+            return {
+                ...state,
+                fetching: true,
+            }
+
+        case RECEIVE_NOTIFICATIONS:
+            return {
+                ...state,
+                fetching: false,
+                notifications: action.payload.notifications
+            }
+
+        default: return state;
+    }
+}
 
 export default userReducer;
