@@ -26,8 +26,8 @@ class Applications extends Component {
             this.onApplicationsCallback.bind(this))
     }
 
-    onApplicationsCallback(data) {
-        if (data.status) {
+    onApplicationsCallback(status,data) {
+        if (status) {
             this.setState({
                 fetching: false,
                 fetched: true,
@@ -38,6 +38,7 @@ class Applications extends Component {
                 fetching: false,
                 fetched: false,
             });
+            console.log(data);
         }
     }
 

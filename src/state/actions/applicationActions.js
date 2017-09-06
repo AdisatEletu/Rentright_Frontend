@@ -7,12 +7,12 @@ export function getApplications(params, callback) {
     return axios.get(getApplication(params.uuid), {params}).then(
         (res) => {
             console.log('applications', res);
-            callback(res.data);
+            callback(true,res.data);
         }
     ).catch(
         (err) => {
             console.error('applications', err);
-            callback(err.data)
+            callback(false, err)
         }
     )
 }

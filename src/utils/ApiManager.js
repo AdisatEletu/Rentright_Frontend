@@ -11,3 +11,5 @@ export const getLeaseUrl = (uuid) => {return BASE_URL+'user/leases/'+uuid};
 export const getAllLeaseUrl = (uuid) => {return BASE_URL+'user/'+uuid+'/leases'};
 
 export const getNotificationsUrl = BASE_URL+'user/notifications';
+
+export const getPaymentUrl = BASE_URL+'user/payments';

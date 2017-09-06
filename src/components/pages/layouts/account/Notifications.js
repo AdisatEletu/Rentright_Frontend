@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Dropdown, NavItem} from "react-materialize";
 import {Avatar, Badge, Icon} from "antd";
 import {getNotifications} from "../../../../state/actions/userActions";
+import shortid from 'shortid';
 
 class Notifications extends Component {
 
@@ -33,7 +34,7 @@ class Notifications extends Component {
                     stopPropagation: false // Stops event propagation
                 }}>
                 {this.props.notifications.notifications.map((notification) => {
-                    return <NavItem style={{minWidth: '300px'}}>
+                    return <NavItem key={shortid.generate()} style={{minWidth: '300px'}}>
                         {notification.type === 'TestNotification' ? <div className="row" style={{marginBottom:0}}>
                             <div className="col m2">
                                 <Avatar style={{ backgroundColor:  !notification.read_at ? '#87d068' : '' }} size="small" icon="bell" />
@@ -46,7 +47,7 @@ class Notifications extends Component {
                     </NavItem>
                 })}
                 {!this.props.notifications.fetching && this.props.notifications.notifications.length <=0 ?
-                    <div className="center" style={{padding: '10px', minWidth: '200px', fontSize: 12}}>
+                    <div className="center" style={{padding: '10px', minWidth: '200px', fontSize: '12'}}>
                         You have no notifications
                     </div>: undefined}
                 {this.props.notifications.fetching ?

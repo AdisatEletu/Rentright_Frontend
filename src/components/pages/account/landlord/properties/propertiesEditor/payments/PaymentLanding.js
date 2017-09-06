@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import {Modal} from 'antd';
+import {Badge, Modal,Icon} from 'antd';
+import {getAllLease} from "../../../../../../../state/actions/leaseAction";
+import shortid from 'shortid';
+import PropTypes from 'prop-types';
 
 class PaymentLanding extends Component {
     constructor(props){
@@ -7,11 +10,29 @@ class PaymentLanding extends Component {
 
         this.state ={
             modalVisible: false,
+            isFetching: true,
+            leases:[],
+        }
+    }
+
+    componentDidMount(){
+        const unit_uuid = this.context.router.route.match.params.id;
+        getAllLease({unit_uuid,include:'tenant'},this.onLeaseReceivedCallBack.bind(this))
+    }
+
+    onLeaseReceivedCallBack(status,data){
+        if(status){
+            this.setState({leases: data.data,isFetching: false});
         }
     }
 
     showModal(modalVisible){
         this.setState({modalVisible});
+    }
+
+    handlePayment = (uuid) => {
+        const unit_uuid = this.context.router.route.match.params.id;
+        this.context.router.history.push('/landlord/units/'+unit_uuid+'/payments/'+uuid);
     }
 
     render() {
@@ -23,9 +44,27 @@ class PaymentLanding extends Component {
                     visible={this.state.modalVisible}
                     onOk={() => this.showModal(false)}
                     onCancel={() => this.showModal(false)}>
-                    <div style={{ background: '#cccccc', padding: '15px'}}>
+                    {this.state.isFetching ? <div className="center" style={{padding: 20}}><Icon type="loading"/></div> :undefined}
+                    {!this.state.isFetching ?
+                        this.state.leases.map((lease) => {
+                        return <div key={shortid.generate()} onClick={()=>{this.handlePayment(lease.uuid)}} className="grey lighten-3 hover" style={{padding: '15px', marginBottom: 15, cursor:'pointer'}}>
+                            <div className="row" style={{marginBottom: 5}}>
+                                <div className="col s9">
+                                    <span style={{fontSize: 18,}}><b>Aug 17 - Aug 18</b></span>
+                                </div>
+                                <div className="col s3">
+                                    <Badge status="warning" text="Draft" />
+                                </div>
+                            </div>
 
-                    </div>
+                            <div className="row" style={{marginBottom: 0}}>
+                                <div className="col s4"><b><span style={{fontSize: 15}}>Rent</span><br/>{lease.rent_amount}/{lease.tenor_type}</b></div>
+                                <div className="col s4"><b><span style={{fontSize: 15}}>Tenant</span><br/>{lease.tenant.data.first_name} {lease.tenant.data.last_name}<br/><span className="tertiary-color-text">{lease.tenant.data.email}</span></b></div>
+                                <div className="col s4"></div>
+                            </div>
+                        </div>
+                        })
+                        : undefined}
                 </Modal>
 
                 <div className="card-panel col s12 m7" style={{paddingBottom: '30px', marginTop: '100px'}}>
@@ -47,6 +86,10 @@ class PaymentLanding extends Component {
         );
     }
 
+}
+
+PaymentLanding.contextTypes = {
+    router: PropTypes.object.isRequired,
 }
 
 export default PaymentLanding;
