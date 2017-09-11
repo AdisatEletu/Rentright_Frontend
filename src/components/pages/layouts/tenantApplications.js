@@ -25,7 +25,7 @@ import  Cascader from 'antd/lib/cascader';
 import Icon from 'antd/lib/icon';
 import Switch from 'antd/lib/switch';
 import Select from 'antd/lib/select';
-
+import Agreement_modal  from './Agreement_modal.js'
 import 'moment/locale/en-gb';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
@@ -109,7 +109,28 @@ const  dateFormat = 'YYYY-MM-DD';
 
   }*/
 
+    showModal= ()=> {
+     $('.t-midmain').css('z-index', '30');
+     $('.midpictures').css('z-index', '1');
+      var th = this;
+      console.log(th) 
+      this.setState(this.css);
+      th.setState({showModal :true});
 
+    }    
+    hideModal = ()=>{
+     $('.t-midmain ').css('z-index', '10');
+    $('.midpictures').css('z-index', '5000');
+     this.setState({showModal:false});
+     this.setState({'css': null});
+     if (this.state.ishighlighting != 'time-highlight'){
+     this.setState({ishighlighting:'time-highlight'})
+     setTimeout(()=>{
+       this.setState({ishighlighting:''})
+      },
+      5000);
+     }
+    } 
 
   postApplications(obj){
     console.log(obj);
@@ -250,11 +271,12 @@ const  dateFormat = 'YYYY-MM-DD';
       </div>
       <div  className = "ic"><Icon type = "user"/></div>
      <div className = "kingslanding-mid t-flex t-justify-center"><span className = "deeplanisters smx">Status <span className = "thinlanisters smx">Checkout lease </span></span> </div>
-      <div className = "kingslanding-bottom t-flex t-align-center t-justify-center purp"><span className = "lanisters lgx">Checkout</span></div>
+      <div className = "kingslanding-bottom t-flex t-align-center t-justify-center purp" onClick = {this.showModal}><span className = "lanisters lgx">Checkout</span></div>
   </div>
 
   </div>
   </div>
+     {this.state.showModal ? <Agreement_modal hideModal = {this.hideModal}/> :null}
 </div> 
   :
   null

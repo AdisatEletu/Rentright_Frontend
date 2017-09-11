@@ -47,7 +47,6 @@ body{font-family:Rooto;}
 .m-drop-down-content{width:8wv; height:auto; display:none; font-size:1.3rem; display:none; color: #666; font-weight:600; text-align:left; padding:10px 15px;}
 .m-drop-down-items{border-bottom:solid 1px #d2d2d2; }
 .m-drop-down:hover .m-drop-down-content{display:block;}
-[data-reactroot] {height: 100% !important; }
 .m-semi-transparent{background-color:rgba(299,299,299,0.8);}
 .m-round-btn2{width:1.2vw;  height:1.2vw; border-radius:50%;  cursor:pointer;  display:flex; align-items:center; justify-content:center; text-align:center; font-size:1.3rem; color:#66BB6A;  }
 .m-round-btn22{width:3.5vw;  height:3.5vw; border-radius:50%;  cursor:pointer;  display:flex; align-items:center; justify-content:center; text-align:center; font-size:3rem; color:#fff;  }
@@ -469,7 +468,7 @@ text-shadow: 0px 0.8px 1px #ededed;}
 box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.29);
 }
 .kingslanding-top{height:55%; width:100%; box-sizing:border-box; } 
-.kingslanding-mid{height:20%; padding:0px 0px; box-sizing:border-box; width:100%; background:#F4F5F7; color:#222; font-size:1.2rem; text-align:center}
+.kingslanding-mid{height:20%; padding:0px 0px; box-sizing:border-box; width:100%;  margin-top:auto; background:#F4F5F7; color:#222; font-size:1.2rem; text-align:center}
 .kingslanding-bottom {height:25%; width:100%; background-color:#51BE68; cursor:pointer; } 
 .kingslanding-top, .kingslanding-mid, .kingdlanding-bottom{display:flex;  align-items:center; justify-content:center; }
 .lanisters, .thinlanisters, .deeplanisters{color:#fff; font-weight:700; font-family:Dosis;  line-height:2.4rem;  font-size:1.8rem; height:2.2rem; width:auto; display:inline; font-family:Open Sans;  white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis;}
@@ -477,7 +476,7 @@ box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.29);
 .smx{transform:scale(0.8, 0.8);  } .lanisters{font-family:Lato; font-weight:500; }
 .lgx{transform:scale(1.2, 1.2); } .kingslanding-bottom:hover{background-color:#47AA5B;}
 
-.midpictures{height:300px; margin-top:10px; opacity:0; display:flex; justify-content:space-around;  align-items:top;  width:65%;  z-index:50000;} .under{z-index:2;}
+.midpictures{height:300px; margin-top:10px; opacity:0; display:flex; justify-content:space-around;  align-items:top;  width:65%;  z-index:5000;} .under{z-index:2;}
 .pictures-got{width:160px; cursor:pointer; height:160px; background-size:cover; background-position:center; border-radius:5px; margin-top:-80px;   z-index:200000;
 -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.29);-moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.29);box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.29);}
 .pictures-got:hover{transform:scale(1.2);  } 
@@ -486,5 +485,74 @@ box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.29);
 .iconify .kingslanding-top{height:auto;   } 
 .iconify .ic{height:20%; display:flex; margin-top:10px;  align-items:center; font-size:30px; justify-content:center;  align-content:center; color:#999;}
 .iconify .kingslanding-mid{height:15% ;  margin-top:auto;  }
-.iconify .kingslanding-bottom {height:25%; margin-top:auto;}
+.iconify .kingslanding-bottom {height:25%;}
+
+
+/* New Modal ...............................................................................................................*/
+/* this is the parent of modal */
+.modalchild{display:flex;  flex-direction:row; width:90%; transform: translateY(-5000px); padding:0; margin:0; height:90%; overflow-x:hidden; background:#fff; border-radius:4px;}
+.modalchild .modalhead{font-size:4rem; letter-spacing:1px; }
+/* this is the left parent modal */
+.modalleft{width:20%;background-size:cover; background-position:center; background-image:url('img/fine1.jpg');   } 
+
+.modalslick{display:flex; width:100%; color:rgba(255,255,255,0.3); cursor:pointer;  align-content:center; align-items:center; height:3rem; height:auto; margin:0px; flex-direction:row; justify-content:left;}
+.modalstick{ width:1px; border-color:#fff;  margin-left:1rem;  height:30px;  background:#fff;}
+.modalslick span{font-size:1.2rem; text-align:center; line-height:2rem; width:2rem; height:2rem; color:#fff; border:solid 1px; box-sizing:border-box; border-radius:50%; }
+.modalslick div{margin-left:10px;  white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis; font-size:1.2rem; font-weight:400; text-align:center; font-family:Open Sans; }
+.modaltext{ white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis; font-size:1.2rem; text-align:center;}
+.modalhd{font-size:2.3rem; font-weight:200; font-family:Raleway; width:100%; text-align:center; line-height:3.3rem; margin-top:3.5rem; color:rgba(255,255,255,0.9); }
+.modalsb{font-size:1.8rem; width:100%; margin-bottom:50px; font-weight:100; text-align:center; text-align:center;  margin-top:0.7rem; line-height:2.2rem; color:rgba(255,255,255,0.5); }
+.slickactive{ color:#fff; border-color:#66BB6A!important; } .stickactive{background-color:#66BB6A;}
+.modalslick:hover{color:#fff; }
+.modalme{width:120px; height:120px; border-radius:50%; background-size:contain;  margin-top:80px; box-sizing:border-box!important; border:solid 8px rgba(255,255,255,0.8); cursor:pointer;}
+.modalcover{padding:30px 20px; width:100%; height:100%;  background:#083A60;  color:#fff;}
+/* this is the right parent modal */
+.modalright{background:#fff; width:80%;  background:#eaeaea; } .blackf i{color:#000!important; width:2.5rem; height:2.5rem; text-align:center;   box-sizing:content-box;  border-radius:50%; } .blackf{padding-bottom:0px!important; }
+.rightband{width:100%; height:20%; display:flex; flex-direction:column; background:#F0F0F0;  border-bottom:solid 1ox #999;}
+.rightbottom{width:100%; border-top:solid 1px #ededed; height:80%; padding:20px 250px; padding-left:250px;  box-sizing:border-box; background:#fff; display:flex; flex-direction:column;}
+.upperslick{font-size:1.5rem; font-weight:100; margin-bottom:5px; margin-top:-20px;  width:100%; text-align:center;font-family:Raleway; line-height:1.7rem; color:#666;}
+.lowerslick{font-size:2.2rem; font-weight:400;  margin-bottom:10px; width:100%; text-align:center; font-family:Raleway; line-height:2.5rem; color:#444;}
+.modal-checklist{width:100%; display:flex; padding:10px 100px; justify-content:center; align-items:center; align-content:center;}
+.modalcheck{width:2rem;  margin:0px; height:2rem; font-size:1.2rem;  color:#fff; background-color:#083A60; border-radius:50%; line-height:2rem; text-align:center; }
+.modalcheckstick{width:200px; height:3px; background-color:#083A60; }
+.inactive{background-color:rgba(8,5,96,0.4); }
+.spantree{color:#555; font-size:1.1rem; margin-right:200px; width:140px; line-height:1.3rem; }
+.parentspan{width:80%;  }
+
+/* forms */
+textarea:focus, input:focus, select:focus{
+    outline: none!important; 
+}
+.input-cover{height:auto; min-height:50px; display:flex; flex-direction:row; margin-bottom:20px; justify-content:space-between; }
+.mod-input-cover{ padding-left:0px;  display:flex;  border-bottom:solid 1px #083A60;    flex-direction:column; box-sizing:content-box; height:auto;}
+input,select, .input, .select, .textare{height:2.2rem;   margin:0px 0px;  border-style:none;   font-size:1.6rem; font-weight:400; color:#333; padding-bottom:5px;  background-color:rgba(0,0,0,0); }
+.iconinput{display:flex; flex-direction:row; justify-content:space-between; width:100%;  } .mod-rest{width:95%; } .mod-icon{font-size:1.6rem; color:#ededed; width:4.6%; text-align:right; margin-right:2px;  }
+.select, .select, .textarea{height:2.6rem; font-size:1.2rem; line-height:1.4rem;}
+.textarea{height:10rem; border-style:none; background:#fAfAfA; padding:25px;  } .no-pad{border:none!important;}
+.label, .labeldate{font-size:1.2rem; text-transform:capitalize;  font-weight:500;  font-family:Roboto;  color:#999; letter-spacing:1px; line-height:1.4rem; margin-bottom:0.6rem; }
+.labeldate{font-size:1rem; color:#999; margin-top:0.6rem;  margin-bottom:0px;} 
+.mod-input-cover ::-webkit-input-placeholder { font-size:1.5rem!important; font-weight:200; color:#d2d2d2; }
+.mod-input-cover ::-moz-placeholder { font-size:1.5rem!important; font-weight:200;; color:#d2d2d2;  }
+.mod-input-cover :-ms-input-placeholder { font-size:1.5rem!important; font-weight:200;; color:#d2d2d2;}
+.mod-input-cover :-moz-placeholder { font-size:1.5rem!important; font-weight:200;; color:#d2d2d2; }
+ .mod-input-cover ::placeholder { font-size:1.5rem!important; font-weight:200; ; color:#d2d2d2;}
+ .mod-input-cover  .input :placeholder-shown{transform:translateY(-10);}  .mod-input-cover option{color:#333; font-size:1.3rem; line-height:1.4rem;}
+.mod-button-container{ width:100%; height:auto; display:flex; flex-direction:row; justify-content:space-between;   }
+.mod-button{padding:10px 10px;  border-style:none; border-radius:3px; font-size:1.5rem;   color:#fff; font-weight:300;  cursor:pointer; }
+ .mod-button:hover{opacity:0.9; -webkit-box-shadow: 1px 1px 73px -35px rgba(0,0,0,0.64);-moz-box-shadow: 1px 1px 73px -35px rgba(0,0,0,0.64);box-shadow: 1px 1px 73px -35px rgba(0,0,0,0.64); }
+ .mod-button-small{width:20%; background:#083A60;}  .mod-button-mid{width:30%; background:#fff;  border:solid 2px #083A60; color:#083A60; }
+ .tenancy h1{font-size:2.2rem; text-transform:capitalize; line-height:3.5rem; margin-top:1rem;   color:#222; font-family:Roboto; letter-spacing:1px; }
+ .tenancy p{font-size:1.2rem; line-height:3.2rem; margin-top:1rem;  color:#333;  font-family:Roboto; letter-spacing:1px; }
+.tenancy sub {font-size:1.8rem; line-height:2.8rem; display:block; margin-top:1rem; margin-bottom:1rem;   color:#999; font-weight:200;  font-family:Open Sans; letter-spacing:1px; }
+.tenancy{ width:50%; }
+.rightbottom2{width:100%; border-top:solid 1px #ededed;  height:90%; padding:10px 20px; display:flex; justify-content:space-between; box-sizing:border-box; background:#fff; display:flex; flex-direction:row;}
+.arrow-cont{display:flex; align-content:flex-start; padding:220px 0px; box-sizing:border-box; width:25%; align-items:flex-start; justify-content:center;}
+.marrow{ color:#fff;  text-align:center;  width:5rem; height:5rem;  border-radius:50%; cursor:pointer; background-color:#489ADD; border:solid 1px #489ADD; }
+.marrow:hover{background:#fff; color:#489ADD; } .cco{font-size:3rem; line-height:5rem;}
+.agreer{margin-top:1.5rem; background-color:#fff;  justify-content:center;  text-align:center;  border-top:solid 1px #d2d2d2; padding:10px 10px; font-size:14px;  }
+.che{font-size:1.2rem; display:block; font-weight:500; color:#222; font-family:Open Sans; width:100%; padding:0px 20px; box-sizing:border-box;  }
+.smitbutton{margin-top:20px; width:100%; display:flex; justify-content:flex-end; }
+
+
+
 
