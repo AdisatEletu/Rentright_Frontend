@@ -42,7 +42,7 @@ class Payments extends Component {
                {/*{this.state.hasLease ? <ScheduleDetails lease={this.state.leaseId}/> : <PaymentLanding/>}*/}
                <Switch>
                    <Route exact path={'/landlord/units/:id/payments'} component={PaymentLanding}/>
-                   <Route path={'/landlord/units/:id/payments/:leaseId'} component={ScheduleDetails}/>
+                   <Route exact path={'/landlord/units/:id/payments/:leaseId'} component={ScheduleDetails}/>
                    <Route path={'/landlord/units/:id/payments/charges/:chargeId'} component={ChargeDetails}/>
                </Switch>
            </div>

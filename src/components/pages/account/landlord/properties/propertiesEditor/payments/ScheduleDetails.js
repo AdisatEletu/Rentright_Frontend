@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
-import {Table, Calendar, Card, Input as AntInput} from "antd";
+import {Table, Calendar, Card, Input as AntInput, Icon, notification} from "antd";
 import {Row, Input} from 'react-materialize';
 import PropTypes from 'prop-types';
 import {getPayment} from "../../../../../../../state/actions/PaymentActions";
 import Loader from "../../../../../../shared/Loader";
+import * as moment from 'moment';
+import {formatCurrency} from "../../../../../../../state/actions/PaymentActions";
+import {addCharge} from "../../../../../../../state/actions/PaymentActions";
+import {isEmpty} from 'lodash';
 
 const {TextArea} = AntInput;
 
@@ -11,6 +15,13 @@ class ScheduleDetails extends Component {
 
     state = {
         loading: true,
+        adding: false,
+        added: {
+            type: 'rent',
+            charge: '',
+            charge_due: moment().format('YYYY-MM-DD HH:mm:ss'),
+            name: '',
+        },
     }
 
     componentDidMount() {
@@ -25,8 +36,62 @@ class ScheduleDetails extends Component {
     }
 
     onDateChange = (value, mode) => {
+        const added = {
+            ...this.state.added,
+            charge_due: moment(value).format('YYYY-MM-DD HH:mm:ss')
+        };
 
+        this.setState({added});
+        console.log(this.state)
     }
+
+    handleCreate = (e) => {
+        e.preventDefault();
+        const {type, charge, charge_due, name} = this.state.added;
+
+        if (isEmpty(type) || isEmpty(charge) || isEmpty(charge_due) || isEmpty(name)) {
+            return;
+        }
+
+        this.setState({adding: true});
+
+        const params = {
+            ...this.state.added,
+            payment_uuid: this.state.payment.uuid,
+        }
+
+        addCharge(params, this.onChargeAddedCallback.bind(this));
+    }
+
+    onChange = (e) => {
+        const added = {
+            ...this.state.added,
+            [e.target.name]: e.target.value
+        }
+        this.setState({added});
+        console.log(this.state)
+    }
+
+    onChargeAddedCallback = (status, data) => {
+        if (status) {
+            const payment = {...this.state.payment};
+            payment.charges.data.push(data);
+
+            const added = {
+                type: 'rent',
+                charge: '',
+                charge_due: moment().format('YYYY-MM-DD HH:mm:ss'),
+                name: '',
+            };
+
+            this.setState({payment, adding: false,added});
+
+            notification.success({
+                message: 'Charge Created',
+                description: 'Charge has been successfully created.',
+            })
+        }
+    };
 
     render() {
         const unit_uuid = this.context.router.route.match.params.id;
@@ -41,7 +106,7 @@ class ScheduleDetails extends Component {
             title: 'Amount',
             className: 'column-money',
             dataIndex: 'charge',
-            render: text => <span>₦{text}</span>,
+            render: text => <span>{formatCurrency(text)}</span>,
         }, {
             title: 'Action',
             dataIndex: 'uuid',
@@ -73,30 +138,37 @@ class ScheduleDetails extends Component {
                     </div>
                     <div className={'col m4 sign-div'}>
                         <Card title={contentHeader} bordered={true}>
-                            <Calendar fullscreen={false} onPanelChange={this.onDateChange.bind(this)}/>
+                            <Calendar fullscreen={false} onPanelChange={this.onDateChange.bind(this)}
+                                      onSelect={this.onDateChange.bind(this)}/>
 
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <input placeholder="Amount" id="charge_amount" type="text" className="validate"/>
-                                    <label htmlFor="charge_amount" className={'active'}>Amount</label>
+                                    <input onChange={this.onChange.bind(this)} placeholder="Amount" name={'charge'}
+                                           id="charge" type="text" value={this.state.added.charge}/>
+                                    <label htmlFor="charge" className={'active'}>Amount</label>
                                 </div>
                             </div>
 
                             <Row>
-                                <Input s={12} type='select' label="What is the charge" defaultValue='1'>
-                                    <option value='1'>Rent</option>
-                                    <option value='2'>Security Deposit</option>
-                                    <option value='3'>Late Fee</option>
-                                    <option value='4'>Fee</option>
+                                <Input onChange={this.onChange.bind(this)} s={12} name={'type'} type='select'
+                                       label="What is the charge" value={this.state.added.type}>
+                                    <option value='rent'>Rent</option>
+                                    <option value='security deposit'>Security Deposit</option>
+                                    <option value='late fee'>Late Fee</option>
+                                    <option value='fee'>Fee</option>
                                 </Input>
                             </Row>
-                            <div className="input-field col s12" style={{marginBottom: '15px'}}>
-                                <TextArea placeholder="Add optional description....."
+                            <div onChange={this.onChange.bind(this)} className="input-field col s12"
+                                 style={{marginBottom: '15px'}}>
+                                <TextArea value={this.state.added.name} name={'name'}
+                                          placeholder="Add optional description....."
                                           autosize={{minRows: 3, maxRows: 6}}/>
                             </div>
                             <div>
                                 <div className={'col s12'}>
-                                    <a className="waves-effect waves-light btn block white-text">Create</a>
+                                    <a disabled={this.state.adding} onClick={this.handleCreate.bind(this)}
+                                       className="waves-effect waves-light btn block white-text">{this.state.adding ?
+                                        <span><Icon type="loading"/> Creating....</span> : 'Create'}</a>
                                 </div>
                             </div>
                         </Card>

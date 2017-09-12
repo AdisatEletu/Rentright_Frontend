@@ -13,3 +13,8 @@ export const getAllLeaseUrl = (uuid) => {return BASE_URL+'user/'+uuid+'/leases'}
 export const getNotificationsUrl = BASE_URL+'user/notifications';
 
 export const getPaymentUrl = BASE_URL+'user/payments';
+
+export const getChargeUrl = (uuid) =>{return BASE_URL+'user/payments/charges/'+uuid};
+
+export const addChargeUrl = BASE_URL + 'user/charges';
+export const editChargeUrl = (uuid) => {return BASE_URL + 'user/charges/'+uuid};

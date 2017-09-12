@@ -140,8 +140,8 @@ ul.side-nav.fixed:hover {
 
 .d-container {
     margin: 0 auto;
-    max-width: 1280px;
-    width: 90%
+    /*max-width: 1280px;*/
+    width: 98%;
 }
 
 
@@ -160,7 +160,7 @@ ul.side-nav.fixed:hover {
     margin-left: 300px;
     padding-left: 0;
     z-index:9;
-    top: 80px;
+    top: 76px;
 }
 
 #index-banner .d-container {
@@ -741,4 +741,21 @@ border-right: none !important;
     padding-right: 10px;
     border-right: 2px #CCCCCC solid;
     cursor: pointer;
+}
+
+#bank-account-footer{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #CCCCCC;
+}
+
+#root,
+.t-fullheight,
+.landlord,
+.application,
+main,
+.d-container.body,.d-container.body .child{
+    min-height: 100vh;
 }
