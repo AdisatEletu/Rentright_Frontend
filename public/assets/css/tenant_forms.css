@@ -1,0 +1,151 @@
+@font-face {  font-family: 'Museo';  src: local('./fonts/Museo 100'), url('./fonts/Museo 100.otf') format('opentype');  font-weight:100; }
+@font-face {  font-family: 'Museo';  src: local('./fonts/Museo 300'), url('./fonts/Museo 300.otf') format('opentype');  font-weight:300; }
+@font-face {  font-family: 'Museo';  src: local('./fonts/Museo 400'), url('./fonts/Museo 400.otf') format('opentype');  font-weight:400; }
+@font-face {  font-family: 'Museo';  src: local('./fonts/Museo 500'), url('./fonts/Museo 500.otf') format('opentype');  font-weight:500; }
+@font-face {  font-family: 'Museo';  src: local('./fonts/Museo 700'), url('./fonts/Museo 700.otf') format('opentype');  font-weight:700; }
+@font-face {  font-family: 'Museo';  src: local('./fonts/Museo 900'), url('./fonts/Museo 900.otf') format('opentype');  font-weight:900; }
+@font-face {  font-family: 'Proxima Nova';  src: local('./fonts/Proxima Nova Thin'), url('./fonts/Proxima Nova Thin.otf') format('opentype');  font-weight:300; }
+@font-face {  font-family: 'Proxima Nova';  src: local('./fonts/Proxima Nova Regular'), url('./fonts/Proxima Nova Regular.otf') format('opentype');  font-weight:normal; }
+@font-face {  font-family: 'Proxima Nova';  src: local('./fonts/Proxima Nova Light'), url('./fonts/Proxima Nova Light.otf') format('opentype');  font-weight:100; }
+@font-face {  font-family: 'Proxima Nova';  src: local('./fonts/Proxima Nova Bold'), url('./fonts/Proxima Nova Bold.otf') format('opentype');  font-weight:700; }
+@font-face {  font-family: 'Proxima Nova';  src: local('./fonts/Proxima Nova semibold'), url('./fonts/Proxima Nova Semibold.otf') format('opentype');  font-weight:500;}
+*{    -webkit-font-smoothing: antialiased!important;     -webkit-tap-highlight-color: rgba(0,0,0,0)!important;}
+.d{display:flex; flex-direction:row; justify-content:space-between;}
+.d-input{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+     -webkit-appearance: none;
+    height: 40px;
+    padding: 7px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 4px;
+    width: 100%;
+    height: 30px;
+    padding: 4px 6px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    font-family:Proxima Nova;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+    cursor: auto;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: start;
+    -webkit-writing-mode: horizontal-tb;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.d-label{   
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-family: Proxima Nova;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333333;
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.d-h1{
+     font-size: 30px;
+    font-family:Museo;
+    font-weight: 300;    margin: 16px 0;
+    line-height: 1.2;
+     text-rendering: optimizelegibility;
+     -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+
+}
+
+.d input[disabled], .d input[type=text][disabled], .d input[type=password][disabled], 
+.d input, .d select, [readonly], .d input[type=text][readonly], .d input[type=password][readonly], .d fieldset[disabled] .d, .d fieldset[disabled] input[type=text], .d fieldset[disabled] input[type=password] {
+    background-color: #eeeeee;
+    opacity: 1;
+}
+.d-btn {
+    font-size: inherit;
+    padding: 10px 25px;
+}
+
+.edit-btn {
+    margin-left: 10px;
+}
+
+ .d-btn {
+    padding: 7px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.d-btn {
+    color: #4c4c4c;
+    background-color: #fafafa;
+    border-color: #cccccc;
+}
+
+
+.d-btn {
+    margin-bottom: 0;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 4px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family:Proxima Nova;
+}
+.d-higlight{background-color:rgba(0,0,0,0.4); border:solid 2px #fff; }
+.d-sidebar-header {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0;
+    padding: 5px 0px 15px 0px;
+    font-family:Proxima Nova;
+}
+.d-sidebar ul,.d-sidebar li{
+margin:0px 0px 5px 0px;
+padding:0px;
+list-style:none;
+font-family:Proxima Nova;
+font-weight:normal;
+font-size:13px;
+line-height:1.22233;
+}
+.d-sidebar{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 13px;
+
+}
+
+.d-img{width:200px; height:300px; background-size:cover;  margin-bottom:-40px;  background-color:#fff; border:solid 2px #fff; padding:20px 10px; display:flex; justify-content:flex-end;}
+.d-icon{font-size:2rem; line-height:3.5rem; height:3.5rem; width:3.5rem; background-color:rgba(0,0,0,0.4); border-radius:50%; border:solid 1px #d2d2d2;}
+.d-cover{width:100%; height:200px; background-size:contain; background-position:center; background-image:url('img/fine2.jpg');}
+
