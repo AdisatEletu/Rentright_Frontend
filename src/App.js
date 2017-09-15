@@ -10,7 +10,8 @@ import Register from '../src/components/pages/Register';
 import LandLord from "./components/pages/account/LandLord";
 import Tenant from "./components/pages/Tenant";
 import Landing from './components/pages/Landing';
-import TenantInfo from './components/pages/TenantInfo';
+import NewTenantInfo from './components/pages/NewTenantInfo';
+import LandlordGuide from './components/pages/LandordGuide';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 import { notification } from 'antd';
@@ -49,8 +50,9 @@ class App extends Component {
                   <Route path="/account" component={requireAuth(Landing)}/>
                   <Route path="/landlord" component={requireAuth(LandLord)}/>
                   <Route path="/sign-in" component={Login}/>
-                  <Route path="/tenant-guide" component={TenantInfo}/>
+                  <Route path="/tenant-guide" component={NewTenantInfo}/>
                   <Route path="/tenant" component={requireAuth(Tenant)}/>
+                  <Route path="/landlord-guide" component={LandlordGuide} />
               </Switch>
           </Router>
           </LocaleProvider>

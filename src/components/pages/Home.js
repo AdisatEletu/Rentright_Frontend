@@ -2,21 +2,10 @@ import React,{Component} from 'react';
 import {Helmet} from "react-helmet";
 import {connect} from 'react-redux';
 import FooterMain from './layouts/footer/FooterMain';
+import PrimaryNav from './layouts/header/navigation/PrimaryNav';
 
+export default class NewHome extends Component{
 
-class NewHome extends Component{
-   constructor(props){
-       super(props)
-       this.state = {}
-   }
-
-  componentDidMount(){
-     console.log(this.state);
-     this.setState(this.props.auth.user)
-  }
-componentDidUpdate(prevProps, prevState){
-console.log(this.state);
-}
     render(){
         return(
             <div className="home-mainbody t-flex t-align-content-stretch t-fullwidth  t-flex-column">
@@ -24,45 +13,29 @@ console.log(this.state);
                     <link href="http://localhost:3000/CSS/tenant.css" rel="stylesheet" type="text/css"/>
                     <link href="http://localhost:3000/CSS/home.css" rel="stylesheet" type="text/css"/>
                 </Helmet>
-                <div className="home-firstnav t-fullwidth t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
-                    <div className=" t-flex  t-fullheight t-justify-right t-right-f home-firstnav-innerdiv-left">
-                        <span> The Ultimate Insider to the RentRight </span>
-                    </div>
-                    <div className="home-firstnav-innerdiv-right t-flex t-justify-center t-flex-row t-center-f t-fullheight">
-                        <span className="home-breadcrumbs"><a href="/Register"><i className="fa fa-user-plus" /> <span>Register</span></a></span>
-                        {this.props.auth.user ?
-                            <span className="home-breadcrumbs"><a href="#"><i className="fa fa-user hom-icons" />{this.props.auth.user.first_name} {this.props.auth.user.last_name}</a></span>
-                        :
-                            null
-                        }
-                        <span className="home-breadcrumbs home-active"><i className="fa fa-sign-out" />
-                            {this.props.auth.user ?  <a href="/sign-out" style={{color: '#ffffff'}}> Logout</a> :<a href="/sign-in" style={{color: '#ffffff'}}> Login</a>}
-
-
-                        </span>
-                    </div>
-                </div>
+                <PrimaryNav/>
                 <div className="home-second-div t-flex t-justify-space-between t-align-center  t-flex-row nav-pad-left-right ">
                     <div className="t-flex t-justify-right t-align-center t-fullheight  ">
                         <div className="t-flex-column t-flex rentright-logo" />
                     </div>
                     <div className="t-flex t-justify-left contact-div lato ">
-            <span className=" t-flex t-flex-column t-align-left icon-props">
-              <i className="material-icons ">place</i>
-            </span>
-                        <div className=" t-flex t-flex-column t-align-left  pad-left-15"><span className="address"> 74 Raymond Njoku street</span><br />Ikoyi, Lagos.</div>
-                        <span className="t-flex  t-align-left  t-flex-column icon-props">
-              <i className="material-icons ">call</i>
-            </span>
+                        <div className="t-flex icon-text-holder">
+                        <span className=" t-flex t-flex-column t-align-left ">
+                          <i className="material-icons icon-props  ">place</i>
+                        </span>
+                            <div className=" t-flex t-flex-column t-align-left  pad-left-15"><span className="address"> 74 Raymond Njoku street</span><span>Ikoyi, Lagos.</span></div></div>
+                        <div className="t-flex icon-text-holder">
+                        <span className="t-flex  t-align-left  t-flex-column ">
+                          <i className="material-icons icon-props ">call</i>
+                        </span>
                         <div className="t-flex  t-align-left  t-flex-column pad-left-15">
-                            <span className="phone-no">  +234 802 2231 719 </span> <br /><a href="#">Info@rentright.com</a>
-                        </div>
+                            <span className="phone-no">  +234 802 2231 719 </span> <span><a href="#">Info@rentright.com</a></span></div></div>
                     </div>
                 </div>
                 <div className="home-third-div t-flex t-align-center  t-flex-row nav-pad-left-right">
                     <div className="bar-box t-flex t-align-center t-justify-space-between t-md-10 ">
                         <div className="t-flex t-flex-row t-align-center t-justify-left t-md-6">
-                            <span className="bar-breadcrumbs bar-tabs  bar-tabs-active"><a href="/account">LANDLORD</a></span>
+                            <span className="bar-breadcrumbs bar-tabs  bar-tabs-active"><a href="/landlord-guide">LANDLORD</a></span>
                             <span className="bar-breadcrumbs bar-tabs "><a href="/tenant-guide">TENANT</a></span>
                             <span className="bar-breadcrumbs bar-tabs "><span>INSTITUTIONS</span><i className="material-icons ">keyboard_arrow_down</i></span>
                             <span className="bar-breadcrumbs bar-tabs "> PROFESSIONALS<i className="material-icons">keyboard_arrow_down</i></span>
@@ -213,19 +186,47 @@ console.log(this.state);
                 </div>
                 <div className="home-ad-picture-holder t-flex t-md-10 t-flex-row nav-pad-left-right">
                     <div className="home-ad-picture t-flex t-md-5">
+                        <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column t-align-content-space-between">
+                            <div className="t-flex t-flex-row">
+                                <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> #500,000 /Year</span>
+                             </div>
+                            <div className=" home-aplicants t-flex t-md-10  ">
+                                <div className=" t-flex t-md-5 t-align-center home-applicants-left  ">
+                                    <div className="t-flex home-aplicant-picture" />
+                                    <span className="home-aplicant-name t-align-center t-flex ">Ngozi John</span>
+                                </div>
+                                <div className="t-flex home-applicant-right t-justify-center t-md-5 t-align-center">
+                                    <div className="t-flex home-aplicant-picture2 t-align-center " />
+                                    <div className="t-flex home-aplicant-picture3 t-align-center " />
+                                    <div className="t-flex home-aplicant-picture4 t-align-center" />
+                                    <div className="t-flex home-no-of-applicant t-align-center montserrat"> 3 Applicants</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="home-ad-info t-flex t-md-5 t-flext-align-space-between t-flex-column">
+                    <div className="home-ad-info t-flex t-fullheight t-md-5 t-flex t-align-space-between t-flex-column">
                         <div className="ad-info-address t-md-10"> 722rd, Festac Town, Lagos.
                         </div>
-                        <div className="ad-proptype t-flex ">Apartment</div>
-                        <div className="ad-py t-flex t-justify-space-between t-md-10 "><span className="ad-prc t-md-5 t-justify-left">#350,000</span><span className="ad-year t-justify-left t-flex t-md-5 t-align-right"> /Year</span></div>
-                        <div className="t-flex ad-description t-flex-row t-md-10 t-justify-space-between ">
-                            <div className="t-flex ad-description1 t-md-45 t-flex-column t-justify-left">
-                                <span>4 bedrooms, three quarter baths <br /> Home size: 1850 Sq ft <br /> Lot size: 7000 Sq ft</span>
+                        <div className="ad-proptype t-flex t-md-10">Apartment</div>
+                        <div className="t-flex ad-description1 t-flex-row t-md-10 t-justify-space-between ">
+                            <div className="t-flex t-flex-column t-md-45">
+                                <div className="t-flex  t-md-10 t-justify-left">
+                                    4 bedrooms, 3quarter baths<br/>
+                                    Home size: 1850 Sq ft<br/>
+                                   Lot size: 7000 Sq ft
+                                </div>
                             </div>
-                            <div className="ad-divider t-flex t-flex-column t-md-2 t-align-center " />
-                            <div className="t-flex ad-description1 t-md-45 t-flex-column t-justify-right ">
-                                <span>Year Built: 2014 <br /> Parking Spot: 2 <br /> Days on market: 205</span>
+
+
+                            <div className="ad-divider t-flex t-flex-column t-md-1 t-align-center " ></div>
+
+
+                            <div className="t-flex t-flex-column t-md-45">
+                                <div className="t-flex  t-md-10 t-justify-left">
+                                    <span>Year Built: 2014</span><br/>
+                                    <span> Parking Spot: 2 </span><br/>
+                                   <span> Days on market: 205</span>
+                                </div>
                             </div>
                         </div>
                         <div className="t-flex ad-view-offer t-flex-row t-md-10 t-justify-space-between ">
@@ -248,7 +249,7 @@ console.log(this.state);
                 Feel free to contact any of our agents for enquires.</span>
                         </div>
                         <div className="home-agents-pics t-flex t-justify-space-between t-md-10">
-                            <div className="home-agents-photo t-flex  t-md-5 ">
+                            <div className="home-agents-photo1 t-flex  t-md-5 ">
                                 <div className="home-agents-pics1 t-flex t-justify-left t-md-4 " />
                                 <div className="t-flex home-agent-phone-name t-md-6 t-flex-column">
                                     <div className="home-agents-name t-flex t-md-10">Dee Newton
@@ -257,7 +258,7 @@ console.log(this.state);
                                     </div>
                                 </div>
                             </div>
-                            <div className="home-agents-photo t-flex  t-md-5 ">
+                            <div className="home-agents-photo2 t-flex  t-md-5 ">
                                 <div className="home-agents-pics2 t-flex t-justify-right t-md-4 " />
                                 <div className="t-flex home-agent-phone-name t-md-6 t-flex-column">
                                     <div className="home-agents-name t-flex t-md-10">Helen Green
@@ -387,10 +388,10 @@ console.log(this.state);
                                 <br /><br />
                                 <div className="home-newest-size t-flex t-md-10 t-justify-space-between ">
                                     <div className="home-square-size t-flex t-md-32">
-                                        <span><i className="material-icons ">home</i> 450 Sq m</span>
+                                        <span><i className="material-icons ">home</i> 450 Sq m</span><br/>
                                     </div>
                                     <div className="home-room-size t-flex t-md-32">
-                                        <span><i className="fa fa-cube" />4 rooms</span>
+                                        <span><i className="fa fa-cube" />4 rooms</span><br/>
                                     </div>
                                     <div className="home-bathroom-size t-flex t-md-32">
                                         <span><i className="fa fa-bathtub" />2 bathrooms</span>
@@ -451,7 +452,7 @@ console.log(this.state);
                             Highly recommended.
                         </div>
                         <div className="home-tes-picture-holder t-flex t-md-6 t-justify-center t-align-center">
-                            <div className="t-justify-space-between t-flex t-md-2">
+                            <div className="t-justify-space-between t-flex r-h t-md-2">
                                 <div className="home-tes-picture t-flex t-md-10 t-justify-left" />
                                 <div className="home-tes-dts t-flex t-flex-column t-justify-center">
                                     <div className="home-tes-name t-flex t-justify-center"> Adeola Abioye</div>
@@ -483,10 +484,4 @@ console.log(this.state);
         );
     }
 }
-function matchStateToProps(state){
-    return {
-        auth:state.user.auth
-    }
-}
 
-export default connect(matchStateToProps,{})(NewHome)
