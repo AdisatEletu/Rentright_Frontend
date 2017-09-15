@@ -85,14 +85,14 @@ this.setState({vizArray:this.scratch.arraybreak[this.scratch.currentpage]})
   handleSubmit = ()=>{
     var th = this;
     let sendobj = this.state.data; 
-    sendobj.uuid = this.props.auth.user.id;
+    sendobj.uuid = this.props.auth.user.uuid;
     console.log(sendobj);
     this.props.showLoading();
-    let newobj = {uuid: this.props.auth.user.id}
+    let newobj = {uuid: this.props.auth.user.uuid}
     newobj[this.state.selected] = sendobj; 
     this.props.update( '/'+this.props.auth.user.uuid,newobj).then((data)=>{
     //   this.context.router.history.push("/tenant/profile/bioinfo/" + this.props.match.params.id);
-    this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true);
+    this.props.loadStructure('/profile/structure/?uuid='+this.props.auth.user.uuid, true);
    
     })
   }
