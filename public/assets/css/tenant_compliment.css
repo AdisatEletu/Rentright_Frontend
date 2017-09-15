@@ -565,6 +565,7 @@ input,select, .input, .select, .textare{height:2.2rem;   margin:0px 0px;  border
 .agreer{margin-top:1.5rem; background-color:#fff;  justify-content:center;  text-align:center;  border-top:solid 1px #d2d2d2; padding:10px 10px; font-size:14px;  }
 .che{font-size:1.2rem; display:block; font-weight:500; color:#222; font-family:Open Sans; width:100%; padding:0px 20px; box-sizing:border-box;  }
 .smitbutton{margin-top:20px; width:100%; display:flex; justify-content:flex-end; }
+/*[data-reactroot]{height:100%!important;}*/
 
 
 

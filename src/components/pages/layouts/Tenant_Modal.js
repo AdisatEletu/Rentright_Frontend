@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import {findDOMNode} from 'react-dom';
 //import GoogleMapsLoader from 'google-maps';
 import $ from 'jquery';
-var GoogleMapsLoader = require('google-maps');
+//var GoogleMapsLoader = require('google-maps');
+import GoogleMapsLoader from 'google-maps'
 GoogleMapsLoader.KEY = 'AIzaSyD2M3_sIa7NQ9HOlNFmGWoGu2j363CMonw';
 class TenantModal extends Component{
     constructor(props) {

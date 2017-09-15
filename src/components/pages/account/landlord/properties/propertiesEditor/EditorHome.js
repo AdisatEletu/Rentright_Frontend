@@ -18,7 +18,7 @@ class EditorHome extends Component {
                         <div className="row" style={{marginTop: '40px', marginBottom: '0'}}>
                             <div className="col m12">
                                 <h2 className="center  grey-text lighten-1"><b>Lets get started. What do you want to do?</b>
-                                </h2><br/>
+                            </h2><br/>
                                 <div className="row">
                                 <div className="col m3">
                                     <div onClick={() => {

@@ -2,10 +2,13 @@ import React, {Component} from 'react';
 import TopBar from "../account/landlord/TopBar";
 import {NavLink} from 'react-router-dom';
 import PropertyMenu from './account/PropertyMenu';
-import {Helmet} from "react-helmet";
 import LoadingBar from 'react-redux-loading-bar'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import Helmet from 'react-helmet';
+
+//require('../account/landlord/asset/materialize/css/materialize.min.css');
+//require('../account/landlord/asset/landlord.css');
 
 class AccountLayout extends Component {
 
@@ -15,8 +18,8 @@ class AccountLayout extends Component {
         <div className="application">
             <LoadingBar style={{ backgroundColor: '#faa61a', height: '2px'}}/>
             <Helmet>
-                <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet"/>
-                <link href="http://localhost:3000/assets/css/effects.css" rel="stylesheet" type="text/css"/>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+                    <link href="http://localhost:3000/assets/css/effects.css" rel="stylesheet" type="text/css"/>
             </Helmet>
             <div className="landlord">
                 <AccountHeader/>
@@ -28,8 +31,8 @@ class AccountLayout extends Component {
                         </div>
                         : undefined}
 
-                    <div className="d-container">
-                        <div style={{paddingLeft: '300px' ,paddingTop: '120px', paddingBottom:'60px'}}>
+                    <div className="d-container body">
+                        <div className="child" style={{paddingLeft: '300px' ,paddingTop: '120px', paddingBottom:'60px'}}>
                             {this.props.children}
                         </div>
                         <div className="fixed-action-btn horizontal">

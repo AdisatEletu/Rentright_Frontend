@@ -504,7 +504,6 @@ a.button-collapse.top-nav.full {
 #sidebar-menu a.item,
 #propertyMenu a.prop-item{
     height: auto !important;
-    display: block;
     padding: 10px;
     margin-bottom: 15px;
     font-size: 20px;
@@ -744,89 +743,12 @@ border-right: none !important;
     cursor: pointer;
 }
 
-.d-dropdown:hover > .d-dropdown-list{
-    display:block;
-    /*height: 300px;*/
-    width: 300px;
-}
-
-.d-dropdown:hover > .d-dropdown-list i{
-    display: block;
-}
-
-.d-dropdown-list{
-    background: transparent;
-    box-shadow:0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 4px 2px -1px rgba(0,0,0,0.2);
-    z-index: 5000;
-    position: absolute;
-    padding-top: 8px;
-    overflow: hidden;
-    float: left;
-    right: 0;
-    -webkit-transition: width .3s, display .6s;
-    display: none;
-    /*height: 0;*/
-    width: 0;
-}
-
-.d-dropdown-list .list{
-    padding:0;
-    border-radius: 2px;
-}
-
-.d-dropdown-list i.arrow{
-    float: right;
-    font-size: 30px;
-    position: absolute;
-    right:5px;
-    margin-top: -20px;
-    color: #F46652;
-}
-
-.d-dropdown-list li{
-    padding: 10px;
-    width: 100%;
-}
-
-.d-dropdown-list .list li:first-of-type{
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-}
-
-.d-dropdown-list .list li:last-child{
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-}
-
-.d-dropdown-list .header{
-    background: #F46652;
-}
-
-.d-dropdown-list .list .dropdown-item{
-    background: #F9F9F9;
-    /*color: #B0B8C0;*/
+#bank-account-footer{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10px;
+    font-weight: bold;
     color: #CCCCCC;
-}
-
-.d-dropdown-list .list .dropdown-item:hover,
-.d-dropdown-list .list .dropdown-item:hover > a{
-    background: #F1F1F1;
-    color: #0A3b61 !important;
-    cursor: pointer;
-}
-
-
-.d-dropdown-list.d-divider .list .dropdown-item{
-    border-bottom: 1px solid #EEEEEE;
-}
-
-.d-dropdown-list .footer{
-    color: #DADADA !important;
-}
-
-.account-dropdown  a.settings:hover,
-.account-dropdown a.profile:hover{
-    color: #424242 !important;
 }
 
 #root,
