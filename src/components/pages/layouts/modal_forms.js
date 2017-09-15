@@ -72,11 +72,9 @@ this.setState({vizArray:this.scratch.arraybreak[this.scratch.currentpage]})
          let dat =  this.state.data;
          Object.assign(dat, data);      
           this.setState({data:dat}, ()=>{
-              console.log(this.state.data)
-          });  
+               });  
       } else{      
             this.setState({data},()=>{
-                console.log(this.state.data)
             });  
       }  
    
@@ -85,14 +83,14 @@ this.setState({vizArray:this.scratch.arraybreak[this.scratch.currentpage]})
   handleSubmit = ()=>{
     var th = this;
     let sendobj = this.state.data; 
-    sendobj.uuid = this.props.auth.user.id;
+    sendobj.uuid = this.props.auth.user.uuid;
     console.log(sendobj);
     this.props.showLoading();
     let newobj = {uuid: this.props.auth.user.id}
     newobj[this.state.selected] = sendobj; 
     this.props.update( '/'+this.props.auth.user.uuid,newobj).then((data)=>{
     //   this.context.router.history.push("/tenant/profile/bioinfo/" + this.props.match.params.id);
-    this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true);
+    this.props.loadStructure('/profile/structure/?uuid='+this.props.auth.user.uuid, true);
    
     })
   }
@@ -261,7 +259,7 @@ hideModal(){
                          {  this.state.scratch.canPrev ? <div onClick = {()=>this.navigatefull('prev')} className = "d-btn d-a d-submit">Previous</div> : null}
                           {  this.state.scratch.canNext ? <div onClick = {()=>this.navigatefull('next')}   className = "d-btn d-a d-submit d-next">Next</div>
                            :
-                           this.props.loader.loading ? 
+                           !this.props.loader.loading ? 
                           <div className = "d-btn d-a dd-sub  d-next" onClick = {this.handleSubmit}>Submit</div>
                                        :
                           <div className = "d-btn d-a dd-sub  d-next" >Loading</div>
