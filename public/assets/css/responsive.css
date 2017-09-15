@@ -1,0 +1,66 @@
+
+
+
+/*......................desktop................*/
+@media only screen
+and (min-width : 1025px) { /* Desktop */
+.resultico{max-width:450px; right:0px;  position:absolute; bottom:0px;}
+.body{width:900px!important; max-width:900px!important;   left:50%; margin-left:-450px!important;height:100%;  border:solid 2px #fff;}
+.max {max-width:500px;}
+.enter {max-width:400px; left:50%; margin-left:-200px; }
+.col-xs{display:none!important;}
+.col-tb{display:none!important;}
+.col-md{display:inline-block!important;}
+.res-button{position:absolute;}
+/*forms */
+
+}
+/*......................desktop ends..................*/
+/*.......................mobile.....................*/
+
+
+
+@media only screen
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {/*mobile*/
+/*.col-xs{margin:0px;}*/
+body { min-height:540px; }     
+
+body[orient="portrait"] { min-height:540px; }
+body[orient="landscape"] { min-height:400px; }
+.resultico{max-width:450px; right:0px;}
+.body{width:100%; height:100%; }
+.max {max-width:500px;}
+.enter {max-width:400px;}
+.col-tb{display:none!important;}
+.col-md{display:none!important;}
+.col-mx{display:none!important;}
+}
+/*...............mobile ends..........................*/
+/*................................tabs......................*/
+@media only screen
+and (min-device-width : 481px) 
+and (max-device-width : 1024px){ /* Tablet */
+.res-button{position:absolute;}
+.resultico{max-width:450px; right:0px;  position:absolute; bottom:0px;  }
+.body{width:100%; height:100%; border:solid 2px #fff;}
+.max {width:100%; max-width:500px;}
+.enter {max-width:400px; left:50%; margin-left:-200px; }
+.col-tb{display:inline-block!important;}
+.col-md{display:none!important;}
+.col-mx{display:none!important;}
+}
+/*.................tabs end.......................*/
+/*.....................large screens..............*/
+@media only screen
+and (min-width : 1824px) {/*largescreens*/
+.resultico{max-width:450px; right:0px;  position:absolute; bottom:0px;}
+.res-button{position:absolute;}
+.body{width:900px!important; max-width:900px!important;   left:50%; margin-left:-450px!important;height:100%; border:solid 2px #fff;}
+.max,.enter {max-width:400px;}
+.enter {max-width:400px; left:50%; margin-left:-200px; }
+.col-xs{display:none!important;}
+.col-tb{display:none!important;}
+.col-mx{display:inline-block!important;}
+}
+/*....................largescreen ends................*/

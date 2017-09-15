@@ -3,71 +3,50 @@
  */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 //import PropTypes from 'prop-types';
 
-function Drop(){
-    return (
-        <div >
-            <ul id="dropdown1" className="dropdown-content">
-                <li><a href="#!">Police</a></li>
-                <li><a href="#!">Courts</a></li>
-                <li><a href="#!">Agencies</a></li>
-                <li><a href="#!">Estate Managers</a></li>
-                <li><a href="#!">Financial Institutions</a></li>
-                <li className="divider"/>
-                <li><a href="#!">Government</a></li>
-            </ul>
+ class PrimaryNav extends Component{
+    constructor(props){
+        super(props)
+        this.state = {}
+    }
 
-            <ul id="dropdown2" className="dropdown-content">
-                <li><a href="#!">Agents</a></li>
-                <li><a href="#!">Arbitrators</a></li>
-                <li><a href="#!">Handy Men</a></li>
-
-                <li className="divider"/>
-                <li><a href="#!">Estate Managers</a></li>
-            </ul>
-        </div>
-    );
-}
-
-function Header(){
-    return (
-
-        <div className="navbar-fixed">
-
-            <nav className = " topbar " >
-                <div className="nav-wrapper row">
-                    <div className = " col s8 col m8 offset-s2">
-                        <a href="#!" className="brand-logo icon">
-                            <div className= "iconic">
-                            </div></a>
-                        <ul className="right hide-on-med-and-down">
-                            <li><Link to= {"/LandlordInfo"}>Landlord </Link></li>
-                            <li><Link to={"/TenantInfo"}>Tenant </Link></li>
-                            <li><a className="dropdown-button" href="#!" data-activates="dropdown1">Institutions<i className="material-icons md-24 right">arrow_drop_down</i></a></li>
-                            <li><a className="dropdown-button" href="#!" data-activates="dropdown2">Professionals<i className="material-icons  md-24 right">arrow_drop_down</i></a></li>
-                            <li><i className="material-icons  md-24 self-orange ">supervisor_account</i></li>
-                            <li><Link to ={"/login"}>Sign in</Link></li>
-                        </ul>
-
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-    );
-}
-
-
-export default class PrimaryNav extends Component{
-
+    componentDidMount(){
+        console.log(this.state);
+        this.setState(this.props.auth.user)
+    }
+    componentDidUpdate(prevProps, prevState){
+        console.log(this.state);
+    }
     render(){
         return(
-            <div>
-                <Drop/>
-                <Header/>
+            <div className="home-firstnav t-fullwidth t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
+                <div className=" t-flex  t-fullheight t-justify-right t-right-f home-firstnav-innerdiv-left">
+                    <span> The Ultimate Insider to the RentRight </span>
+                </div>
+                <div className="home-firstnav-innerdiv-right t-flex t-justify-center t-flex-row t-center-f t-fullheight">
+                    <span className="home-breadcrumbs">{this.props.auth.user? null : <Link to="/Register"><i className="fa fa-user-plus" /> <span>Register</span></Link>}</span>
+                    {this.props.auth.user ?
+                        <span className="home-breadcrumbs">Welcome,{" "}{this.props.auth.user.first_name} {this.props.auth.user.last_name} <a href="#"><i className="fa fa-user home-icons" /></a></span>
+                        :
+                        null
+                    }
+                    <span className="home-breadcrumbs home-active"><i className="fa fa-sign-out" />
+                        {this.props.auth.user ?  <a href="/sign-out" style={{color: '#ffffff'}}> Logout</a> :<a href="/sign-in" style={{color: '#ffffff'}}> Login</a>}
+
+
+                        </span>
+                </div>
             </div>
         );
     }
 }
 
+function matchStateToProps(state){
+    return {
+        auth:state.user.auth
+    }
+}
+
+export default connect(matchStateToProps,{})(PrimaryNav)

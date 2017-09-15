@@ -8,7 +8,8 @@ export default class FooterMain extends Component {
             <div>
                 <div className="home-footer t-flex t-md-10 ">
                     <div className="footer-items-holder t-md-10 t-fullheight t-flex nav-pad-left-right t-justify-space-between">
-                        <div className=" t-flex t-md-22 t-flex-column  ">
+                        <div className=" t-flex-column t-md-22">
+                        <div className=" t-flex t-md-10 t-flex-column footer-text ">
                             <div className="rentright-logo t-flex t-md-10" />
                             <div className="home-rentright-about t-flex t-left-f t-md-10"> RentRight is a platform for everybody involved in property-renting business
                                 landlords, tenants, agents, arbitrators, preventing issues and saving time.</div>
@@ -17,6 +18,8 @@ export default class FooterMain extends Component {
                                 <span><i className="fa fa-facebook home-twit t-flex t-md-3 " /></span>
                                 <span><i className="fa fa-linkedin home-twit t-flex t-md-3" /></span>
                             </div>
+                        </div>
+
                         </div>
                         <div className="t-flex t-md-22 t-flex-column  t-align-content-center ">
                             <span className="most-commented t-flex t-md-10 "> Most Commented</span>
@@ -33,6 +36,8 @@ export default class FooterMain extends Component {
                                     <span className="home-tes-prof ">March 13, 2017</span></div>
                             </div>
                         </div>
+
+
                         <div className="home-useful-links t-flex t-md-22  t-flex-column">
                             <div className="t-flex t-justify-space-between t-flex-column">
                                 <div className="most-commented t-flex t-md-10 ">Useful Links</div>
@@ -46,6 +51,8 @@ export default class FooterMain extends Component {
                                 <div className="footer-hr" />
                             </div>
                         </div>
+
+
                         <div className="most-commented t-flex t-md-22 ">Twitter Feeds</div>
                     </div>
                 </div>

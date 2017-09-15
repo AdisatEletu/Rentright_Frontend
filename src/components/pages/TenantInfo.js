@@ -96,3 +96,11 @@ export default class TenantInfo extends Component {
     }
 
 }
+
+function matchStateToProps(state){
+    return {
+        auth:state.user.auth
+    }
+}
+
+export default connect(matchStateToProps,{})(NewTenantInfo)
