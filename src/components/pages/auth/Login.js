@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import {login} from '../../../state/actions/authAction';
 import {Helmet} from "react-helmet";
 import LoadingBar from 'react-redux-loading-bar';
+require('./auth.css');
 
 class Login extends Component {
 
@@ -95,9 +96,6 @@ class Login extends Component {
         return (
             <div id="login-page">
                 <LoadingBar style={{ background: 'linear-gradient(to bottom right, red, yellow)', height: '4px'}}/>
-                <Helmet>
-                    <link href="http://localhost:3000/CSS/auth.css" rel="stylesheet" type="text/css"/>
-                </Helmet>
                 <div id="login-top">
                     <div className="top-bar">
                         <span style={{marginLeft: '20px'}}><a href="/"><i style={{color:'#ffffff'}} className="fa fa-times fa-3x"/></a></span>

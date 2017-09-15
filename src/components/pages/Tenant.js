@@ -15,6 +15,7 @@ import PublicProfile from "./layouts/PublicProfile";
 import ImageUpdate from "./layouts/ImageUpdate";
 import {NavLink} from "react-router-dom";
 import BioForm from "./layouts/BioForm";
+import TenantApplications from "./layouts/tenantApplications";
 import TenantNav from "./tenantlayouts/tenant_nav";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";  
@@ -27,13 +28,11 @@ class Tenant extends Component{
     uuid;
     constructor(props) {                  
         super(props)  
-        console.log(this.props) 
        //this.uuid = "/"+this.props.match.params.id 
         this.first_name = this.props.auth.user.first_name;
         this.last_name =  this.props.auth.user.last_name;   
         this.uuid = this.props.auth.user.uuid;  
-        this.props.loadTenant("/"+this.uuid);
-      
+        this.props.loadTenant("/"+this.uuid);      
  
     }
     componentDidMount(){    
@@ -41,11 +40,11 @@ class Tenant extends Component{
     try{
        //this.uuid = this.props.match.params.id;
         
-         this.props.connectToSocket(this.uuid);
-        this.context.router.history.push("/tenant/profile/" + this.uuid);
+        // this.props.connectToSocket(this.uuid);
+        //this.context.router.history.push("/tenant/profile/" + this.uuid);
   
      }catch(err){
-    console.log(err)
+
 }
  
 
@@ -91,8 +90,8 @@ loadprofile = ()=>{
 <div className = "t-flex t-flex-column m-top-med">
          <NavLink className = "m-nav-li t-md-10" to = {"/tenant/profile/"+this.uuid } activeClassName ="m-active-nav"><i className = "fa fa-user-circle lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Registeration Status</span> <div className = "t-bullet m-activate">{this.props.myProfile ? this.props.myProfile.tenants.completed +' %' : null}</div> </NavLink>
         <NavLink className = "m-nav-li t-md-10" to = {"/tenant/publicprofile/" + this.first_name +"/" + this.last_name + "/" + this.uuid +"/"}  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Public Profile</span><div className = "t-bullet"></div> </NavLink>
-        <NavLink className = "m-nav-li t-md-10" to = {"/tenant/find/accommodation/" + this.uuid +"/"}  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Applications</span><div className = "t-bullet"></div> </NavLink>
-        <NavLink className = "m-nav-li t-md-10"  to = "/tenant/messages/:id"  activeClassName = "m-active-nav"><i className = "fa fa-envelope-open-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses ">Messages</span> <div className = "t-bullet"></div> </NavLink>
+        <NavLink className = "m-nav-li t-md-10" to = {"/tenant/find/accommodation/" + this.uuid +"/"}  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Listings</span><div className = "t-bullet"></div> </NavLink>
+        <NavLink className = "m-nav-li t-md-10"  to = {"/tenant/my/applications/" + this.uuid +"/"} activeClassName = "m-active-nav"><i className = "fa fa-envelope-open-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses ">My Applications</span> <div className = "t-bullet"></div> </NavLink>
         <NavLink className = "m-nav-li t-md-10"  to = "/tenant/propertysearch/:id" activeClassName = "m-active-nav"><i className = "fa fa-building-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses"> Find Properties</span> <div className = "t-bullet m-activate">10 new</div> </NavLink>
      </div>
       </div>
@@ -111,6 +110,7 @@ loadprofile = ()=>{
             <Route  exact path="/tenant/profile/immigrationinfo/:id"  component={ImmigrationForm}/>    
              <Route  exact path="/tenant/find/accommodation/:id"  component={TenantSearch}/> 
              <Route  path="/tenant/publicprofile/:first_name/:last_name/:id"  component={PublicProfile}/> 
+              <Route  path="/tenant/my/applications/:id"  component={TenantApplications}/> 
               <Route  path="/tenant/profilepicture/:id"  component={ImageUpdate}/> 
                 </Switch>
           </div>

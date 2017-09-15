@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux';
 import CompletenessBar  from '../tenantlayouts/completeness_bar';
 import FormElements  from '../tenantlayouts/form_elements';
 import NewForm  from '../tenantlayouts/new_form';
-import { loadAllTenants, loadSpecificTenant,post_my_application,  load_my_query, load_my_applications, patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct, hideLoading, errorLoading, breakFormToComponents,  getProfileStruct  } from '../../../state/actions/tenantAction';
+import { loadAllTenants, loadSpecificTenant,post_my_application,  load_my_query, load_my_applications,  sendSocketPost,patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct, hideLoading, errorLoading, breakFormToComponents,  getProfileStruct  } from '../../../state/actions/tenantAction';
 import Spin from  'antd/lib/spin';
 import Button from'antd/lib/button';
 import ProfileContent from '../tenantlayouts/profile_content';
@@ -76,13 +76,17 @@ const  dateFormat = 'YYYY-MM-DD';
    
   postApplications(obj){
     console.log(obj);
-    this.props.post_my_application(obj).then((it)=>{
-      console.log(it)
-        notification["success"]({
+    this.props.post_my_application(obj).then((it)=>{   
+     let data = {};
+     data.peer_id = obj.unit_manager;
+     data.message = obj.leasee_first_name +" " +obj.leasee_first_name + " applied for the apartment " +obj.property;
+     this.props.sendSocketPost(data);     
+       notification["success"]({
           message: 'You applied for a property',
-         description: 'Your appliction for an apartment on rentright was successful we will alert you once iportant events occour we will notify you.',
+         description: 'Your appliction for  apartment '+obj.property+  ' on rentright was successful we will alert you once iportant events occour we will notify you.',
   });
     }).catch((err)=>{
+       console.log(err)
           notification["error"]({
           message: 'Failed to apply',
          description: 'Your appliction was not successful please try again later or check your internet settings.',
@@ -354,34 +358,43 @@ this.props.queryResult.results ?
         itemm  ?   
          !this.props.applicationsPostIndicator.Loading &&  !this.props.applicationsPostIndicator.Error && !itemm.applied &&  this.props.applicationsPost &&  !this.props.applicationsPost.success 
         ? 
-        <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr"
-          onClick = {(e)=>{this.postApplications({units:itemm.id, unit_tenant:this.props.auth.user.id, unit_manager:itemm.unit_manager})}}>
+        <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr .m-ellipses"
+          onClick = {(e)=>{this.postApplications({units:itemm.id, unit_tenant:this.props.auth.user.id, unit_manager:itemm.unit_manager ,
+           leasee_first_name:this.props.auth.user.first_name,
+          leasee_last_name:this.props.auth.user.last_name,
+          property:itemm.title
+              })}}>
            Apply&nbsp; <Icon type = "export"/>
             </div>
          :        
          itemm.applied  ||  this.props.applicationsPost && this.props.applicationsPost.success
         ? 
-          <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-success" >
+          <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-success .m-ellipses" >
             Application Sent <Icon type = "export"/>
             </div>
           :      
          this.props.applicationsPostIndicator && this.props.applicationsPostIndicator.Loading 
          ?         
-           <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-working" >
+           <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-working .m-ellipses" >
             Applying ... <Icon type = "loading"/>
             </div>         
           : 
          this.props.applicationsPostIndicator && !this.props.applicationsPostIndicator.Loading && this.props.applicationsPost.Error
          ?
-              <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-danger"
-              onClick = {(e)=>{this.postApplications({units:itemm.id, unit_tenant:this.props.auth.user.id, unit_manager:itemm.unit_manager})}}>
+              <div  className = "q-border-right q-act t-flex t-align-center t-justify-space-around f-q fr q-danger .m-ellipses"
+              onClick = {(e)=>{this.postApplications({units:itemm.id, unit_tenant:this.props.auth.user.id, unit_manager:itemm.unit_manager,
+          leasee_first_name:this.props.auth.user.first_name ,
+          leasee_last_name:this.props.auth.user.last_name,
+          property:itemm.title
+              
+              })}}>
                 Not Complete Try Again &nbsp; 
                 <Icon type = "export"/>
                 </div>
             :
             null
             :
-        <NavLink to = {'/sign-in'}   className = "q-border-right  q-act t-flex t-align-center t-justify-space-around f-q fr qbdiv q-danger">
+        <NavLink to = {'/sign-in'}   className = "q-border-right  q-act t-flex t-align-center t-justify-space-around f-q fr qbdiv q-danger .m-ellipses">
                    Sign in&nbsp; <Icon type = "export"/>              
                </NavLink>      
           
@@ -461,7 +474,8 @@ function mapDispatchToProps(dispatch) {
     breakFormToComponents:breakFormToComponents,
     loadMyQuery: load_my_query,
     loadMyApplications: load_my_applications,
-    post_my_application:post_my_application
+    post_my_application:post_my_application,
+    sendSocketPost:sendSocketPost
   }, dispatch);
 }
 

@@ -9,7 +9,8 @@ export const dispatchmessage = {
 
 }
 
-
+let socket;
+let socketObs;
 export const api = new apiActions('https://rentright.herokuapp.com/api/rentright/tenant');
 export const tenant_employment = ['curent_employment','uuid', 'salary','employment_start', 'employment_ends', 'reasons_for_living', 'address', 'employer_telephone', 'employer_email', 'employer', 'title', 'others', 'completed' ]
 export const tenant_immigration = ['years_resident', 'country','uuid','proposed_years', 'current_resident', 'resident_from', 'resident_to', 'visa_ends', 'visa_start', 'resident_reason',  'have_work_permit', 'others','completed' ]
@@ -71,18 +72,41 @@ export function loadAllTenants() {
       dispatch(loadTenantSuccess(tenants));
     }).catch(error => {
         dispatch(errorLoading());
-      console.log(error);
       throw(error);
     });
   };
 }
 
 export function connectToSocket(uuid){
-  let socket = new SocketService(uuid);
-  console.log(socket);
-  socket.initialize().then((val)=>{
-    console.log(val);
+  socket = new SocketService(uuid); 
+
+  return function(dispatch){
+  socketObs = socket.koler.subscribe( (item) => {  dispatch(receivedKoler(item))})
+  socket.initialize().then((val)=>{  
+    if(val){
+    dispatch(connectedToSocket(true));
+    }else{
+    dispatch(connectedToSocket(false));
+    }  
+  }).catch((err)=>{
+   return function (dispatch){
+   dispatch(connectedToSocket(false));
+   }
   })
+}
+  }
+export function sendSocketPost(data){
+  socket.postmessage(data);
+  return function(dispatch){
+  dispatch(postMessage(data));
+ 
+  }
+}
+
+export function recieiveSocketPost(data){
+  return function(dispatch){
+    dispatch(receivedKoler(data));
+  }
 }
 
 
@@ -131,8 +155,9 @@ export function load_my_applications(path){
     //send only uuid
     dispatch(loading_applications('loading'))
       let api = new apiActions('https://rentright.herokuapp.com/api/rentright/tenants/applications/');
-      let uri = api + path
-      return api.geturl(uri, true).then((applications)=>{
+      let uri = api.url + path
+      console.log(uri)
+      return api.geturl(path, true).then((applications)=>{
         dispatch(loading_applications('hideloading'));
         dispatch(load_my_applications_success(applications))
       }).catch((err)=>{
@@ -158,25 +183,21 @@ export function post_my_application(obj){
 }
 
 
-export function load_my_query(path){
+export function load_my_query(path = ''){
   return ((dispatch)=>{
     //send only uuid
     dispatch(loading_query('loading'))
-      let api = new apiActions('https://rentright.herokuapp.com/api/rentright/units/query/?');
-      
+   let api = new apiActions('https://rentright.herokuapp.com/api/rentright/units/query/?');      
       let uri = path;
-      console.log(path)
       return api.geturl(uri, true).then((results)=>{
-        if (results.error){
-          console.log(results);
+        if (results.error){ 
           dispatch(loading_query('errorloading'));
         }else{
         dispatch(loading_query('hideloading'));
         dispatch(load_my_query_success(results))
         }
       }).catch((err)=>{
-        console.log(err)
-        dispatch(loading_query('errorloading'));
+            dispatch(loading_query('errorloading'));
       })
      
     
@@ -195,26 +216,21 @@ export function patchSpecificTenant(path,obj) {
 
     }).catch(error => {
         dispatch(errorLoading());
-      console.log(error);
       throw(error);
     });
   };
 }
 export function getProfileStruct(path) {  
-  console.log(path)
   return function(dispatch) {
     dispatch(showLoading());
     return api.geturl(path, true).then(structure => {
-      console.log(structure);
-      console.log('Structure');
         dispatch(hideLoading());
       if (structure){
       dispatch(StructureLoadSuccess(structure));
       }
     }).catch(error => {
         dispatch(errorLoading());
-      console.log(error);
-  
+    
     });
   };
 }
@@ -227,8 +243,7 @@ export function getFormStruct() {
       dispatch(FormLoadSuccess(data));
     }).catch(error => {
         dispatch(errorLoading());
-      console.log(error);
-      throw(error);
+         throw(error);
     });
   };
 }
@@ -237,15 +252,12 @@ export function getFormStruct() {
 export function uploadFile ( file, api_url, uuid, name) {  
   return function (dispatch){
   let data = new FormData();
-  console.log(file)
   data.append( 'file', file );
   data.append('uuid', uuid);
   data.append('filename', name)
   dispatch(showLoading());
   return  api.postimage(api_url, data)
       .then(response =>{ 
-        console.log(response);
-          console.log('Succes .....................................................................................................................................')
         dispatch(uploadSuccess(response))
          dispatch(hideLoading());   
          dispatch(loadSpecificTenant('/'+uuid) );     
@@ -253,8 +265,6 @@ export function uploadFile ( file, api_url, uuid, name) {
     })
       
       .catch( error => {
-        console.log(error);
-          console.log('Erro .....................................................................................................................................')
         dispatch(uploadFail(error))
         dispatch(hideLoading());
     })
@@ -267,7 +277,6 @@ export function readThis (inputValue, api_url, uuid ) {
   var file = inputValue.target.files[0];
   var name = inputValue.target.files[0].name;
   api_url = api_url;
-  console.log(file.name);
   //dispatch(uploadFile(file, api_url,uuid ))    
  var reader = new FileReader();
   reader.onload = ()=>{
@@ -293,15 +302,31 @@ export function deleteSpecificTenant(path,obj) {
     }).catch(error => {
         dispatch(errorLoading());
        dispatchmessage.error();
-      console.log(error);
-      throw(error);
+          throw(error);
     });
   };
 }
 
 export function load_my_applications_success(applications){
-  return  {type: types.TENANT_APPLICATIONS_LOAD, applications:applications.results }
+  console.log(applications.results.results)
+  return  {type: types.TENANT_APPLICATIONS_LOAD, applications:applications.results.results }
   
+}
+export function connectedToSocket(val){
+  if (val){
+   return {type : types.USER_CONNECTED}
+  }else{
+   return {type : types.USER_LEFT}
+  }
+}
+export function postMessage(data){
+  return {type:types.POST_SENT}
+}
+export function loadNotifications(data){
+  return {type:types.LOAD_NOTIFICATIONS, data}
+}
+export function receivedKoler(datad){
+  return {type : types.POST_RECIEVED, data:datad}
 }
 export function post_my_applications_success(applications){
   return  {type: types.TENANT_APPLY, applications:applications }
@@ -327,7 +352,12 @@ export  function StructureLoadSuccess(structure){
     return {type: types.STRUCTURE_LOAD_SUCCESS , structure:structure.results.values};
 }
 export  function FormLoadSuccess(data){
-    return {type: types.FORM_LOAD_SUCCESS , data:data.results.values};
+  let values;
+    if (data.results){
+    values = data.results.values;
+  }
+    return {type: types.FORM_LOAD_SUCCESS , data:values};
+
 }
 
 export function abstractdispatchfunctions(){
@@ -342,7 +372,6 @@ export function imageready(item,message = ""){
       message:message
     }
   }else{
-    console.log(item + '   this is the returned item to show fuction runs')
     return{
       type : types.IMAGE_READY_FAIL,
       message:message
@@ -465,7 +494,6 @@ export function loading_query(context){
 
 }
 export  function runitem(item){
-  console.log(item);
 }
 
 export function breakFormToComponents(formdatal){
@@ -568,7 +596,6 @@ export function breakFormToComponents(formdatal){
                            date: dateforms, select:selectforms, textarea:textareaforms, 
                             phone:phoneforms,  text:textforms,  int:intforms,  switch:switchforms
                           };
-            console.log(allform);
         dispatch(formBreakDown(allform));
           dispatch(hideLoading());
   }

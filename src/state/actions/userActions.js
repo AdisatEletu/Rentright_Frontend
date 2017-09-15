@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {UPDATE_AUTH_USER,RECEIVE_ACTIVE_PROPERTY,REQUEST_ACTIVE_PROPERTY,
     REQUEST_PROPERTIES_PAGE,RECEIVE_PROPERTIES_PAGE,REQUEST_UNITS,
-    RECEIVE_UNITS,REQUEST_ACTIVE_UNIT,RECEIVE_ACTIVE_UNIT} from '../ActionTypes';
-import {getUnitUrl,unitImageUrl} from '../../utils/ApiManager';
+    RECEIVE_UNITS,REQUEST_ACTIVE_UNIT,RECEIVE_ACTIVE_UNIT,REQUEST_NOTIFICATIONS,RECEIVE_NOTIFICATIONS} from '../ActionTypes';
+import {getUnitUrl,unitImageUrl, getNotificationsUrl} from '../../utils/ApiManager';
 import {toastr} from 'react-redux-toastr';
 import {setCurrentUser} from './authAction';
 
@@ -67,6 +67,21 @@ export function receiveSingleUnit(unit){
     return{
         type: RECEIVE_ACTIVE_UNIT,
         payload: {unit}
+    }
+}
+
+export function requestNotifications(){
+    return {
+        type: REQUEST_NOTIFICATIONS,
+    }
+}
+
+export function receiveNotifications(notifications){
+    return {
+        type: RECEIVE_NOTIFICATIONS,
+        payload: {
+            notifications
+        }
     }
 }
 
@@ -238,6 +253,21 @@ export function publishUnit(params,callback){
         ).catch(
             (err) => {
                 return false;
+            }
+        );
+    }
+}
+
+export function getNotifications(){
+    return dispatch => {
+        dispatch(requestNotifications());
+
+        return axios.get(getNotificationsUrl).then(
+            (res) => {
+                dispatch(receiveNotifications(res.data.data));
+            }
+        ).catch(
+            (err) => {
             }
         );
     }

@@ -8,7 +8,6 @@ export default class apiActions {
     this.url = url
   };
    geturl = (api_path = null, append = false) =>{
-     console.log(api_path)
     let path;
     if (api_path){ 
       if (append){
@@ -31,8 +30,6 @@ export default class apiActions {
   };
    patchurl  = (api_path,obj) =>{
      api_path = api_path + '/';
-  console.log(this.url + api_path);
-  console.log(obj);
   return fetch(this.url+ api_path, {
   headers: {
     'Accept': 'application/json',
@@ -43,8 +40,6 @@ export default class apiActions {
 }).then(response =>{
   return response.json();  
 }).catch(error => {
-console.log(error)
-
   return error;
 })
  }
@@ -80,7 +75,6 @@ console.log(error)
   }
  postimage = (api_path, obj) =>{
    api_path =  'https://rentright.herokuapp.com/api/rentright/' + api_path + '/';
-   console.log(api_path)
     return axios({
      url:api_path,
      headers: {    

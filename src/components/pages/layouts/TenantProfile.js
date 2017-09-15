@@ -3,7 +3,9 @@ import {Switch,Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
+import $ from 'jquery';
 import TenantCard from '../tenantCard';
+import ModalForms from './modal_forms';
 import CircleLinks from '../tenantlayouts/circle_links';
 import CompletenessBar  from '../tenantlayouts/completeness_bar';
 import {bindActionCreators} from 'redux';  
@@ -14,7 +16,8 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
     constructor(props) {           
         super(props) 
         this.state = {};
-
+        this.css = {};
+        this.showModal = this.showModal.bind(this);
         this.props.loadTenant('/'+this.props.match.params.id); 
         this.props.getFormStruct();         
            this.uuid = '/'+this.props.match.params.id;
@@ -28,7 +31,26 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
         
 
      }
-     
+    showModal= ()=> {
+     $('.t-midmain').css('z-index', '30');
+      var th = this;
+      console.log(th) 
+      this.setState(this.css);
+      th.setState({showModal :true});
+
+    }    
+    hideModal = ()=>{
+     $('.t-midmain').css('z-index', '10');
+     this.setState({showModal:false});
+     this.setState({'css': null});
+     if (this.state.ishighlighting != 'time-highlight'){
+     this.setState({ishighlighting:'time-highlight'})
+     setTimeout(()=>{
+       this.setState({ishighlighting:''})
+      },
+      5000);
+     }
+    } 
 
     render(){
         if(this.props.myProfile.tenants){
@@ -155,6 +177,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
 
         
            return(
+        
         <div className = "t-md-10 t-fullheight t-scroll t-flex t-flex-column t-align-content-space-between" >
         <div className = "t-md-10 t-flex t-justify-space-between m-bottomx ">
          <div className = "p-widget t-md-65 t-white personalize2  m-bottomx ">
@@ -188,7 +211,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
              <div className = "t-md-10 p-widget margin-below  btransp  m-padding-zero">
                  <div className = "btrcover">
                      <div className = ""></div>
-                     <div className = "m-marg-top t-flex t-flex-row t-justify-center  t-md-10"><NavLink  to = {"/tenant/profile/"  + this.uuid +"/"}  className = "tr-button">Get Started </NavLink ><div className = "tr-highlight">Find A Home</div></div>
+                     <div className = "m-marg-top t-flex t-flex-row t-justify-center  t-md-10"><div  onClick = {this.showModal} className = "tr-button">Get Started </div><div className = "tr-highlight">Find A Home</div></div>
 
                  </div>
                  </div>
@@ -200,7 +223,8 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
                <div className= "m-others m-blinks int4"><div className= "m-cover"></div></div>
                <div className= "m-others m-blinks int5"><div className= "m-cover"></div></div>
             </div>*/}
-       
+        
+    {this.state.showModal ? <ModalForms selected = "tenant_bio" hideModal = {this.hideModal}/> :null}
         
    </div>
         

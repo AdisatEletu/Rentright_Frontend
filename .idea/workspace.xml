@@ -2,7 +2,154 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a190c886-54e7-40a7-8aaf-d881e69766f0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 100.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 300.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 400.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 500-r.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 500.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 700.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 900.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Black Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Black.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Bold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Bold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Black Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Black.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Bold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Bold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Extrabold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Extrabold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Light Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Light.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Regular Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Regular.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Semibold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Semibold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Thin Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Thin.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Black Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Black.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Bold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Bold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Extrabold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Extrabold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Light Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Light.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Regular Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Regular.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Semibold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Semibold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Thin Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Thin.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extrabold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extrabold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Light Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Light.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Regular Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Regular.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Semibold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Semibold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Thin Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Thin.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova/banner-proximanova580x290.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/__MACOSX/Proxima Nova/._.DS_Store" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/bg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/bg2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/bg3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/fonts/roboto/Roboto-Bold.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/fonts/roboto/Roboto-Bold.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/fonts/roboto/Roboto-Light.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/fonts/roboto/Roboto-Light.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/fonts/roboto/Roboto-Medium.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/fonts/roboto/Roboto-Medium.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/fonts/roboto/Roboto-Regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/fonts/roboto/Roboto-Regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/fonts/roboto/Roboto-Thin.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/fonts/roboto/Roboto-Thin.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/debug.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Licenses/exljbris - Desktop License 1.0.0.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Reference/Release Notes.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/readme.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/tenant_forms.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/landlord.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/css/materialize.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/css/materialize.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/js/materialize.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/js/materialize.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/profile/BankAccounts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/ChargeDetails.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/PaymentLanding.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/ScheduleDetails.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/auth/auth.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/home/home.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/home/tenant.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/layouts/Agreement_modal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/layouts/account/Notifications.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/layouts/modal_forms.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/layouts/tenantApplications.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/date.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/basic/flex_form.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/controllers/_scratch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/controllers/profile_middleware.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/form_trans.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/input.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/select.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/switch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/textarea.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/shared/DropDown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/test/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/state/actions/PaymentActions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/state/actions/leaseAction.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/state/reducers/socketReducer.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/odaib.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/rent_right.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/state/actions/propertiesAction.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/CSS/auth.css" afterPath="$PROJECT_DIR$/public/CSS/auth.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/CSS/indexT.css" afterPath="$PROJECT_DIR$/public/CSS/indexT.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/CSS/textT.css" afterPath="$PROJECT_DIR$/public/CSS/textT.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/effects.css" afterPath="$PROJECT_DIR$/public/assets/css/effects.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/tenant.css" afterPath="$PROJECT_DIR$/public/assets/css/tenant.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/tenant_compliment.css" afterPath="$PROJECT_DIR$/public/assets/css/tenant_compliment.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/Tenant.js" afterPath="$PROJECT_DIR$/src/components/pages/Tenant.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/LandLord.js" afterPath="$PROJECT_DIR$/src/components/pages/account/LandLord.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/TopBar.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/TopBar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Applications.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Applications.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/EditorHome.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/EditorHome.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Payments.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Payments.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/applications/ShowCard.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/applications/ShowCard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseTerm.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseTerm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/auth/Login.js" afterPath="$PROJECT_DIR$/src/components/pages/auth/Login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/TenantProfile.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/TenantProfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/Tenant_Modal.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/Tenant_Modal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/tenant_search.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/tenant_search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/tenantlayouts/new_form.js" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/new_form.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/tenantlayouts/tenant_nav.js" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/tenant_nav.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/services/socket.service.js" afterPath="$PROJECT_DIR$/src/services/socket.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/ActionTypes.js" afterPath="$PROJECT_DIR$/src/state/ActionTypes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/actions/apiActions.js" afterPath="$PROJECT_DIR$/src/state/actions/apiActions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/actions/applicationActions.js" afterPath="$PROJECT_DIR$/src/state/actions/applicationActions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/actions/authAction.js" afterPath="$PROJECT_DIR$/src/state/actions/authAction.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/actions/tenantAction.js" afterPath="$PROJECT_DIR$/src/state/actions/tenantAction.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/actions/userActions.js" afterPath="$PROJECT_DIR$/src/state/actions/userActions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/reducers.js" afterPath="$PROJECT_DIR$/src/state/reducers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/reducers/userReducer.js" afterPath="$PROJECT_DIR$/src/state/reducers/userReducer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/ApiManager.js" afterPath="$PROJECT_DIR$/src/utils/ApiManager.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,7 +205,7 @@
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <caret line="78" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -77,8 +224,8 @@
       <file leaf-file-name="Home.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="459" column="34" lean-forward="true" selection-start-line="459" selection-start-column="34" selection-end-line="459" selection-end-column="34" />
+            <state relative-caret-position="110">
+              <caret line="447" column="34" lean-forward="false" selection-start-line="447" selection-start-column="34" selection-end-line="447" selection-end-column="34" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -245,9 +392,10 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="1370" />
+    <option name="width" value="1359" />
     <option name="height" value="735" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -700,7 +848,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="826970000" />
+    <option name="totallyTimeSpent" value="827022000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -712,26 +860,36 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1370" height="735" extended-state="0" />
+    <frame x="-7" y="0" width="1359" height="735" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1509009" sideWeight="0.6178862" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15215746" sideWeight="0.6132597" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15355521" sideWeight="0.15913978" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886191" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18272425" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1509009" sideWeight="0.3821138" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3986711" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15215746" sideWeight="0.38674033" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="78" y="155" width="1170" height="535" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15355521" sideWeight="0.15913978" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18272425" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1509009" sideWeight="0.6178862" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886191" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1509009" sideWeight="0.3821138" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1108,7 +1266,7 @@
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <caret line="78" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1139,8 +1297,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="459" column="34" lean-forward="true" selection-start-line="459" selection-start-column="34" selection-end-line="459" selection-end-column="34" />
+        <state relative-caret-position="110">
+          <caret line="447" column="34" lean-forward="false" selection-start-line="447" selection-start-column="34" selection-end-line="447" selection-end-column="34" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
