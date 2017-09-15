@@ -14,11 +14,18 @@ html,body{
 
 	}
 
+
+
+
+
+
+
+
 *, *:before, *:after {  box-sizing: inherit;}
 .home-mainbody{background-color:#fff;  }
 .home-primary-color {background-color: #0a3b61;}.home-primary-color-f {color: #0a3b61;}
 .home-secondary-color{background-color: #faa61a;}.home-secondary-color-f{color: #faa61a;}
-.home-firstnav{height:40px; z-index:100; position: fixed;  font-family: Open Sans; font-size: 1rem; line-height:40px; color:rgba(255,255,255,0.4); box-sizing:border-box; margin: 0px;}
+.home-firstnav{height:40px; z-index:100; position: fixed; font-family: Open Sans; font-size: 1rem; line-height:40px; color:rgba(255,255,255,0.4); box-sizing:border-box; margin: 0px;}
 .home-firstnav i {font-size: 1.2rem; margin-right:1rem; line-height:40px;} .home-breadcrumbs{padding: 0px 15px; cursor:pointer;}
 .home-active{height: 52px; line-height:52px; margin-left:2vw; font-size:1.2rem; padding:0px 20px; background-color:#f6505c; color:#fff;}
 .home-active:hover{background:#ff1744; color:rgba(255,255,255,0.4);} .home-breadcrumbs:hover{color:#fff;}
@@ -38,6 +45,8 @@ html,body{
 .home-search-field input[type = text], .home-search-field input, .home-first-search{box-sizing: border-box!important;
  border-bottom:none!important; font-size:0.8rem!important; font-family:Open Sans; margin:0px!important; padding:0px!important;
  border-style:none!important;  line-height:80px!important;  width:80%!important; background-color:#fff; height:30px!important;  text-indent:20px;}
+
+
 .home-search-field{ font-size:1.5rem; height:40px;    font-weight:300;  border:solid 1px #d2d2d2;}
 .home-search-field i, .home-search-field .material-icons, .home-search-icon{ width:10%; color:#999; padding:0px 5px; box-sizing:border-box; height:100%;  font-weight:500; font-size:1.5rem!important; cursor:pointer; line-height:40px; }
 .search-icon:hover{color:#222;}
@@ -50,7 +59,6 @@ html,body{
 -moz-box-shadow: 1px 3px 45px 23px rgba(234,234,234,1);
 box-shadow: 1px 3px 45px 23px rgba(234,234,234,1);
 }
-
 .home-body-search{min-height: 30vh;box-sizing:border-box; transform: translateZ(0px); z-index: 3; background-color: #eaeaea;}
 .home-search{margin-top:-200px; background-color:#fff;  padding:10px 20px;  min-height:30vh;  z-index: 3;}
 
@@ -68,7 +76,7 @@ box-shadow: 1px 3px 45px 23px rgba(234,234,234,1);
 
  .home-view-deals span, .home-view-deals2 span{height:100%;  line-height:40px; align-self:center; font-family:Lato; font-weight:300; text-transform:uppercase; }
  .home-view-deals i, .home-view-deals2 i{height:100%;  line-height:40px; align-self:center; font-size:20px; font-weight:300;}
-.home-fourth-div {background-image: url('img/interior18.jpg'); height:45vh; box-sizing: border-box; background-position: bottom; background-repeat: no-repeat; background-size: cover; z-index:10;}
+.home-fourth-div {background-image: url('img/interior18.jpg'); height:45vh; box-sizing: border-box; background-position: bottom; background-repeat: no-repeat; background-size: cover; z-index:50;}
 
 .m-ellipses{width: 99%;
     overflow: hidden;
@@ -79,7 +87,7 @@ box-shadow: 1px 3px 45px 23px rgba(234,234,234,1);
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical; } .home-search-wrapper2{height:50px;} .home-label-top{padding-bottom:4%;}
-.home-fourth-div-cover{ z-index: 10;
+.home-fourth-div-cover{ z-index: 50;
 width:100%; height:100%;
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#183174+0,246b99+43,287ca0+73,287ca0+100&0.72+0,0.83+100 */
 background: -moz-linear-gradient(-45deg, rgba(24,49,116,0.72) 0%, rgba(36,107,153,0.77) 73%, rgba(40,124,160,0.8) 73%, rgba(40,124,160,0.83) 100%); /* FF3.6-15 */
@@ -89,23 +97,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8183174', e
 
 	}
 .home-div-outer-box{box-sizing:border-box; height: 70%; overflow:hidden;  background-color:#fff; width:22%; padding:10px; } .home-outer-div-icon{ height: 40%;} .home-icon-central{font-size:3.5rem; color: #f6505c;}
+
+
+
+
+
+
 .home-div-outer-header{font-size:1.4rem; color: #333; font-weight:500; height:20%; line-height:1.4rem;} .home-div-outer-body{font-size:1.2rem; line-height:1.4rem; font-family:Open Sans; color: #999; font-weight:400; height:30%;}
 .classbottom{height:auto; font-family:Roboto;  box-sizing:border-box; margin-top:auto; }
 .t-md-45{width: 45%;}
 
-.home-fifth-div{height: 30vh; background-color: #fff;} .home-rent-ad{font-size:3rem; color:#0a3b61; font-weight: 300; font-family:Roboto; }
+.home-fifth-div{height: 30vh; background-color: #fff; box-sizing: border-box;} .home-rent-ad{font-size:3rem; color:#0a3b61; font-weight: 300; font-family:Roboto; }
 .t-hr{color:#0a3b61; background-color:#0a3b61;  height:3px; border-radius:2px;  }
 .home-rent-ad-details{font-size:1.2rem; line-height:1.6rem; color:#999; font-weight: 600; font-family:Open Sans; text-transform:lowercase;}
 .home-t-hr-cover{background-color:#ededed; }.home-t-hr-cover2{background-color:#464a49; } .home-hr-super{height:3px; margin-bottom:3vw; margin-top:1.5vw; }
 .home-hr-super2{height:3px; margin-bottom:1vw; margin-top:1vw; }
-.home-ad-picture-holder{background-color:#fff; height: 40vh;  } .home-ad-picture{background-image: url('img/interior12.jpg'); background-repeat:no-repeat; background-size:cover; }
+.home-ad-picture-holder{background-color:#fff; height: 40vh;  } .home-ad-picture{background-image: url('img/interior111.jpg'); border-top-left-radius: 5%; background-repeat:no-repeat; background-size:cover; }
 .home-ad-info{background-color: #e8e8e8; padding:20px;} .ad-info-address{font-size: 1.7rem; font-family: Roboto; font-weight: 400; color:#626260; line-height:3rem;}
 .ad-proptype{font-size: 1.2rem; font-family: Roboto; font-weight: 300; color:#91918f; }	.ad-year{font-size:1.2rem;  font-weight: 500; color:#91918f; } .ad-py{height:40px; padding: 15px 0px;}.ad-prc{font-size:1.5rem; color:#f84e5d; font-family: Roboto;}
-.ad-description1{font-size:1.1rem; font-weight:500; padding: 10px 0px; line-height: 2.5rem; height: 10%}
+.ad-description1{font-size:1.1rem; font-weight:500; padding: 10px 0px; line-height: 2rem; height: 100px; box-sizing: border-box;}
 .t-md-48{width:48%;}
-.ad-divider{box-sizing: border-box; width:2px; height:60%; background-color: #999;}
+.ad-divider{box-sizing: border-box; width:1px; height:60%; background-color: #999; align-self: center;}
 
-.ad-view-offer-btn {box-sizing:border-box; border-radius:2px; cursor:pointer; background-color: #0a3b61; height:40px; font-size: 1.2rem; color: #fff; padding:0px 10px; text-transform:uppercase}
+.ad-view-offer-btn {box-sizing:border-box; border-radius:2px; cursor:pointer; background-color: #f6505c; height:40px; font-size: 1.2rem; color: #fff; padding:0px 10px; text-transform:uppercase}
 .ad-view-offer-btn2 { text-transform: uppercase; box-sizing:border-box; padding:0px 10px; border-radius:2px; cursor:pointer; background-color: #000; height:40px; font-size: 1.2rem; color: #fff;}
 .ad-view-offer{padding: 10px 0px;} .home-agents-picture{background-image: url('img/agent2.jpg'); background-repeat:no-repeat; background-size: cover; background-position: center;}
 .home-agents-div{height: 50vh; margin-top:10vh;} .home-agents-details{background-color:#000; padding: 10vh;} .home-agent-header{font-size:2rem; color:#fff; font-weight: 300;}
@@ -118,10 +132,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8183174', e
 .home-agents-phone{font-size: 1.4rem; color:#fff; line-height:3rem;padding:10px; font-weight:300;}.home-agents-phone i{font-size: 1.4rem; color:#fff; line-height:3rem;  }
 
 .home-hr-super3{height:3px; margin-bottom:1.5vw; margin-top:1.5vw; } .home-t-hr-cover3{background-color:#b7b9b8; } .home-newest-details{font-size: 1.2rem; color: #999;}
-.home-newest-properties-div{ height: 65vh; background-color:#eaeaea; box-sizing: border-box; z-index:5;}
+.home-newest-properties-div{ min-height: 65vh; background-color:#eaeaea; box-sizing: border-box; z-index:5; border-top-left-radius: 5%;}
 .home-property1, .home-property2, .home-property3, .home-property4{background-color: #fff;  height: 85%; box-sizing:border-box; border-radius :5px;}
-.home-property-picture1{height:70%; background-image: url('img/interior19.jpg'); background-size: cover; box-sizing:border-box;  border-top-left-radius :5px;border-top-right-radius :5px;}
-.home-property-picture2{height:70%; background-image: url('img/interior21.jpg'); background-size: cover; box-sizing:border-box; border-top-left-radius :5px;border-top-right-radius :5px;}
+.home-property-picture1{height:70%; background-image: url('img/interior19.jpg'); cursor: pointer; background-size: cover; box-sizing:border-box;  border-top-left-radius :5px;border-top-right-radius :5px;}
+.home-property-picture2{height:70%; background-image: url('img/interior21.jpg'); cursor: pointer; background-size: cover; box-sizing:border-box; border-top-left-radius :5px;border-top-right-radius :5px;}
 .home-property-picture3{height:70%; background-image: url('img/interior18.jpg'); background-size: cover; box-sizing:border-box; border-top-left-radius :5px;border-top-right-radius :5px;}
 .home-property-picture4{height:70%; background-image: url('img/interior16.jpg'); background-size: cover; box-sizing:border-box; border-top-left-radius :5px;border-top-right-radius :5px;}
 .home-newest-header{font-size:3rem; color:#464039; font-weight: 400; font-family:Roboto;} .home-newest-offer-div{height: 30vh; z-index: 5; background-color:#eaeaea;}
@@ -140,7 +154,7 @@ box-shadow: 0px 0px 42px 0px rgba(0,0,0,0.75);}	.home-aplicant-picture{backgroun
 .home-newest-size{font-family: 'Montserrat', sans-serif; font-size:1.2rem; font-weight:400; color:#333;}
 .home-newest-size i{color: #ff1744; font-size:2rem; padding: 0px 5px;} .home-newest-address i{padding: 0px 5px; font-size:2rem; color:#ff1744;}
 .t-md-32{width:32%;} .montserrat{font-family: 'Montserrat', sans-serif;} .home-testimonial{height:65vh; background-image: url('img/couple.jpg');  background-repeat:no-repeat; background-size:cover; background-position:center;}
-.home-testimonial-cover{background: rgba(0,0,0,0.7cl);}
+.home-testimonial-cover{background-color: rgba(0,0,0,0.7);}
 .home-tes{font-size: 1.7rem; color:#fff; font-weight: 300;}.home-tes2{font-size: 2.3rem; color:#fff; font-weight: 300;}.home-tes3{font-size: 1.2rem; color:#fff; font-weight: 300;}
 .home-tes-picture {background-image: url('img/girl_picture.jpg'); border-radius:50%; width:80px; height: 80px; background-size:cover;}
 .home-tes-picture-holder{height: 30%;}
@@ -152,7 +166,7 @@ box-shadow: 0px 0px 42px 0px rgba(0,0,0,0.75);}	.home-aplicant-picture{backgroun
 .t-md-05{width:4%;}
 .home-icons{padding-right: 3px;}
 
-.home-footer{height: 40vh; padding: 50px 0px;background-color:#073855;}
+.home-footer{height: 40vh; padding: 20px 0px;background-color:#073855;}
 .contactus{font-size: 2.2rem; color:#333; padding-top: 30px;}
 .home-contact-us-div{height:100vh; background-color: #eaeaea; padding: 15px 0px; z-index: 5; }
 .home-sub-text{font-size:1.4rem; color: #666; }
@@ -163,7 +177,7 @@ box-shadow: 0px 0px 42px 0px rgba(0,0,0,0.75);}	.home-aplicant-picture{backgroun
 .home-new-post{font-size: 1.1rem; color:#fff; font-weight:400;}
 .footer-img2{background-image: url('img/interior13.jpg'); margin-top: auto; background-repeat:no-repeat; background-size: cover; background-position: center; width: 60px; height:60px; border-radius: 50%;}
 .footer-img2-details{padding:10px;}	.footer-a{font-size: 1rem; font-weight: 300; color:#fff; cursor:pointer; padding: 10px 0px;; }.home-first-link i{font-size: 0.9rem; padding: 10px 0px; padding-right: 10px;  font-weight: 300; color:#fff; cursor:pointer;}
-.footer-img1-details{padding:10px;}	.footer-hr{ background-color:#fff;  height:1px; border-radius:2px; } .home-footer-social{padding-right: 10px;}
+.footer-img1-details{padding:10px;}	.footer-hr{ background-color:#fff;  height:1px; border-radius:2px; } .home-footer-social{padding-right: 10px; margin-top: 10px;}
 .footer-copyright{height: 5vh;}	.copyright-a{font-size: 1rem; font-weight: 300; cursor:pointer;}
 .copyright{color:#fff; font-size: 1rem; padding: 10px 0px;}
 .copyright-top{color:#fff; font-size: 1rem; padding: 10px 0px; cursor:pointer;}
@@ -206,26 +220,27 @@ box-shadow: 0px -2px 137px -14px rgba(0,0,0,0.75);}
 .login-active:hover{background:#e4b71d; color:rgba(255,255,255,0.4);}
 .login-social{margin-top: 1rem;}
 
-.tg-fst{height: 70vh; z-index: 3; background-image: url("img/landlord-tenant-edit.jpg"); width:108%!important; background-size: cover; background-position: top; background-repeat: no-repeat; margin-left:-4%; margin-top:-30px ;}
-.tg-cover{background-color: rgba(0,0,0,0.5);}
-.t-header{font-size: 4rem; color: #fff; }
+.tg-fst{ z-index: 3; height: 100vh; background-image: url("img/vec4.jpg"); margin-top: -50px; background-size: cover; background-position: top; background-repeat: no-repeat; }
+.landlord-guide-pic{ z-index: 3; height: 100vh; background-image: url("img/house4.jpg"); margin-top: 0px; background-size: cover; background-position: top; background-repeat: no-repeat; }
+.tg-cover{background-color: rgba(0,0,0,0.7); height: 100%;}
+.t-header{font-size: 4rem; color: #fff; }   .tg-header{font-size: 2rem; color: #222; }
 .tenant-guide-header{padding: 0% 5%;}    .get-started-button{height: 40px; line-height: 40px; font-size: 1.2rem; font-weight: 300; margin-top: 20px; cursor: pointer; border-radius: 2px; background-color: #FAA61A; color: #fff;}
-.t-text{font-size: 2rem; color: #fff; font-weight: 300; }
+.t-text{font-size: 1.5rem; color: #fff; font-weight: 300; }
 .tenant-guide-video{background-image: url("img/ipad-air-white.png"); height: 300px; background-position: center; background-repeat: no-repeat; background-size: contain;}
-.tenant-search-properties{height: 100%; background-color: rgba(0,0,0,0.03);  z-index: 2; padding: 7px 15px; box-sizing: border-box; overflow: hidden; border: solid 1px; border-color: #ededed; }
-.tenant-guide-icon{color: #FAA61A; font-size: 4rem; font-weight: 300; margin: 30px 0px; }
-.tenant-process{height: 70vh; padding: 5%; z-index: 5; background-color: #fff; }
-.t-profile-text{font-size: 1.5rem; color: #0a3b61; font-weight: 300; font-family: Lato; text-transform: uppercase;  margin-bottom: 15px;}
-.t-profile-description{font-size: 1.2rem; color: #222; font-weight: 300; }
+.tenant-search-properties{height: 48vh;  z-index: 2;  box-sizing: border-box; overflow: hidden; }
+.tenant-guide-icon{color: #666; font-size: 4rem; font-weight: 300; margin: 10px 0px; }
+.tenant-process{height: 50vh; z-index: 5; background-color: #fff; }
+.t-profile-text{font-size: 1.5rem; color: #0a3b61; font-weight: 300; font-family: Lato; text-transform: uppercase;  margin-bottom: 5px;}
+.t-profile-description{font-size: 1.2rem; color: #546e7a; font-weight: 400; }
 .more-button{ font-size: 1.2rem; font-weight: 300; margin-top: 20px; cursor: pointer; border-radius: 4px; background-color: #FAA61A; color: #fff; padding: 3px 15px;}
 .th-elipsis{overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;}
 .parallax{transform: translateZ(-1px) scale(2); z-index: 1; width:102%; margin-left:1%;}
 .t-iframe{width: 430px; height: 240px; margin-left: 3px; margin-top: 4px; }
+.t-how{padding-top: 15px; }
 
-
-
+.r-logo{background-repeat: no-repeat; background-size: contain; height: 40px; }
  .landing-main-body{ box-sizing: border-box; }
 .landing-img{background-image: url("img/landing-page.jpg"); background-size: cover; background-position: top;}
 .landing-body-cover{background-color: rgba(0,0,0,0.7); padding-bottom: 10%;}
@@ -240,6 +255,255 @@ box-shadow: 0px -2px 137px -14px rgba(0,0,0,0.75);}
 .landing-nav{background-color: rgba(255,255,255,0.1); height: 50px; z-index: 50; line-height: 50px; color: #fff;} .landing-app-img2{cursor: pointer; background-image: url("img/coming-soon-iphone.png"); background-size: contain; background-repeat: no-repeat; height: 40px;}
 .landing-overall-holder{margin-top: 30%;}   .landing-app-img{background-image: url("img/play-store-app.png"); margin-right: 5px; cursor: pointer; background-size: contain; background-repeat: no-repeat; height: 40px;}
 .landing-logo{background-image: url("img/rentright-logo-300.png"); background-size: contain; background-repeat: no-repeat; height: 40px;}
+.lg-s{height: 330px; }
+.landlord-t-img{background-image: url("img/Add_property.jpg"); background-size: contain; background-repeat: no-repeat; height: 300px;}
+.landlord-t-img2{background-image: url("img/Screen.png"); background-size: contain; background-repeat: no-repeat; height: 300px;}
+.landlord-t-img3{background-image: url("img/rent.png"); background-size: contain; background-repeat: no-repeat; height: 300px;}
+.landlord-t-img4{background-image: url("img/Maintanance.jpg"); background-size: contain; background-repeat: no-repeat; height: 300px;}
+.landlord-t-img5{background-image: url("img/Insurance.jpg"); background-size: contain; background-repeat: no-repeat; height: 300px;}
+.landlord-t-img6{background-image: url("img/Landord_rate.png"); background-size: contain; background-repeat: no-repeat; height: 300px;}
+
+.landlord-t-s{  padding-top: 5%; }
+.landlord-guide-pic-cover{background-color: rgba(0,0,0,0.6); height: 100%}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    .home-div-outer-box {
+        width: 100%;
+    }
+    .home-fourth-div{
+     min-height: 120vh;
+
+    }
+    .home-fourth-div-cover{
+        padding-top: 30px;
+        padding-bottom: 30px;
+
+    }
+    .home-div-outer{
+        flex-direction: column;
+        min-height: 100vh;
+
+    }
+    .home-div-outer-box{
+        margin-bottom: 15px ;
+    }
+    .home-rent-ad{
+        height: 8%;
+        font-size: 2rem;
+    }
+    .home-rent-ad-details{
+        font-size: 1rem;
+        box-sizing: border-box;
+        text-align: center;
+        width: 80%;
+    }
+
+    .home-fifth-div{
+        height: 50vh;
+    }
+    .home-hr-super{
+        margin-top: 3vw;
+    }
+    .home-ad-picture-holder{
+        width: 100%;
+        flex-direction: column;
+        height: 65vh;
+    }
+    .home-ad-picture{
+        width: 100%;
+        box-sizing: border-box;
+        height: 50%;
+
+    }
+    .home-ad-info{
+        width: 100%;
+        box-sizing: border-box;
+        height: 50%;
+
+    }
+    .home-newest-property-price{
+        font-size: 1rem;
+        width: 50%;
+        box-sizing: content-box;
+
+    }
+    .home-aplicant-name{
+        font-size: 1rem;
+    }
+    .home-aplicant-picture{
+        width: 60px;
+        height: 45px;
+
+    }
+    .ad-info-address{
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+    }
+    .home-applicant-right{
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .home-applicants-left{
+        align-items: flex-end;
+
+    }
+    .home-aplicant-picture3{
+        margin-top: -15px;
+    }
+    .home-aplicant-picture4{
+        margin-top: -15px;
+    }
+    .home-no-of-applicant{
+        font-size: 1rem;
+    }
+    .home-agents-div{
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    .home-agents-details{
+        width: 100%;
+        height:50%;
+        padding: 5%;
+
+    }
+    .home-agents-picture{
+        width: 100%;
+        height: 50%;
+    }
+    .home-breadcrumbs{display: none;}
+    .rentright-logo{width: 40px; height: 40px;}
+    .contact-div{flex-direction: column; align-items: flex-start; justify-content: flex-end; font-size: 1rem;}
+    .phone-no{font-size: 1rem;} .address{font-size: 1rem;} .icon-props{font-size: 15px;}
+    .nav-pad-left-right{padding: 0 10%; border-top-left-radius: 0;} .home-agent-header{font-size: 1.2rem;} .home-agent-info{font-size: 1rem; align-content: space-between;}
+    .home-agents-pics{flex-direction: column; height:15%;}  .home-agents-pics1{width: 40px; height: 40px;}.home-agents-pics2{width: 40px; height: 40px;}
+    .home-agents-photo1 {width: 100%; align-items: flex-end} .home-agents-photo2 {width: 100%} .home-newest-location{padding: 5px;}
+    .home-newest-offer-div{min-height: 40vh;} .home-agents-phone{font-size: 1.1rem; line-height: 1.2rem;} .home-property1{width: 100%; box-sizing: border-box;overflow-y: hidden; margin-bottom: 5px;}.home-property2{width: 100%; box-sizing: border-box;overflow-y: hidden; margin-bottom: 5px;}.home-property3{width: 100%; box-sizing: border-box; overflow-y: hidden;overflow-y: hidden; margin-bottom: 5px;}.home-property4{width: 100%; box-sizing: border-box; overflow-y: hidden; margin-bottom: 5px;}
+    .home-newest-header{font-size: 2rem;} .home-newest-details{font-size: 1rem; width: 80%;}    .home-properties-holder{flex-direction: column;} .home-tes2{text-align: center; font-size: 1.3rem;}.home-tes{text-align: center; font-size: 1rem;}.home-tes3{text-align: center; font-size: 1rem; width: 60%;}
+    .home-carousel{width: 10%;} .contactus{font-size: 1.5rem;} .home-sub-text{font-size: 1.1rem;}
+    .home-tes-picture-holder{width: 100%;}
+    .r-h{width: 40%;}
+
+}
+@media only screen
+and (min-device-width : 481px)
+and (max-device-width : 1024px){ /* Tablet */
+    .home-div-outer-box {
+        width: 100%;
+    }
+    .home-fourth-div{
+        min-height: 120vh;
+
+    }
+    .home-fourth-div-cover{
+        padding-top: 30px;
+        padding-bottom: 30px;
+
+    }
+    .home-div-outer{
+        flex-direction: column;
+        min-height: 100vh;
+
+    }
+    .home-div-outer-box{
+        margin-bottom: 15px ;
+    }
+    .home-rent-ad{
+        height: 8%;
+        font-size: 2rem;
+    }
+    .home-rent-ad-details{
+        font-size: 1rem;
+        box-sizing: border-box;
+        text-align: center;
+        width: 80%;
+    }
+
+    .home-fifth-div{
+        height: 50vh;
+    }
+    .home-hr-super{
+        margin-top: 3vw;
+    }
+    .home-ad-picture-holder{
+        width: 100%;
+        flex-direction: column;
+        height: 65vh;
+    }
+    .home-ad-picture{
+        width: 100%;
+        box-sizing: border-box;
+        height: 50%;
+
+    }
+    .home-ad-info{
+        width: 100%;
+        box-sizing: border-box;
+        height: 50%;
+
+    }
+    .home-newest-property-price{
+        font-size: 1rem;
+        width: 50%;
+        box-sizing: content-box;
+
+    }
+    .home-aplicant-name{
+        font-size: 1rem;
+    }
+    .home-aplicant-picture{
+        width: 60px;
+        height: 45px;
+
+    }
+    .ad-info-address{
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+    }
+    .home-applicant-right{
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .home-applicants-left{
+        align-items: flex-end;
+
+    }
+    .home-aplicant-picture3{
+        margin-top: -15px;
+    }
+    .home-aplicant-picture4{
+        margin-top: -15px;
+    }
+    .home-no-of-applicant{
+        font-size: 1rem;
+    }
+    .home-agents-div{
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    .home-agents-details{
+        width: 100%;
+        height:50%;
+        padding: 5%;
+
+    }
+    .home-agents-picture{
+        width: 100%;
+        height: 50%;
+    }
+    .home-breadcrumbs{display: none;}
+    .rentright-logo{width: 40px; height: 40px;}
+    .contact-div{flex-direction: column; align-items: flex-start; justify-content: flex-end; font-size: 1rem;}
+    .phone-no{font-size: 1rem;} .address{font-size: 1rem;} .icon-props{font-size: 15px;}
+    .nav-pad-left-right{padding: 0 10%; border-top-left-radius: 0;} .home-agent-header{font-size: 1.2rem;} .home-agent-info{font-size: 1rem; align-content: space-between;}
+    .home-agents-pics{flex-direction: column; height:15%;}  .home-agents-pics1{width: 40px; height: 40px;}.home-agents-pics2{width: 40px; height: 40px;}
+    .home-agents-photo1 {width: 100%; align-items: flex-end} .home-agents-photo2 {width: 100%} .home-newest-location{padding: 5px;}
+    .home-newest-offer-div{min-height: 40vh;} .home-agents-phone{font-size: 1.1rem; line-height: 1.2rem;} .home-property1{width: 100%; box-sizing: border-box;overflow-y: hidden; margin-bottom: 5px;}.home-property2{width: 100%; box-sizing: border-box;overflow-y: hidden; margin-bottom: 5px;}.home-property3{width: 100%; box-sizing: border-box; overflow-y: hidden;overflow-y: hidden; margin-bottom: 5px;}.home-property4{width: 100%; box-sizing: border-box; overflow-y: hidden; margin-bottom: 5px;}
+    .home-newest-header{font-size: 2rem;} .home-newest-details{font-size: 1rem; width: 80%;}    .home-properties-holder{flex-direction: column;} .home-tes2{text-align: center; font-size: 1.3rem;}.home-tes{text-align: center; font-size: 1rem;}.home-tes3{text-align: center; font-size: 1rem; width: 60%;}
+    .home-carousel{width: 10%;} .contactus{font-size: 1.5rem;} .home-sub-text{font-size: 1.1rem;}
+}
+
 
 [data-reactroot]{height:100%!important;}
 
