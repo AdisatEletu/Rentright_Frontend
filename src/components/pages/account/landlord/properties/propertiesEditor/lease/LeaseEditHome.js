@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import queryString from 'query-string';
 import TenantLease from "./TenantLease";
 import EditLease from "./EditLease";
+import {getLease} from "../../../../../../../state/actions/leaseAction";;
 
 class LeaseEditHome extends Component {
 
@@ -10,6 +11,10 @@ class LeaseEditHome extends Component {
         this.state = {
             isPreview: false,
         }
+    }
+
+    componentWillMount(){
+        //getLease();
     }
 
     componentDidMount() {

@@ -20,14 +20,14 @@ class Applications extends Component {
 
     componentDidMount() {
         const {uuid} = this.props.activeUnit.unit;
-        this.props.getApplications({
+        getApplications({
                 uuid, include: 'tenant'
             },
             this.onApplicationsCallback.bind(this))
     }
 
-    onApplicationsCallback(data) {
-        if (data.status) {
+    onApplicationsCallback(status,data) {
+        if (status) {
             this.setState({
                 fetching: false,
                 fetched: true,
@@ -38,6 +38,7 @@ class Applications extends Component {
                 fetching: false,
                 fetched: false,
             });
+            console.log(data);
         }
     }
 
@@ -78,8 +79,7 @@ function mapStateToProps(state) {
 
 Applications.propTypes = {
     activeUnit: PropTypes.object,
-    getApplications: PropTypes.func,
 }
 
-export default connect(mapStateToProps, {getApplications})(Applications);
+export default connect(mapStateToProps,)(Applications);
 

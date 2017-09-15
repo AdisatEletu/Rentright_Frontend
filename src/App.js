@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route,Switch} from "react-router-dom";
 import requireAuth from './utils/requireAuth';
 import {connectToSocket} from './state/actions/tenantAction';
 import {bindActionCreators} from 'redux';  
@@ -43,7 +43,7 @@ class App extends Component {
       return(
            <LocaleProvider locale={enUS}>
           <Router>
-              <switch>
+              <Switch>
                   <Route exact path="/" component={Home}/>
                   <Route path={"/register"} component={Register}/>
                   <Route path="/account" component={requireAuth(Landing)}/>
@@ -51,7 +51,7 @@ class App extends Component {
                   <Route path="/sign-in" component={Login}/>
                   <Route path="/tenant-guide" component={TenantInfo}/>
                   <Route path="/tenant" component={requireAuth(Tenant)}/>
-              </switch>
+              </Switch>
           </Router>
           </LocaleProvider>
       );

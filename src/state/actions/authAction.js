@@ -5,7 +5,6 @@ import {SET_AUTH_USER} from '../ActionTypes';
 import {addFlashMessage} from './flashMessageActions';
 
 export function setCurrentUser(user){
-
     localStorage.setItem('user',JSON.stringify(user));
     return {
         type: SET_AUTH_USER,
@@ -47,17 +46,15 @@ export function login(data,callback){
     }
 }
 
-export function logout(){
+export function logout(callback){
     return dispatch => {
         localStorage.removeItem('rs_token');
         localStorage.removeItem('user');
 
         dispatch(setCurrentUser({}));
-        dispatch(addFlashMessage({
-            type: 'success',
-            title: 'Logged Out',
-            text: 'You have successfully logged out',
-        }))
+
+        callback();
+
     }
 }
 

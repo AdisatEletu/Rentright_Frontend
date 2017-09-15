@@ -10,6 +10,8 @@ import AdvancedWarnings from "./AdvancedWarnings";
 import LeaseContact from "./LeaeseContact";
 import * as SmoothScroll from 'smooth-scroll';
 import Lessees from "./Lessees";
+import Loader from "../../../../../../shared/Loader";
+import {getLease} from "../../../../../../../state/actions/leaseAction";
 
 
 const Step = Steps.Step;
@@ -21,6 +23,19 @@ class EditLease extends Component {
         super(props);
         this.state = {
             current_step:1,
+            isLoading: true,
+        }
+    }
+
+    componentDidMount(){
+        const lease_uuid = this.context.router.route.match.params.leaseId;
+        const include = 'clause,tenant,landlord,unit';
+        getLease({lease_uuid,include},this.onLeaseRetrieved.bind(this));
+    }
+
+    onLeaseRetrieved(status,data){
+        if(status){
+            this.setState({isLoading:false,lease:data});
         }
     }
 
@@ -51,7 +66,9 @@ class EditLease extends Component {
         const {current_step} = this.state;
         return (
             <div style={{marginTop: '50px'}}>
-                <div className="row">
+                {this.state.isLoading ? <Loader/> : undefined}
+                {!this.state.isLoading ?
+                    <div className="row">
                     <div className="msform col m8">
                         <div className="row">
                             <div className="col m12">
@@ -67,12 +84,12 @@ class EditLease extends Component {
                         </div>
                         <div className="card-panel">
                             <VelocityTransitionGroup enter={{animation: "fadeIn"}} leave={{animation: "fadeOut"}}>
-                                {this.state.current_step===1 ? <LeaseTerm onChange={this.onChange.bind(this)}/> : undefined}
-                                {this.state.current_step===2 ? <LeaseClauses onChange={this.onChange.bind(this)}/> : undefined}
-                                {this.state.current_step===3 ? <LeasePermissions onChange={this.onChange.bind(this)}/> : undefined}
-                                {this.state.current_step===4 ? <AdvancedWarnings onChange={this.onChange.bind(this)}/> : undefined}
-                                {this.state.current_step===5? <LeaseContact onChange={this.onChange.bind(this)}/> : undefined}
-                                {this.state.current_step===6? <Lessees onChange={this.onChange.bind(this)}/> : undefined}
+                                {this.state.current_step===1 ? <LeaseTerm onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                {this.state.current_step===2 ? <LeaseClauses onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                {this.state.current_step===3 ? <LeasePermissions onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                {this.state.current_step===4 ? <AdvancedWarnings onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                {this.state.current_step===5 ? <LeaseContact onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                {this.state.current_step===6 ? <Lessees onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
                             </VelocityTransitionGroup>
                         </div>
                         <div className="row">
@@ -98,7 +115,7 @@ class EditLease extends Component {
                             </div>
                         </Affix>
                     </div>
-                </div>
+                </div> : undefined}
             </div>
         );
     }
@@ -164,5 +181,10 @@ function mapStateToProps(state) {
 EditLease.propTypes = {
     activeProperty: PropTypes.object.isRequired,
 }
+
+EditLease.contextTypes = {
+    router: PropTypes.object.isRequired,
+};
+
 export default connect(mapStateToProps)(EditLease);
 

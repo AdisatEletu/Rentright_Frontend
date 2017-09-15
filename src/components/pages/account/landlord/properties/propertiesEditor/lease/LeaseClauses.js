@@ -15,7 +15,20 @@ class LeaseClauses extends Component {
                 as rent for the Premises, Parking, or otherwise the sum as stated above. Rent is due and payable on
                 the 1st day of each calendar month, in advance.
                 The timely payment of each installment of rent is deemed to be of the essence of this Lease."/>
-                <Clause title="Rent" content="Lessee shall pay to Lessor or Lessor's authorized agent, at the address
+
+                <Clause title="Late Rent" content="Lessee shall pay to Lessor or Lessor's authorized agent, at the address
+                set forth above, or through Rentalutions, Inc., or as hereafter changed by written notice to lessee,
+                as rent for the Premises, Parking, or otherwise the sum as stated above. Rent is due and payable on
+                the 1st day of each calendar month, in advance.
+                The timely payment of each installment of rent is deemed to be of the essence of this Lease."/>
+
+                <Clause title="Security Deposits" content="Lessee shall pay to Lessor or Lessor's authorized agent, at the address
+                set forth above, or through Rentalutions, Inc., or as hereafter changed by written notice to lessee,
+                as rent for the Premises, Parking, or otherwise the sum as stated above. Rent is due and payable on
+                the 1st day of each calendar month, in advance.
+                The timely payment of each installment of rent is deemed to be of the essence of this Lease."/>
+
+                <Clause title="Late Rent" content="Lessee shall pay to Lessor or Lessor's authorized agent, at the address
                 set forth above, or through Rentalutions, Inc., or as hereafter changed by written notice to lessee,
                 as rent for the Premises, Parking, or otherwise the sum as stated above. Rent is due and payable on
                 the 1st day of each calendar month, in advance.

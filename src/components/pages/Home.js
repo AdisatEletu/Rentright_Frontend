@@ -20,11 +20,7 @@ console.log(this.state);
     render(){
         return(
             <div className="home-mainbody t-flex t-align-content-stretch t-fullwidth  t-flex-column">
-                <Helmet>
-                    <link href="http://localhost:3000/CSS/tenant.css" rel="stylesheet" type="text/css"/>
-                    <link href="http://localhost:3000/CSS/home.css" rel="stylesheet" type="text/css"/>
-                </Helmet>
-                <div className="home-firstnav t-fullwidth t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
+                <div className="home-firstnav t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
                     <div className=" t-flex  t-fullheight t-justify-right t-right-f home-firstnav-innerdiv-left">
                         <span> The Ultimate Insider to the RentRight </span>
                     </div>
