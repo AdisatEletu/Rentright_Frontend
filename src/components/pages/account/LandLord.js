@@ -13,7 +13,8 @@ class LandLord extends Component{
             <AccountLayout>
                 <Switch>
                     <Route exact path='/landlord' component={Profile}/>
-                    <Route path='/landlord/account_settings' component={Profile}/>
+                    <Route path='/landlord/profile' component={Profile}/>
+                    <Route path='/landlord/settings' component={Profile}/>
                     <Route path='/landlord/bank_accounts' component={BankAccounts}/>
                     <Route path='/landlord/properties' component={Properties}/>
                     <Route path='/landlord/units/:id' component={PropertyEditor}/>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getPaymentUrl, getChargeUrl, addChargeUrl, editChargeUrl} from "../../utils/ApiManager";
+import {getPaymentUrl, getChargeUrl, addChargeUrl, editChargeUrl,getBankUrl} from "../../utils/ApiManager";
 
 export function getPayment(params, callback) {
     return axios.get(getPaymentUrl, {params}).then(
@@ -56,14 +56,14 @@ export function addCharge(params, callback) {
     )
 }
 
-export function getPaystackBankList() {
-    return axios.get('').then(
+export function getPaystackBankList(callback) {
+    return axios.get(getBankUrl).then(
         (res) => {
-
+            callback(true,res.data.data);
         }
     ).catch(
         (err) => {
-
+            callback(false,err);
         }
     );
 }

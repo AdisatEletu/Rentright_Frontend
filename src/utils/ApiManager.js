@@ -18,3 +18,5 @@ export const getChargeUrl = (uuid) =>{return BASE_URL+'user/payments/charges/'+u
 
 export const addChargeUrl = BASE_URL + 'user/charges';
 export const editChargeUrl = (uuid) => {return BASE_URL + 'user/charges/'+uuid};
+
+export const getBankUrl = BASE_URL + 'bank';
