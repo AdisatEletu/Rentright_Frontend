@@ -2,7 +2,7 @@ import {NavLink} from 'react-router-dom';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {findDOMNode} from 'react-dom';
-import {Select, Date, Input, Textarea, Phone, ButtonGroup} from '../tenantlayouts/flex_form';
+import {Select, Date, Input, Textarea, Phone, ButtonGroup} from '../tenantlayouts/durables/basic/flex_form';
 import { Switch, Icon } from 'antd';
 import { Checkbox } from 'antd';
 import { Button } from 'antd';

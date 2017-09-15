@@ -17,7 +17,7 @@ import Select from 'antd/lib/select'
 import 'moment/locale/en-gb';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
-
+//import {Select, Date, Input, Textarea, Phone, ButtonGroup} from './flex_form';
 moment.locale('en');
 const InputGroup = Input.Group;
 const Option = Select.Option;

@@ -18,7 +18,6 @@ class TenantModal extends Component{
         console.log(GoogleMapsLoader);
     }
 
-
 componentWillMount(){ 
     let img = this.props.listimage.map((item, i)=>{
     let ind = i;               

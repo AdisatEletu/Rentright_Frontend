@@ -26,9 +26,9 @@ export  class Textarea extends Component{
   } 
     render(){
         return(
-              <div className = { this.props.fullwidth ? "t-md-10 mod-input-cover no-pad " : "t-md-45 mod-input-cover  no-pad"  }>
-                <div className = "label">{this.props.label}</div>
-                <textarea className = "textarea" row = "20"  column = "15" placeholder = {this.props.label} type = "text" onChange = {(e) => this.handleInputChange(e,this.props.name)} ></textarea> 
+              <div className = { "t-md-8 mod-input-cover no-pad " }>
+                <div className = "d-label">{this.props.label}</div>
+                <textarea className = "d-textarea" rows = "8"  placeholder = {this.props.label} cols = "15"  onChange = {(e) => this.handleInputChange(e,this.props.name)} ></textarea> 
           </div>
         );
     }
@@ -68,8 +68,8 @@ export  class Input extends Component{
     render(){
         return(
             <div className = { this.props.fullwidth ? "t-md-10 mod-input-cover " : "t-md-45 mod-input-cover "  }>
-                <div className = "label">{this.props.label}</div>
-                <input className = "input" placeholder = {this.props.label} type = "text" onChange = {(e) => this.handleInputChange(e,this.props.name)} /> 
+                <span className = "d-label">{this.props.label}</span>
+                <input className = "d-input" placeholder = {this.props.label} type = "text" onChange = {(e) => this.handleInputChange(e,this.props.name)} /> 
           </div>
         );
     }
@@ -82,6 +82,156 @@ Input.PropTypes = {
     fullwidth: PropTypes.bool    
 
 }
+
+export  class ButtonGroup extends Component{
+    constructor(props){
+        super(props)
+        this.state = {}
+        this.retobj = {};
+        this.constructed  = false;
+     this.handleClick = this.handleClick.bind(this);
+    }
+ componentDidMount(){
+     this.props.children.map((item)=>{ 
+         var va = item.value;   
+         let obj = {}  
+         obj[item.value]  = false 
+         this.setState(obj);
+         this.constructed = true
+     })
+ }
+ handleClick = (action, label)=> {
+   var val = action.value;
+   var keys = Object.keys(this.state);
+   if (! this.state[action.value]){         
+       let obj = {}
+      obj[action.value]  = true        
+       this.setState(obj,()=>{       
+       })
+  
+   keys.map((item)=>{
+    if (item !== action.value){
+    let  obj = {}
+    obj[item] = false
+    this.setState(obj, ()=>{
+         this.props.onUpdate(this.state)
+    });
+     }
+})
+   }
+ 
+  } 
+    render(){
+        return(
+     <div className = {"t-md-10 mod-input-cover " }>  
+      <div className = "d-btngroup">
+        <div className = "d-label">{this.props.label}</div>
+        <div className = "d-btnlist">
+        {
+            this.props.children.map((item,index)=>{
+        return (
+          <div className = {
+              this.constructed ?
+              this.state[item.value] ? " d-aa daaselected":" d-aa" 
+              :
+              'd-aa'
+          
+              }  
+          
+          key = {index} onClick = {()=>this.handleClick(item, item.label)} >
+            {item.label}  
+          </div>
+                )
+            })
+        }
+        </div>
+        </div>
+        </div>
+        );
+    }
+}
+ButtonGroup.PropTypes = {
+    onUpdate: PropTypes.func,
+    children: PropTypes.array,
+    label:PropTypes.string,
+
+
+}
+
+
+export  class Switch extends Component{
+    constructor(props){
+        super(props)
+        this.state = {truthy:false, falsy:false}  
+        this.handleClick = this.handleClick.bind(this);
+        this.onUpdate = this.onUpdate.bind(this);
+    }
+onUpdate(value, action){
+    let obj = {}
+    obj[value] = action;
+    this.props.onUpdate(obj);
+}
+
+ handleClick = (action)=> {
+   if (action){
+       if (!this.state.truthy){
+       this.setState({truthy: true},()=>{
+           this.setState({falsy: false},()=>{
+           this.onUpdate(this.props.name, action);
+           })
+       });  
+       }       
+   }else{
+    if(!this.state.falsy){
+    this.setState({truthy: false},()=>{
+      this.setState({falsy: true},()=>{
+      this.onUpdate(this.props.name, action);
+      });
+       }); 
+    }
+   }
+  
+  } 
+    render(){
+        return(
+     <div className = {"t-md-45 mod-input-cover " }>  
+      <div className = "d-btngroup">
+        <div className = "d-label">{this.props.label}</div>
+        <div className = "d-btnlist">           
+          <div className =  {
+              this.state.truthy ? 'dd-active d-aa':
+              'd-aa dd-passive'
+               }                       
+          onClick = {()=>this.handleClick(true)} >
+            <Icon type = "check" style = {this.state.truthy ?{color:'#7cbf49',fontSize:15}:{color:'#ccc', fontSize:15}} />
+             &nbsp;&nbsp;True 
+          </div>   
+        <div className = {
+            this.state.falsy ? 'dd-active d-aa':
+             'd-aa dd-passive'
+        }                        
+          onClick = {()=>this.handleClick(false)} >
+            <Icon type = "close" style = {this.state.falsy ?{color:'#7cbf49', fontSize:15}:{color:'#ccc', fontSize:15}} />
+             &nbsp;&nbsp;False 
+          </div>     
+        
+        </div>
+        </div>
+        </div>
+        );
+    }
+}
+Switch.PropTypes = {
+    onUpdate: PropTypes.func,    
+    label:PropTypes.string,
+    value:PropTypes.string
+
+
+}
+
+
+
+
 
 export  class Phone extends Component{
     constructor(props){
@@ -107,8 +257,8 @@ export  class Phone extends Component{
     render(){
         return(
             <div className = { this.props.fullwidth ? "t-md-10 mod-input-cover " : "t-md-45 mod-input-cover "  }>
-                <div className = "label">{this.props.label}</div>
-                <input className = "input" placeholder = {this.props.label} type = "number" onChange = {(e) => this.handleInputChange(e,this.props.name)} /> 
+                <div className = "d-label">{this.props.label}</div>
+                <input className = "d-input" placeholder = {this.props.label} type = "number" onChange = {(e) => this.handleInputChange(e,this.props.name)} /> 
           </div>
         );
     }
@@ -123,7 +273,7 @@ Phone.PropTypes = {
 }
 
 
-export  class ButtonGroup extends Component{
+export  class Buttonsbm extends Component{
     constructor(props){
         super(props)
         this.state = {}
@@ -147,7 +297,7 @@ export  class ButtonGroup extends Component{
         );
     }
 }
-ButtonGroup.PropTypes = {
+Buttonsbm.PropTypes = {
     btnModes: PropTypes.array
 
 
@@ -175,34 +325,23 @@ export  class Select extends Component{
         return <option key={item} value = {item}>{item}</option>;
       });
      this.setState({options : this.opo});
-     console.log(this.opo);
-     console.log('new select')
-
-    }
+   }
     }
  handleSelectChange = (value,name)=> {
-    console.log(value)
-    console.log('select event')
-   this.sendobj = {};
-    var th = this;
-    console.log(name) 
-    if (value != ''){
-      let newshi = {};
-      newshi[name] = value;
-      this.setState(newshi);
-      Object.assign(th.sendobj, newshi) ;
+    this.setState({ ret:
+   { [name]: value}
+    }, ()=>{  
+    this.props.onUpdate(this.state.ret);
     }
-    this.setState({
-    [name]: value
-    });
-    this.props.onUpdate(th.sendobj)
+   
+    );
   } 
 
     render(){
         return(
             <div className = { this.props.fullwidth ? "t-md-10 mod-input-cover " : "t-md-45 mod-input-cover "  }>
-                <div className = "label">{this.props.label}</div>
-                <select placeholder = {this.props.label} className = "select" type = "text" onChange = {(e) => this.handleSelectChange(e,this.props.name)} >
+                <div className = "d-label">{this.props.label}</div>
+                <select placeholder = {this.props.label} className = "d-select" type = "text" onChange = {(e) => this.handleSelectChange(e.target.value,this.props.name)} >
                     <option default>Select one ...</option> 
                      {
                       this.opo
@@ -301,12 +440,11 @@ export  class Date extends Component{
     render(){
         return(
             <div className = "t-flex t-md-10 t-flex-column">
-            <div className = "label">{this.props.label}</div>
+            <div className = "d-label">{this.props.label}</div>
             <div className = "input-cover t-md-45 t-flex t-justify-space-between t-flex-row" >
             
             <div className = "mod-input-cover  t-md-2">
-                <div className = "labeldate">Day</div>
-                <select placeholder = "Day"  className  = "select"   onChange = {(e) => this.handleNameChange(e,'Day')} > 
+                   <select placeholder = "Day"  className  = "d-select"   onChange = {(e) => this.handleNameChange(e,'Day')} > 
                     <option default>Day</option>
                    {
                       this.state.days
@@ -314,8 +452,7 @@ export  class Date extends Component{
                     </select>
           </div>
             <div className = "mod-input-cover  t-md-35">
-                <div className = "labeldate">Month</div>
-                <select placeholder = "Month"  className  = "select" onChange = {(e) => this.handleNameChange(e,'Month')} > 
+                 <select placeholder = "Month"  className  = "d-select" onChange = {(e) => this.handleNameChange(e,'Month')} > 
                  <option default>Month</option>
                    {
                       this.state.months
@@ -323,8 +460,7 @@ export  class Date extends Component{
                     </select>
           </div>
              <div className = "mod-input-cover  t-md-35">
-                <div className = "labeldate">Year</div>
-                <select placeholder = "Year"  className  = "select"  onChange = {(e) => this.handleNameChange(e,'Year')} > 
+                <select placeholder = "Year"  className  = "d-select"  onChange = {(e) => this.handleNameChange(e,'Year')} > 
                   <option default>Year</option>
                    {
                       this.state.years

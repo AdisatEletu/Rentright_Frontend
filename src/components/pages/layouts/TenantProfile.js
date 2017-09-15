@@ -224,7 +224,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
                <div className= "m-others m-blinks int5"><div className= "m-cover"></div></div>
             </div>*/}
         
-    {this.state.showModal ? <ModalForms hideModal = {this.hideModal}/> :null}
+    {this.state.showModal ? <ModalForms selected = "tenant_bio" hideModal = {this.hideModal}/> :null}
         
    </div>
         
