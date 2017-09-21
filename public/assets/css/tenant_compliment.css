@@ -21,6 +21,7 @@
 @font-face {  font-family: 'Proxima Nova';  src: local('./fonts/Proxima Nova Light'), url('./fonts/Proxima Nova Light.otf') format('opentype');  font-weight:100; }
 @font-face {  font-family: 'Proxima Nova';  src: local('./fonts/Proxima Nova Bold'), url('./fonts/Proxima Nova Bold.otf') format('opentype');  font-weight:700; }
 @font-face {  font-family: 'Proxima Nova';  src: local('./fonts/Proxima Nova semibold'), url('./fonts/Proxima Nova Semibold.otf') format('opentype');  font-weight:500;}
+@font-face {  font-family: 'Geovana';  src: local('./fonts/Geovana'), url('./fonts/Geovana.otf') format('opentype');}
 
 *{
 
@@ -81,14 +82,14 @@ body{font-family:Rooto;}
 .m-balls-hold{display:flex;  flex-direction:column; align-items:center; justify-content:center;  align-content:space-between; height:100%; width:12%; }
 .m-balls{background:#fff; cursor:pointer;   font-size:1.25rem;  width:2.5rem; height:2.5rem; line-height:2.5rem; overflow:hidden; display:flex; justify-content:center; align-content:center;
  border:solid 2px #108EE9; text-align:center; color:#66BB6A; background:#108EE9; color:#fff;  font-weight:100; border-radius:50%; }
-.m-balls-text{font-size:1rem; width:90%; text-align:center; font-weight:400; color:#108EE9;  font-family:Open Sans; margin-top:1vh;  } .highlight{color:#FF782D;}
+.m-balls-text{font-size:1.2rem; font-family:Proxima Nova;  width:95%; text-align:center; font-weight:400; color:#108EE9;  font-family:Open Sans; margin-top:1vh;  } .highlight{color:#FF782D;}
 
 .m-balls:hover, .m-balls-active{color:#fff; background:#66BB6A; border-color:#66BB6A;}
 .m-balls:hover{ transform:scale(1.2); border-color:rgba(0,0,0,0.05);}
 .m-primary-nav{display:flex; height:7vh; align-content:center; flex-direction:row; width:100%; margin:0; padding:0px 30px; padding-left:17vw; background-color:#083A60; color:#FFF; justify-content:space-between; box-sizing:border-box;  }
 .m-prf2 { width: 1.5vw;    height: 1.5vw;    border: solid 2px #eaeaea;    box-sizing: border-box;    overflow: hidden;}
-.m-profile-info{min-width:15%; height:100%; display:flex; align-items:center; color:rgba(255,255,255,0.6); 
-  font-family:Lato; font-size:1rem; font-weight:400;  align-content:center; justify-content:space-between; padding:0px 20px; width:40vh;   }
+.m-profile-info{min-width:25%; height:100%; display:flex; align-items:center; color:rgba(255,255,255,1); 
+  font-family:Proxima Nova; font-size:1.2rem; font-weight:400;  align-content:center; justify-content:space-between; padding:0px 20px; width:40vh;   }
 .m-profile-info span:hover, .m-profile-info i:hover{color:#fff;} 
 .m-profile-info span, .m-profile-info i {cursor:pointer;}   
 .m-profile-info .t-sup-h3{-webkit-text-shadow: 1px 1px 73px -35px rgba(0,0,0,0.64);-moz-text-shadow: 1px 1px 73px -35px rgba(0,0,0,0.64);text-shadow: 1px 1px 73px -35px rgba(0,0,0,0.64); font-size:2rem!important;}
@@ -192,18 +193,18 @@ background-image:url('img/logo.png');background-size:100px; background-repeat:no
 
  .p-desc, .list{font-family:Roboto; font-size:1.2rem; font-weight:300; line-height:2.2rem; color:#fff; letter-spacing:1px;   }
 .p-profile-name{font-size:3.3rem; line-height:4.5rem; color:#fff; letter-spacing:2px; font-weight:200; } .p-highlight{ color:#749FF5;} .p-dim{color:#ededed;}
-.p-widget{border-radius:5px; margin-top:3vh;  background:#fff;  min-height:9vh; -webkit-box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37);-moz-box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37);
+.p-widget{border-radius:5px; margin-top:3vh;  background:#fff;  -webkit-box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37);-moz-box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37);
 box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37); background-color:#fff;   padding:20px 40px; padding-bottom:5px; }
 .list{padding:5px 10px; width:100%; } .p-bolden{font-weight:500;} .p-widgets i{color:#666;}
 .pre-hack{line-height:45px; } .common i{font-size:1.5rem; cursor:pointer; padding:5px; margin:3px;}
 .m-push-down{margin-top:auto;}
-.m-overview-scale{height:50px; cursor:pointer; display:flex; flex-direction:column;  align-items:flex-start; width:100%; padding:10px 15px; padding-bottom:20px; box-sizing:border-box; border-bottom:solid 1px #ededed;}
+.m-overview-scale{height:50px; cursor:pointer; display:flex; flex-direction:column;  align-items:flex-start; width:100%; padding:10px 15px; padding-bottom:20px; box-sizing:border-box; border-bottom:solid 0px #ededed;}
 .m-overview-scale:hover{background:#ededed;}
-.m-small-head{font-size:1.1rem; font-weight:400; text-transform:uppercase;}
+.m-small-head{font-size:1.3rem; font-family:Museo; font-weight:400; text-transform:capitalize;}
 
 /*   quickbars */
 .q-parent{width:100%; display:flex; color:#66BB6A; font-size:0.9rem; font-weight:600; height:1.2rem; line-height:1.2rem; align-content:center; display:flex; justify-content:space-around;  margin-top:auto; flex-direction:row; }
-.q-hold{height:6px; width:90%; border:inset 1px rgba(0,0,0,0.07); align-items:center;  justify-content:space-between; display:flex; flex-direction:row; border-radius:4px; overflow:hidden;}
+.q-hold{height:6px; width:90%; border:inset 0px rgba(0,0,0,0.07); align-items:center;  justify-content:space-between; display:flex; flex-direction:row; border-radius:4px; overflow:hidden;}
 .q-green, .q-wite{height:100%;}
 .margin-below{margin-bottom:5vh;} .margin-htop{margin-top:1vh;}
  .btransp{height:25vh; align-self:flex-end;  margin-top:auto;  margin-bottom:0px!important; background-size:cover;  background-position:center; background-image:url('img/person.jpg'); border-style:none; box-shadow:transparent;} 
@@ -212,7 +213,7 @@ box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37); background-color:#fff;   padding:
 .tr-highlight{background:rgba(0,0,0,0); padding:6px 30px;  border:solid 2px #fff; margin-left:2vw;}
 .tr-button:hover,.tr-highlight:hover,.tr-highlightw{color:#4CAF50; background:#fff; border-color:#fff; }
 /*.t-scroll{ overflow-y:auto!important; overflow-x:hidden; min-height:100%!important;}*/
-.personalize{height:20%;  box-sizing:border-box; padding-bottom:10px; } 
+.personalize{height:450px;  box-sizing:border-box; padding-bottom:10px; } 
 .personalize2{ padding:20px 20px;   box-sizing:border-box!important; padding-bottom:40px!important; overflow:hidden; }
 .deeper{background:rgba(0,0,0,0); padding:5px; box-shadow:0px 0px 0px rgba(0,0,0,0);}
  .tr-highlightw:hover{padding:6px 30px; border:solid 2px #4CAF50;  background:#4CAF50; color:#fff; font-size:1rem; font-weight:500; border-radius:4px; cursor:pointer; }
@@ -287,7 +288,7 @@ box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37); padding:0px 0px; box-sizing:borde
 .il-m-heading-2{font-size:1.7rem;  font-family:Montserrat;   margin-top:1rem; margin-bottom:0.5rem; font-weight:400; padding-bottom:10px; line-height:1.5rem;}
 .il-image-cont{min-height:60vh;}
 .push-down{margin-top:auto;}
-.il-m-thin{font-size:0.9rem; font-weight:300; color:#666; width:70%; font-family:Montserrat; margin-top:1.2rem; margin-bottom:2rem;}
+.il-m-thin{font-size:1.3rem; font-family:Proxima Nova;  font-weight:300; color:#666; width:70%; font-family:Montserrat; margin-top:1.2rem; margin-bottom:2rem;}
 .il-increase{transform:scaleX(2.5); }
 .il-contain{overflow:hidden;}
 .il-image{background-size:contain; background-repeat:no-repeat; background-position:top; background-color: #666; border:solid 3px #666; height:90%;  color:#666; width:70%; padding:0px; margin:0px; }
@@ -321,7 +322,7 @@ box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.37); padding:0px 0px; box-sizing:borde
     -o-transition: background 0.1s ease!important;
     transition: background 0.1s ease!important;
 }
-.t-md-h333{font-size:1.6rem; color:rgba(255,255,255,0.6); text-transform:uppercase;     line-height: 65px; font-weight:400; font-family:Raleway;}
+.t-md-h333{font-size:1.6rem; color:rgba(255,255,255,0.6); text-transform:capitalize;     line-height: 65px; font-weight:400; font-family:Museo;}
 
 
 /* ............................................query component.....*/
@@ -503,7 +504,7 @@ box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.29);
 
 /* New Modal ...............................................................................................................*/
 /* this is the parent of modal */
-.modalchild{display:flex;  flex-direction:row; width:90%; transform: translateY(-5000px); padding:0; margin:0; height:90%; overflow-x:hidden; background:#fff; border-radius:4px;}
+.modalchild{display:flex;  flex-direction:row; width:90%; transform: translateY(-5000px); padding:0; margin:0; height:90%; overflow-y:visible; overflow-x:hidden; background:#fff; border-radius:4px;}
 .modalchild .modalhead{font-size:4rem; letter-spacing:1px; }
 /* this is the left parent modal */
 .modalleft{width:20%;background-size:cover; background-position:center; background-image:url('img/fine1.jpg');   } 
@@ -566,6 +567,7 @@ input,select, .input, .select, .textare{height:2.2rem;   margin:0px 0px;  border
 .che{font-size:1.2rem; display:block; font-weight:500; color:#222; font-family:Open Sans; width:100%; padding:0px 20px; box-sizing:border-box;  }
 .smitbutton{margin-top:20px; width:100%; display:flex; justify-content:flex-end; }
 /*[data-reactroot]{height:100%!important;}*/
+
 
 
 

@@ -8,7 +8,9 @@ import TenantCard from '../tenantCard';
 import ModalForms from './modal_forms';
 import CircleLinks from '../tenantlayouts/circle_links';
 import CompletenessBar  from '../tenantlayouts/completeness_bar';
+import { Progress, Icon } from 'antd';
 import {bindActionCreators} from 'redux';  
+import {FlexLayout,List, MainLayout, PictureCards, Profiler} from '../tenantlayouts/durables/layout_elements/flex_layout'
 import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant, showLoading, hideLoading, errorLoading,getFormStruct } from '../../../state/actions/tenantAction';
 
 
@@ -17,6 +19,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
         super(props) 
         this.state = {};
         this.css = {};
+        this.selected ="tenant_bio";
         this.showModal = this.showModal.bind(this);
         this.props.loadTenant('/'+this.props.match.params.id); 
         this.props.getFormStruct();         
@@ -31,9 +34,11 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
         
 
      }
-    showModal= ()=> {
+    showModal= (e)=> {
      $('.t-midmain').css('z-index', '30');
       var th = this;
+      this.selected = e;
+      console.log(e)
       console.log(th) 
       this.setState(this.css);
       th.setState({showModal :true});
@@ -176,9 +181,60 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
 
 
         
+
            return(
+             <div className = "t-md-10 p-hold t-flex-row t-flex-space-between t-flex-wrap">
+            <div className = "events">
+            <div className  = "t-md-10 t-flex t-space-between events-padding">
+              <span className = "header-test">Experiences</span>
+              <span className = "bodyTest">SEE ALL <Icon type = "right" /></span>
+            </div>
+            <div className = "t-md-10 t-flex-wrap t-fullheight t-flex t-justify-space-around bot">
+               <Profiler imageclass = "person1" name = "Locus Stnading " paragraph = "Also called cosmic string entity used to represent elementary particles finite stringlike" />
+               <Profiler imageclass = "person2" name = "Locus Stnading " paragraph = "Also called cosmic string entity used to represent elementary particles finite stringlike" /> 
+               <Profiler imageclass = "person3" name = "Locus Stnading " paragraph = "Also called cosmic string entity used to represent elementary particles finite stringlike" />
+               <Profiler imageclass = "person5" name = "Locus Stnading " paragraph = "Also called cosmic string entity used to represent elementary particles finite stringlike" />
+                </div>
+
+            </div>
+            <div className  = "t-md-10 t-flex t-space-between events-padding">
+              <span className = "header-test">Functionals</span>
+              <span className = "bodyTest">SEE ALL <Icon type = "right" /></span>
+            </div>       
+           <div className = "t-md-10 t-flex t-justify-space-around">
+             <MainLayout width = "35%" 
+             icon = "layout" 
+             headers = "Profile Completion"
+             midtext = "Check your profile level"
+             completed = {this.props.myProfile.tenants.completed}
+             firstname = {this.props.auth.user.first_name}
+             lastname = {this.props.auth.user.last_name}
+             rightnode ={<Icon stle = {{color:'#333'}}type = "user"/>} 
+             clicked = {(e)=>this.showModal("tenant_bio")}>
+
+             </MainLayout>
+              <FlexLayout width = "30%" 
+             icon = "layout" 
+             headers = "Profile Completion"
+             midtext = "Check your profile level"
+             rightnode ={<Icon stle = {{color:'#333'}}type = "user"/>} 
+             noheaders = {true}
+              >
+             <PictureCards  fullheight = {true}otherclass = "play6" text = "Luxurious Two Bedroom in Alagomeji"/> 
+             </FlexLayout>
+            <FlexLayout width = "30%" 
+             icon = "layout" 
+             headers = "Messages"
+             midtext = ""
+             rightnode ={<Icon stle = {{color:'#333'}}type = "user"/>} 
+             noheaders = {false}
+              >
+ 
+             </FlexLayout>
+             </div>
+               {this.state.showModal ? <ModalForms selected = {this.selected} hideModal = {this.hideModal}/> :null}
         
-        <div className = "t-md-10 t-fullheight t-scroll t-flex t-flex-column t-align-content-space-between" >
+       {/* <div className = "t-md-10 t-fullheight t-scroll t-flex t-flex-column t-align-content-space-between" >
         <div className = "t-md-10 t-flex t-justify-space-between m-bottomx ">
          <div className = "p-widget t-md-65 t-white personalize2  m-bottomx ">
              <div className = "t-flex t-flex-column t-md-10 t-justify-left ">
@@ -187,12 +243,12 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
             </div>
                <CompletenessBar completeness = {this.props.myProfile.tenants.completed} withinform = {false} label = "Profile completeness" />
             <div className = "m-step">
-                <CircleLinks linkTo = {"/tenant/profile" + this.uuid } scale = {true} childLabel = "Overview" label = "A" isActive = {true}/>     
-                 <CircleLinks linkTo = {"/tenant/profile/bioinfo" + this.uuid} scale = {false} childLabel = "Bio Info" label = "1" isActive = {false}/>
+                <CircleLinks   linkTo = {"/tenant/profile" + this.uuid } scale = {true} childLabel = "Overview" label = "A" isActive = {true}/>     
+                 <CircleLinks  linkTo = {"/tenant/profile/bioinfo" + this.uuid} scale = {false} childLabel = "Bio Info" label = "1" isActive = {false}/>
                  <CircleLinks linkTo = {"/tenant/profile/employmentinfo" + this.uuid} scale = {false} childLabel = "Employment Info" label = "2" isActive = {false}/>
                   <CircleLinks linkTo = {"/tenant/profile/residentialinfo" + this.uuid} scale = {false} childLabel = "Residential Info" label = "3" isActive = {false}/>
                 <CircleLinks linkTo = {"/tenant/profile/immigrationinfo" + this.uuid} scale = {false} childLabel = "Immigration Info" label = "4" isActive = {false}/>
-                <CircleLinks linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "5" isActive = {false}/>
+                <CircleLinks  linkTo = {"/tenant/profile/generalinfo" + this.uuid} scale = {false} childLabel = "General Info" label = "5" isActive = {false}/>
     
 
               </div>
@@ -200,7 +256,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
             <div className =  "p-widget t-md-3 t-white m-padding-zero b-transp personalize">
                 
                 <div className = "m-overview-scale"><div className = "m-small-head">Bio Information</div><div className = "q-parent"><span>{this.props.myProfile.tenants.tenant_bio.completed + " %"}</span><div className = "q-hold"><div className = "q-green" style = {styleb}></div><div className = "q-white" style = {style2b}></div></div></div></div>
-                <div className = "m-overview-scale"><div className = "m-small-head">General Information</div><div className = "q-parent"><span>{this.props.myProfile.tenants.completed + " %"}</span><div className = "q-hold"><div className = "q-green"  style = {styleg}></div><div className = "q-white"  style = {style2g}></div></div></div></div>
+                <div className = "m-overview-scale" onClick = {(e)=>this.showModal("general_info")}><div className = "m-small-head">General Information</div><div className = "q-parent"><span>{this.props.myProfile.tenants.completed + " %"}</span><div className = "q-hold"><div className = "q-green"  style = {styleg}></div><div className = "q-white"  style = {style2g}></div></div></div></div>
                 <div className = "m-overview-scale"><div className = "m-small-head">Employment Information</div><div className = "q-parent"><span>{! this.props.myProfile.tenants.tenant_employment_history[0] ? '0%' :this.props.myProfile.tenants.tenant_employment_history[0].completed + '%' }</span><div className = "q-hold"><div className = "q-green"  style = {stylee}></div><div className = "q-white" style = {style2e}></div></div></div></div>
                 <div className = "m-overview-scale"><div className = "m-small-head">Residential Information</div><div className = "q-parent"><span>{! this.props.myProfile.tenants.tenant_residence_history[0] ? '0%' :this.props.myProfile.tenants.tenant_residence_history[0].completed + '%' }</span><div className = "q-hold"><div className = "q-green" style = {styler}></div><div className = "q-white" style = {style2r}></div></div></div></div>
                 <div className = "m-overview-scale"><div className = "m-small-head">Immigration Information</div><div className = "q-parent"><span>{! this.props.myProfile.tenants.tenant_immigration_history[0] ? '0%' :this.props.myProfile.tenants.tenant_immigration_history[0].completed + '%' }</span><div className = "q-hold"><div className = "q-green" style = {stylei}></div><div className = "q-white" style = {style2i}></div></div></div></div>
@@ -211,23 +267,17 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
              <div className = "t-md-10 p-widget margin-below  btransp  m-padding-zero">
                  <div className = "btrcover">
                      <div className = ""></div>
-                     <div className = "m-marg-top t-flex t-flex-row t-justify-center  t-md-10"><div  onClick = {this.showModal} className = "tr-button">Get Started </div><div className = "tr-highlight">Find A Home</div></div>
+                     <div className = "m-marg-top t-flex t-flex-row t-justify-center  t-md-10"><div  onClick = {(e)=>this.showModal("tenant_bio")} className = "tr-button">Get Started </div><div className = "tr-highlight">Find A Home</div></div>
 
                  </div>
                  </div>
 
-            {/* <div className= "m-other-profile  m-push-down">
-               <div className= "m-others m-blinks int1"><div className= "m-cover"></div></div>
-               <div className= "m-others m-blinks int2"><div className= "m-cover"></div></div>
-               <div className= "m-others m-blinks int3"><div className= "m-cover"></div></div>
-               <div className= "m-others m-blinks int4"><div className= "m-cover"></div></div>
-               <div className= "m-others m-blinks int5"><div className= "m-cover"></div></div>
-            </div>*/}
+
         
-    {this.state.showModal ? <ModalForms selected = "tenant_bio" hideModal = {this.hideModal}/> :null}
+    {this.state.showModal ? <ModalForms selected = {this.selected} hideModal = {this.hideModal}/> :null}
         
-   </div>
-        
+   </div>*/}
+        </div>
         );
     }else{
         return <div>Loading..</div>

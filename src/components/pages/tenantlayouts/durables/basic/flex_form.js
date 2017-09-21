@@ -26,9 +26,9 @@ export  class Textarea extends Component{
   } 
     render(){
         return(
-              <div className = { "t-md-8 mod-input-cover no-pad " }>
+              <div className = { "t-md-10 mod-input-cover no-pad " }>
                 <div className = "d-label">{this.props.label}</div>
-                <textarea className = "d-textarea" rows = "8"  placeholder = {this.props.label} cols = "15"  onChange = {(e) => this.handleInputChange(e,this.props.name)} ></textarea> 
+                <textarea className = "d-textarea" rows = "6"  placeholder = {this.props.label} cols = "15"  onChange = {(e) => this.handleInputChange(e,this.props.name)} ></textarea> 
           </div>
         );
     }
@@ -194,7 +194,7 @@ onUpdate(value, action){
   } 
     render(){
         return(
-     <div className = {"t-md-45 mod-input-cover " }>  
+     <div className = {"t-md-10 mod-input-cover " }>  
       <div className = "d-btngroup">
         <div className = "d-label">{this.props.label}</div>
         <div className = "d-btnlist">           
@@ -441,26 +441,26 @@ export  class Date extends Component{
         return(
             <div className = "t-flex t-md-10 t-flex-column">
             <div className = "d-label">{this.props.label}</div>
-            <div className = "input-cover t-md-45 t-flex t-justify-space-between t-flex-row" >
+            <div className = "input-cover t-md-10 t-flex t-justify-left t-flex-row" >
             
-            <div className = "mod-input-cover  t-md-2">
-                   <select placeholder = "Day"  className  = "d-select"   onChange = {(e) => this.handleNameChange(e,'Day')} > 
+            <div className = "mod-input-cover  t-md-3 " >
+                   <select placeholder = "Day"  className  = "d-select  no-radius left-radius no-b-right"   onChange = {(e) => this.handleNameChange(e,'Day')} > 
                     <option default>Day</option>
                    {
                       this.state.days
                   }
                     </select>
           </div>
-            <div className = "mod-input-cover  t-md-35">
-                 <select placeholder = "Month"  className  = "d-select" onChange = {(e) => this.handleNameChange(e,'Month')} > 
+            <div className = "mod-input-cover  t-md-4">
+                 <select placeholder = "Month"  className  = "d-select  no-radius  no-b-right" onChange = {(e) => this.handleNameChange(e,'Month')} > 
                  <option default>Month</option>
                    {
                       this.state.months
                   }
                     </select>
           </div>
-             <div className = "mod-input-cover  t-md-35">
-                <select placeholder = "Year"  className  = "d-select"  onChange = {(e) => this.handleNameChange(e,'Year')} > 
+             <div className = "mod-input-cover  t-md-3 ">
+                <select placeholder = "Year"  className  = "d-select no-radius right-radius"  onChange = {(e) => this.handleNameChange(e,'Year')} > 
                   <option default>Year</option>
                    {
                       this.state.years

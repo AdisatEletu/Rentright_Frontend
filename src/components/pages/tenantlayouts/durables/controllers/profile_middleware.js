@@ -46,7 +46,7 @@ export default class Middle extends Component{
 
 
         render (){ 
-        if (this.radiogroup) {
+        if (this.buttongroup) {
             return(
             <ButtonGroup fullwidth ={true} label ="Select source of income"  onUpdate = {(e)=>this.handleChange(e)}   children = {this.props.keyname}  /> 
             )
