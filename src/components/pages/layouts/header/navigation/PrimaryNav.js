@@ -22,13 +22,13 @@ import {connect} from 'react-redux';
     render(){
         return(
             <div className="home-firstnav t-fullwidth t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
-                <div className=" t-flex  t-fullheight t-justify-right t-right-f home-firstnav-innerdiv-left">
+                <div className=" t-flex  t-fullheight t-justify-right t-right-f home-firstnav-innerdiv-left ">
                     <span> The Ultimate Insider to the RentRight </span>
                 </div>
-                <div className="home-firstnav-innerdiv-right t-flex t-justify-center t-flex-row t-center-f t-fullheight">
+                <div className="home-firstnav-innerdiv-right t-flex t-justify-center t-flex-row t-center-f t-fullheight ">
                     <span className="home-breadcrumbs">{this.props.auth.user? null : <Link to="/Register"><i className="fa fa-user-plus" /> <span>Register</span></Link>}</span>
                     {this.props.auth.user ?
-                        <span className="home-breadcrumbs">Welcome,{" "}{this.props.auth.user.first_name} {this.props.auth.user.last_name} <a href="#"><i className="fa fa-user home-icons" /></a></span>
+                        <span className="home-breadcrumbs">Welcome,{" "}{this.props.auth.user.last_name} <a href="#"><i className="fa fa-user home-icons" /></a></span>
                         :
                         null
                     }

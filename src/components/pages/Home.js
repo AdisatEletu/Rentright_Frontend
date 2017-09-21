@@ -6,6 +6,7 @@ import PrimaryNav from './layouts/header/navigation/PrimaryNav';
 
 export default class NewHome extends Component{
 
+
     render(){
         return(
             <div className="home-mainbody t-flex t-align-content-stretch t-fullwidth  t-flex-column">
@@ -23,12 +24,12 @@ export default class NewHome extends Component{
                         <span className=" t-flex t-flex-column t-align-left ">
                           <i className="material-icons icon-props  ">place</i>
                         </span>
-                            <div className=" t-flex t-flex-column t-align-left  pad-left-15"><span className="address"> 74 Raymond Njoku street</span><span>Ikoyi, Lagos.</span></div></div>
+                            <div className=" t-flex t-flex-column t-align-left t-justify-space-between pad-left-15"><span className="address"> 74 Raymond Njoku street</span><span>Ikoyi, Lagos.</span></div></div>
                         <div className="t-flex icon-text-holder">
                         <span className="t-flex  t-align-left  t-flex-column ">
                           <i className="material-icons icon-props ">call</i>
                         </span>
-                        <div className="t-flex  t-align-left  t-flex-column pad-left-15">
+                        <div className="t-flex  t-align-left t-justify-space-between t-flex-column pad-left-15">
                             <span className="phone-no">  +234 802 2231 719 </span> <span><a href="#">Info@rentright.com</a></span></div></div>
                     </div>
                 </div>
@@ -51,71 +52,75 @@ export default class NewHome extends Component{
                     </div></div>
                 <div className="home-body-search t-flex t-align-center nav-pad-left-right t-justify-center ">
                     <div className="home-search t-flex t-md-10 t-flex-column home-pad">
-                        <div className="t-flex t-fullheight t-flex-row t-md-10 t-justify-space-between t-align-top home-top-pad ">
-                            <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
-                                <label className="home-label">Keyword</label>
-                                <div className="home-search-items t-flex t-md-10 ">
-                                    <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-10" id="keyword" />
+
+                        <div className="home-search-holder t-flex t-flex-column t-md-10">
+
+                            <div className="t-flex t-fullheight t-flex-row key-crumbs t-md-10 t-justify-space-between t-align-top home-top-pad ">
+                                <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
+                                    <label className="home-label">Keyword</label>
+                                    <div className="home-search-items t-flex t-md-10 ">
+                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-10" id="keyword" />
+                                    </div>
+                                </div>
+                                <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
+                                    <label className="home-label">Location</label>
+                                    <div className="home-search-items t-flex t-md-10 ">
+                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
+                                        <i className="material-icons home-search-icon2 t-md-2">keyboard_arrow_down</i>
+                                    </div>
+                                </div>
+                                <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
+                                    <label className="home-label">Property Type</label>
+                                    <div className="home-search-items t-flex t-md-10 ">
+                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
+                                        <i className="material-icons home-search-icon2 t-md-2">keyboard_arrow_down</i>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
-                                <label className="home-label">Location</label>
-                                <div className="home-search-items t-flex t-md-10 ">
-                                    <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                    <i className="material-icons home-search-icon2 t-md-2">keyboard_arrow_down</i>
+                            <div className="t-flex t-fullheight t-flex-row key-crumbs t-md-10 t-justify-space-between t-align-top home-top-pad ">
+                                <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
+                                    <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
+                                        <label className="home-label m-ellipses home-label-top">Min Bedrooms</label>
+                                        <div className="home-search-items t-flex t-md-10  ">
+                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
+                                        </div>
+                                    </div>
+                                    <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
+                                        <label className="home-label m-ellipses home-label-top">Min Bathrooms</label>
+                                        <div className="home-search-items t-flex t-md-10 ">
+                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
-                                <label className="home-label">Property Type</label>
-                                <div className="home-search-items t-flex t-md-10 ">
-                                    <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                    <i className="material-icons home-search-icon2 t-md-2">keyboard_arrow_down</i>
+                                <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
+                                    <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
+                                        <label className="home-label m-ellipses home-label-top ">Min Area (Sq ft)</label>
+                                        <div className="home-search-items t-flex t-md-10 ">
+                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
+                                        </div>
+                                    </div>
+                                    <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
+                                        <label className="home-label m-ellipses home-label-top ">Max Area (Sq ft)</label>
+                                        <div className="home-search-items t-flex t-md-10 ">
+                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
+                                    <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
+                                        <label className="home-label m-ellipses home-label-top ">Min Price ( # )</label>
+                                        <div className="home-search-items t-flex t-md-10 ">
+                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
+                                        </div>
+                                    </div>
+                                    <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
+                                        <label className="home-label m-ellipses home-label-top ">Max Price ( # )</label>
+                                        <div className="home-search-items t-flex t-md-10">
+                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                        <div className="t-flex t-fullheight t-flex-row t-md-10 t-justify-space-between t-align-top home-top-pad ">
-                            <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
-                                <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
-                                    <label className="home-label m-ellipses home-label-top">Min Bedrooms</label>
-                                    <div className="home-search-items t-flex t-md-10  ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
-                                    <label className="home-label m-ellipses home-label-top">Min Bathrooms</label>
-                                    <div className="home-search-items t-flex t-md-10 ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
-                                <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
-                                    <label className="home-label m-ellipses home-label-top ">Min Area (Sq ft)</label>
-                                    <div className="home-search-items t-flex t-md-10 ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
-                                    <label className="home-label m-ellipses home-label-top ">Max Area (Sq ft)</label>
-                                    <div className="home-search-items t-flex t-md-10 ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
-                                <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
-                                    <label className="home-label m-ellipses home-label-top ">Min Price ( # )</label>
-                                    <div className="home-search-items t-flex t-md-10 ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
-                                    <label className="home-label m-ellipses home-label-top ">Max Price ( # )</label>
-                                    <div className="home-search-items t-flex t-md-10">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div className="t-flex  t-flex-row t-md-10 t-justify-space-between classbottom ">
                             <div className="t-flex  t-md-45 home-view-deals lato t-align-content-center t-justify-space-between">
@@ -218,13 +223,15 @@ export default class NewHome extends Component{
                             </div>
 
 
-                            <div className="ad-divider t-flex t-flex-column t-md-1 t-align-center " ></div>
+                            <div className="ad-divider t-flex t-flex-column t-md-1 t-align-center " >
+
+                            </div>
 
 
                             <div className="t-flex t-flex-column t-md-45">
-                                <div className="t-flex  t-md-10 t-justify-left">
-                                    <span>Year Built: 2014</span><br/>
-                                    <span> Parking Spot: 2 </span><br/>
+                                <div className="t-flex  t-md-10 t-flex-column t-justify-left">
+                                    <span>Year Built: 2014</span>
+                                    <span> Parking Spot: 2 </span>
                                    <span> Days on market: 205</span>
                                 </div>
                             </div>
@@ -248,22 +255,28 @@ export default class NewHome extends Component{
                 Feel free to contact any of our agents for enquires.
                 Feel free to contact any of our agents for enquires.</span>
                         </div>
-                        <div className="home-agents-pics t-flex t-justify-space-between t-md-10">
-                            <div className="home-agents-photo1 t-flex  t-md-5 ">
-                                <div className="home-agents-pics1 t-flex t-justify-left t-md-4 " />
-                                <div className="t-flex home-agent-phone-name t-md-6 t-flex-column">
-                                    <div className="home-agents-name t-flex t-md-10">Dee Newton
+                        <div className="home-agents-contact  t-flex t-md-10">
+
+
+                            <div className="home-agents-holder1 t-flex  t-md-5 ">
+                                    <div className="home-agents-pics1 t-flex t-justify-left t-md-4 " >
+
                                     </div>
-                                    <div className="home-agents-phone t-flex t-md-10 t-justify-space-between"> <i className="material-icons ">call</i> +234 802 2231 719
+                                    <div className="t-flex home-agent-phone-name t-md-6 t-flex-column">
+                                        <div className="home-agents-name t-flex t-md-10">Dee Newton</div>
+                                        <div className="home-agents-phone t-flex t-md-10 t-justify-space-between"><i className="fa fa-phone t-md-1" /><span className="t-md-9">+234 802 2231 719</span>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
-                            <div className="home-agents-photo2 t-flex  t-md-5 ">
-                                <div className="home-agents-pics2 t-flex t-justify-right t-md-4 " />
-                                <div className="t-flex home-agent-phone-name t-md-6 t-flex-column">
-                                    <div className="home-agents-name t-flex t-md-10">Helen Green
+
+                            <div className="home-agents-holder2 t-flex  t-md-5 ">
+                                    <div className="home-agents-pics2 t-flex t-justify-right t-md-4 " >
+
                                     </div>
-                                    <div className="home-agents-phone t-flex t-md-10 t-justify-space-between"> <i className="material-icons ">call</i> +234 802 2231 719
+                                        <div className="t-flex home-agent-phone-name1 t-md-6 t-flex-column">
+                                         <div className="home-agents-name t-flex t-md-10">Helen Green
+                                         </div>
+                                            <div className="home-agents-phone t-flex t-md-10 "> <i className="fa fa-phone t-md-1" /> <span className="t-md-9">+234 802 2231 719</span>
                                     </div>
                                 </div>
                             </div>
@@ -350,7 +363,7 @@ export default class NewHome extends Component{
                                         <span><i className="material-icons ">home</i> 450 Sq m</span>
                                     </div>
                                     <div className="home-room-size t-flex t-md-32">
-                                        <span><i className="fa fa-cube" />4 rooms</span>
+                                        <span><i className="fa fa-cube" />< span className="home-size-hover"> 4 rooms</span></span>
                                     </div>
                                     <div className="home-bathroom-size t-flex t-md-32">
                                         <span><i className="fa fa-bathtub" />2 bathrooms</span>
@@ -425,13 +438,13 @@ export default class NewHome extends Component{
                                 <br />
                                 <div className="home-newest-size t-flex t-md-10 t-justify-space-between ">
                                     <div className="home-square-size t-flex t-md-32">
-                                        <span><i className="material-icons ">home</i> 450 Sq m</span>
+                                        <span><i className="material-icons ">home</i> 450 < span className="home-size-hover">Sgm</span></span>
                                     </div>
                                     <div className="home-room-size t-flex t-md-32">
-                                        <span><i className="fa fa-cube" />4 rooms</span>
+                                        <span><i className="fa fa-cube" /> 4 < span className="home-size-hover">rooms</span></span>
                                     </div>
                                     <div className="home-bathroom-size t-flex t-md-32">
-                                        <span><i className="fa fa-bathtub" />2 bathrooms</span>
+                                        <span><i className="fa fa-bathtub" />2 < span className="home-size-hover">Bathrooms</span></span>
                                     </div>
                                 </div>
                             </div>
@@ -473,7 +486,7 @@ export default class NewHome extends Component{
                         <div className="home-sub-text t-flex t-center-f t-justify-center">
                             Managing your rental property is easier when everything is in one place.
                             Property listings, tenant screening, leasing, rent collection and even maintenance tracking all on one screen.</div>
-                        <div className=" t-flex t-justify-center t-md-10 home-imgg"><img src="css/img/macbook.png" /></div>
+                        <div className=" t-flex t-justify-center t-md-10"><span className= "home-imgg"></span> </div>
                         <div className="home-sub-text t-flex t-center-f t-justify-center ">All the tools you need, designed specifically
                             for do-it-yourself landlords. With our online landlord software,
                             you can manage your property in just clicks and not hours!</div>
