@@ -6,6 +6,7 @@ import {Select, Date, Input, Textarea, Phone, ButtonGroup, Switch} from '../tena
 import { Progress, Icon} from 'antd';
 import _scratch from '../tenantlayouts/durables/controllers/_scratch';
 import Middle from '../tenantlayouts/durables/controllers/profile_middleware';
+import { notification } from 'antd';
 //import GoogleMapsLoader from 'google-maps';
 import $ from 'jquery';
 import PropTypes from 'prop-types';
@@ -22,13 +23,16 @@ class ModalForms extends Component{
     constructor(props) {
         super(props)       
         this.selected = this.props.selected;
+        console.log(this.props.loader)
         this.scratch = new _scratch(this.props.form[this.selected],this.selected, )
+       
         this.state = {css: {},transitionCss:{}, selected:this.props.selected, scratch:this.scratch, ownstate:{}, label:mapping[this.props.selected], vizArray:this.scratch.arraybreak[this.scratch.currentpage]};
         this.css = {};
         this.hideModal = this.hideModal.bind(this);
         this.transitionOut = this.transitionOut.bind(this);
         this.transitionIn = this.transitionIn.bind(this);
         this.navigatepart = this.navigatepart.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.onUpdate = this.onUpdate.bind(this);
         this.navigatefull = this.navigatefull.bind(this);
         this.counter = 1;
@@ -39,7 +43,8 @@ componentWillMount(){
 
 }
 navigatefull(ctxt){
-this.scratch.navigator(ctxt)
+let dnewpage = this.state.scratch.navigator(ctxt)
+console.log(dnewpage)
 this.setState({vizArray:this.scratch.arraybreak[this.scratch.currentpage],scratch:this.scratch});
 
 }
@@ -57,6 +62,7 @@ navigatepart(selected,label){
 }
 
 componentDidMount(){
+
 this.setState(this.css);
 this.setState({vizArray:this.scratch.arraybreak[this.scratch.currentpage]})
       this.setState({showModal :true});
@@ -72,27 +78,37 @@ this.setState({vizArray:this.scratch.arraybreak[this.scratch.currentpage]})
          let dat =  this.state.data;
          Object.assign(dat, data);      
           this.setState({data:dat}, ()=>{
-               });  
+            
+          });  
       } else{      
             this.setState({data},()=>{
+             
             });  
       }  
    
   }
 
   handleSubmit = ()=>{
+    if (this.state.data && this.state.data !== {}){    
     var th = this;
     let sendobj = this.state.data; 
     sendobj.uuid = this.props.auth.user.uuid;
-    console.log(sendobj);
-    this.props.showLoading();
-    let newobj = {uuid: this.props.auth.user.id}
+    let newobj = {uuid: this.props.auth.user.uuid}
     newobj[this.state.selected] = sendobj; 
     this.props.update( '/'+this.props.auth.user.uuid,newobj).then((data)=>{
     //   this.context.router.history.push("/tenant/profile/bioinfo/" + this.props.match.params.id);
-    this.props.loadStructure('/profile/structure/?uuid='+this.props.auth.user.uuid, true);
-   
+    this.props.loadStructure('/profile/structure/?uuid='+this.props.auth.user.uuid, true);     
+    this.navigatefull('next');
+    console.log(this.state.vizArray);
+    this.setState({data:null}) ;
     })
+   }else{
+ notification['warning']({
+    message: 'No changes detected',
+    description: 'You havent change any information please fill the form with your information and then you can subit the data.',
+  });
+    }
+
   }
 
 
@@ -219,57 +235,100 @@ hideModal(){
 
                            </div>
                            <div className = "d-right">
-                            {this.props.loader.loading  ? <div className = "d-spinner">
-                                <Icon type = "loading" style={{ fontSize: 60}}/>
+                            
+                            {  /*                                                    
+                            this.props.loader.Loading  ?
+                            <div className = "d-spinner">
+                            <Icon type = "loading" style={{ fontSize: 60}}/>
                             </div>
-                             : 
-                           
+                             : */                           
                            <div className = "d-form">
                             <div className = "d-formpost"  style = {this.state.transitionCss}>
                             <div className = "t-flex t-md-10 t-flex-row t-justify-space-between h-40px">
                             <h1 className = "d-h1 zero-marg">{this.state.label}..</h1>
                             <div className = "d-btn d-a">Check your privacy settings</div>
-                            </div>                           
-                            {                              
-                            this.state.vizArray.map((item, index)=>{
-                            this.counter = this.counter +  1 
-                            
-                            if (this.counter % 2 === 0){                           
+                            </div>   
+                            {                 
+                                                            
+                              this.state.vizArray.success ?
+                            <div className = "t-md-9 t-full-height">
+                               <h1 className = "d-h2 zero-marg"><icon type={this.state.vizArray.success.icon} />&nbsp;{this.state.vizArray.success.header}..</h1>
+                               <span className = "p">{this.state.vizArray.success.body}</span>
+                               <div className = "t-md-10 t-flex t-justify-space-between">
+                              { this.state.scratch.canPrev ? <div onClick = {()=>this.navigatefull('prev')} className = "d-btn d-a d-submit">Previous</div> : null}
+                               <div onClick = {()=>this.navigatefull('next')} className = "d-btn d-a d-submit d-next">Next</div>
+                               </div>
+                               </div>                           
+                          
+                              : 
+                            <div className = "t-md-10  t-flex t-flex-wrap t-justify-space-between hidden-overflow">   
+                       
+                            {                  
+                             this.state.vizArray.map((item, index)=>{                    
+                                            
+                             if (item.datatype == "textarea"){                         
+                     
+                             return (   
+                              <div   key = {item.key}  className = "d-block  d-full">                             
+                              <Middle ownstate = {this.state.ownstate} variable = {item}  onUpdate = {this.onUpdate} name = {item.key}  datatype ={item.datatype} keyname = {item.keyname} />
+                               </div> 
+                               )
+                            }
+                            else if( item.datatype === "formgroup"){                         
+                  
+                             return (   
+                              <div   key = {item.key}  className = "d-block d-full">                             
+                              <Middle ownstate = {this.state.ownstate} variable = {item}  onUpdate = {this.onUpdate} name = {item.key}  datatype ={item.datatype} keyname = {item.keyname} />
+                               </div> 
+                               )
+                            }                           
+                             else {  
+                                              
                             return (
-                             <div className = "d-inline-block d-fl">                             
-                              <Middle key = {item.key} ownstate = {this.state.ownstate} variable = {item}  onUpdate = {this.onUpdate} name = {item.key}  datatype ={item.datatype} keyname = {item.keyname} />
-                             </div>                                    
-                                )
-                            }
-                            else{
-                            return(  
-                             <div className = "d-inline-block d-fr">                                                       
-                              <Middle key = {item.key} ownstate = {this.state.ownstate} variable = {item} onUpdate = {this.onUpdate}  name = {item.key}  datatype ={item.datatype} keyname = {item.keyname} />
-                           </div>
-                            )                        
-                            }
-                           
-
+                             <div key = {item.key} className = "d-inline-block d-fr">                             
+                              <Middle  ownstate = {this.state.ownstate} variable = {item}  onUpdate = {this.onUpdate} name = {item.key}  datatype ={item.datatype} keyname = {item.keyname} />
+                             </div>                                  
+ 
+                            )
+                            }                
+                        
+                        
+                            
                                 })
-                       
-
                             }
-                       
+                            
+
+                            
+                         </div>
+                            }
+                         {! this.state.vizArray.success 
+                         ?
                           <div className = "d-footer">
-                         {  this.state.scratch.canPrev ? <div onClick = {()=>this.navigatefull('prev')} className = "d-btn d-a d-submit">Previous</div> : null}
-                          {  this.state.scratch.canNext ? <div onClick = {()=>this.navigatefull('next')}   className = "d-btn d-a d-submit d-next">Next</div>
-                           :
-                           !this.props.loader.loading ? 
+                         { this.state.scratch.canPrev ? <div onClick = {()=>this.navigatefull('prev')} className = "d-btn d-a d-submit">Previous</div> : null}
+                          { /* this.state.scratch.canNext ? <div onClick = {()=>this.navigatefull('next')}   className = "d-btn d-a d-submit d-next">Next</div>
+                           :*/
+                           !this.props.loader.Loading ? 
                           <div className = "d-btn d-a dd-sub  d-next" onClick = {this.handleSubmit}>Submit</div>
-                                       :
-                          <div className = "d-btn d-a dd-sub  d-next" >Loading</div>
-                               }
+                            :
+                          <div className = "d-btn d-a dd-sub  d-next" style={{ opacity: 0.6}} >  <Icon type = "loading" />&nbsp;&nbsp;Loading</div>
+                             }
                            </div>
+                           :null
+                         }
                            </div>
                            </div>
                             }
                            <div className = "d-details">
-                            <Progress type="circle" percent={75} format={percent => `${percent} Days`} />
+                            {
+                            this.props.myProfile.tenants[this.state.selected] ?
+                          
+                            <Progress type="circle" percent={this.props.myProfile.tenants[this.state.selected].completed} format={percent => `${percent}%`} />
+                                :
+                              <Progress type="circle" percent={0} format={percent => `${percent}%`} />    
+                                
+                                
+
+                            }
                             <h1 className = "d-h1 zero-marg">Completion status</h1>  
                             <p className = "d-span t-center">Lorem iipsum gimmick foran imso pentium sowrie fordie dolge macking</p>  
                            <div className = "d-area">
@@ -331,7 +390,7 @@ function mapDispatchToProps(dispatch) {
     errorLoading:errorLoading,
     hideLoading:hideLoading,
     getFormStruct: getFormStruct, 
-     loadStructure: getProfileStruct,
+    loadStructure: getProfileStruct,
     breakFormToComponents:breakFormToComponents
   }, dispatch);
 }

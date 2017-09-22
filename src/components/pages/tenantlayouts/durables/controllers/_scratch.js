@@ -8,7 +8,9 @@ this.canPrev = false;
 this.arraybreak = [];
 this.arraylength;
 this.currentarray = 0;
+this.template = [];
 this.group = [];
+this.selected;
 this.completion = this.navigator();
 this.counter();
 this.navigator();
@@ -26,34 +28,31 @@ let indof = arrr.indexOf(item);
 if (indof > -1){
     arrr.splice(indof,1);
 }
-if ( arrrobj[item].groupinfo.groupdata )  {    
-    group.push(item); 
+if ( arrrobj[item].groupinfo.groupdata )  {  
+    console.log(item)  
+    group.push({label:arrrobj[item].keyname, value:false}); 
     if (group.length == 3){
-       let itemo = {keyname : group, key:'Select incmoe Type',datatype:'formgroup' };
+       let itemo = {keyname : group, key:'Select income Type',datatype:'formgroup' };
        currentarr.push(itemo);
        console.log(itemo , 'Item passed')
-    }   
-}else{
- if( arrrobj[item].datatype !== "textarea" ){
-   if (currentarr.length < 3 ){
-       currentarr.push(arrrobj[item])
-   }
-   else{
-    arraybreak.push(currentarr);
-    currentarr = [];
-   }    
-} else{
-   if (currentarr.length < 3 ){
-       currentarr.push(arrrobj[item])
-   }
-   else{
-    arraybreak.push(currentarr);
-    currentarr = [];
-   }
-
-}
+       arraybreak.push(currentarr);
+}   
+}else {
+    currentarr.push(arrrobj[item])
+  
+    //currentarr = []
 }
 })
+  arraybreak.push(currentarr);
+let i = {success :{}, error:{}};
+    i.success = this.populate(this.selected, 
+        'success', 
+        'check-circle-o',
+         'Your '+this.selected+'information was updated successfully',
+        'click the button below to update or modify the next section of your profile, you can also check and moderate your privacy settings and control the information prospective landlord can see about you. '
+        );
+    this.template.push(i);
+    arraybreak.push(i)
 this.arraybreak = arraybreak;
 this.arraylength = this.arraybreak.length;
 return  arraybreak;
@@ -62,9 +61,14 @@ return  arraybreak;
 }
 
 };
+populate =  (selected, context, icon, header, body) => {
+    let obj = {header, body, context, icon, header}
+    return obj
+
+ }
 navigator = (ass)=>{
 let th = this;
-if(this.currentpage + 1 < this.arraybreak.length  - 1 ){
+if(this.currentpage + 1 < this.arraybreak.length ){
     this.canNext = true;
 }else{this.canNext = false}
 if (this.currentpage -1  <  0 ) {

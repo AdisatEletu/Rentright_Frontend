@@ -16,7 +16,7 @@ import ImageUpdate from "./layouts/ImageUpdate";
 import {NavLink} from "react-router-dom";
 import BioForm from "./layouts/BioForm";
 import TenantApplications from "./layouts/tenantApplications";
-import TenantNav from "./tenantlayouts/tenant_nav";
+import TenantNav from "./tenantlayouts/durables/basic/tenant_nav";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";  
 import PropTypes from "prop-types";
@@ -58,8 +58,11 @@ loadprofile = ()=>{
     return(
 <div className = "t-body">
 
- <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-align-stretch t-justify-space-between">
-           {this.props.myProfile.tenants.tenant_bio ? <TenantNav first_name = {this.props.user.first_name}  myProfile = {this.props.myProfile}/>  : <TenantNav first_name = {this.props.user.first_name}/> }
+ <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-justify-space-between t-gg">
+           {this.props.myProfile.tenants.tenant_bio ? <TenantNav first_name = {this.props.user.first_name} last_name = {this.props.user.last_name}   myProfile = {this.props.myProfile}/>  : 
+           <TenantNav
+            last_name = {this.props.user.last_name}
+            first_name = {this.props.user.first_name} myProfile =  { {tenant_bio:null} }/> }
           <div className = "t-left t-gray  t-flex  t-align-content-space-between t-right-bx t-right-bx t-flex-column">
       
           <div className = "t-justify-left t-flex">
@@ -100,7 +103,7 @@ loadprofile = ()=>{
     <div className = "t-midmain t-flex t-jusify-center t-flex-row">
 
 
-        <div  className = "t-dash t-flex  t-justify-center t-flex-column">
+        <div  className = "t-dash t-flex  t-align-center t-flex-column">
             <Switch>
               <Route  exact path="/tenant/profile/:id/"  component={TenantProfile}/>  
               <Route  exact path="/tenant/profile/generalinfo/:id"  component={GeneralForm}/>       

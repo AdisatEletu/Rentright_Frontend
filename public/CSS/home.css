@@ -55,6 +55,8 @@ html,body{
 .interior1{ background-repeat:no-repeat; background-size: cover; background-position:center;}
 .home-slider{background-image:url('img/interior10.jpg');  z-index:1;  transform: translateZ(-1px) scale(2);} .home-cover{background-color: rgba(0,0,0,0.2); width:100%; height:100%;}
 
+.home-account-switch{border: solid 1px ; color: rgba(255,255,255,0.4); cursor: pointer; font-size: 12px; height: 30px; line-height: 30px; align-self: center; width: 100px; border-radius: 15px;}
+.home-account-switch:hover{color: #fff;}
 .home-bxshadow{-webkit-box-shadow: 1px 3px 45px 23px rgba(234,234,234,1);
 -moz-box-shadow: 1px 3px 45px 23px rgba(234,234,234,1);
 box-shadow: 1px 3px 45px 23px rgba(234,234,234,1);
@@ -97,8 +99,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8183174', e
 
 	}
 .home-div-outer-box{box-sizing:border-box; height: 70%; overflow:hidden;  background-color:#fff; width:22%; padding:10px; } .home-outer-div-icon{ height: 40%;} .home-icon-central{font-size:3.5rem; color: #f6505c;}
-
-
 
 
 
@@ -265,6 +265,62 @@ box-shadow: 0px -2px 137px -14px rgba(0,0,0,0.75);}
 
 .landlord-t-s{  padding-top: 5%; }
 .landlord-guide-pic-cover{background-color: rgba(0,0,0,0.6); height: 100%}
+
+
+
+.acct-holder:hover .dropdown-content {
+    display: block;
+}
+
+.home-account-switch {
+
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.acct-holder {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    font-size: 16px;
+    font-weight: 500;
+    color: #f6505c;
+    padding: 5px 5px;
+    text-decoration: none;
+    display: block;
+    background-color: #eaeaea;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.acct-holder:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.acct-holder:hover .home-account-switch {
+    border: solid 1px #fff;
+}
+
+
+
 
 @media only screen
 and (min-device-width : 320px)
@@ -471,6 +527,8 @@ and (max-device-width : 1024px){ /* Tablet */
     .home-agents-pic1{ height: 100px; width: 50px; align-self: center;} .home-agent-phone-name{width: 100%;}
     .home-agents-holder1{flex-direction: column;} .a-p-h-d{width: 100%;}
     .home-ad-picture-holder{height: 25vh;}
+
+    .home-agents-pics2{height: 100px; width: 50px;}
 
 
 }

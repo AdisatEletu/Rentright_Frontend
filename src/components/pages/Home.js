@@ -38,8 +38,12 @@ export default class NewHome extends Component{
                         <div className="t-flex t-flex-row t-align-center t-justify-left t-md-6">
                             <span className="bar-breadcrumbs bar-tabs  bar-tabs-active"><a href="/landlord-guide">LANDLORD</a></span>
                             <span className="bar-breadcrumbs bar-tabs "><a href="/tenant-guide">TENANT</a></span>
+
+                            <span className="bar-breadcrumbs bar-tabs ">
+                                PROFESSIONALS<i className="material-icons">keyboard_arrow_down</i>
+                            </span>
                             <span className="bar-breadcrumbs bar-tabs "><span>INSTITUTIONS</span><i className="material-icons ">keyboard_arrow_down</i></span>
-                            <span className="bar-breadcrumbs bar-tabs "> PROFESSIONALS<i className="material-icons">keyboard_arrow_down</i></span>
+
                         </div>
                         <div className="home-search-field t-flex-row t-flex t-justify-space-between t-align-center t-md-3">
                             <input type="text" placeholder="Search Cities ..." className="home-first-search" />
