@@ -9,7 +9,6 @@ export default function(ComposedComponent){
 
         componentWillMount(){
             if(!this.props.isAuthenticated){
-                toastr.error('Login Required!','User authentication is required to access this page');
                 this.context.router.history.push('/sign-in');
             }
         }

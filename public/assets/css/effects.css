@@ -829,6 +829,11 @@ border-right: none !important;
     color: #424242 !important;
 }
 
+.complaint-activities .ant-steps .ant-steps-title,
+.complaint-activities .ant-steps .ant-steps-head{
+    background-color: transparent !important;
+}
+
 #root,
 .t-fullheight,
 .landlord,

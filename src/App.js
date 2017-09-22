@@ -46,7 +46,7 @@ class App extends Component {
                   <Route exact path="/" component={Home}/>
                   <Route path={"/register"} component={Register}/>
                   <Route path="/account" component={requireAuth(ContinueAs)}/>
-                  <Route path="/landlord" component={requireAuth(LandLord)}/>
+                  <Route path="/landlord" component={LandLord}/>
                   <Route path="/sign-in" component={Login}/>
                   <Route path="/tenant" component={requireAuth(Tenant)}/>
               </Switch>

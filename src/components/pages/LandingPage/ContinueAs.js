@@ -9,6 +9,7 @@ import Copyright from '../layouts/footer/Copyright';
 import {Helmet} from 'react-helmet';
 
 export default class ContinueAs extends Component{
+
     render(){
         return(
             <div className = "t-fullheight t-fullwidth">

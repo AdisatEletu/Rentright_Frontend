@@ -2,7 +2,7 @@ import axios from 'axios';
 import {UPDATE_AUTH_USER,RECEIVE_ACTIVE_PROPERTY,REQUEST_ACTIVE_PROPERTY,
     REQUEST_PROPERTIES_PAGE,RECEIVE_PROPERTIES_PAGE,REQUEST_UNITS,
     RECEIVE_UNITS,REQUEST_ACTIVE_UNIT,RECEIVE_ACTIVE_UNIT,REQUEST_NOTIFICATIONS,RECEIVE_NOTIFICATIONS} from '../ActionTypes';
-import {getUnitUrl,unitImageUrl, getNotificationsUrl} from '../../utils/ApiManager';
+import {getUnitUrl,unitImageUrl, getNotificationsUrl,addBankAccountUrl,getSingleBankAccountUrl,getBankAccountsUrl} from '../../utils/ApiManager';
 import {toastr} from 'react-redux-toastr';
 import {setCurrentUser} from './authAction';
 
@@ -271,4 +271,40 @@ export function getNotifications(){
             }
         );
     }
+}
+
+export function getBankAccounts(callback){
+    return axios.get(getBankAccountsUrl).then(
+        (res) => {
+            callback(true,res.data.data);
+        }
+    ).catch(
+        (err) => {
+
+        }
+    );
+}
+
+export function addBankAccount(params,callback){
+    return axios.post(addBankAccountUrl,params).then(
+        (res) => {
+            callback(true,res.data.data);
+        }
+    ).catch(
+        (err) => {
+            callback(false,err);
+        }
+    );
+}
+
+export function getSingleBankAccount(params){
+    return axios.get(getSingleBankAccountUrl(params.uuid)).then(
+        (res) => {
+
+        }
+    ).catch(
+        (err) => {
+
+        }
+    );
 }
