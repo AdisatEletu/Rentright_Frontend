@@ -118,23 +118,33 @@ background-color:#fff; display:inline-flex; flex-direction:column; padding:30px 
   /*.main-second .ant-progress-text{}*/
   .main-button{font-size:20px; margin-top:40px;  height:40px; line-height:40px; padding:0px 80px; border-radius:4px; color:#fff; font-family:Museo; background-color:#108EE9; margin-top:20px; cursor:pointer; }
    .main-button:hover{background-color:#55C16C;}
-   .events{height:580px; width:100%; display:flex;flex-direction:column; padding:0px 0px; box-sizing:border-box;  margin-bottom:0px;}
+   .events{height:580px; width:100%; display:flex;flex-direction:column; padding:0px 0px; box-sizing:border-box;  margin-bottom:60px;}
    .events-padding{box-sizing:border-box; padding:0px 30px;}
+   .events .secondreview{height:auto!important; min-height:10px!important;}
 .header-test{ font-family: Museo, Proxima Nova,Helvetica Neue,sans-serif;
     font-size: 32px;    line-height: 40px;  text-transform:uppercase;   letter-spacing: -0.6px;
     padding-top: 0px;    padding-bottom: 0px;    color: #484848;
-    font-weight: 700;    margin-bottom: 30px;
+    font-weight: 700;    margin-bottom: 30px; 
 }
 .bot{margin-top:auto;}
-.event-cards{height:95%;  width:23%; background:#fff; border-radius:4px; }
+.event-cards{height:95%;  width:18%; background:#fff; border-radius:4px; }
 .bodyTest{font-family:Proxima Nova; margin-left:auto; display:inline-block;line-height:40px; color:#222; font-weight:500;  font-size:12px; }
 .event-cards-image{height:65%; width:100%; background-size:cover; background-position:center; }
-.event-cover{width:100%; height:100%; padding:10px; box-sizing:border-box; background-color:rgba(0,0,0,0.4);}
+.event-cover{width:100%; height:100%; padding:10px; box-sizing:border-box; background-color:rgba(0,0,0,0.3);}
 .person1{background-image:url('img/person1.jpg');} .person2{background-image:url('img/person2.jpg');}
 .person3{background-image:url('img/person3.jpg');} .person4{background-image:url('img/person4.jpg');}
 .person5{background-image:url('img/person5.jpg');}
-.events p{box-sizing:border-box;padding:10px 20px; margin:0px;  margin-bottom:15px;  color:#333; font-family:Proxima Nova; font-size:14px; line-height:16px;  }
+.events p{box-sizing:border-box;padding:10px 20px; margin:0px;  margin-bottom:8px;  color:#333; font-family:Proxima Nova; font-size:14px; line-height:16px;  }
 .e-name{font-weight:600; }
+.psmall-pad{padding:0px 20px; box-sizing:border-box;}
+.modal-owner{height:300px;  width:100%; margin-top:10px; padding:10px; box-sizing:border-box; display:flex; flex-direction:row; }
+.modal-left,.modal-right{height:100%; width:70%;} .modal-left{text-align:center; display:flex; width:24%; justify-content:center; align-content:center; align-items:center;}
+ .arrow-div{width:2%; height:100%; display:flex; justify-content:center; align-content:center; align-items:center;}
+ .lightfb{color:#55A32A;}
+.modal-right{padding:10px 5px; text-align:center; display:flex; align-items:center; padding-top:100px;  align-content:center; flex-direction:column; }.modal-left i{font-size:120px; color:#55A32A;  line-height:300px;  } .arrow-div i{line-height:3000px;  font-size:20px; color:#666; cursor:pointer;}
+.modal-right .d-label{font-size:23px; font-weight:500;  margin-bottom:10px; }
+.p-s-modal-child .q-h1, .p-s-modal-child .q-h11{font-family:Museo!important;}
+
 
 
 

@@ -514,10 +514,14 @@ html, body {
     z-index: 10;
 
     margin-left: 16%; /* temprorary*/
-    width: 64%;
+    width: 84%;
 }
 
 /* <-- should always contain t-subnav element as the first element  --> */
+.push-right{margin-left:auto;}
+.push-left{margin-right:auto;}
+.push-top{margin-bottom:auto;}
+.push-bottom{margin-top:auto;}
 
 .t-midmain {
     padding-left: 0;
@@ -691,7 +695,9 @@ html, body {
 .t-md-7 {
     width: 70%;
 }
-
+.t-md-75 {
+    width: 75%;
+}
 .t-md-8 {
     width: 80%;
 }
