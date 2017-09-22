@@ -22,10 +22,10 @@ return (
         <div className = "p-package t-flex t-justify-left">
          <div className ="curved-white">Invite A Friend</div>
           <Dropdown 
-          flowClass = "p-links" 
-          linkClass = {<span>Notifications...</span>}
-          dropdownHeader = "Notifications"
-          dropdownChild = {<div className = "list-elements"></div>}
+              flowClass = "p-links"
+              linkClass = {<span>Notifications...</span>}
+              dropdownHeader = "Notifications"
+              dropdownChild = {<div className = "list-elements"></div>}
           />
 
         <span className = "p-links"><Badge count={5}> <i className = "material-icons small">cloud_queue</i> </Badge></span>
