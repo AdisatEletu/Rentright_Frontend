@@ -41,7 +41,8 @@ import {logout} from '../../../../../state/actions/authAction';
 
 
 
-                    <span className="home-breadcrumbs">{this.props.auth.isAuthenticated?
+                    <span className="home-breadcrumbs">
+                        {this.props.auth.isAuthenticated?
                         <div className="acct-holder ">
                             <div className="home-account-switch t-flex t-justify-center ">Account</div>
                             <div className="dropdown-content">
@@ -49,14 +50,15 @@ import {logout} from '../../../../../state/actions/authAction';
                                 <Link to ='/tenant'>Tenant</Link>
                                 <Link to ='/'>Agent</Link>
                             </div>
-                        </div> : <Link to="/Register"><i className="fa fa-user-plus" /> <span>Register</span></Link>}</span>
+                        </div> : <Link to="/Register"><i className="fa fa-user-plus" /> <span>Register</span></Link>}
+                        </span>
                     {this.props.auth.isAuthenticated ?
                         <span className="home-breadcrumbs">Welcome,{" "}{this.props.auth.user.last_name} <a href="#"><i className="fa fa-user home-icons" /></a></span>
                         :
                         null
                     }
                     <span className="home-breadcrumbs home-active"><i className="fa fa-sign-out" />
-                        {this.props.auth.isAuthenticated ?  <a href="/sign-out" style={{color: '#ffffff'}} onClick={this.logout.bind(this)}> Logout</a> :<a href="/sign-in" style={{color: '#ffffff'}}> Login</a>}
+                        {this.props.auth.isAuthenticated  ?  <a href="/sign-out" style={{color: '#ffffff'}} onClick={this.logout.bind(this)}> Logout</a> :<a href="/sign-in" style={{color: '#ffffff'}}> Login</a>}
 
 
                         </span>
