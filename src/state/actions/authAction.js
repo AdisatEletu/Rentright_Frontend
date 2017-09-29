@@ -53,7 +53,7 @@ export function logout(callback){
 
         dispatch(setCurrentUser({}));
 
-        callback();
+        callback(true);
 
     }
 }

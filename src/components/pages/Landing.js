@@ -4,6 +4,7 @@
 import React,{Component} from 'react';
 import {Helmet} from "react-helmet";
 import {connect} from 'react-redux';
+import {Link}from "react-router-dom";
 
  class Landing extends Component{
     constructor(props){
@@ -62,10 +63,10 @@ import {connect} from 'react-redux';
 
                             <div className="l-button-holder t-md-10 t-flex t-justify-space-between  ">
                                 <div className=" t-flex t-md-3  t-justify-right " >
-                                    <span className="landing-btn t-center-f t-justify-center t-md-10">Landlord</span>
+                                    <Link to="/landlord" className="landing-btn t-center-f t-justify-center t-md-10"> Landlord</Link>
                                 </div>
                                 <div className=" t-flex t-md-3 t-justify-right ">
-                                    <span className="landing-c-btn t-center-f t-justify-center t-md-10">Tenant</span>
+                                    <Link to="/tenant" className="landing-c-btn t-center-f t-justify-center t-md-10">Tenant</Link>
                                 </div>
                                 <div className=" t-flex t-md-3 t-justify-right ">
                                     <span className="landing-c-btn t-center-f t-justify-center t-md-10">Agent</span>
