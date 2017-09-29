@@ -28,7 +28,7 @@ export  class Textarea extends Component{
         return(
               <div className = { "t-md-10 mod-input-cover no-pad " }>
                 <div className = "d-label">{this.props.label}</div>
-                <textarea className = "d-textarea" rows = "6"  placeholder = {this.props.label} cols = "15"  onChange = {(e) => this.handleInputChange(e,this.props.name)} ></textarea> 
+                <textarea className = "d-textarea" rows = "6"   defaultValue = {this.props.hasvalue ? this.props.hasvalue :"" }  placeholder = {this.props.label} cols = "15"  onChange = {(e) => this.handleInputChange(e,this.props.name)} ></textarea> 
           </div>
         );
     }
@@ -69,7 +69,7 @@ export  class Input extends Component{
         return(
             <div className = { this.props.fullwidth ? "t-md-10 mod-input-cover " : "t-md-45 mod-input-cover "  }>
                 <span className = "d-label">{this.props.label}</span>
-                <input className = "d-input" placeholder = {this.props.label} type = "text" onChange = {(e) => this.handleInputChange(e,this.props.name)} /> 
+                <input className = "d-input"     defaultValue  = {this.props.hasvalue ? this.props.hasvalue :"" } placeholder = {this.props.label} type = "text" onChange = {(e) => this.handleInputChange(e,this.props.name)} /> 
           </div>
         );
     }
@@ -165,6 +165,20 @@ export  class Switch extends Component{
         this.state = {truthy:false, falsy:false}  
         this.handleClick = this.handleClick.bind(this);
         this.onUpdate = this.onUpdate.bind(this);
+    
+    }
+    componentDidMount(){
+        if (this.props.hasvalue || !this.props.hasvalue === false){
+            this.props.hasvalue ? 
+            this.setState({truthy:true,falsy:false})
+            :
+            this.props.hasvalue === false ? 
+            this.setState({truthy:false,falsy:true})
+            :
+            null
+
+        
+        }
     }
 onUpdate(value, action){
     let obj = {}
@@ -258,7 +272,7 @@ export  class Phone extends Component{
         return(
             <div className = { this.props.fullwidth ? "t-md-10 mod-input-cover " : "t-md-45 mod-input-cover "  }>
                 <div className = "d-label">{this.props.label}</div>
-                <input className = "d-input" placeholder = {this.props.label} type = "number" onChange = {(e) => this.handleInputChange(e,this.props.name)} /> 
+                <input   defaultValue  = {this.props.hasvalue ? this.props.hasvalue :"" }  className = "d-input" placeholder = {this.props.label} type = "number" onChange = {(e) => this.handleInputChange(e,this.props.name)} /> 
           </div>
         );
     }
@@ -341,8 +355,8 @@ export  class Select extends Component{
         return(
             <div className = { this.props.fullwidth ? "t-md-10 mod-input-cover " : "t-md-45 mod-input-cover "  }>
                 <div className = "d-label">{this.props.label}</div>
-                <select placeholder = {this.props.label} className = "d-select" type = "text" onChange = {(e) => this.handleSelectChange(e.target.value,this.props.name)} >
-                    <option default>Select one ...</option> 
+                <select placeholder = {this.props.label}   defaultValue = {this.props.hasvalue ? this.props.hasvalue :"opt" }    className = "d-select" type = "text" onChange = {(e) => this.handleSelectChange(e.target.value,this.props.name)} >
+                    <option value="opt" default>Select one ...</option> 
                      {
                       this.opo
                      }
@@ -365,11 +379,22 @@ export  class Date extends Component{
         super(props)
         this.state = {}
         this.daysp = _.range(1,31);
+        let monthstretch = {'01':'Jan', '02':'Feb','03':'Mar','04':'Apr', '05':'May', '06':'Jun','07':'Jul', '08':'Aug','09':'Sep', '10':'Oct', '11':'Nov', '12': 'Dec'}
         this.monthsp = [{value:1, label:'Jan'}, {value:2 ,label:'Feb'}, 
         {value:3, label:'Mar'}, { value:4 , label:'Apr'}, , {value:5, label:'May'}, { value:6,  label: 'Jun'}, 
         {value: 7, label: 'Jul'}, {value:8, label: 'Aug'}, { value:9 , label: 'Sep'},
         {value:10 , label:'Oct'}, { value:11 , label: 'Nov'}, {value:12 , label:'Dec'}];
         this.yearp = _.range(2016, 1900);
+        if (this.props.hasvalue){
+         let valuelist = this.props.hasvalue.split("-");
+
+         this.selectday = parseInt(valuelist[2]);
+         let prselectmonth = monthstretch[valuelist[1]]
+         this.selectmonth ={}
+         this.selectmonth['value'] = parseInt(valuelist[1])
+         this.selectmonth['label'] = prselectmonth
+         this.selectyear = parseInt(valuelist[0])
+        }
         this.value = ""; this.dayValue = ""; this.monthsvalue = ""; this.yearValue = "";
     }
    componentDidMount(){
@@ -384,8 +409,7 @@ export  class Date extends Component{
       });
 
      this.setState({days , months, years});
-     console.log(this.state);
-     console.log('new form state')
+
 
     }
     
@@ -414,7 +438,7 @@ export  class Date extends Component{
          }
 
     if (this.dayValue != "" && this.monthsValue != "" && this.yearValue != ""){
-             this.value = this.dayValue + "-" + this.monthsValue + "-" + this.yearValue
+             this.value = this.yearValue + "-"+ this.monthsValue + "-" + this.dayValue  
             
              this.handleSelectChange(this.value, this.props.name);
  }
@@ -444,24 +468,24 @@ export  class Date extends Component{
             <div className = "input-cover t-md-10 t-flex t-justify-left t-flex-row" >
             
             <div className = "mod-input-cover  t-md-3 " >
-                   <select placeholder = "Day"  className  = "d-select  no-radius left-radius no-b-right"   onChange = {(e) => this.handleNameChange(e,'Day')} > 
-                    <option default>Day</option>
+                   <select placeholder = "Day" defaultValue = {this.props.hasvalue ? this.selectday :"opt" }   className  = "d-select  no-radius left-radius no-b-right"   onChange = {(e) => this.handleNameChange(e,'Day')} > 
+                    <option value = "opt" >Day</option>
                    {
                       this.state.days
                   }
                     </select>
           </div>
             <div className = "mod-input-cover  t-md-4">
-                 <select placeholder = "Month"  className  = "d-select  no-radius  no-b-right" onChange = {(e) => this.handleNameChange(e,'Month')} > 
-                 <option default>Month</option>
+                 <select placeholder = "Month" defaultValue = {this.props.hasvalue ? this.selectmonth.value :"opt" }  className  = "d-select  no-radius  no-b-right" onChange = {(e) => this.handleNameChange(e,'Month')} > 
+                 <option  value = "opt">Month</option>
                    {
                       this.state.months
                   }
                     </select>
           </div>
              <div className = "mod-input-cover  t-md-3 ">
-                <select placeholder = "Year"  className  = "d-select no-radius right-radius"  onChange = {(e) => this.handleNameChange(e,'Year')} > 
-                  <option default>Year</option>
+                <select placeholder = "Year"   defaultValue = {this.props.hasvalue ? this.selectyear :"opt" } className  = "d-select no-radius right-radius"  onChange = {(e) => this.handleNameChange(e,'Year')} > 
+                  <option value = "opt">Year</option>
                    {
                       this.state.years
                   }

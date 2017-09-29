@@ -1,3 +1,4 @@
+const stack = ['tenant_bio', 'general_info',  'tenant_employment_history',   'tenant_residence_history', 'tenant_immigration_history']
 export default class _scratch {
 constructor(arr,item){
 this.selected = item;
@@ -7,9 +8,13 @@ this.canNext = true;
 this.canPrev = false;
 this.arraybreak = [];
 this.arraylength;
-this.currentarray = 0;
+this.currentarray;
 this.template = [];
 this.group = [];
+this.stackposition = stack.indexOf(this.selected);
+this.stackvisible = false;
+this.labelstack = stack[this.stackposition + 1];
+this.previouslabelstack =stack[this.stackposition - 1];
 this.selected;
 this.completion = this.navigator();
 this.counter();
@@ -34,14 +39,12 @@ if ( arrrobj[item].groupinfo.groupdata )  {
     if (group.length == 3){
        let itemo = {keyname : group, key:'Select income Type',datatype:'formgroup' };
        currentarr.push(itemo);
-       console.log(itemo , 'Item passed')
-       arraybreak.push(currentarr);
-}   
+      // console.log(itemo , 'Item passed');
+       //arraybreak.push(currentarr);
+      }   
 }else {
-    currentarr.push(arrrobj[item])
-  
-    //currentarr = []
-}
+    currentarr.push(arrrobj[item])     
+   }
 })
   arraybreak.push(currentarr);
 let i = {success :{}, error:{}};
@@ -52,7 +55,7 @@ let i = {success :{}, error:{}};
         'click the button below to update or modify the next section of your profile, you can also check and moderate your privacy settings and control the information prospective landlord can see about you. '
         );
     this.template.push(i);
-    arraybreak.push(i)
+arraybreak.push(i)
 this.arraybreak = arraybreak;
 this.arraylength = this.arraybreak.length;
 return  arraybreak;
@@ -66,55 +69,67 @@ populate =  (selected, context, icon, header, body) => {
     return obj
 
  }
+movestack = (context) =>{   
+    if (context === "next"){
+        if (this.stackposition + 1 > stack.length - 1){
+            this.stackposition = 0;            
+        }else{
+            this.stackposition = this.stackposition + 1;
+        }
+    }else{
+        if (this.stackposition - 1 < 0){
+            this.stackposition = stack.length - 1;
+        }else{
+            this.stackposition = this.stackposition - 1;
+        }
+    }
+    this.labelstack = stack[this.stackposition];
+    this.previouslabelstack = stack[this.stackposition - 1]
+}
 navigator = (ass)=>{
 let th = this;
-if(this.currentpage + 1 < this.arraybreak.length ){
+if(this.currentpage  == 0){
+    this.canPrev  = false;
     this.canNext = true;
-}else{this.canNext = false}
-if (this.currentpage -1  <  0 ) {
-    this.canPrev = false;
-}else{this.canPrev = true}
-if (!ass){
-    this.currentpage = 0;
-    this.canNext = true;
-}else{
-  if (this.arraybreak.length > 0){
-    if (ass === 'next' && th.canNext ){
-       if( this.currentpage + 1  >  this.arraybreak.length - 1  ){
-           this.canNext = false;                              
-         }else{
-          this.canNext = true;
-         }
-           this.currentpage = th.currentpage + 1;
-            this.canPrev = true;         
-           this.currentarray = th.currentarray + 1;        
-       
-
-    }else if (ass === "prev" && this.canPrev){
-        if(th.currentpage -1  <  0 ){          
-           th.canPrev = false;                
-        }else{
-        th.canPrev = true; 
-        }                   
-           th.currentpage = this.currentpage - 1; 
-            this.canNext = true;                  
-           th.currentarray = this.currentarray - 1;
-       
-    
+    if (ass === "next"){
+        this.currentpage = 1;
+        this.currentarray = th.currentarray + 1;
+        this.canNext = false;
+        this.canPrev = true;
+        this.stackvisible = true;
+    }else{
+        this.currentpage = 0;
+        this.currentarray = th.currentarray - 1;
+        this.canNext = true;
+        this.canPrev = false
+        this.stackvisible = false;
     }
+}
+else{
+    this.canPrev =true;
+    this.canNext = false
+    if (ass === "prev"){
+        this.canNext = true;
+        this.currentpage = 0;
+        this.currentarray = th.currentarray - 1;
+        this.canPrev = false;
+        this.stackvisible  = false;
+    }else{
+        this.currentpage = 1;
+         this.currentarray = th.currentarray + 1;
+        this.canNext = false;
+        this.canPrev = true;
+        this.stackvisible = true;
+    }
+}
 
-}else{
-    return undefined;
-}
-}
  let len = this.arraybreak.length;
  let currentpage = this.currentpage;
  if (currentpage == 0){
      currentpage = 0;
  }
 this.completion = (this.currentpage/len)*100;
-return currentpage;   
-
+return currentpage;
 };
 
 };

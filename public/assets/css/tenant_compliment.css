@@ -411,7 +411,11 @@ border-left:solid 1px #FAA517; }
 .i{font-size:3.8rem;} .q-left-items div{cursor:pointer;}
 .q-label-hold{display:flex; width:100%; height:90px; border-bottom:solid 1px #d2d2d2; padding:10px;  padding-right:5px;box-sizing:border-box;}
 .q-label-image{width:60px; height:60px; background-size:cover; margin-right:10px;}
-.q-label-label, .q-label{font-family:Open Sans; font-size:1.4rem; line-height:1.9rem; font-weight:600;  letter-spacing:0.2px; color:#365899;     word-wrap: break-word; text-shadow: 1px 1px 2px -1px #A8B7D3 }
+.q-label-label, .q-label{font-family:Open Sans; font-size:1.4rem; line-height:1.9rem; font-weight:600;  letter-spacing:0.2px; color:#365899;     word-wrap: break-word; text-shadow: 1px 1px 2px -1px #A8B7D3; 
+white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis;
+
+
+}
 .q-label-sub{font-size:1.1rem; line-height:1.3rem; color:#999; font-weight:400;}
 .q-label{font-size:1.2rem; margin-bottom:10px;  font-weight:500; line-height:1.4rem; margin-right:auto;} 
 .map{width:300px; height:200px; margin-right:auto; background:rgba(255,255,255,0.5);  margin-top:20px;} .q-black{font-family:Roboto; margin-right:auto; color:#333; font-weight:400; width:80%; }
@@ -434,9 +438,6 @@ border-left:solid 1px #FAA517; }
 .q-success{background-color:#a5d6a7 !important; border-color:#a5d6a7 !important;}
 .q-working{background-color:#039be5!important;  border-color:#039be5!important;}
 .q-danger{background-color:#e65100!important; border-color:#e65100!important;}
-
-
-
 /*...............................................................................................applications page..*/
 .cwall{width:100%; height:480px;  overflow:hidden;}
 .wallpaper{width:100%; height:100%; overflow:hidden; border-radius:4px; background-size:cover; background-position:center; }

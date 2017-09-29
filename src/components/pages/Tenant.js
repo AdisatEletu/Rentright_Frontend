@@ -21,7 +21,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";  
 import PropTypes from "prop-types";
 import {getProperty} from "../../state/actions/userActions";
-import { loadAllTenants, loadSpecificTenant,imageready, patchSpecificTenant,connectToSocket, deleteSpecificTenant, showLoading, hideLoading, errorLoading } from '../../state/actions/tenantAction';
+import { loadAllTenants, loadSpecificTenant,imageready, patchSpecificTenant,connectToSocket,getProfileStruct, deleteSpecificTenant, showLoading, hideLoading, errorLoading } from '../../state/actions/tenantAction';
 
 
 class Tenant extends Component{
@@ -32,7 +32,9 @@ class Tenant extends Component{
         this.first_name = this.props.auth.user.first_name;
         this.last_name =  this.props.auth.user.last_name;   
         this.uuid = this.props.auth.user.uuid;  
-        this.props.loadTenant("/"+this.uuid);      
+        this.props.loadTenant("/"+this.uuid).then(()=>{
+     this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true);    
+    });    
  
     }
     componentDidMount(){    
@@ -50,7 +52,10 @@ class Tenant extends Component{
 
     }
 loadprofile = ()=>{
-    this.props.loadTenant("/"+this.props.match.params.id);
+    this.props.loadTenant("/"+this.props.match.params.id).then(()=>{
+     this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true);    
+    });
+    
    } 
    
     render (){
@@ -149,7 +154,8 @@ function matchStateToProps(state){
         tenantStruct:state.tenantInfoStruct,
         tenantInfoList:state.tenantInfoLists,
         user:state.user.auth.user,
-       fileToServer:state.fileToServer      
+        fileToServer:state.fileToServer ,
+        structure:state.structure   
         
  
     }      
@@ -157,9 +163,10 @@ function matchStateToProps(state){
 }
 function mapDispatchToProps(dispatch) {  
   return bindActionCreators({
-    loadTenant: loadSpecificTenant,
+         loadTenant: loadSpecificTenant,
          imageready:imageready ,
-         connectToSocket:connectToSocket     
+         connectToSocket:connectToSocket,
+         loadStructure: getProfileStruct    
   }, dispatch);
 }
 

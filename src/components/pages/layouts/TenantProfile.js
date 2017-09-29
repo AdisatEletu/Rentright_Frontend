@@ -21,9 +21,12 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
         this.css = {};
         this.selected ="tenant_bio";
         this.showModal = this.showModal.bind(this);
-        this.props.loadTenant('/'+this.props.match.params.id); 
+        this.props.loadTenant('/'+this.props.match.params.id).then(()=>{
+
+      
         this.props.getFormStruct();         
            this.uuid = '/'+this.props.match.params.id;
+             }) 
 
     }
        componentWillMount(){
@@ -88,7 +91,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
              completed = {this.props.myProfile.tenants.completed}
              firstname = {this.props.auth.user.first_name}
              lastname = {this.props.auth.user.last_name}
-             rightnode ={<Icon stle = {{color:'#333'}}type = "user"/>} 
+             rightnode ={<Icon style = {{color:'#333'}}type = "user"/>} 
              clicked = {(e)=>this.showModal("tenant_bio")}>
 
              </MainLayout>
@@ -105,7 +108,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
              icon = "layout" 
              headers = "Messages"
              midtext = ""
-             rightnode ={<Icon stle = {{color:'#333'}}type = "user"/>} 
+             rightnode ={<Icon style = {{color:'#333'}}type = "user"/>} 
              noheaders = {false}
               >
                <LongCards imgclass = "play2" header = "Ocean View APartment" body = "Lorem ipn pistol came to away lower vaccuuum skey intelisense and alll.."/>
@@ -117,7 +120,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
              icon = "layout" 
              headers = "Messages"
              midtext = ""
-             rightnode ={<Icon stle = {{color:'#333'}}type = "user"/>} 
+             rightnode ={<Icon style = {{color:'#333'}}type = "user"/>} 
              noheaders = {false}
               >
                <LongCards imgclass = "play2" header = "Ocean View APartment" body = "Lorem ipn pistol came to away lower vaccuuum skey intelisense and alll.."/>

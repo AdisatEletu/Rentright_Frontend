@@ -12,7 +12,7 @@ export default class Middle extends Component{
     this.state = Object.assign(this.props.ownstate);
     this.buttongroup = false;this.text = false; this.switch = false; 
     this.select = false; this.textarea; this.phone = false; this.date = false;
-    this.handleChange = this.handleChange.bind(this);   
+    this.handleChange = this.handleChange.bind(this);  
     if (this.props.datatype == "formgroup"){
          this.buttongroup = true;
     }
@@ -28,7 +28,7 @@ export default class Middle extends Component{
     else if (this.props.datatype == "textarea"){ 
         this.textarea = true; 
     }
-     else if (this.props.datatype == "phone"){ 
+     else if (this.props.datatype == "phone" || this.props.datatype == "number"){ 
         this.phone = true; 
     }
     else { 
@@ -48,32 +48,32 @@ export default class Middle extends Component{
         render (){ 
         if (this.buttongroup) {
             return(
-            <ButtonGroup fullwidth ={true} label ="Select source of income"  onUpdate = {(e)=>this.handleChange(e)}   children = {this.props.keyname}  /> 
+            <ButtonGroup fullwidth ={true} label ="Select source of income"     hasvalue = {this.props.hasvalue}    onUpdate = {(e)=>this.handleChange(e)}   children = {this.props.keyname}  /> 
             )
         } else if (this.textarea) {
             return(
-              <Textarea fullwidth ={true}  label ={this.props.keyname} onUpdate = {(e)=>this.handleChange(e)} name = {this.props.name}  />    
+              <Textarea fullwidth ={true}  label ={this.props.keyname}  hasvalue = {this.props.hasvalue}  onUpdate = {(e)=>this.handleChange(e)} name = {this.props.name}  />    
             )
         }  else if (this.text) {
             return(
-              <Input fullwidth ={true} label ={this.props.keyname} onUpdate = {(e)=>this.handleChange(e)} name = {this.props.name}  />    
+              <Input fullwidth ={true} label ={this.props.keyname}  hasvalue = {this.props.hasvalue}  onUpdate = {(e)=>this.handleChange(e)} name = {this.props.name}  />    
             )
         } else if (this.date) {
             return(
-            <Date label = {this.props.keyname}  onUpdate = {(e)=>this.handleChange(e)} name  = {this.props.name}/>
+            <Date label = {this.props.keyname}  hasvalue = {this.props.hasvalue} onUpdate = {(e)=>this.handleChange(e)} name  = {this.props.name}/>
             )
         }  
          else if (this.phone) {
             return(
-             <Phone fullwidth ={true} label ={this.props.keyname} onUpdate = {(e)=>this.handleChange(e)} name = {this.props.name}  /> 
+             <Phone fullwidth ={true}  hasvalue = {this.props.hasvalue}  label ={this.props.keyname} onUpdate = {(e)=>this.handleChange(e)} name = {this.props.name}  /> 
             )        
         }  else if (this.select) {
             return(
-                 <Select fullwidth ={true}  options = {this.props.variable.options} label ={this.props.keyname} onUpdate = {(e)=>this.handleChange(e)} name = {this.props.name}  /> 
+                 <Select fullwidth ={true}  hasvalue = {this.props.hasvalue}   options = {this.props.variable.options} label ={this.props.keyname} onUpdate = {(e)=>this.handleChange(e)} name = {this.props.name}  /> 
             )
         }else {
             return(
-                <Switch fullwidth ={true} label ={this.props.keyname} onUpdate = {(e)=>this.handleChange(e)} name = {this.props.name}  />  
+                <Switch fullwidth ={true}  hasvalue = {this.props.hasvalue}  label ={this.props.keyname} onUpdate = {(e)=>this.handleChange(e)} name = {this.props.name}  />  
             )
         }    
  };

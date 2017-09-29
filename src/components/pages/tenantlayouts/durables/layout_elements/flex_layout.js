@@ -55,7 +55,7 @@ return (
     <div className = "main-top">
         <div className = "main-cover">
        <div className = "p-headers main-nobg  main-nobd">
-           <Icon style = {{color:'#333'}}type = {this.props.icon}/><span className = "p-headers">{this.props.headers}</span>
+           <Icon style = {{color:'#333'}} type = {this.props.icon}/><span className = "p-headers">{this.props.headers}</span>
            <div className = "p-mid">{this.props.midtext}</div>
            {this.props.rightnode}
            </div>
@@ -109,7 +109,7 @@ clicked = ()=>{
          <Icon type = "heart"/>
      </div>
      </div>
-     <div className = "t-white" style = {{height:'50%'}}>
+     <div className = "t-white" style = {{minHeight:'30%'}}>
      <p><span className = "e-name">{this.props.name}</span> {this.props.paragraph}</p>
       <div className = "secondreview">
        <div><Icon type = "star"/><Icon type = "star"/><Icon type = "star-o"/><Icon type = "star-o"/><Icon type = "star-o"/><span className = "starsbb"> 5 Reviews</span></div>
@@ -249,3 +249,81 @@ return (
 
 
 }
+export class Accordion extends Component{
+constructor(props){
+        super(props);        
+        this.state = {editing:{ index : -1 }}
+        this.expandAccordion = this.expandAccordion.bind(this);
+        this.collapseOtherAccordions = this.collapseOtherAccordions.bind(this);
+         }
+     collapseOtherAccordions(){
+         let editingStat = {};
+          Object.assign(editingStat,this.state.editing)
+          editingStat.index = -1;
+          this.setState({editing: editingStat});
+     }
+     expandAccordion(index){
+        let editingStat = {};
+        this.collapseOtherAccordions();
+          Object.assign(editingStat,this.state.editing)
+          editingStat.index = index;         
+          this.setState({editing:editingStat});
+     }
+        render (){
+         const childrenWithProps = React.Children.map(this.props.children,
+           (child, i) =>React.cloneElement(child, {
+               collapseOtherAccordions: this.collapseOtherAccordions,
+               expandAccordion : (i)=>this.expandAccordion(i),
+               index : i
+           })
+           )   
+           return  (<div style = {styles}> {childrenWithProps }</div>)
+        }//render            
+ }
+ const styles = {
+     width: '105%',
+     height: '100%',
+     overflow:'hidden',
+     padding: '10px',
+     boxSixing: 'border-box'
+ }
+
+
+ export class LeftItems extends Component{
+  constructor(props){
+      super(props);
+     }
+ render(){
+     return(
+     <div className = "il-overall">
+         <div className = "il-collapse">
+             <span className = "il-icons"><Icon type = "up"/></span>
+             <span className = "il-headers">{this.props.header}</span>
+             <span  className =  "il-headers" style ={{marginLeft:'auto'}}><Icon  type = "close"/></span></div>
+             <div className = "il-body">            
+                 <div className = "il-right">
+                    <div className ="il-sub2">{this.props.sub2}</div> 
+                 <p className = "il-sub1">{this.props.sub1}</p>
+                     <div className = "il-attention">{this.props.attention}</div>                     
+                 </div>
+                 <div className = "il-float-bottom">
+                <div className = "il-button">Edit</div>  <div className = "il-button"><Icon type = "delete"/>&nbsp;&nbsp;Delete</div> 
+                     </div>
+             </div>
+
+        
+     </div>
+     )
+ }
+
+ } 
+
+
+
+
+
+
+
+
+
+

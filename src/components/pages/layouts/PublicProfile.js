@@ -20,8 +20,8 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
     }
        componentWillMount(){
         console.log(this.props.profile);
-         this.props.loadTenant('/'+this.uuid);  
-        this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true);    
+        // this.props.loadTenant('/'+this.uuid);  
+        //this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true);    
           
        }
     componentWillReceiveProps(nexprops){
