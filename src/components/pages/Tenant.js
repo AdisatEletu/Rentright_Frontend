@@ -119,7 +119,7 @@ loadprofile = ()=>{
           </div>
                
     </div>
-<Advert/>
+{/*<Advert/>*/}
 </div>
 </div>
 

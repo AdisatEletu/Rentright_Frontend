@@ -101,17 +101,22 @@ clicked = ()=>{
         render (){
    return ( 
     
-     <div className = "event-cards">
-     <div className = {this.props.imageclass ? this.props.imageclass + "  event-cards-image" : " person1 event-cards-image"  }>
+     <div className = "event-cards" style  = {this.props.style ? this.props.style : null }>
+     <div className = {this.props.imageclass ? this.props.imageclass + "  event-cards-image" : " person1 event-cards-image"  }
+    style = {this.props.notdummy ? this.props.height ?  {height:'50%',backgroundImage:'url('+this.props.img+')'}: {backgroundImage:'url('+this.props.img+')'}:null}
+    >
      <div className = "event-cover">
          <Icon type = "heart"/>
      </div>
+     </div>
+     <div className = "t-white" style = {{height:'50%'}}>
      <p><span className = "e-name">{this.props.name}</span> {this.props.paragraph}</p>
       <div className = "secondreview">
-       <div><Icon type = "star"/><Icon type = "star"/><Icon type = "star"/><Icon type = "star"/><Icon type = "star"/><span className = "starsbb"> 5 Reviews</span></div>
-     <div className = "starsb"  style = {{fontSize:'14px', lineHeight:'20px', marginTop:'20px'}}  >5 upvotes | 4 down Votes | 13 reviews</div>
+       <div><Icon type = "star"/><Icon type = "star"/><Icon type = "star-o"/><Icon type = "star-o"/><Icon type = "star-o"/><span className = "starsbb"> 5 Reviews</span></div>
+     <div className = "starsb"  style = {{fontSize:'13px', lineHeight:'20px', marginTop:'5px'}}  >0 Upvotes | 0 Down Votes</div>
     </div>
-     </div>
+   </div>
+  
      </div>
 
          
@@ -218,8 +223,13 @@ constructor(props){
             }
         render (){
 return (
-<div className = "longmore extra-small-cards t-md-10">
-        <div className = {"longmore-circle " + this.props.imgclass} ></div>
+<div className = "longmore extra-small-cards t-md-10" styl = {this.props.square ? {height:'100%'}:null}>
+        <div className = {"longmore-circle " + this.props.imgclass}
+         style = {this.props.img ?
+          this.props.square ? {height:'90px', width:'150px', borderRadius:'0px', backgroundImage:'url('+this.props.img+')' }: {backgroundImage:'url('+this.props.img+')'}
+          :null
+          }
+         ></div>
         <div className = "longed">
         <div className = "allbig">{this.props.header}<i className = "material-icons more longed-gray">expand_more</i></div>
             <div className = "allsmall">{this.props.body}</div>

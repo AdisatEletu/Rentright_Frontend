@@ -10,7 +10,7 @@ import CircleLinks from '../tenantlayouts/circle_links';
 import CompletenessBar  from '../tenantlayouts/completeness_bar';
 import { Progress, Icon } from 'antd';
 import {bindActionCreators} from 'redux';  
-import {FlexLayout,List, MainLayout, PictureCards, Profiler} from '../tenantlayouts/durables/layout_elements/flex_layout'
+import {FlexLayout,List, MainLayout, PictureCards, Profiler, LongCards} from '../tenantlayouts/durables/layout_elements/flex_layout'
 import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant, showLoading, hideLoading, errorLoading,getFormStruct } from '../../../state/actions/tenantAction';
 
 
@@ -58,130 +58,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
     } 
 
     render(){
-        if(this.props.myProfile.tenants){
-            let style = {
-               width:this.props.myProfile.tenants.completed + '%' 
-        }
-         let style2 = {
-               width:100 - (this.props.myProfile.tenants.completed) + '%'
-        }
-        let stylee = {
-                  width:'0%',
-                  backgroundColor:'#FF782D' 
-                }
-             let style2e = {
-               width:'100%',
-               backgroundColor:"#FFFCEC"
-            } 
-            let styler = {
-                  width:'0%',
-                  backgroundColor:'#FF782D' 
-                }
-             let style2r = {
-               width:'100%',
-               backgroundColor:"#FFFCEC"
-            } 
-            let stylei = {
-                  width:'0%',
-                  backgroundColor:'#FF782D' 
-                }
-             let style2i = {
-               width:'100%',
-               backgroundColor:"#FFFCEC"
-               } 
-        //#FF782D  orange
-        //#b2d234 green
-            let styleb = {
-               width:this.props.myProfile.tenants.tenant_bio.completed + '%',
-               backgroundColor: this.props.myProfile.tenants.tenant_bio.completed < 50 ? '#FF782D' : '#66BB6A'            
-                }
-             let style2b = {
-               width:100 - (this.props.myProfile.tenants.tenant_bio.completed) + '%',
-               backgroundColor:"#FFFCEC"
-               }
-              let styleg = {
-               width:this.props.myProfile.tenants.completed + '%',
-               backgroundColor: this.props.myProfile.tenants.completed < 50 ? '#FF782D' : '#66BB6A'            
-                }
-             let style2g = {
-               width:100 - (this.props.myProfile.tenants.completed) + '%',
-               backgroundColor:"#FFFCEC"
-            } 
-            if (this.props.myProfile.tenants.tenant_employment_history.length > 0){
-             stylee = {               
-               width:this.props.myProfile.tenants.tenant_employment_history[0].completed + '%',
-               backgroundColor:this.props.myProfile.tenants.tenant_employment_history[0].completed < 50 ? '#FF782D' : '#66BB6A'            
-                }
-            style2e = {
-               width:100 - (this.props.myProfile.tenants.tenant_employment_history[0].completed) + '%',
-               backgroundColor:"#FFFCEC"
-               } 
-            }//ifelse\\
-            else{
-            stylee = {
-                 width:'0%',
-                  backgroundColor:'#FF782D' 
-                }
-            style2e = {
-               width:'100 %',
-               backgroundColor:"#FFFCEC"
-               } 
-
-            }
-            try{
-             if (this.props.myProfile.tenants.tenant_residence_history.length > 0){
-             styler = {               
-               width:this.props.myProfile.tenants.tenant_residence_history[0].completed + '%',
-               backgroundColor:this.props.myProfile.tenants.tenant_residence_history[0].completed < 50 ? '#FF782D' : '#66BB6A'            
-                }
-             style2r = {
-               width:100 - (this.props.myProfile.tenants.tenant_residence_history[0].completed) + '%',
-               backgroundColor:"#FFFCEC"
-               } 
-            }//ifelse\\
-            else{
-            styler = {
-                 width:'0%',
-                  backgroundColor:'#FF782D' 
-                }
-            style2r = {
-               width:'100 %',
-               backgroundColor:"#FFFCEC"
-               } 
-
-            }
-            }catch(err){
-               console.log(err)
-            }
-        try{
-         if (this.props.myProfile.tenants.tenant_immigration_history.length > 0){
-             stylei = {               
-               width:this.props.myProfile.tenants.tenant_immigration_history[0].completed + '%',
-               backgroundColor:this.props.myProfile.tenants.tenant_residencet_history[0].completed < 50 ? '#FF782D' : '#66BB6A'            
-                }
-             style2i = {
-               width:100 - (this.props.myProfile.tenants.tenant_immigration_history[0].completed) + '%',
-               backgroundColor:"#FFFCEC"
-               } 
-            }//ifelse\\
-            else{
-            stylei = {
-                 width:'0%',
-                  backgroundColor:'#FF782D' 
-                }
-            style2i = {
-               width:'100 %',
-               backgroundColor:"#FFFCEC"
-               } 
-
-            }
-        }catch(err){
-          console.log(err);
-        }
-
-
-        
-
+        if(this.props.myProfile.tenants){          
            return(
              <div className = "t-md-10 p-hold t-flex-row t-flex-space-between t-flex-wrap">
             <div className = "events">
@@ -194,6 +71,8 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
                <Profiler imageclass = "person2" name = "Locus Stnading " paragraph = "Also called cosmic string entity used to represent elementary particles finite stringlike" /> 
                <Profiler imageclass = "person3" name = "Locus Stnading " paragraph = "Also called cosmic string entity used to represent elementary particles finite stringlike" />
                <Profiler imageclass = "person5" name = "Locus Stnading " paragraph = "Also called cosmic string entity used to represent elementary particles finite stringlike" />
+               <Profiler imageclass = "person5" name = "Locus Stnading " paragraph = "Also called cosmic string entity used to represent elementary particles finite stringlike" />
+       
                 </div>
 
             </div>
@@ -202,7 +81,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
               <span className = "bodyTest">SEE ALL <Icon type = "right" /></span>
             </div>       
            <div className = "t-md-10 t-flex t-justify-space-around">
-             <MainLayout width = "35%" 
+             <MainLayout width = "25%" 
              icon = "layout" 
              headers = "Profile Completion"
              midtext = "Check your profile level"
@@ -213,7 +92,7 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
              clicked = {(e)=>this.showModal("tenant_bio")}>
 
              </MainLayout>
-              <FlexLayout width = "30%" 
+              <FlexLayout width = "20%" 
              icon = "layout" 
              headers = "Profile Completion"
              midtext = "Check your profile level"
@@ -222,15 +101,31 @@ import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecific
               >
              <PictureCards  fullheight = {true}otherclass = "play6" text = "Luxurious Two Bedroom in Alagomeji"/> 
              </FlexLayout>
-            <FlexLayout width = "30%" 
+            <FlexLayout width = "20%" 
              icon = "layout" 
              headers = "Messages"
              midtext = ""
              rightnode ={<Icon stle = {{color:'#333'}}type = "user"/>} 
              noheaders = {false}
               >
- 
+               <LongCards imgclass = "play2" header = "Ocean View APartment" body = "Lorem ipn pistol came to away lower vaccuuum skey intelisense and alll.."/>
+               <LongCards imgclass = "play3" header = " Banana Island" body = "Lorem ipsum somas swimmern pistol came to away lower vac.."/>
+               <LongCards imgclass = "play2" header = "Ocean View APartment" body = "Lorem ipn pistol came to away lower vaccuuum skey intelisense and alll.."/>
+               <LongCards imgclass = "play3" header = " Banana Island" body = "Lorem ipsum somas swimmern pistol came to away lower vac.."/>
              </FlexLayout>
+            <FlexLayout width = "20%" 
+             icon = "layout" 
+             headers = "Messages"
+             midtext = ""
+             rightnode ={<Icon stle = {{color:'#333'}}type = "user"/>} 
+             noheaders = {false}
+              >
+               <LongCards imgclass = "play2" header = "Ocean View APartment" body = "Lorem ipn pistol came to away lower vaccuuum skey intelisense and alll.."/>
+               <LongCards imgclass = "play3" header = " Banana Island" body = "Lorem ipsum somas swimmern pistol came to away lower vac.."/>
+               <LongCards imgclass = "play2" header = "Ocean View APartment" body = "Lorem ipn pistol came to away lower vaccuuum skey intelisense and alll.."/>
+               <LongCards imgclass = "play3" header = " Banana Island" body = "Lorem ipsum somas swimmern pistol came to away lower vac.."/>
+             </FlexLayout>
+
              </div>
                {this.state.showModal ? <ModalForms selected = {this.selected} hideModal = {this.hideModal}/> :null}
         
