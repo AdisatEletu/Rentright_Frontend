@@ -3,12 +3,15 @@ import {Helmet} from "react-helmet";
 import {connect} from 'react-redux';
 import FooterMain from './layouts/footer/FooterMain';
 import PrimaryNav from './layouts/header/navigation/PrimaryNav';
-
+import HomeSearch from "./HomeSearch";
+import {StickyContainer, Sticky} from 'react-sticky'
+const opt = { isSticky:true, distanceFromTop:45 }
 export default class NewHome extends Component{
 
 
     render(){
         return(
+            <StickyContainer>
             <div className="home-mainbody t-flex t-align-content-stretch t-fullwidth  t-flex-column">
                 <Helmet>
                     <link href="http://localhost:3000/CSS/tenant.css" rel="stylesheet" type="text/css"/>
@@ -51,92 +54,28 @@ export default class NewHome extends Component{
                         </div>
                     </div>
                 </div>
+                <StickyContainer>
                 <div className="picture-div t-flex t-fullwidth interior1 home-slider t-fullheight home-bxshadow ">
-                    <div className="home-cover">
-                    </div></div>
-                <div className="home-body-search t-flex t-align-center nav-pad-left-right t-justify-center ">
-                    <div className="home-search t-flex t-md-10 t-flex-column home-pad">
 
-                        <div className="home-search-holder t-flex t-flex-column t-md-10">
+                    <div className="home-cover t-flex  t-align-center t-justify-center  nav-pad-left-right">
 
-                            <div className="t-flex t-fullheight t-flex-row key-crumbs t-md-10 t-justify-space-between t-align-top home-top-pad ">
-                                <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
-                                    <label className="home-label">Keyword</label>
-                                    <div className="home-search-items t-flex t-md-10 ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-10" id="keyword" />
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
-                                    <label className="home-label">Location</label>
-                                    <div className="home-search-items t-flex t-md-10 ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        <i className="material-icons home-search-icon2 t-md-2">keyboard_arrow_down</i>
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
-                                    <label className="home-label">Property Type</label>
-                                    <div className="home-search-items t-flex t-md-10 ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        <i className="material-icons home-search-icon2 t-md-2">keyboard_arrow_down</i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="t-flex t-fullheight t-flex-row key-crumbs t-md-10 t-justify-space-between t-align-top home-top-pad ">
-                                <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
-                                        <label className="home-label m-ellipses home-label-top">Min Bedrooms</label>
-                                        <div className="home-search-items t-flex t-md-10  ">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
-                                        <label className="home-label m-ellipses home-label-top">Min Bathrooms</label>
-                                        <div className="home-search-items t-flex t-md-10 ">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
-                                        <label className="home-label m-ellipses home-label-top ">Min Area (Sq ft)</label>
-                                        <div className="home-search-items t-flex t-md-10 ">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
-                                        <label className="home-label m-ellipses home-label-top ">Max Area (Sq ft)</label>
-                                        <div className="home-search-items t-flex t-md-10 ">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
-                                        <label className="home-label m-ellipses home-label-top ">Min Price ( # )</label>
-                                        <div className="home-search-items t-flex t-md-10 ">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
-                                        <label className="home-label m-ellipses home-label-top ">Max Price ( # )</label>
-                                        <div className="home-search-items t-flex t-md-10">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        </div>
-                        <div className="t-flex  t-flex-row t-md-10 t-justify-space-between classbottom ">
-                            <div className="t-flex  t-md-45 home-view-deals lato t-align-content-center t-justify-space-between">
-                                <span>View Deals</span>
-                                <i className="material-icons">arrow_forward</i>
-                            </div>
-                            <div className="t-flex  t-md-45 home-view-deals2  t-justify-space-between ">
-                                <span>Search</span>
-                                <i className="material-icons">arrow_forward</i>
-                            </div>
-                        </div>
+                        <Sticky disableCompensation relative = {true} topOffset = {50}>
+                            {
+                                (isSticky =true, distanceFromTop = 80) =>{
+                                return(
+                                    <HomeSearch/>
+                                )
+                            } }
+
+                        </Sticky>
+
+
                     </div>
+
+                </div>
+                </StickyContainer>
+                <div className="home-body-search2 t-flex t-align-center nav-pad-left-right ">
+
                 </div>
                 <div className="t-flex home-fourth-div t-flex-row t-md-10 t-justify-space-around t-align-top "><div className="home-fourth-div-cover ">
                     <div className="home-div-outer t-fullheight t-flex t-justify-space-around t-md-10  t-align-center nav-pad-left-right">
@@ -498,6 +437,7 @@ export default class NewHome extends Component{
                 </div>
                 <FooterMain/>
             </div>
+            </StickyContainer>
         );
     }
 }
