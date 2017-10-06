@@ -3,12 +3,78 @@ import {Helmet} from "react-helmet";
 import {connect} from 'react-redux';
 import FooterMain from './layouts/footer/FooterMain';
 import PrimaryNav from './layouts/header/navigation/PrimaryNav';
+import HomeSearch from "./HomeSearch";
+import {Icon} from 'antd'
+
 
 export default class NewHome extends Component{
+ constructor(props){
+     super(props);
+     this.state = {loading:true}
+     this.loadingStatus = this.loadingStatus.bind(this)
+    this.searchFunc = this.searchFunc.bind(this);
+    this.myapi = this.myapi.bind(this);
+    this.loadingStatus = this.loadingStatus.bind(this);
 
+}
+
+loadingStatus =(context) =>{
+     let obj = {};
+     obj['loading'] = context;
+     this.setState(obj);
+
+}
+componentWillUnmount(){
+     console.log('Unmounted')
+
+}
+componentDidMount (){
+    console.log('mounting')
+    this.searchFunc()
+    /*({
+     units: response.body.search,
+     total: response.body.totalResults
+     });*/
+}
+
+
+
+    searchFunc = ()=>{
+    const context = this;
+       // this.setState ({loading:true, error:false,results:null});
+        this.loadingStatus(true)
+        let url= "https://rentright.herokuapp.com/api/rentright/units/query/?all=true";
+        this.myapi(url).then((data) => {
+            console.log('this is response', data.results)
+            context.setState({loading:false, error:false,results:data.results});
+           // context.loadingStatus(false)
+         }).catch((error)=>{
+           // context.setState({loading:false, error:true, results:undefined});
+            //context.loadingStatus(false)
+            console.log('home error',error)
+        })
+
+
+
+
+
+    }
+         myapi = (url)=>{
+        return  fetch(url).then((dat) => {
+            return  dat.json();
+        });
+
+
+    }
 
     render(){
+     if (this.state.loading){
+         return (
+             <Icon type = "loading" style = {{width:'100%', fontSize:'50px', boxSizing:'border-box', color:'#666', textAlign:'center', height:'100%', paddingTop:'20%'}}/>
+         )
+     }else{
         return(
+
             <div className="home-mainbody t-flex t-align-content-stretch t-fullwidth  t-flex-column">
                 <Helmet>
                     <link href="http://localhost:3000/CSS/tenant.css" rel="stylesheet" type="text/css"/>
@@ -24,18 +90,22 @@ export default class NewHome extends Component{
                         <span className=" t-flex t-flex-column t-align-left ">
                           <i className="material-icons icon-props  ">place</i>
                         </span>
-                            <div className=" t-flex t-flex-column t-align-left t-justify-space-between pad-left-15"><span className="address"> 74 Raymond Njoku street</span><span>Ikoyi, Lagos.</span></div></div>
+                            <div className=" t-flex t-flex-column t-align-left t-justify-space-between pad-left-15"><span className="address museo">Find Home</span><span>Ikoyi, Lagos.</span></div></div>
                         <div className="t-flex icon-text-holder">
                         <span className="t-flex  t-align-left  t-flex-column ">
                           <i className="material-icons icon-props ">call</i>
                         </span>
                         <div className="t-flex  t-align-left t-justify-space-between t-flex-column pad-left-15">
-                            <span className="phone-no">  +234 802 2231 719 </span> <span><a href="#">Info@rentright.com</a></span></div></div>
+                            <span className="phone-no museo">  List Your Property </span>
+                            <div><a href="#" className="home-list">here</a></div>
+                        </div>
+
+                        </div>
                     </div>
                 </div>
                 <div className="home-third-div t-flex t-align-center  t-flex-row nav-pad-left-right">
-                    <div className="bar-box t-flex t-align-center t-justify-space-between t-md-10 ">
-                        <div className="t-flex t-flex-row t-align-center t-justify-left t-md-6">
+                    <div className="bar-box t-flex t-align-center t-justify-space-between t-md-10  ">
+                        <div className="t-flex t-flex-row t-align-center t-justify-right t-md-10">
                             <span className="bar-breadcrumbs bar-tabs  bar-tabs-active"><a href="/landlord-guide">LANDLORD</a></span>
                             <span className="bar-breadcrumbs bar-tabs "><a href="/tenant-guide">TENANT</a></span>
 
@@ -45,98 +115,22 @@ export default class NewHome extends Component{
                             <span className="bar-breadcrumbs bar-tabs "><span>INSTITUTIONS</span><i className="material-icons ">keyboard_arrow_down</i></span>
 
                         </div>
-                        <div className="home-search-field t-flex-row t-flex t-justify-space-between t-align-center t-md-3">
-                            <input type="text" placeholder="Search Cities ..." className="home-first-search" />
-                            <i className=" home-search-icon material-icons">search</i>
-                        </div>
+
                     </div>
                 </div>
+
                 <div className="picture-div t-flex t-fullwidth interior1 home-slider t-fullheight home-bxshadow ">
-                    <div className="home-cover">
-                    </div></div>
-                <div className="home-body-search t-flex t-align-center nav-pad-left-right t-justify-center ">
-                    <div className="home-search t-flex t-md-10 t-flex-column home-pad">
 
-                        <div className="home-search-holder t-flex t-flex-column t-md-10">
+                    <div className="home-cover t-flex  t-align-center t-justify-center  nav-pad-left-right">
 
-                            <div className="t-flex t-fullheight t-flex-row key-crumbs t-md-10 t-justify-space-between t-align-top home-top-pad ">
-                                <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
-                                    <label className="home-label">Keyword</label>
-                                    <div className="home-search-items t-flex t-md-10 ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-10" id="keyword" />
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
-                                    <label className="home-label">Location</label>
-                                    <div className="home-search-items t-flex t-md-10 ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        <i className="material-icons home-search-icon2 t-md-2">keyboard_arrow_down</i>
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-column t-align-space-between t-md-3 t-justify-center home-search-wrapper">
-                                    <label className="home-label">Property Type</label>
-                                    <div className="home-search-items t-flex t-md-10 ">
-                                        <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        <i className="material-icons home-search-icon2 t-md-2">keyboard_arrow_down</i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="t-flex t-fullheight t-flex-row key-crumbs t-md-10 t-justify-space-between t-align-top home-top-pad ">
-                                <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
-                                        <label className="home-label m-ellipses home-label-top">Min Bedrooms</label>
-                                        <div className="home-search-items t-flex t-md-10  ">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
-                                        <label className="home-label m-ellipses home-label-top">Min Bathrooms</label>
-                                        <div className="home-search-items t-flex t-md-10 ">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
-                                        <label className="home-label m-ellipses home-label-top ">Min Area (Sq ft)</label>
-                                        <div className="home-search-items t-flex t-md-10 ">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
-                                        <label className="home-label m-ellipses home-label-top ">Max Area (Sq ft)</label>
-                                        <div className="home-search-items t-flex t-md-10 ">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="t-flex t-flex-row t-justify-space-between t-md-3 home-search-wrapper2">
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-center t-align-space-between  ">
-                                        <label className="home-label m-ellipses home-label-top ">Min Price ( # )</label>
-                                        <div className="home-search-items t-flex t-md-10 ">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                    <div className="t-flex t-flex-column t-md-45 t-justify-space-between">
-                                        <label className="home-label m-ellipses home-label-top ">Max Price ( # )</label>
-                                        <div className="home-search-items t-flex t-md-10">
-                                            <input type="text" placeholder="Enter Keyword" className="home-keyword t-md-8" id="keyword" />
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        </div>
-                        <div className="t-flex  t-flex-row t-md-10 t-justify-space-between classbottom ">
-                            <div className="t-flex  t-md-45 home-view-deals lato t-align-content-center t-justify-space-between">
-                                <span>View Deals</span>
-                                <i className="material-icons">arrow_forward</i>
-                            </div>
-                            <div className="t-flex  t-md-45 home-view-deals2  t-justify-space-between ">
-                                <span>Search</span>
-                                <i className="material-icons">arrow_forward</i>
-                            </div>
-                        </div>
+                                    <HomeSearch/>
+
                     </div>
+
+                </div>
+
+                <div className="home-body-search2 t-flex t-align-center nav-pad-left-right ">
+
                 </div>
                 <div className="t-flex home-fourth-div t-flex-row t-md-10 t-justify-space-around t-align-top "><div className="home-fourth-div-cover ">
                     <div className="home-div-outer t-fullheight t-flex t-justify-space-around t-md-10  t-align-center nav-pad-left-right">
@@ -144,8 +138,8 @@ export default class NewHome extends Component{
                             <div className="t-md-10 home-outer-div-icon t-flex t-align-center t-justify-center t-center-f ">
                                 <span><i className="material-icons home-icon-central">vpn_key</i></span>
                             </div>
-                            <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses"> Quick Deals</div>
-                            <div className="home-div-outer-body t-flex t-md-10 t-center-f">
+                            <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo"> Quick Deals</div>
+                            <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima">
                                 It is fun and easy to rent or list a property using RentRight.
                             </div>
                         </div>
@@ -153,8 +147,8 @@ export default class NewHome extends Component{
                             <div className="t-md-10 home-outer-div-icon t-flex t-align-center t-justify-center t-center-f ">
                                 <span><i className="material-icons home-icon-central">thumb_up</i></span>
                             </div>
-                            <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses"> Experience</div>
-                            <div className="home-div-outer-body t-flex t-md-10 t-center-f">
+                            <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo"> Experience</div>
+                            <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima">
                                 It is fun and easy to rent or list a property using RentRight.
                             </div>
                         </div>
@@ -162,8 +156,8 @@ export default class NewHome extends Component{
                             <div className="t-md-10 home-outer-div-icon t-flex t-align-center t-justify-center t-center-f ">
                                 <span><i className="material-icons home-icon-central">star_border</i></span>
                             </div>
-                            <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses">  Exclusive Offers</div>
-                            <div className="home-div-outer-body t-flex t-md-10 t-center-f">
+                            <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo">  Exclusive Offers</div>
+                            <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima">
                                 It is fun and easy to rent or list a property using RentRight.
                             </div>
                         </div>
@@ -171,8 +165,8 @@ export default class NewHome extends Component{
                             <div className="t-md-10 home-outer-div-icon t-flex t-align-center t-justify-center t-center-f ">
                                 <span><i className="material-icons home-icon-central">favorite_border</i></span>
                             </div>
-                            <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses"> Happy Clients</div>
-                            <div className="home-div-outer-body t-flex t-md-10 t-center-f">
+                            <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo"> Happy Clients</div>
+                            <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima">
                                 It is fun and easy to rent or list a property using RentRight.
                             </div>
                         </div>
@@ -180,72 +174,109 @@ export default class NewHome extends Component{
                 </div>
                 </div>
                 <div className="home-fifth-div t-flex nav-pad-left-right t-md-10 t-justify-center t-align-center t-flex-column">
-                    <div className="home-rent-ad t-flex t-center-f t-align-center t-justify-center"> Best Offer for Rent
+                    <div className="home-rent-ad t-flex t-center-f t-align-center t-justify-center museo"> Best Featured Offer
                     </div>
                     <div className=" t-flex t-align-center t-md-10 t-justify-center home-hr-super">
                         <div className="t-flex t-md-4 t-justify-center t-fullheight home-t-hr-cover">
                             <div className="t-hr t-md-3 t-fullheight" />
                         </div>
                     </div>
-                    <div className="home-rent-ad-details t-flex t-center-f t-md-7 t-align-center t-justify-center"> Best Offer for Rent  Best Offer for Rent
-                        Best Offer for Rent Best Offer
-                        for Rent Best Offer for Rent Best Offer for Rent Best Offer for
-                        Rent Best Offer for Rent Best Offer for Rent Best Offer for Rent
+                    <div className="home-rent-ad-details t-flex t-center-f t-md-7 t-align-center t-justify-center proxima">
+                        This is the best featured offer based on your location, sign in to see more of these offers.
                     </div>
                 </div>
-                <div className="home-ad-picture-holder t-flex t-md-10 t-flex-row nav-pad-left-right">
-                    <div className="home-ad-picture t-flex t-md-5">
-                        <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column t-align-content-space-between">
-                            <div className="t-flex t-flex-row">
-                                <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> #500,000 /Year</span>
-                             </div>
-                            <div className=" home-aplicants t-flex t-md-10  ">
-                                <div className=" t-flex t-md-5 t-align-center home-applicants-left  ">
-                                    <div className="t-flex home-aplicant-picture" />
-                                    <span className="home-aplicant-name t-align-center t-flex ">Ngozi John</span>
+
+                {this.state.results.units.map((real,)=> {
+                        return(
+
+                        <div key={0} className="home-ad-picture-holder t-flex t-md-10 t-flex-row nav-pad-left-right">
+                            <div className="t-flex  t-md-5 home-bgg " style = {real.unit_images[0] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[0].id+ ")"}:undefined} >
+
+                                <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column t-align-content-space-between">
+                                    <div className="t-flex t-flex-row">
+                                        <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {real.monthly_rent}</span>
+                                    </div>
+
+                                    <div className="t-flex t-justify-center t-align-content-center  t-md-10">
+                                        <span className="home-street-view t-md-5 t-justify-center t-align-center"><Icon type="link"/> Street View</span>
+                                    </div>
+
+                                    <div className=" home-aplicants t-flex t-md-10  ">
+                                        <div className=" t-flex t-md-5 t-align-center home-applicants-left  ">
+                                            <div className="t-flex home-aplicant-picture" style = {real.unit_images[2] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[2].id+ ")"}:undefined}
+
+                                            />
+                                            <span className="home-aplicant-name t-align-center t-flex ">{real.unit_images[1].section}</span>
+                                        </div>
+                                        <div className="t-flex home-applicant-right t-justify-center t-md-5 t-align-center">
+                                            {real.applications.length>0?
+                                                <div className = "t-md-10 t-full-height t-flex ">
+                                                    <div className="t-flex home-no-of-applicant t-align-center montserrat">{real.applications.length} Applicants</div>
+                                                </div>
+                                                :
+                                                null
+
+                                            }
+
+                                                { real.applications.map((item, index) => {
+                                                    return(
+                                                    <div key={index}
+                                                         className="pppppp t-flex home-aplicant-picture2 t-align-center "
+                                                         style={{backgroundImage: 'url(' + item + ')'}}/>
+                                                    )
+
+                                                })
+                                                }
+
+                                        </div>
+
+
+                                    </div>
                                 </div>
-                                <div className="t-flex home-applicant-right t-justify-center t-md-5 t-align-center">
-                                    <div className="t-flex home-aplicant-picture2 t-align-center " />
-                                    <div className="t-flex home-aplicant-picture3 t-align-center " />
-                                    <div className="t-flex home-aplicant-picture4 t-align-center" />
-                                    <div className="t-flex home-no-of-applicant t-align-center montserrat"> 3 Applicants</div>
+                            </div>
+                            <div
+                                className="home-ad-info t-flex t-fullheight t-md-5 t-flex t-align-space-between t-flex-column">
+                                <div className="ad-info-address t-md-10"> {real.address.address.address}
+                                </div>
+                                <div className="ad-proptype t-flex t-md-10">{real.unit_type}</div>
+                                <div className="t-flex ad-description1 t-flex-row t-md-10 t-justify-space-between ">
+                                    <div className="t-flex t-flex-column t-md-45">
+                                        <div className="t-flex  t-md-10 t-flex-column t-justify-left">
+                                            <span>4 bedrooms, {real.bathrooms} baths</span>
+                                           <span> Home size: {real.square_footage} Sq ft</span>
+                                            <span> Parking Spot: {real.parking_no} </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="ad-divider t-flex t-flex-column t-md-1 t-align-center ">
+
+                                    </div>
+
+
+                                    <div className="t-flex t-flex-column t-md-45">
+                                        <div className="t-flex  t-md-10 t-flex-column t-justify-left">
+                                            <span>Year Built:</span>
+
+                                            <span> Days on market: </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="t-flex ad-view-offer t-flex-row t-md-10 t-justify-space-between ">
+                                    <div
+                                        className="ad-view-offer-btn t-flex t-flex column t-md-45 t-align-center t-justify-space-between">
+                                        <span>View offer </span><i
+                                        className="material-icons t-justify-right ">arrow_forward</i></div>
+                                    <div
+                                        className="ad-view-offer-btn2 t-flex t-flex column t-md-45 t-align-center t-justify-space-between">
+                                        <span> Add to Favourite</span><i className="material-icons t-justify-right ">favorite</i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="home-ad-info t-flex t-fullheight t-md-5 t-flex t-align-space-between t-flex-column">
-                        <div className="ad-info-address t-md-10"> 722rd, Festac Town, Lagos.
-                        </div>
-                        <div className="ad-proptype t-flex t-md-10">Apartment</div>
-                        <div className="t-flex ad-description1 t-flex-row t-md-10 t-justify-space-between ">
-                            <div className="t-flex t-flex-column t-md-45">
-                                <div className="t-flex  t-md-10 t-justify-left">
-                                    4 bedrooms, 3quarter baths<br/>
-                                    Home size: 1850 Sq ft<br/>
-                                   Lot size: 7000 Sq ft
-                                </div>
-                            </div>
-
-
-                            <div className="ad-divider t-flex t-flex-column t-md-1 t-align-center " >
-
-                            </div>
-
-
-                            <div className="t-flex t-flex-column t-md-45">
-                                <div className="t-flex  t-md-10 t-flex-column t-justify-left">
-                                    <span>Year Built: 2014</span>
-                                    <span> Parking Spot: 2 </span>
-                                   <span> Days on market: 205</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="t-flex ad-view-offer t-flex-row t-md-10 t-justify-space-between ">
-                            <div className="ad-view-offer-btn t-flex t-flex column t-md-45 t-align-center t-justify-space-between"> <span>View offer </span><i className="material-icons t-justify-right ">arrow_forward</i></div>
-                            <div className="ad-view-offer-btn2 t-flex t-flex column t-md-45 t-align-center t-justify-space-between"><span> Add to Favourite</span><i className="material-icons t-justify-right ">favorite</i></div>
-                        </div>
-                    </div>
-                </div>
+                        );
+                    }
+                )}
                 <div className="home-agents-div t-flex t-md-10">
                     <div className="home-agents-details t-flex  t-md-5 t-flex-column"><div className="home-agent-header t-flex t-justify-right">Feel Free to Contact Our Agents</div>
                         <div className=" t-flex t-md-10 t-justify-right home-hr-super2">
@@ -299,161 +330,68 @@ export default class NewHome extends Component{
                         Newest Offer Newest Offer Newest Offer Newest Offer Newest Offer Newest Offer Newest Offer Newest Offer Newest Offer Newest Offer
                         Newest Offer Newest Offer Newest Offer</div>
                 </div>
-                <div className="home-newest-properties-div t-flex nav-pad-left-right t-md-10 ">
-                    <div className="home-properties-holder t-flex t-md-10 t-justify-space-between t-align-center">
-                        <div className="home-property1 t-flex t-md-48 t-flex-column">
-                            <div className="home-property-picture1 t-flex t-md-10">
+                <div className = "t-flex t-flex-row t-md-10 t-flex-wrap t-justify-space-between home-newest-properties-div nav-pad-left-right">
+                {this.state.results.units.map((real, i)=>
+
+                        <div key={i} className="home-property1 t-flex t-md-48 t-flex-column">
+                            <div className="home-property-picture1 t-flex t-md-10" style = {real.unit_images[0] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[0].id+ ")"}:undefined}>
                                 <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
                                     <div className="t-flex t-flex-row">
-                                        <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> #12,000 /month</span>
+                                        <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {real.monthly_rent}</span>
                                         <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center "><i className="material-icons ">favorite_border</i> </span>
                                     </div>
+
+                                    <div className="t-flex t-justify-center t-align-content-center  t-md-10">
+                                        <span className="home-street-view t-md-5 t-justify-center t-align-center"><Icon type="link"/> Street View</span>
+                                    </div>
+
                                     <div className=" home-aplicants t-flex t-md-10  ">
                                         <div className=" t-flex t-md-5 t-align-center  ">
-                                            <div className="t-flex home-aplicant-picture" />
-                                            <span className="home-aplicant-name t-align-center t-flex ">Ngozi John</span>
+                                            <div className="t-flex home-aplicant-picture" style = {real.unit_images[1] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[1].id+ ")"}:undefined} ></div>
+                                            <span className="home-aplicant-name t-align-center t-flex ">{real.unit_images[1].section}</span>
                                         </div>
                                         <div className="t-flex home-applicant-right t-justify-center t-md-5 t-align-center">
-                                            <div className="t-flex home-aplicant-picture2 t-align-center " />
-                                            <div className="t-flex home-aplicant-picture3 t-align-center " />
-                                            <div className="t-flex home-aplicant-picture4 t-align-center" />
-                                            <div className="t-flex home-no-of-applicant t-align-center montserrat"> 3 Applicants</div>
+                                            {real.applications.length>0?
+                                                <div className = "t-md-10 t-full-height t-flex ">
+                                                    <div className="t-flex home-no-of-applicant t-align-center montserrat">{real.applications.length} Applicant</div>
+                                                </div>
+                                                :
+                                                null
+
+                                            }
+
+                                            { real.applications.map((item, index) => {
+                                                return(
+                                                    <div key={index}
+                                                         className="pppppp t-flex home-aplicant-picture2 t-align-center "
+                                                         style={{backgroundImage: 'url(' + item + ')'}}/>
+                                                )
+
+                                            })
+                                            }
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-center">
-                                <div className="home-newest-address t-flex t-align-left t-md-7 "><i className="material-icons ">place</i> 722rd Festac town, Lagos.</div>
+                               <div className="home-newest-address t-flex t-align-left t-md-7 "><i className="material-icons ">place</i> {real.address.address.address}</div>
                                 <br /><br />
                                 <div className="home-newest-size t-flex t-md-10 t-justify-space-between ">
                                     <div className="home-square-size t-flex t-md-32">
-                                        <span><i className="material-icons ">home</i> 450 Sq m</span>
+                                        <span><i className="material-icons ">home</i> {real.square_footage} Sq m</span>
                                     </div>
                                     <div className="home-room-size t-flex t-md-32">
-                                        <span><i className="fa fa-cube" />4 rooms</span>
+                                        <span><i className="fa fa-cube" />{real.bedrooms}rooms</span>
                                     </div>
                                     <div className="home-bathroom-size t-flex t-md-32">
-                                        <span><i className="fa fa-bathtub" />2 bathrooms</span>
+                                        <span><i className="fa fa-bathtub" />{real.bathrooms} bathrooms</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="home-property2 t-flex t-md-48 t-flex-column">
-                            <div className="home-property-picture2 t-flex t-md-10 t-justify-space-between ">
-                                <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column t-align-content-space-between">
-                                    <div className="t-flex t-flex-row">
-                                        <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> #12,000 /month</span>
-                                        <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center "><i className="material-icons ">favorite_border</i> </span>
-                                    </div>
-                                    <div className=" home-aplicants t-flex t-md-10  ">
-                                        <div className=" t-flex t-md-5 t-align-center  ">
-                                            <div className="t-flex home-aplicant-picture" />
-                                            <span className="home-aplicant-name t-align-center t-flex ">Ngozi John</span>
-                                        </div>
-                                        <div className="t-flex home-applicant-right t-justify-center t-md-5 t-align-center">
-                                            <div className="t-flex home-aplicant-picture2 t-align-center " />
-                                            <div className="t-flex home-aplicant-picture3 t-align-center " />
-                                            <div className="t-flex home-aplicant-picture4 t-align-center" />
-                                            <div className="t-flex home-no-of-applicant t-align-center montserrat"> 3 Applicants</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="home-newest-location t-flex t-flex-column t-md-10 t-align-content-space-between  t-justify-center">
-                                <div className="home-newest-address t-flex t-align-left t-md-7 "><i className="material-icons ">place</i> 722rd Festac town, Lagos.</div>
-                                <br /><br />
-                                <div className="home-newest-size t-flex t-md-10 t-justify-space-between ">
-                                    <div className="home-square-size t-flex t-md-32">
-                                        <span><i className="material-icons ">home</i> 450 Sq m</span>
-                                    </div>
-                                    <div className="home-room-size t-flex t-md-32">
-                                        <span><i className="fa fa-cube" />< span className="home-size-hover"> 4 rooms</span></span>
-                                    </div>
-                                    <div className="home-bathroom-size t-flex t-md-32">
-                                        <span><i className="fa fa-bathtub" />2 bathrooms</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="home-newest-properties-div t-flex nav-pad-left-right t-md-10 ">
-                    <div className="home-properties-holder t-flex t-md-10 t-justify-space-between t-align-center">
-                        <div className="home-property3 t-flex t-md-48 t-flex-column">
-                            <div className="home-property-picture3 t-flex t-md-10">
-                                <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
-                                    <div className="t-flex t-flex-row">
-                                        <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> #12,000 /month</span>
-                                        <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center "><i className="material-icons ">favorite_border</i> </span>
-                                    </div>
-                                    <div className=" home-aplicants t-flex t-md-10  ">
-                                        <div className=" t-flex t-md-5 t-align-center  ">
-                                            <div className="t-flex home-aplicant-picture" />
-                                            <span className="home-aplicant-name t-align-center t-flex ">Ngozi John</span>
-                                        </div>
-                                        <div className="t-flex home-applicant-right t-justify-center t-md-5 t-align-center">
-                                            <div className="t-flex home-aplicant-picture2 t-align-center " />
-                                            <div className="t-flex home-aplicant-picture3 t-align-center " />
-                                            <div className="t-flex home-aplicant-picture4 t-align-center" />
-                                            <div className="t-flex home-no-of-applicant t-align-center montserrat"> 3 Applicants</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-center">
-                                <div className="home-newest-address t-flex t-align-left t-md-7 "><i className="material-icons ">place</i> 722rd Festac town, Lagos.</div>
-                                <br /><br />
-                                <div className="home-newest-size t-flex t-md-10 t-justify-space-between ">
-                                    <div className="home-square-size t-flex t-md-32">
-                                        <span><i className="material-icons ">home</i> 450 Sq m</span><br/>
-                                    </div>
-                                    <div className="home-room-size t-flex t-md-32">
-                                        <span><i className="fa fa-cube" />4 rooms</span><br/>
-                                    </div>
-                                    <div className="home-bathroom-size t-flex t-md-32">
-                                        <span><i className="fa fa-bathtub" />2 bathrooms</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="home-property4 t-flex t-md-48 t-flex-column">
-                            <div className="home-property-picture4 t-flex t-md-10 t-justify-space-between ">
-                                <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column t-align-content-space-between">
-                                    <div className="t-flex t-flex-row">
-                                        <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> #12,000 /month</span>
-                                        <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center "><i className="material-icons ">favorite_border</i> </span>
-                                    </div>
-                                    <div className=" home-aplicants t-flex t-md-10  ">
-                                        <div className=" t-flex t-md-5 t-align-center  ">
-                                            <div className="t-flex home-aplicant-picture" />
-                                            <span className="home-aplicant-name t-align-center t-flex ">Ngozi John</span>
-                                        </div>
-                                        <div className="t-flex home-applicant-right t-justify-center t-md-5 t-align-center">
-                                            <div className="t-flex home-aplicant-picture2 t-align-center " />
-                                            <div className="t-flex home-aplicant-picture3 t-align-center " />
-                                            <div className="t-flex home-aplicant-picture4 t-align-center" />
-                                            <div className="t-flex home-no-of-applicant t-align-center montserrat"> 3 Applicants</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="home-newest-location t-flex t-flex-column t-md-10 t-align-content-space-between  t-justify-center">
-                                <div className="home-newest-address t-flex t-align-left t-md-7 "><i className="material-icons ">place</i> <span>722rd Festac town, Lagos.</span></div>
-                                <br />
-                                <div className="home-newest-size t-flex t-md-10 t-justify-space-between ">
-                                    <div className="home-square-size t-flex t-md-32">
-                                        <span><i className="material-icons ">home</i> 450 < span className="home-size-hover">Sgm</span></span>
-                                    </div>
-                                    <div className="home-room-size t-flex t-md-32">
-                                        <span><i className="fa fa-cube" /> 4 < span className="home-size-hover">rooms</span></span>
-                                    </div>
-                                    <div className="home-bathroom-size t-flex t-md-32">
-                                        <span><i className="fa fa-bathtub" />2 < span className="home-size-hover">Bathrooms</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                )}
+
                 </div>
                 <div className="t-flex home-testimonial "><div className="home-testimonial-cover t-flex t-fullheight t-fullwidth">
                     <div className="home-testimonial-text-holder t-fullheight t-flex t-justify-center t-flex-column t-md-10  t-align-center">
@@ -487,11 +425,11 @@ export default class NewHome extends Component{
                 <div className="home-contact-us-div t-flex t-md-10 t-flex-column ">
                     <div className="home-contact-us-holder t-fullheight t-flex t-md-10 t-flex-column nav-pad-left-right">
                         <div className="contactus t-flex t-center-f t-justify-center"> Everything you need in one place </div>
-                        <div className="home-sub-text t-flex t-center-f t-justify-center">
+                        <div className="home-sub-text t-flex t-center-f t-justify-center " style={{marginBottom:'20px'}}>
                             Managing your rental property is easier when everything is in one place.
                             Property listings, tenant screening, leasing, rent collection and even maintenance tracking all on one screen.</div>
                         <div className=" t-flex t-justify-center t-md-10"><span className= "home-imgg"></span> </div>
-                        <div className="home-sub-text t-flex t-center-f t-justify-center ">All the tools you need, designed specifically
+                        <div className="home-sub-text t-flex t-center-f t-justify-center "  style={{marginTop:'20px'}}>All the tools you need, designed specifically
                             for do-it-yourself landlords. With our online landlord software,
                             you can manage your property in just clicks and not hours!</div>
                     </div>
@@ -499,6 +437,8 @@ export default class NewHome extends Component{
                 <FooterMain/>
             </div>
         );
+     }
     }
+
 }
 

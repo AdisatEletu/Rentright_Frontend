@@ -66,7 +66,7 @@ const pageurl =  "https://rentright.herokuapp.com/api/rentright/units/query/?";
         this.uuid = this.props.auth.user.uuid;   
         console.log(this.uuid);
         this.hideModal = this.hideModal.bind(this);   
-        this.css = {'transform': 'scale(0.2, 0.2)' }
+        this.css =  {'transform': 'scale(0.2, 0.2)' }
        this.sendobj = {};
     }
        componentWillMount(){        
@@ -245,24 +245,21 @@ const pageurl =  "https://rentright.herokuapp.com/api/rentright/units/query/?";
   
 
   <div className = "t-flex t-md-10 t-fullheight t-justify-left psmall-pad ">
-      {this.state.showCont ?
-         <ContModal  css = {this.state.css} hideContModal = {this.hideContModal} unit = {this.state.item}  frontimage = {this.frontimage}  listimage = {this.listimage}  />
-         :
-         null
+              {this.state.showCont ?
+                 <ContModal  css = {this.state.css} hideContModal = {this.hideContModal} unit = {this.state.item}  frontimage = {this.frontimage}  listimage = {this.listimage}  />
+                 :
+                 null
 
 
-  }
-<div className = "t-flex t-md-75 t-flex-column t-fullheight please-dont-shrink" style = {! this.state.query.results? {backgroundColor:'rgba(0,0,0,0)'} : {backgroundColor:'rgba(0,0,0,0)'}}>
-  { this.state.showModal ?
+          }
+        <div className = "t-flex t-md-75 t-flex-column t-fullheight please-dont-shrink" style = {! this.state.query.results? {backgroundColor:'rgba(0,0,0,0)'} : {backgroundColor:'rgba(0,0,0,0)'}}>
+          { this.state.showModal ?
 
-        <TenantModal  css = {this.state.css} hideModal = {this.hideModal.bind(this)} unit = {this.state.item}  frontimage = {this.frontimage} listimage = {this.listimage}  />
-     :
-     undefined
-  }
-    
-
-
-<div className = "q-head  t-flex-column t-justify-left q-sub">
+                <TenantModal  css = {this.state.css} hideModal = {this.hideModal.bind(this)} unit = {this.state.item}  frontimage = {this.frontimage} listimage = {this.listimage}  />
+             :
+             undefined
+          }
+            <div className = "q-head  t-flex-column t-justify-left q-sub">
     <div className = "q-h1 t-left-f">Are you ready to find your home ? </div>
     <div className = "q-h2 t-lfet-f">Please use the options provided below and select a query parameter..</div>
 </div>
@@ -272,7 +269,7 @@ const pageurl =  "https://rentright.herokuapp.com/api/rentright/units/query/?";
 <div className = "t-flex t-md-3 t-flex-column t-fullheight q-bright">
 <div className = "t-flex t-md-10 t-flex-column">
   <span className = "span">Search By Place</span>
- <Input  prefix={<Icon type="tag" />}  size = "large"  name = "name" onChange = {this.handleInputChange}   />  
+ <Input  prefix={<Icon type="tag" />}  size = "large"  name = "name" onChange = {this.handleInputChange}   />
 </div>
 <div className = "t-flex t-md-10 t-flex-column">
   <span  className = "span">Search By Space</span>
@@ -298,7 +295,7 @@ const pageurl =  "https://rentright.herokuapp.com/api/rentright/units/query/?";
 </Row>
   <span  className = "span">Number of rooms</span>
      <Col span={15}> <InputNumber  min={1}  name = "bedrooms" style={{ width: 50 }}  onChange = {(e)=> this.handleInputChange(e,'bedrooms')}  max={20} /></Col>
- 
+
 
 
 
@@ -314,7 +311,7 @@ const pageurl =  "https://rentright.herokuapp.com/api/rentright/units/query/?";
  <div className = "t-flex t-flex-row t-md-5 t-justify-right">
    { this.state.query? this.props.queryIndicator.Loading ?
        <Button type="primary" loading= {true}>Loading ...</Button>
-           :  
+           :
         <Button type="default" icon="download"  onClick={this.handleSubmit} size="default">Find</Button>
         :
         undefined
@@ -330,19 +327,19 @@ const pageurl =  "https://rentright.herokuapp.com/api/rentright/units/query/?";
 
 <div className = "q-body p-widget"  style = {! this.state.query.results? {backgroundColor:'rgba(0,0,0,0)'} : {backgroundColor:'rgba(0,0,0,0)'}}>
 {
-  this.state.query ? this.state.query.loading || this.state.promoted.loading?  
+  this.state.query ? this.state.query.loading || this.state.promoted.loading?
 <div className = "t-md-10 t-justify-center t-align-center t-full-height t-sup-h1">
  <span className = "t-center-f t-md-10"><Icon  type = "loading" /></span>
 </div>
-: 
-this.state.query.error  ? 
+:
+this.state.query.error  ?
 <div className = "toppadsm t-md-10">
 <div className = "q-h1sm t-md-10 t-center-f"><Icon type = "bell"/>&nbsp;Could not find any property </div>
 <div className  = "t-md-10 t-fullheight q-h11sm t-center-f">Sorry your search parameter returned no result, endeavour to moderate your parameters and search again, should you not find what your are looking for, we will alert you when a property turns up matching your criteria </div>
 
 </div>
- : 
-this.state.query.results ? 
+ :
+this.state.query.results ?
 <div className = "q-results-pane">
   <div className = "q-breadcrumbs">
     <div className = "q-b t-fullheight">
@@ -358,7 +355,7 @@ this.state.query.results ?
           }
             })
 
-         
+
     }
     </div>
     </div>
