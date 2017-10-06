@@ -72,15 +72,19 @@ box-shadow: 1px 3px 45px 23px rgba(234,234,234,1);
 
 
 .home-body-search2{min-height: 20vh;box-sizing:border-box; transform: translateZ(0px); z-index: 3; background-color: #eaeaea;}
-.home-search2{background-color:#fff;  padding:10px 20px;  height:400px;  z-index: 3; border-radius: 2px;}
+.home-search2{background-color:#fff;  padding:20px 40px; box-sizing:border-box;   height:400px;   z-index: 3; border-radius: 2px; height:500px!important;
+-webkit-box-shadow: 2px -21px 55px 5px rgba(0,0,0,0.33);
+-moz-box-shadow: 2px -21px 55px 5px rgba(0,0,0,0.33);
+box-shadow: 2px -21px 55px 5px rgba(0,0,0,0.33);
+}
 .home-search-header{font-size: 2.5rem; color: #222; font-weight: 500; }
 .home-search-des{font-size: 1.3rem; color: #999; font-weight: 300; padding-bottom: 20px; }
-.home-search-items2{ font-size:1.2rem; height:35px;  font-weight:300;  border:solid 1px #999;  border-radius:2px;  color:#999;}
+.home-search-items2{ font-size:1.2rem; height:45px; box-sizing:border-box; overflow:hidden;  font-weight:300; margin-bottom:30px;   border:solid 1px #ccc;  border-radius:2px;  color:#999;}
 .home-search-label{font-size: 1.3rem; color: #666; font-weight: 300; }
 .home-search-key{font-size: 1.5rem; color: #222; line-height: 35px; text-indent: 10px; font-weight: 300;}
-.home-search-button{height: 35px; line-height: 35px; font-size:1.5rem; color: #fff; background-color: #0a3b61; border-radius: 4px; cursor: pointer; margin-top: 15px; }
+.home-search-button{height: 50px; line-height: 50px; font-size:1.5rem; color: #fff; background-color: #0a3b61; border:none!important; border-radius: 4px; cursor: pointer; margin-top: auto; }
 .home-search-button:hover{background:#073855; }
-.home-search2 input, .home-search2 select{height:30px; border:none; background-color: #fff;   border-radius: 2px; box-sizing:border-box; line-height:35px;  font-family:Proxima Nova; font-size:20px; }
+.home-search2 input, .home-search2 select{height:45px; border:none; background-color: #fff;   border-radius: 2px; box-sizing:border-box; line-height:45px;  font-family:Proxima Nova; font-size:20px; }
 
 
 .holderr{padding-top: 10px;}

@@ -4,17 +4,80 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import   fetch from 'isomorphic-fetch';
+import {Switch,Route} from 'react-router-dom';
+
+import PropTypes from 'prop-types';
 
 class HomeSearch extends Component{
     constructor(props){
         super(props);
-        this.state={ units: []}
+        this.state ={ showCont:false, showModal:false, states :{}, promoted:{loading:false, error:false, results:undefined} ,query:{loading:false, error:false, results:undefined}}
+
+        this.submit = this.submit.bind(this)
+        this.sendobj = {};
     }
 
 componentWillMount(){
 
 }
+submit = (e)=>{
+ e.preventDefault();
+  var th = this;     
+    if (this.state.states !== {}) {
+       let path = ""
+      let keys = Object.keys(this.state.states)
+      let lis = keys.map((item)=>{
+        console.log(item)
+        if (path == ""){
+          path = item + "="+this.state.states[item];
+        }else{
+          path  += "&" +item + "="  + this.state.states[item] 
+        }   
+      this.setState({showModal:false, states:{}});       
+      })
+      
+      console.log(path);
+      /*this.props.loadMyQuery(path).then((res)=>{
+        console.log(res);
+      })*/
+     this.context.router.history.push("/generalsearch/" + path);
 
+    }
+
+
+}
+   handleInputChange = (event, name = undefined)=> {  
+      
+      let value; 
+    let target;
+    if (! name){
+    try{
+    target = event.target;
+    value = target.type === 'radio' ? target.selected : target.value;
+    name = target.name;
+    }catch(err){
+      value = event;
+    }
+  
+    }
+  else{
+    if(name == "name"){
+        value =  event.target.value;
+    }else if(name == "all"){
+        value = event
+    }
+    else {
+        value = event.target.value
+    }
+  }
+   console.log(name, value)
+    this.setState({states:{
+      [name]: value
+    }});
+  
+    console.log(this.state);
+ 
+  } 
 componentDidMount(){
 
 }
@@ -25,6 +88,7 @@ componentDidMount(){
         return(
 
 
+                    <form method="GET" onSubmit={this.submit}  className = "t-md-10  t-full-height t-flex t-flex-column">
             <div className="t-md-10 t-justify-space-between t-flex ">
                 <div className="home-search2 t-flex t-md-4 t-flex-column home-pad">
 
@@ -36,23 +100,22 @@ componentDidMount(){
                     </div>
 
 
-                    <form method="GET" onSubmit={} >
                     <label className="home-search-label museo">Location </label>
                     <div className="home-search-items2 t-flex t-md-10">
-                        <input type="text" className="t-md-10 home-search-key" />
+                        <input type="text" className="t-md-10 home-search-key" onChange = {(e)=>this.handleInputChange(e, 'name')}  />
                     </div>
                     <div className="holderr t-md-10 t-flex t-justify-space-between">
                         <div className="half-holder t-flex t-flex-column t-md-48">
-                            <label className="home-search-label museo">Price</label>
-                            <div className="home-search-items2 t-flex  ">
-                                <input type="text" className="t-md-10 home-search-key "/>
+                            <label className="home-search-label museo">Budget</label>
+                            <div className="home-search-items2 t-flex ">
+                                <input type="text" className="t-md-10 home-search-key "   onChange = {(e)=> this.handleInputChange(e,'rent')} />
                             </div>
                         </div>
 
                         <div className="half-holder t-flex t-md-48 t-flex-column">
                             <label className="home-search-label museo">Size </label>
                             <div className="home-search-items2 t-flex  ">
-                                <input type="text" className="t-md-10 home-search-key"/>
+                                <input type="number" className="t-md-10 home-search-key" onChange = {(e)=> this.handleInputChange(e,'footage')}  />
                             </div>
                         </div>
                     </div>
@@ -85,19 +148,19 @@ componentDidMount(){
                         <div className="half-holder t-flex t-md-48 t-flex-column">
                             <label className="home-search-label museo">Bedroom</label>
                             <div className="home-search-items2 t-flex  ">
-                                <input type="text" className="t-md-9 home-search-key" />
+                                <input type="text" className="t-md-9 home-search-key" onChange = {(e)=>this.handleInputChange( true, "all")}  />
                             </div>
                         </div>
                     </div>
 
-                    <div className="home-search-button t-md-10 t-flex t-justify-center museo " >
+                    <button type = "submit" className="home-search-button t-md-10 t-flex t-justify-center museo " >
                         <span>Find</span>
-                    </div>
-                    </form>
+                    </button>
+           
                 </div>
             </div>
 
-
+             </form>
         );
 
     }
@@ -126,4 +189,7 @@ const styles = {
 
 
 }
+HomeSearch.contextTypes = {
+        router: PropTypes.object.isRequired,
+    }
 export default HomeSearch;

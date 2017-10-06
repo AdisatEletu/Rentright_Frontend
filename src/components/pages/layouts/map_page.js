@@ -2,13 +2,13 @@ import {NavLink} from 'react-router-dom';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {findDOMNode} from 'react-dom';
-import {Select, Date, Input, Textarea, Phone, ButtonGroup, Switch} from '../tenantlayouts/durables/basic/flex_form';
+import {Select, Date, Input, Textarea, Phone, ButtonGroup} from '../tenantlayouts/durables/basic/flex_form';
 import { Progress, Icon} from 'antd';
 import _scratch from '../tenantlayouts/durables/controllers/_scratch';
 import apiActions from '../tenantlayouts/durables/controllers/apiActions';
 import Middle from '../tenantlayouts/durables/controllers/profile_middleware';
 import { notification } from 'antd';
-
+import {Switch,Route} from 'react-router-dom';
 import Scroll from 'react-scroll'; // Imports all Mixins
 import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 //import GoogleMapsLoader from 'google-maps';
@@ -40,7 +40,7 @@ const mapping = {'tenant_bio':'Bio Information', 'general_info':'General Informa
 class MapPage extends Component{
     constructor(props) {
         super(props) 
-        this.state = {promoted:{loading:false, error:false, results:undefined} };
+        this.state = {promoted:{loading:false, error:false, results:undefined, path: ""} };
         this.queryForPromotions = this.queryForPromotions.bind(this);     
           
     }
@@ -63,7 +63,8 @@ transitionOut(){
 }
   queryForPromotions(){
     this.setState({promoted:{loading:true, error:false, results:undefined}})
-    let api_path = "all=true";
+    let api_path =this.context.router.route.match.params.param;
+    this.setState({ path:api_path})
     let api = new apiActions(pageurl);
     api.geturl(api_path, false).then((data)=>{
       this.setState({promoted:{loading:false, error:false,results:data}})
@@ -120,7 +121,7 @@ hideModal(){
 </div>
 <div className = "map-input">
     <Icon type = "search"/>
-    <input type = "text" placeholder = "Search again here"/>
+    <input type = "text" placeholder =  { this.state.path == ""? "Click to search for more" : "You are searching for " +  this.state.path }/>
     </div>
 <div className = "map-right-logo">
      <Icon type = "user"/>
@@ -191,6 +192,8 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-
+MapPage.contextTypes = {
+        router: PropTypes.object.isRequired,
+    }
 
 export default connect(matchStateToProps, mapDispatchToProps)(MapPage)
