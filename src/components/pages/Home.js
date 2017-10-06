@@ -425,11 +425,11 @@ componentDidMount (){
                 <div className="home-contact-us-div t-flex t-md-10 t-flex-column ">
                     <div className="home-contact-us-holder t-fullheight t-flex t-md-10 t-flex-column nav-pad-left-right">
                         <div className="contactus t-flex t-center-f t-justify-center"> Everything you need in one place </div>
-                        <div className="home-sub-text t-flex t-center-f t-justify-center">
+                        <div className="home-sub-text t-flex t-center-f t-justify-center " style={{marginBottom:'20px'}}>
                             Managing your rental property is easier when everything is in one place.
                             Property listings, tenant screening, leasing, rent collection and even maintenance tracking all on one screen.</div>
                         <div className=" t-flex t-justify-center t-md-10"><span className= "home-imgg"></span> </div>
-                        <div className="home-sub-text t-flex t-center-f t-justify-center ">All the tools you need, designed specifically
+                        <div className="home-sub-text t-flex t-center-f t-justify-center "  style={{marginTop:'20px'}}>All the tools you need, designed specifically
                             for do-it-yourself landlords. With our online landlord software,
                             you can manage your property in just clicks and not hours!</div>
                     </div>

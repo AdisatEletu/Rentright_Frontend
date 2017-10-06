@@ -8,8 +8,16 @@ import   fetch from 'isomorphic-fetch';
 class HomeSearch extends Component{
     constructor(props){
         super(props);
+        this.state={ units: []}
     }
 
+componentWillMount(){
+
+}
+
+componentDidMount(){
+
+}
 
 
       render(){
@@ -26,6 +34,9 @@ class HomeSearch extends Component{
                     <div className="home-search-des t-md-10 proxima">
                         Explore properties that suits your Personality on RentRight
                     </div>
+
+
+                    <form method="GET" onSubmit={} >
                     <label className="home-search-label museo">Location </label>
                     <div className="home-search-items2 t-flex t-md-10">
                         <input type="text" className="t-md-10 home-search-key" />
@@ -79,9 +90,10 @@ class HomeSearch extends Component{
                         </div>
                     </div>
 
-                    <div className="home-search-button t-md-10 t-flex t-justify-center museo">
+                    <div className="home-search-button t-md-10 t-flex t-justify-center museo " >
                         <span>Find</span>
                     </div>
+                    </form>
                 </div>
             </div>
 

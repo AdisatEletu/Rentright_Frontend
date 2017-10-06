@@ -78,8 +78,8 @@ box-shadow: 1px 3px 45px 23px rgba(234,234,234,1);
 .home-search-items2{ font-size:1.2rem; height:35px;  font-weight:300;  border:solid 1px #999;  border-radius:2px;  color:#999;}
 .home-search-label{font-size: 1.3rem; color: #666; font-weight: 300; }
 .home-search-key{font-size: 1.5rem; color: #222; line-height: 35px; text-indent: 10px; font-weight: 300;}
-.home-search-button{height: 35px; line-height: 35px; font-size:1.5rem; color: #fff; background-color: #f6505c; border-radius: 2px; cursor: pointer; margin-top: 15px; }
-.home-search-button:hover{background:#ff1744; }
+.home-search-button{height: 35px; line-height: 35px; font-size:1.5rem; color: #fff; background-color: #0a3b61; border-radius: 4px; cursor: pointer; margin-top: 15px; }
+.home-search-button:hover{background:#073855; }
 .home-search2 input, .home-search2 select{height:30px; border:none; background-color: #fff;   border-radius: 2px; box-sizing:border-box; line-height:35px;  font-family:Proxima Nova; font-size:20px; }
 
 
@@ -166,7 +166,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8183174', e
 
 .home-fifth-div{height: 30vh; background-color: #fff; box-sizing: border-box;} .home-rent-ad{font-size:3rem; color:#0a3b61; font-weight: 300; font-family:Roboto; }
 .t-hr{color:#0a3b61; background-color:#0a3b61;  height:3px; border-radius:2px;  }
-.home-rent-ad-details{font-size:1.2rem; line-height:1.6rem; color:#999; font-weight: 600; font-family:Open Sans; text-transform:lowercase;}
+.home-rent-ad-details{font-size:1.3rem; line-height:1.6rem; color:#999; font-weight: 400; text-transform:capitalize; }
 .home-t-hr-cover{background-color:#ededed; }.home-t-hr-cover2{background-color:#464a49; } .home-hr-super{height:3px; margin-bottom:3vw; margin-top:1.5vw; }
 .home-hr-super2{height:3px; margin-bottom:1vw; margin-top:1vw; }
 .home-ad-picture-holder{background-color:#fff; height: 40vh;  } .home-ad-picture{background-image: url('img/interior111.jpg'); border-top-left-radius: 5%; background-repeat:no-repeat; background-size:cover; }
@@ -431,7 +431,7 @@ and (max-device-width : 480px) {
         box-sizing: border-box;
         text-align: center;
         width: 80%;
-    }
+       }
 
     .ad-description1{
         font-size: 11px;
@@ -524,7 +524,7 @@ and (max-device-width : 480px) {
      .home-agents-photo2 {width: 100%} .home-newest-location{padding: 5px;}
     .home-newest-offer-div{min-height: 40vh;} .home-agents-phone{font-size: 1.1rem; line-height: 1.2rem;} .home-property1{width: 100%; box-sizing: border-box;overflow-y: hidden; margin-bottom: 5px;}.home-property2{width: 100%; box-sizing: border-box;overflow-y: hidden; margin-bottom: 5px;}.home-property3{width: 100%; box-sizing: border-box; overflow-y: hidden;overflow-y: hidden; margin-bottom: 5px;}.home-property4{width: 100%; box-sizing: border-box; overflow-y: hidden; margin-bottom: 5px;}
     .home-newest-header{font-size: 2rem;} .home-newest-details{font-size: 1rem; width: 80%;}    .home-properties-holder{flex-direction: column;} .home-tes2{text-align: center; font-size: 1.3rem;}.home-tes{text-align: center; font-size: 1rem;}.home-tes3{text-align: center; font-size: 1rem; width: 60%;}
-    .home-carousel{width: 10%;} .contactus{font-size: 1.5rem;} .home-sub-text{font-size: 1.1rem;}
+    .home-carousel{width: 10%;} .contactus{font-size: 1.5rem;} .home-sub-text{font-size: 1.1rem; margin-bottom: 20px;}
     .home-tes-picture-holder{width: 100%;} .home-tes-picture{height: auto;}
     .r-h{width: 40%;}
     .ad-view-offer-btn {font-size: 8px; height: 20px;} .ad-view-offer-btn i{font-size: 10px;}
