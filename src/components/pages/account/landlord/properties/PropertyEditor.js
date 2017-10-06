@@ -10,23 +10,27 @@ import Payments from "./propertiesEditor/Payments";
 import {getUnit} from "../../../../../state/actions/userActions";
 import {setHeader, resetHeader} from '../../../../../state/actions/uiAction';
 import PropTypes from 'prop-types';
-import Loader from "../../../../shared/Loader";
 
 
 class PropertyEditor extends Component {
 
+    constructor(props){
+        super(props);
+        this.getUnitCallBack = this.getUnitCallBack.bind(this);
+    }
+
     componentWillMount() {
         this.props.resetHeader();
         const uuid = this.props.match.params.id;
-        this.props.getUnit({uuid: uuid}, this.getUnitCallBack);
+        getUnit({uuid: uuid,include:'property'}, this.getUnitCallBack);
     }
 
-    getUnitCallBack = (status,unit=null) => {
+    getUnitCallBack = (status, data) => {
         if (status) {
             this.props.setHeader({
-                text: unit.properties.name + ", Unit " + unit.number,
+                text: data.property.data.name + ", Unit " + data.number,
                 hasBar: true,
-                uuid: unit.uuid,
+                uuid: data.uuid,
             });
         }
     }
@@ -35,17 +39,14 @@ class PropertyEditor extends Component {
 
         return (
             <div>
-                {this.props.unit.fetched ?
-                    <Switch>
-                        <Route exact path='/landlord/units/:id' component={EditorHome}/>
-                        <Route path='/landlord/units/:id/listing' component={Listing}/>
-                        <Route path='/landlord/units/:id/applications' component={Applications}/>
-                        <Route path='/landlord/units/:id/lease' component={Lease}/>
-                        <Route path='/landlord/units/:id/payments' component={Payments}/>
-                        <Route path='/landlord/units/:id/maintenance' component={Maintenance}/>
-                    </Switch>
-                    : <Loader/>
-                }
+                <Switch>
+                    <Route exact path='/landlord/units/:id' component={EditorHome}/>
+                    <Route path='/landlord/units/:id/listing' component={Listing}/>
+                    <Route path='/landlord/units/:id/applications' component={Applications}/>
+                    <Route path='/landlord/units/:id/lease' component={Lease}/>
+                    <Route path='/landlord/units/:id/payments' component={Payments}/>
+                    <Route path='/landlord/units/:id/maintenance' component={Maintenance}/>
+                </Switch>
             </div>
         );
     }
@@ -59,11 +60,10 @@ function mapStateToProps(state) {
 }
 
 PropertyEditor.propTypes = {
-    getUnit: PropTypes.func.isRequired,
     unit: PropTypes.object.isRequired,
     setHeader: PropTypes.func.isRequired,
     resetHeader: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps, {getUnit, setHeader, resetHeader})(PropertyEditor);
+export default connect(mapStateToProps, {setHeader, resetHeader})(PropertyEditor);
 

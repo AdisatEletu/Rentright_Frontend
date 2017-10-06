@@ -1,8 +1,12 @@
 const BASE_URL = 'https://rentright-api-gateway.herokuapp.com/';
 
 
-export const getUnitUrl = (uuid) =>{ return BASE_URL+'user/units/'+uuid};
-export const unitImageUrl = (id) => {return BASE_URL+'user/units/image/'+id};
+export const addPropertyUrl =  BASE_URL+'properties';
+export const getPropertiesUrl =  BASE_URL+'properties';
+export const getSinglePropertyUrl = (uuid) =>  BASE_URL+'properties/'+uuid;
+
+export const getUnitUrl = (uuid) =>{ return BASE_URL+'units/'+uuid};
+export const unitImageUrl = (uuid) =>  BASE_URL+"https://rentright-laravel-api.herokuapp.com/api/units/"+uuid+"/images?section=room";
 
 export const getApplication = (uuid) => {return BASE_URL+'user/units/'+uuid+'/applications'};
 export const acceptApplicationUrl = (uuid) => {return BASE_URL+'user/applications/'+uuid+'/accept'};

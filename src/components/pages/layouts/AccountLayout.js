@@ -6,6 +6,7 @@ import LoadingBar from 'react-redux-loading-bar'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
+import Alert from "./account/Alert";
 
 //require('../account/landlord/asset/materialize/css/materialize.min.css');
 //require('../account/landlord/asset/landlord.css');
@@ -30,7 +31,7 @@ class AccountLayout extends Component {
                             <Tab uuid={header.uuid}/>
                         </div>
                         : undefined}
-
+                        <Alert/>
                     <div className="d-container body">
                         <div className="child" style={{paddingLeft: '300px' ,paddingTop: '120px', paddingBottom:'60px'}}>
                             {this.props.children}

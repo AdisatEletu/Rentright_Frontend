@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {getSingleComplaint} from "../../../../../../../state/actions/maintenanceActions";
+import {getSingleComplaint,addComment} from "../../../../../../../state/actions/maintenanceActions";
 import PropTypes from 'prop-types';
 import Loader from "../../../../../../shared/Loader";
-import {Upload,Modal,Icon,Steps,Input,Button} from 'antd';
+import {Upload,Modal,Icon,Steps,Input,Button,notification} from 'antd';
 import {addComplaintImageUrl, getImage} from "../../../../../../../utils/ApiManager";
 import * as moment from 'moment';
+import isEmpty from 'lodash/isEmpty';
 
 const Step = Steps.Step;
 const { TextArea } = Input;
@@ -19,6 +20,7 @@ class MaintenanceDetails extends Component {
             addingComment: false,
             previewVisible: false,
             previewImage: '',
+            comment: '',
             complaint: {}
         }
 
@@ -27,6 +29,8 @@ class MaintenanceDetails extends Component {
         this.handleCancel = this.handleCancel.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleAddComment = this.handleAddComment.bind(this);
+        this.onCommentChange = this.onCommentChange.bind(this);
+        this.onAddCommentCallback = this.onAddCommentCallback.bind(this);
     }
 
     componentDidMount() {
@@ -48,9 +52,36 @@ class MaintenanceDetails extends Component {
 
     handleChange = ({fileList}) => this.setState({fileList});
 
-    handleAddComment(value) {
-        console.log('Selected:'+value);
+    onCommentChange = (e) =>{
+        this.setState({comment:e.target.value});
+        console.log(this.state.comment);
+    };
+
+    handleAddComment() {
+        if(isEmpty(this.state.comment)){
+            return;
+        }
+        this.setState({addingComment:true});
+        const params = {
+            uuid: this.context.router.route.match.params.complaint,
+            comment: this.state.comment,
+        }
+        addComment(params,this.onAddCommentCallback);
     }
+
+    onAddCommentCallback = (status,data) => {
+        if(status){
+            const complaint = {...this.state.complaint};
+
+            complaint.activities.data.push(data);
+            notification.success({
+                message: 'Success',
+                description:'Comment added successfully',
+            })
+            this.setState({complaint,addingComment:false,comment:''});
+        }
+
+    };
 
     onComplaintReceivedCallBack(status, data) {
         if (status) {
@@ -112,19 +143,19 @@ class MaintenanceDetails extends Component {
                     <div className={'complaint-activities'} style={{padding:'24px'}}>
                         <h3>Activities</h3>
 
-                        <Steps direction="vertical" current={(complaint.activities.data.length)}>
-                            {complaint.activities.data.map(
-                                (activity)=><Step icon={"clock-circle-o"} title={activity.text} description={moment(activity.created_at.date).fromNow()} />
-                            )}
+                        <Steps direction="vertical" current={complaint.activities.data.length}>
                             <Step
                                 title="Add Comment"
                                 description={
                                     <div style={{paddingRight:'10px'}}>
-                                        <TextArea placeholder="Add Comment here" autosize={{ minRows: 3, maxRows: 6 }} />
+                                        <TextArea disabled={this.state.addingComment} value={this.state.comment} onChange={this.onCommentChange} placeholder="Add Comment here" autosize={{ minRows: 3, maxRows: 6 }} />
                                         <div style={{marginTop:'10px'}} className={'clearfix'}>
-                                            <Button className={'right'} type="primary">Add Comment</Button>
+                                            <Button onClick={this.handleAddComment} loading={this.state.addingComment} className={'right'} type="primary">Add Comment</Button>
                                         </div>
                                     </div>} />
+                            {complaint.activities.data.map(
+                                (activity)=><Step key={activity.id} icon={"clock-circle-o"} title={activity.text} description={moment(activity.created_at.date).fromNow()} />
+                            )}
                         </Steps>
                     </div>
                 </div>

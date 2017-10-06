@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getComplaintsUrl,getSingleComplaintUrl} from "../../utils/ApiManager";
+import {getComplaintsUrl,getSingleComplaintUrl,addComplaintCommentUrl} from "../../utils/ApiManager";
 
 export function getComplaints(params,callback){
     return axios.get(getComplaintsUrl,{params}).then(
@@ -26,7 +26,7 @@ export function getSingleComplaint(params,callback){
 }
 
 export function addComment(params,callback){
-    return axios.post('').then(
+    return axios.post(addComplaintCommentUrl(params.uuid),params).then(
         (res) => {
             callback(true,res.data.data);
         }

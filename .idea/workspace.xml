@@ -2,19 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4846936-5bd9-4061-8338-97cecc35918a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/maintenance/MaintenanceDetails.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/maintenance/MaintenanceHome.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/state/actions/maintenanceActions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/layouts/account/Alert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/shared/PlacesAutoComplete.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/state/reducers/propertyReducer.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/effects.css" afterPath="$PROJECT_DIR$/public/assets/css/effects.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/LandingPage/ContinueAs.js" afterPath="$PROJECT_DIR$/src/components/pages/LandingPage/ContinueAs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/LandLord.js" afterPath="$PROJECT_DIR$/src/components/pages/account/LandLord.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/profile/BankAccounts.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/profile/BankAccounts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Maintenance.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Maintenance.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/Content.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/Content.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/NewUnit.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/NewUnit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/PropertyEditor.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/PropertyEditor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/content/UnitWidgets.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/content/UnitWidgets.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/EditorHome.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/EditorHome.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/Photos.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/Photos.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/PropertyInfo.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/PropertyInfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/RentalTerms.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/RentalTerms.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/maintenance/MaintenanceDetails.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/maintenance/MaintenanceDetails.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/account/PropertyMenu.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/account/PropertyMenu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/ActionTypes.js" afterPath="$PROJECT_DIR$/src/state/ActionTypes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/actions/maintenanceActions.js" afterPath="$PROJECT_DIR$/src/state/actions/maintenanceActions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/actions/uiAction.js" afterPath="$PROJECT_DIR$/src/state/actions/uiAction.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/actions/userActions.js" afterPath="$PROJECT_DIR$/src/state/actions/userActions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/reducers/uiReducer.js" afterPath="$PROJECT_DIR$/src/state/reducers/uiReducer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/reducers/userReducer.js" afterPath="$PROJECT_DIR$/src/state/reducers/userReducer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/ApiManager.js" afterPath="$PROJECT_DIR$/src/utils/ApiManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/requireAuth.js" afterPath="$PROJECT_DIR$/src/utils/requireAuth.js" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -29,62 +42,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Maintenance.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Maintenance.js">
+      <file leaf-file-name="userActions.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/state/actions/userActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="maintenanceActions.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/state/actions/maintenanceActions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="28" column="23" lean-forward="false" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+            <state relative-caret-position="101">
+              <caret line="228" column="10" lean-forward="false" selection-start-line="228" selection-start-column="10" selection-end-line="228" selection-end-column="10" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+                <element signature="n#!!block;n#receiveUnits#0" expanded="false" />
+                <element signature="n#!!block;n#requestSingleUnit#0" expanded="false" />
+                <element signature="n#!!block;n#receiveSingleUnit#0" expanded="false" />
+                <element signature="n#!!block;n#requestNotifications#0" expanded="false" />
+                <element signature="n#!!block;n#receiveNotifications#0" expanded="false" />
+                <element signature="n#!!block;n#update#0" expanded="false" />
+                <element signature="n#!!block;n#addProperty#0" expanded="false" />
+                <element signature="n#!!block;n#getProperties#0" expanded="false" />
+                <element signature="n#!!block;n#getProperty#0" expanded="false" />
+                <element signature="n#!!block;n#getUnits#0" expanded="false" />
+                <element signature="n#!!block;n#getUnit#0" expanded="false" />
+                <element signature="n#!!block;n#getUnitWithDispatch#0" expanded="false" />
+                <element signature="n#!!block;n#publishUnit#0" expanded="false" />
+                <element signature="n#!!block;n#getNotifications#0" expanded="false" />
+                <element signature="n#!!block;n#getBankAccounts#0" expanded="false" />
+                <element signature="n#!!block;n#addBankAccount#0" expanded="false" />
+                <element signature="n#!!block;n#getSingleBankAccount#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MaintenanceDetails.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/maintenance/MaintenanceDetails.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <marker date="1506091621255" expanded="true" signature="2458:2576" ph="..." />
-                <marker date="1506091621255" expanded="true" signature="2641:4022" ph="..." />
-                <marker date="1506091621255" expanded="true" signature="2739:3995" ph="..." />
-                <marker date="1506091621255" expanded="true" signature="3005:3095" ph="..." />
-                <marker date="1506091621255" expanded="true" signature="3208:3562" ph="..." />
-                <marker date="1506091621255" expanded="true" signature="3821:3964" ph="..." />
-                <marker date="1506091621255" expanded="false" signature="4090:4108" ph="..." />
-                <marker date="1506091621255" expanded="true" signature="4108:5182" ph="..." />
-                <marker date="1506091621255" expanded="true" signature="4251:5155" ph="..." />
-                <marker date="1506091621255" expanded="true" signature="4533:4630" ph="..." />
-                <marker date="1506091621255" expanded="false" signature="4679:4702" ph="..." />
-                <marker date="1506091621255" expanded="true" signature="4702:5118" ph="..." />
-                <marker date="1506091621255" expanded="false" signature="4877:4897" ph="..." />
-                <marker date="1506091621255" expanded="true" signature="4920:5075" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="effects.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/css/effects.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="834" column="1" lean-forward="true" selection-start-line="834" selection-start-column="1" selection-end-line="834" selection-end-column="1" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -92,22 +74,236 @@
       <file leaf-file-name="ApiManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/ApiManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="50" column="87" lean-forward="false" selection-start-line="50" selection-start-column="87" selection-end-line="50" selection-end-column="87" />
+            <state relative-caret-position="136">
+              <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PropertyEditor.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/PropertyEditor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="70" lean-forward="false" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Listing.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1411">
+              <caret line="330" column="50" lean-forward="false" selection-start-line="330" selection-start-column="50" selection-end-line="330" selection-end-column="50" />
               <folding>
-                <element signature="e#1244#1536#0" expanded="false" />
+                <element signature="e#0#39#0" expanded="true" />
+                <element signature="n#!!block;n#constructor#0;n#Listing#0" expanded="false" />
+                <element signature="n#!!block;n#onChange#0;n#Listing#0" expanded="false" />
+                <element signature="n#!!block;n#onUpdateCallback#0;n#Listing#0" expanded="false" />
+                <element signature="e#6195#6272#0" expanded="false" />
+                <element signature="e#6288#6352#0" expanded="false" />
+                <element signature="e#6436#6513#0" expanded="false" />
+                <element signature="e#6529#6593#0" expanded="false" />
+                <element signature="e#7327#7391#0" expanded="false" />
+                <element signature="e#7568#7632#0" expanded="false" />
+                <element signature="e#9138#9204#0" expanded="false" />
+                <element signature="e#10559#10953#0" expanded="false" />
+                <element signature="e#10978#11318#0" expanded="false" />
+                <element signature="e#11588#11657#0" expanded="false" />
+                <element signature="e#11673#11729#0" expanded="false" />
+                <element signature="e#13091#13160#0" expanded="false" />
+                <element signature="e#13176#13232#0" expanded="false" />
+                <element signature="e#13297#13366#0" expanded="false" />
+                <element signature="e#13382#13438#0" expanded="false" />
+                <element signature="e#13612#13670#0" expanded="false" />
+                <element signature="n#!!block;n#formChange#0;n#Listing#0" expanded="false" />
+                <element signature="n#!!block;n#next#0;n#Listing#0" expanded="false" />
+                <element signature="n#!!block;n#previous#0;n#Listing#0" expanded="false" />
+                <element signature="n#!!block;n#listingAction#0;n#Listing#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userActions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/state/actions/userActions.js">
+      <file leaf-file-name="Photos.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/Photos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5083">
-              <caret line="299" column="36" lean-forward="false" selection-start-line="299" selection-start-column="36" selection-end-line="299" selection-end-column="36" />
+            <state relative-caret-position="901">
+              <caret line="63" column="122" lean-forward="false" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="122" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#959#1089#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountLayout.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2414">
+              <caret line="150" column="11" lean-forward="false" selection-start-line="150" selection-start-column="11" selection-end-line="150" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="effects.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/css/effects.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7089">
+              <caret line="930" column="36" lean-forward="false" selection-start-line="930" selection-start-column="36" selection-end-line="930" selection-end-column="36" />
+              <folding>
+                <element signature="e#7#88#0" expanded="false" />
+                <element signature="e#101#142#0" expanded="false" />
+                <element signature="e#159#204#0" expanded="false" />
+                <element signature="e#224#247#0" expanded="false" />
+                <element signature="e#264#309#0" expanded="false" />
+                <element signature="e#331#354#0" expanded="false" />
+                <element signature="e#376#410#0" expanded="false" />
+                <element signature="e#421#445#0" expanded="false" />
+                <element signature="e#452#482#0" expanded="false" />
+                <element signature="e#495#530#0" expanded="false" />
+                <element signature="e#544#580#0" expanded="false" />
+                <element signature="e#592#626#0" expanded="false" />
+                <element signature="e#641#678#0" expanded="false" />
+                <element signature="e#693#719#0" expanded="false" />
+                <element signature="e#732#757#0" expanded="false" />
+                <element signature="e#769#793#0" expanded="false" />
+                <element signature="e#808#835#0" expanded="false" />
+                <element signature="e#853#877#0" expanded="false" />
+                <element signature="e#893#916#0" expanded="false" />
+                <element signature="e#931#953#0" expanded="false" />
+                <element signature="e#971#996#0" expanded="false" />
+                <element signature="e#1016#1117#0" expanded="false" />
+                <element signature="e#1165#1219#0" expanded="false" />
+                <element signature="e#1322#1369#0" expanded="false" />
+                <element signature="e#1387#1442#0" expanded="false" />
+                <element signature="e#1455#1530#0" expanded="false" />
+                <element signature="e#1559#1655#0" expanded="false" />
+                <element signature="e#1738#1775#0" expanded="false" />
+                <element signature="e#1795#1857#0" expanded="false" />
+                <element signature="e#1883#1907#0" expanded="false" />
+                <element signature="e#1924#1946#0" expanded="false" />
+                <element signature="e#1964#1994#0" expanded="false" />
+                <element signature="e#2011#2032#0" expanded="false" />
+                <element signature="e#2051#2183#0" expanded="false" />
+                <element signature="e#2194#3028#0" expanded="false" />
+                <element signature="e#3046#3091#0" expanded="false" />
+                <element signature="e#3109#3236#0" expanded="false" />
+                <element signature="e#3251#3317#0" expanded="false" />
+                <element signature="e#3665#3691#0" expanded="false" />
+                <element signature="e#3717#3737#0" expanded="false" />
+                <element signature="e#3996#4030#0" expanded="false" />
+                <element signature="e#4063#4088#0" expanded="false" />
+                <element signature="e#4100#4161#0" expanded="false" />
+                <element signature="e#4177#4271#0" expanded="false" />
+                <element signature="e#4273#4410#0" expanded="false" />
+                <element signature="e#4310#4355#0" expanded="false" />
+                <element signature="e#4364#4408#0" expanded="false" />
+                <element signature="e#4822#4871#0" expanded="false" />
+                <element signature="e#4987#5054#0" expanded="false" />
+                <element signature="e#5088#5139#0" expanded="false" />
+                <element signature="e#5174#5256#0" expanded="false" />
+                <element signature="e#5292#5362#0" expanded="false" />
+                <element signature="e#5400#5467#0" expanded="false" />
+                <element signature="e#5504#5588#0" expanded="false" />
+                <element signature="e#5613#5809#0" expanded="false" />
+                <element signature="e#5838#5893#0" expanded="false" />
+                <element signature="e#5929#6113#0" expanded="false" />
+                <element signature="e#6127#6279#0" expanded="false" />
+                <element signature="e#6301#6337#0" expanded="false" />
+                <element signature="e#6349#6395#0" expanded="false" />
+                <element signature="e#6402#6620#0" expanded="false" />
+                <element signature="e#6632#6923#0" expanded="false" />
+                <element signature="e#6929#7003#0" expanded="false" />
+                <element signature="e#7010#7085#0" expanded="false" />
+                <element signature="e#7174#7214#0" expanded="false" />
+                <element signature="e#7254#7284#0" expanded="false" />
+                <element signature="e#7329#7368#0" expanded="false" />
+                <element signature="e#7411#7455#0" expanded="false" />
+                <element signature="e#7500#7588#0" expanded="false" />
+                <element signature="e#7635#7721#0" expanded="false" />
+                <element signature="e#7738#7810#0" expanded="false" />
+                <element signature="e#8731#8910#0" expanded="false" />
+                <element signature="e#8924#8962#0" expanded="false" />
+                <element signature="e#8976#9009#0" expanded="false" />
+                <element signature="e#9012#9114#0" expanded="false" />
+                <element signature="e#9128#9187#0" expanded="false" />
+                <element signature="e#9204#9325#0" expanded="false" />
+                <element signature="e#9371#9488#0" expanded="false" />
+                <element signature="e#9548#9569#0" expanded="false" />
+                <element signature="e#9645#9678#0" expanded="false" />
+                <element signature="e#9691#9787#0" expanded="false" />
+                <element signature="e#9802#9910#0" expanded="false" />
+                <element signature="e#9925#9973#0" expanded="false" />
+                <element signature="e#10022#10159#0" expanded="false" />
+                <element signature="e#10216#10307#0" expanded="false" />
+                <element signature="e#10366#10415#0" expanded="false" />
+                <element signature="e#10446#10519#0" expanded="false" />
+                <element signature="e#10552#10618#0" expanded="false" />
+                <element signature="e#10633#10683#0" expanded="false" />
+                <element signature="e#10709#10857#0" expanded="false" />
+                <element signature="e#10922#11147#0" expanded="false" />
+                <element signature="e#11166#11341#0" expanded="false" />
+                <element signature="e#11374#11465#0" expanded="false" />
+                <element signature="e#11502#11634#0" expanded="false" />
+                <element signature="e#11648#11775#0" expanded="false" />
+                <element signature="e#11801#11835#0" expanded="false" />
+                <element signature="e#11850#11892#0" expanded="false" />
+                <element signature="e#11915#11934#0" expanded="false" />
+                <element signature="e#11964#12115#0" expanded="false" />
+                <element signature="e#12152#12182#0" expanded="false" />
+                <element signature="e#12200#12226#0" expanded="false" />
+                <element signature="e#12261#12547#0" expanded="false" />
+                <element signature="e#12555#12641#0" expanded="false" />
+                <element signature="e#12660#12695#0" expanded="false" />
+                <element signature="e#12709#12776#0" expanded="false" />
+                <element signature="e#12800#12829#0" expanded="false" />
+                <element signature="e#12915#12997#0" expanded="false" />
+                <element signature="e#13042#13080#0" expanded="false" />
+                <element signature="e#13088#13108#0" expanded="false" />
+                <element signature="e#13116#13180#0" expanded="false" />
+                <element signature="e#13203#13271#0" expanded="false" />
+                <element signature="e#13300#13364#0" expanded="false" />
+                <element signature="e#13419#13458#0" expanded="false" />
+                <element signature="e#13508#13542#0" expanded="false" />
+                <element signature="e#13568#13604#0" expanded="false" />
+                <element signature="e#13636#13715#0" expanded="false" />
+                <element signature="e#13724#13819#0" expanded="false" />
+                <element signature="e#13833#13873#0" expanded="false" />
+                <element signature="e#13886#13958#0" expanded="false" />
+                <element signature="e#13971#14056#0" expanded="false" />
+                <element signature="e#14077#14098#0" expanded="false" />
+                <element signature="e#14133#14167#0" expanded="false" />
+                <element signature="e#14192#14381#0" expanded="false" />
+                <element signature="e#14419#14482#0" expanded="false" />
+                <element signature="e#14522#14545#0" expanded="false" />
+                <element signature="e#14942#14984#0" expanded="false" />
+                <element signature="e#15010#15134#0" expanded="false" />
+                <element signature="e#15155#15194#0" expanded="false" />
+                <element signature="e#15235#15305#0" expanded="false" />
+                <element signature="e#15343#15419#0" expanded="false" />
+                <element signature="e#15445#15473#0" expanded="false" />
+                <element signature="e#15512#15584#0" expanded="false" />
+                <element signature="e#15678#15758#0" expanded="false" />
+                <element signature="e#15808#15849#0" expanded="false" />
+                <element signature="e#15875#15909#0" expanded="false" />
+                <element signature="e#15981#16015#0" expanded="false" />
+                <element signature="e#17633#17659#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="uiReducer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/state/reducers/uiReducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#95#0" expanded="true" />
+                <element signature="n#!!block;n#setHeader#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -119,15 +315,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Component File" />
         <option value="JavaScript File" />
+        <option value="Component File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>h5</find>
-      <find>table,</find>
       <find>.highlight</find>
       <find>.actio</find>
       <find>mr</find>
@@ -143,7 +337,6 @@
       <find>tab</find>
       <find>index-b</find>
       <find>side</find>
-      <find>other</find>
       <find>'img/</find>
       <find>blink</find>
       <find>0px</find>
@@ -155,6 +348,10 @@
       <find>.eot</find>
       <find>sh</find>
       <find>box-sh</find>
+      <find>big</find>
+      <find>block</find>
+      <find>shimm</find>
+      <find>other</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;Clause</replace>
@@ -176,35 +373,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/state/reducers/query_indicator_reducer.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/PropertyEditor.js" />
-        <option value="$PROJECT_DIR$/src/state/actions/ApplicationActions.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/layouts/Tenant_Modal.js" />
-        <option value="$PROJECT_DIR$/src/state/reducers.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/home/home.css" />
-        <option value="$PROJECT_DIR$/src/components/pages/Home.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/applications/ShowCard.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js" />
-        <option value="$PROJECT_DIR$/src/state/actions/leaseAction.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseTerm.js" />
         <option value="$PROJECT_DIR$/public/CSS/auth.css" />
         <option value="$PROJECT_DIR$/public/assets/css/tenant.css" />
         <option value="$PROJECT_DIR$/public/assets/css/tenant_compliment.css" />
-        <option value="$PROJECT_DIR$/src/state/ActionTypes.js" />
-        <option value="$PROJECT_DIR$/src/state/reducers/userReducer.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/SheduleDetails.js" />
         <option value="$PROJECT_DIR$/src/components/pages/layouts/account/Notifications.js" />
         <option value="$PROJECT_DIR$/src/state/actions/applicationActions.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Applications.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Payments.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/EditorHome.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/PaymentLanding.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/ScheduleDetails.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/asset/landlord.css" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/ChargeDetails.js" />
         <option value="$PROJECT_DIR$/src/components/pages/auth/auth.css" />
         <option value="$PROJECT_DIR$/src/components/shared/DropDown.js" />
@@ -216,17 +395,35 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/utils/requireAuth.js" />
         <option value="$PROJECT_DIR$/src/components/pages/LandingPage/ContinueAs.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/LandLord.js" />
-        <option value="$PROJECT_DIR$/src/state/actions/userActions.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/profile/BankAccounts.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/TopBar.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/maintenance/MaintenanceHome.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Maintenance.js" />
-        <option value="$PROJECT_DIR$/public/assets/css/effects.css" />
-        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/maintenance/MaintenanceDetails.js" />
-        <option value="$PROJECT_DIR$/src/utils/ApiManager.js" />
         <option value="$PROJECT_DIR$/src/state/actions/maintenanceActions.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/maintenance/MaintenanceDetails.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/components/shared/PlacesAutoComplete.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/NewUnit.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/layouts/account/PropertyMenu.js" />
+        <option value="$PROJECT_DIR$/src/state/reducers/userReducer.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/EditorHome.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/PropertyEditor.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/LandLord.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/Content.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/content/UnitWidgets.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/PropertyInfo.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/RentalTerms.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/asset/landlord.css" />
+        <option value="$PROJECT_DIR$/src/state/ActionTypes.js" />
+        <option value="$PROJECT_DIR$/src/state/actions/uiAction.js" />
+        <option value="$PROJECT_DIR$/src/state/reducers/uiReducer.js" />
+        <option value="$PROJECT_DIR$/public/assets/css/effects.css" />
+        <option value="$PROJECT_DIR$/src/components/pages/layouts/account/Alert.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/Photos.js" />
+        <option value="$PROJECT_DIR$/src/utils/ApiManager.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js" />
+        <option value="$PROJECT_DIR$/src/state/actions/userActions.js" />
       </list>
     </option>
   </component>
@@ -265,6 +462,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -275,24 +473,6 @@
             <path>
               <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -334,53 +514,6 @@
               <item name="account" type="462c0819:PsiDirectoryNode" />
               <item name="landlord" type="462c0819:PsiDirectoryNode" />
               <item name="properties" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-              <item name="landlord" type="462c0819:PsiDirectoryNode" />
-              <item name="properties" type="462c0819:PsiDirectoryNode" />
-              <item name="propertiesEditor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-              <item name="landlord" type="462c0819:PsiDirectoryNode" />
-              <item name="properties" type="462c0819:PsiDirectoryNode" />
-              <item name="propertiesEditor" type="462c0819:PsiDirectoryNode" />
-              <item name="listing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-              <item name="landlord" type="462c0819:PsiDirectoryNode" />
-              <item name="properties" type="462c0819:PsiDirectoryNode" />
-              <item name="propertiesEditor" type="462c0819:PsiDirectoryNode" />
-              <item name="maintenance" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-              <item name="landlord" type="462c0819:PsiDirectoryNode" />
-              <item name="properties" type="462c0819:PsiDirectoryNode" />
-              <item name="propertiesEditor" type="462c0819:PsiDirectoryNode" />
-              <item name="payments" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
@@ -395,18 +528,11 @@
               <item name="state" type="462c0819:PsiDirectoryNode" />
               <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -621,25 +747,34 @@
       <workItem from="1505567253711" duration="4799000" />
       <workItem from="1505658889838" duration="31638000" />
       <workItem from="1505776772151" duration="10306000" />
-      <workItem from="1505980487254" duration="35285000" />
+      <workItem from="1505980487254" duration="43616000" />
+      <workItem from="1506331656586" duration="38389000" />
+      <workItem from="1506446521624" duration="8623000" />
+      <workItem from="1506596942320" duration="11944000" />
+      <workItem from="1506679894268" duration="19616000" />
+      <workItem from="1507027158520" duration="15858000" />
+      <workItem from="1507107544837" duration="5623000" />
+      <workItem from="1507121109396" duration="31145000" />
+      <workItem from="1507195864706" duration="21467000" />
+      <workItem from="1507282646890" duration="146000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1490086000" />
+    <option name="totallyTimeSpent" value="1651228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16071428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19122024" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3536184" sideWeight="0.5208333" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998326" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886191" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3536184" sideWeight="0.47916666" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28125" sideWeight="0.47916666" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -678,159 +813,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/TenantLease.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="36" column="109" lean-forward="false" selection-start-line="36" selection-start-column="109" selection-end-line="37" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Lease.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/PaymentLanding.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="34" column="27" lean-forward="false" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/Sample.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/ScheduleDetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2499">
-          <caret line="156" column="51" lean-forward="false" selection-start-line="156" selection-start-column="51" selection-end-line="156" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/state/actions/uiAction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/effects.css" />
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/css/materialize.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="5" column="51295" lean-forward="false" selection-start-line="5" selection-start-column="51291" selection-end-line="5" selection-end-column="51295" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/js/materialize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/asset/landlord.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12665">
-          <caret line="745" column="1" lean-forward="false" selection-start-line="745" selection-start-column="1" selection-end-line="745" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/state/actions/apiActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/state/actions/applicationActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/state/reducers/uiReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/asset/materialize/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/layouts/account/Notifications.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/steps/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="16" column="15" lean-forward="false" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/auth/auth.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-686">
           <caret line="330" column="44" lean-forward="true" selection-start-line="330" selection-start-column="44" selection-end-line="330" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/state/actions/authAction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -848,24 +834,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/profile/ProfileForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="32" column="5" lean-forward="false" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/requireAuth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -880,7 +852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="43" column="36" lean-forward="false" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -888,16 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="48" column="61" lean-forward="false" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -905,7 +866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="40" column="43" lean-forward="false" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -913,13 +873,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1904">
           <caret line="122" column="12" lean-forward="false" selection-start-line="122" selection-start-column="12" selection-end-line="123" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-            <element signature="e#4907#5447#0" expanded="false" />
-            <element signature="e#5477#6004#0" expanded="false" />
-            <element signature="e#6034#6613#0" expanded="false" />
-            <element signature="e#6642#7216#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -927,64 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/TopBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="82" column="35" lean-forward="false" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/LandLord.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="20" column="78" lean-forward="false" selection-start-line="20" selection-start-column="78" selection-end-line="20" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/state/ActionTypes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-595">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2049">
-          <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/state/actions/userActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5083">
-          <caret line="299" column="36" lean-forward="false" selection-start-line="299" selection-start-column="36" selection-end-line="299" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/EditorHome.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1641">
-          <caret line="19" column="74" lean-forward="false" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/PropertyEditor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="44" column="68" lean-forward="true" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -992,19 +887,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1666">
           <caret line="107" column="57" lean-forward="false" selection-start-line="107" selection-start-column="57" selection-end-line="107" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/Photos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="41" column="36" lean-forward="true" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,68 +894,471 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="45" lean-forward="true" selection-start-line="7" selection-start-column="45" selection-end-line="8" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/effects.css">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Maintenance.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="834" column="1" lean-forward="true" selection-start-line="834" selection-start-column="1" selection-end-line="834" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="136">
+          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/actions/maintenanceActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="30" column="27" lean-forward="false" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/maintenance/MaintenanceDetails.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+          <caret line="145" column="95" lean-forward="true" selection-start-line="145" selection-start-column="95" selection-end-line="145" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="35" column="11" lean-forward="false" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/AuthService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/shared/PlacesAutoComplete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="75" column="9" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/requireAuth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/reducers/propertyReducer.js" />
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/EditorHome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/layouts/account/PropertyMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <marker date="1506091621255" expanded="true" signature="2458:2576" ph="..." />
-            <marker date="1506091621255" expanded="true" signature="2641:4022" ph="..." />
-            <marker date="1506091621255" expanded="true" signature="2739:3995" ph="..." />
-            <marker date="1506091621255" expanded="true" signature="3005:3095" ph="..." />
-            <marker date="1506091621255" expanded="true" signature="3208:3562" ph="..." />
-            <marker date="1506091621255" expanded="true" signature="3821:3964" ph="..." />
-            <marker date="1506091621255" expanded="false" signature="4090:4108" ph="..." />
-            <marker date="1506091621255" expanded="true" signature="4108:5182" ph="..." />
-            <marker date="1506091621255" expanded="true" signature="4251:5155" ph="..." />
-            <marker date="1506091621255" expanded="true" signature="4533:4630" ph="..." />
-            <marker date="1506091621255" expanded="false" signature="4679:4702" ph="..." />
-            <marker date="1506091621255" expanded="true" signature="4702:5118" ph="..." />
-            <marker date="1506091621255" expanded="false" signature="4877:4897" ph="..." />
-            <marker date="1506091621255" expanded="true" signature="4920:5075" ph="..." />
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/content/UnitWidgets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/Properties.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="53" lean-forward="true" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/Content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="63" column="82" lean-forward="true" selection-start-line="63" selection-start-column="82" selection-end-line="63" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-329">
+          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="51" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/reducers/userReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/NewUnit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="102" column="15" lean-forward="true" selection-start-line="99" selection-start-column="12" selection-end-line="102" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/PropertyInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="39" lean-forward="true" selection-start-line="0" selection-start-column="39" selection-end-line="1" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/RentalTerms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="32" column="53" lean-forward="true" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="27" column="10" lean-forward="true" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/ContactInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/actions/authAction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/es/notification/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/notification/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="17" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/TopBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="84" column="34" lean-forward="false" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="27" column="44" lean-forward="true" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/asset/landlord.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="751" column="1" lean-forward="false" selection-start-line="751" selection-start-column="1" selection-end-line="751" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/LandLord.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="22" column="82" lean-forward="false" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/actions/uiAction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/reducers/uiReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#95#0" expanded="true" />
+            <element signature="n#!!block;n#setHeader#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/layouts/account/Alert.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="50" column="14" lean-forward="true" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/ActionTypes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/effects.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7089">
+          <caret line="930" column="36" lean-forward="false" selection-start-line="930" selection-start-column="36" selection-end-line="930" selection-end-column="36" />
+          <folding>
+            <element signature="e#7#88#0" expanded="false" />
+            <element signature="e#101#142#0" expanded="false" />
+            <element signature="e#159#204#0" expanded="false" />
+            <element signature="e#224#247#0" expanded="false" />
+            <element signature="e#264#309#0" expanded="false" />
+            <element signature="e#331#354#0" expanded="false" />
+            <element signature="e#376#410#0" expanded="false" />
+            <element signature="e#421#445#0" expanded="false" />
+            <element signature="e#452#482#0" expanded="false" />
+            <element signature="e#495#530#0" expanded="false" />
+            <element signature="e#544#580#0" expanded="false" />
+            <element signature="e#592#626#0" expanded="false" />
+            <element signature="e#641#678#0" expanded="false" />
+            <element signature="e#693#719#0" expanded="false" />
+            <element signature="e#732#757#0" expanded="false" />
+            <element signature="e#769#793#0" expanded="false" />
+            <element signature="e#808#835#0" expanded="false" />
+            <element signature="e#853#877#0" expanded="false" />
+            <element signature="e#893#916#0" expanded="false" />
+            <element signature="e#931#953#0" expanded="false" />
+            <element signature="e#971#996#0" expanded="false" />
+            <element signature="e#1016#1117#0" expanded="false" />
+            <element signature="e#1165#1219#0" expanded="false" />
+            <element signature="e#1322#1369#0" expanded="false" />
+            <element signature="e#1387#1442#0" expanded="false" />
+            <element signature="e#1455#1530#0" expanded="false" />
+            <element signature="e#1559#1655#0" expanded="false" />
+            <element signature="e#1738#1775#0" expanded="false" />
+            <element signature="e#1795#1857#0" expanded="false" />
+            <element signature="e#1883#1907#0" expanded="false" />
+            <element signature="e#1924#1946#0" expanded="false" />
+            <element signature="e#1964#1994#0" expanded="false" />
+            <element signature="e#2011#2032#0" expanded="false" />
+            <element signature="e#2051#2183#0" expanded="false" />
+            <element signature="e#2194#3028#0" expanded="false" />
+            <element signature="e#3046#3091#0" expanded="false" />
+            <element signature="e#3109#3236#0" expanded="false" />
+            <element signature="e#3251#3317#0" expanded="false" />
+            <element signature="e#3665#3691#0" expanded="false" />
+            <element signature="e#3717#3737#0" expanded="false" />
+            <element signature="e#3996#4030#0" expanded="false" />
+            <element signature="e#4063#4088#0" expanded="false" />
+            <element signature="e#4100#4161#0" expanded="false" />
+            <element signature="e#4177#4271#0" expanded="false" />
+            <element signature="e#4273#4410#0" expanded="false" />
+            <element signature="e#4310#4355#0" expanded="false" />
+            <element signature="e#4364#4408#0" expanded="false" />
+            <element signature="e#4822#4871#0" expanded="false" />
+            <element signature="e#4987#5054#0" expanded="false" />
+            <element signature="e#5088#5139#0" expanded="false" />
+            <element signature="e#5174#5256#0" expanded="false" />
+            <element signature="e#5292#5362#0" expanded="false" />
+            <element signature="e#5400#5467#0" expanded="false" />
+            <element signature="e#5504#5588#0" expanded="false" />
+            <element signature="e#5613#5809#0" expanded="false" />
+            <element signature="e#5838#5893#0" expanded="false" />
+            <element signature="e#5929#6113#0" expanded="false" />
+            <element signature="e#6127#6279#0" expanded="false" />
+            <element signature="e#6301#6337#0" expanded="false" />
+            <element signature="e#6349#6395#0" expanded="false" />
+            <element signature="e#6402#6620#0" expanded="false" />
+            <element signature="e#6632#6923#0" expanded="false" />
+            <element signature="e#6929#7003#0" expanded="false" />
+            <element signature="e#7010#7085#0" expanded="false" />
+            <element signature="e#7174#7214#0" expanded="false" />
+            <element signature="e#7254#7284#0" expanded="false" />
+            <element signature="e#7329#7368#0" expanded="false" />
+            <element signature="e#7411#7455#0" expanded="false" />
+            <element signature="e#7500#7588#0" expanded="false" />
+            <element signature="e#7635#7721#0" expanded="false" />
+            <element signature="e#7738#7810#0" expanded="false" />
+            <element signature="e#8731#8910#0" expanded="false" />
+            <element signature="e#8924#8962#0" expanded="false" />
+            <element signature="e#8976#9009#0" expanded="false" />
+            <element signature="e#9012#9114#0" expanded="false" />
+            <element signature="e#9128#9187#0" expanded="false" />
+            <element signature="e#9204#9325#0" expanded="false" />
+            <element signature="e#9371#9488#0" expanded="false" />
+            <element signature="e#9548#9569#0" expanded="false" />
+            <element signature="e#9645#9678#0" expanded="false" />
+            <element signature="e#9691#9787#0" expanded="false" />
+            <element signature="e#9802#9910#0" expanded="false" />
+            <element signature="e#9925#9973#0" expanded="false" />
+            <element signature="e#10022#10159#0" expanded="false" />
+            <element signature="e#10216#10307#0" expanded="false" />
+            <element signature="e#10366#10415#0" expanded="false" />
+            <element signature="e#10446#10519#0" expanded="false" />
+            <element signature="e#10552#10618#0" expanded="false" />
+            <element signature="e#10633#10683#0" expanded="false" />
+            <element signature="e#10709#10857#0" expanded="false" />
+            <element signature="e#10922#11147#0" expanded="false" />
+            <element signature="e#11166#11341#0" expanded="false" />
+            <element signature="e#11374#11465#0" expanded="false" />
+            <element signature="e#11502#11634#0" expanded="false" />
+            <element signature="e#11648#11775#0" expanded="false" />
+            <element signature="e#11801#11835#0" expanded="false" />
+            <element signature="e#11850#11892#0" expanded="false" />
+            <element signature="e#11915#11934#0" expanded="false" />
+            <element signature="e#11964#12115#0" expanded="false" />
+            <element signature="e#12152#12182#0" expanded="false" />
+            <element signature="e#12200#12226#0" expanded="false" />
+            <element signature="e#12261#12547#0" expanded="false" />
+            <element signature="e#12555#12641#0" expanded="false" />
+            <element signature="e#12660#12695#0" expanded="false" />
+            <element signature="e#12709#12776#0" expanded="false" />
+            <element signature="e#12800#12829#0" expanded="false" />
+            <element signature="e#12915#12997#0" expanded="false" />
+            <element signature="e#13042#13080#0" expanded="false" />
+            <element signature="e#13088#13108#0" expanded="false" />
+            <element signature="e#13116#13180#0" expanded="false" />
+            <element signature="e#13203#13271#0" expanded="false" />
+            <element signature="e#13300#13364#0" expanded="false" />
+            <element signature="e#13419#13458#0" expanded="false" />
+            <element signature="e#13508#13542#0" expanded="false" />
+            <element signature="e#13568#13604#0" expanded="false" />
+            <element signature="e#13636#13715#0" expanded="false" />
+            <element signature="e#13724#13819#0" expanded="false" />
+            <element signature="e#13833#13873#0" expanded="false" />
+            <element signature="e#13886#13958#0" expanded="false" />
+            <element signature="e#13971#14056#0" expanded="false" />
+            <element signature="e#14077#14098#0" expanded="false" />
+            <element signature="e#14133#14167#0" expanded="false" />
+            <element signature="e#14192#14381#0" expanded="false" />
+            <element signature="e#14419#14482#0" expanded="false" />
+            <element signature="e#14522#14545#0" expanded="false" />
+            <element signature="e#14942#14984#0" expanded="false" />
+            <element signature="e#15010#15134#0" expanded="false" />
+            <element signature="e#15155#15194#0" expanded="false" />
+            <element signature="e#15235#15305#0" expanded="false" />
+            <element signature="e#15343#15419#0" expanded="false" />
+            <element signature="e#15445#15473#0" expanded="false" />
+            <element signature="e#15512#15584#0" expanded="false" />
+            <element signature="e#15678#15758#0" expanded="false" />
+            <element signature="e#15808#15849#0" expanded="false" />
+            <element signature="e#15875#15909#0" expanded="false" />
+            <element signature="e#15981#16015#0" expanded="false" />
+            <element signature="e#17633#17659#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2414">
+          <caret line="150" column="11" lean-forward="false" selection-start-line="150" selection-start-column="11" selection-end-line="150" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/PropertyEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="70" lean-forward="false" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/Photos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="63" column="122" lean-forward="false" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="122" />
+          <folding>
+            <element signature="e#959#1089#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/ApiManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="50" column="87" lean-forward="false" selection-start-line="50" selection-start-column="87" selection-end-line="50" selection-end-column="87" />
-          <folding>
-            <element signature="e#1244#1536#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Maintenance.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        <state relative-caret-position="1411">
+          <caret line="330" column="50" lean-forward="false" selection-start-line="330" selection-start-column="50" selection-end-line="330" selection-end-column="50" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#Listing#0" expanded="false" />
+            <element signature="n#!!block;n#onChange#0;n#Listing#0" expanded="false" />
+            <element signature="n#!!block;n#onUpdateCallback#0;n#Listing#0" expanded="false" />
+            <element signature="e#6195#6272#0" expanded="false" />
+            <element signature="e#6288#6352#0" expanded="false" />
+            <element signature="e#6436#6513#0" expanded="false" />
+            <element signature="e#6529#6593#0" expanded="false" />
+            <element signature="e#7327#7391#0" expanded="false" />
+            <element signature="e#7568#7632#0" expanded="false" />
+            <element signature="e#9138#9204#0" expanded="false" />
+            <element signature="e#10559#10953#0" expanded="false" />
+            <element signature="e#10978#11318#0" expanded="false" />
+            <element signature="e#11588#11657#0" expanded="false" />
+            <element signature="e#11673#11729#0" expanded="false" />
+            <element signature="e#13091#13160#0" expanded="false" />
+            <element signature="e#13176#13232#0" expanded="false" />
+            <element signature="e#13297#13366#0" expanded="false" />
+            <element signature="e#13382#13438#0" expanded="false" />
+            <element signature="e#13612#13670#0" expanded="false" />
+            <element signature="n#!!block;n#formChange#0;n#Listing#0" expanded="false" />
+            <element signature="n#!!block;n#next#0;n#Listing#0" expanded="false" />
+            <element signature="n#!!block;n#previous#0;n#Listing#0" expanded="false" />
+            <element signature="n#!!block;n#listingAction#0;n#Listing#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/state/actions/maintenanceActions.js">
+    <entry file="file://$PROJECT_DIR$/src/state/actions/userActions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="28" column="23" lean-forward="false" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        <state relative-caret-position="101">
+          <caret line="228" column="10" lean-forward="false" selection-start-line="228" selection-start-column="10" selection-end-line="228" selection-end-column="10" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!block;n#receiveUnits#0" expanded="false" />
+            <element signature="n#!!block;n#requestSingleUnit#0" expanded="false" />
+            <element signature="n#!!block;n#receiveSingleUnit#0" expanded="false" />
+            <element signature="n#!!block;n#requestNotifications#0" expanded="false" />
+            <element signature="n#!!block;n#receiveNotifications#0" expanded="false" />
+            <element signature="n#!!block;n#update#0" expanded="false" />
+            <element signature="n#!!block;n#addProperty#0" expanded="false" />
+            <element signature="n#!!block;n#getProperties#0" expanded="false" />
+            <element signature="n#!!block;n#getProperty#0" expanded="false" />
+            <element signature="n#!!block;n#getUnits#0" expanded="false" />
+            <element signature="n#!!block;n#getUnit#0" expanded="false" />
+            <element signature="n#!!block;n#getUnitWithDispatch#0" expanded="false" />
+            <element signature="n#!!block;n#publishUnit#0" expanded="false" />
+            <element signature="n#!!block;n#getNotifications#0" expanded="false" />
+            <element signature="n#!!block;n#getBankAccounts#0" expanded="false" />
+            <element signature="n#!!block;n#addBankAccount#0" expanded="false" />
+            <element signature="n#!!block;n#getSingleBankAccount#0" expanded="false" />
           </folding>
         </state>
       </provider>
