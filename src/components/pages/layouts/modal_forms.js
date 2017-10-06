@@ -5,8 +5,11 @@ import {findDOMNode} from 'react-dom';
 import {Select, Date, Input, Textarea, Phone, ButtonGroup, Switch} from '../tenantlayouts/durables/basic/flex_form';
 import { Progress, Icon} from 'antd';
 import _scratch from '../tenantlayouts/durables/controllers/_scratch';
+import apiActions from '../tenantlayouts/durables/controllers/apiActions';
 import Middle from '../tenantlayouts/durables/controllers/profile_middleware';
 import { notification } from 'antd';
+import Scroll from 'react-scroll'; // Imports all Mixins
+import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 //import GoogleMapsLoader from 'google-maps';
 import $ from 'jquery';
 import PropTypes from 'prop-types';
@@ -14,7 +17,7 @@ import {bindActionCreators} from 'redux';
 import  {LeftItems, Accordion} from  '../tenantlayouts/durables/layout_elements/flex_layout';
 import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct, hideLoading, errorLoading, breakFormToComponents,  getProfileStruct  } from '../../../state/actions/tenantAction';
 var _ = require('lodash');
-
+let scroll     = Scroll.animateScroll;
 var GoogleMapsLoader = require('google-maps');
 GoogleMapsLoader.KEY = 'AIzaSyD2M3_sIa7NQ9HOlNFmGWoGu2j363CMonw';
 const mapping = {'tenant_bio':'Bio Information', 'general_info':'General Information', 'tenant_employment_history':'Employment Information', 'tenant_residence_history': 'Residentail Information', 
@@ -36,6 +39,8 @@ class ModalForms extends Component{
         this.onUpdate = this.onUpdate.bind(this);
         this.navigatefull = this.navigatefull.bind(this);
         this.counter = 1;
+        this.scrollToTop = this.scrollToTop.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
 componentWillMount(){ 
@@ -74,9 +79,13 @@ findvalue = (item)=>{
      return null
     }
 }
+  scrollToTop () {
+    scroll.scrollToTop();
+  }
 navigatefull(ctxt){
 let dnewpage = this.state.scratch.navigator(ctxt);
 this.setState({vizArray:this.state.scratch.arraybreak[this.scratch.currentpage]});
+  this.scrollToTop();
 
 }
 componentWillReceiveProps(){
@@ -87,8 +96,10 @@ navigatepart(selected,label){
   this.scratch =  new _scratch(this.props.form[selected],selected);  
   this.setState({selected, 
     scratch:this.scratch
+    
 
 });
+  this.scrollToTop();
   this.setState({label});
   this.counter = 1;
   this.selected = selected;
@@ -163,7 +174,7 @@ onUpdate =(data)=>{
     }else if(this.state.selected == 'general_info' ) {
       newobj = sendobj;
     }else{
-          newobj[this.state.selected] = [sendobj];   
+          newobj[this.state.selected] = [sendobj]; 
     }
     console.log(newobj, 'sending')
      //let newobj = {uuid:this.props.match.params.id, tenant_employment_history:[this.sendobj]}
@@ -173,6 +184,11 @@ onUpdate =(data)=>{
     console.log(this.state.employment)
     this.navigatefull('next'); 
     this.setState({data:null}) ;
+    }).catch((err)=>{
+        notification['erro']({
+    message: 'This is our fault',
+    description: 'Ooops something went wrong, we couldnt update this information, however we are working to fix the issue which we will ASAP.',
+        })
     })
    }else{
  notification['warning']({
@@ -181,6 +197,22 @@ onUpdate =(data)=>{
   });
     }
 
+  }
+
+    handleDelete = (employer)=>{  
+    let api = new apiActions('https://rentright.herokuapp.com/api/rentright/tenant/employment') 
+    api.deleteurl('/'+employer).then((data)=>{
+    this.props.loadStructure('/profile/structure/?uuid='+this.props.auth.user.uuid, true);     
+    this.setState({employment: this.props.myProfile.tenants.tenant_employment_history, residence:this.props.myProfile.tenants.tenant_residence_history, immigration:this.props.myProfile.tenants.tenant_immigration_history})
+    console.log(this.state.employment)
+    this.setState({data:null}) ;
+    }).catch((err)=>{
+     notification['erro']({
+    message: 'This is our fault',
+    description: 'Ooops something went wrong, we couldnt update this information, however we are working to fix the issue which we will ASAP.',
+        })
+    })
+   
   }
 
 
@@ -308,14 +340,8 @@ hideModal(){
 
 
                            </div>
-                           <div className = "d-right">
-                            
-                            {  /*                                                    
-                            this.props.loader.Loading  ?
-                            <div className = "d-spinner">
-                            <Icon type = "loading" style={{ fontSize: 60}}/>
-                            </div>
-                             : */                           
+                           <div className = "d-right">                            
+                         
                            <div className = "d-form">
                             <div className = "d-formpost"  style = {this.state.transitionCss}>
                             <div className = "t-flex t-md-10 t-flex-row t-justify-space-between h-40px">
@@ -342,9 +368,11 @@ hideModal(){
                             <div className = "t-md-10  t-flex t-flex-wrap t-justify-space-between hidden-overflow">   
                        
                             {                  
-                             this.state.vizArray.map((item, index)=>{                    
-                              let value = this.findvalue(item);  
-                              
+                             this.state.vizArray.map((item, index)=>{  
+                             let value  = null; 
+                            if (this.state.selected !== 'tenant_employment_history' ) {               
+                              value = this.findvalue(item);  
+                            }                            
                                     
                              if (item.datatype == "textarea"){                                         
                      
@@ -398,7 +426,7 @@ hideModal(){
                          }
                            </div>
                            </div>
-                            }
+                         
                            <div className = "d-details">
                             {
                              this.state.selected === "general_info" 
@@ -441,8 +469,10 @@ hideModal(){
                                        key = {index}
                                         header = {item.employer}
                                         sub2 = {item.is_this_your_current_employer ? "Currently working here" : "Left here at "+ item.employment_ends }
-                                        sub1 = {"You worked here over a period of " +item.employment_start + " to " + item.employment_ends  + ", this compnay is located at " + item.address + " please check all this information to ensure that it is correct"}
+                                        sub1 = {"You worked here over a period of " +item.employment_start + " to " + item.employment_ends  + ", this compnay is located at " + item.address.address + " please check all this information to ensure that it is correct"}
                                         attention = {item.position}
+                                        transmit = {(employer)=>this.handleDelete(employer)}
+
                                        />
                                          )
 

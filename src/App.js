@@ -9,6 +9,7 @@ import Login from '../src/components/pages/auth/Login';
 import Register from '../src/components/pages/Register';
 import LandLord from "./components/pages/account/LandLord";
 import Tenant from "./components/pages/Tenant";
+import MapPage from "../src/components/pages/layouts/map_page"
 import Landing from './components/pages/Landing';
 import NewTenantInfo from './components/pages/NewTenantInfo';
 import LandlordGuide from './components/pages/LandordGuide';
@@ -53,6 +54,7 @@ class App extends Component {
                   <Route path="/tenant-guide" component={NewTenantInfo}/>
                   <Route path="/tenant" component={Tenant} />
                   <Route path="/landlord-guide" component={LandlordGuide} />
+                  <Route path="/generalsearch/:param" component={MapPage} />
               </Switch>
           </Router>
           </LocaleProvider>

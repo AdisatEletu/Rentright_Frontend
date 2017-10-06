@@ -7,6 +7,16 @@ import Dropdown from '../layout_elements/dropdown';
 import { Badge } from 'antd';
 import {Icon,Progress} from 'antd'; 
 import { Avatar } from 'antd';
+import BingTileLayer  from '../controllers/bing_leaflet'
+import L from 'leaflet';
+
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+const street = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}';
+const imagery = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+const streetkey = {'bingMapsKey':' AuyEx9iRRzYb8lUwuLFvNvRttyzrgrgLDNLcFp8IYSSC1z93fYIcxfp-298VK__L','imagerySet':'Road',attribution: '' }
+const satkey = {'bingMapsKey':' Ap1SHDN96htRONGcKqC5ZJxlY8svqfFfFOOgESUURUk5GWVwtwmeQdUVduOst8TF','imagerySet':'Aerial',attribution: '' }
+
+
 
 
 export class FlexLayout extends Component{
@@ -135,6 +145,62 @@ Profiler.PropTypes = {
 }
 
 
+
+
+
+
+export class Profiler2 extends Component{
+    constructor(props){
+        super(props)
+        this.clcked = this.clicked.bind(this)
+         }
+clicked = ()=>{
+    this.props.clicked()
+}
+        render (){
+   return ( 
+    
+     <div className = "event-cards new-cards" style  = {this.props.style ? this.props.style : null }>
+     <div className = {this.props.imageclass ? this.props.imageclass + "  event-cards-image" : " person1 event-cards-image"  }
+    style = {this.props.notdummy ? this.props.height ?  {height:'50%',backgroundImage:'url('+this.props.img+')'}: {backgroundImage:'url('+this.props.img+')'}:null}
+    >
+     <div className = "event-cover vh">
+         <Icon type = "heart"/>
+     </div>
+     </div>
+     <div className = "t-white t-w" style = {{minHeight:'30%'}}>
+     <p className = "ppc ml-ellipses"><span className = "e-name">{this.props.name}</span> {this.props.paragraph}</p>
+      <div className = "secondreview srv">
+       <div><Icon type = "star"/><Icon type = "star"/><Icon type = "star-o"/><Icon type = "star-o"/><Icon type = "star-o"/><span className = "starsbb"> 5 Reviews</span></div>
+     <div className = "starsb stb"  style = {{fontSize:'13px'}}  >0 Upvotes | 0 Down Votes</div>
+    </div>
+   </div>
+  
+     </div>
+
+         
+        );//return
+
+        }//render
+        
+    
+ }
+Profiler.PropTypes = {
+      imageclass:PropTypes.string,
+      name:PropTypes.string,
+      paragraph: PropTypes.string,
+
+
+}
+
+
+
+
+
+
+
+
+
 export class List extends Component{
 constructor(props){
         super(props)
@@ -253,6 +319,7 @@ export class Accordion extends Component{
 constructor(props){
         super(props);        
         this.state = {editing:{ index : -1 }}
+
         this.expandAccordion = this.expandAccordion.bind(this);
         this.collapseOtherAccordions = this.collapseOtherAccordions.bind(this);
          }
@@ -261,23 +328,32 @@ constructor(props){
           Object.assign(editingStat,this.state.editing)
           editingStat.index = -1;
           this.setState({editing: editingStat});
+               this.setState({editing:{index:-1}});
      }
      expandAccordion(index){
         let editingStat = {};
+        if (this.state.editing.index == index){
+            this.setState({editing:{index:-1}});
+        }else{
         this.collapseOtherAccordions();
           Object.assign(editingStat,this.state.editing)
           editingStat.index = index;         
           this.setState({editing:editingStat});
+        }
      }
         render (){
          const childrenWithProps = React.Children.map(this.props.children,
            (child, i) =>React.cloneElement(child, {
                collapseOtherAccordions: this.collapseOtherAccordions,
                expandAccordion : (i)=>this.expandAccordion(i),
-               index : i
+               index : i,
+               editing: this.state.editing.index == i
            })
            )   
-           return  (<div style = {styles}> {childrenWithProps }</div>)
+           return  (<div style = {styles}> 
+               <div className = "il-headers2" style = {this.state.editing.index == -1? {borderColor:'#ccc'}: null}>Recently uploaded items</div>
+                {childrenWithProps }
+                </div>)
         }//render            
  }
  const styles = {
@@ -285,34 +361,68 @@ constructor(props){
      height: '100%',
      overflow:'hidden',
      padding: '10px',
-     boxSixing: 'border-box'
+     boxSixing: 'border-box',
+     display:'flex',
+     flexDirection:'column',
+     justifyContent:'flex-end'
  }
 
 
  export class LeftItems extends Component{
   constructor(props){
       super(props);
+      console.log(this.props.index, ' Click stat');
+      this.sendToParent = this.sendToParent.bind(this)
      }
+    sendToParent(employer){
+        this.props.transmit(employer)
+    }
  render(){
      return(
-     <div className = "il-overall">
-         <div className = "il-collapse">
-             <span className = "il-icons"><Icon type = "up"/></span>
+     <div className = "il-overall" >
+         <div className = "il-collapse" onClick = {()=>this.props.expandAccordion(this.props.index)} >
+             <span className = "il-icons">{! this.props.editing ? <Icon type = "down"/>: <Icon type = "up"/> }</span>
              <span className = "il-headers">{this.props.header}</span>
              <span  className =  "il-headers" style ={{marginLeft:'auto'}}><Icon  type = "close"/></span></div>
-             <div className = "il-body">            
+             <div className = {this.props.editing ? "il-body"  : "il-body il-hidebody"  } > 
+                                 
                  <div className = "il-right">
+                      <div className = "il-attention">{this.props.attention}</div>   
                     <div className ="il-sub2">{this.props.sub2}</div> 
                  <p className = "il-sub1">{this.props.sub1}</p>
-                     <div className = "il-attention">{this.props.attention}</div>                     
+                                 
                  </div>
                  <div className = "il-float-bottom">
-                <div className = "il-button">Edit</div>  <div className = "il-button"><Icon type = "delete"/>&nbsp;&nbsp;Delete</div> 
+                <div className = "il-button">Edit</div>  <div className = "il-button" onClick = {()=>this.sendToParent(this.props.header)}><Icon type = "delete"/>&nbsp;&nbsp;Delete</div> 
                      </div>
              </div>
 
         
      </div>
+     )
+ }
+
+ } 
+
+  require('leaflet-plugins/layer/tile/Bing.js');
+  export class RentRightMap extends Component{
+  constructor(props){
+      super(props);
+      this.position = this.props.view;
+
+     };
+    componentWillMount(){
+
+    }
+    sendToParent(employer){
+        this.props.transmit(employer)
+
+    }
+ render(){
+     return(
+    <Map center={this.position} zoom={12}>
+  <BingTileLayer bingKey='<bingmapskey>' type='aerial' />
+      </Map>
      )
  }
 

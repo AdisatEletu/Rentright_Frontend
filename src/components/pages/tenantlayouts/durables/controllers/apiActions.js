@@ -58,15 +58,15 @@ export default class apiActions {
   return error;
 })
   }
-  deleteurl = (api_path, obj) =>{
+  deleteurl = (api_path) =>{
    api_path =  api_path + '/';
     return fetch(this.url + api_path, {
         headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   },
-  method: 'delete',                                                              
-  body: JSON.stringify( { obj } )
+  method: 'delete'                                                    
+
     }).then(response =>{
   return response.json();  
 }).catch(error => {
