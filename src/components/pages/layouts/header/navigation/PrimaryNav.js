@@ -30,7 +30,7 @@ import {Icon} from 'antd';
     render(){
 
         return(
-            <div className="home-firstnav t-fullwidth t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
+            <div className="home-firstnav t-fullwidth t-flex t-justify-space-between t-align-center nav-pad-left-right">
                 <div className=" t-flex  t-fullheight t-justify-right t-right-f home-firstnav-innerdiv-left ">
                     <span> The Ultimate Insider to the RentRight </span>
                 </div>

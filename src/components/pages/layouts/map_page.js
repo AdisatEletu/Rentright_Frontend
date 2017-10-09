@@ -9,8 +9,8 @@ import apiActions from '../tenantlayouts/durables/controllers/apiActions';
 import Middle from '../tenantlayouts/durables/controllers/profile_middleware';
 import { notification } from 'antd';
 import {Switch,Route} from 'react-router-dom';
-import Scroll from 'react-scroll'; // Imports all Mixins
-import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
+//import Scroll from 'react-scroll'; // Imports all Mixins
+//import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 //import GoogleMapsLoader from 'google-maps';
 import $ from 'jquery';
 import PropTypes from 'prop-types';
@@ -31,7 +31,7 @@ const pageurl =  "https://rentright.herokuapp.com/api/rentright/units/query/?";
 
 
 var _ = require('lodash');
-let scroll     = Scroll.animateScroll;
+//nlet scroll     = Scroll.animateScroll;
 
 var GoogleMapsLoader = require('google-maps');
 GoogleMapsLoader.KEY = 'AIzaSyD2M3_sIa7NQ9HOlNFmGWoGu2j363CMonw';

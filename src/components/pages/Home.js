@@ -81,7 +81,7 @@ componentDidMount (){
                     <link href="http://localhost:3000/CSS/home.css" rel="stylesheet" type="text/css"/>
                 </Helmet>
                 <PrimaryNav/>
-                <div className="home-second-div t-flex t-justify-space-between t-align-center  t-flex-row nav-pad-left-right ">
+                { /*<div className="home-second-div t-flex t-justify-space-between t-align-center  t-flex-row nav-pad-left-right ">
                     <div className="t-flex t-justify-right t-align-center t-fullheight  ">
                         <div className="t-flex-column t-flex rentright-logo" />
                     </div>
@@ -102,8 +102,12 @@ componentDidMount (){
 
                         </div>
                     </div>
-                </div>
+                </div>*/}
                 <div className="home-third-div t-flex t-align-center  t-flex-row nav-pad-left-right">
+                    <div className="t-flex t-justify-right t-align-content-center t-fullheight  ">
+                        <div className="t-flex-column t-flex rentright-logo" />
+                    </div>
+
                     <div className="bar-box t-flex t-align-center t-justify-space-between t-md-10  ">
                         <div className="t-flex t-flex-row t-align-center t-justify-right t-md-10">
                             <span className="bar-breadcrumbs bar-tabs  bar-tabs-active"><a href="/landlord-guide">LANDLORD</a></span>

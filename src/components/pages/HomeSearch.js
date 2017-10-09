@@ -90,7 +90,7 @@ componentDidMount(){
 
                     <form method="GET" onSubmit={this.submit}  className = "t-md-10  t-full-height t-flex t-flex-column">
             <div className="t-md-10 t-justify-space-between t-flex ">
-                <div className="home-search2 t-flex t-md-4 t-flex-column home-pad">
+                <div className="home-search2 t-flex t-md-6 t-flex-column home-pad">
 
                     <div className="home-search-header t-md-10 museo">
                         Find Properties
