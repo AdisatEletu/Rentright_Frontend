@@ -210,7 +210,7 @@ componentDidMount (){
                                             <div className="t-flex home-aplicant-picture" style = {real.unit_images[2] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[2].id+ ")"}:undefined}
 
                                             />
-                                            <span className="home-aplicant-name t-align-center t-flex ">{real.unit_images[1].section}</span>
+                                            <span className="home-aplicant-name t-align-center t-flex ">{real.unit_images[1] &&real.unit_images[1].section ? real.unit_images[1].section: null}</span>
                                         </div>
                                         <div className="t-flex home-applicant-right t-justify-center t-md-5 t-align-center">
                                             {real.applications.length>0?
@@ -353,7 +353,7 @@ componentDidMount (){
                                     {/*<div className=" home-aplicants t-flex t-md-10  ">
                                         <div className=" t-flex t-md-5 t-align-center  ">
                                             <div className="t-flex home-aplicant-picture" style = {real.unit_images[1] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[1].id+ ")"}:undefined} ></div>
-                                            <span className="home-aplicant-name t-align-center t-flex ">{real.unit_images[1].section}</span>
+                                            <span className="home-aplicant-name t-align-center t-flex ">{real.unit_images[1] &&real.unit_images[1].section ? real.unit_images[1].section: null}</span>
                                         </div>
 
                                     </div>*/}

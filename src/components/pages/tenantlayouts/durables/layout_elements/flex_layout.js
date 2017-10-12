@@ -9,8 +9,40 @@ import {Icon,Progress} from 'antd';
 import { Avatar } from 'antd';
 import BingTileLayer  from '../controllers/bing_leaflet'
 import L from 'leaflet';
+import Modal from 'antd/lib/modal';
 
+import Radio from  'antd/lib/radio';
+import Input from 'antd/lib/input';
+import moment from 'moment';
+import Col from 'antd/lib/col';
+import InputNumber from 'antd/lib/input-number';
+import  DatePicker from 'antd/lib/date-picker'; 
+import  AutoComplete from 'antd/lib/auto-complete';
+import  Cascader from 'antd/lib/cascader';
+import  {Switch as SW} from 'antd/lib/switch';
+import Select from 'antd/lib/select';
+import  apiActions from '../controllers/apiActions';
+import 'moment/locale/en-gb';
+import { LocaleProvider } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
+import { Slider, Row } from 'antd';
+import $ from 'jquery';
+import {Button} from 'antd';
+import { notification } from 'antd';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { divIcon } from 'leaflet';
+import DivIcon from 'react-leaflet-div-icon';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
+const { OptGroup } = Select;
+const InputGroup = Input.Group;
+const Option = Select.Option;
+const { TextArea } = Input;
+const RadioGroup = Radio.Group;
+const RadioButton = Radio.Button;
+
+const { MonthPicker, RangePicker } = DatePicker;
+const  dateFormat = 'YYYY-MM-DD';
+const pageurl =  "https://rentright.herokuapp.com/api/rentright/units/query/?";
 const street = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}';
 const imagery = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
 const streetkey = {'bingMapsKey':' AuyEx9iRRzYb8lUwuLFvNvRttyzrgrgLDNLcFp8IYSSC1z93fYIcxfp-298VK__L','imagerySet':'Road',attribution: '' }
@@ -119,12 +151,15 @@ clicked = ()=>{
          <Icon type = "heart"/>
      </div>
      </div>
-     <div className = "t-white" style = {{minHeight:'30%'}}>
-     <p><span className = "e-name">{this.props.name}</span> {this.props.paragraph}</p>
-      <div className = "secondreview">
-       <div><Icon type = "star"/><Icon type = "star"/><Icon type = "star-o"/><Icon type = "star-o"/><Icon type = "star-o"/><span className = "starsbb"> 5 Reviews</span></div>
-     <div className = "starsb"  style = {{fontSize:'13px', lineHeight:'20px', marginTop:'5px'}}  >0 Upvotes | 0 Down Votes</div>
+     <div className = "t-white" style = {{height:'auto', paddingBottom:'10', boxSizing:'border-box'}}>
+     <div className = "secondreview">
+       <div className = "studded"><Icon type = "star"/><Icon type = "star"/><Icon type = "star-o"/><Icon type = "star-o"/><Icon type = "star-o"/><span className = "starsbb"> 5 Reviews</span>
+       <div className = "ll">Explore</div>
+       </div>
+     <div className = "starsb"  style = {{fontSize:'13px'}}  >0 Upvotes | 0 Down Votes</div>
     </div>
+     <p><span className = "e-name">{this.props.name}</span> {this.props.paragraph}</p>
+ 
    </div>
   
      </div>
@@ -146,46 +181,86 @@ Profiler.PropTypes = {
 
 
 
-
-
-
 export class Profiler2 extends Component{
     constructor(props){
         super(props)
         this.clcked = this.clicked.bind(this)
+        let image = {};
+        this.sendback = this.sendback.bind(this);
+        if (this.props.list.length > 0){
+          image.list =   this.props.list.map((item)=>{
+                return ('https://rentright-api-gateway.herokuapp.com/user/units/image/'+item.id)
+              })
+        }else{
+            image.list = []
+        }
+
+           this.state = {image, index:0}
+        this.navimage = this.navimage.bind(this);
          }
+    sendback = (a,b)=>{
+        console.log(a,b);
+        this.props.street(a,b)
+    }
+    navimage = (context)=>{
+        if (context === 'prev'){
+        if (! this.state.index < 1){
+            this.setState({index: this.state.index-1})
+        }else{
+            this.setState({index:this.state.image.list.length - 1})
+        }
+        }else if (context === 'next'){
+        if ( this.state.index  === this.state.image.list.length - 1){
+            this.setState({index:0})
+        }else{
+              this.setState({index: this.state.index + 1})
+          
+        }
+
+        }
+    console.log(this.state.index)
+    
+
+    }
 clicked = ()=>{
     this.props.clicked()
 }
         render (){
-   return ( 
-    
-     <div className = "event-cards new-cards" style  = {this.props.style ? this.props.style : null }>
-     <div className = {this.props.imageclass ? this.props.imageclass + "  event-cards-image" : " person1 event-cards-image"  }
-    style = {this.props.notdummy ? this.props.height ?  {height:'50%',backgroundImage:'url('+this.props.img+')'}: {backgroundImage:'url('+this.props.img+')'}:null}
+    return (      
+    <div className = "event-cards shad" style  = {this.props.style ? this.props.style : null }>
+     <div className =  "  event-cards-image"
+    style = {
+    this.props.notdummy?
+     this.props.height && this.state.image.list.length > 0  ? 
+      {height:'129px' ,backgroundImage: 'url('+this.state.image.list[this.state.index]+')'}: 
+
+    { height:'129px',backgroundImage: 'url('+this.state.image.list[this.state.index]+')'}:
+    null
+    }
     >
-     <div className = "event-cover vh">
-         <Icon type = "heart"/>
+     <div className = "event-cover replace-cover">
+       <div className = "e-a-hold">
+           <div className = "e-a-left" onClick = {()=>this.navimage('prev')}><Icon type = "left"/></div>
+           <div className = "e-a-right" onClick = {()=>this.navimage('next')}><Icon type = "right"/></div>
+           </div> 
      </div>
      </div>
-     <div className = "t-white t-w" style = {{minHeight:'30%'}}>
-     <p className = "ppc ml-ellipses"><span className = "e-name">{this.props.name}</span> {this.props.paragraph}</p>
-      <div className = "secondreview srv">
-       <div><Icon type = "star"/><Icon type = "star"/><Icon type = "star-o"/><Icon type = "star-o"/><Icon type = "star-o"/><span className = "starsbb"> 5 Reviews</span></div>
-     <div className = "starsb stb"  style = {{fontSize:'13px'}}  >0 Upvotes | 0 Down Votes</div>
-    </div>
+     <div className = "t-white" style = {{height:'auto', padding:'10px 3px', paddingBottom:'10', borderStyle:'none',  boxSizing:'border-box'}}>
+        {/*  <div className = "ll" onClick = {()=>this.sendback(this.props.address.latitude, this.props.address.longitude)}>Explore</div>*/}
+     <p className = "line-clamp" onClick = {()=>this.sendback(this.props.address.latitude, this.props.address.longitude)} style = {{fontSize:'12px', color:'#222'}}><span className = "e-name" style = {{fontSize:'14px'}} >{this.props.name}</span><br/> {this.props.paragraph}</p>
+ 
    </div>
   
      </div>
 
          
         );//return
-
+    
         }//render
         
     
  }
-Profiler.PropTypes = {
+Profiler2.PropTypes = {
       imageclass:PropTypes.string,
       name:PropTypes.string,
       paragraph: PropTypes.string,
@@ -393,7 +468,7 @@ constructor(props){
                                  
                  </div>
                  <div className = "il-float-bottom">
-                <div className = "il-button">Edit</div>  <div className = "il-button" onClick = {()=>this.sendToParent(this.props.header)}><Icon type = "delete"/>&nbsp;&nbsp;Delete</div> 
+                <div className = "il-button">Edit</div>  <div className = "il-button" onClick = {()=>this.sendToParent(this.props.id)}><Icon type = "delete"/>&nbsp;&nbsp;Delete</div> 
                      </div>
              </div>
 
@@ -404,11 +479,159 @@ constructor(props){
 
  } 
 
-  require('leaflet-plugins/layer/tile/Bing.js');
-  export class RentRightMap extends Component{
+
+  export class GlobalSearch extends Component{
   constructor(props){
       super(props);
+      console.log(this.props.index, ' Click stat');
+      this.sendToParent = this.sendToParent.bind(this)
+      this.state ={ states :{}, query:{loading:false, error:false, results:undefined}}
+      this.handleInputChange = this.handleInputChange.bind(this);
+      this.isLoading = this.isLoading.bind(this);
+      this.isNotLoading = this.isNotLoading.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.queryForApplications = this.queryForApplications.bind(this);
+     }
+ sendToParent(employer){
+   this.props.transmit(employer)
+ }
+handleInputChange = (event, name = null) => {  
+     let value;    
+      let target;
+    if (! name){
+    try{ target = event.target; 
+        value = target.type === 'radio' ?
+       target.selected : target.value;  
+         name = target.name;
+    }catch(err){  value = event;  } }
+  else{
+      if (name === "name"){
+          value = event.target.value;
+      }else if(name == "all"){
+          value = event;
+      }else{
+          value = event.target.value;
+      }    
+     } 
+console.log(this.state.states)
+   this.setState({states:{   [name]: value  }});     
+  } 
+  isLoading(){
+      this.props.transmit({loading:true})
+      this.setState({query:{loading:true}})
+  }
+    isNotLoading(){
+    console.log('noloading started')
+    this.props.transmit({loading:false})
+     this.setState({query:{loading:false}})
+   } 
+  queryForApplications(api_path){
+      this.setState({query:{loading:true, error:false,results:undefined}});
+      let url = "https://rentright.herokuapp.com/api/rentright/units/query/?"
+      let api = new apiActions(url);
+      this.isLoading();
+      api.geturl(api_path, false).then((data)=>{   
+          this.isNotLoading();  
+          this.props.transmit({results:data.results});      
+      }).catch((err)=>{
+        console.log(err)
+           this.isNotLoading(); 
+
+      })
+    
+  } 
+
+ handleSubmit = (e)=>{ 
+     e.preventDefault();
+     var th = this;     
+    if (this.state.states !== {}) {
+      let path = ""
+      let keys = Object.keys(this.state.states)
+      let lis = keys.map((item)=>{
+        console.log(item)
+        if (path == ""){
+          path = item + "="+this.state.states[item];
+        }else{
+          path  += "&" +item + "="  + this.state.states[item] 
+        }   
+      this.setState({showModal:false, states:{}});       
+      })
+       path += "&" +"uuid="+this.props.uuid;
+      this.queryForApplications(path);
+    }
+
+  }
+ render(){
+     return(
+     <div className = "t-md-10 t-fullheight" style = {this.props.style ? this.props.style : null}>
+    <form className = "t-md-10 t-fullheight">
+     <div className = "nobd   t-flex-column t-justify-left q-sub">
+        <div className = "header-test" style = {{paddingLeft:'30px'}}>{this.props.header}</div>
+    </div>
+    <div style = {{padding:'0px 30px', boxSizing:'border-box' }}>
+        <div className = "straightsearch">
+            <div className = "input t-md-3 stbr"><Icon type = "environment-o"/><input name = "name" onChange = {this.handleInputChange}   type = "text" placeholder = "Search by place"/></div>
+            <div className = "input t-md-2 stbr"><Icon type = "layout"/>
+            <select type = "text" defaultValue = "opt" placeholder = "Apartment Type">
+                <option value="opt" disabled default>Type</option> 
+                <option value="1" default>House</option> 
+                 <option value="2" default>Condo</option> 
+                <option value="3" default>Flats</option> 
+                <option value="4" default>Bungalow</option> 
+                <option value="5" default>Terrace</option> 
+                <option value="6" default>Duplex</option> 
+                <option value="11" default>More</option> 
+                </select>
+
+            </div>
+            <div className = "input t-md-2 stbr"><Icon type = "solution"/><input type = "number"  onChange = {(e)=> this.handleInputChange(e,'bedrooms')} placeholder = "Bedrooms"/></div>
+            <div className = "input t-md-2 "><Icon type = "coffee"/><input onChange = {(e)=> this.handleInputChange(e,'rent')}  type = "number" placeholder = "Budget"/></div>
+                    <div className = "t-md-1 inpsubmit">
+        {   
+             this.state.query.loading ?
+            <button type  = "submit"  className = "inpsubmit load">Loading ...</button>
+                :
+            <button type  = "submit"   onClick={this.handleSubmit}  className = "inpsubmit">Find</button>             
+                }
+
+        </div>
+        
+        </div></div>
+     </form>
+    </div>
+     )
+ }
+
+ } 
+ GlobalSearch.PropTypes= {
+      header:PropTypes.string,
+       substring:PropTypes.string,
+      body:PropTypes.string
+
+
+}
+
+
+
+
+require('leaflet-plugins/layer/tile/Bing.js');
+export class RentRightMap extends Component{
+  
+  constructor(props){
+     
+      super(props);
       this.position = this.props.view;
+       this.icon =  divIcon({className: 'ricon'});
+     console.log(this.props.markers, 'grer')
+     this.markers = this.props.markers.map((item)=>{
+         return {lat:item.position[0], lng:item.position[1]};
+         
+     })
+this.markerclusterOptions = {
+    showCoverageOnHover: false,
+    spiderfyDistanceMultiplier: 2,
+
+  };
 
      };
     componentWillMount(){
@@ -418,10 +641,24 @@ constructor(props){
         this.props.transmit(employer)
 
     }
+
  render(){
      return(
-    <Map center={this.position} zoom={12}>
-  <BingTileLayer bingKey='<bingmapskey>' type='aerial' />
+    <Map  className="markercluster-map" maxZoom = "30"  minZoom = "2" center={this.props.markers[0].position} zoom={9}>
+          <BingTileLayer url = '' bingKey='<bingmapskey>'  type='aerial' />
+        {
+            this.props.markers?
+ <MarkerClusterGroup
+    markers={this.markers}
+
+    wrapperOptions={{enableDefaultStyle: true}}
+  />
+            :
+            null
+        }
+
+
+
       </Map>
      )
  }
