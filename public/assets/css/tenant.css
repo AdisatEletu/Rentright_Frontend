@@ -675,7 +675,12 @@ html, body {
 .t-md-2 {
     width: 20%;
 }
-
+.t-md-35 {
+    width: 35%;
+}
+.t-md-25 {
+    width: 25%;
+}
 .t-md-3 {
     width: 30%;
 }
@@ -687,6 +692,7 @@ html, body {
 .t-md-5 {
     width: 50%;
 }
+.t-md-55{width:55%;}
 
 .t-md-6 {
     width: 60%;

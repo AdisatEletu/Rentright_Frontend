@@ -63,7 +63,7 @@ background-color:#fff; display:inline-flex; flex-direction:column; padding:30px 
 .p-headers{font-size:20px;  border-color:#ccc; height:60px; line-height:60px; display:flex; justify-content:space-between;
       text-transform:capitalize; font-weight:500; font-family:Museo; color:#333; }
 .p-headers i {font-size:22px; color:#47AA5B; line-height:60px; margin-right:10px; }
-.p-hold{padding:10px 10px; box-sizing:border-box; display:inline-flex; justify-content: space-between;  }
+.p-hold{padding:10px 20px; box-sizing:border-box; display:inline-flex; justify-content: space-between; margin-top:-40px;  }
 .p-mid{font-size:14px; color:#999; font-weight:300; white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis; }
 
 
@@ -90,11 +90,11 @@ background-color:#fff; display:inline-flex; flex-direction:column; padding:30px 
      .bbottom{padding-bottom:10px; box-sizing:border-box;}
 .reviews{width:100%; height:70px;display:flex;  padding-bottom:10px; box-sizing:border-box; flex-direction:row; align-content:center; justify-content:left; align-items:center;   }
  .reviewed{width:40px; background-image:url('img/me.jpg'); height:40px; margin-left:10px; border-radius:50%; background-size:cover; }
- .secondreview, .longed{width:80%; font-family:Museo; height:100%; display:flex; flex-direction:column; margin-left:15px; margin-top:-10px;  justify-content:flex-start; align-items:flex-start; }
+ .secondreview, .longed{width:100%; font-family:Museo; height:100%; display:flex; flex-direction:column; margin-left:15px; margin-top:-10px;  justify-content:flex-start; align-items:flex-start; }
  .longed{width:80%; margin-top:0px; }
-  .secondreview i ,.starsbb{color:#55A32A; text-align:left; font-size:13px; line-height:18px;}
-  .starsbb{font-size:14px; letter-spacing:1px;  font-weight:500;}
-  .starsb{font-size:11px; margin-top:5px;  line-height:15px; color:#999; font-family:Proxima Nova;} .play3{background-image:url('img/int4.jpg'); }  .play4{background-image:url('img/int5.jpg'); }
+  .secondreview i ,.starsbb{color:#55A32A; text-align:left; font-size:14px; line-height:16px; font-weight:400; }
+  .starsbb{font-size:13px; letter-spacing:1px;  font-weight:400; text-transform:uppercase;}
+  .starsb{font-size:15px; margin-top:5px; font-weight:400;  line-height:15px; color:#222; font-family:Proxima Nova; margin-top:-5px;} .play3{background-image:url('img/int4.jpg'); }  .play4{background-image:url('img/int5.jpg'); }
    .play6{background-image:url('img/int6.jpg'); }
 .longmore {width:100%; margin-top:10px;  padding:5px 10px; background:#fff; box-sizing:border-box; overflow:hidden;  border-bottom:solid 1px #eaeaea;   display:flex;  flex-direction:row; align-content:center;
      justify-content:left; align-items:center; justify-content:space-between;  }
@@ -118,24 +118,24 @@ background-color:#fff; display:inline-flex; flex-direction:column; padding:30px 
   /*.main-second .ant-progress-text{}*/
   .main-button{font-size:20px; margin-top:40px;  height:40px; line-height:40px; padding:0px 80px; border-radius:4px; color:#fff; font-family:Museo; background-color:#108EE9; margin-top:20px; cursor:pointer; }
    .main-button:hover{background-color:#55C16C;}
-   .events{height:580px; width:100%; display:flex;flex-direction:column; padding:0px 0px; box-sizing:border-box;  margin-bottom:10px;}
+   .events{height:auto; width:100%; display:flex;flex-direction:column; background:#fff;  padding:0px 0px; padding-bottom:0px;  box-sizing:border-box; }
    .events-padding{box-sizing:border-box; padding:0px 30px;}
-   .events .secondreview{height:auto!important; min-height:10px!important;}
+   .events .secondreview{height:auto!important; margin-top:20px; font-weight:300!important; min-height:10px!important;}
 .header-test{ font-family: Museo, Proxima Nova,Helvetica Neue,sans-serif;
-    font-size: 32px;    line-height: 40px;  text-transform:uppercase;   letter-spacing: -0.6px;
+    font-size: 22px;    line-height: 40px;  text-transform:uppercase;   letter-spacing: -0.6px;
     padding-top: 0px;    padding-bottom: 0px;    color: #484848;
     font-weight: 700;    margin-bottom: 10px; 
 }
-.bot{margin-top:auto;}
-.event-cards{height:95%;  width:18%; background:#fff; border-radius:4px; }
+.bot{margin-top:auto; padding:0px 20px; box-sizing:border-box; }
+.event-cards{ width:23%; background:#fff; border-radius:4px; }
 .bodyTest{font-family:Proxima Nova; margin-left:auto; display:inline-block;line-height:40px; color:#222; font-weight:500;  font-size:12px; }
-.event-cards-image{height:65%; width:100%; background-size:cover; background-position:center; }
-.event-cover{width:100%; height:100%; padding:10px; box-sizing:border-box; background-color:rgba(0,0,0,0.3);}
+.event-cards-image{height:250px; width:100%; background-size:cover; background-position:center; }
+.event-cover{width:100%; height:100%; padding:10px; box-sizing:border-box; background-color:rgba(0,0,0,0.03);}
 .person1{background-image:url('img/person1.jpg');} .person2{background-image:url('img/person2.jpg');}
 .person3{background-image:url('img/person3.jpg');} .person4{background-image:url('img/person4.jpg');}
 .person5{background-image:url('img/person5.jpg');}
-.events p{box-sizing:border-box;padding:10px 20px; margin:0px;  margin-bottom:8px;  color:#333; font-family:Proxima Nova; font-size:14px; line-height:16px;  }
-.e-name{font-weight:600; }
+.events p{box-sizing:border-box;padding:10px 10px; margin:0px;   margin-bottom:8px;  color:#333; font-family:Proxima nova; font-size:14px; line-height:18px;  }
+.e-name{font-weight:600; font-size:18px; font-family:Museo; }
 .psmall-pad{padding:0px 20px; box-sizing:border-box;}
 .modal-owner{height:300px;  width:100%; margin-top:10px; padding:10px; box-sizing:border-box; display:flex; flex-direction:row; }
 .modal-left,.modal-right{height:100%; width:70%;} .modal-left{text-align:center; display:flex; width:24%; justify-content:center; align-content:center; align-items:center;}
@@ -145,6 +145,19 @@ background-color:#fff; display:inline-flex; flex-direction:column; padding:30px 
 .modal-right .d-label{font-size:23px; font-weight:500;  margin-bottom:10px; }
 .p-s-modal-child .q-h1, .p-s-modal-child .q-h11{font-family:Museo!important;}
 
+.mmbluegradient{
+width:100%; padding:20px 20px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:flex-start;
+background-color: #fff;
+}
+.mmheader{font-size:40px; line-height:50px; font-weight:200; color:#fff;  text-align:center;  font-family:Museo; }
+.mmmidder{height:50%; display:flex; align-items:center; justify-content:center; }
+.circler{width:120px; height:120px; background-size:cover; background-image:url('img/person2.jpg'); overflow:hidden; border-radius:50%; box-sizing:border-box; border:solid 8px rgba(255,255,255,0.7); }
+.line-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;   
+}
 
 
 

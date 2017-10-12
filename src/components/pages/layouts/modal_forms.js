@@ -34,6 +34,7 @@ class ModalForms extends Component{
         this.transitionIn = this.transitionIn.bind(this);
         this.findvalue = this.findvalue.bind(this);
         this.movestack = this.movestack.bind(this);
+        this.resetstate = this.resetstate.bind(this);
         this.navigatepart = this.navigatepart.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onUpdate = this.onUpdate.bind(this);
@@ -92,6 +93,7 @@ componentWillReceiveProps(){
 
 }
 navigatepart(selected,label){
+this.selected = selected;
   this.transitionOut().then(()=>{
   this.scratch =  new _scratch(this.props.form[selected],selected);  
   this.setState({selected, 
@@ -102,7 +104,7 @@ navigatepart(selected,label){
   this.scrollToTop();
   this.setState({label});
   this.counter = 1;
-  this.selected = selected;
+  
   this.senobj = {};
 
    this.setState({vizArray:this.scratch.arraybreak[this.scratch.currentpage],scratch:this.scratch});
@@ -140,6 +142,19 @@ this.setState({vizArray:this.scratch.arraybreak[this.scratch.currentpage]})
         })
     }
 
+}
+resetstate=()=>{
+         
+    if (this.props.myProfile.tenants){
+        this.setState({
+         employment: this.props.myProfile.tenants.tenant_employment_history,
+         residence: this.props.myProfile.tenants.tenant_residence_history,
+          immigration: this.props.myProfile.tenants.tenant_immigration_history,
+        },()=>{
+ this.props.loadTenant('/'+this.props.match.params.id)
+        })
+    }
+        
 }
     
 onUpdate =(data)=>{  
@@ -183,9 +198,10 @@ onUpdate =(data)=>{
     this.setState({employment: this.props.myProfile.tenants.tenant_employment_history, residence:this.props.myProfile.tenants.tenant_residence_history, immigration:this.props.myProfile.tenants.tenant_immigration_history})
     console.log(this.state.employment)
     this.navigatefull('next'); 
-    this.setState({data:null}) ;
+    this.setState({data:{}}) ;
+    this.resetstate();
     }).catch((err)=>{
-        notification['erro']({
+        notification['error']({
     message: 'This is our fault',
     description: 'Ooops something went wrong, we couldnt update this information, however we are working to fix the issue which we will ASAP.',
         })
@@ -200,14 +216,17 @@ onUpdate =(data)=>{
   }
 
     handleDelete = (employer)=>{  
+    console.log(employer)
     let api = new apiActions('https://rentright.herokuapp.com/api/rentright/tenant/employment') 
     api.deleteurl('/'+employer).then((data)=>{
+   //this.props.loadTenant()
     this.props.loadStructure('/profile/structure/?uuid='+this.props.auth.user.uuid, true);     
-    this.setState({employment: this.props.myProfile.tenants.tenant_employment_history, residence:this.props.myProfile.tenants.tenant_residence_history, immigration:this.props.myProfile.tenants.tenant_immigration_history})
+    //this.setState({employment: this.props.myProfile.tenants.tenant_employment_history, residence:this.props.myProfile.tenants.tenant_residence_history, immigration:this.props.myProfile.tenants.tenant_immigration_history})
     console.log(this.state.employment)
-    this.setState({data:null}) ;
+    this.setState({data:{}}) ;
+    this.resetstate();
     }).catch((err)=>{
-     notification['erro']({
+     notification['error']({
     message: 'This is our fault',
     description: 'Ooops something went wrong, we couldnt update this information, however we are working to fix the issue which we will ASAP.',
         })
@@ -463,13 +482,18 @@ hideModal(){
                                  </div>
                            :  this.props.myProfile.tenants && this.props.myProfile.tenants.tenant_employment_history ?
                            <Accordion>
-                            { this.state.employment.map((item, index)=>{
-                                 return (
+                            { this.state.employment.slice(0,5).map((item, index)=>{
+
+                                   if(!item.address){ item.address = {address:" ' You didnt ptovide an address for this section '"} } 
+                                 return (                                  
                                  <LeftItems 
                                        key = {index}
                                         header = {item.employer}
+                                        id = {item.id}
                                         sub2 = {item.is_this_your_current_employer ? "Currently working here" : "Left here at "+ item.employment_ends }
-                                        sub1 = {"You worked here over a period of " +item.employment_start + " to " + item.employment_ends  + ", this compnay is located at " + item.address.address + " please check all this information to ensure that it is correct"}
+                                        sub1 = {"You worked here over a period of " +item.employment_start + " to " + item.employment_ends  +  ", "+
+                                        item.address ? "this compnay is located at " + item.address.address +" please check all this information to ensure that it is correct" :
+                                        " You didnt provide the location of this company   please check all this information to ensure that it is correct"}
                                         attention = {item.position}
                                         transmit = {(employer)=>this.handleDelete(employer)}
 

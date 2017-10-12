@@ -19,7 +19,7 @@ import  {LeftItems, Accordion, RentRightMap, Profiler2} from  '../tenantlayouts/
 import { loadAllTenants, loadSpecificTenant, patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct, hideLoading, errorLoading, breakFormToComponents,  getProfileStruct  } from '../../../state/actions/tenantAction';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
-
+import { divIcon } from 'leaflet';
 const street = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}';
 const imagery = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
  const streetkey = {'bingMapsKey':' AuyEx9iRRzYb8lUwuLFvNvRttyzrgrgLDNLcFp8IYSSC1z93fYIcxfp-298VK__L','imagerySet':'Road',attribution: '' }
@@ -40,16 +40,51 @@ const mapping = {'tenant_bio':'Bio Information', 'general_info':'General Informa
 class MapPage extends Component{
     constructor(props) {
         super(props) 
-        this.state = {promoted:{loading:false, error:false, results:undefined, path: ""} };
+        this.state = {promoted:{loading:false, error:false, image:false, results:undefined, path: ""} };
         this.queryForPromotions = this.queryForPromotions.bind(this);     
+        this.initialize = this.initialize.bind(this);
           
     }
 
 componentDidMount(){ 
-      this.queryForPromotions();
+this.queryForPromotions();
+GoogleMapsLoader.onLoad(function(google) {
+	console.log('I just loaded google maps api');
+});
 
 }
+initialize(lat, lng) {
+console.log(lat,lng)
+if (! this.state.image){
+this.setState({image:true})
+  var fenway = {lat, lng};  
+  let el = findDOMNode(this.refs.mapj);
+  console.log(el);
+let map =  null;
+let panorama = null;
+   GoogleMapsLoader.load((google)=> {
+   map =  new google.maps.Map(el, {
+    center: fenway,
+    zoom: 14
+  });
+console.log(map)
+  });
+  GoogleMapsLoader.load(function(google) {
+  panorama = new google.maps.StreetViewPanorama(
+      el, {
+        position: fenway,
+        pov: {
+          heading: 34,
+          pitch: 10
+        }
+      });
+  });
+}else{
+this.setState({image:false});
+}
 
+ // map.setStreetView(panorama);
+}
 transitionOut(){
     return new Promise((resolve, reject)=>{
     let transOut = {'opacity':0,'transform':'translateY(1000px )'};
@@ -67,8 +102,21 @@ transitionOut(){
     this.setState({ path:api_path})
     let api = new apiActions(pageurl);
     api.geturl(api_path, false).then((data)=>{
-      this.setState({promoted:{loading:false, error:false,results:data}})
-
+      
+    let frm = data.results.units.map((item, index)=>{
+        let position = [];
+        let obj = {};  
+        position.push( item.address.address.latitude);     
+        position.push(item.address.address.longitude);
+        obj.position  = position
+        return obj;
+       
+    });
+       
+    this.setState({ markers:frm, promoted:{loading:false, error:false,results:data}}, ()=>{
+   console.log(this.state.markers,'markers')
+    });
+ 
     }).catch((err)=>{
       console.log(err)
       this.setState({promoted:{loading:false, error:true, results:undefined}});
@@ -134,17 +182,22 @@ hideModal(){
         <div className = "text-section">
            <Icon type = "bulb"/>&nbsp; Click on a propert to get more info about it ...
             </div>
-          <div className = "map-hold t-flex-wrap">
+               <div className = "t-md-10 t-flex-wrap t-fullheight t-align-top t-flex t-justify-space-around bot remove-space">
          {
-                this.state.promoted.results ? this.state.promoted.results.results.units.map((itemm,i)=>{    
+                this.state.promoted.results ? this.state.promoted.results.results.units.map((itemm,i)=>{  
+                               
                     return(
-                    <Profiler2  key = {i} notdummy = {true}  style = {{width:'45%', marginTop:'10px', border:"solid 1px #E8EAED", height:'300px'}} height = {false}
+                    <Profiler2  address = {itemm.address.address} key = {i} notdummy = {true} street = {this.initialize}  style = {{width:'45%', marginTop:'20px', height:'220px'}} height = {false}
                     img = {itemm.unit_images[0] ?"https://rentright-api-gateway.herokuapp.com/user/units/image/"+itemm.unit_images[0].id: undefined}
+                    list = {itemm.unit_images.length> 0 ?itemm.unit_images : null }
                     paragraph = {itemm.bedrooms+ " bedroom apartment, located in " + itemm.title+ " .Rent goes for " + 
                                     itemm.monthly_rent}
-                                    name = "Get this nice apartment" />            
+                                    name = {itemm.title} />            
 
                     )
+                    
+   
+                    
                 })
                 :
                 null
@@ -154,7 +207,13 @@ hideModal(){
         </div>
     </div>
     <div className = "map-mp">
-       <RentRightMap view = {view}/>
+    {!this.state.image && this.state.markers ? 
+       <RentRightMap markers = {this.state.markers} view = {view}/>
+       : null}
+     
+       <div style = { !this.state.image?{display:'none'}:{display:'block', width:'100%', height:'100%'} }ref = "mapj" className = "t-md-10 t-fullheight"></div>
+      
+     
     </div>
 
     </div>

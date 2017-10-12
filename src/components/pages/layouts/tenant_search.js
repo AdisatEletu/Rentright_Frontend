@@ -259,7 +259,7 @@ const pageurl =  "https://rentright.herokuapp.com/api/rentright/units/query/?";
              :
              undefined
           }
-            <div className = "q-head  t-flex-column t-justify-left q-sub">
+  <div className = "q-head  t-flex-column t-justify-left q-sub">
     <div className = "q-h1 t-left-f">Are you ready to find your home ? </div>
     <div className = "q-h2 t-lfet-f">Please use the options provided below and select a query parameter..</div>
 </div>

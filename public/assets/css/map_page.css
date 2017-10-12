@@ -1,5 +1,5 @@
 img{box-sizing:content-box!important; }
-.map-header{background:#083A60; height:80px; line-height:80px; display:flex; align-content:center;      border-bottom: 1px solid #E8EAED;}
+.map-header{background:#fff; height:80px; line-height:80px; display:flex; align-content:center;      border-bottom: 1px solid #E8EAED;}
 .map-container{width:100%;  overflow:hidden; height:100%; padding:0px; margin:0px; }
 .map-br{    border-right: 1px solid #E8EAED;}
 .map-left-logo{width:15%; height:100%; display:flex; align-content:center; align-items:center; justify-content:center;}
@@ -12,15 +12,15 @@ img{box-sizing:content-box!important; }
      padding:2px; overflow:hidden; text-align:center; vertical-align:center; height:40px; width:40px; box-sizing:border-box; border-radius:50%; display:inline-block; color:#666; background-size:contain; background-position:center; }
 .map-input, .map-input i{color:#fff; line-height:80px; font-family:Museo; font-size:35px;  text-transform:capitalize; }
 .map-input i{ margin-right:30px;}
-.map-input ::-webkit-input-placeholder {  font-weight:300;  color:#fff; line-height:80px; font-family:Museo; font-size:28px!important;  text-transform:capitalize;  }
-.map-input   ::-moz-placeholder {  font-weight:300; color:#fff; line-height:80px; font-family:Museo; font-size:28px!important;  text-transform:capitalize;   }
-.map-input  :-ms-input-placeholder {  font-weight:300;  color:#fff; line-height:80px; font-family:Museo; font-size:28px!important;   text-transform:capitalize;  }
-.map-input  :-moz-placeholder {  font-weight:300;  color:#fff; line-height:80px; font-family:Museo; font-size:28px!important;   text-transform:capitalize;  }
- .map-input ::placeholder {  font-weight:300;  color:#fff; line-height:80px; font-family:Museo; font-size:28px!important;  text-transform:capitalize;  }
+.map-input ::-webkit-input-placeholder {  font-weight:300;  color:#41638E; line-height:80px; font-family:Museo; font-size:28px!important;  text-transform:capitalize;  }
+.map-input   ::-moz-placeholder {  font-weight:300; color:#41638E; line-height:80px; font-family:Museo; font-size:28px!important;  text-transform:capitalize;   }
+.map-input  :-ms-input-placeholder {  font-weight:300;  color:#41638E; line-height:80px; font-family:Museo; font-size:28px!important;   text-transform:capitalize;  }
+.map-input  :-moz-placeholder {  font-weight:300;  color:#41638E; line-height:80px; font-family:Museo; font-size:28px!important;   text-transform:capitalize;  }
+ .map-input ::placeholder {  font-weight:300;  color:#41638E;line-height:80px; font-family:Museo; font-size:28px!important;  text-transform:capitalize;  }
  .map-input input{border:none; background:rgba(0,0,0,0);  width:90%; font-size:35px!important; color:#999; font-family:Museo; line-height:80px; height:100%; display:inline-block;}
  .map-input{width:40%; height:100%; overflow:hidden; display:flex; padding:0px 20px;  }
- .map-drawer, .map-mp{height: calc(100% - 80px);  box-sizing:border-box; overflow:hidden; padding:0px; margin:0px; width:39.999%; background:#fff; display:inline-block; }
- .map-mp{width:60%; background:#ededed; }
+ .map-drawer, .map-mp{height: calc(100% - 80px);  box-sizing:border-box; overflow:hidden; padding:0px; margin:0px; width:29.999%; background:#fff; display:inline-block; }
+ .map-mp{width:70%; background:#ededed; }.map-drawer{overflow-x:hidden; overflow-y:scroll;}
  .leaflet-container {  height: 100%;  width: 100%;}
  .leaflet-container .leaflet-control-attribution, .leaflet-container .leaflet-control-attribution, .leaflet-container .leaflet-control-scale {
   opacity:0!important; width:0px; height:0px!important; box-sizing:content-box!important;
@@ -37,7 +37,7 @@ img{box-sizing:content-box!important; }
 .t-w{padding:10px; box-sizing:border-box; height:200px; overflow:hidden;}
 .srv{margin-top:auto;} .ppc{font-size:13px; font-weight:400; font-family:museo; line-height:18px;}
 .vh i{color:#fff;}
-.map-header i{color:#fff!important; color:#fff!important; border-color:#fff;}
+.map-header i{color:#666!important; color:#666!important; border-color:#666;}
 .new-cards{height:450px; overflow:hidden; cursor:pointer; }
 .new-cards:hover{
 -webkit-box-shadow: 2px 4px 55px 5px rgba(0,0,0,0.33);
@@ -65,3 +65,22 @@ box-shadow: 2px 4px 55px 5px rgba(0,0,0,0.33);
 }
 .stb{margin-top:1px!important;}
 .text-section{font-family:Proxima Nova; font-size:16px; width:100%;    border-bottom: 1px solid #E8EAED;  overflow:hidden; line-height:55px; padding:0px 30px;  color:#666; font-weight:500; height:55px; box-sizing:border-box; }
+.remove-space{align-content:flex-start;}
+.shad{cursor:pointer;padding-bottom:10px; overflow:hidden; } .shad:hover,.e-a-left:hover, .e-a-right:hover, .ricon{-webkit-box-shadow: 1px 2px 12px -1px rgba(0,0,0,0.48);
+-moz-box-shadow: 1px 2px 12px -1px rgba(0,0,0,0.48);
+box-shadow: 1px 2px 12px -1px rgba(0,0,0,0.48);}
+.event-cover .anticon-heart{color:#fff; font-size:20px;}
+.replace-cover{display:flex; align-items:center; padding:0px 10px; align-content:center;}
+.e-a-hold{display:flex; width:100%; padding:0px; justify-content:space-between;}
+.e-a-left, .e-a-right{width:30px; opacity:0.6;  height:30px; text-align:center; line-height:30px; font-size:15px; color:#333; border-radius:50%;
+background:#fff; cursor:pointer; }
+.e-a-left:hover, .e-a-right:hover{opacity:1;}
+.event-cards-image{transition:all(0.4s);}
+.ricon{    width: 40px!important;    height: 40px;
+    background: #865FCA;    border: 1px solid #6B48A8;
+    border-radius: 50%;    font-size: 14px;    color: #FFF;
+    line-height: 39px;    text-align: center;    
+
+}
+   .leaflet-div-icon{border:none; background:rgba(0,0,0,0);}
+
