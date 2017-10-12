@@ -202,7 +202,7 @@ componentDidMount (){
                                     </div>
 
                                     <div className="t-flex t-justify-center t-align-content-center  t-md-10">
-                                        <span className="home-street-view t-md-5 t-justify-center t-align-center"><Icon type="link"/> Street View</span>
+                                        <span className="home-street-view t-md-5 t-justify-center t-align-center"></span>
                                     </div>
 
                                     <div className=" home-aplicants t-flex t-md-10  ">
@@ -339,58 +339,67 @@ componentDidMount (){
 
                         <div key={i} className="home-property1 t-flex t-md-48 t-flex-column">
                             <div className="home-property-picture1 t-flex t-md-10" style = {real.unit_images[0] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[0].id+ ")"}:undefined}>
-                                <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
+                               <div className="home-new-property-cover t-md-10 t-fullheight">
+                               <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
                                     <div className="t-flex t-flex-row">
                                         <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {real.monthly_rent}</span>
                                         <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center "><i className="material-icons ">favorite_border</i> </span>
                                     </div>
 
-                                    <div className="t-flex t-justify-center t-align-content-center  t-md-10">
+                                    {  /* <div className="t-flex t-justify-center t-align-content-center  t-md-10">
                                         <span className="home-street-view t-md-5 t-justify-center t-align-center"><Icon type="link"/> Street View</span>
-                                    </div>
+                                    </div>*/}
 
-                                    <div className=" home-aplicants t-flex t-md-10  ">
+                                    {/*<div className=" home-aplicants t-flex t-md-10  ">
                                         <div className=" t-flex t-md-5 t-align-center  ">
                                             <div className="t-flex home-aplicant-picture" style = {real.unit_images[1] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[1].id+ ")"}:undefined} ></div>
                                             <span className="home-aplicant-name t-align-center t-flex ">{real.unit_images[1].section}</span>
                                         </div>
-                                        <div className="t-flex home-applicant-right t-justify-center t-md-5 t-align-center">
-                                            {real.applications.length>0?
-                                                <div className = "t-md-10 t-full-height t-flex ">
-                                                    <div className="t-flex home-no-of-applicant t-align-center montserrat">{real.applications.length} Applicant</div>
-                                                </div>
-                                                :
-                                                null
 
-                                            }
+                                    </div>*/}
 
-                                            { real.applications.map((item, index) => {
-                                                return(
-                                                    <div key={index}
-                                                         className="pppppp t-flex home-aplicant-picture2 t-align-center "
-                                                         style={{backgroundImage: 'url(' + item + ')'}}/>
-                                                )
 
-                                            })
-                                            }
-                                        </div>
-                                    </div>
                                 </div>
+                               </div>
                             </div>
-                            <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-center">
-                               <div className="home-newest-address t-flex t-align-left t-md-7 "><i className="material-icons ">place</i> {real.address.address.address}</div>
-                                <br /><br />
-                                <div className="home-newest-size t-flex t-md-10 t-justify-space-between ">
-                                    <div className="home-square-size t-flex t-md-32">
-                                        <span><i className="material-icons ">home</i> {real.square_footage} Sq m</span>
+                           <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-space-around t-align-content-space-around">
+
+                                 <div className="home-new-property-address t-flex t-md-10  t-justify-space-between">
+                                    <div className="home-new-property-addre  t-justify-space-between t-flex t-md-6 ">
+                                        <i className="material-icons t-md-1">place</i><span className="t-flex t-md-89 proxima"> {real.address.address.address}</span>
                                     </div>
-                                    <div className="home-room-size t-flex t-md-32">
-                                        <span><i className="fa fa-cube" />{real.bedrooms}rooms</span>
-                                    </div>
-                                    <div className="home-bathroom-size t-flex t-md-32">
-                                        <span><i className="fa fa-bathtub" />{real.bathrooms} bathrooms</span>
+                                    <div className="street-view t-flex  t-justify-space-between t-md-29">
+                                        <i className="material-icons t-md-1">streetview</i> <span className="t-flex t-md-75 proxima">Street View</span>
                                     </div>
                                 </div>
+
+                                <div className="home-unit-attributes t-flex t-md-10 t-justify-space-between proxima">
+
+                                    <div className="home-sizes t-md-7 t-flex t-justify-space-between t-align-content-space-between">
+                                        <span className="home-sqf t-flex t-md-33 t-justify-space-between  ">
+                                             <i className="material-icons t-md-1">home</i><span className="t-md-8"> {real.square_footage} Sqft</span>
+                                        </span>
+                                        <span className="home-sqf t-flex t-md-33 t-justify-space-between  ">
+                                             <i className="material-icons t-md-1">hotel</i><span className="t-md-8"> {real.bedrooms} Rooms</span>
+                                        </span>
+                                        <span className="home-sqf t-flex t-md-33 t-justify-space-between ">
+                                             <i className="material-icons t-md-1">hot_tub</i><span className="t-md-8"> {real.bathrooms} Bathroom</span>
+                                        </span>
+
+                                    </div>
+                                    <div className="t-flex home-applicant-right  t-md-3 ">
+                                        {real.applications.length>0?
+                                            <div className = "t-md-10 t-full-height t-flex ">
+                                                <div className="t-flex home-no-of-applicant t-align-center montserrat">{real.applications.length} Applicant</div>
+                                            </div>
+                                            :
+                                            null
+
+                                        }
+                                    </div>
+
+                                    </div>
+
                             </div>
                         </div>
 
