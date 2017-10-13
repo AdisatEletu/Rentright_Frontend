@@ -30,7 +30,7 @@ class App extends Component {
 
          }
     componentWillReceiveProps(newprops){
-        if (this.props.socketState.joined && this.props.socketState.data.length > 0 ){
+        if (newprops.socketState.joined && newprops.socketState.data.length > 0 ){
          notification["success"]({
           message: 'New Application',
          description:this.props.socketState.data[this.props.socketState.data.length-1].message
