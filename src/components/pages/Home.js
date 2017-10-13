@@ -57,8 +57,10 @@ componentDidMount (){
 
 
 
-
     }
+
+
+
          myapi = (url)=>{
         return  fetch(url).then((dat) => {
             return  dat.json();
@@ -335,18 +337,21 @@ componentDidMount (){
                         Newest Offer Newest Offer Newest Offer</div>
                 </div>
                 <div className = "t-flex t-flex-row t-md-10 t-flex-wrap t-justify-space-between home-newest-properties-div nav-pad-left-right">
-                {this.state.results.units.map((real, i)=>
+                {this.state.results.units.slice(0,4).map((real, i)=>
 
                         <div key={i} className="home-property1 t-flex t-md-48 t-flex-column">
                             <div className="home-property-picture1 t-flex t-md-10" style = {real.unit_images[0] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[0].id+ ")"}:undefined}>
                                <div className="home-new-property-cover t-md-10 t-fullheight">
                                <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
                                     <div className="t-flex t-flex-row">
-                                        <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {real.monthly_rent}</span>
+                                       <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {real.monthly_rent.toLocaleString('en')}</span>
                                         <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center "><i className="material-icons ">favorite_border</i> </span>
                                     </div>
-
-                                    {  /* <div className="t-flex t-justify-center t-align-content-center  t-md-10">
+                                   <div className="t-flex t-justify-space-between t-align-center t-fullheight  t-md-10">
+                                       <div className = "e-a-left" onClick = {()=>this.navimage('prev')}><Icon type = "left"/></div>
+                                       <div className = "e-a-right" onClick = {()=>this.navimage('next')}><Icon type = "right"/></div>
+                                   </div>
+                                   {  /* <div className="t-flex t-justify-center t-align-content-center  t-md-10">
                                         <span className="home-street-view t-md-5 t-justify-center t-align-center"><Icon type="link"/> Street View</span>
                                     </div>*/}
 
@@ -368,22 +373,23 @@ componentDidMount (){
                                     <div className="home-new-property-addre  t-justify-space-between t-flex t-md-6 ">
                                         <i className="material-icons t-md-1">place</i><span className="t-flex t-md-89 proxima"> {real.address.address.address}</span>
                                     </div>
+
                                     <div className="street-view t-flex  t-justify-space-between t-md-29">
                                         <i className="material-icons t-md-1">streetview</i> <span className="t-flex t-md-75 proxima">Street View</span>
                                     </div>
                                 </div>
-
+                               <div className="new-props-hr t-md-10 t-flex"></div>
                                 <div className="home-unit-attributes t-flex t-md-10 t-justify-space-between proxima">
 
                                     <div className="home-sizes t-md-7 t-flex t-justify-space-between t-align-content-space-between">
                                         <span className="home-sqf t-flex t-md-33 t-justify-space-between  ">
-                                             <i className="material-icons t-md-1">home</i><span className="t-md-8"> {real.square_footage} Sqft</span>
+                                            {/*<i className="material-icons t-md-1">home</i>*/}<span className="t-md-8"> {real.square_footage} Sqft</span>
                                         </span>
                                         <span className="home-sqf t-flex t-md-33 t-justify-space-between  ">
-                                             <i className="material-icons t-md-1">hotel</i><span className="t-md-8"> {real.bedrooms} Rooms</span>
+                                             {/*<i className="material-icons t-md-1">hotel</i>*/}<span className="t-md-8"> {real.bedrooms} Rooms</span>
                                         </span>
                                         <span className="home-sqf t-flex t-md-33 t-justify-space-between ">
-                                             <i className="material-icons t-md-1">hot_tub</i><span className="t-md-8"> {real.bathrooms} Bathroom</span>
+                                            {/*<i className="material-icons t-md-1">hot_tub</i>*/}<span className="t-md-8"> {real.bathrooms} Bathroom</span>
                                         </span>
 
                                     </div>

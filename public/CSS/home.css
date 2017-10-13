@@ -35,7 +35,7 @@ html,body{
 .address{font-size: 1.4rem; font-weight:400;color:#424242;} .phone-no{font-size: 1.4rem; font-weight:400; color:#424242;}
 .contact-div{font-size:1.2rem; font-weight: 300; line-height: 1rem; color:#9e9e9e; font-family:Roboto;}.pad-left-15{padding:  0px 15px;} .icon-props{color:#ff1744; font-size:30px;}
 
-.home-third-div{box-sizing:border-box; z-index:3; background: linear-gradient(to bottom,#fff, rgba(255,255,255,0.8)); height: 15vh; margin-top: 40px;}
+.home-third-div{box-sizing:border-box; z-index:3; background:#fff; height: 15vh; margin-top: 40px;}
 
 .bar-box{padding: 0px; height:10vh; box-sizing:border-box;  /*border-top:solid 2px #eaeaea;*/ z-index:1;}
  .bar-tabs{padding: 0px 10px; padding-left: 0px; border-top: solid 3px rgba(0,0,0,0);
@@ -53,8 +53,8 @@ html,body{
 .search-icon:hover{color:#222;}
 .picture-div{height:100vh; z-index:2; margin-top: -20vh;}
 .bar-tabs-active{border-top-color:#0a3b61; z-index:1;}  .bar-tabs:hover{border-top-color:#eaeaea; color:#ff1744;}
-.interior1{ background-repeat:no-repeat; background-size: cover; background-position:center;}
-.home-slider{background-image:url('img/interior10.jpg');  z-index:1;} .home-cover{background-color: rgba(0,0,0,0.2); width:100%; height:100%; }
+.interior1{ background-repeat:no-repeat; background-size: cover; background-position:center; background-attachment: fixed;}
+.home-slider{background-image:url('img/interior10.jpg');  z-index:1;} .home-cover{background-color: rgba(0,0,0,0.2); width:100%; height:100%;  }
 
 .home-account-switch{border: solid 1px ; color: rgba(255,255,255,0.4); cursor: pointer; font-size: 12px; height: 30px; line-height: 30px; align-self: center; width: 100px; border-radius: 15px;}
 .home-account-switch:hover{color: #fff;}
@@ -65,7 +65,7 @@ box-shadow: 1px 3px 45px 23px rgba(234,234,234,1);
 .home-body-search{min-height: 30vh;box-sizing:border-box; transform: translateZ(0px); z-index: 3; background-color: #eaeaea;}
 .home-search{margin-top:-200px; background-color:#fff;  padding:10px 20px;  height:400px;  z-index: 3;}
 
-
+.new-props-hr{height: 1px; background-color: rgba(0,0,0,0.1); }
 
 
 
