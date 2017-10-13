@@ -110,7 +110,7 @@ loadprofile = ()=>{
 
         <div  className = "t-dash t-flex  t-align-center t-flex-column">
             <Switch>
-              <Route  exact path="/tenant/profile/:id/"  component={TenantProfile}/>  
+              <Route  exact path="/tenant"  component={TenantProfile}/>
               <Route  exact path="/tenant/profile/generalinfo/:id"  component={GeneralForm}/>       
               <Route  exact path="/tenant/profile/bioinfo/:id"  component={BioForm}/>     
               <Route  exact path="/tenant/profile/residentialinfo/:id"  component={ResidentialForm}/>   
