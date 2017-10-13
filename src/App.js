@@ -9,7 +9,10 @@ import Login from '../src/components/pages/auth/Login';
 import Register from '../src/components/pages/Register';
 import LandLord from "./components/pages/account/LandLord";
 import Tenant from "./components/pages/Tenant";
-import ContinueAs from './components/pages/LandingPage/ContinueAs';
+import MapPage from "../src/components/pages/layouts/map_page"
+import Landing from './components/pages/Landing';
+import NewTenantInfo from './components/pages/NewTenantInfo';
+import LandlordGuide from './components/pages/LandordGuide';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 import { notification } from 'antd';
@@ -45,10 +48,13 @@ class App extends Component {
               <Switch>
                   <Route exact path="/" component={Home}/>
                   <Route path={"/register"} component={Register}/>
-                  <Route path="/account" component={requireAuth(ContinueAs)}/>
+                  <Route path="/account" component={requireAuth(Landing)}/>
                   <Route path="/landlord" component={LandLord}/>
                   <Route path="/sign-in" component={Login}/>
-                  <Route path="/tenant" component={requireAuth(Tenant)}/>
+                  <Route path="/tenant-guide" component={NewTenantInfo}/>
+                  <Route path="/tenant" component={Tenant} />
+                  <Route path="/landlord-guide" component={LandlordGuide} />
+                  <Route path="/generalsearch/:param" component={MapPage} />
               </Switch>
           </Router>
           </LocaleProvider>

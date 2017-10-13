@@ -3,71 +3,81 @@
  */
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-//import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {logout} from '../../../../../state/actions/authAction';
+import {Icon} from 'antd';
 
-function Drop(){
-    return (
-        <div >
-            <ul id="dropdown1" className="dropdown-content">
-                <li><a href="#!">Police</a></li>
-                <li><a href="#!">Courts</a></li>
-                <li><a href="#!">Agencies</a></li>
-                <li><a href="#!">Estate Managers</a></li>
-                <li><a href="#!">Financial Institutions</a></li>
-                <li className="divider"/>
-                <li><a href="#!">Government</a></li>
-            </ul>
+ class PrimaryNav extends Component{
+     logout(e) {
+         e.preventDefault();
+         this.props.logout();
+     }
+    constructor(props){
+        super(props)
+        this.state = {}
+    }
 
-            <ul id="dropdown2" className="dropdown-content">
-                <li><a href="#!">Agents</a></li>
-                <li><a href="#!">Arbitrators</a></li>
-                <li><a href="#!">Handy Men</a></li>
+    componentDidMount(){
+        console.log(this.state);
+        this.setState(this.props.auth.user)
+    }
+    componentDidUpdate(prevProps, prevState){
+        console.log(this.state);
+    }
 
-                <li className="divider"/>
-                <li><a href="#!">Estate Managers</a></li>
-            </ul>
-        </div>
-    );
-}
-
-function Header(){
-    return (
-
-        <div className="navbar-fixed">
-
-            <nav className = " topbar " >
-                <div className="nav-wrapper row">
-                    <div className = " col s8 col m8 offset-s2">
-                        <a href="#!" className="brand-logo icon">
-                            <div className= "iconic">
-                            </div></a>
-                        <ul className="right hide-on-med-and-down">
-                            <li><Link to= {"/LandlordInfo"}>Landlord </Link></li>
-                            <li><Link to={"/TenantInfo"}>Tenant </Link></li>
-                            <li><a className="dropdown-button" href="#!" data-activates="dropdown1">Institutions<i className="material-icons md-24 right">arrow_drop_down</i></a></li>
-                            <li><a className="dropdown-button" href="#!" data-activates="dropdown2">Professionals<i className="material-icons  md-24 right">arrow_drop_down</i></a></li>
-                            <li><i className="material-icons  md-24 self-orange ">supervisor_account</i></li>
-                            <li><Link to ={"/login"}>Sign in</Link></li>
-                        </ul>
-
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-    );
-}
-
-
-export default class PrimaryNav extends Component{
 
     render(){
+
         return(
-            <div>
-                <Drop/>
-                <Header/>
+            <div className="home-firstnav t-fullwidth t-flex t-justify-space-between t-align-center nav-pad-left-right">
+                <div className=" t-flex  t-fullheight t-justify-right t-right-f home-firstnav-innerdiv-left ">
+                    <span> The Ultimate Insider to the RentRight </span>
+                </div>
+                <div className="home-firstnav-innerdiv-right t-flex t-justify-center t-flex-row t-center-f t-fullheight ">
+
+
+
+
+
+
+
+                    <span className="home-breadcrumbs">
+                        {this.props.auth.isAuthenticated?
+                        <div className="acct-holder ">
+                            <div className="home-account-switch t-flex t-justify-center ">Account</div>
+                            <div className="dropdown-content">
+                                <Link to ='/landlord'>Landlord</Link>
+                                <Link to ='/tenant'>Tenant</Link>
+                                <Link to ='/'>Agent</Link>
+                            </div>
+                        </div> : <Link to="/Register" className="Iconstyle"><Icon type="user" /> <span>Register</span></Link>}
+                        </span>
+                    {this.props.auth.isAuthenticated ?
+                        <span className="home-breadcrumbs">Welcome,{" "}{this.props.auth.user.last_name} <a href="#"><Icon type="user home-icons" /></a></span>
+                        :
+                        null
+                    }
+                    <span className="home-breadcrumbs home-active">
+                        {this.props.auth.isAuthenticated  ?  <a href="/sign-out" style={{color: '#ffffff'}} onClick={this.logout.bind(this)}><Icon type="logout" /> Logout</a> :<a href="/sign-in" style={{color: '#ffffff'}}> Login</a>}
+
+
+                        </span>
+                </div>
             </div>
         );
     }
 }
 
+
+PrimaryNav.propTypes={
+     logout: PropTypes.func.isRequired
+}
+
+function matchStateToProps(state){
+    return {
+        auth:state.user.auth
+    }
+}
+
+export default connect(matchStateToProps,{logout})(PrimaryNav)

@@ -15,12 +15,13 @@ import PublicProfile from "./layouts/PublicProfile";
 import ImageUpdate from "./layouts/ImageUpdate";
 import {NavLink} from "react-router-dom";
 import BioForm from "./layouts/BioForm";
-import TenantNav from "./tenantlayouts/tenant_nav";
+import TenantApplications from "./layouts/tenantApplications";
+import TenantNav from "./tenantlayouts/durables/basic/tenant_nav";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";  
 import PropTypes from "prop-types";
 import {getProperty} from "../../state/actions/userActions";
-import { loadAllTenants, loadSpecificTenant,imageready, patchSpecificTenant,connectToSocket, deleteSpecificTenant, showLoading, hideLoading, errorLoading } from '../../state/actions/tenantAction';
+import { loadAllTenants, loadSpecificTenant,imageready, patchSpecificTenant,connectToSocket,getProfileStruct, deleteSpecificTenant, showLoading, hideLoading, errorLoading } from '../../state/actions/tenantAction';
 
 
 class Tenant extends Component{
@@ -31,8 +32,9 @@ class Tenant extends Component{
         this.first_name = this.props.auth.user.first_name;
         this.last_name =  this.props.auth.user.last_name;   
         this.uuid = this.props.auth.user.uuid;  
-        this.props.loadTenant("/"+this.uuid);
-      
+        this.props.loadTenant("/"+this.uuid).then(()=>{
+     this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true);    
+    });    
  
     }
     componentDidMount(){    
@@ -50,7 +52,10 @@ class Tenant extends Component{
 
     }
 loadprofile = ()=>{
-    this.props.loadTenant("/"+this.props.match.params.id);
+    this.props.loadTenant("/"+this.props.match.params.id).then(()=>{
+     this.props.loadStructure('/profile/structure/?uuid='+this.uuid, true);    
+    });
+    
    } 
    
     render (){
@@ -58,8 +63,11 @@ loadprofile = ()=>{
     return(
 <div className = "t-body">
 
- <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-align-stretch t-justify-space-between">
-           {this.props.myProfile.tenants.tenant_bio ? <TenantNav first_name = {this.props.user.first_name}  myProfile = {this.props.myProfile}/>  : <TenantNav first_name = {this.props.user.first_name}/> }
+ <div className = "t-fullheight t-fullwidth t-white t-flex t-container t-justify-space-between t-gg">
+           {this.props.myProfile.tenants.tenant_bio ? <TenantNav first_name = {this.props.user.first_name} last_name = {this.props.user.last_name}   myProfile = {this.props.myProfile}/>  : 
+           <TenantNav
+            last_name = {this.props.user.last_name}
+            first_name = {this.props.user.first_name} myProfile =  { {tenant_bio:null} }/> }
           <div className = "t-left t-gray  t-flex  t-align-content-space-between t-right-bx t-right-bx t-flex-column">
       
           <div className = "t-justify-left t-flex">
@@ -90,8 +98,8 @@ loadprofile = ()=>{
 <div className = "t-flex t-flex-column m-top-med">
          <NavLink className = "m-nav-li t-md-10" to = {"/tenant/profile/"+this.uuid } activeClassName ="m-active-nav"><i className = "fa fa-user-circle lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Registeration Status</span> <div className = "t-bullet m-activate">{this.props.myProfile ? this.props.myProfile.tenants.completed +' %' : null}</div> </NavLink>
         <NavLink className = "m-nav-li t-md-10" to = {"/tenant/publicprofile/" + this.first_name +"/" + this.last_name + "/" + this.uuid +"/"}  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Public Profile</span><div className = "t-bullet"></div> </NavLink>
-        <NavLink className = "m-nav-li t-md-10" to = {"/tenant/find/accommodation/" + this.uuid +"/"}  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Applications</span><div className = "t-bullet"></div> </NavLink>
-        <NavLink className = "m-nav-li t-md-10"  to = "/tenant/messages/:id"  activeClassName = "m-active-nav"><i className = "fa fa-envelope-open-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses ">Messages</span> <div className = "t-bullet"></div> </NavLink>
+        <NavLink className = "m-nav-li t-md-10" to = {"/tenant/find/accommodation/" + this.uuid +"/"}  activeClassName="m-active-nav"><i className = "fa fa-bookmark-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">Listings</span><div className = "t-bullet"></div> </NavLink>
+        <NavLink className = "m-nav-li t-md-10"  to = {"/tenant/my/applications/" + this.uuid +"/"} activeClassName = "m-active-nav"><i className = "fa fa-envelope-open-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses ">My Applications</span> <div className = "t-bullet"></div> </NavLink>
         <NavLink className = "m-nav-li t-md-10"  to = "/tenant/propertysearch/:id" activeClassName = "m-active-nav"><i className = "fa fa-building-o lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses"> Find Properties</span> <div className = "t-bullet m-activate">10 new</div> </NavLink>
      </div>
       </div>
@@ -100,7 +108,7 @@ loadprofile = ()=>{
     <div className = "t-midmain t-flex t-jusify-center t-flex-row">
 
 
-        <div  className = "t-dash t-flex  t-justify-center t-flex-column">
+        <div  className = "t-dash t-flex  t-align-center t-flex-column">
             <Switch>
               <Route  exact path="/tenant/profile/:id/"  component={TenantProfile}/>  
               <Route  exact path="/tenant/profile/generalinfo/:id"  component={GeneralForm}/>       
@@ -110,12 +118,13 @@ loadprofile = ()=>{
             <Route  exact path="/tenant/profile/immigrationinfo/:id"  component={ImmigrationForm}/>    
              <Route  exact path="/tenant/find/accommodation/:id"  component={TenantSearch}/> 
              <Route  path="/tenant/publicprofile/:first_name/:last_name/:id"  component={PublicProfile}/> 
+              <Route  path="/tenant/my/applications/:id"  component={TenantApplications}/> 
               <Route  path="/tenant/profilepicture/:id"  component={ImageUpdate}/> 
                 </Switch>
           </div>
                
     </div>
-<Advert/>
+{/*<Advert/>*/}
 </div>
 </div>
 
@@ -145,7 +154,8 @@ function matchStateToProps(state){
         tenantStruct:state.tenantInfoStruct,
         tenantInfoList:state.tenantInfoLists,
         user:state.user.auth.user,
-       fileToServer:state.fileToServer      
+        fileToServer:state.fileToServer ,
+        structure:state.structure   
         
  
     }      
@@ -153,9 +163,10 @@ function matchStateToProps(state){
 }
 function mapDispatchToProps(dispatch) {  
   return bindActionCreators({
-    loadTenant: loadSpecificTenant,
+         loadTenant: loadSpecificTenant,
          imageready:imageready ,
-         connectToSocket:connectToSocket     
+         connectToSocket:connectToSocket,
+         loadStructure: getProfileStruct    
   }, dispatch);
 }
 

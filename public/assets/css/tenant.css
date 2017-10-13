@@ -14,6 +14,7 @@ html, body {
 
 .t-body {
     width: 100%;
+    height:100%;
     overflow-x: hidden;
     background: #fff;
     font-size: 12px !important;
@@ -185,6 +186,9 @@ html, body {
     flex-direction: column;
 }
 
+.t-flex-wrap{
+     flex-wrap: wrap;
+}
 .t-flex-wrap {
     flex-wrap: wrap;
 }
@@ -295,7 +299,8 @@ html, body {
 }
 
 .t-h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    font-family:Museo;
     line-height: 1.8rem;
 }
 
@@ -304,8 +309,9 @@ html, body {
 }
 
 .t-h4 {
-    font-size: 1rem;
-    line-height: 1.4rem;
+    font-size: 1.4rem;
+    font-family:Museo;
+    line-height: 1.6rem;
 }
 
 .t-h5 {
@@ -488,7 +494,7 @@ html, body {
 .t-capitalize {
     text-transform: capitalize;
 }
-
+.t-gg{background-color:#E9EBEE;}
 .t-left {
     z-index: 4;
     background: #fff;
@@ -506,18 +512,23 @@ html, body {
 .t-midmain {
     margin-top: 12vh;
     z-index: 10;
-    background: #E9EBEE;
+
     margin-left: 16%; /* temprorary*/
-    width: 69%;
+    width: 84%;
 }
 
 /* <-- should always contain t-subnav element as the first element  --> */
+.push-right{margin-left:auto;}
+.push-left{margin-right:auto;}
+.push-top{margin-bottom:auto;}
+.push-bottom{margin-top:auto;}
 
 .t-midmain {
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding-left: 0;
+    padding-right: 0px;
     box-sizing: border-box;
-    height: 100%;
+    overflow:visible;
+    padding-bottom:3px; 
 }
 
 .t-midmain {
@@ -525,23 +536,24 @@ html, body {
 }
 
 .t-dash {
-    width: 98%;
+    width: 100%;
     z-index: 2000;
-    padding: 3% 5%;
+    padding: 0px;
+    margin-top:20px;
     box-sizing: border-box;
     padding-top: 2%;
 }
 
 .t-advert {
-    width: 15%;
+    width: 20%;
     position: fixed;
     z-index: 2;
-    margin-left: auto;
     top:0;
-    padding: 1.5vw;
-    padding-top: 10vh;
+    padding-left:10px;
+    box-sizing:border-box;
+    padding-top: 13vh;
     height: 100%;
-    right:0;
+    right:2vh;
     background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -663,7 +675,12 @@ html, body {
 .t-md-2 {
     width: 20%;
 }
-
+.t-md-35 {
+    width: 35%;
+}
+.t-md-25 {
+    width: 25%;
+}
 .t-md-3 {
     width: 30%;
 }
@@ -675,6 +692,7 @@ html, body {
 .t-md-5 {
     width: 50%;
 }
+.t-md-55{width:55%;}
 
 .t-md-6 {
     width: 60%;
@@ -683,7 +701,9 @@ html, body {
 .t-md-7 {
     width: 70%;
 }
-
+.t-md-75 {
+    width: 75%;
+}
 .t-md-8 {
     width: 80%;
 }

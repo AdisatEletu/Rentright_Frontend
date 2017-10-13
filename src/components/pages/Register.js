@@ -2,11 +2,12 @@
  * Created by Adisat on 16/08/2017.
  */
 import React,{Component} from 'react';
+import {Switch,Route} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
 import PropTypes from 'prop-types'
 import {register} from '../../state/actions/authAction';
 import {connect} from 'react-redux';
-
+import Landing from './Landing';
 import FacebookLogin from 'react-facebook-login';
 
 const responseFacebook = (response) => {
@@ -18,7 +19,7 @@ class Facebook extends Component {
     render() {
         return (
             <FacebookLogin
-                appId="1088597931155576"
+                appId=" 112618779343581"
                 autoLoad={true}
                 fields="name,email,picture"
                 callback={responseFacebook}
@@ -45,18 +46,23 @@ export class SignupForm extends Component{
     }
 
 
+
     onSubmit(e) {
         e.preventDefault();
 
         console.log(this.props)
         this.setState({isLoading: true});
 
-        this.props.register(this.state).then(
-            (res) => console.log(res),
-        ).catch(
+        this.props.register(this.state).then((res) => {
+            console.log(res)
+            this.context.router.history.push("/")
+
+        }).catch(
             (err) => console.log(err),
+
         );
-        console.log("I am registered")
+
+
     }
 
     onChange(e) {
@@ -85,17 +91,19 @@ export class SignupForm extends Component{
                                     <span><i className="fa fa-user-o t-md-2  login-user-icon" /></span>
                                     <input type="text"  placeholder="Last Name" name="last_name" disabled={isLoading}  onChange={this.onChange.bind(this)} className="t-md-8 login-email-box" />
                                 </div>
-                                <div className="login-hr" />
 
-                                <div className="t-flex login-email-div t-md-10 t-justify-space-between t">
-                                    <span><i className="fa fa-envelope t-md-2 login-user-icon" /></span>
-                                    <input type="email" placeholder="Email" name="email" className="t-md-8 login-email-box" disabled={isLoading}  onChange={this.onChange.bind(this)}/>
-                                </div>
                                 <div className="login-hr" />
                                 <div className="t-flex login-email-div t-md-10 t-justify-space-between t">
                                     <span><i className="fa fa-phone t-md-2 login-user-icon" /></span>
                                     <input type="text" placeholder="Phone Number" name="phone_number" className="t-md-8 login-email-box"  disabled={isLoading}  onChange={this.onChange.bind(this)}  />
                                 </div>
+
+                                <div className="login-hr" />
+                                <div className="t-flex login-email-div t-md-10 t-justify-space-between t">
+                                    <span><i className="fa fa-envelope t-md-2 login-user-icon" /></span>
+                                    <input type="email" placeholder="Email" name="email" className="t-md-8 login-email-box" disabled={isLoading}  onChange={this.onChange.bind(this)}/>
+                                </div>
+
                                 <div className="login-hr" />
                                 <div className="t-flex login-email-div t-md-10 t-justify-space-between t">
                                     <span><i className="fa fa-lock t-md-2 login-user-icon" /></span>
@@ -150,7 +158,7 @@ export class SignupForm extends Component{
                     <div className="t-flex  login-logo t-justify-center t-md-2" />
                     <div className="t-flex login-header  t-flex-column t-md-8 t-justify-center home-primary-color-f t-center-f">
                         <div className="login-h1 t-center-f">Welcome to RentRight</div>
-                        <div className="login-h2 t-center-f ">Already on RentRight? <span className="login-a">Sign In</span> </div>
+                        <div className="login-h2 t-center-f ">Already on RentRight? <span className="login-a">< a href="/sign-in">Sign In</a></span> </div>
                     </div>
 
 
@@ -174,6 +182,10 @@ export class SignupForm extends Component{
 
 SignupForm.propTypes = {
     register: PropTypes.func.isRequired,
+}
+
+SignupForm.contextTypes = {
+    router: PropTypes.object.isRequired,
 }
 
 Register.propTypes ={

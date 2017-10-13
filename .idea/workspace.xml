@@ -2,9 +2,150 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4846936-5bd9-4061-8338-97cecc35918a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/coming-soon-android.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/content-keys.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/house4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/index.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/interior111.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/ipad-air-white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/landing-page.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/landlord-ten.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/landlord-tenant-edit.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/landlordimg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/play-store-app.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/tenanat.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/tenant-pic.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/img/web_blurred.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Geovana.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Geovana.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 100.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 300.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 400.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 500-r.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 500.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 700.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Museo 900.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Black Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Black.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Bold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Bold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Black Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Black.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Bold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Bold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Extrabold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Extrabold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Light Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Light.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Regular Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Regular.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Semibold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Semibold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Thin Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Condensed Thin.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Black Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Black.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Bold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Bold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Extrabold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Extrabold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Light Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Light.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Regular Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Regular.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Semibold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Semibold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Thin Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extra Condensed Thin.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extrabold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Extrabold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Light Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Light.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Regular Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Regular.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Semibold Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Semibold.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Thin Italic.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova Thin.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Proxima Nova/banner-proximanova580x290.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/__MACOSX/Proxima Nova/._.DS_Store" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/bg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/bg2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/bg3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/int6.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/person1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/person3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/person4.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/img/person5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Fonts/Read Me.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Licenses/exljbris - Desktop License 1.0.0.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/Reference/Release Notes.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/fonts/readme.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/map_page.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/position.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/responsive.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/tenant_forms.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/HomeSearch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/Landing.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/LandordGuide.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/NewTenantInfo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/layouts/Agreement_modal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/layouts/ContModal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/layouts/map_page.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/layouts/modal_forms.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/layouts/tenantApplications.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/date.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/basic/flex_form.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/basic/tenant_nav.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/controllers/_scratch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/controllers/apiActions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/controllers/bing_leaflet.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/controllers/profile_middleware.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/layout_elements/dropdown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/layout_elements/flex_layout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/durables/layout_elements/side_list.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/form_trans.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/input.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/select.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/switch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/textarea.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/test/test.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/odaib.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/rent_right.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/pages/tenantlayouts/tenant_nav.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/img/me.jpg" afterPath="$PROJECT_DIR$/public/assets/css/img/me.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/img/person2.jpg" afterPath="$PROJECT_DIR$/public/assets/css/img/person2.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/PropertyInfo.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/PropertyInfo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/RentalTerms.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/RentalTerms.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/debug.log" afterPath="$PROJECT_DIR$/debug.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/CSS/home.css" afterPath="$PROJECT_DIR$/public/CSS/home.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/CSS/indexT.css" afterPath="$PROJECT_DIR$/public/CSS/indexT.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/CSS/tenant.css" afterPath="$PROJECT_DIR$/public/CSS/tenant.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/CSS/textT.css" afterPath="$PROJECT_DIR$/public/CSS/textT.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/tenant.css" afterPath="$PROJECT_DIR$/public/assets/css/tenant.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/tenant_compliment.css" afterPath="$PROJECT_DIR$/public/assets/css/tenant_compliment.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/Home.js" afterPath="$PROJECT_DIR$/src/components/pages/Home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/Register.js" afterPath="$PROJECT_DIR$/src/components/pages/Register.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/Tenant.js" afterPath="$PROJECT_DIR$/src/components/pages/Tenant.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/TenantInfo.js" afterPath="$PROJECT_DIR$/src/components/pages/TenantInfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/auth/auth.css" afterPath="$PROJECT_DIR$/src/components/pages/auth/auth.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/home/home.css" afterPath="$PROJECT_DIR$/src/components/pages/home/home.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/Footer.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/Footer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/PublicProfile.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/PublicProfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/TenantProfile.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/TenantProfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/footer/FooterMain.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/footer/FooterMain.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/header/navigation/PrimaryNav.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/header/navigation/PrimaryNav.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/tenant_search.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/tenant_search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/tenantlayouts/advert.js" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/advert.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/tenantlayouts/new_form.js" afterPath="$PROJECT_DIR$/src/components/pages/tenantlayouts/new_form.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/ActionTypes.js" afterPath="$PROJECT_DIR$/src/state/ActionTypes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/actions/authAction.js" afterPath="$PROJECT_DIR$/src/state/actions/authAction.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/actions/tenantAction.js" afterPath="$PROJECT_DIR$/src/state/actions/tenantAction.js" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -18,24 +159,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ScheduleDetails.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/ScheduleDetails.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2822">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Applications.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Applications.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="688">
-              <caret line="116" column="16" lean-forward="true" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
+            <state relative-caret-position="1853">
+              <caret line="116" column="16" lean-forward="false" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -46,8 +175,8 @@
       <file leaf-file-name="TopSection.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/dashboard/TopSection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-791">
-              <caret line="138" column="30" lean-forward="true" selection-start-line="138" selection-start-column="30" selection-end-line="138" selection-end-column="30" />
+            <state relative-caret-position="2295">
+              <caret line="138" column="30" lean-forward="false" selection-start-line="138" selection-start-column="30" selection-end-line="138" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -56,8 +185,8 @@
       <file leaf-file-name="ShowCard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/applications/ShowCard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="188" column="16" lean-forward="true" selection-start-line="188" selection-start-column="16" selection-end-line="188" selection-end-column="16" />
+            <state relative-caret-position="3077">
+              <caret line="188" column="16" lean-forward="false" selection-start-line="188" selection-start-column="16" selection-end-line="188" selection-end-column="16" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -65,11 +194,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Home.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="83" column="25" lean-forward="false" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -78,7 +207,7 @@
       <file leaf-file-name="Listing.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
+            <state relative-caret-position="9316">
               <caret line="569" column="53" lean-forward="false" selection-start-line="569" selection-start-column="53" selection-end-line="569" selection-end-column="53" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -90,20 +219,32 @@
       <file leaf-file-name="RentalTerms.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/RentalTerms.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="578">
               <caret line="36" column="55" lean-forward="false" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PropertyInfo.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PropertyInfo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/PropertyInfo.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+              <caret line="31" column="61" lean-forward="false" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="59" column="27" lean-forward="false" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,7 +253,7 @@
       <file leaf-file-name="applicationActions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/state/actions/applicationActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="323">
               <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -124,7 +265,7 @@
       <file leaf-file-name="ApiManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/ApiManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
+            <state relative-caret-position="357">
               <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
@@ -195,7 +336,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/pages/layouts/account/Notifications.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Payments.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/PaymentLanding.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/ScheduleDetails.js" />
@@ -207,7 +347,6 @@
         <option value="$PROJECT_DIR$/src/state/actions/PaymentActions.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/profile/ProfileForm.js" />
         <option value="$PROJECT_DIR$/src/components/pages/auth/Login.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/utils/requireAuth.js" />
         <option value="$PROJECT_DIR$/src/components/pages/LandingPage/ContinueAs.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/profile/BankAccounts.js" />
@@ -246,6 +385,8 @@
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/applications/ShowCard.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/RentalTerms.js" />
         <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/PropertyInfo.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/Home.js" />
       </list>
     </option>
   </component>
@@ -266,7 +407,7 @@
     <option name="width" value="780" />
     <option name="height" value="733" />
   </component>
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
@@ -284,7 +425,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -353,6 +493,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -583,25 +724,28 @@
       <workItem from="1507622705867" duration="23840000" />
       <workItem from="1507713855316" duration="10019000" />
       <workItem from="1507794774172" duration="22874000" />
+      <workItem from="1507888887427" duration="129000" />
+      <workItem from="1507889272334" duration="801000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1754576000" />
+    <option name="totallyTimeSpent" value="1755506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19122024" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3536184" sideWeight="0.5208333" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998326" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886191" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27631578" sideWeight="0.47916666" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27631578" sideWeight="0.47916666" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -704,13 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1343">
           <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="27" column="10" lean-forward="true" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -826,9 +963,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -843,7 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="156" column="46" lean-forward="false" selection-start-line="156" selection-start-column="46" selection-end-line="156" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -851,9 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="39" lean-forward="false" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
-          <folding>
-            <element signature="e#1935#4187#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -861,7 +991,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
           <caret line="63" column="82" lean-forward="true" selection-start-line="63" selection-start-column="82" selection-end-line="63" selection-end-column="82" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -876,7 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1581">
           <caret line="102" column="15" lean-forward="true" selection-start-line="99" selection-start-column="12" selection-end-line="102" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -891,7 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="37" column="57" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -899,12 +1026,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="25" column="39" lean-forward="true" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-            <element signature="e#1125#1497#0" expanded="false" />
-            <element signature="e#1985#5109#0" expanded="false" />
-            <element signature="e#2206#3883#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -912,9 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="44" column="52" lean-forward="true" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -922,145 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="284" column="0" lean-forward="true" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
-          <folding>
-            <element signature="e#7#88#0" expanded="false" />
-            <element signature="e#101#142#0" expanded="false" />
-            <element signature="e#159#204#0" expanded="false" />
-            <element signature="e#224#247#0" expanded="false" />
-            <element signature="e#264#309#0" expanded="false" />
-            <element signature="e#331#354#0" expanded="false" />
-            <element signature="e#421#445#0" expanded="false" />
-            <element signature="e#452#482#0" expanded="false" />
-            <element signature="e#495#530#0" expanded="false" />
-            <element signature="e#544#580#0" expanded="false" />
-            <element signature="e#592#626#0" expanded="false" />
-            <element signature="e#641#678#0" expanded="false" />
-            <element signature="e#693#719#0" expanded="false" />
-            <element signature="e#732#757#0" expanded="false" />
-            <element signature="e#769#793#0" expanded="false" />
-            <element signature="e#808#835#0" expanded="false" />
-            <element signature="e#853#877#0" expanded="false" />
-            <element signature="e#893#916#0" expanded="false" />
-            <element signature="e#931#953#0" expanded="false" />
-            <element signature="e#971#996#0" expanded="false" />
-            <element signature="e#1016#1117#0" expanded="false" />
-            <element signature="e#1165#1219#0" expanded="false" />
-            <element signature="e#1322#1369#0" expanded="false" />
-            <element signature="e#1387#1442#0" expanded="false" />
-            <element signature="e#1455#1530#0" expanded="false" />
-            <element signature="e#2178#2274#0" expanded="false" />
-            <element signature="e#2357#2394#0" expanded="false" />
-            <element signature="e#2414#2476#0" expanded="false" />
-            <element signature="e#2502#2526#0" expanded="false" />
-            <element signature="e#2543#2565#0" expanded="false" />
-            <element signature="e#2583#2613#0" expanded="false" />
-            <element signature="e#2630#2651#0" expanded="false" />
-            <element signature="e#2670#2802#0" expanded="false" />
-            <element signature="e#2813#3647#0" expanded="false" />
-            <element signature="e#3665#3710#0" expanded="false" />
-            <element signature="e#3728#3855#0" expanded="false" />
-            <element signature="e#3870#3936#0" expanded="false" />
-            <element signature="e#4284#4310#0" expanded="false" />
-            <element signature="e#4336#4356#0" expanded="false" />
-            <element signature="e#4615#4649#0" expanded="false" />
-            <element signature="e#4682#4707#0" expanded="false" />
-            <element signature="e#4719#4780#0" expanded="false" />
-            <element signature="e#4796#4890#0" expanded="false" />
-            <element signature="e#4892#5029#0" expanded="false" />
-            <element signature="e#4929#4974#0" expanded="false" />
-            <element signature="e#4983#5027#0" expanded="false" />
-            <element signature="e#5052#5420#0" expanded="false" />
-            <element signature="e#5441#5490#0" expanded="false" />
-            <element signature="e#5606#5673#0" expanded="false" />
-            <element signature="e#5707#5758#0" expanded="false" />
-            <element signature="e#5793#5875#0" expanded="false" />
-            <element signature="e#5911#5981#0" expanded="false" />
-            <element signature="e#6019#6086#0" expanded="false" />
-            <element signature="e#6123#6207#0" expanded="false" />
-            <element signature="e#6232#6428#0" expanded="false" />
-            <element signature="e#6457#6512#0" expanded="false" />
-            <element signature="e#6548#6732#0" expanded="false" />
-            <element signature="e#6746#6898#0" expanded="false" />
-            <element signature="e#6920#6956#0" expanded="false" />
-            <element signature="e#6968#7014#0" expanded="false" />
-            <element signature="e#7021#7239#0" expanded="false" />
-            <element signature="e#7251#7542#0" expanded="false" />
-            <element signature="e#7548#7622#0" expanded="false" />
-            <element signature="e#7629#7704#0" expanded="false" />
-            <element signature="e#7793#7833#0" expanded="false" />
-            <element signature="e#7873#7903#0" expanded="false" />
-            <element signature="e#7948#7987#0" expanded="false" />
-            <element signature="e#8030#8074#0" expanded="false" />
-            <element signature="e#8119#8207#0" expanded="false" />
-            <element signature="e#8254#8340#0" expanded="false" />
-            <element signature="e#8357#8429#0" expanded="false" />
-            <element signature="e#12545#12724#0" expanded="false" />
-            <element signature="e#12738#12776#0" expanded="false" />
-            <element signature="e#12790#12823#0" expanded="false" />
-            <element signature="e#12826#12928#0" expanded="false" />
-            <element signature="e#12942#13001#0" expanded="false" />
-            <element signature="e#13018#13139#0" expanded="false" />
-            <element signature="e#13185#13302#0" expanded="false" />
-            <element signature="e#13362#13383#0" expanded="false" />
-            <element signature="e#13459#13492#0" expanded="false" />
-            <element signature="e#13505#13601#0" expanded="false" />
-            <element signature="e#13616#13724#0" expanded="false" />
-            <element signature="e#13739#13787#0" expanded="false" />
-            <element signature="e#13836#13973#0" expanded="false" />
-            <element signature="e#14030#14121#0" expanded="false" />
-            <element signature="e#14180#14229#0" expanded="false" />
-            <element signature="e#14260#14333#0" expanded="false" />
-            <element signature="e#14366#14432#0" expanded="false" />
-            <element signature="e#14447#14497#0" expanded="false" />
-            <element signature="e#14523#14671#0" expanded="false" />
-            <element signature="e#14736#14961#0" expanded="false" />
-            <element signature="e#14980#15155#0" expanded="false" />
-            <element signature="e#15188#15279#0" expanded="false" />
-            <element signature="e#15316#15448#0" expanded="false" />
-            <element signature="e#15462#15589#0" expanded="false" />
-            <element signature="e#15615#15649#0" expanded="false" />
-            <element signature="e#15664#15706#0" expanded="false" />
-            <element signature="e#15729#15748#0" expanded="false" />
-            <element signature="e#15778#15929#0" expanded="false" />
-            <element signature="e#15966#15996#0" expanded="false" />
-            <element signature="e#16014#16040#0" expanded="false" />
-            <element signature="e#16075#16361#0" expanded="false" />
-            <element signature="e#16369#16455#0" expanded="false" />
-            <element signature="e#16474#16509#0" expanded="false" />
-            <element signature="e#16523#16590#0" expanded="false" />
-            <element signature="e#16614#16643#0" expanded="false" />
-            <element signature="e#16729#16811#0" expanded="false" />
-            <element signature="e#16856#16894#0" expanded="false" />
-            <element signature="e#16902#16922#0" expanded="false" />
-            <element signature="e#16930#16994#0" expanded="false" />
-            <element signature="e#17017#17085#0" expanded="false" />
-            <element signature="e#17114#17178#0" expanded="false" />
-            <element signature="e#17233#17272#0" expanded="false" />
-            <element signature="e#17322#17356#0" expanded="false" />
-            <element signature="e#17382#17418#0" expanded="false" />
-            <element signature="e#17450#17529#0" expanded="false" />
-            <element signature="e#17538#17633#0" expanded="false" />
-            <element signature="e#17647#17687#0" expanded="false" />
-            <element signature="e#17700#17772#0" expanded="false" />
-            <element signature="e#17785#17870#0" expanded="false" />
-            <element signature="e#17891#17912#0" expanded="false" />
-            <element signature="e#17947#17981#0" expanded="false" />
-            <element signature="e#18006#18195#0" expanded="false" />
-            <element signature="e#18233#18296#0" expanded="false" />
-            <element signature="e#18336#18359#0" expanded="false" />
-            <element signature="e#18756#18798#0" expanded="false" />
-            <element signature="e#18824#18948#0" expanded="false" />
-            <element signature="e#18969#19008#0" expanded="false" />
-            <element signature="e#19049#19119#0" expanded="false" />
-            <element signature="e#19157#19233#0" expanded="false" />
-            <element signature="e#19259#19287#0" expanded="false" />
-            <element signature="e#19326#19398#0" expanded="false" />
-            <element signature="e#19492#19572#0" expanded="false" />
-            <element signature="e#19622#19663#0" expanded="false" />
-            <element signature="e#19689#19723#0" expanded="false" />
-            <element signature="e#19795#19829#0" expanded="false" />
-            <element signature="e#21447#21473#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1068,9 +1047,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2278">
           <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1078,25 +1054,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-306">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/ScheduleDetails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/payments/ScheduleDetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2822">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/ApiManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
+        <state relative-caret-position="357">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
@@ -1104,7 +1077,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/state/actions/applicationActions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="323">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -1114,8 +1087,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Applications.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="116" column="16" lean-forward="true" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
+        <state relative-caret-position="1853">
+          <caret line="116" column="16" lean-forward="false" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -1124,8 +1097,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/dashboard/TopSection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-791">
-          <caret line="138" column="30" lean-forward="true" selection-start-line="138" selection-start-column="30" selection-end-line="138" selection-end-column="30" />
+        <state relative-caret-position="2295">
+          <caret line="138" column="30" lean-forward="false" selection-start-line="138" selection-start-column="30" selection-end-line="138" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -1134,31 +1107,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/applications/ShowCard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="188" column="16" lean-forward="true" selection-start-line="188" selection-start-column="16" selection-end-line="188" selection-end-column="16" />
+        <state relative-caret-position="3077">
+          <caret line="188" column="16" lean-forward="false" selection-start-line="188" selection-start-column="16" selection-end-line="188" selection-end-column="16" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
+        <state relative-caret-position="9316">
           <caret line="569" column="53" lean-forward="false" selection-start-line="569" selection-start-column="53" selection-end-line="569" selection-end-column="53" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -1168,7 +1132,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/RentalTerms.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="578">
           <caret line="36" column="55" lean-forward="false" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
           <folding />
         </state>
@@ -1177,10 +1141,28 @@
     <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/listing/PropertyInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <caret line="31" column="61" lean-forward="false" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="59" column="27" lean-forward="false" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="83" column="25" lean-forward="false" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,120 +1,72 @@
 import React, {Component} from 'react';
 
-function Rows(props) {
-
-    return (
-
-        <div className="row">
-            <AboutUs/>
-            <Recent recents={props.recents}/>
-            <Contact/>
-            <UsefulLinks/>
-        </div>
-    );
-}
-
-function AboutUs() {
-    return (
-        <div className="col-md-3 col-sm-3">
-            <article>
-                <h3>About Us</h3>
-                <p>Rent Right is a platform that eliminates friction between tenants and landlords. The
-                    platform provides tools that makes the
-                    rental process and property management pleasurable and effective.
-                </p>
-                <hr />
-                <a href="#.com" className="link-arrow">Read More</a>
-            </article>
-        </div>
-    );
-}
-function Recent(props) {
-
-    return (
-        <div className="col-md-3 col-sm-3">
-            <article>
-                <h3>Recent Properties</h3>
-                {props.recents.map((recent)=>
-                    <div className="property small">
-                        <a href="property-detail.html">
-                            <div className="property-image">
-                                <img alt="" src={recent.img}/>
-                            </div>
-                        </a>
-                        <div className="info">
-                            <a href="property-detail.html"><h4>{recent.address}</h4></a>
-                            <figure>{recent.location} </figure>
-                            <div className="tag price">{recent.price}</div>
-                        </div>
-                    </div>
-                )}
-
-            </article>
-        </div>
-    );
-}
-
-function Contact() {
-    return (
-        <div className="col-md-3 col-sm-3">
-            <article>
-                <h3>Contact</h3>
-                <address>
-                    <strong>Algorism Nig</strong><br />
-                    74 Raymond Njoku<br />
-                    Off Awolowo Road, Ikoyi.
-                </address>
-                +(234) 808-231-5489<br />
-                <a href="#.com">contactus@rentright.com</a>
-            </article>
-        </div>
-    );
-}
-
-function UsefulLinks() {
-
-    return (
-        <div className="col-md-3 col-sm-3">
-            <article>
-                <h3>Useful Links</h3>
-                <ul className="list-unstyled list-links">
-                    <li><a href="#.com">All Properties</a></li>
-                    <li><a href="#.com">Privacy Policy</a></li>
-                    <li><a href="#.com">Login and Register Account</a></li>
-                    <li><a href="#.com">FAQ</a></li>
-                    <li><a href="#.com">Terms and Conditions</a></li>
-                </ul>
-            </article>
-        </div>
-    );
-}
-
 export default class FooterMain extends Component {
 
     render() {
-        const recent = [
-            {
-                id: 1,
-                img: "http://localhost:3000/assets/img/properties/property-06.jpg",
-                price: "$ 71,000",
-                address: "2186 Rinehart Road",
-                location: "Doral, FL 33178"
-            },
-            {
-                id: 2,
-                img: "http://localhost:3000/assets/img/properties/property-09.jpg",
-                price: "$ 61,000",
-                address: "2479 Murphy Court",
-                location: "Minneapolis, MN 55402"
-            },
-        ];
 
         return (
-            <aside id="footer-main">
-                <div className="container">
-                    <Rows recents={recent}/>
+            <div>
+                <div className="home-footer t-flex t-md-10 ">
+
+                        <div className="footer-items-holder t-md-10 t-fullheight t-flex nav-pad-left-right t-justify-space-between">
+                            <div className="holder t-md-10 t-flex">
+                            <div className=" t-flex-column t-md-5 footer-text">
+                            <div className=" t-flex t-md-10 t-flex-column  ">
+                                <div className="rentright-logo t-flex t-md-10" />
+                                <div className="home-rentright-about t-flex t-left-f t-md-10"> RentRight is a platform for everybody involved in property-renting business
+                                    landlords, tenants, agents, arbitrators, preventing issues and saving time.</div>
+                                <div className="home-footer-social t-flex t-md-10 ">
+                                    <span><i className="fa fa-twitter home-twit t-flex t-md-3" /></span>
+                                    <span><i className="fa fa-facebook home-twit t-flex t-md-3 " /></span>
+                                    <span><i className="fa fa-linkedin home-twit t-flex t-md-3" /></span>
+                                </div>
+                            </div>
+
+                            </div>
+                            <div className="t-flex t-md-5 t-flex-column most-commented  t-align-content-center ">
+                                <span className=" t-flex t-md-10 "> Most Commented</span>
+                                <div className="footer-img-holder t-flex t-md-10  ">
+                                    <div className="footer-img1 t-flex"> </div>
+                                    <div className=" t-flex t-flex-column footer-img1-details t-justify-center ">
+                                        <div className="home-new-post">New Post with image </div>
+                                        <span className="home-tes-prof ">March 13, 2017</span></div>
+                                </div>
+                                <div className="footer-img-holder t-flex t-md-10  ">
+                                    <div className="footer-img2 t-flex"> </div>
+                                    <div className=" t-flex footer-img2-details t-flex-column  ">
+                                        <div className="home-new-post t-justify-center">Video Post </div>
+                                        <span className="home-tes-prof ">March 13, 2017</span></div>
+                                </div>
+                            </div>
+                    </div>
+
+                            <div className="holder t-md-10 t-flex ">
+                        <div className=" t-flex t-md-5  t-flex-column home-useful-links">
+                            <div className="t-flex t-justify-space-between t-flex-column">
+                                <div className="most-commented t-flex t-md-10 ">Useful Links</div>
+                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i> <span className="footer-a">For Landlord</span></div>
+                                <div className="footer-hr" />
+                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i><span className="footer-a">For Tenant</span></div>
+                                <div className="footer-hr" />
+                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i> <span className="footer-a">Landlord </span></div>
+                                <div className="footer-hr" />
+                                <div className="home-first-link t-flex"> <i className="material-icons">arrow_forward</i><span className="footer-a"> Landlord</span></div>
+                                <div className="footer-hr" />
+                            </div>
+                        </div>
+
+
+                        <div className="most-commented t-flex t-md-5 ">Twitter Feeds</div>
+                    </div>
                 </div>
-            </aside>
+                </div>
+                <div className="footer-copyright home-primary-color t-md-10 t-justify-space-between t-align-center t-flex-column ">
+                    <div className="t-flex t-flex nav-pad-left-right  ">
+                        <div className="copyright t-flex t-md-8">RentRight © 2017. All Rights Reserved. <div className="copyright-a t-flex home-secondary-color-f">Terms Of Use</div> and <div className="copyright-a t-flex home-secondary-color-f"> Privacy Policy</div></div>
+                        <div className="copyright-top t-flex t-md-2  t-justify-right">Top.</div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }

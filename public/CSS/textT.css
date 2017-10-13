@@ -23,7 +23,6 @@
 .m-drop-down-content{width:8wv; height:auto; display:none; font-size:1.3rem; display:none; color: #666; font-weight:600; text-align:left; padding:10px 15px;}
 .m-drop-down-items{border-bottom:solid 1px #d2d2d2; }
 .m-drop-down:hover .m-drop-down-content{display:block;}
-[data-reactroot] {height: 100% !important; }
 .m-semi-transparent{background-color:rgba(299,299,299,0.8);}
 .m-round-btn2{width:1.2vw;  height:1.2vw; border-radius:50%;  cursor:pointer;  display:flex; align-items:center; justify-content:center; text-align:center; font-size:1.3rem; color:#66BB6A;  }
 .m-round-btn22{width:3.5vw;  height:3.5vw; border-radius:50%;  cursor:pointer;  display:flex; align-items:center; justify-content:center; text-align:center; font-size:3rem; color:#fff;  }

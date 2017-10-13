@@ -155,8 +155,9 @@ export function load_my_applications(path){
     //send only uuid
     dispatch(loading_applications('loading'))
       let api = new apiActions('https://rentright.herokuapp.com/api/rentright/tenants/applications/');
-      let uri = api + path
-      return api.geturl(uri, true).then((applications)=>{
+      let uri = api.url + path
+      console.log(uri)
+      return api.geturl(path, true).then((applications)=>{
         dispatch(loading_applications('hideloading'));
         dispatch(load_my_applications_success(applications))
       }).catch((err)=>{
@@ -182,16 +183,14 @@ export function post_my_application(obj){
 }
 
 
-export function load_my_query(path){
+export function load_my_query(path = ''){
   return ((dispatch)=>{
     //send only uuid
     dispatch(loading_query('loading'))
-      let api = new apiActions('https://rentright.herokuapp.com/api/rentright/units/query/?');
-      
+   let api = new apiActions('https://rentright.herokuapp.com/api/rentright/units/query/?');      
       let uri = path;
       return api.geturl(uri, true).then((results)=>{
-        if (results.error){
- 
+        if (results.error){ 
           dispatch(loading_query('errorloading'));
         }else{
         dispatch(loading_query('hideloading'));
@@ -309,7 +308,8 @@ export function deleteSpecificTenant(path,obj) {
 }
 
 export function load_my_applications_success(applications){
-  return  {type: types.TENANT_APPLICATIONS_LOAD, applications:applications.results }
+  console.log(applications.results.results)
+  return  {type: types.TENANT_APPLICATIONS_LOAD, applications:applications.results.results }
   
 }
 export function connectedToSocket(val){
@@ -321,6 +321,9 @@ export function connectedToSocket(val){
 }
 export function postMessage(data){
   return {type:types.POST_SENT}
+}
+export function loadNotifications(data){
+  return {type:types.LOAD_NOTIFICATIONS, data}
 }
 export function receivedKoler(datad){
   return {type : types.POST_RECIEVED, data:datad}
@@ -349,7 +352,12 @@ export  function StructureLoadSuccess(structure){
     return {type: types.STRUCTURE_LOAD_SUCCESS , structure:structure.results.values};
 }
 export  function FormLoadSuccess(data){
-    return {type: types.FORM_LOAD_SUCCESS , data:data.results.values};
+  let values;
+    if (data.results){
+    values = data.results.values;
+  }
+    return {type: types.FORM_LOAD_SUCCESS , data:values};
+
 }
 
 export function abstractdispatchfunctions(){
