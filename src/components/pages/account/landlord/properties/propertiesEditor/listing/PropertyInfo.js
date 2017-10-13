@@ -24,16 +24,19 @@ class PropertyInfo extends Component {
                         <label htmlFor="bathrooms" className="active">How many bathrooms?</label>
                     </div>
                 </div>
-                <Row>
-                    <Input s={12} type='select' name={"unit_type"} label="Whats type of property is this"
-                           value={info.unit_type} onChange={this.props.onChange}>
-                        <option value="apartment">Apartment</option>
-                        <option value="single_family">Single family house</option>
-                        <option value="flat">Flat</option>
-                        <option value="self_contained">Self contained</option>
-                        <option value="office">Office Space</option>
-                    </Input>
-                </Row>
+                <div className={'row'}>
+                    <div className="input-field col s12 m6">
+                        <label>Whats type of property is this</label>
+                        <select name={"unit_type"} className="browser-default"
+                                value={info.unit_type} onChange={this.props.onChange}>
+                            <option value="apartment">Apartment</option>
+                            <option value="single_family">Single family house</option>
+                            <option value="flat">Flat</option>
+                            <option value="self_contained">Self contained</option>
+                            <option value="office">Office Space</option>
+                        </select>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="input-field col s12">
                         <input placeholder="Whats the square footage?" id="footage"

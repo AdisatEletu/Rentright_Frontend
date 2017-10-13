@@ -34,12 +34,16 @@ class RentalTerms extends Component {
                                placeholder="The minimum lease term in months? 12?"/>
                     </div>
 
-                    <Input s={4} type='select' name={"minimum_lease_term_type"} label="Term type"
-                           value={this.props.terms.minimum_lease_term_type} onChange={this.props.onChange}>
-                        <option value="weeks">Weeks</option>
-                        <option value="months">Months</option>
-                        <option value="years">Years</option>
-                    </Input>
+                    <div className="input-field col s12 m4">
+                        <label>Term type</label>
+                        <select name={"minimum_lease_term_type"} className="browser-default"
+                                value={this.props.terms.minimum_lease_term_type} onChange={this.props.onChange}>
+                            <option value="weeks">Weeks</option>
+                            <option value="months">Months</option>
+                            <option value="years">Years</option>
+                        </select>
+                    </div>
+
                 </div>
             </div>
         );
