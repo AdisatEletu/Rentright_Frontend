@@ -5,6 +5,7 @@ import FooterMain from './layouts/footer/FooterMain';
 import PrimaryNav from './layouts/header/navigation/PrimaryNav';
 import HomeSearch from "./HomeSearch";
 import {Icon} from 'antd'
+import HomeShowCard from "./home/HomeShowCard";
 
 
 export default class NewHome extends Component{
@@ -16,8 +17,39 @@ export default class NewHome extends Component{
     this.myapi = this.myapi.bind(this);
     this.loadingStatus = this.loadingStatus.bind(this);
 
-}
+     this.clcked = this.clicked.bind(this)
 
+     this.sendback = this.sendback.bind(this);
+
+     this.navimage = this.navimage.bind(this);
+ }
+    sendback = (a,b)=>{
+        console.log(a,b);
+        this.props.street(a,b)
+    }
+    navimage = (context)=>{
+        if (context === 'prev'){
+            if (! this.state.index < 1){
+                this.setState({index: this.state.index-1})
+            }else{
+                this.setState({index:this.state.image.list.length - 1})
+            }
+        }else if (context === 'next'){
+            if ( this.state.index  === this.state.image.list.length - 1){
+                this.setState({index:0})
+            }else{
+                this.setState({index: this.state.index + 1})
+
+            }
+
+        }
+        console.log(this.state.index)
+
+
+    }
+    clicked = ()=>{
+        this.props.clicked()
+    }
 loadingStatus =(context) =>{
      let obj = {};
      obj['loading'] = context;
@@ -337,79 +369,7 @@ componentDidMount (){
                         Newest Offer Newest Offer Newest Offer</div>
                 </div>
                 <div className = "t-flex t-flex-row t-md-10 t-flex-wrap t-justify-space-between home-newest-properties-div nav-pad-left-right">
-                {this.state.results.units.slice(0,4).map((real, i)=>
-
-                        <div key={i} className="home-property1 t-flex t-md-48 t-flex-column">
-                            <div className="home-property-picture1 t-flex t-md-10" style = {real.unit_images[0] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[0].id+ ")"}:undefined}>
-                               <div className="home-new-property-cover t-md-10 t-fullheight">
-                               <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
-                                    <div className="t-flex t-flex-row">
-                                       <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {real.monthly_rent.toLocaleString('en')}</span>
-                                        <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center "><i className="material-icons ">favorite_border</i> </span>
-                                    </div>
-                                   <div className="t-flex t-justify-space-between t-align-center t-fullheight  t-md-10">
-                                       <div className = "e-a-left" onClick = {()=>this.navimage('prev')}><Icon type = "left"/></div>
-                                       <div className = "e-a-right" onClick = {()=>this.navimage('next')}><Icon type = "right"/></div>
-                                   </div>
-                                   {  /* <div className="t-flex t-justify-center t-align-content-center  t-md-10">
-                                        <span className="home-street-view t-md-5 t-justify-center t-align-center"><Icon type="link"/> Street View</span>
-                                    </div>*/}
-
-                                    {/*<div className=" home-aplicants t-flex t-md-10  ">
-                                        <div className=" t-flex t-md-5 t-align-center  ">
-                                            <div className="t-flex home-aplicant-picture" style = {real.unit_images[1] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[1].id+ ")"}:undefined} ></div>
-                                            <span className="home-aplicant-name t-align-center t-flex ">{real.unit_images[1] &&real.unit_images[1].section ? real.unit_images[1].section: null}</span>
-                                        </div>
-
-                                    </div>*/}
-
-
-                                </div>
-                               </div>
-                            </div>
-                           <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-space-around t-align-content-space-around">
-
-                                 <div className="home-new-property-address t-flex t-md-10  t-justify-space-between">
-                                    <div className="home-new-property-addre  t-justify-space-between t-flex t-md-6 ">
-                                        <i className="material-icons t-md-1">place</i><span className="t-flex t-md-89 proxima"> {real.address.address.address}</span>
-                                    </div>
-
-                                    <div className="street-view t-flex  t-justify-space-between t-md-29">
-                                        <i className="material-icons t-md-1">streetview</i> <span className="t-flex t-md-75 proxima">Street View</span>
-                                    </div>
-                                </div>
-                               <div className="new-props-hr t-md-10 t-flex"></div>
-                                <div className="home-unit-attributes t-flex t-md-10 t-justify-space-between proxima">
-
-                                    <div className="home-sizes t-md-7 t-flex t-justify-space-between t-align-content-space-between">
-                                        <span className="home-sqf t-flex t-md-33 t-justify-space-between  ">
-                                            {/*<i className="material-icons t-md-1">home</i>*/}<span className="t-md-8"> {real.square_footage} Sqft</span>
-                                        </span>
-                                        <span className="home-sqf t-flex t-md-33 t-justify-space-between  ">
-                                             {/*<i className="material-icons t-md-1">hotel</i>*/}<span className="t-md-8"> {real.bedrooms} Rooms</span>
-                                        </span>
-                                        <span className="home-sqf t-flex t-md-33 t-justify-space-between ">
-                                            {/*<i className="material-icons t-md-1">hot_tub</i>*/}<span className="t-md-8"> {real.bathrooms} Bathroom</span>
-                                        </span>
-
-                                    </div>
-                                    <div className="t-flex home-applicant-right  t-md-3 ">
-                                        {real.applications.length>0?
-                                            <div className = "t-md-10 t-full-height t-flex ">
-                                                <div className="t-flex home-no-of-applicant t-align-center montserrat">{real.applications.length} Applicant</div>
-                                            </div>
-                                            :
-                                            null
-
-                                        }
-                                    </div>
-
-                                    </div>
-
-                            </div>
-                        </div>
-
-                )}
+                {this.state.results.units.slice(0,4).map((real, i)=><HomeShowCard key={i} unit={real}/>)}
 
                 </div>
                 <div className="t-flex home-testimonial "><div className="home-testimonial-cover t-flex t-fullheight t-fullwidth">
