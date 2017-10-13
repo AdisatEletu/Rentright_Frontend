@@ -7,7 +7,7 @@ import Dropdown from '../layout_elements/dropdown';
 import { Badge } from 'antd';
 import {Icon,Progress} from 'antd'; 
 import { Avatar } from 'antd';
-import BingTileLayer  from '../controllers/bing_leaflet'
+import {BingTileLayer, geojsonMaker, GeoJSONCUSTOM  } from '../controllers/bing_leaflet'
 import L from 'leaflet';
 import Modal from 'antd/lib/modal';
 
@@ -29,7 +29,7 @@ import { Slider, Row } from 'antd';
 import $ from 'jquery';
 import {Button} from 'antd';
 import { notification } from 'antd';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Map, Marker, Popup, TileLayer , GeoJSON } from 'react-leaflet';
 import { divIcon } from 'leaflet';
 import DivIcon from 'react-leaflet-div-icon';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
@@ -186,6 +186,7 @@ export class Profiler2 extends Component{
         super(props)
         this.clcked = this.clicked.bind(this)
         let image = {};
+    this.mapit = this.mapit.bind(this);
         this.sendback = this.sendback.bind(this);
         if (this.props.list.length > 0){
           image.list =   this.props.list.map((item)=>{
@@ -198,6 +199,9 @@ export class Profiler2 extends Component{
            this.state = {image, index:0}
         this.navimage = this.navimage.bind(this);
          }
+    mapit = (id)=>{
+        this.props.mapit(id);
+    }
     sendback = (a,b)=>{
         console.log(a,b);
         this.props.street(a,b)
@@ -227,7 +231,7 @@ clicked = ()=>{
 }
         render (){
     return (      
-    <div className = "event-cards shad" style  = {this.props.style ? this.props.style : null }>
+    <div  className = "event-cards shad" style  = {this.props.style ? this.props.style : null }>
      <div className =  "  event-cards-image"
     style = {
     this.props.notdummy?
@@ -245,9 +249,15 @@ clicked = ()=>{
            </div> 
      </div>
      </div>
-     <div className = "t-white" style = {{height:'auto', padding:'10px 3px', paddingBottom:'10', borderStyle:'none',  boxSizing:'border-box'}}>
+     <div className = "t-white tw" style = {{  paddingBottom:'10',  boxSizing:'border-box'}}>
         {/*  <div className = "ll" onClick = {()=>this.sendback(this.props.address.latitude, this.props.address.longitude)}>Explore</div>*/}
-     <p className = "line-clamp" onClick = {()=>this.sendback(this.props.address.latitude, this.props.address.longitude)} style = {{fontSize:'12px', color:'#222'}}><span className = "e-name" style = {{fontSize:'14px'}} >{this.props.name}</span><br/> {this.props.paragraph}</p>
+     <p className = "line-clamp"  style = {{fontSize:'12px', color:'#222'}}>
+         <span className = "e-name" style = {{fontSize:'14px', fontWeight:500}} >{this.props.name}</span><br/> </p>
+         <div className = "mline">
+             <span onClick = {()=>this.sendback(this.props.address.latitude, this.props.address.longitude)}><Icon type = "car"/> Street</span>
+             <span onClick = {()=>this.mapit(this.props.mapid)} ><Icon type = "global" /> Locate</span>
+             <span><Icon type = "paper-clip"/> Details</span>
+         </div>
  
    </div>
   
@@ -622,40 +632,80 @@ export class RentRightMap extends Component{
       super(props);
       this.position = this.props.view;
        this.icon =  divIcon({className: 'ricon'});
-     console.log(this.props.markers, 'grer')
-     this.markers = this.props.markers.map((item)=>{
+       //this.map =  this.refs.map.leafletElement;
+       this.sendobj = [];
+       this.state = {id:null}
+       this.output = [];this.geojson;
+       this.pop = this.pop.bind(this);
+     
+       this.locatePoint = this.locatePoint.bind(this);
+       this.refresh = this.refresh.bind(this);
+        console.log(this.props.markers, 'grer')
+        this.markers = this.props.markers.map((item)=>{
+          let obj = {latitude:item.position[0], longitude: item.position[1] }  
+          this.sendobj.push( item.data) ;
+          this.geoj;
          return {lat:item.position[0], lng:item.position[1]};
          
      })
-this.markerclusterOptions = {
-    showCoverageOnHover: false,
-    spiderfyDistanceMultiplier: 2,
-
-  };
-
-     };
-    componentWillMount(){
-
+                let c = new geojsonMaker(this.sendobj);
+                this.geoj = c.convertdata();
+                //console.log(this.geoj, 'Okay now this wierd') 
+                this.markerclusterOptions = {
+                showCoverageOnHover: false,
+                spiderfyDistanceMultiplier: 2,
+            };
+             
+                };
+componentWillReceiveProps( { id } = this.props){
+            this.refresh();
+            this.setState({id});      
     }
+refresh = ()=>{
+    if (this.map){
+   // this.map.setView(this.props.markers[0].position, 9)
+    }
+}
+    componentDidMount(){
+        if (this.refs.map){
+        this.map = this.refs.map.leafletElement;
+
+        }
+        
+         }
     sendToParent(employer){
         this.props.transmit(employer)
 
     }
+pop = (output)=>{
+    this.output = output;
+}
+  locatePoint = (obj)=>{
+    console.log(obj, 'locatePoint')    
+    let lat = obj.lat;
+    let lng = obj.lng;
+    this.map.setView([lat, lng], 14);   
+}
+    
+              /*<MarkerClusterGroup   wrapperOptions={{enableDefaultStyle: true}}  >
+                 <GeoJSONCUSTOM map = {this.map}  id = {this.state.id}   ref='geojd' da = {this.geoj}  />
+            </MarkerClusterGroup>*/
+      
 
  render(){
      return(
-    <Map  className="markercluster-map" maxZoom = "30"  minZoom = "2" center={this.props.markers[0].position} zoom={9}>
+    <Map  className="markercluster-map"  ref = "map" maxZoom = {30} minZoom ={2} center={this.props.markers[0].position}  zoom={9}>
           <BingTileLayer url = '' bingKey='<bingmapskey>'  type='aerial' />
-        {
-            this.props.markers?
- <MarkerClusterGroup
-    markers={this.markers}
-
-    wrapperOptions={{enableDefaultStyle: true}}
-  />
-            :
+           {
+            this.props.markers? 
+             
+                 <GeoJSONCUSTOM   markers ={this.markers} locatePoint = {this.locatePoint} populateoutput = {this.pop} id = {this.state.id}  da = {this.geoj}  />
+                 :
             null
         }
+        <MarkerClusterGroup markers= {this.markers}  wrapperOptions={{enableDefaultStyle: true}}  >
+                
+            </MarkerClusterGroup>   
 
 
 

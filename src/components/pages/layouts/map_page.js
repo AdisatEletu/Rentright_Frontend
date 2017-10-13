@@ -39,10 +39,13 @@ const mapping = {'tenant_bio':'Bio Information', 'general_info':'General Informa
 'tenant_immigration_history': 'Immigration Information'}
 class MapPage extends Component{
     constructor(props) {
+
         super(props) 
-        this.state = {promoted:{loading:false, error:false, image:false, results:undefined, path: ""} };
+        this.mapI;
+        this.mapit = this.mapit.bind(this);
+        this.state = {promoted:{loading:false, error:false, image:false, results:undefined, path: ""}, hasData:false, mapid:null };
         this.queryForPromotions = this.queryForPromotions.bind(this);     
-        this.initialize = this.initialize.bind(this);
+        this.initialize = this.initialize.bind(this);   
           
     }
 
@@ -51,7 +54,9 @@ this.queryForPromotions();
 GoogleMapsLoader.onLoad(function(google) {
 	console.log('I just loaded google maps api');
 });
-
+}
+mapit(id){
+this.setState({hasData:true, mapid:id})
 }
 initialize(lat, lng) {
 console.log(lat,lng)
@@ -60,15 +65,19 @@ this.setState({image:true})
   var fenway = {lat, lng};  
   let el = findDOMNode(this.refs.mapj);
   console.log(el);
-let map =  null;
+
 let panorama = null;
+if (!this.mapI){
    GoogleMapsLoader.load((google)=> {
-   map =  new google.maps.Map(el, {
+   this.mapI =  new google.maps.Map(el, {
     center: fenway,
     zoom: 14
   });
-console.log(map)
+console.log(this.mapI)
   });
+}else{
+    
+}
   GoogleMapsLoader.load(function(google) {
   panorama = new google.maps.StreetViewPanorama(
       el, {
@@ -106,6 +115,9 @@ transitionOut(){
     let frm = data.results.units.map((item, index)=>{
         let position = [];
         let obj = {};  
+        obj.data = item;
+        obj.data.latitude = item.address.address.latitude;
+        obj.data.longitude = item.address.address.longitude;
         position.push( item.address.address.latitude);     
         position.push(item.address.address.longitude);
         obj.position  = position
@@ -153,13 +165,13 @@ hideModal(){
    render(){   
     return (
     <div className = "map-container">
-    <div className = "map-header">
+    <div className = "map-header" style = {this.state.promoted.loading ? styles : null}>
         <div className = "map-left-logo map-br">
             <div className = "map-logo">
 
             </div>
             </div>
-<div className = "map-section map-br">
+<div className = "map-section map-br"  style = {this.state.promoted.loading ? styles : null}>
     <Icon type = "environment"/>
     <Icon type = "export"/>
     <Icon type = "message"/>
@@ -177,17 +189,18 @@ hideModal(){
 
          </div>
 
-    <div className = "map-drawer t-right-bx">
+    <div className = "map-drawer t-right-bx"  style = {this.state.promoted.loading ? styles : null}>
         <div className = "t-flex t-flex-column t-justify-left t-md-10 t-fullheight">
         <div className = "text-section">
            <Icon type = "bulb"/>&nbsp; Click on a propert to get more info about it ...
             </div>
-               <div className = "t-md-10 t-flex-wrap t-fullheight t-align-top t-flex t-justify-space-around bot remove-space">
+               <div className = "t-md-10 t-flex-wrap t-fullheight t-align-top t-flex t-justify-space-between bot remove-space">
          {
                 this.state.promoted.results ? this.state.promoted.results.results.units.map((itemm,i)=>{  
                                
                     return(
-                    <Profiler2  address = {itemm.address.address} key = {i} notdummy = {true} street = {this.initialize}  style = {{width:'45%', marginTop:'20px', height:'220px'}} height = {false}
+                    <Profiler2 mapit= {this.mapit} mapid = {itemm.id}  address = {itemm.address.address} key = {i} notdummy = {true} 
+                    street = {this.initialize}  style = {{width:'49%', marginTop:'20px', paddingBottom:'0px'}} height = {false}
                     img = {itemm.unit_images[0] ?"https://rentright-api-gateway.herokuapp.com/user/units/image/"+itemm.unit_images[0].id: undefined}
                     list = {itemm.unit_images.length> 0 ?itemm.unit_images : null }
                     paragraph = {itemm.bedrooms+ " bedroom apartment, located in " + itemm.title+ " .Rent goes for " + 
@@ -206,9 +219,10 @@ hideModal(){
 
         </div>
     </div>
-    <div className = "map-mp">
+    <div className = "map-mp"  style = {this.state.promoted.loading ? styles : null}>
+    {this.state.promoted.loading ? <Icon type = "loading" style = {{fontSize:'40px', color:'#666', marginTop:'30%', marginLeft:'30%'}} /> : null}
     {!this.state.image && this.state.markers ? 
-       <RentRightMap markers = {this.state.markers} view = {view}/>
+       <RentRightMap markers = {this.state.markers} view = {view} hasData = {this.state.hasData} id = {this.state.mapid}/>
        : null}
      
        <div style = { !this.state.image?{display:'none'}:{display:'block', width:'100%', height:'100%'} }ref = "mapj" className = "t-md-10 t-fullheight"></div>
@@ -221,7 +235,9 @@ hideModal(){
 }
 
 }
-
+const styles = {
+    opaity:0.6, backgroundColor:'rgba(255,255,255,0.3)'
+}
 function matchStateToProps(state){
     return   {
         auth:state.user.auth,
