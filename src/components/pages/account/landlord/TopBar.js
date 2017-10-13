@@ -82,7 +82,7 @@ class TopBar extends Component {
                                 </DropDown>
                             </span>
                             <span className="right" style={{marginRight: '25px', marginTop: '5px'}}>
-                                <Notifications/>
+                                {/*<Notifications/>*/}
                             </span>
                         </div>
                     </div>

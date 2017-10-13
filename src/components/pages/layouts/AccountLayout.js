@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import TopBar from "../account/landlord/TopBar";
-import {NavLink} from 'react-router-dom';
+import {NavLink,Link} from 'react-router-dom';
 import PropertyMenu from './account/PropertyMenu';
 import LoadingBar from 'react-redux-loading-bar'
 import PropTypes from 'prop-types';
@@ -71,13 +71,13 @@ function AccountHeader(props) {
                 </li>
                 <li className="no-padding">
                     <div id="sidebar-menu">
-                        <NavLink to="/landlord/dashboard" activeClassName={"active"} className="item"><i className="fa fa-desktop" aria-hidden="true"/> Dashboard</NavLink>
+                        <NavLink exact to="/landlord" activeClassName={"active"} className="item"><i className="fa fa-desktop" aria-hidden="true"/> Dashboard</NavLink>
                         {/*<NavLink to="/landlord/properties" activeClassName={"active"} className="item"><i className="fa fa-building-o" aria-hidden="true"/> My Properties</NavLink>*/}
                         <NavLink to="/landlord/rent-analysis" activeClassName={"active"} className="item"><i className="fa fa-area-chart" aria-hidden="true"/> Rent Analysis</NavLink>
                         <NavLink to="/landlord/reports" activeClassName={"active"} className="item"><i className="fa fa-file-text-o" aria-hidden="true"/> Reports</NavLink>
                         <NavLink to="/landlord/my-team" activeClassName={"active"} className="item"><i className="fa fa-users" aria-hidden="true"/> My Team</NavLink>
                         <NavLink to="/landlord/guide" activeClassName={"active"} className="item"><i className="fa fa-book" aria-hidden="true"/> Landlord Guide</NavLink>
-                        <div className="section-header">Properties <a className="pull-right" href="/landlord/properties/new"><i className="fa fa-plus"/></a></div>
+                        <div className="section-header">Properties <Link className="pull-right" to="/landlord/new_property"><i className="fa fa-plus"/></Link></div>
                         <PropertyMenu/>
                     </div>
                 </li>

@@ -152,6 +152,14 @@ export function getProperties(meta) {
     }
 }
 
+export function getPropertiesNoDispatch(params,callback){
+    axios.get(getPropertiesUrl, {params}).then(
+        (res) =>  callback(true,res.data.data)
+    ).catch(
+        (err) => callback(false,err)
+    );
+}
+
 export function getProperty(params, callback) {
     return axios.get(getSinglePropertyUrl(params.uuid), {params}).then(
         (res) => {

@@ -1,10 +1,10 @@
 import axios from 'axios';
-import {getApplication, acceptApplicationUrl} from '../../utils/ApiManager';
+import {getApplication, updateApplicationUrl} from '../../utils/ApiManager';
 
 
 export function getApplications(params, callback) {
 
-    return axios.get(getApplication(params.uuid), {params}).then(
+    return axios.get(getApplication, {params}).then(
         (res) => {
             console.log('applications', res);
             callback(true,res.data);
@@ -17,16 +17,16 @@ export function getApplications(params, callback) {
     )
 }
 
-export function acceptApplication(uuid, callback) {
+export function updateApplication(params, callback) {
 
-    return axios.post(acceptApplicationUrl(uuid)).then(
+    return axios.patch(updateApplicationUrl(params.uuid),params).then(
         (res) => {
-            console.log(res.data);
-            callback(res.data);
+            console.log(res.data.data);
+            callback(true,res.data.data);
         }
     ).catch(
         (err) => {
-            callback(err.data)
+            callback(false,err)
         }
     );
 }

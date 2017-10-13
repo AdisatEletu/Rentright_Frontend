@@ -103,6 +103,17 @@ main.d-main{
     background-color: #eeeeee;
 }
 
+/*--------------------class selectors for overriding materialize----------------------------*/
+input:not([type]).d-input, input[type=text].d-input, input[type=password].d-input, input[type=email].d-input, input[type=url].d-input, input[type=time].d-input, input[type=date].d-input, input[type=datetime].d-input, input[type=datetime-local].d-input, input[type=tel].d-input, input[type=number].d-input, input[type=search].d-input{
+    border-bottom: none !important;
+    margin: 0 0 0 0 !important;
+}
+
+.d-input:active,.d-input:focus,.d-input::after{
+    border-bottom: none !important;
+    box-shadow: none!important;
+}
+
 
 ul.side-nav.fixed li.logo {
     text-align: center;
@@ -481,7 +492,194 @@ a.button-collapse.top-nav.full {
     /*font-weight: bolder;*/
 /*}*/
 
+/*--------------------------------------------------------------Dashboard-----------------------------------------------*/
+ul.DAWl{
+    display: block;
 
+}
+
+ul.DAWl li{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+ul.DAWl li span{
+    text-align: right;
+    float:right;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+ul.DAWl li.TiT span{
+    color: #00838f;
+    font-size: 20px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ul.DAWl li.TT span{
+    color: #00838f;
+}
+
+ul.DAWl li.VCT span{
+    color: #c62828 ;
+}
+
+ul.DAWl li.OCPD span{
+    color: #2e7d32;
+}
+ul.DAWl li.PEN span{
+    color: #ffb300;
+}
+
+.CWf{
+    padding: 15px 0;
+    border-top: 1px solid #bdbdbd;
+}
+
+.CWf span{
+    font-weight: bold;
+    color: #1396e2 !important;
+    cursor: pointer;
+}
+
+.CWf span.P {
+    float: left;
+}
+
+.CWf span.N{
+    float: right;
+}
+
+.QAT,.QAB{
+    height:45%;
+    border-bottom:1px solid #cccccc;
+}
+
+.QAB{
+    border-bottom:none !important;
+}
+
+.QAT .QATR, .QAB .QABR,.QAT .QATL, .QAB .QABL{
+    cursor: pointer;
+    height:100%;
+    width:50%;
+    float:left;
+    border-right:1px solid #cccccc;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.QAT .QATL, .QAB .QABL{
+    border-right:none;
+}
+
+.QAT .QATR:hover,
+.QAB .QABR:hover,
+.QAT .QATL:hover,
+.QAB .QABL:hover{
+    background-color: #EEEEEE;
+}
+
+.QAT .QATR span, .QAB .QABR span,.QAT .QATL span, .QAB .QABL span{
+
+}
+
+.QAT .QATR img, .QAB .QABR img,.QAT .QATL img, .QAB .QABL img{
+    width: 50px;
+    display: block;
+    margin: 5% auto 5px;
+}
+
+.dashboard-prp-srch{
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: #85929e;
+    background-color: #ffffff;
+    width: 700px;
+    /*font-size: 2.5em !important;*/
+}
+
+.dashboard-prp-srch .prop-srch{
+    display: block;
+    width: 100%;
+    padding: .5em .5em .5em 2em;
+    font-size: 2.5em !important;
+    line-height: 2 !important;
+    height: 2em;
+    border: 0;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.prop-srch::placeholder{
+    font-size: 1em !important;
+}
+.dashboard-prp-srch i{
+    cursor: pointer;
+}
+
+.DSi{
+    position: absolute;
+    top: 0;
+    padding: .5em .6em;
+    font-size: 2em;
+    line-height: 1.5;
+    color: #85929e;
+    -webkit-transition: color .3s;
+    transition: color .3s;
+}
+
+.DTsD{
+    margin: .5rem 0 3rem 0;
+    display: block;
+}
+
+.DTsD img{
+    width: 100px;
+    float: left;
+    margin: 0 15px 0 0;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+}
+
+.DTsD .address1{
+    display: block;
+    font-size: 30px;
+    font-weight:bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.HTaD{
+    display: block;
+}
+.HTaD h5{
+    border-bottom: #757575 solid 1px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.HTaD ul li{
+    display: block;
+    padding-bottom: 10px;
+    font-size: 18px;
+    color: #616161;
+}
+
+.HTaD ul li span.NumB{
+    color: #00695c !important;
+    font-weight: bold;
+}
+
+/*-----------------------------------------------------------/Dashboard------------------------------------------------*/
 .d-tabs {
     margin:  0;
     padding: 0;

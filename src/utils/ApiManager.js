@@ -8,8 +8,8 @@ export const getSinglePropertyUrl = (uuid) =>  BASE_URL+'properties/'+uuid;
 export const getUnitUrl = (uuid) =>{ return BASE_URL+'units/'+uuid};
 export const unitImageUrl = (uuid) =>  BASE_URL+"https://rentright-laravel-api.herokuapp.com/api/units/"+uuid+"/images?section=room";
 
-export const getApplication = (uuid) => {return BASE_URL+'user/units/'+uuid+'/applications'};
-export const acceptApplicationUrl = (uuid) => {return BASE_URL+'user/applications/'+uuid+'/accept'};
+export const getApplication = BASE_URL+'applications';
+export const updateApplicationUrl = (uuid) => {return BASE_URL+'applications/'+uuid};
 
 export const getLeaseUrl = (uuid) => {return BASE_URL+'user/leases/'+uuid};
 export const getAllLeaseUrl = (uuid) => {return BASE_URL+'user/'+uuid+'/leases'};
