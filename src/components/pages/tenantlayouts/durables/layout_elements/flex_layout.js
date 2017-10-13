@@ -49,8 +49,6 @@ const streetkey = {'bingMapsKey':' AuyEx9iRRzYb8lUwuLFvNvRttyzrgrgLDNLcFp8IYSSC1
 const satkey = {'bingMapsKey':' Ap1SHDN96htRONGcKqC5ZJxlY8svqfFfFOOgESUURUk5GWVwtwmeQdUVduOst8TF','imagerySet':'Aerial',attribution: '' }
 
 
-
-
 export class FlexLayout extends Component{
     constructor(props){
         super(props)
@@ -218,12 +216,12 @@ export class Profiler2 extends Component{
             this.setState({index:0})
         }else{
               this.setState({index: this.state.index + 1})
-          
+
         }
 
         }
     console.log(this.state.index)
-    
+
 
     }
 clicked = ()=>{

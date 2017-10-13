@@ -9,7 +9,7 @@ import {register} from '../../state/actions/authAction';
 import {connect} from 'react-redux';
 import Landing from './Landing';
 import FacebookLogin from 'react-facebook-login';
-
+import {Icon} from 'antd';
 const responseFacebook = (response) => {
     console.log(response);
 }
@@ -52,7 +52,6 @@ export class SignupForm extends Component{
 
         console.log(this.props)
         this.setState({isLoading: true});
-
         this.props.register(this.state).then((res) => {
             console.log(res)
             this.context.router.history.push("/")
@@ -69,7 +68,9 @@ export class SignupForm extends Component{
         if (e.target.name === "password_confirm") {
 
         }
-        this.setState({[e.target.name]: e.target.value});
+        let obj = {}
+        obj[e.target.name] =  e.target.value
+        this.setState(obj);
 
     }
 
@@ -112,7 +113,7 @@ export class SignupForm extends Component{
                             </div>
                             <div className="login-social t-flex t-md-10 t-flex-column t-align-center">
                             <div className="t-flex t-md-3  t-justify-center t-align-content-left login-submit-button" onClick={this.onSubmit.bind(this)} type="submit">{isLoading ?
-                                <i className="fa fa-spinner fa-spin"/>: "Create an Account"}</div>
+                                <Icon type="loading"/>: "Create an Account"}</div>
 
                             <div className="login-alt t-flex t-align-center t-md-3 login-alt t-justify-space-between">
                                 <div className="line-div t-flex t-md-3" /><span className="t-flex login-or t-justify-space-around"> OR</span><div className="line-div t-flex t-md-3" />

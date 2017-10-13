@@ -29,7 +29,7 @@ import {Link}from "react-router-dom";
                     <div className="landing-body-cover t-md-10 t-fullheight  t-flex t-flex-column">
                         <div className="landing-nav t-fullwidth t-flex t-justify-space-between home-primary-color t-align-center nav-pad-left-right">
 
-                            <span className="landing-logo t-md-3"></span>
+                            <a href="/" className="landing-logo t-md-3"></a>
 
                             <div className="home-firstnav-innerdiv-right t-flex t-justify-center t-flex-row t-center-f t-fullheight">
 
