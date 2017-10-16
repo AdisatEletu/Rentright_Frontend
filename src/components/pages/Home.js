@@ -11,7 +11,7 @@ import HomeShowCard from "./home/HomeShowCard";
 export default class NewHome extends Component{
  constructor(props){
      super(props);
-     this.state = {loading:true, }
+     this.state = {loading:true }
      this.loadingStatus = this.loadingStatus.bind(this)
     this.searchFunc = this.searchFunc.bind(this);
     this.myapi = this.myapi.bind(this);
@@ -201,64 +201,7 @@ componentDidMount (){
                         return(
 
                         <div key={0} className="home-ad-picture-holder t-flex t-md-10 t-flex-row nav-pad-left-right">
-                            <div className="t-flex  t-md-5 home-bgg " style = {real.unit_images.length > 0 ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[this.state.index].id+ ")"}:undefined}>
-                                <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column t-align-content-space-between">
-                                    <div className="t-flex t-flex-row">
-                                        <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {real.monthly_rent.toLocaleString('en Us')}</span>
-                                    </div>
 
-
-                                    <div className="t-flex t-justify-space-between e-a t-align-center t-fullheight  t-md-10">
-                                        <div className = "e-a-left " onClick = {()=>this.navigate('previous')}><Icon type = "left"/></div>
-                                        <div className = "e-a-right" onClick = {()=>this.navigate('next')}><Icon type = "right"/></div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            <div
-                                className="home-ad-info t-flex t-fullheight t-md-5 t-flex t-align-space-between t-flex-column">
-                                <div className="ad-info-address t-md-10"> {real.address.address.address}
-                                </div>
-                                <div className="ad-proptype t-flex t-md-10">{real.unit_type}</div>
-                                <div className="t-flex ad-description1 t-flex-row t-md-10 t-justify-space-between ">
-                                    <div className="t-flex t-flex-column t-md-45">
-                                        <div className="t-flex  t-md-10 t-flex-column t-justify-left">
-                                            <span>4 bedrooms, {real.bathrooms} baths</span>
-                                           <span> Home size: {real.square_footage} Sq ft</span>
-                                            <span> Parking Spot: {real.parking_no} </span>
-                                        </div>
-                                    </div>
-
-
-                                    <div className="ad-divider t-flex t-flex-column t-md-1 t-align-center ">
-
-                                    </div>
-
-
-                                    <div className="t-flex t-flex-column t-md-45">
-                                        <div className="t-flex  t-md-10 t-flex-column t-justify-left">
-                                            <span>Street view available</span>
-                                            { real.applications.length>0?
-                                                <div className="t-flex t-md-10 ">No of
-                                                    applicants: {real.applications.length}</div>
-                                                :
-                                                null
-                                            }
-                                        </div>
-                                    </div>
-                                </div>  */
-                                <div className="t-flex ad-view-offer t-flex-row t-md-10 t-justify-space-between ">
-                                    <div
-                                        className="ad-view-offer-btn t-flex t-flex column t-md-45 t-align-center t-justify-space-between">
-                                        <span>View offer </span><i
-                                        className="material-icons t-justify-right ">arrow_forward</i></div>
-                                    <div
-                                        className="ad-view-offer-btn2 t-flex t-flex column t-md-45 t-align-center t-justify-space-between">
-                                        <span> Add to Favourite</span><i className="material-icons t-justify-right ">favorite</i>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         );
                     }
