@@ -7,7 +7,7 @@ import Dropdown from '../layout_elements/dropdown';
 import { Badge } from 'antd';
 import {Icon,Progress} from 'antd'; 
 import { Avatar } from 'antd';
-import {BingTileLayer, geojsonMaker, GeoJSONCUSTOM  } from '../controllers/bing_leaflet'
+import {BingTileLayer, geojsonMaker, GeoJSONCUSTOM ,  GeoJSONCUSTOM2 } from '../controllers/bing_leaflet'
 import L from 'leaflet';
 import Modal from 'antd/lib/modal';
 
@@ -28,6 +28,7 @@ import enUS from 'antd/lib/locale-provider/en_US';
 import { Slider, Row } from 'antd';
 import $ from 'jquery';
 import {Button} from 'antd';
+import {GoogleLayer} from 'react-leaflet-google'
 import { notification } from 'antd';
 import { Map, Marker, Popup, TileLayer , GeoJSON } from 'react-leaflet';
 import { divIcon } from 'leaflet';
@@ -39,6 +40,9 @@ const Option = Select.Option;
 const { TextArea } = Input;
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
+const key = 'AIzaSyD2M3_sIa7NQ9HOlNFmGWoGu2j363CMonw';
+const terrain = 'TERRAIN';
+const road = 'ROADMAP';
 
 const { MonthPicker, RangePicker } = DatePicker;
 const  dateFormat = 'YYYY-MM-DD';
@@ -184,11 +188,12 @@ export class Profiler2 extends Component{
         super(props)
         this.clcked = this.clicked.bind(this)
         let image = {};
-    this.mapit = this.mapit.bind(this);
+        this.mapit = this.mapit.bind(this);
         this.sendback = this.sendback.bind(this);
+        this.detailclick = this.detailclick.bind(this);
         if (this.props.list.length > 0){
           image.list =   this.props.list.map((item)=>{
-                return ('https://rentright-api-gateway.herokuapp.com/user/units/image/'+item.id)
+                return ('https://rentright-api-gateway.herokuapp.com/user/units/image/'+item.id);
               })
         }else{
             image.list = []
@@ -197,6 +202,10 @@ export class Profiler2 extends Component{
            this.state = {image, index:0}
         this.navimage = this.navimage.bind(this);
          }
+    detailclick = (obj, id)=>{
+        this.props.mapit(id);
+        this.props.detailclick(obj);
+    }
     mapit = (id)=>{
         this.props.mapit(id);
     }
@@ -252,13 +261,12 @@ clicked = ()=>{
      <p className = "line-clamp"  style = {{fontSize:'12px', color:'#222'}}>
          <span className = "e-name" style = {{fontSize:'14px', fontWeight:500}} >{this.props.name}</span><br/> </p>
          <div className = "mline">
-             <span onClick = {()=>this.sendback(this.props.address.latitude, this.props.address.longitude)}><Icon type = "car"/> Street</span>
-             <span onClick = {()=>this.mapit(this.props.mapid)} ><Icon type = "global" /> Locate</span>
-             <span><Icon type = "paper-clip"/> Details</span>
+             <span onClick = {()=>this.sendback(this.props.address.latitude, this.props.address.longitude)}><Icon type = "car"/>&nbsp;Street</span>
+             <span onClick = {()=>this.mapit(this.props.mapid)} ><Icon type = "global" />&nbsp;Locate</span>
+             <span onClick = {()=>this.detailclick(this.props.itemm, this.props.mapid)} ><Icon type = "paper-clip"/>&nbsp;Details</span>
          </div>
  
-   </div>
-  
+   </div>  
      </div>
 
          
@@ -632,13 +640,13 @@ export class RentRightMap extends Component{
        this.icon =  divIcon({className: 'ricon'});
        //this.map =  this.refs.map.leafletElement;
        this.sendobj = [];
-       this.state = {id:null}
-       this.output = [];this.geojson;
-       this.pop = this.pop.bind(this);
-     
+       this.state = {id:null,places:null, id2:null}
+       this.output = [];this.geojson;this.output2;
+       this.pop = this.pop.bind(this);  
+       this.pop2 = this.pop2.bind(this);   
        this.locatePoint = this.locatePoint.bind(this);
-       this.refresh = this.refresh.bind(this);
-        console.log(this.props.markers, 'grer')
+        this.locatePoint2 = this.locatePoint2.bind(this);
+       this.refresh = this.refresh.bind(this);   
         this.markers = this.props.markers.map((item)=>{
           let obj = {latitude:item.position[0], longitude: item.position[1] }  
           this.sendobj.push( item.data) ;
@@ -655,9 +663,12 @@ export class RentRightMap extends Component{
             };
              
                 };
-componentWillReceiveProps( { id } = this.props){
+componentWillReceiveProps( { id,places,id2 } = this.props){
             this.refresh();
-            this.setState({id});      
+            this.setState({id});
+            this.setState({id2})
+            this.setState({places})
+
     }
 refresh = ()=>{
     if (this.map){
@@ -676,13 +687,23 @@ refresh = ()=>{
 
     }
 pop = (output)=>{
-    this.output = output;
+     this.output = output;
 }
+pop2 = (output)=>{
+     this.output2 = output;
+     this.props.populateSearch(output);
+}    
   locatePoint = (obj)=>{
     console.log(obj, 'locatePoint')    
     let lat = obj.lat;
     let lng = obj.lng;
     this.map.setView([lat, lng], 14);   
+}
+  locatePoint2 = (obj)=>{
+    console.log(obj, 'locatePoint')    
+    let lat = obj.lat;
+    let lng = obj.lng;
+    this.map.setView([lat, lng], 17);   
 }
     
               /*<MarkerClusterGroup   wrapperOptions={{enableDefaultStyle: true}}  >
@@ -693,19 +714,22 @@ pop = (output)=>{
  render(){
      return(
     <Map  className="markercluster-map"  ref = "map" maxZoom = {30} minZoom ={2} center={this.props.markers[0].position}  zoom={9}>
-          <BingTileLayer url = '' bingKey='<bingmapskey>'  type='aerial' />
+           <GoogleLayer googlekey={key}  maptype={road}/>
            {
-            this.props.markers? 
-             
+            this.props.markers?              
                  <GeoJSONCUSTOM   markers ={this.markers} locatePoint = {this.locatePoint} populateoutput = {this.pop} id = {this.state.id}  da = {this.geoj}  />
                  :
             null
         }
         <MarkerClusterGroup markers= {this.markers}  wrapperOptions={{enableDefaultStyle: true}}  >
                 
-            </MarkerClusterGroup>   
-
-
+        </MarkerClusterGroup>   
+        {this.state.places ?
+           <GeoJSONCUSTOM2  map = {this.refs.map.leafletElement} locatePoint = {this.locatePoint2}  id2 = {this.state.id2}  local = {this.props.local} markers = {this.state.places} da = {this.state.places}   populateoutput = {this.pop2} />
+           :
+          null
+        }
+       
 
       </Map>
      )
