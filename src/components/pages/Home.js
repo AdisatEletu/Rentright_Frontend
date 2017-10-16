@@ -11,51 +11,24 @@ import HomeShowCard from "./home/HomeShowCard";
 export default class NewHome extends Component{
  constructor(props){
      super(props);
-     this.state = {loading:true}
+     this.state = {loading:true, }
      this.loadingStatus = this.loadingStatus.bind(this)
     this.searchFunc = this.searchFunc.bind(this);
     this.myapi = this.myapi.bind(this);
     this.loadingStatus = this.loadingStatus.bind(this);
 
-     this.clcked = this.clicked.bind(this)
 
-     this.sendback = this.sendback.bind(this);
-
-     this.navimage = this.navimage.bind(this);
  }
-    sendback = (a,b)=>{
-        console.log(a,b);
-        this.props.street(a,b)
-    }
-    navimage = (context)=>{
-        if (context === 'prev'){
-            if (! this.state.index < 1){
-                this.setState({index: this.state.index-1})
-            }else{
-                this.setState({index:this.state.image.list.length - 1})
-            }
-        }else if (context === 'next'){
-            if ( this.state.index  === this.state.image.list.length - 1){
-                this.setState({index:0})
-            }else{
-                this.setState({index: this.state.index + 1})
-
-            }
-
-        }
-        console.log(this.state.index)
 
 
-    }
-    clicked = ()=>{
-        this.props.clicked()
-    }
-loadingStatus =(context) =>{
+
+        loadingStatus =(context) =>{
      let obj = {};
      obj['loading'] = context;
      this.setState(obj);
 
 }
+
 componentWillUnmount(){
      console.log('Unmounted')
 
@@ -93,7 +66,7 @@ componentDidMount (){
 
 
 
-         myapi = (url)=>{
+        myapi = (url)=>{
         return  fetch(url).then((dat) => {
             return  dat.json();
         });
@@ -224,52 +197,23 @@ componentDidMount (){
                     </div>
                 </div>
 
-                {this.state.results.units.map((real,)=> {
+                {this.state.results.units.map((real,id)=> {
                         return(
 
                         <div key={0} className="home-ad-picture-holder t-flex t-md-10 t-flex-row nav-pad-left-right">
-                            <div className="t-flex  t-md-5 home-bgg " style = {real.unit_images[0] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[0].id+ ")"}:undefined} >
-
+                            <div className="t-flex  t-md-5 home-bgg " style = {real.unit_images ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[0].id+ ")"}:undefined}>
                                 <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column t-align-content-space-between">
                                     <div className="t-flex t-flex-row">
-                                        <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {real.monthly_rent}</span>
+                                        <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {real.monthly_rent.toLocaleString('en')}</span>
                                     </div>
 
-                                    <div className="t-flex t-justify-center t-align-content-center  t-md-10">
-                                        <span className="home-street-view t-md-5 t-justify-center t-align-center"></span>
+
+                                    <div className="t-flex t-justify-space-between e-a t-align-center t-fullheight  t-md-10">
+                                        <div className = "e-a-left " onClick = {()=>this.navigate('previous')}><Icon type = "left"/></div>
+                                        <div className = "e-a-right" onClick = {()=>this.navigate('next')}><Icon type = "right"/></div>
                                     </div>
 
-                                    <div className=" home-aplicants t-flex t-md-10  ">
-                                        <div className=" t-flex t-md-5 t-align-center home-applicants-left  ">
-                                            <div className="t-flex home-aplicant-picture" style = {real.unit_images[2] ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+real.unit_images[2].id+ ")"}:undefined}
 
-                                            />
-                                            <span className="home-aplicant-name t-align-center t-flex ">{real.unit_images[1] &&real.unit_images[1].section ? real.unit_images[1].section: null}</span>
-                                        </div>
-                                        <div className="t-flex home-applicant-right t-justify-center t-md-5 t-align-center">
-                                            {real.applications.length>0?
-                                                <div className = "t-md-10 t-full-height t-flex ">
-                                                    <div className="t-flex home-no-of-applicant t-align-center montserrat">{real.applications.length} Applicants</div>
-                                                </div>
-                                                :
-                                                null
-
-                                            }
-
-                                                { real.applications.map((item, index) => {
-                                                    return(
-                                                    <div key={index}
-                                                         className="pppppp t-flex home-aplicant-picture2 t-align-center "
-                                                         style={{backgroundImage: 'url(' + item + ')'}}/>
-                                                    )
-
-                                                })
-                                                }
-
-                                        </div>
-
-
-                                    </div>
                                 </div>
                             </div>
                             <div
@@ -294,12 +238,16 @@ componentDidMount (){
 
                                     <div className="t-flex t-flex-column t-md-45">
                                         <div className="t-flex  t-md-10 t-flex-column t-justify-left">
-                                            <span>Year Built:</span>
-
-                                            <span> Days on market: </span>
+                                            <span>Street view available</span>
+                                            { real.applications.length>0?
+                                                <div className="t-flex t-md-10 ">No of
+                                                    applicants: {real.applications.length}</div>
+                                                :
+                                                null
+                                            }
                                         </div>
                                     </div>
-                                </div>
+                                </div>  */
                                 <div className="t-flex ad-view-offer t-flex-row t-md-10 t-justify-space-between ">
                                     <div
                                         className="ad-view-offer-btn t-flex t-flex column t-md-45 t-align-center t-justify-space-between">

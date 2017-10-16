@@ -73,7 +73,7 @@ d-npd{
     margin-top: 0;
 }
 .d-no-mrgn-bottom{
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 
 .card-panel-header{
@@ -1152,7 +1152,6 @@ border-right: none !important;
 }
 
 #root,
-.t-fullheight,
 .landlord,
 .application,
 main,

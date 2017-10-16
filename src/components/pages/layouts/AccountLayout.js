@@ -20,7 +20,9 @@ class AccountLayout extends Component {
             <LoadingBar style={{ backgroundColor: '#faa61a', height: '2px'}}/>
             <Helmet>
                 {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>*/}
-                    {/*<link href="http://localhost:3000/assets/css/effects.css" rel="stylesheet" type="text/css"/>*/}
+{/*
+                    <link href="http://localhost:3000/CSS/style_compressed.css" rel="stylesheet" type="text/css"/>
+*/}
             </Helmet>
             <div className="landlord">
                 <AccountHeader/>
