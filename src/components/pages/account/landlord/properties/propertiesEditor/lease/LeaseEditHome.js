@@ -13,10 +13,6 @@ class LeaseEditHome extends Component {
         }
     }
 
-    componentWillMount(){
-        //getLease();
-    }
-
     componentDidMount() {
         const is_preview = queryString.parse(this.props.location.search).preview ? queryString.parse(this.props.location.search).preview : false;
 
@@ -27,11 +23,12 @@ class LeaseEditHome extends Component {
     }
 
     render() {
-        return (
-            <div>
-                {this.state.isPreview ? <TenantLease/> : <EditLease/>}
-            </div>
-        );
+        if(this.state.isPreview){
+            return  <TenantLease/>;
+        }
+
+        return <EditLease/>;
+
     }
 
 }

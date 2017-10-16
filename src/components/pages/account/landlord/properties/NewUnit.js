@@ -38,7 +38,7 @@ class NewUnit extends Component {
     }
 
     onAddressSelected(selected) {
-        this.setState({address:selected[0].formatted_address});
+        this.setState({address: selected[0].formatted_address});
 
         for (let i = 0; i < selected[0].address_components.length; i++) {
             if (selected[0].address_components[i].types.indexOf('street_number') > -1) {
@@ -113,12 +113,12 @@ class NewUnit extends Component {
 
     onPropertyAdded(status, data) {
         this.setState({adding: false});
-        if(status){
+        if (status) {
             notification.success({
                 message: 'Success!',
                 description: 'Property added Successfully.'
             });
-            this.context.router.history.push('/landlord/units/'+data.uuid);
+            this.context.router.history.push('/landlord/units/' + data.uuid);
         }
     }
 
@@ -163,82 +163,91 @@ class NewUnit extends Component {
                                 </div>
                             </div>
                             <div className={'row'}>
-                                <Input s={4} type='select' onChange={this.onChange} name={'property_type'} defaultValue={0}>
-                                    <option value="0" disabled>Type</option>
-                                    <option value="apartment">Apartment</option>
-                                    <option value="condo">Condo</option>
-                                    <option value="duplex">Duplex</option>
-                                    <option value="house">House</option>
-                                    <option value="lofts">Loft</option>
-                                </Input>
-                                <Input Input s={4} type='select' label="" onChange={this.onChange}
-                                       name={'property_bedrooms'} defaultValue={0}>
-                                    <option value="0" disabled>Bedrooms</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30+">30+</option>
-                                </Input>
-                                <Input s={4} type='select' label="" onChange={this.onChange}
-                                       name={'property_bathrooms'} defaultValue={0}>
-                                    <option value="0" disabled>Bathrooms</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30+">30+</option>
-                                </Input>
+                                <div className="input-field col s4">
+                                    <select onChange={this.onChange} name={'property_type'} defaultValue={0}>
+                                        <option value="0" disabled>Type</option>
+                                        <option value="apartment">Apartment</option>
+                                        <option value="condo">Condo</option>
+                                        <option value="duplex">Duplex</option>
+                                        <option value="house">House</option>
+                                        <option value="lofts">Loft</option>
+                                    </select>
+                                    <label className={'active'}>Unit type</label>
+                                </div>
+                                <div className="input-field col s4">
+                                    <select onChange={this.onChange}
+                                            name={'property_bedrooms'} defaultValue={0}>
+                                        <option value="0" disabled>Bedrooms</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30+">30+</option>
+                                    </select>
+                                    <label className={'active'}>Bedrooms</label>
+                                </div>
+                                <div className="input-field col s4">
+                                    <select onChange={this.onChange}
+                                            name={'property_bathrooms'} defaultValue={0}>
+                                        <option value="0" disabled>Bathrooms</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30+">30+</option>
+                                    </select>
+                                    <label className={'active'}>Bathrooms</label>
+                                </div>
                             </div>
                             <a disabled={this.state.adding} onClick={() => this.createProperty()}
                                className={'d-button primary-color block'}>
@@ -258,7 +267,8 @@ class NewUnit extends Component {
                     <div className={'col s4 center'}>
                         <i className={'fa fa-laptop fa-2x'}/>
                         <h4><b>List Your property</b></h4><br/>
-                        <p>Add your property in seconds with unlimited photos, description, and list of amenities. It’s
+                        <p>Add your property in seconds with unlimited photos, description, and list of amenities.
+                            It’s
                             easy and secure.</p>
                     </div>
                     <div className={'col s4 center'}>
@@ -270,7 +280,8 @@ class NewUnit extends Component {
                     <div className={'col s4 center'}>
                         <i className={'fa fa-user-o fa-2x'}/>
                         <h4><b>Find Qualified Tenants</b></h4><br/>
-                        <p>Receive all the crucial information on applicants. And that includes detailed credit reports
+                        <p>Receive all the crucial information on applicants. And that includes detailed credit
+                            reports
                             and background checks.</p>
                     </div>
                 </div>

@@ -12,6 +12,7 @@ import * as SmoothScroll from 'smooth-scroll';
 import Lessees from "./Lessees";
 import Loader from "../../../../../../shared/Loader";
 import {getLease} from "../../../../../../../state/actions/leaseAction";
+import moment from 'moment'
 
 
 const Step = Steps.Step;
@@ -24,18 +25,47 @@ class EditLease extends Component {
         this.state = {
             current_step:1,
             isLoading: true,
+            fetched: false,
         }
+
+        this.onLeaseRetrieved = this.onLeaseRetrieved.bind(this);
     }
 
     componentDidMount(){
         const lease_uuid = this.context.router.route.match.params.leaseId;
-        const include = 'clause,tenant,landlord,unit';
-        getLease({lease_uuid,include},this.onLeaseRetrieved.bind(this));
+        const include = 'clause,tenant,landlord,unit.property.address';
+        getLease({lease_uuid,include},this.onLeaseRetrieved);
     }
 
     onLeaseRetrieved(status,data){
         if(status){
-            this.setState({isLoading:false,lease:data});
+            const initial = {
+                term: {
+                    started_at: data.started_at || moment.now(),
+                },
+                clause: data.clause.data,
+                permission: {},
+                warning:{},
+                contact: {},
+                lessee: {},
+            };
+            const present ={
+                term: {},
+                clause: {},
+                permission: {},
+                warning:{},
+                contact: {},
+                lessee: {},
+            };;
+
+            this.setState({
+                isLoading:false,
+                fetched:true,
+                lease:data,
+                initial,
+                present
+            });
+            console.log('states',this.state)
         }
     }
 
@@ -64,11 +94,14 @@ class EditLease extends Component {
 
     render() {
         const {current_step} = this.state;
-        return (
-            <div style={{marginTop: '50px'}}>
-                {this.state.isLoading ? <Loader/> : undefined}
-                {!this.state.isLoading ?
-                    <div className="row">
+
+        if(this.state.isLoading){
+            return <Loader/>;
+        }
+
+        if(!this.state.isLoading && this.state.fetched){
+            return (
+                <div className="row">
                     <div className="msform col m8">
                         <div className="row">
                             <div className="col m12">
@@ -85,7 +118,7 @@ class EditLease extends Component {
                         <div className="card-panel">
                             <VelocityTransitionGroup enter={{animation: "fadeIn"}} leave={{animation: "fadeOut"}}>
                                 {this.state.current_step===1 ? <LeaseTerm onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
-                                {this.state.current_step===2 ? <LeaseClauses onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                {this.state.current_step===2 ? <LeaseClauses onChange={this.onChange.bind(this)} clauses={this.state.initial.clause}/> : undefined}
                                 {this.state.current_step===3 ? <LeasePermissions onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
                                 {this.state.current_step===4 ? <AdvancedWarnings onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
                                 {this.state.current_step===5 ? <LeaseContact onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
@@ -115,9 +148,9 @@ class EditLease extends Component {
                             </div>
                         </Affix>
                     </div>
-                </div> : undefined}
-            </div>
-        );
+                </div>
+            );
+        }
     }
 
 }

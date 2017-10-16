@@ -2,7 +2,143 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fef1f50-96f9-4da0-a9ea-24ee433108db" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/CSS/style_compressed.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/legacy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/picker.date.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/picker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/picker.time.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/themes/classic.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/themes/classic.date.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/themes/classic.time.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/themes/default.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/themes/default.date.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/themes/default.time.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/themes/rtl.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/bg_BG.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/bs_BA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/ca_ES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/cs_CZ.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/da_DK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/de_DE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/el_GR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/es_ES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/et_EE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/eu_ES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/fa_IR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/fi_FI.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/fr_FR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/gl_ES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/he_IL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/hi_IN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/hr_HR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/hu_HU.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/id_ID.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/is_IS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/it_IT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/ja_JP.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/ko_KR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/lt_LT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/lv_LV.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/nb_NO.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/ne_NP.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/nl_NL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/no_NO.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/pl_PL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/pt_BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/pt_PT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/ro_RO.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/ru_RU.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/sk_SK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/sl_SI.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/sv_SE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/th_TH.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/tr_TR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/uk_UA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/vi_VN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/zh_CN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/compressed/translations/zh_TW.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/legacy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/picker.date.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/picker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/picker.time.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/_variables.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/base.date.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/base.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/base.time.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/classic.date.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/classic.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/classic.time.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/default.date.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/default.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/default.time.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes-source/rtl.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes/classic.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes/classic.date.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes/classic.time.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes/default.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes/default.date.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes/default.time.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/themes/rtl.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/FORMATTING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/NAMING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/bg_BG.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/bs_BA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/ca_ES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/cs_CZ.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/da_DK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/de_DE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/el_GR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/es_ES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/et_EE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/eu_ES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/fa_ir.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/fi_FI.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/fr_FR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/gl_ES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/he_IL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/hi_IN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/hr_HR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/hu_HU.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/id_ID.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/is_IS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/it_IT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/ja_JP.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/ko_KR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/lt_LT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/lv_LV.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/nb_NO.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/ne_NP.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/nl_NL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/pl_PL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/pt_BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/pt_PT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/ro_RO.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/ru_RU.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/sk_SK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/sl_SI.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/sv_SE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/th_TH.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/tr_TR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/uk_UA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/vi_VN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/zh_CN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/pickadate/lib/translations/zh_TW.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/effects.css" afterPath="$PROJECT_DIR$/public/assets/css/effects.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/TopBar.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/TopBar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/NewUnit.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/NewUnit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/applications/ShowCard.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/applications/ShowCard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseTerm.js" afterPath="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseTerm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js" afterPath="$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,32 +151,147 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Home.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="EditLease.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
-              <caret line="226" column="52" lean-forward="false" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
+            <state relative-caret-position="273">
+              <caret line="120" column="147" lean-forward="true" selection-start-line="120" selection-start-column="147" selection-end-line="120" selection-end-column="147" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
+      <file leaf-file-name="LeaseClauses.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="193">
+              <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountLayout.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="22" column="23" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="118" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="29" column="24" lean-forward="true" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LeaseTerm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseTerm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="63" column="26" lean-forward="false" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#1987#2431#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="effects.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/css/effects.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/CSS/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88859">
+              <caret line="5911" column="0" lean-forward="false" selection-start-line="5911" selection-start-column="0" selection-end-line="5911" selection-end-column="0" />
+              <folding>
+                <element signature="e#55890#59538#0" expanded="false" />
+                <element signature="e#59540#63188#0" expanded="false" />
+                <element signature="e#63190#66887#0" expanded="false" />
+                <element signature="e#139028#139535#0" expanded="false" />
+                <element signature="e#142698#143111#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style_compressed.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/CSS/style_compressed.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40613">
+              <caret line="3073" column="18" lean-forward="false" selection-start-line="3073" selection-start-column="13" selection-end-line="3073" selection-end-column="18" />
+              <folding>
+                <element signature="e#33623#37271#0" expanded="false" />
+                <element signature="e#37273#40921#0" expanded="false" />
+                <element signature="e#40923#44620#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LeaseEditHome.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>.row</find>
+      <find>.col</find>
+      <find>.input-field</find>
+      <find>.card</find>
+      <find>.card-panel</find>
+      <find>.side-nav.f</find>
+      <find>.hide-on-large-only</find>
+      <find>.side-nav</find>
+      <find>d-np</find>
+      <find>.sect</find>
+      <find>index-</find>
+      <find>.right</find>
+      <find>.center</find>
+      <find>.circ</find>
+      <find>.circle</find>
+      <find>all</find>
+      <find>input</find>
+      <find>other</find>
+      <find>select</find>
+      <find>, input</find>
+      <find>label.active</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>,.landlord input</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,6 +301,20 @@
       <list>
         <option value="$PROJECT_DIR$/public/CSS/tenant.css" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/applications/ShowCard.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/TopBar.js" />
+        <option value="$PROJECT_DIR$/public/assets/css/effects.css" />
+        <option value="$PROJECT_DIR$/public/CSS/style.css" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/NewUnit.js" />
+        <option value="$PROJECT_DIR$/public/CSS/style_compressed.css" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseTerm.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -64,11 +329,14 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="320" />
     <option name="y" value="2" />
     <option name="width" value="780" />
     <option name="height" value="733" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -85,6 +353,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -92,6 +361,11 @@
             <path>
               <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
@@ -111,17 +385,35 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Rentright_Frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rentright_Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\odaib\Documents\repos\Rentright_Frontend\public\assets" />
+      <recent name="C:\Users\odaib\Documents\repos\Rentright_Frontend\public\assets\css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\odaib\Documents\repos\Rentright_Frontend\public\assets\pickadate" />
+      <recent name="C:\Users\odaib\Documents\repos\Rentright_Frontend\public\assets\css\pickadate" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -146,33 +438,35 @@
       <option name="presentableId" value="Default" />
       <updated>1507892423094</updated>
       <workItem from="1507892434223" duration="639000" />
+      <workItem from="1507901345603" duration="2459000" />
+      <workItem from="1508064484228" duration="18965000" />
+      <workItem from="1508088794579" duration="2296000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2937000" />
+    <option name="totallyTimeSpent" value="26657000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -183,15 +477,125 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseTerm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="63" column="26" lean-forward="true" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+          <folding>
+            <element signature="e#1987#2431#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/effects.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/CSS/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100487">
+          <caret line="5911" column="0" lean-forward="true" selection-start-line="5911" selection-start-column="0" selection-end-line="5911" selection-end-column="0" />
+          <folding>
+            <element signature="e#55890#59538#0" expanded="false" />
+            <element signature="e#59540#63188#0" expanded="false" />
+            <element signature="e#63190#66887#0" expanded="false" />
+            <element signature="e#139028#139535#0" expanded="false" />
+            <element signature="e#142698#143111#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/CSS/style_compressed.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52241">
+          <caret line="3073" column="18" lean-forward="true" selection-start-line="3073" selection-start-column="13" selection-end-line="3073" selection-end-column="18" />
+          <folding>
+            <element signature="e#33623#37271#0" expanded="false" />
+            <element signature="e#37273#40921#0" expanded="false" />
+            <element signature="e#40923#44620#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Lease.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="93" lean-forward="false" selection-start-line="14" selection-start-column="93" selection-end-line="14" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/CSS/tenant.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -199,7 +603,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-85">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2255">
+          <caret line="226" column="52" lean-forward="false" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -207,19 +617,149 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/applications/ShowCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="124" column="29" lean-forward="false" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="76" column="81" lean-forward="false" selection-start-line="76" selection-start-column="81" selection-end-line="76" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Lease.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="13" column="81" lean-forward="false" selection-start-line="13" selection-start-column="81" selection-end-line="13" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/actions/leaseAction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="26" lean-forward="false" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/Listing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="262" column="12" lean-forward="false" selection-start-line="262" selection-start-column="12" selection-end-line="335" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/pickadate/lib/themes/rtl.css" />
+    <entry file="file://$PROJECT_DIR$/public/assets/pickadate/lib/themes/rtl.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/TopBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseEditHome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/effects.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/NewUnit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1244">
+          <caret line="173" column="45" lean-forward="true" selection-start-line="173" selection-start-column="45" selection-end-line="173" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/CSS/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88859">
+          <caret line="5911" column="0" lean-forward="false" selection-start-line="5911" selection-start-column="0" selection-end-line="5911" selection-end-column="0" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#55890#59538#0" expanded="false" />
+            <element signature="e#59540#63188#0" expanded="false" />
+            <element signature="e#63190#66887#0" expanded="false" />
+            <element signature="e#139028#139535#0" expanded="false" />
+            <element signature="e#142698#143111#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
+    <entry file="file://$PROJECT_DIR$/public/CSS/style_compressed.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="226" column="52" lean-forward="false" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
+        <state relative-caret-position="40613">
+          <caret line="3073" column="18" lean-forward="false" selection-start-line="3073" selection-start-column="13" selection-end-line="3073" selection-end-column="18" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#33623#37271#0" expanded="false" />
+            <element signature="e#37273#40921#0" expanded="false" />
+            <element signature="e#40923#44620#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseTerm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="63" column="26" lean-forward="false" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+          <folding>
+            <element signature="e#1987#2431#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/EditLease.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="120" column="147" lean-forward="true" selection-start-line="120" selection-start-column="147" selection-end-line="120" selection-end-column="147" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/account/landlord/properties/propertiesEditor/lease/LeaseClauses.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/layouts/AccountLayout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="22" column="23" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="29" column="24" lean-forward="true" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

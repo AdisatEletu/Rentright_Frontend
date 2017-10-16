@@ -4,6 +4,10 @@ import PropsTypes from 'prop-types';
 import {Input} from 'react-materialize';
 
 class LeaseTerm extends Component {
+    componentDidMount(){
+        window.$('.date_picker').pickadate();
+    }
+
     render() {
         return (
             <div id="lease-term">
@@ -13,8 +17,10 @@ class LeaseTerm extends Component {
 
                 <h2 className="fs-header"><b>Premises</b></h2>
 
-                <p>{this.props.unit.properties.address.house_number} {this.props.unit.properties.address.street_name}, <b className="primary-color-text">Unit {this.props.unit.number}</b>, {this.props.unit.properties.address.community}
-                <br/> {this.props.unit.properties.address.state}, {this.props.unit.properties.address.country}
+                <p>{this.props.lease.unit.data.property.data.address.data.street_name}, <b className="primary-color-text">Unit {this.props.lease.unit.data.number}</b>, {this.props.lease.unit.data.property.data.address.data.community}
+                </p>
+                <p>
+                    {this.props.lease.unit.data.property.data.address.data.state}, {this.props.lease.unit.data.property.data.address.data.country}
                 </p>
 
                 <div className="d-underline" style={{marginTop: '15px'}}/>
@@ -22,11 +28,15 @@ class LeaseTerm extends Component {
                 <h2 className="fs-header"><b>Lease Terms</b></h2>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Start Date<span className="red-text">*</span></div>
-                    <Input className={"right-align"} m={6} name='start_date' type='date' onChange={function(e, value) { alert(e.target.value)}} />
+                    <div className="input-field col s6">
+                        <input className={'date_picker'} name={'start_date'} id="start_date"/>
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '10px'}}>End Date<span className="red-text">*</span></div>
-                    <Input className={"right-align"} m={6} name='end_date' type='date' onChange={function(e, value) {}} />
+                    <div className="input-field col s6">
+                        <input className={'date_picker'} name='end_date' />
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Rent Amount<span className="red-text">*</span></div>
@@ -36,7 +46,9 @@ class LeaseTerm extends Component {
                 </div>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Rent Due On<span className="red-text">*</span></div>
-                    <Input className={"right-align"} m={6} name='rent_due' type='date' onChange={function(e, value) {}} />
+                    <div className="input-field col s6">
+                        <input className={'date_picker'} name='rent_due' type='date'/>
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Security Deposit</div>
@@ -62,15 +74,6 @@ class LeaseTerm extends Component {
     }
 }
 
-function mapStateToProps(state){
-    return {
-        unit: state.user.activeUnit.unit,
-    }
-}
 
-LeaseTerm.propTypes = {
-    unit: PropsTypes.object,
-};
-
-export default connect(mapStateToProps) (LeaseTerm);
+export default LeaseTerm;
 

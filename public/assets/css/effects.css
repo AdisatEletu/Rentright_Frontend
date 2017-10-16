@@ -127,7 +127,7 @@ ul.side-nav.fixed li.logo #logo-container:hover, ul.side-nav.fixed li.logo:hover
 }
 
 ul.side-nav.fixed {
-    margin-top: 80px;
+    margin-top: 70px;
     z-index: 9;
     overflow: hidden
 }
@@ -222,7 +222,7 @@ ul.side-nav.fixed:hover {
     margin-left: 300px;
     padding-left: 0;
     z-index:9;
-    top: 76px;
+    top: 70px;
 }
 
 #index-banner .d-container {
@@ -231,6 +231,13 @@ ul.side-nav.fixed:hover {
 
 #index-banner .d-header {
     color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+ }
+
+#index-banner #header-text-wrap {
+    height: 40px;
+    margin:auto;
 }
 
 #index-banner, .side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body li.active, footer.page-footer, nav {

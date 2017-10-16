@@ -35,7 +35,7 @@ class Listing extends Component {
         };
 
         this.getUnitCallBack = this.getUnitCallBack.bind(this);
-        // this.onUpdateCallback = this.onUpdateCallback.bind(this);
+        this.onUpdateCallback = this.onUpdateCallback.bind(this);
     }
 
     onChange(e) {
@@ -258,7 +258,6 @@ class Listing extends Component {
     }
 
     getUnitCallBack = (status, data) => {
-        console.log('unit', data);
         if (status) {
             //set them all in the initial sections
             const initial = {
@@ -417,7 +416,7 @@ class Listing extends Component {
             data['uuid'] = this.context.router.route.match.params.id;
             this.props.updateSingleUnit(
                 data,
-                this.onUpdateCallback.bind(this)
+                this.onUpdateCallback
             );
         }
     }

@@ -50,7 +50,7 @@ class Dashboard extends Component {
                         <h5 className="d-underline">Pending Lease</h5>
                         <div className="row">
                             {this.state.leases.map((lease) =>{
-                                return <PendingLease key={shortid.generate()} lease={lease} name="Tosin Felixson" email="tosinfelixsonyusuf@gmail.com"/>
+                                return <PendingLease key={shortid.generate()} lease={lease} name={lease.tenant.data.first_name + '' +lease.tenant.data.last_name} email={lease.tenant.data.email}/>
                             })}
                         </div>
                     </div>

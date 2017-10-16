@@ -127,11 +127,14 @@ class ShowCard extends Component {
         let btnAction = null;
 
         if(this.props.application.accepted_at === null){
-            btnAction = <button onClick={() =>this.handleActionClick} name="accept" className="btn block green darken-2">Accept application</button>;
+            btnAction = <button onClick={this.handleActionClick} name="accept" className="btn block green darken-2">Accept application</button>;
         }
 
         if(this.props.application.rejected_at !== null){
             btnAction = <div style={{padding:'10px'}} name="view" className="center block red-text">Rejected {moment(this.props.application.rejected_at.date).fromNow()}</div>;
+        }
+        if(this.props.application.accepted_at !== null){
+            btnAction = <div style={{padding:'10px'}} name="view" className="center block green-text">Accepted {moment(this.props.application.accepted_at.date).fromNow()}</div>;
         }
 
         return (
