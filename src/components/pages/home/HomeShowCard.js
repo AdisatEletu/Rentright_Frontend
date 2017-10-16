@@ -52,8 +52,8 @@ class HomeShowCard extends Component{
                                 <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {unit.monthly_rent.toLocaleString('en')}</span>
                                 <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center "><i className="material-icons ">favorite_border</i> </span>
                             </div>
-                            <div className="t-flex t-justify-space-between t-align-center t-fullheight  t-md-10">
-                                <div className = "e-a-left" onClick = {()=>this.navImage('previous')}><Icon type = "left"/></div>
+                            <div className="t-flex t-justify-space-between e-a t-align-center t-fullheight  t-md-10">
+                                <div className = "e-a-left " onClick = {()=>this.navImage('previous')}><Icon type = "left"/></div>
                                 <div className = "e-a-right" onClick = {()=>this.navImage('next')}><Icon type = "right"/></div>
                             </div>
                             {  /* <div className="t-flex t-justify-center t-align-content-center  t-md-10">
