@@ -13,6 +13,7 @@ import Lessees from "./Lessees";
 import Loader from "../../../../../../shared/Loader";
 import {getLease} from "../../../../../../../state/actions/leaseAction";
 import moment from 'moment'
+import LandlordCovenant from "./LandlordConvenant";
 
 
 const Step = Steps.Step;
@@ -43,8 +44,9 @@ class EditLease extends Component {
                 term: {
                     started_at: data.started_at || moment.now(),
                 },
-                clause: data.clause.data,
-                permission: {},
+                clause: data.clause.data.filter((clause)=>clause.type==='clause'),
+                covenant: data.clause.data.filter((clause)=>clause.type==='landlord_covenant'),
+                agreements: data.clause.data.filter((clause)=>clause.type==='agreement'),
                 warning:{},
                 contact: {},
                 lessee: {},
@@ -75,7 +77,7 @@ class EditLease extends Component {
         let current = this.state.current_step;
         current = current+1;
 
-        if(current <= 6){
+        if(current <= 7){
             this.setState({current_step: current});
         }
 
@@ -112,6 +114,7 @@ class EditLease extends Component {
                                     <li className={current_step>=4 ? "completed" : undefined}> <span className="bubble" /> Step 4. </li>
                                     <li className={current_step>=5 ? "completed" : undefined}> <span className="bubble" /> Step 5. </li>
                                     <li className={current_step>=6 ? "completed" : undefined}> <span className="bubble" /> Step 6. </li>
+                                    <li className={current_step>=7 ? "completed" : undefined}> <span className="bubble" /> Step 6. </li>
                                 </ul>
                             </div>
                         </div>
@@ -119,10 +122,11 @@ class EditLease extends Component {
                             <VelocityTransitionGroup enter={{animation: "fadeIn"}} leave={{animation: "fadeOut"}}>
                                 {this.state.current_step===1 ? <LeaseTerm onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
                                 {this.state.current_step===2 ? <LeaseClauses onChange={this.onChange.bind(this)} clauses={this.state.initial.clause}/> : undefined}
-                                {this.state.current_step===3 ? <LeasePermissions onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
-                                {this.state.current_step===4 ? <AdvancedWarnings onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
-                                {this.state.current_step===5 ? <LeaseContact onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
-                                {this.state.current_step===6 ? <Lessees onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                {this.state.current_step===3 ? <LandlordCovenant onChange={this.onChange.bind(this)} covenants={this.state.initial.covenant}/> : undefined}
+                                {this.state.current_step===4 ? <LeasePermissions onChange={this.onChange.bind(this)} agreements={this.state.initial.agreements}/> : undefined}
+                                {this.state.current_step===5 ? <AdvancedWarnings onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                {this.state.current_step===6 ? <LeaseContact onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                {this.state.current_step===7 ? <Lessees onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
                             </VelocityTransitionGroup>
                         </div>
                         <div className="row">
