@@ -461,7 +461,11 @@ options{min-width:300px!important;}.hidden-overflow{overflow:hidden;}
 .w:hover, .b:hover{opacity:0.7;}
 .ll{margin-left:auto; padding:0px 10px; line-height:25px; margin-left:auto; cursor:pointer; height:25px; font-size:12px; color:#222; font-weight:500; font-family:Proxima nova; border:solid 1px #d2d2d2; border-radius:4px;  }
 .ll:hover{background-color:#eaeaea;}
-.studded{width:100%; display:flex; padding:0px 10px;  padding-left:0px;  }
+.studded{width:100%; display:flex; padding:0px 10px;   padding-left:0px;  }
+.leaflet-pane, .leaflet-layer, .leaflet-tile-container{width:150px!important; padding:10px; box-sizing:border-box;  height:150px!important;}
+
+.leaflet-pane h1{font-family:Museo; font-size:16px;  line-height:18px; height:auto; display:block; padding:0px; margin:0px; padding:5px;  margin-bottom:10px; }
+.leaflet-pane li{font-family:Proxima nova; list-style:none;  font-size:14px; text-align:left; padding:0px 10px; margin:3px 0px;  color:#333; }
 
 
 
