@@ -90,8 +90,6 @@ class Listing extends Component {
                 break;
         }
         this.setState({present});
-        console.log(this.state.present)
-        console.log(this.state.initial)
     }
 
     onUpdateCallback(status, data) {

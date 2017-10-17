@@ -29,7 +29,7 @@ class App extends Component {
 
 
          }
-    componentWillReceiveProps(newprops){
+    /*componentWillReceiveProps(newprops){
         if (newprops.socketState.joined && newprops.socketState.data.length > 0 ){
          notification["success"]({
           message: 'New Application',
@@ -38,7 +38,7 @@ class App extends Component {
         }
        
     
-    }
+    }*/
 
   render() {
 

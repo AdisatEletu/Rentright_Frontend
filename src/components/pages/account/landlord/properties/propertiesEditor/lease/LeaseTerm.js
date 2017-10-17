@@ -2,10 +2,16 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropsTypes from 'prop-types';
 import {Input} from 'react-materialize';
+import moment from "moment";
 
 class LeaseTerm extends Component {
     componentDidMount(){
-        window.$('.date_picker').pickadate();
+        window.$('.date_picker').pickadate(
+            {
+                format: 'dd mmmm yyyy',
+                onSet: (context)=>this.props.onDateChange(context.select),
+            }
+        );
     }
 
     render() {
@@ -29,44 +35,48 @@ class LeaseTerm extends Component {
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Start Date<span className="red-text">*</span></div>
                     <div className="input-field col s6">
-                        <input className={'date_picker'} name={'start_date'} id="start_date"/>
+                        <input className={'right-align date_picker'} name={'start_date'} id="start_date" defaultValue={moment(this.props.term.started_at).format('DD MMMM YYYY')}/>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col m6" style={{paddingTop: '10px'}}>End Date<span className="red-text">*</span></div>
+                    <div className="col m6" style={{paddingTop: '10px'}}>Tenor<span className="red-text">*</span></div>
                     <div className="input-field col s6">
-                        <input className={'date_picker'} name='end_date' />
+                        <input onChange={this.props.onChange} value={this.props.term.tenor} className={'right-align tenor'} name='tenor' />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col m6" style={{paddingTop: '10px'}}>Tenor Type<span className="red-text">*</span></div>
+                    <div className="input-field col s6">
+                        <select onChange={this.props.onChange} value={this.props.term.tenor_type} dir="rtl" className={'right-align tenor_type'} name='tenor_type' >
+                            <option style={{ direction:'rtl'}} value={'weeks'}>Weeks</option>
+                            <option style={{ direction:'rtl'}} value={'months'}>Months</option>
+                            <option style={{ direction:'rtl'}} value={'years'}>Years</option>
+                        </select>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Rent Amount<span className="red-text">*</span></div>
                     <div className="input-field col m6" style={{marginTop: '0'}}>
-                        <input className="right-align" style={{margin: '0'}} placeholder="0.00" name="rent_amount" id="rent_amount" onChange={this.props.onChange}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col m6" style={{paddingTop: '20px'}}>Rent Due On<span className="red-text">*</span></div>
-                    <div className="input-field col s6">
-                        <input className={'date_picker'} name='rent_due' type='date'/>
+                        <input className="right-align" style={{margin: '0'}} placeholder="0.00" name="rent_amount" id="rent_amount" onChange={this.props.onChange} value={this.props.term.rent_amount}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Security Deposit</div>
                     <div className="input-field col m6" style={{marginTop: '0'}}>
-                        <input className="right-align" style={{margin: '0'}} placeholder="0.00" name="security_deposit" id="security_deposit" onChange={this.props.onChange}/>
+                        <input className="right-align" style={{margin: '0'}} placeholder="0.00" name="security_deposit" id="security_deposit" onChange={this.props.onChange} value={this.props.term.security_deposit}/>
 
                     </div>
                 </div>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Move-In Fee</div>
                     <div className="input-field col m6" style={{marginTop: '0'}}>
-                        <input className="right-align" style={{margin: '0'}} placeholder="0.00" name="move_in_fee" id="move_in_fee" onChange={this.props.onChange}/>
+                        <input className="right-align" style={{margin: '0'}} placeholder="0.00" name="move_in_fee" id="move_in_fee" onChange={this.props.onChange} value={this.props.term.move_in_fee}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Late Rent Fee</div>
                     <div className="col m6" style={{marginTop: '0'}}>
-                        <input className="right-align" style={{margin: '0'}} placeholder="0.00" name="late_rent_fee" id="late_rent_fee" onChange={this.props.onChange}/>
+                        <input className="right-align" style={{margin: '0'}} placeholder="0.00" name="late_rent_fee" id="late_rent_fee" onChange={this.props.onChange} value={this.props.term.late_rent_fee}/>
                     </div>
                 </div>
             </div>

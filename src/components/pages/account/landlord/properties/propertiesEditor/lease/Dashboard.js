@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import {getAllLease} from "../../../../../../../state/actions/leaseAction";
 import Loader from "../../../../../../shared/Loader";
 import shortid from 'shortid';
+import {formatCurrency} from "../../../../../../../state/actions/PaymentActions";
+import moment from "moment";
 
 
 class Dashboard extends Component {
@@ -72,11 +74,10 @@ class PendingLease extends Component {
         const tenant = this.props.lease.tenant.data;
 
         const titleNode = <div className="row d-underline">
-            <div className="col m2"><i className="material-icons"
-                                       style={{fontSize: '50px', color: '#6a1b9a'}}>folder</i></div>
+            <div className="col m2"><Avatar size="large" icon="folder-open" style={{color: '#6a1b9a'}}/></div>
             <div className="col m7" style={{fontSize: '16px', marginTop: '5px'}}>
-                <b style={{display: 'block', marginBottom: '5px'}}>₦{this.props.lease.rent_amount}/<span style={{fontSize: '13px'}}>{this.props.lease.tenor_type}</span></b>
-                8/10/2017 - 8/10/2017
+                <b style={{display: 'block', marginBottom: '5px'}}>{formatCurrency(this.props.lease.rent_amount)}/<span style={{fontSize: '13px'}}>{this.props.lease.tenor_type}</span></b>
+                {moment(moment(this.props.lease.started_at.date)).format('DD/MM/YYYY')} - {moment(moment(this.props.lease.started_at.date)).add(this.props.lease.tenor,this.props.lease.tenor_type).format('DD/MM/YYYY')}
             </div>
             <div className="col m3" style={{marginTop: '5px'}}><b>{this.props.lease.state === 'draft' ? <Badge status="warning" text="Draft"/> : <Badge status="success" text="Final"/>}</b></div>
         </div>
@@ -107,7 +108,7 @@ class PendingLease extends Component {
         </div>
         return (
             <div className="col s12 m6">
-                <Card>
+                <Card style={{marginTop: '20px'}}>
                     {titleNode}
                     {actionsRow}
                     {tenants}
@@ -119,7 +120,7 @@ class PendingLease extends Component {
                     </div>
                     <div className="row">
                         <div className="col s12">
-                            <button className="waves-effect waves-light btn purple darken-2 block">Send lease to tenants
+                            <button className="d-button white-text purple darken-2 block">Send lease to tenants
                                 to sign
                             </button>
                         </div>

@@ -3062,6 +3062,14 @@
     text-align: center
 }
 
+.right-align {
+    text-align: right;
+}
+
+.left-align {
+    text-align: left
+}
+
 .landlord .right {
     float: right !important
 }

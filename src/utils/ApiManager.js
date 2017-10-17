@@ -11,8 +11,9 @@ export const unitImageUrl = (uuid) =>  BASE_URL+"https://rentright-laravel-api.h
 export const getApplication = BASE_URL+'applications';
 export const updateApplicationUrl = (uuid) => {return BASE_URL+'applications/'+uuid};
 
-export const getLeaseUrl = (uuid) => {return BASE_URL+'user/leases/'+uuid};
-export const getAllLeaseUrl = (uuid) => {return BASE_URL+'user/'+uuid+'/leases'};
+export const getLeaseUrl = (uuid) => {return BASE_URL+'leases/'+uuid};
+export const updateLeaseUrl = (uuid) => {return BASE_URL+'leases/'+uuid};
+export const getAllLeaseUrl =  BASE_URL+'leases';
 
 export const getNotificationsUrl = BASE_URL+'user/notifications';
 
