@@ -16,6 +16,8 @@ import ImageUpdate from "./layouts/ImageUpdate";
 import {NavLink} from "react-router-dom";
 import BioForm from "./layouts/BioForm";
 import TenantApplications from "./layouts/tenantApplications";
+import TenantApplicationsDetail from "./layouts/tenantApplicationsDetail";
+import ApplicationOverview from "./layouts//ApplicationsComponents/ApplicationOverview";
 import TenantNav from "./tenantlayouts/durables/basic/tenant_nav";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";  
@@ -120,6 +122,12 @@ loadprofile = ()=>{
              <Route  path="/tenant/publicprofile/:first_name/:last_name/:id"  component={PublicProfile}/> 
               <Route  path="/tenant/my/applications/:id"  component={TenantApplications}/> 
               <Route  path="/tenant/profilepicture/:id"  component={ImageUpdate}/> 
+              <Route exact path="/tenant/applications/:id/:address/:uuid"  component={ TenantApplicationsDetail}/>  
+               <Route exact path="/tenant/applications/:id/:address/:uuid/overview"  component={ ApplicationOverview}/>  
+             
+          
+             
+                  
                 </Switch>
           </div>
                

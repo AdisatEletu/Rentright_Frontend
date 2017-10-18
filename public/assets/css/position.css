@@ -126,7 +126,7 @@ background-color:#fff; display:inline-flex; flex-direction:column; padding:30px 
     padding-top: 0px;    padding-bottom: 0px;    color: #484848;
     font-weight: 700;    margin-bottom: 10px; 
 }
-.bot{margin-top:auto; padding:0px 20px; box-sizing:border-box; background:rgba(0,0,0,0.05); }
+.bot{margin-top:auto; padding:0px 20px; box-sizing:border-box; background:#fff; }
 .event-cards{ width:23%; background:#fff; border-radius:4px; }
 .bodyTest{font-family:Proxima Nova; margin-left:auto; display:inline-block;line-height:40px; color:#222; font-weight:500;  font-size:12px; }
 .event-cards-image{height:250px; width:100%; background-size:cover; background-position:center; }

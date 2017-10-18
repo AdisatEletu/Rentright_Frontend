@@ -292,7 +292,9 @@ hideModal(){
                           <Icon type = "user"/>
                           <div className = "name">John Doe</div>
                            <div className = "other line-clamp2">{this.state.seldetail.address.address.address}</div>
-                          <div className = "fancy-button">Apply</div>
+                           <NavLink  to = {'/tenant/applications/'+this.props.auth.user.uuid+'/'+this.state.seldetail.address.address.address+'/'+this.state.seldetail.id+'/overview' } className = "fancy-button">Apply</NavLink>
+
+                          
                       </div>
                       <div className = "place-top t-flex-wrap">
                           <div className = "pan-h2">Points Of Interest</div>
