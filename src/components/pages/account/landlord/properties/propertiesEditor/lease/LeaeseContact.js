@@ -68,7 +68,7 @@ class LeaseContact extends Component {
                     <select id={'state'} name={'state'} defaultValue='lagos' onChange={this.props.onChange}>
                         <option value='lagos'>Lagos</option>
                     </select>
-                        <label className={'active'} htmlFor={'state'}>City</label>
+                        <label className={'active'} htmlFor={'state'}>State</label>
                     </div>
 
                     <div className="input-field col s12 m6">
@@ -76,7 +76,7 @@ class LeaseContact extends Component {
                         <option value='Nigeria'>Nigeria</option>
                     </select>
 
-                        <label className={'active'} htmlFor={'country'}>City</label>
+                        <label className={'active'} htmlFor={'country'}>Country</label>
                     </div>
                 </div>
             </div>
