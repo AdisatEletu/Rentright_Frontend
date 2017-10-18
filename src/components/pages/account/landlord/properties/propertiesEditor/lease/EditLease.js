@@ -39,7 +39,7 @@ class EditLease extends Component {
 
     componentDidMount() {
         const lease_uuid = this.context.router.route.match.params.leaseId;
-        const include = 'clause,tenant,landlord,unit.property.address';
+        const include = 'clause,tenant,landlord.work_address,unit.property.address';
         getLease({lease_uuid, include}, this.onLeaseRetrieved);
     }
 
@@ -60,7 +60,12 @@ class EditLease extends Component {
                 covenant: data.clause.data.filter((clause) => clause.type === 'landlord_covenant'),
                 agreements: data.clause.data.filter((clause) => clause.type === 'agreement'),
                 /*warning:{},*/
-                contact: {},
+                contact: {
+                    street_name: data.landlord.data.work_address.data.street_name,
+                    community: data.landlord.data.work_address.data.community,
+                    state: data.landlord.data.work_address.data.state,
+                    country: data.landlord.data.work_address.data.country,
+                },
                 tenant: data.tenant.data,
             };
             const present = {
@@ -78,7 +83,12 @@ class EditLease extends Component {
                 covenant: data.clause.data.filter((clause) => clause.type === 'landlord_covenant'),
                 agreements: data.clause.data.filter((clause) => clause.type === 'agreement'),
                 /*warning:{},*/
-                contact: {},
+                contact: {
+                    street_name: data.landlord.data.work_address.data.street_name,
+                    community: data.landlord.data.work_address.data.community,
+                    state: data.landlord.data.work_address.data.state,
+                    country: data.landlord.data.work_address.data.country,
+                },
                 tenant: data.tenant.data,
             };
 
@@ -263,7 +273,7 @@ class EditLease extends Component {
                                                                                    agreements={this.state.present.agreements}/> : undefined}
                                 {/*{this.state.current_step===5 ? <AdvancedWarnings onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}*/}
                                 {this.state.current_step === 5 ? <LeaseContact onChange={this.onChange.bind(this)}
-                                                                               lease={this.state.lease}/> : undefined}
+                                                                               contact={this.state.present.contact}/> : undefined}
                                 {this.state.current_step === 6 ?
                                     <Lessees onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
                             </VelocityTransitionGroup>

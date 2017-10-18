@@ -52,27 +52,27 @@ class LeaseContact extends Component {
                 <div className="row">
                     <div className="input-field col s12">
                         <input id="street_address" type="text" name="street_address" className="validate"
-                               value={""} onChange={this.props.onChange}/>
+                               value={this.props.contact.street_name} onChange={this.props.onChange}/>
                         <label htmlFor="street_address" className="active">Street Address</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
                         <input id="city" type="text" name="city"
-                               value={""} onChange={this.props.onChange}/>
+                               value={this.props.contact.community} onChange={this.props.onChange}/>
                         <label htmlFor="city" className="active">City</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12 m6">
-                    <select id={'state'} name={'state'} defaultValue='lagos' onChange={this.props.onChange}>
+                    <select id={'state'} name={'state'} value={this.props.contact.state} onChange={this.props.onChange}>
                         <option value='lagos'>Lagos</option>
                     </select>
                         <label className={'active'} htmlFor={'state'}>State</label>
                     </div>
 
                     <div className="input-field col s12 m6">
-                    <select id={'country'} name={'country'} defaultValue='nigeria' onChange={this.props.onChange}>
+                    <select id={'country'} name={'country'} value={this.props.contact.country} onChange={this.props.onChange}>
                         <option value='Nigeria'>Nigeria</option>
                     </select>
 
