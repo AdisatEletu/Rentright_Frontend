@@ -189,6 +189,7 @@ const styles = {
 
 
 }
+
 HomeSearch.contextTypes = {
         router: PropTypes.object.isRequired,
     }

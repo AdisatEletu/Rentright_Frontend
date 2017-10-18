@@ -52,7 +52,7 @@ class FeaturedProperty extends Component {
 
         return(
             <div className="t-flex t-flex-row t-md-10">
-                <div className="t-flex  t-md-5 home-bgg " style = {unit.unit_images.length > 0 ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+unit.unit_images[this.state.index].id+ ")"}:undefined}>
+                <div className="t-flex  t-md-5 home-bgg g "  onClick ={()=>console.log('I was clicked')} style = {unit.unit_images.length > 0 ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+unit.unit_images[this.state.index].id+ ")"}:undefined}>
                     <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column t-align-content-space-between">
                         <div className="t-flex t-flex-row">
                             <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {unit.monthly_rent.toLocaleString('en')}</span>

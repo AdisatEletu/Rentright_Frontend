@@ -198,7 +198,7 @@ export default class NewHome extends Component {
                                         className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo">
                                         List Your Property
                                     </div>
-                                    <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima">
+                                    <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima line-clamp">
                                         Create a listing in few minutes and Reach out to thousands of tenants by listing
                                         your property on this platform
                                     </div>
