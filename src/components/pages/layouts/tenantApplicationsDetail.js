@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
+import {Switch,Route,} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import TenantCard from '../tenantCard';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import CircleLinks from '../tenantlayouts/circle_links';
 import {bindActionCreators} from 'redux';  
 import CompletenessBar  from '../tenantlayouts/completeness_bar';
 import FormElements  from '../tenantlayouts/form_elements';
 import NewForm  from '../tenantlayouts/new_form';
-import { loadAllTenants, loadSpecificTenant,post_my_application,  load_my_query, load_my_applications,  sendSocketPost,patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct, hideLoading, errorLoading, breakFormToComponents,  getProfileStruct  } from '../../../state/actions/tenantAction';
+import { loadAllTenants, loadSpecificTenant,post_my_application,
+      load_my_query, load_my_applications,  sendSocketPost,patchSpecificTenant, deleteSpecificTenant,showLoading, getFormStruct,
+       hideLoading, errorLoading,  setCurrentApplicationFunc, breakFormToComponents,  getProfileStruct,
+       setCurrentUnitFunc
+    } from '../../../state/actions/tenantAction';
 import Spin from  'antd/lib/spin';
 import Button from'antd/lib/button';
 import ProfileContent from '../tenantlayouts/profile_content';
@@ -18,12 +23,13 @@ import Radio from  'antd/lib/radio';
 import  Input from 'antd/lib/input';
 import moment from 'moment';
 import Col from 'antd/lib/col';
+import Advert from '../tenantlayouts/advert'
 import InputNumber from 'antd/lib/input-number';
 import  DatePicker from 'antd/lib/date-picker'; 
 import  AutoComplete from 'antd/lib/auto-complete';
 import  Cascader from 'antd/lib/cascader';
 import Icon from 'antd/lib/icon';
-import Switch from 'antd/lib/switch';
+import {Switch as AntSwitch} from 'antd';
 import Select from 'antd/lib/select';
 import Agreement_modal  from './Agreement_modal.js'
 import 'moment/locale/en-gb';
@@ -33,6 +39,7 @@ import { Slider, Row } from 'antd';
 import TenantModal from './Tenant_Modal';
 import $ from 'jquery';
 import { notification } from 'antd';
+import ApplicationOverview from './ApplicationsComponents/ApplicationOverview';
 var _ = require('lodash');
 const InputGroup = Input.Group;
 const Option = Select.Option;
@@ -43,72 +50,81 @@ const { OptGroup } = Select;
 const { MonthPicker, RangePicker } = DatePicker;
 const  dateFormat = 'YYYY-MM-DD';
 
- class TenantApplications extends Component{
+ class TenantApplicationsDetail extends Component{
     constructor(props) {           
-      super(props) 
-      this.k;
-      this.state ={ showModal:false }
-      this.frontimage = null;
-      this.listimage = [];
-       this.handleInputChange = this.handleInputChange.bind(this);    
-       this.postApplications = this.postApplications.bind(this);
-       this.handleSubmit = this.handleSubmit.bind(this); 
-       this.showModal = this.showModal.bind(this);
-       this.hideModal = this.hideModal.bind(this);
-        this.uuid = this.props.auth.user.uuid;   
-        console.log(this.uuid);
-        this.hideModal = this.hideModal.bind(this);   
-        this.css = {'transform': 'scale(0.2, 0.2)' }
-       this.sendobj = {};
-      this.props.loadMyApplications(this.uuid +'/').then((res)=>{
-        console.log(res);
-     if (this.props.myApplications.applications && this.props.myApplications.applications.length > 0 ){
-      this.props.myApplications.applications.map((item)=>{
-        this.props.loadMyQuery('units='+item.units).then((res)=>{
-        console.log(res);
-      }) 
-        
-      })
-
-       }
-      })
-
+    super(props);
+    this.state = {}
+    this.runLoadQuery = this.runLoadQuery.bind(this);    
     }
-       componentWillMount(){        
-      
+ componentWillMount(){  
+    let tenant_id = this.props.match.params.id;
+    let unit_uuid = this.props.match.params.uuid;
+    let address = this.props.match.params.address;
+     this.setState({application:null, address:address, id:tenant_id, unit_uuid,  unit:null, error:false, errorMessage: '', notFound404:false , loading:true})
+      if(!this.props.auth.user.uuid){
+       this.context.router.history.push("/sign-in");    
      }
-    componentDidMount(){ 
+    if( tenant_id !== this.props.auth.user.uuid){
+     this.context.router.history.push("/tenant/applications/"+this.props.auth.user.uuid+"/"+address+"/"+ unit_uuid);  
+     } 
+    
+}
+ componentDidMount(){   
+      let tenant_id = this.props.match.params.id;
+      let address =  this.props.match.params.address;
+      let unit_uuid = this.props.match.params.uuid;
+      console.log(tenant_id,address,unit_uuid, 'params')
+      let checkApp;  
+      this.setState({loading:true})
+      this.props.loadMyApplications(unit_uuid +'/').then((res)=>{
+        if (this.props.myApplications.length !== 0){
+             checkApp = this.props.myApplications.findIndex( i => i.units == unit_uuid); 
 
-     }
-     componentDidUpdate(prevProps, prevState) {
-
-
-     }
-   
-/*handleSubmit = ()=>{
-    var th = this;     
-    if (this.state !== {}) {
-      let path = ""
-      let keys = Object.keys(this.state)
-      let lis = keys.map((item)=>{
-        console.log(item)
-        if (path == ""){
-          path = item + "="+this.state[item];
+  }else{  
+     checkApp = -1;
+    }
+    if( checkApp && checkApp !== -1) {
+             this.props.setActiveApp(this.props.myApplication[checkApp])
         }else{
-          path  += "&" +item + "="  + this.state[item] 
-        }   
-      this.setState({showModal:false});       
-      })
-       path += "&" +"uuid="+this.props.auth.user.uuid;
-      console.log(path);
-      this.props.loadMyQuery(path).then((res)=>{
-        console.log(res);
-      })
+            this.props.setActiveApp({none:true, count:0})
+            }
+    let obj2 = {};
+    obj2['application'] = checkApp !== -1 ? res[checkApp] : null;
+    this.setState(obj2);
+     this.runLoadQuery(unit_uuid);
+    
 
+    }).catch ((err) =>{
+        this.runLoadQuery(unit_uuid);
+    })      
+}
+runLoadQuery (item){   
+    let unit_uuid = item;
+     this.props.loadMyQuery('units='+unit_uuid).then(()=>{ 
+    console.log(this.props.queryResult.results)
+    if ( this.props.queryResult.results) {       
+     this.setState ({unit: this.props.queryResult.results.units[0], loading:false }, ()=>{
+     if (this.state.unit){
+       //this.context.router.history.push("/tenant/applications/"+this.props.auth.user.uuid+'/'+this.state.address+"/"+ this.state.unit_uuid +"/overview" ); 
+       //this.props.setActiveUnit(this.state.unit)
+      //this.context.router.history.push("overview" ); 
+      
+      }; 
+
+    })
     }
+    else{
+           this.setState({loading:false, error:true, errorMessage:"We could not load this particular unit probably you mispelled the url parameters, please go back or query for the unit u desire "})  
+    } 
+     }).catch((err)=>{
+        this.setState({loading:false, error:true, errorMessage:"We could not load this particular unit probably you mispelled the url parameters, please go back or query for the unit u desire "})
+    })
 
-  }*/
+}
+componentDidUpdate(prevProps, prevState) {
 
+}
+   
     showModal= ()=> {
      $('.t-midmain').css('z-index', '30');
      $('.midpictures').css('z-index', '1');
@@ -131,164 +147,55 @@ const  dateFormat = 'YYYY-MM-DD';
       5000);
      }
     } 
-
-  postApplications(obj){
-    console.log(obj);
-    this.props.post_my_application(obj).then((it)=>{   
-     let data = {};
-     data.peer_id = obj.unit_manager;
-     data.message = obj.leasee_first_name +" " +obj.leasee_first_name + " applied for the apartment " +obj.property;
-     this.props.sendSocketPost(data);     
-       notification["success"]({
-          message: 'You applied for a property',
-         description: 'Your appliction for  apartment '+obj.property+  ' on rentright was successful we will alert you once important events occour we will notify you.',
-  });
-    }).catch((err)=>{
-       console.log(err)
-          notification["error"]({
-          message: 'Failed to apply',
-         description: 'Your appliction was not successful please try again later or check your internet settings.',
-  });
-    });
-
-
-  }
-   hideModal(){
-     $('.t-midmain').css('z-index', '10');
-     this.setState({showModal:false});
-     this.setState({'css': null});
-     if (this.state.ishighlighting != 'time-highlight'){
-     this.setState({ishighlighting:'time-highlight'})
-     setTimeout(()=>{
-       this.setState({ishighlighting:''})
-      },
-      5000);
-     }
-   }
-    showModal= (frontimage, listimage, item)=> {
-     $('.t-midmain').css('z-index', '30');
-     this.frontimage = frontimage;
-     this.listimage = listimage;
-      var th = this;
-      console.log(th)
-      console.log(th.state)
-      this.setState(this.css);
-      th.setState({showModal :true, item});
-      setTimeout(()=>{
-        this.css = {'transform':'scale(1,1)' };
-        this.setState(this.css);
-        console.log(this.css);
-      }, 100);
-
-    }
-   handleInputChange(event, name = null) {
   
-    var th = this;
-    let value; 
-    let target;
-    if (! name){
-    try{
-    target = event.target;
-    value = target.type === 'radio' ? target.selected : target.value;
-    name = target.name;
-    }catch(err){
-      value = event;
-    }
-  
-    }
-  else{
-    value = event
-  }
-
-    if (value && value != ''){
-      th.sendobj[name]  = value ;
-    this.setState({
-      [name]: value
-    });
-    }
-    console.log(this.state);
- 
-  } 
-
-
-
-  handleSubmit = ()=>{
-    var th = this;     
-   let  path  ='https://rentright.herokuapp.com/api/rentright/tenants/applications/'+this.props.auth.user.uuid;
-    console.log(path);
-      this.props.loadMyQuery(path).then((res)=>{
-        console.log(res);
-      })
-
-    }
-
-  
- render(){ 
-    
-
-  return (
-  this.props.queryResult  && this.props.queryResult.results  && this.props.queryResult.results.units.length > 0 ? 
+ render(){  
+{/*if(! this.state.loading){
+ if ( !this.state.error){*/}
+return (
 <div className = "t-fullheight t-md-10">
-<div className = "cwall under">
-<div className = "t-flex zoomeffect wallpaper"   style = {{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+this.props.queryResult.results.units[0].unit_images[1].id+ ")"}}>
-<div className = "wallpapercover opacityeffect">
-  <div className = "kings">
-  <div className = "westeros"><span>{this.props.queryResult.results.units[0].unit_type.replace('_', ' ' )}</span><span>{ this.props.queryResult.results.units[0].bedrooms + " bedrooms"}</span></div>
-  <div className = "knight">
-  <div className = "wallh1">{this.props.queryResult.results.units[0].title}</div>
-  </div>
-  </div>
-<div className = "watch t-flex t-align-top t-justify-right">
-  <div className = "whitewalkers">
-    <div className = "kingslanding-top t-flex t-flex-column t-justify-center">
-      <span className = "thinlanisters">Monthly Price</span>
-      <span className = "deeplanisters"> {"N " + this.props.queryResult.results.units[0].monthly_rent }</span>
-      </div>
-     <div className = "kingslanding-mid t-flex t-justify-center"><span className = "deeplanisters smx">Status <span className = "thinlanisters smx">Application Sent</span></span> </div>
-      <div className = "kingslanding-bottom t-flex t-align-center t-justify-center"><span className = "lanisters lgx">Application</span></div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-<div className = "t-flex t-flex-row t-md-10">
-<div className = "midpictures upeffect">
-  { this.props.queryResult.results.units[0].unit_images.map((obj, ind)=>{
-    return(
-    <div className = "pictures-got" key = {ind} style = {{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+ obj.id}}>
-    <div className = "wallpapercover"></div>
-    </div>
-    )
-  })
+<Link className = "m-nav-li t-md-10" to = {`/tenant/applications/${this.props.auth.user.uuid}/${this.state.address}/${this.state.unit_uuid}/overview`} activeClassName ="m-active-nav"><i className = "fa fa-user-circle lg t-md-2"></i><span className = "t-uppercase t-md-6 m-ellipses">My Registeration Status</span> <div className = "t-bullet m-activate">{this.props.myProfile ? this.props.myProfile.tenants.completed +' %' : null}</div> </Link>
 
-  }  
-  </div>  
-  <div className = "middialog upeffect"> 
-      <div className = "whitewalkers iconify">
-    <div className = "kingslanding-top t-flex t-flex-column t-justify-center">
-      <span className = "thinlanisters">Lease Agreeement</span>
-      <span className = "deeplanisters">From landlord</span>
-      </div>
-      <div  className = "ic"><Icon type = "user"/></div>
-     <div className = "kingslanding-mid t-flex t-justify-center"><span className = "deeplanisters smx">Status <span className = "thinlanisters smx">Checkout lease </span></span> </div>
-      <div className = "kingslanding-bottom t-flex t-align-center t-justify-center purp" onClick = {this.showModal}><span className = "lanisters lgx">Checkout</span></div>
-  </div>
-
-  </div>
-  </div>
-     {this.state.showModal ? <Agreement_modal hideModal = {this.hideModal}/> :null}
-</div> 
-  :
-  null
+<div className = "t-fullheight t-md-75" >
+{/*<Route strict  exact path={`/tenant/applications/:id/:address/:uuid/overview`}  component={ApplicationOverview}/>*/}
+<div className = "t-md-2  t-fullheight">
+  <Advert/>
+</div>
+</div>
+</div>
       
    )
+{/*} }else{
+     return(
+         <div className = "t-md-10 t-ful-height t-flex t-flex-column t-justify-center t-align-center t-align-content-center">
+             <Icon type = "warning" style = {styles.icon}/>
+             <p style = {styles.span}>{this.state.errorMessage}</p>      
+
+           </div>  
+     )
+ }
+}else{
+    return (
+        <Icon style ={
+            { color:'#333', fontSize:'40px', marginTop:'200px', marginLeft:'200px'}
+        } 
+        
+         type = "loading" />
+    )
+}*/}
    
               
                  
         
      }
  }
-
+const styles = {
+     icon:{
+        color:'#9999', fontSize:'150', marginBotttom:'20px',        
+    },
+    span:{
+        fontFamily:'Museo', margin:0, padding:0, textAlign:'center', fontSize:'16px', lineHeight:'18px', color:'#222'
+    }
+}
  
 function matchStateToProps(state){
     return   {
@@ -306,7 +213,9 @@ function matchStateToProps(state){
         applicationsPostIndicator:state.applications_post_indicator,
         queryResult:state.query_result,
         myApplications: state.applications_result,
-        applicationsPost: state.tenant_post_applications,   
+        applicationsPost: state.tenant_post_applications,  
+        activeUnit: state.ApplicationDetails.currentUnit,
+        activeApplication: state.ApplicationDetails.currentApplication
   
  
     }      
@@ -325,20 +234,13 @@ function mapDispatchToProps(dispatch) {
     loadMyQuery: load_my_query,
     loadMyApplications: load_my_applications,
     post_my_application:post_my_application,
-    sendSocketPost:sendSocketPost
+    sendSocketPost:sendSocketPost,
+    setActiveUnit : setCurrentUnitFunc,
+    setActiveApp : setCurrentApplicationFunc,
   }, dispatch);
 }
 
-TenantApplications.PropTypes = {
-    loadTenant: PropTypes.func.isRequired,
-    loadprofile: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-   myProfile: PropTypes.object.isRequired
-
-
-}
-TenantApplications.contextTypes = {
-        router: PropTypes.object.isRequired,
+TenantApplicationsDetail.contextTypes = {
+    router: PropTypes.object.isRequired,
     }
-
-export default connect(matchStateToProps, mapDispatchToProps)(TenantApplications)
+export default connect(matchStateToProps, mapDispatchToProps)(TenantApplicationsDetail)

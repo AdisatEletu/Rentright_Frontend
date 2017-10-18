@@ -168,6 +168,18 @@ export function load_my_applications(path){
   })
 
 }
+export function setCurrentUnitFunc(unit){
+  return ((dispatch)=>{
+   dispatch(setCurrentUnit(unit));     
+  })
+}
+export function setCurrentApplicationFunc(app){
+  return ((dispatch)=>{
+   dispatch(setCurrentApplication(app));     
+  })
+}
+
+
 export function post_my_application(obj){
   let path = 'https://rentright.herokuapp.com/api/rentright/applications/';
   return((dispatch)=>{
@@ -463,6 +475,21 @@ export function loading_post_applications(context){
   }
 
 }
+
+export function setCurrentUnit(unit){
+  return {
+    type: types.CURRENT_UNIT,
+    data:unit    
+  }
+}
+export function setCurrentApplication(app){
+  return {
+    type: types.CURRENT_APPLICATION,
+    data:app   
+  }
+}
+
+
 export function loading_query(context){
   switch(context){
     case 'loading' :
