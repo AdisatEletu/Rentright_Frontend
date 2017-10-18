@@ -7,7 +7,7 @@ import Dropdown from '../layout_elements/dropdown';
 import { Badge } from 'antd';
 import {Icon,Progress} from 'antd'; 
 import { Avatar } from 'antd';
-import BingTileLayer  from '../controllers/bing_leaflet'
+import {BingTileLayer, geojsonMaker, GeoJSONCUSTOM ,  GeoJSONCUSTOM2 } from '../controllers/bing_leaflet'
 import L from 'leaflet';
 import Modal from 'antd/lib/modal';
 
@@ -28,8 +28,9 @@ import enUS from 'antd/lib/locale-provider/en_US';
 import { Slider, Row } from 'antd';
 import $ from 'jquery';
 import {Button} from 'antd';
+import {GoogleLayer} from 'react-leaflet-google'
 import { notification } from 'antd';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Map, Marker, Popup, TileLayer , GeoJSON } from 'react-leaflet';
 import { divIcon } from 'leaflet';
 import DivIcon from 'react-leaflet-div-icon';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
@@ -39,6 +40,9 @@ const Option = Select.Option;
 const { TextArea } = Input;
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
+const key = 'AIzaSyD2M3_sIa7NQ9HOlNFmGWoGu2j363CMonw';
+const terrain = 'TERRAIN';
+const road = 'ROADMAP';
 
 const { MonthPicker, RangePicker } = DatePicker;
 const  dateFormat = 'YYYY-MM-DD';
@@ -184,10 +188,12 @@ export class Profiler2 extends Component{
         super(props)
         this.clcked = this.clicked.bind(this)
         let image = {};
+        this.mapit = this.mapit.bind(this);
         this.sendback = this.sendback.bind(this);
+        this.detailclick = this.detailclick.bind(this);
         if (this.props.list.length > 0){
           image.list =   this.props.list.map((item)=>{
-                return ('https://rentright-api-gateway.herokuapp.com/user/units/image/'+item.id)
+                return ('https://rentright-api-gateway.herokuapp.com/user/units/image/'+item.id);
               })
         }else{
             image.list = []
@@ -196,6 +202,13 @@ export class Profiler2 extends Component{
            this.state = {image, index:0}
         this.navimage = this.navimage.bind(this);
          }
+    detailclick = (obj, id)=>{
+        this.props.mapit(id);
+        this.props.detailclick(obj);
+    }
+    mapit = (id)=>{
+        this.props.mapit(id);
+    }
     sendback = (a,b)=>{
         console.log(a,b);
         this.props.street(a,b)
@@ -225,7 +238,7 @@ clicked = ()=>{
 }
         render (){
     return (      
-    <div className = "event-cards shad" style  = {this.props.style ? this.props.style : null }>
+    <div  className = "event-cards shad" style  = {this.props.style ? this.props.style : null }>
      <div className =  "  event-cards-image"
     style = {
     this.props.notdummy?
@@ -243,12 +256,17 @@ clicked = ()=>{
            </div> 
      </div>
      </div>
-     <div className = "t-white" style = {{height:'auto', padding:'10px 3px', paddingBottom:'10', borderStyle:'none',  boxSizing:'border-box'}}>
+     <div className = "t-white tw" style = {{  paddingBottom:'10',  boxSizing:'border-box'}}>
         {/*  <div className = "ll" onClick = {()=>this.sendback(this.props.address.latitude, this.props.address.longitude)}>Explore</div>*/}
-     <p className = "line-clamp" onClick = {()=>this.sendback(this.props.address.latitude, this.props.address.longitude)} style = {{fontSize:'12px', color:'#222'}}><span className = "e-name" style = {{fontSize:'14px'}} >{this.props.name}</span><br/> {this.props.paragraph}</p>
+     <p className = "line-clamp"  style = {{fontSize:'12px', color:'#222'}}>
+         <span className = "e-name" style = {{fontSize:'14px', fontWeight:500}} >{this.props.name}</span><br/> </p>
+         <div className = "mline">
+             <span onClick = {()=>this.sendback(this.props.address.latitude, this.props.address.longitude)}><Icon type = "car"/>&nbsp;Street</span>
+             <span onClick = {()=>this.mapit(this.props.mapid)} ><Icon type = "global" />&nbsp;Locate</span>
+             <span onClick = {()=>this.detailclick(this.props.itemm, this.props.mapid)} ><Icon type = "paper-clip"/>&nbsp;Details</span>
+         </div>
  
-   </div>
-  
+   </div>  
      </div>
 
          
@@ -525,12 +543,20 @@ console.log(this.state.states)
    } 
   queryForApplications(api_path){
       this.setState({query:{loading:true, error:false,results:undefined}});
+      let newurl = ""
       let url = "https://rentright.herokuapp.com/api/rentright/units/query/?"
+      newurl =  api_path;
+      console.log(newurl, "new url ")
+      if (newurl == ""){
+        this.props.transmit("all=true")  
+      }
+      this.props.transmit(newurl) 
       let api = new apiActions(url);
       this.isLoading();
       api.geturl(api_path, false).then((data)=>{   
           this.isNotLoading();  
-          this.props.transmit({results:data.results});      
+          //this.props.transmit({results:data.results});   
+          this.props.transmit(newurl)   
       }).catch((err)=>{
         console.log(err)
            this.isNotLoading(); 
@@ -545,8 +571,7 @@ console.log(this.state.states)
     if (this.state.states !== {}) {
       let path = ""
       let keys = Object.keys(this.state.states)
-      let lis = keys.map((item)=>{
-        console.log(item)
+      let lis = keys.map((item)=>{       
         if (path == ""){
           path = item + "="+this.state.states[item];
         }else{
@@ -554,8 +579,10 @@ console.log(this.state.states)
         }   
       this.setState({showModal:false, states:{}});       
       })
-       path += "&" +"uuid="+this.props.uuid;
+      // path += "&" +"uuid="+this.props.uuid;
       this.queryForApplications(path);
+    }else{
+     this.queryForApplications("");   
     }
 
   }
@@ -620,42 +647,98 @@ export class RentRightMap extends Component{
       super(props);
       this.position = this.props.view;
        this.icon =  divIcon({className: 'ricon'});
-     console.log(this.props.markers, 'grer')
-     this.markers = this.props.markers.map((item)=>{
+       //this.map =  this.refs.map.leafletElement;
+       this.sendobj = [];
+       this.state = {id:null,places:null, id2:null}
+       this.output = [];this.geojson;this.output2;
+       this.pop = this.pop.bind(this);  
+       this.pop2 = this.pop2.bind(this);   
+       this.locatePoint = this.locatePoint.bind(this);
+        this.locatePoint2 = this.locatePoint2.bind(this);
+       this.refresh = this.refresh.bind(this);   
+        this.markers = this.props.markers.map((item)=>{
+          let obj = {latitude:item.position[0], longitude: item.position[1] }  
+          this.sendobj.push( item.data) ;
+          this.geoj;
          return {lat:item.position[0], lng:item.position[1]};
          
      })
-this.markerclusterOptions = {
-    showCoverageOnHover: false,
-    spiderfyDistanceMultiplier: 2,
-
-  };
-
-     };
-    componentWillMount(){
+                let c = new geojsonMaker(this.sendobj);
+                this.geoj = c.convertdata();
+                //console.log(this.geoj, 'Okay now this wierd') 
+                this.markerclusterOptions = {
+                showCoverageOnHover: false,
+                spiderfyDistanceMultiplier: 2,
+            };
+             
+                };
+componentWillReceiveProps( { id,places,id2 } = this.props){
+            this.refresh();
+            this.setState({id});
+            this.setState({id2})
+            this.setState({places})
 
     }
+refresh = ()=>{
+    if (this.map){
+   // this.map.setView(this.props.markers[0].position, 9)
+    }
+}
+    componentDidMount(){
+        if (this.refs.map){
+        this.map = this.refs.map.leafletElement;
+
+        }
+        
+         }
     sendToParent(employer){
         this.props.transmit(employer)
 
     }
+pop = (output)=>{
+     this.output = output;
+}
+pop2 = (output)=>{
+     this.output2 = output;
+     this.props.populateSearch(output);
+}    
+  locatePoint = (obj)=>{
+    console.log(obj, 'locatePoint')    
+    let lat = obj.lat;
+    let lng = obj.lng;
+    this.map.setView([lat, lng], 14);   
+}
+  locatePoint2 = (obj)=>{
+    console.log(obj, 'locatePoint')    
+    let lat = obj.lat;
+    let lng = obj.lng;
+    this.map.setView([lat, lng], 17);   
+}
+    
+              /*<MarkerClusterGroup   wrapperOptions={{enableDefaultStyle: true}}  >
+                 <GeoJSONCUSTOM map = {this.map}  id = {this.state.id}   ref='geojd' da = {this.geoj}  />
+            </MarkerClusterGroup>*/
+      
 
  render(){
      return(
-    <Map  className="markercluster-map" maxZoom = "30"  minZoom = "2" center={this.props.markers[0].position} zoom={9}>
-          <BingTileLayer url = '' bingKey='<bingmapskey>'  type='aerial' />
-        {
-            this.props.markers?
- <MarkerClusterGroup
-    markers={this.markers}
-
-    wrapperOptions={{enableDefaultStyle: true}}
-  />
-            :
+    <Map  className="markercluster-map"  ref = "map" maxZoom = {30} minZoom ={2} center={this.props.markers[0].position}  zoom={9}>
+           <GoogleLayer googlekey={key}  maptype={road}/>
+           {
+            this.props.markers?              
+                 <GeoJSONCUSTOM   markers ={this.markers} locatePoint = {this.locatePoint} populateoutput = {this.pop} id = {this.state.id}  da = {this.geoj}  />
+                 :
             null
         }
-
-
+        <MarkerClusterGroup markers= {this.markers}  wrapperOptions={{enableDefaultStyle: true}}  >
+                
+        </MarkerClusterGroup>   
+        {this.state.places ?
+           <GeoJSONCUSTOM2  map = {this.refs.map.leafletElement} locatePoint = {this.locatePoint2}  id2 = {this.state.id2}  local = {this.props.local} markers = {this.state.places} da = {this.state.places}   populateoutput = {this.pop2} />
+           :
+          null
+        }
+       
 
       </Map>
      )

@@ -28,6 +28,30 @@ export default class apiActions {
    
   })
   };
+   geturl_cors = (api_path = null, append = false) =>{
+    return new Promise((resolve, reject)=>{
+    let path;
+    if (api_path){ 
+    if (!append){
+       api_path =api_path
+      }else{
+      api_path = api_path + '/';
+      }
+      path =  this.url + api_path
+      
+    }else{
+      path = this.url;
+    }    
+    fetch(path).then(response => {
+      resolve(response.json());
+    }).catch(error => {
+      reject(error);
+      throw error
+      return error;
+    }); 
+   
+  })
+  };
    patchurl  = (api_path,obj) =>{
      api_path = api_path + '/';
   return fetch(this.url+ api_path, {

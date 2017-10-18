@@ -1,4 +1,8 @@
+
+import apiActions from './apiActions';
+import {geojsonMaker} from './bing_leaflet';
 const stack = ['tenant_bio', 'general_info',  'tenant_employment_history',   'tenant_residence_history', 'tenant_immigration_history']
+
 export default class _scratch {
 constructor(arr,item){
 this.selected = item;
@@ -133,3 +137,96 @@ return currentpage;
 };
 
 };
+export class NairaConverter{
+    constructor(){        
+        this.moderate = this.moderate.bind(this);   
+        this.replaceComma = this.replaceComma.bind(this);     
+        //this.replaceComma(val);
+        
+    }
+    replaceComma=(val,start,end)=>{
+        console.log( [val.slice(start, end), ', ', val.slice(end)].join('') , 'Comma Attempt')
+        return  [val.slice(start, end), ', ', val.slice(end)].join('');
+     
+    }
+    moderate (vall){
+        let val = vall.toString()
+        let returnlist;
+        let n  = val.length
+        let valuelist;
+        let valuelist2;
+        let valuelist3;
+        switch(n){
+           case(n == 4):      
+            valuelist = this.replaceComma(val, 0,1);                 
+            ;
+            case( n >= 7 && n < 11):   
+            console.log('case sat')      
+            valuelist2 = this.replaceComma(val, 0,1); 
+            valuelist = this.replaceComma(valuelist2, 6,7);                
+            ;
+            case(n >= 11):           
+            valuelist3 = this.replaceComma(val, 0,1); 
+            valuelist2 = this.replaceComma(valuelist3, 5,6);  
+            valuelist = this.replaceComma(valuelist2, 11,12);               
+            ;          
+           default:
+            valuelist = vall
+         }
+    returnlist  = valuelist;
+  
+    return returnlist;
+    }
+
+
+}
+const url2 = 'https://maps.googleapis.com/maps/api/place/photo?';
+const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
+const key = 'AIzaSyD2M3_sIa7NQ9HOlNFmGWoGu2j363CMonw';
+const api = new apiActions(url);
+const api2 = new apiActions(url2)
+export class PlaceLoader{
+    constructor(){
+          this.path;
+            }
+runquery(){
+return new Promise((resolve,reject)=>{
+    api.geturl_cors(this.path).then((data)=>{
+
+    resolve(data);
+            }).catch((err) =>{
+                console.log(err)
+                reject(err)
+            })
+
+            })
+}
+findpicture(obj){
+    return new Promise((resolve,reject)=>{
+    let photo_ref = obj.photo_reference;
+    let height = 10000;
+    let path =url2 + 'photo_reference='+photo_ref+'&height='+height+'&key='+key;
+    resolve(path);
+   
+    });
+    
+}        
+findplace(longitude, latitude,radius=5000, type, keyword = null){  
+     return new Promise((resolve,reject)=>{
+     this.path ='location='+latitude+','+longitude+'&radius='+radius+'&type='+type +'&key=' + key+'&keyword='+type;
+     this.runquery().then((data)=>{
+      let sendObj = [];
+      data.results.map((item)=>{
+      sendObj.push ({...item, latitude:item.geometry.location.lat, longitude:item.geometry.location.lng })
+      })
+      let c = new geojsonMaker(sendObj);
+      let geoj = c.convertdata();
+     resolve(geoj);
+     }).catch((err) =>{
+        console.log(err)
+         reject(err)
+            })
+     });
+}
+
+}

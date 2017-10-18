@@ -42,15 +42,17 @@ class TenantProfile extends Component{
     })
    }
     onTransmit=(item)=>{
+      console.log(item);
        if (item.loading){
          this.setState({loading:true})
        }else{
-         this.setState({loading:false})
-         if (item.results){
-           console.log(item.results)
-            this.setState(item.results) ;
+         this.setState({loading:false})         
+          this.context.router.history.push(`/generalsearch/${item}`)
+          // console.log(item.results)
+          //  this.setState(item.results) ;
+          //  let units = item.results.units;
 
-         }
+         
        }
       }
        componentWillMount(){
@@ -138,7 +140,7 @@ class TenantProfile extends Component{
 
             <div className = "events">
             <div className  = "t-md-10 t-flex t-space-between events-padding">
-              <span className = "header-test">Recently Listed</span>
+              <span className = "header-test">Professionals</span>
               <span className = "bodyTest">SEE ALL <Icon type = "right" /></span>
             </div>
             <div className = "t-md-10 t-flex-wrap t-fullheight t-flex t-justify-space-around bot">
@@ -242,5 +244,8 @@ TenantProfile.PropTypes = {
 
 
 }
+  TenantProfile.contextTypes = {
+        router: PropTypes.object.isRequired,
+    }
 
 export default connect(matchStateToProps, mapDispatchToProps)(TenantProfile)
