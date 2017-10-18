@@ -42,15 +42,17 @@ class TenantProfile extends Component{
     })
    }
     onTransmit=(item)=>{
+      console.log(item);
        if (item.loading){
          this.setState({loading:true})
        }else{
-         this.setState({loading:false})
-         if (item.results){
-           console.log(item.results)
-            this.setState(item.results) ;
+         this.setState({loading:false})         
+          this.context.router.history.push(`/generalsearch/${item}`)
+          // console.log(item.results)
+          //  this.setState(item.results) ;
+          //  let units = item.results.units;
 
-         }
+         
        }
       }
        componentWillMount(){
@@ -242,5 +244,8 @@ TenantProfile.PropTypes = {
 
 
 }
+  TenantProfile.contextTypes = {
+        router: PropTypes.object.isRequired,
+    }
 
 export default connect(matchStateToProps, mapDispatchToProps)(TenantProfile)
