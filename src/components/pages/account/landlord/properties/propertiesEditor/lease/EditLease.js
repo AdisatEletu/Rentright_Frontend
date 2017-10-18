@@ -48,7 +48,7 @@ class EditLease extends Component {
             const initial = {
                 term: {
                     section: 'term',
-                    started_at: data.started_at ? moment(data.started_at.date) : moment.now(),
+                    started_at: data.started_at ? moment(data.started_at.date).format('DD MMMM YYYY') : moment.now(),
                     move_in_fee: data.move_in_fee,
                     late_rent_fee: data.late_rent_fee,
                     rent_amount: data.rent_amount,
@@ -66,7 +66,7 @@ class EditLease extends Component {
             const present = {
                 term: {
                     section: 'term',
-                    started_at: data.started_at ? moment(data.started_at.date) : moment.now(),
+                    started_at: data.started_at ? moment(data.started_at.date).format('DD MMMM YYYY') : moment.now(),
                     move_in_fee: data.move_in_fee,
                     late_rent_fee: data.late_rent_fee,
                     rent_amount: data.rent_amount,
@@ -81,7 +81,7 @@ class EditLease extends Component {
                 contact: {},
                 tenant: data.tenant.data,
             };
-            ;
+
 
             this.setState({
                 isLoading: false,
@@ -112,8 +112,8 @@ class EditLease extends Component {
 
     onDateChange = (date) => {
         const present = {...this.state.present};
-        present.term['started_at'] = date;
-        console.log('date', date);
+        present.term['started_at'] = moment(date).format('DD MMMM YYYY');
+        console.log('date', moment(date).format('DD MMMM YYYY'));
         this.setState({present})
     }
 
@@ -124,7 +124,7 @@ class EditLease extends Component {
         let current = this.state.current_step;
         current = current + 1;
 
-        if (current < 6) {
+        if (current <= 6) {
             this.setState({current_step: current});
         }
 
@@ -151,7 +151,7 @@ class EditLease extends Component {
             case 1:
                 if (!isEqual(this.state.initial.term, this.state.present.term)) {
                     equal = false;
-                    data = this.state.present.info;
+                    data = this.state.present.term;
                 }
                 break;
 
@@ -174,7 +174,7 @@ class EditLease extends Component {
                 case 'term':
                     const termInitial = {
                         section: 'term',
-                        started_at: data.started_at ? moment(data.started_at.date) : moment.now(),
+                        started_at: data.started_at ? moment(data.started_at.date).format('DD MMMM YYYY') : moment.now(),
                         move_in_fee: data.move_in_fee,
                         late_rent_fee: data.late_rent_fee,
                         rent_amount: data.rent_amount,
@@ -185,7 +185,7 @@ class EditLease extends Component {
 
                     const termPresent = {
                         section: 'term',
-                        started_at: data.started_at ? moment(data.started_at.date) : moment.now(),
+                        started_at: data.started_at ? moment(data.started_at.date).format('DD MMMM YYYY') : moment.now(),
                         move_in_fee: data.move_in_fee,
                         late_rent_fee: data.late_rent_fee,
                         rent_amount: data.rent_amount,
@@ -354,6 +354,10 @@ function TableOfContent(props) {
     );
 }
 
+
+EditLease.propTypes = {
+    showAlert: PropTypes.func,
+}
 
 EditLease.contextTypes = {
     router: PropTypes.object.isRequired,

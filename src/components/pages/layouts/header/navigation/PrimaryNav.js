@@ -11,7 +11,7 @@ import {Icon} from 'antd';
  class PrimaryNav extends Component{
      logout(e) {
          e.preventDefault();
-         this.props.logout();
+         this.props.logout(status=>this.context.router.history.replace('/'));
      }
     constructor(props){
         super(props)
@@ -72,6 +72,10 @@ import {Icon} from 'antd';
 
 PrimaryNav.propTypes={
      logout: PropTypes.func.isRequired
+}
+
+PrimaryNav.contextTypes = {
+     router: PropTypes.object,
 }
 
 function matchStateToProps(state){

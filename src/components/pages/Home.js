@@ -83,10 +83,10 @@ componentDidMount (){
         return(
 
             <div className="home-mainbody t-flex t-align-content-stretch t-fullwidth  t-flex-column">
-                <Helmet>
+                {/*<Helmet>
                     <link href="http://localhost:3000/CSS/tenant.css" rel="stylesheet" type="text/css"/>
                     <link href="http://localhost:3000/CSS/home.css" rel="stylesheet" type="text/css"/>
-                </Helmet>
+                </Helmet>*/}
                 <PrimaryNav/>
                 { /*<div  className="home-second-div t-flex t-justify-space-between t-align-center  t-flex-row nav-pad-left-right ">
                     <div className="t-flex t-justify-right t-align-center t-fullheight  ">

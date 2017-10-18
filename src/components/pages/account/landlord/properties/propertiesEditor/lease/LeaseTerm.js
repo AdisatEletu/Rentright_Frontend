@@ -35,7 +35,7 @@ class LeaseTerm extends Component {
                 <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Start Date<span className="red-text">*</span></div>
                     <div className="input-field col s6">
-                        <input className={'right-align date_picker'} name={'start_date'} id="start_date" defaultValue={moment(this.props.term.started_at).format('DD MMMM YYYY')}/>
+                        <input className={'right-align date_picker'} name={'start_date'} id="start_date" defaultValue={this.props.term.started_at}/>
                     </div>
                 </div>
                 <div className="row">

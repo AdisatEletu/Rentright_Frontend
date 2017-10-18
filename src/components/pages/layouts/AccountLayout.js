@@ -35,14 +35,6 @@ class AccountLayout extends Component {
                         <div className="child" style={{paddingLeft: '300px' ,paddingTop: '120px', paddingBottom:'60px'}}>
                             {this.props.children}
                         </div>
-                        <div className="fixed-action-btn horizontal">
-                            <a className="btn-floating btn-large secondary-color">
-                                <i className="large material-icons">info_outline</i>
-                            </a>
-                            <ul>
-                                <li><a className="btn-floating red tooltipped" data-position="top" data-delay="20" data-tooltip="Help"><i className="fa fa-question-circle-o"/></a></li>
-                            </ul>
-                        </div>
                     </div>
                 </main>
                 {/*<AccountFooter/>*/}

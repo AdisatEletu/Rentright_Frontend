@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Input} from 'react-materialize';
+import {connect} from 'react-redux';
 
 class LeaseContact extends Component {
 
@@ -22,26 +22,26 @@ class LeaseContact extends Component {
                 <div className="row">
                     <div className="input-field col s6">
                         <input id="first_name" name="first_name" type="text" className="validate"
-                               value={""} onChange={this.props.onChange}/>
+                               value={this.props.user.first_name} onChange={this.props.onChange}/>
                         <label htmlFor="first_name" className="active">First Name</label>
                     </div>
                     <div className="input-field col s6">
                         <input id="last_name" type="text" name="last_name" className="validate"
-                               value={""} onChange={this.props.onChange}/>
+                               value={this.props.user.last_name} onChange={this.props.onChange}/>
                         <label htmlFor="last_name" className="active">Last Name</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
                         <input id="email" type="email" name="email" className="validate"
-                               value={""} onChange={this.props.onChange}/>
+                               value={this.props.user.email} onChange={this.props.onChange}/>
                         <label htmlFor="email" className="active">Email</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
                         <input id="phone_number" type="text" name="phone_number" className="validate"
-                               value={""} onChange={this.props.onChange}/>
+                               value={this.props.user.phone_number} onChange={this.props.onChange}/>
                         <label htmlFor="phone_number" className="active">Phone Number</label>
                     </div>
                 </div><br/>
@@ -58,29 +58,42 @@ class LeaseContact extends Component {
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                        <input id="city" type="text" name="city" className="validate"
+                        <input id="city" type="text" name="city"
                                value={""} onChange={this.props.onChange}/>
                         <label htmlFor="city" className="active">City</label>
                     </div>
                 </div>
                 <div className="row">
-                    <Input s={12} m={6} type='select' label="State" name={'state'} defaultValue='1' onChange={this.props.onChange}>
-                        <option value='1'>Lagos</option>
-                    </Input>
-                    <Input s={12} m={6} type='select' label="Country" name={'country'} defaultValue='1' onChange={this.props.onChange}>
-                        <option value='1'>Nigeria</option>
-                    </Input>
-                </div><br/>
+                    <div className="input-field col s12 m6">
+                    <select id={'state'} name={'state'} defaultValue='lagos' onChange={this.props.onChange}>
+                        <option value='lagos'>Lagos</option>
+                    </select>
+                        <label className={'active'} htmlFor={'state'}>City</label>
+                    </div>
+
+                    <div className="input-field col s12 m6">
+                    <select id={'country'} name={'country'} defaultValue='nigeria' onChange={this.props.onChange}>
+                        <option value='Nigeria'>Nigeria</option>
+                    </select>
+
+                        <label className={'active'} htmlFor={'country'}>City</label>
+                    </div>
+                </div>
             </div>
         );
     }
 
 }
 
-LeaseContact.propTypes = {
-    contact: PropTypes.object,
-    onChange: PropTypes.func,
+function mapStateToProps(state){
+    return {
+        user: state.user.auth.user
+    }
 }
 
-export default LeaseContact;
+LeaseContact.propTypes = {
+    user: PropTypes.object,
+}
+
+export default connect(mapStateToProps) (LeaseContact);
 

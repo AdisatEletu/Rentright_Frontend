@@ -26,8 +26,9 @@ export function getAllLease(params,callback) {
 }
 
 export function updateLease(params,callback){
-    axios.patch(updateLease(params.lease_uuid),params).then(
-        res => {
+
+    axios.patch(updateLeaseUrl(params.lease_uuid),params).then(
+        (res) => {
             const {data} = res.data;
             data['section'] = params.section;
             callback(true,data);
