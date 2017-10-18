@@ -238,7 +238,7 @@ const  dateFormat = 'YYYY-MM-DD';
   return (
  this.state.unit  ? 
 <div className = "t-fullheight t-md-10" style = {{marginTop:'-2%'}}>
-<div className= "t-full-height t-md-75">
+<div className= "t-full-height t-md-10">
 <div className = "cwall under">
 <div className = "t-flex zoomeffect wallpaper"   style = {{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+this.state.unit.unit_images[1].id+ ")"}}>
 <div className = "wallpapercover opacityeffect">
@@ -288,9 +288,7 @@ const  dateFormat = 'YYYY-MM-DD';
   </div>
      {this.state.showModal ? <Agreement_modal hideModal = {this.hideModal}/> :null}
 </div>
-<div className = "t-md-2 t-fullheight">
-      <Advert/>
-</div>
+
 </div> 
   :
   null
