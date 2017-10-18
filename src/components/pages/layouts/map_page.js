@@ -62,7 +62,7 @@ class MapPage extends Component{
     }
 
 componentDidMount(){ 
-this.queryForPromotions();
+
 GoogleMapsLoader.onLoad(function(google) {
 	console.log('I just loaded google maps api');
 });
@@ -142,9 +142,14 @@ transitionOut(){
         }, 50); 
     }); 
 }
+componentWillMount(){
+    this.queryForPromotions();
+}
   queryForPromotions(){
     this.setState({promoted:{loading:true, error:false, results:undefined}})
+    setTimeout( ()=>{
     let api_path =this.context.router.route.match.params.param;
+    console.log(api_path)
     this.setState({ path:api_path})
     let api = new apiActions(pageurl);
     api.geturl(api_path, false).then((data)=>{
@@ -170,6 +175,7 @@ transitionOut(){
       console.log(err)
       this.setState({promoted:{loading:false, error:true, results:undefined}});
     })  
+    },300)
     
 
   }
@@ -205,9 +211,9 @@ hideModal(){
     <div className = "map-container">
     <div className = "map-header" style = {this.state.promoted.loading ? styles : null}>
         <div className = "map-left-logo map-br">
-            <div className = "map-logo">
+            <NavLink to ="/" className = "map-logo">
 
-            </div>
+            </NavLink>
             </div>
 <div className = "map-section map-br"  style = {this.state.promoted.loading ? styles : null}>
     <Icon type = "environment"/>

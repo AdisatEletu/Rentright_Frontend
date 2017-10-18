@@ -545,12 +545,20 @@ console.log(this.state.states)
    } 
   queryForApplications(api_path){
       this.setState({query:{loading:true, error:false,results:undefined}});
+      let newurl = ""
       let url = "https://rentright.herokuapp.com/api/rentright/units/query/?"
+      newurl =  api_path;
+      console.log(newurl, "new url ")
+      if (newurl == ""){
+        this.props.transmit("all=true")  
+      }
+      this.props.transmit(newurl) 
       let api = new apiActions(url);
       this.isLoading();
       api.geturl(api_path, false).then((data)=>{   
           this.isNotLoading();  
-          this.props.transmit({results:data.results});      
+          //this.props.transmit({results:data.results});   
+          this.props.transmit(newurl)   
       }).catch((err)=>{
         console.log(err)
            this.isNotLoading(); 
@@ -565,8 +573,7 @@ console.log(this.state.states)
     if (this.state.states !== {}) {
       let path = ""
       let keys = Object.keys(this.state.states)
-      let lis = keys.map((item)=>{
-        console.log(item)
+      let lis = keys.map((item)=>{       
         if (path == ""){
           path = item + "="+this.state.states[item];
         }else{
@@ -574,8 +581,10 @@ console.log(this.state.states)
         }   
       this.setState({showModal:false, states:{}});       
       })
-       path += "&" +"uuid="+this.props.uuid;
+      // path += "&" +"uuid="+this.props.uuid;
       this.queryForApplications(path);
+    }else{
+     this.queryForApplications("");   
     }
 
   }
