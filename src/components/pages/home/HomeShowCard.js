@@ -84,6 +84,10 @@ class HomeShowCard extends Component{
                         </div>
                     </div>
                     <div className="new-props-hr t-md-10 t-flex"/>
+
+
+
+
                     <div className="home-unit-attributes t-flex t-md-10 t-justify-space-between proxima">
 
                         <div className="home-sizes t-md-7 t-flex t-justify-space-between t-align-content-space-between">
