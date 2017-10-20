@@ -68,7 +68,7 @@ class FeaturedProperty extends Component {
                     </div>
                 </div>
                 <div
-                    className="home-ad-info t-flex t-fullheight t-md-5 t-flex t-align-space-between t-flex-column">
+                    className="home-ad-info t-flex t-fullheight t-md-5 t-flex t-align-space-between t-justify-space-between t-flex-column">
                     <div className="ad-info-address t-md-10"> {unit.address.address.address}
                     </div>
                     <div className="ad-proptype t-flex t-md-10">{unit.unit_type}</div>
