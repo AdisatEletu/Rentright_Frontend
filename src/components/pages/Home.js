@@ -7,7 +7,7 @@ import HomeSearch from "./HomeSearch";
 import {Icon} from 'antd'
 import HomeShowCard from "./home/HomeShowCard";
 import FeaturedProperty from "./home/FeaturedProperty";
-
+import {info} from "./home/Info";
 
 export default class NewHome extends Component {
     constructor(props) {
@@ -196,11 +196,10 @@ export default class NewHome extends Component {
                                     </div>
                                     <div
                                         className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo">
-                                        List Your Property
+                                        {info.list}
                                     </div>
                                     <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima line-clamp">
-                                        Create a listing in few minutes and Reach out to thousands of tenants by listing
-                                        your property on this platform
+                                        {info.listText}
                                     </div>
                                 </div>
                                 <div
@@ -209,9 +208,9 @@ export default class NewHome extends Component {
                                         className="t-md-10 home-outer-div-icon t-flex t-align-center t-justify-center t-center-f ">
                                         <span><i className="material-icons home-icon-central">thumb_up</i></span>
                                     </div>
-                                    <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo">Manage Property</div>
+                                    <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo">{info.managePropertyheader}</div>
                                     <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima">
-                                        It is fun and easy to rent or list a property using RentRight.
+                                        {info.managePropertybx}
                                     </div>
                                 </div>
                                 <div
@@ -222,10 +221,10 @@ export default class NewHome extends Component {
                                     </div>
                                     <div
                                         className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo">
-                                        Exclusive Offers
+                                        {info.exclusive}
                                     </div>
                                     <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima">
-                                        It is fun and easy to rent or list a property using RentRight.
+                                        {info.exclusiveText}
                                     </div>
                                 </div>
                                 <div
@@ -236,10 +235,10 @@ export default class NewHome extends Component {
                                     </div>
                                     <div
                                         className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo">
-                                        Happy Clients
+                                        {info.happy}
                                     </div>
                                     <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima">
-                                        It is fun and easy to rent or list a property using RentRight.
+                                        {info.happyText}
                                     </div>
                                 </div>
                             </div>
@@ -247,8 +246,8 @@ export default class NewHome extends Component {
                     </div>
                     <div
                         className="home-fifth-div t-flex nav-pad-left-right t-md-10 t-justify-center t-align-center t-flex-column">
-                        <div className="home-rent-ad t-flex t-center-f t-align-center t-justify-center museo"> Best
-                            Featured Offer
+                        <div className="home-rent-ad t-flex t-center-f t-align-center t-justify-center museo">
+                            {info.feature}
                         </div>
                         <div className=" t-flex t-align-center t-md-10 t-justify-center home-hr-super">
                             <div className="t-flex t-md-4 t-justify-center t-fullheight home-t-hr-cover">
@@ -257,8 +256,7 @@ export default class NewHome extends Component {
                         </div>
                         <div
                             className="home-rent-ad-details t-flex t-center-f t-md-7 t-align-center t-justify-center proxima">
-                            This is the best featured offer based on your location and your searches, sign in to see
-                            more of these offers.
+                            {info.featureText}
                         </div>
                     </div>
 
@@ -269,7 +267,7 @@ export default class NewHome extends Component {
 
                     <div className="home-agents-div t-flex t-md-10">
                         <div className="home-agents-details t-flex  t-md-5 t-flex-column t-justify-space-around">
-                            <div className="home-agent-header t-flex t-justify-right t-right-f t-flex-column" >Tenants and Landlords all over the nation trust us with their personal information
+                            <div className="home-agent-header t-flex t-justify-right t-right-f t-flex-column" >{info.melin}
 
                                 <div className=" t-flex t-md-10 t-justify-right home-hr-super2">
                                     <div className="t-flex t-md-3 t-justify-right t-fullheight home-t-hr-cover2">
@@ -281,68 +279,33 @@ export default class NewHome extends Component {
                             <div className="home-tl t-md-10 t-flex t-justify-space-between ">
                                 <div className="home-trusted-box t-flex t-flex-column t-md-32 t-justify-space-around ">
                                     <Icon type="check-circle-o" className="home-trusted-icon"/>
-                                    <div className="home-trusted-header t-center-f">Secured </div>
+                                    <div className="home-trusted-header t-center-f">{info.secure}</div>
                                     <div className="home-box-body t-center-f ">
-                                        Your personal information is encrypted with 128-bit, bank-level SSL encryption.
+                                        {info.text}
                                     </div>
                                 </div>
                                 <div className="home-trusted-box t-flex t-flex-column t-md-32 t-justify-space-around ">
                                     <Icon type="clock-circle-o" className="home-trusted-icon" />
-                                    <div className="home-trusted-header t-center-f">Monitored</div>
+                                    <div className="home-trusted-header t-center-f">{info.monitored}</div>
                                     <div className="home-box-body t-center-f ">
-                                        Our servers are automatically on check 24hrs and 99.7% uptime is assured.
+                                        {info.monitoredText}
                                     </div>
                                 </div>
                                 <div className="home-trusted-box t-flex t-flex-column t-md-32 t-justify-space-around ">
                                     <Icon type="lock" className="home-trusted-icon"/>
-                                    <div className="home-trusted-header t-center-f">Private </div>
-                                    <div className="home-box-body t-center-f ">
-                                        Your information is highly confidential, we only display the information you want public.
+                                    <div className="home-trusted-header t-center-f">{info.private}</div>
+                                    <div className="home-box-body t-center-f ">{info.privateText}
                                     </div>
                                 </div>
 
                             </div>
 
-                            { /*    <div className="home-agents-info t-flex t-md-10 t-justify-right t-center-f ">
-
-                            </div>
-                             <div className="home-agents-contact  t-flex t-md-10">
-
-
-                                <div className="home-agents-holder1 t-flex  t-md-5 ">
-                                    <div className="home-agents-pics1 t-flex t-justify-left t-md-4 ">
-
-                                    </div>
-                                    <div className="t-flex home-agent-phone-name t-md-6 t-flex-column">
-                                        <div className="home-agents-name t-flex t-md-10">Dee Newton</div>
-                                        <div className="home-agents-phone t-flex t-md-10 t-justify-space-between"><i
-                                            className="fa fa-phone t-md-1"/><span
-                                            className="t-md-9">+234 802 2231 719</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="home-agents-holder2 t-flex  t-md-5 ">
-                                    <div className="home-agents-pics2 t-flex t-justify-right t-md-4 ">
-
-                                    </div>
-                                    <div className="t-flex home-agent-phone-name1 t-md-6 t-flex-column">
-                                        <div className="home-agents-name t-flex t-md-10">Helen Green
-                                        </div>
-                                        <div className="home-agents-phone t-flex t-md-10 "><i
-                                            className="fa fa-phone t-md-1"/> <span
-                                            className="t-md-9">+234 802 2231 719</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  */}
                         </div>
                         <div className="home-agents-picture t-flex  t-md-5"/>
                     </div>
                     <div
                         className="home-newest-offer-div t-flex nav-pad-left-right t-md-10 t-justify-center t-align-center t-flex-column ">
-                        <div className="home-newest-header t-flex t-center-f t-align-center t-justify-center"> Newest
-                            Offer
+                        <div className="home-newest-header t-flex t-center-f t-align-center t-justify-center"> {info.newestHeader}
                         </div>
                         <div className=" t-flex t-align-center t-md-10 t-justify-center home-hr-super3">
                             <div className="t-flex t-md-4 t-justify-center t-fullheight home-t-hr-cover3">
@@ -350,7 +313,8 @@ export default class NewHome extends Component {
                             </div>
                         </div>
                         <div className="home-newest-details t-center-f t-align-center t-justify-center t-md-7">
-                            Thousands of landlords list their properties on RentRight, these are some of the newest offer of properties on the plaform based on your searches and location
+                            {info.newestDetails}
+
                         </div>
                     </div>
                     <div
@@ -362,24 +326,22 @@ export default class NewHome extends Component {
                         <div className="home-testimonial-cover t-flex t-fullheight t-fullwidth">
                             <div
                                 className="home-testimonial-text-holder t-fullheight t-flex t-justify-center t-flex-column t-md-10  t-align-center">
-                                <div className="home-tes t-flex t-md-8 t-justify-center "> Testimonials</div>
-                                <div className="home-tes2 t-flex t-md-7 t-justify-center"> We're Proud of Our Work</div>
+                                <div className="home-tes t-flex t-md-8 t-justify-center "> {info.testimonial}</div>
+                                <div className="home-tes2 t-flex t-md-7 t-justify-center"> {info.proud }</div>
                                 <div className=" t-flex t-align-center t-md-5 t-justify-center home-hr-super">
                                     <div className="t-flex t-md-4 t-justify-center t-fullheight home-t-hr-cover">
                                         <div className="t-hr t-md-2 t-fullheight"/>
                                     </div>
                                 </div>
-                                <div className="home-tes3 t-flex t-md-4 t-center-f t-justify-center">If you are looking
-                                    for a place for your property to be taken care of
-                                    you are right here. Amazed by the professionalism and attitude to the client.
-                                    Highly recommended.
+                                <div className="home-tes3 t-flex t-md-4 t-center-f t-justify-center">
+                                    {info.testimonialQuote}
                                 </div>
                                 <div className="home-tes-picture-holder t-flex t-md-6 t-justify-center t-align-center">
                                     <div className="t-justify-space-between t-flex r-h t-md-2">
                                         <div className="home-tes-picture t-flex t-md-10 t-justify-left"/>
                                         <div className="home-tes-dts t-flex t-flex-column t-justify-center">
-                                            <div className="home-tes-name t-flex t-justify-center"> Adeola Abioye</div>
-                                            <span className="home-tes-prof t-flex "> Laywer</span></div>
+                                            <div className="home-tes-name t-flex t-justify-center"> {info.testimonialname}</div>
+                                            <span className="home-tes-prof t-flex "> {info.testimonialOccupation}</span></div>
                                     </div>
                                 </div>
                                 <div className="home-carousel t-flex t-md-05 t-justify-space-between">
@@ -393,20 +355,15 @@ export default class NewHome extends Component {
                     <div className="home-contact-us-div t-flex t-md-10 t-flex-column ">
                         <div
                             className="home-contact-us-holder t-fullheight t-flex t-md-10 t-flex-column nav-pad-left-right">
-                            <div className="contactus t-flex t-center-f t-justify-center"> Everything you need in one
-                                place
+                            <div className="contactus t-flex t-center-f t-justify-center"> {info.everything}
                             </div>
                             <div className="home-sub-text t-flex t-center-f t-justify-center "
                                  style={{marginBottom: '20px'}}>
-                                Managing your rental property is easier when everything is in one place.
-                                Property listings, tenant screening, leasing, rent collection and even maintenance
-                                tracking all on one screen.
+                                {info.manageProperty}
                             </div>
-                            <div className=" t-flex t-justify-center t-md-10"><span className="home-imgg"></span></div>
+                            <div className=" t-flex t-justify-center t-md-10"><span className="home-imgg"/></div>
                             <div className="home-sub-text t-flex t-center-f t-justify-center "
-                                 style={{marginTop: '20px'}}>All the tools you need, designed specifically
-                                for do-it-yourself landlords. With our online landlord software,
-                                you can manage your property in just clicks and not hours!
+                                 style={{marginTop: '20px'}}>{info.tools}
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
  * Created by Adisat on 29/09/2017.
  */
 import React,{Component} from 'react';
-import {connect} from 'react-redux';
+import {info} from "./home/Info";
 import   fetch from 'isomorphic-fetch';
 import {Switch,Route} from 'react-router-dom';
 
@@ -93,10 +93,10 @@ componentDidMount(){
                 <div className="home-search2 t-flex t-md-6 t-flex-column t-justify-space-around">
 
                     <div className="home-search-header t-md-10 museo">
-                        Find Properties
+                        {info.findProperty}
                     </div>
                     <div className="home-search-des t-md-10 proxima">
-                        Explore properties that suits your Personality on RentRight
+                        {info.explore}
                     </div>
 
 
