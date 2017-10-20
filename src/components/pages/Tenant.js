@@ -17,7 +17,8 @@ import {NavLink} from "react-router-dom";
 import BioForm from "./layouts/BioForm";
 import TenantApplications from "./layouts/tenantApplications";
 import TenantApplicationsDetail from "./layouts/tenantApplicationsDetail";
-import ApplicationOverview from "./layouts//ApplicationsComponents/ApplicationOverview";
+import ApplicationOverview from "./layouts/ApplicationsComponents/ApplicationOverview";
+import ProfileConfirm from "./layouts/ApplicationsComponents/ProfileConfirm";
 import TenantNav from "./tenantlayouts/durables/basic/tenant_nav";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";  
@@ -73,8 +74,8 @@ loadprofile = ()=>{
           <div className = "t-left t-gray  t-flex  t-align-content-space-between t-right-bx t-right-bx t-flex-column">
       
           <div className = "t-justify-left t-flex">
-            <div className = "t-flex-2 t-contain m-logo ">                
-            </div>
+            <NavLink to = "/" className = "t-flex-2 t-contain m-logo ">                
+            </NavLink>
          </div>
 
          <div className = " t-justify-center t-flex">   
@@ -112,7 +113,7 @@ loadprofile = ()=>{
 
         <div  className = "t-dash t-flex  t-align-center t-flex-column">
             <Switch>
-              <Route  exact path="/tenant"  component={TenantProfile}/>
+              <Route  path="/tenant/profile"  component={TenantProfile}/>
               <Route  exact path="/tenant/profile/generalinfo/:id"  component={GeneralForm}/>       
               <Route  exact path="/tenant/profile/bioinfo/:id"  component={BioForm}/>     
               <Route  exact path="/tenant/profile/residentialinfo/:id"  component={ResidentialForm}/>   
@@ -124,7 +125,7 @@ loadprofile = ()=>{
               <Route  path="/tenant/profilepicture/:id"  component={ImageUpdate}/> 
               <Route exact path="/tenant/applications/:id/:address/:uuid"  component={ TenantApplicationsDetail}/>  
                <Route exact path="/tenant/applications/:id/:address/:uuid/overview"  component={ ApplicationOverview}/>  
-             
+               <Route exact path="/tenant/confirmprofile/:id/:address/:uuid/overview"  component={ ProfileConfirm}/>  
           
              
                   

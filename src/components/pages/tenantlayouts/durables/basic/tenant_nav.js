@@ -17,9 +17,9 @@ return (
    <div className = "t-nav">
      <div className = "p-nav-container">
      <div className = "p-signature">Rent-Right</div>  
-     <NavLink to  = "/" className = "curved t-flex t-justify-left t-flex-row p-curved-serach ">
+     <div className = "curved t-flex t-justify-left t-flex-row p-curved-serach ">
        <Icon style = {{color:'rgba(255,255,255,0.2)', fontSize:'20px', lineHeight:'35px', marginRight:'20px'}} type = "search"/><input type = "text" placeholder = "Search ..."/>
-       </NavLink>      
+       </div>      
         <div className = "p-links-hold t-justify-right">       
         <div className = "p-package t-flex t-justify-left">
          <div className ="curved-white">Invite A Friend</div>

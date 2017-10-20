@@ -209,7 +209,9 @@ export default class NewHome extends Component {
                                         className="t-md-10 home-outer-div-icon t-flex t-align-center t-justify-center t-center-f ">
                                         <span><i className="material-icons home-icon-central">thumb_up</i></span>
                                     </div>
-                                    <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo"/>
+                                    <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo">
+                                        Find A Home
+                                        </div>
                                     <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima">
                                         It is fun and easy to rent or list a property using RentRight.
                                     </div>

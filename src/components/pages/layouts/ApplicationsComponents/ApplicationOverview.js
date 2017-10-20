@@ -8,7 +8,10 @@ import { loadAllTenants, loadSpecificTenant,post_my_application,
       load_my_query, load_my_applications,
         sendSocketPost,patchSpecificTenant, deleteSpecificTenant,
         showLoading, getFormStruct, hideLoading, errorLoading,
-         breakFormToComponents,  getProfileStruct  } from '../../../../state/actions/tenantAction';
+         breakFormToComponents,  getProfileStruct,         
+         setCurrentApplicationFunc, setCurrentUnitFunc   
+        
+        } from '../../../../state/actions/tenantAction';
 import ProfileContent from '../../tenantlayouts/profile_content';
 import {Modal, Button , Col,AutoComplete,Cascader, notification, Slider, Row , LocaleProvider ,InputNumber, Icon, DatePicker ,  Select,Switch, Progress,  Input ,Radio} from 'antd';
 import moment from 'moment';
@@ -74,7 +77,7 @@ const  dateFormat = 'YYYY-MM-DD';
         if (this.props.myApplications.length !== 0){
              checkApp = this.props.myApplications.findIndex( i => i.units == unit_uuid); 
 
-  }else{  
+       }else{  
      checkApp = -1;
     }
     if( checkApp && checkApp !== -1) {
@@ -90,6 +93,7 @@ const  dateFormat = 'YYYY-MM-DD';
 
     }).catch ((err) =>{
         this.runLoadQuery(unit_uuid);
+        this.props.setActiveApp({none:true, count:0})
     })   
         
      }
@@ -105,7 +109,7 @@ const  dateFormat = 'YYYY-MM-DD';
     if ( this.props.queryResult.results) {       
      this.setState ({unit: this.props.queryResult.results.units[0], loading:false }, ()=>{
      if (this.state.unit){
-     
+       this.props.setActiveUnit(this.state.unit);     
       }; 
 
     })
@@ -245,25 +249,42 @@ const  dateFormat = 'YYYY-MM-DD';
   <div className = "kings">
   <div className = "westeros"><span>{this.state.unit.unit_type.replace('_', ' ' )}</span><span>{ this.state.unit.bedrooms + " bedrooms"}</span></div>
   <div className = "knight">
-  <div className = "wallh1">{this.state.unit.title}</div>
+  <div className = "wallh1 line-clamp2">{this.state.unit.title}</div>
   </div>
   </div>
-<div className = "watch t-flex t-align-top t-justify-right">
+<div className = "watch t-flex t-align-top">
+  {
+    this.props.activeApplication  && ! this.props.activeApplication.none
+    ?
+  <div className = "whitewalkers">
+    <div className = "kingslanding-top t-flex t-flex-column t-justify-center">
+      <span className = "thinlanisters">Applied </span>
+      <span className = "deeplanisters"> &#8358; { this.state.unit.monthly_rent.toLocaleString('en') }</span>
+      </div>
+     <div className = "kingslanding-mid t-flex t-justify-center"><span className = "deeplanisters smx">Status <span className = "thinlanisters smx">{!this.state.unit.status ? "Available": "Occupied"}</span></span> </div>
+      <div className = "kingslanding-bottom t-flex t-align-center t-justify-center"><span className = "lanisters lgx">Application</span></div>
+  </div>
+  :
   <div className = "whitewalkers">
     <div className = "kingslanding-top t-flex t-flex-column t-justify-center">
       <span className = "thinlanisters">Monthly Price</span>
-      <span className = "deeplanisters"> {"N " + this.state.unit.monthly_rent }</span>
+      <span className = "deeplanisters">  &#8358; {this.state.unit.monthly_rent.toLocaleString('en') }</span>
       </div>
-     <div className = "kingslanding-mid t-flex t-justify-center"><span className = "deeplanisters smx">Status <span className = "thinlanisters smx">Application Sent</span></span> </div>
-      <div className = "kingslanding-bottom t-flex t-align-center t-justify-center"><span className = "lanisters lgx">Application</span></div>
+     <div className = "kingslanding-mid t-flex t-justify-center"><span className = "deeplanisters smx">Status <span className = "thinlanisters smx">{!this.state.unit.status ? "  Available": "Occupied"}</span></span> </div>
+      <NavLink className = "kingslanding-bottom t-flex t-align-center t-justify-center"
+       to = {  "/tenant/confirmprofile/"+this.props.auth.user.uuid+"/"+this.state.unit.address.address.address+"/"+ this.state.unit.id }
+      ><span className = "lanisters lgx">Apply</span></NavLink>
   </div>
+
+  }
 </div>
 </div>
 </div>
 </div>
 <div className = "t-flex t-flex-row t-md-10">
-<div className = "midpictures upeffect">
-  { this.state.unit.unit_images.map((obj, ind)=>{
+<div className = "midpictures upeffect t-flex-column ">
+  <div className = "t-md-10 t-flex t-flex-row">
+  { this.state.unit.unit_images.slice(0,4).map((obj, ind)=>{
     return(
     <div className = "pictures-got" key = {ind} style = {{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+ obj.id}}>
     <div className = "wallpapercover"></div>
@@ -271,7 +292,13 @@ const  dateFormat = 'YYYY-MM-DD';
     )
   })
 
-  }  
+  } 
+  </div>
+  <div className = "k-text-box">
+    <div className = "k-t-h1">{this.state.unit.address.address.address}</div>
+    <div className = "k-t-pre">{this.state.unit.unit_type.replace('_', " ")}</div>
+    <div className = "k-t-p">{this.state.unit.title} {this.state.unit.description}</div>
+    </div> 
   </div>  
   <div className = "middialog upeffect"> 
       <div className = "whitewalkers iconify">
@@ -285,7 +312,26 @@ const  dateFormat = 'YYYY-MM-DD';
   </div>
 
   </div>
+
   </div>
+  <div className = "t-flex-row t-flex t-md-10">
+    <div className = "kings-left amen">
+      <div className = "amenity t-flex-wrap">
+        <div className = "t-md-10 ktk"> Amenities</div>
+        { 
+          this.state.unit.unit_facilities ?
+         this.state.unit.unit_facilities.map ((item, index)=>{
+         return(      
+          <div key = {index} className = "amenrow"><Icon type = "gift"/><span>{item.name.replace('_', " ")}</span></div>
+         )
+        })
+        :
+        null
+        }
+       </div>
+       </div>
+    </div>
+
      {this.state.showModal ? <Agreement_modal hideModal = {this.hideModal}/> :null}
 </div>
 
@@ -320,7 +366,7 @@ function matchStateToProps(state){
         myApplications: state.applications_result,
         applicationsPost: state.tenant_post_applications,   
         activeUnit: state.ApplicationDetails.currentUnit,
-        activeApplication: state.ApplicationDetails.currentApplication
+        activeApplication: state.ApplicationDetailsApp.currentApplication
   
  
     }      
@@ -339,7 +385,9 @@ function mapDispatchToProps(dispatch) {
     loadMyQuery: load_my_query,
     loadMyApplications: load_my_applications,
     post_my_application:post_my_application,
-    sendSocketPost:sendSocketPost
+    sendSocketPost:sendSocketPost,
+    setActiveUnit : setCurrentUnitFunc,
+    setActiveApp : setCurrentApplicationFunc,
   }, dispatch);
 }
 

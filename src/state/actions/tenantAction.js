@@ -174,6 +174,7 @@ export function setCurrentUnitFunc(unit){
   })
 }
 export function setCurrentApplicationFunc(app){
+  console.log(app)
   return ((dispatch)=>{
    dispatch(setCurrentApplication(app));     
   })
@@ -320,7 +321,7 @@ export function deleteSpecificTenant(path,obj) {
 }
 
 export function load_my_applications_success(applications){
-  console.log(applications.results.results)
+
   return  {type: types.TENANT_APPLICATIONS_LOAD, applications:applications.results.results }
   
 }
