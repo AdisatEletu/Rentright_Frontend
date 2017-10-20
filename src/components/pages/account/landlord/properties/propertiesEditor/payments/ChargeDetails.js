@@ -137,7 +137,7 @@ class ChargeDetails extends Component {
                                     <h5><b>You haven't added a bank account.</b></h5>
                                     You must successfully add at least one bank account to accept payments online.
                                     <Link to={'/landlord/account'}
-                                          className={'waves-effect waves-light btn block white-text d-mrgn-top'}>Add
+                                          className={'d-button block green darken-4 white-text'}>Add
                                         bank account</Link>
                                 </div>
                             </div>

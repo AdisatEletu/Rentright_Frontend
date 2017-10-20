@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Clause} from "../Lease";
 import PropTypes from 'prop-types';
+import shortid from "shortid";
 
 class LandlordCovenant extends Component {
 
@@ -9,7 +10,7 @@ class LandlordCovenant extends Component {
             <div id="lease-clause">
                 <h2 className="fs-title"><b>Landlord Covenants</b></h2>
                 <h3 className="fs-subtitle">These standard covenants apply to this lease based on what you've told us.</h3><br/>
-                {this.props.covenants.map((covenant)=><Clause title={covenant.name} content={covenant.statement}/>)}
+                {this.props.covenants.map((covenant)=><Clause key={shortid.generate()} title={covenant.name} content={covenant.statement}/>)}
             </div>
         );
     }
@@ -17,7 +18,7 @@ class LandlordCovenant extends Component {
 }
 
 LandlordCovenant.propTypes ={
-    covenants: PropTypes.object,
+    covenants: PropTypes.array,
 }
 
 export default LandlordCovenant;

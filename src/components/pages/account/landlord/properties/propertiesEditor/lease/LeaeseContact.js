@@ -9,6 +9,10 @@ class LeaseContact extends Component {
         console.log(props)
     }
 
+    componentWillReceiveProps(nextProps){
+        console.log('new props',nextProps)
+    }
+
     render() {
         return (
             <div>
@@ -22,26 +26,26 @@ class LeaseContact extends Component {
                 <div className="row">
                     <div className="input-field col s6">
                         <input id="first_name" name="first_name" type="text" className="validate"
-                               value={this.props.user.first_name} onChange={this.props.onChange}/>
+                               value={this.props.user.first_name} readOnly={true}/>
                         <label htmlFor="first_name" className="active">First Name</label>
                     </div>
                     <div className="input-field col s6">
                         <input id="last_name" type="text" name="last_name" className="validate"
-                               value={this.props.user.last_name} onChange={this.props.onChange}/>
+                               value={this.props.user.last_name} readOnly={true}/>
                         <label htmlFor="last_name" className="active">Last Name</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
                         <input id="email" type="email" name="email" className="validate"
-                               value={this.props.user.email} onChange={this.props.onChange}/>
+                               value={this.props.user.email} readOnly={true}/>
                         <label htmlFor="email" className="active">Email</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
                         <input id="phone_number" type="text" name="phone_number" className="validate"
-                               value={this.props.user.phone_number} onChange={this.props.onChange}/>
+                               value={this.props.user.phone_number} readOnly={true}/>
                         <label htmlFor="phone_number" className="active">Phone Number</label>
                     </div>
                 </div><br/>
@@ -51,14 +55,14 @@ class LeaseContact extends Component {
 
                 <div className="row">
                     <div className="input-field col s12">
-                        <input id="street_address" type="text" name="street_address" className="validate"
+                        <input id="street_address" type="text" name="street_name" className="validate"
                                value={this.props.contact.street_name} onChange={this.props.onChange}/>
                         <label htmlFor="street_address" className="active">Street Address</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                        <input id="city" type="text" name="city"
+                        <input id="city" type="text" name="community"
                                value={this.props.contact.community} onChange={this.props.onChange}/>
                         <label htmlFor="city" className="active">City</label>
                     </div>

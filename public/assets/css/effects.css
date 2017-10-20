@@ -1151,6 +1151,42 @@ border-right: none !important;
     background-color: #f9a825 !important;
 }
 
+
+.LEDOC .LEDOCHD h4{
+    font-size: 35px;
+    font-weight: bold;
+    color: #424242;
+}
+
+.LEDOC .LEDOCHD h6{
+    font-size: 15px;
+    color: #757575;
+}
+
+.LEDOC .LEDOC-SEC{
+
+}
+
+.LEDOC-SEC .SECHD{
+padding-bottom: 10px;
+border-bottom: 1px solid #757575;
+margin-top: 25px;
+}
+
+.LEDOC-SEC .SECHD i{
+    margin-right: 10px;
+}
+
+.LEDOC-SEC .SECHD span{
+    font-size: 16pt;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.LEDOC-SEC .SECBD{
+    margin-top: 15px;
+}
+
 #root,
 .landlord,
 .application,
