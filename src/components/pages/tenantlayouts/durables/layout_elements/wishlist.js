@@ -24,6 +24,7 @@ export default class Wishlist extends Component{
         if (this.props.clicked) {
             this.props.clicked(context);
         }
+
     }
     likeAction(){
         this.setState({loading:true});
@@ -37,6 +38,7 @@ export default class Wishlist extends Component{
                 this.clicked(true);
                 this.setState({loading:false});
             }).catch((err)=>{
+                console.log(err)
                 this.setState({loading:false});
                 this.setState({wished:false});
             })
@@ -59,10 +61,11 @@ export default class Wishlist extends Component{
     }
     componentDidMount(){
         this.props.style ? this.setState({style:this.props.style}) : this.setState({style:{}})
-        let api = new apiActions("https://rentright.herokuapp.com/api/rentright/users/wishlist/list/")
-        let path = this.props.uuid ;
+        let api = new apiActions("https://rentright.herokuapp.com/api/rentright/users/wishlist/get/")
+                let path = this.props.uuid ;
         api.geturl(path,true).then((item)=>{
-            let liked = item.results.results;
+            console.log(item, 'new wishlist')
+            let liked = item.results;
             console.log(liked, 'liked def')
             console.log(liked.length, 'liked')
             if (liked.length > 0) {
