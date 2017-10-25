@@ -3,16 +3,37 @@
  */
 
 import React, {Component} from 'react';
-import {Icon} from "antd";
+import {Icon, notification} from "antd";
+import Wishlist from "../tenantlayouts/durables/layout_elements/wishlist";
+import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
+
 
 class FeaturedProperty extends Component {
     constructor(props){
         super(props);
-
+        this.clicked=this.clicked.bind(this)
         this.state = {
             unit: this.props.unit || {},
             index: 0,
         }
+
+    }
+
+
+
+    clicked(context) {
+       /* let message = ""
+        if (context) {
+            message = "You just liked a property, it has being added to your wishlist";
+        } else {
+            message = "You just unliked a property, it has being removed from your wishlist";
+        }
+        notification["success"]({
+            message,
+            description: "Your info has being updated"
+        })
+*/
     }
 
     navigate(action) {
@@ -56,8 +77,20 @@ class FeaturedProperty extends Component {
                     <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column t-align-content-space-between">
                         <div className="t-flex t-flex-row">
                             <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {unit.monthly_rent.toLocaleString('en')}</span>
-                        </div>
+                            <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center ">
+                                    {
+                                        this.props.auth.user.uuid ?
+                                            <Wishlist uuid = {this.props.auth.user.uuid}
+                                                      clicked = {this.clicked}
+                                                      unit_id = {unit.id}
+                                            />
+                                            :
+                                            <NavLink to = "sign-in"><Icon type="heart-o"/></NavLink>
 
+                                    }
+
+                                </span>
+                        </div>
 
                         <div className="t-flex t-justify-space-between e-a t-align-center t-fullheight  t-md-10">
                             <div className = "e-a-left " onClick = {()=>this.navigate('prev')}><Icon type = "left"/></div>
@@ -101,20 +134,44 @@ class FeaturedProperty extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="t-flex ad-view-offer t-flex-row t-md-10 t-justify-space-between ">
-                        <div
-                            className="ad-view-offer-btn t-flex t-flex column t-md-45 t-align-center t-justify-space-between">
-                            <span>View offer </span><i
-                            className="material-icons t-justify-right ">arrow_forward</i></div>
+                      <div className="t-flex ad-view-offer t-flex-row t-md-10 t-justify-space-between ">
+
+                            <NavLink
+                                to = {
+                                    this.props.auth.user.uuid ?
+                                        "tenant/applications/"+
+                                        this.props.auth.user.uuid+"/"+
+                                        unit.address.address.address +"/"+
+                                        unit.id+"/overview"
+
+
+                                        :
+                                        "/sign-in"
+                                }
+
+
+                                className="ad-view-offer-btn t-flex t-flex column t-md-45 t-align-center t-justify-space-between">
+
+                                <span>View offer </span>
+                                <i className="material-icons t-flex t-justify-right home-ad-icon ">arrow_forward</i></NavLink>
+
                         <div
                             className="ad-view-offer-btn2 t-flex t-flex column t-md-45 t-align-center t-justify-space-between">
-                            <span> Add to Favourite</span><i className="material-icons t-justify-right ">favorite</i>
+                            <span> Street View </span><i className="material-icons t-justify-right home-ad-icon ">streetview</i>
                         </div>
                     </div>
                 </div>
             </div>
         );
     }
+
+
 }
 
-export default FeaturedProperty;
+
+function matchStateToProps(state){
+    return {
+        auth:state.user.auth
+    }
+}
+    export default connect(matchStateToProps, {}) ( FeaturedProperty)

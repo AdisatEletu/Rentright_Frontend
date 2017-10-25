@@ -7,6 +7,7 @@ export const unitImageUrl = (id) => {return BASE_URL+'user/units/image/'+id};
 export const getApplication = (uuid) => {return BASE_URL+'user/units/'+uuid+'/applications'};
 export const acceptApplicationUrl = (uuid) => {return BASE_URL+'user/applications/'+uuid+'/accept'};
 
+
 export const getLeaseUrl = (uuid) => {return BASE_URL+'user/leases/'+uuid};
 export const getAllLeaseUrl = (uuid) => {return BASE_URL+'user/'+uuid+'/leases'};
 

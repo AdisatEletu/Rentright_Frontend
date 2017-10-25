@@ -16,7 +16,7 @@ class HomeShowCard extends Component{
         }
     }
     clicked(context){
-        let message = ""
+       /* let message = ""
         if (context){
            message = "You just liked a property, it has being added to your wishlist";
         }else{
@@ -26,7 +26,7 @@ class HomeShowCard extends Component{
             message,
             description: "Your info has being updated"
         })
-
+*/
     }
     navImage(action){
         const unit_images = [...this.state.unit.unit_images];
@@ -87,7 +87,7 @@ class HomeShowCard extends Component{
                                 <div className = "home-button-preshow"><NavLink
                                     to = {
                                         this.props.auth.user.uuid ?
-                                        "tenant/applications/"+
+                                            "tenant/applications/"+
                                     this.props.auth.user.uuid+"/"+
                                     unit.address.address.address +"/"+
                                     unit.id+"/overview"
