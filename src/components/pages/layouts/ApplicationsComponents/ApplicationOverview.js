@@ -17,6 +17,7 @@ import {Modal, Button , Col,AutoComplete,Cascader, notification, Slider, Row , L
 import moment from 'moment';
 import Agreement_modal  from '../Agreement_modal'
 import 'moment/locale/en-gb';
+import 'moment';
 import Advert from '../../tenantlayouts/advert'
 import enUS from 'antd/lib/locale-provider/en_US';
 import TenantModal from '../Tenant_Modal';
@@ -73,24 +74,25 @@ const  dateFormat = 'YYYY-MM-DD';
       console.log(tenant_id,address,unit_uuid, 'params')
       let checkApp;  
       this.setState({loading:true})
-      this.props.loadMyApplications(unit_uuid +'/').then((res)=>{
+      this.props.loadMyApplications(tenant_id +'/').then((res)=>{
+        console.log(this.props.myApplications.length, 'load my applications resoult is shown here')
         if (this.props.myApplications.length !== 0){
-             checkApp = this.props.myApplications.findIndex( i => i.units == unit_uuid); 
-
+             checkApp = parseInt(this.props.myApplications.findIndex( i => parseInt(i.units) == parseInt(unit_uuid))); 
+             console.log(checkApp, 'check app')
        }else{  
      checkApp = -1;
     }
-    if( checkApp && checkApp !== -1) {
-             this.props.setActiveApp(this.props.myApplication[checkApp])
-        }else{
-            this.props.setActiveApp({none:true, count:0})
-            }
+    if( checkApp >= 0) {
+      console.log( this.props.myApplications[checkApp], 'running this now')
+      this.props.setActiveApp(this.props.myApplications[checkApp])
+     }else{
+      this.props.setActiveApp({none:true, count:0})
+     }
     let obj2 = {};
-    obj2['application'] = checkApp !== -1 ? res[checkApp] : null;
+    obj2['application'] = checkApp >= 0 ? this.props.myApplications[checkApp] : null;
+    console.log(obj2['application'] , 'suspect');
     this.setState(obj2);
-     this.runLoadQuery(unit_uuid);
-    
-
+    this.runLoadQuery(unit_uuid);
     }).catch ((err) =>{
         this.runLoadQuery(unit_uuid);
         this.props.setActiveApp({none:true, count:0})
@@ -259,10 +261,11 @@ const  dateFormat = 'YYYY-MM-DD';
   <div className = "whitewalkers">
     <div className = "kingslanding-top t-flex t-flex-column t-justify-center">
       <span className = "thinlanisters">Applied </span>
-      <span className = "deeplanisters"> &#8358; { this.state.unit.monthly_rent.toLocaleString('en') }</span>
+      <span className = "deeplanisters">Status : {this.props.activeApplication.status}</span>
       </div>
-     <div className = "kingslanding-mid t-flex t-justify-center"><span className = "deeplanisters smx">Status <span className = "thinlanisters smx">{!this.state.unit.status ? "Available": "Occupied"}</span></span> </div>
-      <div className = "kingslanding-bottom t-flex t-align-center t-justify-center"><span className = "lanisters lgx">Application</span></div>
+     <div className = "kingslanding-mid t-flex t-justify-center"><span className = "deeplanisters smx">Applied on<span className = "thinlanisters smx">&nbsp;&nbsp;
+        { moment(new Date(this.props.activeApplication.created_at)).format("MMM Do YY")}</span></span> </div>
+      <div className = "kingslanding-bottom t-flex t-align-center t-justify-center"><span className = "lanisters lgx">Manage Application</span></div>
   </div>
   :
   <div className = "whitewalkers">
@@ -272,7 +275,7 @@ const  dateFormat = 'YYYY-MM-DD';
       </div>
      <div className = "kingslanding-mid t-flex t-justify-center"><span className = "deeplanisters smx">Status <span className = "thinlanisters smx">{!this.state.unit.status ? "  Available": "Occupied"}</span></span> </div>
       <NavLink className = "kingslanding-bottom t-flex t-align-center t-justify-center"
-       to = {  "/tenant/confirmprofile/"+this.props.auth.user.uuid+"/"+this.state.unit.address.address.address+"/"+ this.state.unit.id }
+       to = {  "/tenant/confirmprofile/"+this.props.auth.user.uuid+"/"+this.state.unit.address.address.address}
       ><span className = "lanisters lgx">Apply</span></NavLink>
   </div>
 
@@ -363,7 +366,7 @@ function matchStateToProps(state){
         applicationsIndicator:state.applications_indicator,
         applicationsPostIndicator:state.applications_post_indicator,
         queryResult:state.query_result,
-        myApplications: state.applications_result,
+        myApplications: state.applications_result.applications,
         applicationsPost: state.tenant_post_applications,   
         activeUnit: state.ApplicationDetails.currentUnit,
         activeApplication: state.ApplicationDetailsApp.currentApplication

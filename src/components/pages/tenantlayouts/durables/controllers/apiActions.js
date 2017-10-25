@@ -131,7 +131,7 @@ export default class apiActions {
     'Content-Type': 'application/json'
   },
   method: 'post',                                                              
-  body: JSON.stringify( { obj } )
+  body: JSON.stringify(  obj  )
     }).then(response =>{
   return response.json();  
 }).catch(error => {

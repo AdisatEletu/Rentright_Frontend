@@ -208,13 +208,7 @@ export default class NewHome extends Component {
                                         className="t-md-10 home-outer-div-icon t-flex t-align-center t-justify-center t-center-f ">
                                         <span><i className="material-icons home-icon-central">thumb_up</i></span>
                                     </div>
-<<<<<<< HEAD
-                                    <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo">
-                                        Find A Home
-                                        </div>
-=======
                                     <div className="home-div-outer-header t-flex t-justify-center t-align-content-center t-md-10 t-center-f  m-ellipses museo">{info.managePropertyheader}</div>
->>>>>>> 6205c94cf0c18294902fb2fd3af055a6830847d1
                                     <div className="home-div-outer-body t-flex t-md-10 t-center-f proxima">
                                         {info.managePropertybx}
                                     </div>
