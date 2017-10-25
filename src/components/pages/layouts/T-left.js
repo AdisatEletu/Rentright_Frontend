@@ -24,8 +24,8 @@ class T_left extends Component{
         return(
                 <div className = "t-left t-gray  t-flex  t-align-content-space-between t-right-bx t-right-bx t-flex-column">
                     <div className = "t-justify-left t-flex">
-                        <div className = "t-flex-2 t-contain m-logo ">                
-                        </div>
+                        <NavLink to = "/" className = " um t-flex-2 t-contain m-logo ">                
+                        </NavLink>
                     </div>
             
                     <div className = " t-justify-center t-flex">        

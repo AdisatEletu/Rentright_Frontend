@@ -20,7 +20,7 @@ import flashMessages from './reducers/flashMessages';
 import { loadingBarReducer } from 'react-redux-loading-bar';
 import {reducer as toastrReducer} from 'react-redux-toastr';
 import uiReducer from './reducers/uiReducer';
-import TenantApplicationDetailsReducer  from './reducers/tenant_application_details_reducer';
+import  {TenantApplicationDetailsReducer, TenantApplicationDetailsReducerAPP }  from './reducers/tenant_application_details_reducer';
 
 const combinedReducers = combineReducers({
     ui: uiReducer,
@@ -45,7 +45,8 @@ const combinedReducers = combineReducers({
     query_result : query_tenant_reducer,
     applications_post_indicator: applications_post_indicator_reducer,
     socketReducer : socketReducer,
-    ApplicationDetails: TenantApplicationDetailsReducer
+    ApplicationDetails: TenantApplicationDetailsReducer,
+    ApplicationDetailsApp: TenantApplicationDetailsReducerAPP
 
 
 });

@@ -104,10 +104,10 @@ main.d-main{
 }
 
 /*--------------------class selectors for overriding materialize----------------------------*/
-input:not([type]).d-input, input[type=text].d-input, input[type=password].d-input, input[type=email].d-input, input[type=url].d-input, input[type=time].d-input, input[type=date].d-input, input[type=datetime].d-input, input[type=datetime-local].d-input, input[type=tel].d-input, input[type=number].d-input, input[type=search].d-input{
+/*input:not([type]).d-input, input[type=text].d-input, input[type=password].d-input, input[type=email].d-input, input[type=url].d-input, input[type=time].d-input, input[type=date].d-input, input[type=datetime].d-input, input[type=datetime-local].d-input, input[type=tel].d-input, input[type=number].d-input, input[type=search].d-input{
     border-bottom: none !important;
     margin: 0 0 0 0 !important;
-}
+}*/
 
 .d-input:active,.d-input:focus,.d-input::after{
     border-bottom: none !important;

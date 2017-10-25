@@ -1,20 +1,33 @@
 import React, {Component} from 'react';
-import {Icon} from "antd";
+import {Icon, notification} from "antd";
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {BindActionCreators} from 'redux';
+import Wishlist from '../tenantlayouts/durables/layout_elements/wishlist';
 
 class HomeShowCard extends Component{
 
     constructor(props){
         super(props);
-
+        this.clicked = this.clicked.bind(this)
         this.state = {
             unit: this.props.unit || {},
             index: 0,
         }
     }
+    clicked(context){
+        let message = ""
+        if (context){
+           message = "You just liked a property, it has being added to your wishlist";
+        }else{
+            message = "You just unliked a property, it has being removed from your wishlist"
+        }
+        notification["success"]({
+            message,
+            description: "Your info has being updated"
+        })
 
+    }
     navImage(action){
         const unit_images = [...this.state.unit.unit_images];
         const image_count = unit_images.length;
@@ -55,7 +68,19 @@ class HomeShowCard extends Component{
                         <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
                             <div className="t-flex t-flex-row">
                                 <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {unit.monthly_rent.toLocaleString('en')}</span>
-                                <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center "><i className="material-icons ">favorite_border</i> </span>
+                                <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center ">
+                                    {
+                                        this.props.auth.user.uuid ?
+                                            <Wishlist uuid = {this.props.auth.user.uuid}
+                                                      clicked = {this.clicked}
+                                                      unit_id = {unit.id}
+                                                       />
+                                        :
+                                            <NavLink to = "sign-in"><Icon type="heart-o"/></NavLink>
+
+                                    }
+
+                                </span>
                             </div>
                             <div className="t-flex t-justify-space-between e-a t-align-center t-fullheight  t-md-10">
                                 <div className = "e-a-left " onClick = {()=>this.navImage('previous')}><Icon type = "left"/></div>

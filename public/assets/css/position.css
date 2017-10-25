@@ -158,6 +158,12 @@ background-color: #fff;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;   
 }
+.line-clamp2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;   
+}
 .tw{
     box-sizing:border-box; display:flex; flex-direction:column; height:130px; padding:10px; border-radius:0px 4px 4px 0px; border:solid 1px rgba(0,0,0,0.09);
     border-top:none;   
