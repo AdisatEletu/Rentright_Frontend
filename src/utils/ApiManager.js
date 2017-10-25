@@ -6,7 +6,7 @@ export const getPropertiesUrl =  BASE_URL+'properties';
 export const getSinglePropertyUrl = (uuid) =>  BASE_URL+'properties/'+uuid;
 
 export const getUnitUrl = (uuid) =>{ return BASE_URL+'units/'+uuid};
-export const unitImageUrl = (uuid) =>  BASE_URL+"https://rentright-laravel-api.herokuapp.com/api/units/"+uuid+"/images?section=room";
+export const unitImageUrl = (uuid) =>  "https://rentright-laravel-api.herokuapp.com/api/units/"+uuid+"/images?section=room";
 
 export const getApplication = BASE_URL+'applications';
 export const updateApplicationUrl = (uuid) => {return BASE_URL+'applications/'+uuid};
