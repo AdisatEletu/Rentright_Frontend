@@ -61,9 +61,9 @@ submit = (e)=>{
   
     }
   else{
-    if(name == "name"){
+    if(name === "name"){
         value =  event.target.value;
-    }else if(name == "all"){
+    }else if(name === "all"){
         value = event
     }
     else {

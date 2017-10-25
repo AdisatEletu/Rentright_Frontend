@@ -185,14 +185,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8183174', e
 .home-street-view{height: 30px; box-sizing: border-box; text-align: center; border: 1px solid rgba(255,255,255,0.7); line-height: 30px; font-size: 15px; color: #fff; font-family: Museo; margin-top: 50px;}
 .home-new-property-cover{background-color: rgba(0,0,0,0.3);}
 .ad-view-offer-btn {box-sizing:border-box; border-radius:2px; cursor:pointer; background-color: #f6505c; height:40px; font-size: 1.2rem; color: #fff; padding:0px 10px; text-transform:uppercase}
-.ad-view-offer-btn2 { text-transform: uppercase; box-sizing:border-box; padding:0px 10px; border-radius:2px; cursor:pointer; background-color: #000; height:40px; font-size: 1.2rem; color: #fff;}
+.ad-view-offer-btn2 { text-transform: uppercase; box-sizing:border-box; padding:0px 10px; border-radius:2px; cursor:pointer; background-color: #000; height:40px; font-size: 12px; color: #fff;}
 .ad-view-offer{padding: 10px 0px;} .home-agents-picture{background-image: url('img/agent2.jpg'); background-repeat:no-repeat; background-size: cover; background-position: center;}
 .home-agents-div{height: 350px; margin-top:10vh;} .home-agents-details{background-color:#000; padding: 4vh; box-sizing: border-box;} .home-agent-header{font-size:2rem; color:#fff; font-weight: 300;}
 .home-agents-info{font-size:1.2rem; color:#4c4e4d; }
 .home-agents-contact{height: 80px; padding: 15px 0px;}
 .home-agents-pics1{background-image: url('img/agent.jpg'); background-position:bottom; border-radius:55%; height:80px; width:80px; background-size:cover; background-repeat:no-repeat;}
 .home-agents-pics2{background-image: url('img/agent2.jpg'); background-position:bottom; border-radius:55%; height:80px; width:80px; background-size:cover; background-repeat:no-repeat;}
-
+.home-ad-icon{font-size: 15px;}
 
 .home-trusted-box{ box-sizing: border-box; }
 .home-trusted-header{font-size: 2rem; color: #CCCCCC; text-transform: capitalize; font-weight: 300; }

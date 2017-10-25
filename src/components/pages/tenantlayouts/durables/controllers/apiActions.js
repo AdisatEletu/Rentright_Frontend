@@ -9,7 +9,7 @@ export default class apiActions {
     let path;
     if (api_path){ 
     if (!append){
-       api_path =api_path
+       api_path = api_path
       }else{
       api_path = api_path + '/';
       }
