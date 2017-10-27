@@ -18,6 +18,7 @@ import Agreement_modal  from '../Agreement_modal'
 import 'moment/locale/en-gb';
 import  apiActions from '../../tenantlayouts/durables/controllers/apiActions';
 import ModalForms from '../modal_forms';
+import {FlexLayout,List, MainLayout, PictureCards, Profiler, LongCards, GlobalSearch} from '../../tenantlayouts/durables/layout_elements/flex_layout';
 
 import Advert from '../../tenantlayouts/advert'
 import enUS from 'antd/lib/locale-provider/en_US';
@@ -36,19 +37,56 @@ const  dateFormat = 'YYYY-MM-DD';
  class ApplicationList extends Component{
     constructor(props) {  
     super(props) 
-         this.state = {loading:false, showModal:false, promoted:{loading:false, error:false, results:undefined},data:{}};
-        
+         this.state = {loading:false, showModal:false, promoted:{loading:false, wishlist: [], applications:[], error:false, results:undefined},data:{}};
+         this.setupShop.bind(this);    
     
     }
-    setpShop(){
-        //this.apiActions.
+    setupShop(){
+        this.setState({loading:true})
+        let api = new apiActions('https://rentright.herokuapp.com/api/rentright/wishlist/detail/');
+        let api2 = new apiActions('https://rentright.herokuapp.com/api/rentright/tenants/applications/');
+         api2.geturl(this.props.user.uuid, false).then((obj2)=>{
+            this.setState({loading:false})
+            let app = obj2.results;
+            console.log(app, 'app')
+              let list = app.results.map((item)=>{
+                let j = {}
+                j['detail'] = item;
+                let api3 = new apiActions('https://rentright.herokuapp.com/api/rentright/units/query?units='  );
+                this.setState({loading:true})
+                api3.geturl(item.units, false).then((data)=>{
+                    console.log('query', data)
+                   j['display'] = data.results.units[0];
+                       this.setState({loading:false})
+                }).catch((err)=>{
+                  console.log('err0r unit', err)
+                this.setState({loading:false})
+                })
+                 return j
+            })
+            console.log(list, 'list')
+            this.setState({applications:list})
+         
+        }).catch((err)=>{
+                    console.log('err0r', err)
+            this.setState({loading:false})
+        })
+            this.setState({loading:true})
+        api.geturl( this.props.auth.user.uuid, false).then((obj)=>{
+               this.setState({loading:false})
+            this.setState({wishlist: obj.units})
+            this.setState({loading:false})
+        }).catch((err)=>{
+            console.log(err, 'Error message')
+            this.setState({loading:false})
+        })
         
     }
     componentWillMount(){  
    
        }
     componentDidMount(){ 
-   
+      this.setupShop ();
         
      }
      componentDidUpdate(prevProps, prevState) {
@@ -100,10 +138,95 @@ const  dateFormat = 'YYYY-MM-DD';
                          <Icon type = "appstore-o"/>
                          <span>Create Search pattern</span>
                      </div>
-                    <div className = "app-idea"> <Icon type = "home"/> <div className = "app-small"><div className = "app-small-h1">No Application</div><div className = "app-small-h2"> pending applications</div></div></div>
-                     <div className = "app-idea"> <Icon type = "home"/><div className = "app-small"><div className = "app-small-h1">No Wishlist</div><div className = "app-small-h2">Search for wishes</div></div></div>
+             <div className = "app-idea app-bg"
+                      style = { this.state.applications  && this.state.applications.length  > 0 &&  this.state.applications[this.state.applications.length - 1] &&  this.state.applications[this.state.applications.length - 1].display ? 
+                       {backgroundImage: "url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+ this.state.applications[this.state.applications.length - 1].display.unit_images[0].id                 
+                        +")" } : 
+                      null
+                      }
+
+                     
+                     > 
+                     <div className = {this.state.applications && this.state.applications.length > 0 ? "app-cover app-temp" : "t-md-10 t-fullheight app-temp"} >
+                     <Icon type = {this.state.laoding?"loading" :"home"}/><div className = "app-small"><div className = "app-small-h1">{ this.state.applications ? this.state.applications.length : 0} Application</div><div className = "app-small-h2">Manage Applications</div></div></div>
+                    </div>                   
+                    
+                    
+                    
+                    
+                     <div className = "app-idea app-bg"
+                      style = { this.state.wishlist  && this.state.wishlist.length > 0 ? 
+                       {backgroundImage: "url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+ this.state.wishlist[this.state.wishlist.length - 1].unit_images[0].id                 
+                        +")" } : 
+                      null
+                      }
+
+                     
+                     > 
+                     <div className = {this.state.wishlist  && this.state.wishlist.length > 0 ? "app-cover app-temp" : "t-md-10 t-fullheight app-temp"} >
+                     <Icon type = {this.state.laoding?"loading" :"home"}/><div className = "app-small"><div className = "app-small-h1">{ this.state.wishlist ? this.state.wishlist.length : 0} in  Wishlist</div><div className = "app-small-h2">Search for wishes</div></div></div>
+                    </div>
+
+
+
 
                      </div>
+
+
+
+
+
+
+            <div className = "events">
+             {this.state.loading ? 
+               <Icon type = "loading" style = {{fontSize:'60px', color:'#666', marginLeft:'40%', textAlign:'center',
+                alignItems:'top',alignContent:'top',
+                zIndex:'4000', position:'fixed', marginTop:'20px', texAlign:'center'}}/>
+               : null
+               }
+             { this.state.wishlist && this.state.wishlist.length > 0 
+            ?
+            <div className = "t-md-10 t-fullheight ">
+            <div className  = "t-md-10 t-flex t-space-around  page-padding">
+              <span className = "app-header">Wished Lists</span>
+              <span className = "bodyTest">SEE ALL <Icon type = "right" /></span>
+            </div>
+            <div className = "t-md-10 t-flex-wrap t-fullheight t-flex bot page-padding">
+              { 
+              this.state.wishlist.map((itemm,i)=>{    
+                  return(
+                    <Profiler  key = {i} notdummy = {true}
+                    style = {{marginRight:'10px'}}
+                    img = {itemm.unit_images[0] ?"https://rentright-api-gateway.herokuapp.com/user/units/image/"+itemm.unit_images[0].id: undefined}
+                    paragraph = {itemm.bedrooms+ " bedroom apartment, located in " + itemm.title+ " .Rent goes for " + 
+                                  itemm.monthly_rent}
+                                  name = "Get this nice" />            
+
+                  )
+                })
+            
+              }           
+       
+                </div>
+                </div>
+                :
+                null
+                }
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
              </div>
          )
     }else{    
