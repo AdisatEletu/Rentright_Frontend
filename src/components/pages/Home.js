@@ -123,7 +123,7 @@ export default class NewHome extends Component {
         } else {
             return (
 
-                <div className="home-mainbody t-flex t-align-content-stretch t-fullwidth  t-flex-column">
+                <div className="home-mainbody t-flex t-fullwidth  t-flex-column">
                     <Helmet>
                         <link href="http://localhost:3000/CSS/tenant.css" rel="stylesheet" type="text/css"/>
                         <link href="http://localhost:3000/CSS/home.css" rel="stylesheet" type="text/css"/>
@@ -368,8 +368,226 @@ export default class NewHome extends Component {
                             </div>
                         </div>
                     </div>
+
+
+                    <div
+                        className="home-newest-offer-div t-flex nav-pad-left-right t-md-10 t-justify-center t-align-center t-flex-column ">
+                        <div className="home-newest-header t-flex t-center-f t-align-center t-justify-center"> {info.newestproHeader}
+                        </div>
+                        <div className=" t-flex t-align-center t-md-10 t-justify-center home-hr-super3">
+                            <div className="t-flex t-md-4 t-justify-center t-fullheight home-t-hr-cover3">
+                                <div className="t-hr t-md-2 t-fullheight"/>
+                            </div>
+                        </div>
+                        <div className="home-newest-details t-center-f t-align-center t-justify-center t-md-7">
+                            {info.newestproDetails}
+
+                        </div>
+                    </div>
+
+
+
+                    <div className="t-flex t-flex-row t-md-10 t-flex-wrap t-justify-space-between home-newest-properties-div nav-pad-left-right">
+                        <div className="home-property1 t-flex t-md-48 t-flex-column">
+                            <div className="professional-div-picture t-flex t-md-10">
+                                <div className="home-new-property-cover t-md-10 ">
+
+                                    <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
+                                        <div className="t-flex t-flex-row">
+                                            <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; 1000 /hr</span>
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-space-around t-align-content-space-around">
+
+                                <div className="home-new-property-address t-flex t-md-10  t-justify-space-between">
+                                    <div className="home-new-property-addre  t-justify-space-between t-flex t-md-6 ">
+                                        <Icon type="tool"/><span className="t-flex t-md-89 t-left-f ">Plumber </span>
+                                    </div>
+
+                                    <div className="street-view t-flex  t-justify-space-between t-md-29">
+                                        <i className="material-icons t-md-1">streetview</i> <span className="t-flex t-md-75 ">Street View</span>
+                                    </div>
+                                </div>
+                                <div className="new-props-hr t-md-10 t-flex"/>
+
+
+
+
+                                <div className="home-unit-attributes t-flex t-md-10 t-justify-space-between proxima">
+
+                                    <div className="home-sizes t-md-7 t-flex t-justify-space-between t-align-content-space-between ml-ellipses2">
+                                        When stuff breaks, we fix it. Our home repair contractors can save you the time and money it would otherwise cost to find and
+                                        install a replacement for your broken fixtures and household items. We believe in a convenient, one-call solution where one call can get one of our house repair
+                                        contractors on the way to fixing whatever you need fixed. Our professional repair services are backed by our Done Right Guarantee.
+
+                                    </div>
+                                    <div className="t-flex home-applicant-right  t-md-3 ">
+                                            <div className = "t-md-10 t-full-height t-flex ">
+                                                <div className="t-flex home-no-of-applicant t-align-center montserrat"></div>
+                                            </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            </div> <div className="home-property1 t-flex t-md-48 t-flex-column">
+                            <div className="professional-div-picture1 t-flex t-md-10">
+                                <div className="home-new-property-cover t-md-10 ">
+
+                                    <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
+                                        <div className="t-flex t-flex-row">
+                                            <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; 1000 /hr</span>
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-space-around t-align-content-space-around">
+
+                                <div className="home-new-property-address t-flex t-md-10  t-justify-space-between">
+                                    <div className="home-new-property-addre  t-justify-space-between t-flex t-md-29 ">
+                                        <Icon type="tool"/><span className="t-flex t-md-89 t-left-f ">Carpenter </span>
+                                    </div>
+
+                                    <div className="pro-review t-flex  t-justify-space-between t-md-4">
+                                        <Icon type="star"/> <Icon type="star"/> <Icon type="star"/> <Icon type="star-o"/> <Icon type="star-o"/> <span className="t-flex t-md-75 ">17 reviews</span>
+                                    </div>
+                                </div>
+                                <div className="new-props-hr t-md-10 t-flex"/>
+
+
+
+
+                                <div className="home-unit-attributes t-flex t-md-10 t-justify-space-between proxima">
+
+                                    <div className="home-sizes t-md-7 t-flex t-justify-space-between t-align-content-space-between ml-ellipses2">
+                                        When stuff breaks, we fix it. Our home repair contractors can save you the time and money it would otherwise cost to find and
+                                        install a replacement for your broken fixtures and household items. We believe in a convenient, one-call solution where one call can get one of our house repair
+                                        contractors on the way to fixing whatever you need fixed. Our professional repair services are backed by our Done Right Guarantee.
+
+                                    </div>
+                                    <div className="t-flex home-applicant-right  t-md-3 ">
+                                            <div className = "t-md-10 t-full-height t-flex ">
+                                                <div className="t-flex home-no-of-applicant t-align-center montserrat"></div>
+                                            </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            </div>
+                        <div className="home-property1 t-flex t-md-48 t-flex-column">
+                            <div className="professional-div-picture2 t-flex t-md-10">
+                                <div className="home-new-property-cover t-md-10 ">
+
+                                    <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
+                                        <div className="t-flex t-flex-row">
+                                            <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; 1000 /hr</span>
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-space-around t-align-content-space-around">
+
+                                <div className="home-new-property-address t-flex t-md-10  t-justify-space-between">
+                                    <div className="home-new-property-addre  t-justify-space-between t-flex t-md-6 ">
+                                        <Icon type="tool"/><span className="t-flex t-md-89 t-left-f ">Interior Designer </span>
+                                    </div>
+
+                                    <div className="street-view t-flex  t-justify-space-between t-md-29">
+                                        <i className="material-icons t-md-1">streetview</i> <span className="t-flex t-md-75 ">Street View</span>
+                                    </div>
+                                </div>
+                                <div className="new-props-hr t-md-10 t-flex"/>
+
+
+
+
+                                <div className="home-unit-attributes t-flex t-md-10 t-justify-space-between proxima">
+
+                                    <div className="home-sizes t-md-7 t-flex t-justify-space-between t-align-content-space-between ml-ellipses2">
+                                        When stuff breaks, we fix it. Our home repair contractors can save you the time and money it would otherwise cost to find and
+                                        install a replacement for your broken fixtures and household items. We believe in a convenient, one-call solution where one call can get one of our house repair
+                                        contractors on the way to fixing whatever you need fixed. Our professional repair services are backed by our Done Right Guarantee.
+
+                                    </div>
+                                    <div className="t-flex home-applicant-right  t-md-3 ">
+                                            <div className = "t-md-10 t-full-height t-flex ">
+                                                <div className="t-flex home-no-of-applicant t-align-center montserrat"></div>
+                                            </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            </div> <div className="home-property1 t-flex t-md-48 t-flex-column">
+                            <div className="professional-div-picture3 t-flex t-md-10">
+                                <div className="home-new-property-cover t-md-10 ">
+
+                                    <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
+                                        <div className="t-flex t-flex-row">
+                                            <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; 1000 /hr</span>
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="home-newest-location t-flex t-flex-column t-md-10  t-justify-space-around t-align-content-space-around">
+
+                                <div className="home-new-property-address t-flex t-md-10  t-justify-space-between">
+                                    <div className="home-new-property-addre  t-justify-space-between t-flex t-md-6 ">
+                                        <Icon type="tool"/><span className="t-flex t-md-89 t-left-f ">Cleaner </span>
+                                    </div>
+
+                                    <div className="street-view t-flex  t-justify-space-between t-md-29">
+                                        <i className="material-icons t-md-1">streetview</i> <span className="t-flex t-md-75 ">Street View</span>
+                                    </div>
+                                </div>
+                                <div className="new-props-hr t-md-10 t-flex"/>
+
+
+
+
+                                <div className="home-unit-attributes t-flex t-md-10 t-justify-space-between proxima">
+
+                                    <div className="home-sizes t-md-7 t-flex t-justify-space-between t-align-content-space-between ml-ellipses2">
+                                        When stuff breaks, we fix it. Our home repair contractors can save you the time and money it would otherwise cost to find and
+                                        install a replacement for your broken fixtures and household items. We believe in a convenient, one-call solution where one call can get one of our house repair
+                                        contractors on the way to fixing whatever you need fixed. Our professional repair services are backed by our Done Right Guarantee.
+
+                                    </div>
+                                    <div className="t-flex home-applicant-right  t-md-3 ">
+                                            <div className = "t-md-10 t-full-height t-flex ">
+                                                <div className="t-flex home-no-of-applicant t-align-center montserrat"></div>
+                                            </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+
                     <FooterMain/>
                 </div>
+
             );
         }
     }

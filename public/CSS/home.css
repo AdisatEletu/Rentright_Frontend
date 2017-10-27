@@ -22,7 +22,7 @@ html,body{
 
 
 *, *:before, *:after {  box-sizing: inherit;}
-.home-mainbody{background-color:#fff;  }
+.home-mainbody{background-color:#fff; height: auto; }
 
 .home-primary-color {background-color: #0a3b61;}.home-primary-color-f {color: #0a3b61;}
 .home-secondary-color{background-color: #faa61a;}.home-secondary-color-f{color: #faa61a;}
@@ -152,6 +152,14 @@ box-shadow: 2px -21px 55px 5px rgba(0,0,0,0.33);
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical; } .home-search-wrapper2{height:50px;} .home-label-top{padding-bottom:4%;}
+.ml-ellipses2{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; }
+
+
+
 .home-fourth-div-cover{ z-index: 50;
 width:100%; height:100%;
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#183174+0,246b99+43,287ca0+73,287ca0+100&0.72+0,0.83+100 */
@@ -240,8 +248,7 @@ box-shadow: 0px 0px 42px 0px rgba(0,0,0,0.75);}	.home-aplicant-picture{ z-index:
 .home-list{cursor: pointer;  }
 .t-md-05{width:4%;} .t-md-89{width: 89%;} .t-md-75{width: 75%;}.t-md-70{width: 70%;}   .t-md-29{width: 29%}
 .home-icons{padding-right: 3px;}
-.home-new-property-address{font-size: 1.1rem; font-family:Museo!important; text-transform:Capitalize; letter-spacing:1px; color:#666; font-weight: 600;  } .home-new-property-address i{font-size: 1.8rem; color: #f6505c;}
-.home-new-property-address{font-size: 1.1rem; font-family:Museo!important; text-transform:Capitalize; letter-spacing:1px; color:#666; font-weight: 600;  } .home-new-property-address i{font-size: 1.8rem; color: #f6505c;}
+.home-new-property-address{font-size: 1.1rem; font-family:Museo!important; text-transform:Capitalize; letter-spacing:1px; color:#666; font-weight: 600;  } .home-new-property-addre i{font-size: 1.8rem; color: #f6505c;}
 .home-unit-attributes{font-size: 12px; padding-left: 1.8rem; font-weight:400; }   .home-unit-attributes i{color: #f6505c; font-size: 1.5rem;}
 .t-md-33{width: 33%;}
 
@@ -251,23 +258,63 @@ border-radius:3px; font-size:16px;
 }
 .home-button-preshow:hover{opacity:1; }
 
-.home-footer{min-height: 40vh; padding: 20px 0px;background-color:#073855; }
+.home-footer1{height: 45vh; }
+.footer-content{height: 90%; background-color:#073855;}
+.most-commented{height: 80px; align-items: center;}
+.t-md-55{width: 55%;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.home-footer{height: 40vh; background-color:#073855; }
 .contactus{font-size: 2.2rem; color:#333; padding-top: 30px;}
 .home-contact-us-div{height:100vh; background-color: #eaeaea; padding: 15px 0px; z-index: 5; }
 .home-sub-text{font-size:1.4rem; color: #666; }
-.home-imgg{justify-content: center; background-image: url("img/macbook.png"); height: 60vh; width: 100%; background-size: contain; background-repeat: no-repeat; }	.footer-img-holder{padding: 5px 0px;}
-.home-rentright-about{font-size: 1rem; color:#fff; padding-bottom: 15px; font-weight:400;}
-.home-twit{font-size: 1.5rem; color:#fff; cursor:pointer; padding-right:10px;}	.most-commented{font-size: 1.2rem; color:#fff; padding-bottom: 15px; font-weight:400;}
-.footer-img1{background-image: url('img/interior10.jpg');  background-repeat:no-repeat; background-size: cover; background-position: center; width: 60px; height:60px; border-radius: 50%;}
+.home-imgg{justify-content: center; background-image: url("img/macbook.png"); height: 60vh; width: 100%; background-size: contain; background-repeat: no-repeat; }
+.home-rentright-about{font-size: 1rem; color:#fff; font-weight:400;}
+.home-twit{font-size: 1.5rem!important; color:#fff; cursor:pointer; }	.most-commented{font-size: 1.2rem; color:#fff;  font-weight:400;}
+.footer-img1{background-image: url('img/interior10.jpg');  background-repeat:no-repeat; background-size: cover; background-position: center; width: 80px; height:70px; }
 .home-new-post{font-size: 1.1rem; color:#fff; font-weight:400;}
-.footer-img2{background-image: url('img/interior13.jpg'); background-repeat:no-repeat; background-size: cover; background-position: center; width: 60px; height:60px; border-radius: 50%;}
-.footer-img2-details{padding:10px;}	.footer-a{font-size: 1rem; font-weight: 300; color:#fff; cursor:pointer; padding: 10px 0px;; }.home-first-link i{font-size: 0.9rem; padding: 10px 0px; padding-right: 10px;  font-weight: 300; color:#fff; cursor:pointer;}
-.footer-img1-details{padding:10px;}	.footer-hr{ background-color:#fff;  height:1px; border-radius:2px; } .home-footer-social{padding-right: 10px; margin-top: 10px;}
+.footer-img2{background-image: url('img/interior13.jpg'); background-repeat:no-repeat; background-size: cover; background-position: center; width: 80px; height:70px; }
+.footer-a{font-size: 1rem; font-weight: 300; color:#fff; cursor:pointer; padding: 10px 0px;; }.home-first-link i{font-size: 1rem;  font-weight: 300; color:#fff; cursor:pointer; align-self: center;}
+.footer-hr{ background-color:rgba(255,255,255,0.1);  height:1px; border-radius:2px; }
 .footer-copyright{height: 5vh;}	.copyright-a{font-size: 1rem; font-weight: 300; cursor:pointer;}
 .copyright{color:#fff; font-size: 1rem; padding: 10px 0px;}
 .copyright-top{color:#fff; font-size: 1rem; padding: 10px 0px; cursor:pointer;}
 .cormorant{font-family: 'Cormorant Garamond', serif;}
+.t-md-85{width: 85%;}
 
+.hhhh{height: 60%;}
+.professional-div-picture{background-image: url("img/handyman1.jpg"); height:80%; background-size: cover; background-repeat: no-repeat; }
+.professional-div-picture2{background-image: url("img/handyman2.jpg"); height:80%; background-size: cover; background-repeat: no-repeat; }
+.professional-div-picture1{background-image: url("img/handyman3.jpg"); height:80%; background-size: cover; background-repeat: no-repeat; }
+.professional-div-picture3{background-image: url("img/handyman-connection-1.jpg"); height:80%; background-size: cover; background-repeat: no-repeat; }
+
+.pro-review, i{font-size: 12px; line-height: 12px!important; }
+.home-sizess{font-size: 12px;}
+
+
+.hhhhhh{height: 115px;}
 .login-shadow{-webkit-box-shadow: 0px -2px 137px -14px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px -2px 137px -14px rgba(0,0,0,0.75);
 box-shadow: 0px -2px 137px -14px rgba(0,0,0,0.75);}
@@ -293,7 +340,7 @@ box-shadow: 0px -2px 137px -14px rgba(0,0,0,0.75);}
 .login-a{color:#e47645; cursor:pointer; font-weight:500}	.login-alt {font-size: 20px; font-family: Roboto;line-height:20px; height:20px; color: #999; margin: 1rem 0rem;}
 .line-div{border: solid 1px; color:#eaeaea; height:1px;}
 .login-fb-button { background-color:#45547c; color:#fff; padding:0px 10px!important; line-height:30px!important; height: 30px!important; cursor:pointer; border: solid 1px #fff; font-size: 1rem;  }
-.fa-facebook{ color:#fff; margin-right:1.2rem; font-size: 2rem; line-height: 30px;}
+.fa-facebook{ color:#fff; font-size: 2rem; }
 .login-lk-button{background:#fff; color:#000; font-weight: 500; margin-top: 1rem; line-height:30px; height: 30px; cursor:pointer; border: solid 1px #fff; font-size: 1.6rem; }
 .login-in{background-color: #2489b9; border-radius: 2px; width:30px; line-height: 30px;height:30px; color:#fff; cursor: pointer; margin-left: 3px;}
 
