@@ -386,11 +386,13 @@ function TableOfContent(props) {
             <h6 className="center-align"><b>Got 10 minutes?</b></h6><br/>
             <p style={{marginBottom: '25px'}}>
                 That's all it should take to create a lease and have it sent over to your tenants to sign.
-                And with this <b>step-by-step guide</b>, you're already off to a good start.
             </p>
             <Steps direction="vertical" size="small" current={props.current}>
                 <Step title="Setting the lease term"/>
-                <Step title="Review and edit the lease clauses"/>
+                <Step title="Tenant Covenants"/>
+                <Step title="Landlord Covenants"/>
+                <Step title="Conditions of Agreement"/>
+                <Step title="Landlord Contact"/>
                 <Step title="Adding Lessee"/>
             </Steps>
             <p>

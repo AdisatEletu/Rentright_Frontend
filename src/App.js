@@ -16,6 +16,7 @@ import LandlordGuide from './components/pages/LandordGuide';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 import { notification } from 'antd';
+import SignPad from "./components/shared/SignPad";
 class App extends Component {
     constructor(props){
         super(props);
@@ -55,6 +56,7 @@ class App extends Component {
                   <Route path="/tenant" component={Tenant} />
                   <Route path="/landlord-guide" component={LandlordGuide} />
                   <Route path="/generalsearch/:param" component={MapPage} />
+                  <Route path="/test" component={SignPad} />
               </Switch>
           </Router>
           </LocaleProvider>
