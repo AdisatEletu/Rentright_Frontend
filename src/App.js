@@ -29,8 +29,8 @@ class App extends Component {
 
 
          }
-    componentWillReceiveProps(newprops){
-        if (this.props.socketState.joined && this.props.socketState.data.length > 0 ){
+    /*componentWillReceiveProps(newprops){
+        if (newprops.socketState.joined && newprops.socketState.data.length > 0 ){
          notification["success"]({
           message: 'New Application',
          description:this.props.socketState.data[this.props.socketState.data.length-1].message
@@ -38,7 +38,7 @@ class App extends Component {
         }
        
     
-    }
+    }*/
 
   render() {
 
@@ -49,7 +49,7 @@ class App extends Component {
                   <Route exact path="/" component={Home}/>
                   <Route path={"/register"} component={Register}/>
                   <Route path="/account" component={requireAuth(Landing)}/>
-                  <Route path="/landlord" component={requireAuth(LandLord)}/>
+                  <Route path="/landlord" component={LandLord}/>
                   <Route path="/sign-in" component={Login}/>
                   <Route path="/tenant-guide" component={NewTenantInfo}/>
                   <Route path="/tenant" component={Tenant} />

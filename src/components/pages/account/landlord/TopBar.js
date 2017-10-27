@@ -54,13 +54,13 @@ class TopBar extends Component {
         </div>;
 
         return (
-            <div className="section no-pad-bot" id="index-banner">
+            <div className="section" id="index-banner">
                 <div className="d-container">
-                    <div className="row full-width">
-                        <div className="col s8">
-                            <h3 className="d-header d-header-tag" style={{marginTop: 0, marginBottom: 0}}>
+                    <div className="row d-no-mrgn-bottom">
+                        <div id={'header-text-wrap'} className="col s8">
+                            <span className="d-header d-header-tag" style={{marginTop: 0, marginBottom: 0}}>
                                 {!header.isSet ? undefined : header.text}
-                            </h3>
+                            </span>
                         </div>
                         <div className="col s4">
                             <span className="right">
@@ -80,9 +80,6 @@ class TopBar extends Component {
                                         <NavLink to={'/landlord/referral'}>{'Refer a Friend'}</NavLink>
                                     </Item>
                                 </DropDown>
-                            </span>
-                            <span className="right" style={{marginRight: '25px', marginTop: '5px'}}>
-                                <Notifications/>
                             </span>
                         </div>
                     </div>

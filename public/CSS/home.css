@@ -5,12 +5,11 @@ html,body{
     font-family: "Roboto", sans-serif;
     font-weight: normal;
     color: rgba(0, 0, 0, 0.87);
-	    font-size: 12px!important;
-		    box-sizing: border-box;
-			    margin: 0px;
-				display:block;
-				height:100%;
-				perspective: 1px;
+    font-size: 12px !important;
+    box-sizing: border-box;
+    margin: 0px;
+    display: block;
+    height: 100%;
 
 	}
 

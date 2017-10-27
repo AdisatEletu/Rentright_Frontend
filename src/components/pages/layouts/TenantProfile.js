@@ -23,7 +23,7 @@ class TenantProfile extends Component{
         this.showModal = this.showModal.bind(this);
         this.queryForPromotions = this.queryForPromotions.bind(this);
         this.onTransmit = this.onTransmit.bind(this);
-        this.props.loadTenant('/'+this.props.match.params.id).then(()=>{      
+        this.props.loadTenant('/'+this.props.auth.user.uuid).then(()=>{
         this.props.getFormStruct();         
            this.uuid = '/'+this.props.match.params.id;
              }) 

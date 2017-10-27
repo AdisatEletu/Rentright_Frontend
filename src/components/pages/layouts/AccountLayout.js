@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import TopBar from "../account/landlord/TopBar";
-import {NavLink} from 'react-router-dom';
+import {NavLink,Link} from 'react-router-dom';
 import PropertyMenu from './account/PropertyMenu';
 import LoadingBar from 'react-redux-loading-bar'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
+import Alert from "./account/Alert";
 
 //require('../account/landlord/asset/materialize/css/materialize.min.css');
 //require('../account/landlord/asset/landlord.css');
@@ -18,9 +19,8 @@ class AccountLayout extends Component {
         <div className="application">
             <LoadingBar style={{ backgroundColor: '#faa61a', height: '2px'}}/>
             <Helmet>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
-                    <link href="http://localhost:3000/assets/css/effects.css" rel="stylesheet" type="text/css"/>
-            </Helmet>
+                <title>RentRight | Landlord</title>
+           </Helmet>
             <div className="landlord">
                 <AccountHeader/>
                 <main className="d-main">
@@ -30,18 +30,10 @@ class AccountLayout extends Component {
                             <Tab uuid={header.uuid}/>
                         </div>
                         : undefined}
-
+                        <Alert/>
                     <div className="d-container body">
                         <div className="child" style={{paddingLeft: '300px' ,paddingTop: '120px', paddingBottom:'60px'}}>
                             {this.props.children}
-                        </div>
-                        <div className="fixed-action-btn horizontal">
-                            <a className="btn-floating btn-large secondary-color">
-                                <i className="large material-icons">info_outline</i>
-                            </a>
-                            <ul>
-                                <li><a className="btn-floating red tooltipped" data-position="top" data-delay="20" data-tooltip="Help"><i className="fa fa-question-circle-o"/></a></li>
-                            </ul>
                         </div>
                     </div>
                 </main>
@@ -70,13 +62,13 @@ function AccountHeader(props) {
                 </li>
                 <li className="no-padding">
                     <div id="sidebar-menu">
-                        <NavLink to="/landlord/dashboard" activeClassName={"active"} className="item"><i className="fa fa-desktop" aria-hidden="true"/> Dashboard</NavLink>
+                        <NavLink exact to="/landlord" activeClassName={"active"} className="item"><i className="fa fa-desktop" aria-hidden="true"/> Dashboard</NavLink>
                         {/*<NavLink to="/landlord/properties" activeClassName={"active"} className="item"><i className="fa fa-building-o" aria-hidden="true"/> My Properties</NavLink>*/}
                         <NavLink to="/landlord/rent-analysis" activeClassName={"active"} className="item"><i className="fa fa-area-chart" aria-hidden="true"/> Rent Analysis</NavLink>
                         <NavLink to="/landlord/reports" activeClassName={"active"} className="item"><i className="fa fa-file-text-o" aria-hidden="true"/> Reports</NavLink>
                         <NavLink to="/landlord/my-team" activeClassName={"active"} className="item"><i className="fa fa-users" aria-hidden="true"/> My Team</NavLink>
                         <NavLink to="/landlord/guide" activeClassName={"active"} className="item"><i className="fa fa-book" aria-hidden="true"/> Landlord Guide</NavLink>
-                        <div className="section-header">Properties <a className="pull-right" href="/landlord/properties/new"><i className="fa fa-plus"/></a></div>
+                        <div className="section-header">Properties <Link className="pull-right" to="/landlord/new_property"><i className="fa fa-plus"/></Link></div>
                         <PropertyMenu/>
                     </div>
                 </li>

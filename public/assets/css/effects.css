@@ -73,7 +73,7 @@ d-npd{
     margin-top: 0;
 }
 .d-no-mrgn-bottom{
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 
 .card-panel-header{
@@ -103,6 +103,17 @@ main.d-main{
     background-color: #eeeeee;
 }
 
+/*--------------------class selectors for overriding materialize----------------------------*/
+/*input:not([type]).d-input, input[type=text].d-input, input[type=password].d-input, input[type=email].d-input, input[type=url].d-input, input[type=time].d-input, input[type=date].d-input, input[type=datetime].d-input, input[type=datetime-local].d-input, input[type=tel].d-input, input[type=number].d-input, input[type=search].d-input{
+    border-bottom: none !important;
+    margin: 0 0 0 0 !important;
+}*/
+
+.d-input:active,.d-input:focus,.d-input::after{
+    border-bottom: none !important;
+    box-shadow: none!important;
+}
+
 
 ul.side-nav.fixed li.logo {
     text-align: center;
@@ -116,13 +127,64 @@ ul.side-nav.fixed li.logo #logo-container:hover, ul.side-nav.fixed li.logo:hover
 }
 
 ul.side-nav.fixed {
-    margin-top: 80px;
+    margin-top: 70px;
     z-index: 9;
     overflow: hidden
 }
 
 ul.side-nav.fixed:hover {
     overflow-y: auto
+}
+
+.d-button:focus{
+    outline: none;
+}
+
+.d-button:active{
+    opacity: 1 !important;
+}
+
+.d-button:hover{
+    opacity: 0.9;
+}
+
+.d-button > span {
+    font-family: "proxima-nova", sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #000;
+    line-height: 60px;
+}
+
+.d-button{
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    border-spacing: 0;
+    color: #26589F;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.42rem;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    text-indent: 0;
+    /* -webkit-box-shadow: 0 14px 24px 0 rgba(50, 48, 58, 0.25); */
+     /*box-shadow: 0 14px 24px 0 rgba(50, 48, 58, 0.25);*/
+    width: 220px;
+    height: 60px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    border-radius: 6px;
+    -webkit-transition: background .2s ease-out;
+    transition: background .2s ease-out , opacity .2s ease-out ;
+    display: inline-block;
 }
 
 #logo-container {
@@ -160,7 +222,7 @@ ul.side-nav.fixed:hover {
     margin-left: 300px;
     padding-left: 0;
     z-index:9;
-    top: 76px;
+    top: 70px;
 }
 
 #index-banner .d-container {
@@ -169,6 +231,13 @@ ul.side-nav.fixed:hover {
 
 #index-banner .d-header {
     color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+ }
+
+#index-banner #header-text-wrap {
+    height: 40px;
+    margin:auto;
 }
 
 #index-banner, .side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body li.active, footer.page-footer, nav {
@@ -430,7 +499,194 @@ a.button-collapse.top-nav.full {
     /*font-weight: bolder;*/
 /*}*/
 
+/*--------------------------------------------------------------Dashboard-----------------------------------------------*/
+ul.DAWl{
+    display: block;
 
+}
+
+ul.DAWl li{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+ul.DAWl li span{
+    text-align: right;
+    float:right;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+ul.DAWl li.TiT span{
+    color: #00838f;
+    font-size: 20px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ul.DAWl li.TT span{
+    color: #00838f;
+}
+
+ul.DAWl li.VCT span{
+    color: #c62828 ;
+}
+
+ul.DAWl li.OCPD span{
+    color: #2e7d32;
+}
+ul.DAWl li.PEN span{
+    color: #ffb300;
+}
+
+.CWf{
+    padding: 15px 0;
+    border-top: 1px solid #bdbdbd;
+}
+
+.CWf span{
+    font-weight: bold;
+    color: #1396e2 !important;
+    cursor: pointer;
+}
+
+.CWf span.P {
+    float: left;
+}
+
+.CWf span.N{
+    float: right;
+}
+
+.QAT,.QAB{
+    height:45%;
+    border-bottom:1px solid #cccccc;
+}
+
+.QAB{
+    border-bottom:none !important;
+}
+
+.QAT .QATR, .QAB .QABR,.QAT .QATL, .QAB .QABL{
+    cursor: pointer;
+    height:100%;
+    width:50%;
+    float:left;
+    border-right:1px solid #cccccc;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.QAT .QATL, .QAB .QABL{
+    border-right:none;
+}
+
+.QAT .QATR:hover,
+.QAB .QABR:hover,
+.QAT .QATL:hover,
+.QAB .QABL:hover{
+    background-color: #EEEEEE;
+}
+
+.QAT .QATR span, .QAB .QABR span,.QAT .QATL span, .QAB .QABL span{
+
+}
+
+.QAT .QATR img, .QAB .QABR img,.QAT .QATL img, .QAB .QABL img{
+    width: 50px;
+    display: block;
+    margin: 5% auto 5px;
+}
+
+.dashboard-prp-srch{
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: #85929e;
+    background-color: #ffffff;
+    width: 700px;
+    /*font-size: 2.5em !important;*/
+}
+
+.dashboard-prp-srch .prop-srch{
+    display: block;
+    width: 100%;
+    padding: .5em .5em .5em 2em;
+    font-size: 2.5em !important;
+    line-height: 2 !important;
+    height: 2em;
+    border: 0;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.prop-srch::placeholder{
+    font-size: 1em !important;
+}
+.dashboard-prp-srch i{
+    cursor: pointer;
+}
+
+.DSi{
+    position: absolute;
+    top: 0;
+    padding: .5em .6em;
+    font-size: 2em;
+    line-height: 1.5;
+    color: #85929e;
+    -webkit-transition: color .3s;
+    transition: color .3s;
+}
+
+.DTsD{
+    margin: .5rem 0 3rem 0;
+    display: block;
+}
+
+.DTsD img{
+    width: 100px;
+    float: left;
+    margin: 0 15px 0 0;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+}
+
+.DTsD .address1{
+    display: block;
+    font-size: 30px;
+    font-weight:bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.HTaD{
+    display: block;
+}
+.HTaD h5{
+    border-bottom: #757575 solid 1px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.HTaD ul li{
+    display: block;
+    padding-bottom: 10px;
+    font-size: 18px;
+    color: #616161;
+}
+
+.HTaD ul li span.NumB{
+    color: #00695c !important;
+    font-weight: bold;
+}
+
+/*-----------------------------------------------------------/Dashboard------------------------------------------------*/
 .d-tabs {
     margin:  0;
     padding: 0;
@@ -829,8 +1085,73 @@ border-right: none !important;
     color: #424242 !important;
 }
 
+.complaint-activities .ant-steps .ant-steps-title,
+.complaint-activities .ant-steps .ant-steps-head{
+    background-color: transparent !important;
+}
+
+.d-autocomplete-container{
+    position: absolute;
+    z-index: 1000;
+    display: block;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 3px;
+    /*box-shadow:0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 4px 2px -1px rgba(0,0,0,0.2);*/
+    box-shadow: 0 14px 24px 14px rgba(50, 48, 58, 0.25);
+}
+
+.d-autocomplete-container ul.d-autocomplete-list{
+    display: block;
+    width: 100%;
+}
+
+.d-autocomplete-container ul.d-autocomplete-list > li{
+    padding:20px 15px;
+     font-size: 16px;
+     color: #32313A;
+    font-weight: bold;
+    border-bottom: #e0e0e0 1px solid;
+}
+
+.d-autocomplete-container ul.d-autocomplete-list > li:hover{
+    background: #F8F9FA;
+    cursor: pointer;
+}
+
+.d-alert{
+    position: fixed;
+    width: 80%;
+    height:60px;
+    margin-left: 300px;
+    padding-left: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    z-index:8;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2);
+    -webkit-transition: top .7s;
+}
+
+.d-alert.success{
+    background-color: #388e3c !important;
+}
+.d-alert.error{
+    background-color: #c62828 !important;
+}
+.d-alert.info{
+    background-color: #1565c0 !important;
+}
+.d-alert.warning{
+    background-color: #f9a825 !important;
+}
+
 #root,
-.t-fullheight,
 .landlord,
 .application,
 main,

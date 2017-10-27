@@ -11,7 +11,11 @@ import LeaseContact from "./LeaeseContact";
 import * as SmoothScroll from 'smooth-scroll';
 import Lessees from "./Lessees";
 import Loader from "../../../../../../shared/Loader";
-import {getLease} from "../../../../../../../state/actions/leaseAction";
+import {getLease, updateLease} from "../../../../../../../state/actions/leaseAction";
+import moment from 'moment'
+import LandlordCovenant from "./LandlordConvenant";
+import {isEqual} from "lodash";
+import {showAlert} from "../../../../../../../state/actions/uiAction";
 
 
 const Step = Steps.Step;
@@ -19,82 +23,271 @@ const scroll = new SmoothScroll();
 
 class EditLease extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            current_step:1,
+            current_step: 1,
             isLoading: true,
+            fetched: false,
         }
+
+        this.onLeaseRetrieved = this.onLeaseRetrieved.bind(this);
+        this.onDateChange = this.onDateChange.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.onUpdateCallback = this.onUpdateCallback.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const lease_uuid = this.context.router.route.match.params.leaseId;
-        const include = 'clause,tenant,landlord,unit';
-        getLease({lease_uuid,include},this.onLeaseRetrieved.bind(this));
+        const include = 'clause,tenant,landlord.work_address,unit.property.address';
+        getLease({lease_uuid, include}, this.onLeaseRetrieved);
     }
 
-    onLeaseRetrieved(status,data){
-        if(status){
-            this.setState({isLoading:false,lease:data});
+    onLeaseRetrieved(status, data) {
+        if (status) {
+            const initial = {
+                term: {
+                    section: 'term',
+                    started_at: data.started_at ? moment(data.started_at.date).format('DD MMMM YYYY') : moment.now(),
+                    move_in_fee: data.move_in_fee,
+                    late_rent_fee: data.late_rent_fee,
+                    rent_amount: data.rent_amount,
+                    tenor: data.tenor,
+                    tenor_type: data.tenor_type,
+                    security_deposit: data.security_deposit
+                },
+                clause: data.clause.data.filter((clause) => clause.type === 'clause'),
+                covenant: data.clause.data.filter((clause) => clause.type === 'landlord_covenant'),
+                agreements: data.clause.data.filter((clause) => clause.type === 'agreement'),
+                /*warning:{},*/
+                contact: {
+                    street_name: data.landlord.data.work_address.data.street_name,
+                    community: data.landlord.data.work_address.data.community,
+                    state: data.landlord.data.work_address.data.state,
+                    country: data.landlord.data.work_address.data.country,
+                },
+                tenant: data.tenant.data,
+            };
+            const present = {
+                term: {
+                    section: 'term',
+                    started_at: data.started_at ? moment(data.started_at.date).format('DD MMMM YYYY') : moment.now(),
+                    move_in_fee: data.move_in_fee,
+                    late_rent_fee: data.late_rent_fee,
+                    rent_amount: data.rent_amount,
+                    tenor: data.tenor,
+                    tenor_type: data.tenor_type,
+                    security_deposit: data.security_deposit
+                },
+                clause: data.clause.data.filter((clause) => clause.type === 'clause'),
+                covenant: data.clause.data.filter((clause) => clause.type === 'landlord_covenant'),
+                agreements: data.clause.data.filter((clause) => clause.type === 'agreement'),
+                /*warning:{},*/
+                contact: {
+                    street_name: data.landlord.data.work_address.data.street_name,
+                    community: data.landlord.data.work_address.data.community,
+                    state: data.landlord.data.work_address.data.state,
+                    country: data.landlord.data.work_address.data.country,
+                },
+                tenant: data.tenant.data,
+            };
+
+
+            this.setState({
+                isLoading: false,
+                fetched: true,
+                lease: data,
+                initial,
+                present
+            });
+            console.log('states', this.state)
         }
     }
 
-    onChange = (e) => {}
+    onChange = (e) => {
+        const position = this.state.current_step;
 
-    next = ()=>{
+        const {present} = this.state;
+
+        switch (position) {
+            case 1:
+                present.term[e.target.name] = e.target.value;
+                break;
+        }
+
+        this.setState({present});
+        console.log('present', this.state.present)
+        console.log('initial', this.state.initial)
+    }
+
+    onDateChange = (date) => {
+        const present = {...this.state.present};
+        present.term['started_at'] = moment(date).format('DD MMMM YYYY');
+        console.log('date', moment(date).format('DD MMMM YYYY'));
+        this.setState({present})
+    }
+
+    next = () => {
+        //initiate form change
+        this.formChange();
+
         let current = this.state.current_step;
-        current = current+1;
+        current = current + 1;
 
-        if(current <= 6){
+        if (current <= 6) {
             this.setState({current_step: current});
         }
 
-        scroll.animateScroll( 0 );
+        scroll.animateScroll(0);
     }
 
     previous = () => {
+        //initiate form change
+        this.formChange();
         let current = this.state.current_step;
-        current = current-1;
+        current = current - 1;
 
-        if(current >= 1){
+        if (current >= 1) {
             this.setState({current_step: current});
         }
-        scroll.animateScroll( 0 );
+        scroll.animateScroll(0);
+    }
+
+    formChange() {
+        let equal = true;
+        let data = null;
+
+        switch (this.state.current_step) {
+            case 1:
+                if (!isEqual(this.state.initial.term, this.state.present.term)) {
+                    equal = false;
+                    data = this.state.present.term;
+                }
+                break;
+
+            default:
+                break;
+        }
+
+        if (!equal) {
+            data['lease_uuid'] = this.context.router.route.match.params.leaseId;
+            updateLease(
+                data,
+                this.onUpdateCallback
+            );
+        }
+    }
+
+    onUpdateCallback(status, data) {
+        if (status) {
+            switch (data.section) {
+                case 'term':
+                    const termInitial = {
+                        section: 'term',
+                        started_at: data.started_at ? moment(data.started_at.date).format('DD MMMM YYYY') : moment.now(),
+                        move_in_fee: data.move_in_fee,
+                        late_rent_fee: data.late_rent_fee,
+                        rent_amount: data.rent_amount,
+                        tenor: data.tenor,
+                        tenor_type: data.tenor_type,
+                        security_deposit: data.security_deposit
+                    }
+
+                    const termPresent = {
+                        section: 'term',
+                        started_at: data.started_at ? moment(data.started_at.date).format('DD MMMM YYYY') : moment.now(),
+                        move_in_fee: data.move_in_fee,
+                        late_rent_fee: data.late_rent_fee,
+                        rent_amount: data.rent_amount,
+                        tenor: data.tenor,
+                        tenor_type: data.tenor_type,
+                        security_deposit: data.security_deposit
+                    }
+
+                    const initialTerm = {...this.state.initial};
+                    initialTerm[data.section] = termInitial;
+                    const presentTerm = {...this.state.present};
+                    presentTerm[data.section] = termPresent;
+
+                    this.setState({initial: initialTerm, present: presentTerm});
+                    console.log('state initial', this.state.initial);
+                    console.log('state present', this.state.present);
+                    break;
+
+                default:
+                    break;
+            }
+
+            this.props.showAlert({
+                type: 'success',
+                message: 'Saved'
+            });
+        }
     }
 
     render() {
         const {current_step} = this.state;
-        return (
-            <div style={{marginTop: '50px'}}>
-                {this.state.isLoading ? <Loader/> : undefined}
-                {!this.state.isLoading ?
-                    <div className="row">
+
+        if (this.state.isLoading) {
+            return <Loader/>;
+        }
+
+        if (!this.state.isLoading && this.state.fetched) {
+            return (
+                <div className="row">
                     <div className="msform col m8">
                         <div className="row">
                             <div className="col m12">
                                 <ul className="progress-indicator">
-                                    <li className={current_step>=1 ? "completed" : undefined}> <span className="bubble" /> Step 1. </li>
-                                    <li className={current_step>=2 ? "completed" : undefined}> <span className="bubble" /> Step 2. </li>
-                                    <li className={current_step>=3 ? "completed" : undefined}> <span className="bubble" /> Step 3. </li>
-                                    <li className={current_step>=4 ? "completed" : undefined}> <span className="bubble" /> Step 4. </li>
-                                    <li className={current_step>=5 ? "completed" : undefined}> <span className="bubble" /> Step 5. </li>
-                                    <li className={current_step>=6 ? "completed" : undefined}> <span className="bubble" /> Step 6. </li>
+                                    <li className={current_step >= 1 ? "completed" : undefined}><span
+                                        className="bubble"/> Step 1.
+                                    </li>
+                                    <li className={current_step >= 2 ? "completed" : undefined}><span
+                                        className="bubble"/> Step 2.
+                                    </li>
+                                    <li className={current_step >= 3 ? "completed" : undefined}><span
+                                        className="bubble"/> Step 3.
+                                    </li>
+                                    <li className={current_step >= 4 ? "completed" : undefined}><span
+                                        className="bubble"/> Step 4.
+                                    </li>
+                                    <li className={current_step >= 5 ? "completed" : undefined}><span
+                                        className="bubble"/> Step 5.
+                                    </li>
+                                    <li className={current_step >= 6 ? "completed" : undefined}><span
+                                        className="bubble"/> Step 6.
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div className="card-panel">
                             <VelocityTransitionGroup enter={{animation: "fadeIn"}} leave={{animation: "fadeOut"}}>
-                                {this.state.current_step===1 ? <LeaseTerm onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
-                                {this.state.current_step===2 ? <LeaseClauses onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
-                                {this.state.current_step===3 ? <LeasePermissions onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
-                                {this.state.current_step===4 ? <AdvancedWarnings onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
-                                {this.state.current_step===5 ? <LeaseContact onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
-                                {this.state.current_step===6 ? <Lessees onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                {this.state.current_step === 1 ?
+                                    <LeaseTerm onDateChange={this.onDateChange} onChange={this.onChange}
+                                               lease={this.state.lease} term={this.state.present.term}/> : undefined}
+                                {this.state.current_step === 2 ? <LeaseClauses onChange={this.onChange.bind(this)}
+                                                                               clauses={this.state.present.clause}/> : undefined}
+                                {this.state.current_step === 3 ? <LandlordCovenant onChange={this.onChange.bind(this)}
+                                                                                   covenants={this.state.present.covenant}/> : undefined}
+                                {this.state.current_step === 4 ? <LeasePermissions onChange={this.onChange.bind(this)}
+                                                                                   agreements={this.state.present.agreements}/> : undefined}
+                                {/*{this.state.current_step===5 ? <AdvancedWarnings onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}*/}
+                                {this.state.current_step === 5 ? <LeaseContact onChange={this.onChange.bind(this)}
+                                                                               contact={this.state.present.contact}/> : undefined}
+                                {this.state.current_step === 6 ?
+                                    <Lessees onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
                             </VelocityTransitionGroup>
                         </div>
                         <div className="row">
-                            <div className="col m6"><button className="action-button primary-color" onClick={this.previous.bind(this)} >previous</button></div>
-                            <div className="col m6"><button className="action-button primary-color" onClick={this.next.bind(this)} >next</button></div>
+                            <div className="col m6">
+                                <button className="action-button primary-color" onClick={this.previous.bind(this)}>
+                                    previous
+                                </button>
+                            </div>
+                            <div className="col m6">
+                                <button className="action-button primary-color" onClick={this.next.bind(this)}>next
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div className="col m4">
@@ -115,9 +308,9 @@ class EditLease extends Component {
                             </div>
                         </Affix>
                     </div>
-                </div> : undefined}
-            </div>
-        );
+                </div>
+            );
+        }
     }
 
 }
@@ -172,19 +365,13 @@ function TableOfContent(props) {
 }
 
 
-function mapStateToProps(state) {
-    return {
-        activeProperty: state.user.activeProperty,
-    }
-}
-
 EditLease.propTypes = {
-    activeProperty: PropTypes.object.isRequired,
+    showAlert: PropTypes.func,
 }
 
 EditLease.contextTypes = {
     router: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(EditLease);
+export default connect(null, {showAlert})(EditLease);
 

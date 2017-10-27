@@ -156,8 +156,10 @@ export function load_my_applications(path){
     dispatch(loading_applications('loading'))
       let api = new apiActions('https://rentright.herokuapp.com/api/rentright/tenants/applications/');
       let uri = api.url + path
-      console.log(uri)
+
+     
       return api.geturl(path, true).then((applications)=>{
+         console.log(applications, 'applicationurl')
         dispatch(loading_applications('hideloading'));
         dispatch(load_my_applications_success(applications))
       }).catch((err)=>{
@@ -174,6 +176,7 @@ export function setCurrentUnitFunc(unit){
   })
 }
 export function setCurrentApplicationFunc(app){
+  console.log(app)
   return ((dispatch)=>{
    dispatch(setCurrentApplication(app));     
   })
@@ -320,7 +323,7 @@ export function deleteSpecificTenant(path,obj) {
 }
 
 export function load_my_applications_success(applications){
-  console.log(applications.results.results)
+
   return  {type: types.TENANT_APPLICATIONS_LOAD, applications:applications.results.results }
   
 }

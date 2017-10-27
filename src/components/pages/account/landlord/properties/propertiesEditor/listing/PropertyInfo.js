@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Row,Input} from 'react-materialize'
+import {Row, Input} from 'react-materialize'
 import PropTypes from 'prop-types';
 
 class PropertyInfo extends Component {
@@ -12,38 +12,46 @@ class PropertyInfo extends Component {
                 <h3 className="fs-subtitle">Lets get some basic details out of the way</h3><br/>
                 <div className="row">
                     <div className="input-field col s12">
-                        <input placeholder="How many bedrooms?" name="bedrooms" id="bedrooms" className="validate" value={info.bedrooms} onChange={this.props.onChange}/>
+                        <input placeholder="How many bedrooms?" name="bedrooms" id="bedrooms" className="validate"
+                               value={info.bedrooms} onChange={this.props.onChange}/>
                         <label htmlFor="bedrooms" className="active">How many bedrooms?</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                        <input placeholder="How many bathrooms?" name="bathrooms" id="bedrooms" className="validate" value={info.bathrooms} onChange={this.props.onChange}/>
+                        <input placeholder="How many bathrooms?" name="bathrooms" id="bedrooms" className="validate"
+                               value={info.bathrooms} onChange={this.props.onChange}/>
                         <label htmlFor="bathrooms" className="active">How many bathrooms?</label>
                     </div>
                 </div>
-                <Row>
-                    <Input s={12} type='select' name={"unit_type"} label="Whats type of property is this" defaultValue='apartment' value={info.unit_type} onChange={this.props.onChange}>
-                        <option value="apartment">Apartment</option>
-                        <option value="single_family">Single family house</option>
-                        <option value="flat">Flat</option>
-                        <option value="self_contained">Self contained</option>
-                        <option value="office">Office Space</option>
-                    </Input>
-                </Row>
+                <div className={'row'}>
+                    <div className="input-field col s12 m6">
+                        <label>Whats type of property is this</label>
+                        <select name={"unit_type"} className="browser-default"
+                                value={info.unit_type} onChange={this.props.onChange}>
+                            <option value="apartment">Apartment</option>
+                            <option value="single_family">Single family house</option>
+                            <option value="flat">Flat</option>
+                            <option value="self_contained">Self contained</option>
+                            <option value="office">Office Space</option>
+                        </select>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="input-field col s12">
                         <input placeholder="Whats the square footage?" id="footage"
-                               className="validate" name="square_footage" value={info.footage} onChange={this.props.onChange}/>
+                               className="validate" name="square_footage" value={info.square_footage}
+                               onChange={this.props.onChange}/>
                         <label htmlFor="footage" className="active">whats the square footage?</label>
                     </div>
                 </div>
-                <Row>
-                    <Input s={12} type='select' name={"parking_type"} label="Whats the parking like?" defaultValue='garage' value={info.parking} onChange={this.props.onChange}>
-                        <option value="garage">Garage</option>
-                        <option value="carport">Carport</option>
-                    </Input>
-                </Row>
+                <div>
+                    <div className="input-field col s12">
+                        <input placeholder="How many parking spaces?" name="parking_no" id="parking_no" className="validate"
+                               value={info.parking_no} onChange={this.props.onChange}/>
+                        <label htmlFor="parking_no" className="active">What no of parking does this property have?</label>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col s12">
                         <label><b>What are your policies</b></label>
@@ -52,7 +60,8 @@ class PropertyInfo extends Component {
                                 <div className="switch">
                                     <label>
 
-                                        <input type="checkbox" name="smoking" checked={info.smoking} onChange={this.props.onChange}/>
+                                        <input type="checkbox" name="smoking" checked={info.smoking}
+                                               onChange={this.props.onChange}/>
                                         <span className="lever"/>
                                         Smoking not allowed.
                                     </label>
@@ -61,8 +70,9 @@ class PropertyInfo extends Component {
                             <li style={{marginTop: '10px'}}>
                                 <div className="switch">
                                     <label>
-                                        <input type="checkbox" name="pets" checked={info.pets} onChange={this.props.onChange}/>
-                                        <span className="lever" />
+                                        <input type="checkbox" name="pets" checked={info.pets}
+                                               onChange={this.props.onChange}/>
+                                        <span className="lever"/>
                                         Pets not allowed.
                                     </label>
                                 </div>

@@ -9,35 +9,55 @@ import UnitWidgets from "./content/UnitWidgets";
 
 class Content extends Component {
 
+    constructor(props){
+        super(props);
+
+        this.state = {
+            fetching: true,
+            property:{},
+        };
+
+        this.onPropertyReceivedCallback = this.onPropertyReceivedCallback.bind(this);
+    }
+
     componentWillMount(){
         this.props.resetHeader();
     }
 
     componentDidMount(){
         const uuid = this.props.match.params.id;
-        this.props.getProperty({uuid:uuid});
+        const include = 'units';
+        getProperty({uuid:uuid,include},this.onPropertyReceivedCallback);
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.property.isSet){
+    onPropertyReceivedCallback(status,data) {
+        if(status){
+            this.setState({
+                fetching:false,
+                property:data,
+            });
+
             this.props.setHeader({
-                text: nextProps.property.property.name,
+                text: data.name,
                 hasBar: false,
-            })
+            });
         }
+        console.log('property', data);
     }
 
     render() {
-        const {property} = this.props;
+        const {fetching,property} = this.state;
+
+        if(fetching){
+            return(<Loader/>);
+        }
 
         return (
-        <div>
-            {property.isSet ?
                 <div>
                     <div className="row">
                         <div className="col m8">
                             <div className="card-panel" style={{height: '340px'}}>
-                                <UnitWidgets uuid={this.props.match.params.id}/>
+                                <UnitWidgets propertyName={property.name} units={property.units.data}/>
                             </div>
                         </div>
                         <div className="col m4">
@@ -70,12 +90,10 @@ class Content extends Component {
                             </div>
                         </div>
                     </div>
-                </div>:
-                <Loader/>
-            }
-        </div>
+                </div>
         );
     }
+
 }
 
 function mapStateToProps(state){
@@ -87,8 +105,6 @@ function mapStateToProps(state){
 Content.propTypes = {
     resetHeader: PropTypes.func.isRequired,
     setHeader: PropTypes.func.isRequired,
-    property: PropTypes.object.isRequired,
-    getProperty: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps,{resetHeader,setHeader,getProperty})(Content)
+export default connect(mapStateToProps,{resetHeader,setHeader})(Content)

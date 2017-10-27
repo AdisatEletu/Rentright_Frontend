@@ -322,7 +322,7 @@ hideModal(){
                      let rent = this.naira.moderate(itemm.monthly_rent)                      
                     return(
                     <Profiler2 mapit= {this.mapit} mapid = {itemm.id}  address = {itemm.address.address} key = {i} notdummy = {true} 
-                    street = {this.initialize}  style = {{width:'49%', marginTop:'20px', paddingBottom:'0px'}} height = {false}
+                    street = {this.initialize}  style = {{width:'49%', marginTop:'20px', paddingBottom:'0px'}} height = {true}
                     img = {itemm.unit_images[0] ?"https://rentright-api-gateway.herokuapp.com/user/units/image/"+itemm.unit_images[0].id: undefined}
                     list = {itemm.unit_images.length> 0 ?itemm.unit_images : null }
                     detailclick = {this.detailclick} itemm = {itemm}
