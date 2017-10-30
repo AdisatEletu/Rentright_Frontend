@@ -18,8 +18,7 @@ import Agreement_modal  from '../Agreement_modal'
 import 'moment/locale/en-gb';
 import  apiActions from '../../tenantlayouts/durables/controllers/apiActions';
 import ModalForms from '../modal_forms';
-import {FlexLayout,List, MainLayout, PictureCards, Profiler, LongCards, GlobalSearch} from '../../tenantlayouts/durables/layout_elements/flex_layout';
-
+import {FlexLayout,List, MainLayout, PictureCards, Profiler, LongCards, GlobalSearch, AppWidget, AppDetail} from '../../tenantlayouts/durables/layout_elements/flex_layout';
 import Advert from '../../tenantlayouts/advert'
 import enUS from 'antd/lib/locale-provider/en_US';
 import TenantModal from '../Tenant_Modal';
@@ -33,14 +32,74 @@ const RadioButton = Radio.Button;
 const { OptGroup } = Select;
 const { MonthPicker, RangePicker } = DatePicker;
 const  dateFormat = 'YYYY-MM-DD';
-
+let done = null; let status =""; let position=  0; let read =null; let header = ""; let date = ""; 
+let detail =null; let display = null; 
  class ApplicationList extends Component{
     constructor(props) {  
     super(props) 
-         this.state = {loading:false, showModal:false, promoted:{loading:false, wishlist: [], applications:[], error:false, results:undefined},data:{}};
-         this.setupShop.bind(this);    
+         this.state = {loading:false, showModal:false, applications:[], events:null, promoted:{loading:false, wishlist: [], counter:0, applications:[], error:false, results:undefined},data:{}};
+         this.setupShop = this.setupShop.bind(this);   
+         this.runit = this.runit.bind(this); 
     
     }
+    runit(itt, item){ 
+        detail = item.detail; 
+        display = item.display;  
+        let newobj = {done:null, status:"", position:0,read :null, header: "", date :"" };
+        console.log(itt, detail[itt], 'runnning')    
+        switch(itt){
+        case  "created_at":
+                newobj.read = true;
+                newobj.position = 1;
+                newobj.done = detail.created_at ? true : false;
+                newobj.date = detail.created_at;
+                newobj.header = "Application Successfully Sent";
+                newobj.status = "Success";
+                 break; 
+            case  "status":
+                newobj.read = true;
+                newobj.position = 2;
+                newobj.done = detail.status == "Not Viewed" ? false : true;
+                newobj.date = detail.rejected_at ? detail.rejected_at :  detail.terminated_at ? display.updated_at : null;
+                newobj.header = "Status of Application";
+                newobj.status = detail.status;
+                 break;
+           case "review_date":
+                newobj.position = 3;
+                newobj.read = true;
+                newobj.done = detail.review_date? true: false;
+                newobj.date = detail.review_date;
+                newobj.header = detail.review_date ? "Your Application has being reviewed" : "No reviews yet";
+                newobj.status = detail.review_date ? "Your application has being accepted" :"Hold tight";
+                 break;
+            case "accepted_on":
+                newobj.position = 4;
+                newobj.read =  detail.rejected_at || detail.terminated_at  ? false : true;
+                newobj.done = detail.accepted_on ? true: false;
+                newobj.date = detail.accepted_on;
+                newobj.header = detail.accepted_on ? "Your Application was accepted"  : "Application is on its way";
+                newobj.status = detail.accepted_on ? "Your application has being accepted" :detail.rejected_at || detail.terminated_at ? "Your Application was rejected" : "Not yet viewed"
+                 break;
+           
+
+         case "rejected_on" || "terminated_at":
+                newobj.position = 4;
+                newobj.read =  detail.rejected_at || detail.terminated_at  ? true : false;
+                newobj.done = detail.rejected_at || detail.terminated_at ? true: false;
+                newobj.date = detail.rejected_at ? detail.rejected_at :  detail.terminated_at ?  detail.terminated_at : null;
+                newobj.header = "Your Application was rejected";
+                newobj.status = detail.rejected_at || detail.terminated_at ? "Your Application was rejected" : "Not yet viewed";
+                 break;
+        default:
+         null                                            
+
+        }
+        let sortobj = [newobj].sort(function (a, b) {
+              return a.position - b.position;
+          });
+       return sortobj[0]
+    }
+
     setupShop(){
         this.setState({loading:true})
         let api = new apiActions('https://rentright.herokuapp.com/api/rentright/wishlist/detail/');
@@ -64,8 +123,15 @@ const  dateFormat = 'YYYY-MM-DD';
                 })
                  return j
             })
-            console.log(list, 'list')
-            this.setState({applications:list})
+         
+            this.setState({applications:list});
+                if( list[0]  ){
+                let obj = Object.keys(list[0].detail);
+                this.setState({events:["created_at","status","review_date","accepted_on","rejected_on", "terminated_at" ]})   
+    }
+           
+
+
          
         }).catch((err)=>{
                     console.log('err0r', err)
@@ -76,17 +142,20 @@ const  dateFormat = 'YYYY-MM-DD';
                this.setState({loading:false})
             this.setState({wishlist: obj.units})
             this.setState({loading:false})
-        }).catch((err)=>{
-            console.log(err, 'Error message')
+           }).catch((err)=>{
             this.setState({loading:false})
         })
         
     }
     componentWillMount(){  
-   
+       this.setupShop ();
        }
     componentDidMount(){ 
-      this.setupShop ();
+    if( this.state.applications[0]  ){
+    let obj = Object.keys(this.state.applications[0].detail);
+     console.log(this.state.obj,'objevents')
+     this.setState({events:obj})
+    }
         
      }
      componentDidUpdate(prevProps, prevState) {
@@ -171,10 +240,65 @@ const  dateFormat = 'YYYY-MM-DD';
 
 
                      </div>
+            <div className  = "t-md-10 t-flex t-space-around  page-padding">
+              <span className = "app-header">Manage Applications</span>
+              <span className = "bodyTest">SEE ALL <Icon type = "right" /></span>
+            </div>
+            <div className = "t-md-10 t-flex-start app-pad t-flex  t-flex-wrap t-flex-row t-whiteb" >
+             {
+                 this.state.applications && this.state.applications.length > 0 ?
+                 
+                     this.state.applications.map((item,index)=>{
+                         console.log(item, 'it')
+                       return(
+                           <AppWidget key = {index} 
+                                applicants = {item.display ? item.display.applications.length : null}
+                                landlordName = { item.detail.unit_manager.first_name + " " + item.detail.unit_manager.last_name}
+                                landlordImage = {  item.display  && item.display.unit_images ?  "https://rentright-api-gateway.herokuapp.com/user/units/image/"+ item.display.unit_images[0].id 
+                                :
+                                ''
+                                }
+                                type =  { item.display ? item.display.title: null}
+                                rent = { item.display ? item.display.minimum_lease_term * item.display.monthly_rent : null}
+                                applicationDate = {item.detail.created_at}
+                                linkTo =  { item && item.display && item.display.address?'/tenant/applications/'+this.props.auth.user.uuid+'/'+item.display.address.address.address+'/'+item.display.id+'/overview' : ""}
+                                >
 
+                               {
+                                   this.state.events && this.state.events.length > 0
+                                   ?
+                                   
+                                   this.state.events.map((itt, ind)=>{
+                                    let newobj = this.runit(itt,item)                               
+                                    if (newobj.read){
+                                       return (                                   
+                                           <AppDetail
+                                            position = {newobj.position}   done = {newobj.done}    header = {newobj.header}
+                                             status = {newobj.status}      date = {newobj.date}    key = {newobj.ind}                             
 
+                                           />
+                                       )
+                                    }
+                                   })
+                                   :
+                                   null
+                               }
 
+                                </AppWidget>
 
+                       )
+
+                     })                
+                 
+                 
+                 
+                 :
+                 <div className = "app-none">
+                     <Icon type = "customer-service"/>
+                     <h1>Hi {this.props.auth.user.firstname} You havent applied for any property yet, would you like to apply for one you can click this button below </h1>
+                     </div>
+             }
+             </div>
 
 
             <div className = "events">

@@ -90,7 +90,7 @@ background:#fff; cursor:pointer; }
 }
  .leaflet-div-icon{border:none; background:rgba(0,0,0,0);}
 .panoramic-top{ width:100%; height:30%; background-size:cover; background-position:center; background-color:#ededed;}
-.panoramic-cover{width:100%; height:100%; background:rgba(0,0,0,0.5); display:flex; flex-direction:column; justify-content:flex-start; padding:10px; }
+.panoramic-cover{width:100%; height:100%;  z-index:10;background:rgba(0,0,0,0.5); display:flex; flex-direction:column; justify-content:flex-start; padding:10px; }
 .back-icon,.back-icon i{cursor:pointer;  margin-bottom:5px; cursor:pointer; font-size:20px; color:#fff; }
 .back-icon i{transform:rotate();}
 .panoramic-header{font-size:25px; text-transform:capitalize;  font-weight:500; color:rgba(255,255,255,0.9); text-align:center; padding:0px 20px;   box-sizing:border-box; line-height:30px; }
@@ -108,7 +108,7 @@ height:150px; width:200px; border-radius:6px;}
 box-shadow: 1px 2px 12px -1px rgba(0,0,0,0.48);}
 .large-box,.small-box{display:flex; overflow-x:hidden; flex-direction:column; width:100%; height:100%;}
 .prelarge-box{ justify-content:center; justify-content:flex-start; padding-left:10px; width:100%; display:flex; height:100px; }
-.large-box{width:60%;  box-sizing:border-box;} .small-box{width:39.99%; display:flex; flex-direction:column; align-content:flex-end; align-items:flex-end;}
+.large-box{width:60%;  overflow:hidden; box-sizing:border-box;} .small-box{width:39.99%; z-index:1;  display:flex; flex-direction:column; align-content:flex-end; align-items:flex-end;}
 .fancy{display:flex;  min-height:220px; width:98%;  box-sizing:border-box; flex-direction:column;  align-items:center; align-content:center; justify-content:space-around;}
 .fancy span{font-size:14px; margin:10px 0px; color:#222; font-family:Museo; height:35px; line-height:35px; border-radius:9px; width:60%; background:#ededed; text-align:center;}
 .fancy i{font-size:30px;    color:#999; text-align:center;}
@@ -123,8 +123,17 @@ box-shadow: 1px 2px 12px -1px rgba(0,0,0,0.48);}
 .pan-amenities{height:40px; display:flex;  text-transform:capitalize; align-content:center; padding:0px 3px; 
   box-sizing:border-box; overflow:hidden; line-height:35px; color:#222; font-size:14px; font-family:Proxima nova; font-weight:400;  }
 .pan-amenities .ihold {line-height:30px; margin-top:7px; background-color:rgb(85,163,42); font-size:18px;  margin-right:10px; height:30px; width:30px; height:30px; text-align:center; color:#fff; }
-.places{ margin-right:auto; padding:0px 3px;  cursor:pointer;  font-weight:400;font-family:Proxima nova; letter-spacing:1.5px; text-transform:capitalize; height:auto; line-height:20px; color:#999; font-size:14px; }
- .place-top{width:100%; margin-right:auto; font-weight:500; display:flex; justify-content:space-around; margin-top:40px; height:auto;}
+.places{
+   width:80%; margin-right:auto; border-radius:4px; margin-bottom:5px;  height:40px; line-height:40px; box-sizing:border-box; 
+   text-align:center; border:solid 1px #d2d2d2;  font-family:Proxima Nova;
+   color:#222; font-weight:300; font-size:13px;  display:inline-block;   
+    cursor:pointer; 
+     letter-spacing:1.5px; 
+     text-transform:capitalize;
+ }
+ .places:hover{background-color:#55A32A; color:#fff; border-color:#55A32A; }
+
+.place-top{width:100%; margin-right:auto; font-weight:500; display:flex; justify-content:space-around; margin-top:40px; height:auto;}
 .place-top .pan-h2{font-weight:500; margin-bottom:20px;  display:block; width:100%; font-size:14px;}
 
 .places:hover{text-decoration:underline;} .places-selected{text-decoration:underline; color:#ff8a80;}

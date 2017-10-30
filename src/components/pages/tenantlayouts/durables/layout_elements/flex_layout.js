@@ -10,7 +10,7 @@ import { Avatar } from 'antd';
 import {BingTileLayer, geojsonMaker, GeoJSONCUSTOM ,  GeoJSONCUSTOM2 } from '../controllers/bing_leaflet'
 import L from 'leaflet';
 import Modal from 'antd/lib/modal';
-
+import 'moment';
 import Radio from  'antd/lib/radio';
 import Input from 'antd/lib/input';
 import moment from 'moment';
@@ -749,8 +749,146 @@ pop2 = (output)=>{
 
 
 
+export class AppWidget extends Component{
+  
+  constructor(props){     
+      super(props);
+      this.state = {css: {height:'250px' ,overflow:'hidden'}, css2: {height:'150px' ,overflow:'hidden'}}
+      this.resize = this.resize.bind(this);
+  }
+componentWillReceiveProps(){
 
 
+    }
+resize(){
+     if (this.state.css.overflow === "hidden"){
+    
+    this.setState({css:{height:'auto', overflow:'visible'}})
+    this.setState({css2:{minHeight:'auto', overflow:'visible'}})  
+    
+     }else{
+    this.setState({css:{height:'350px', overflow:'hidden'}} )
+    this.setState({css2:{height:'500px', overflow:'hidden'}} )
+}
+}
+    componentDidMount(){
+ 
+        
+         }
+    sendToParent(){
+
+    }
+
+render(){
+     return(
+ <div className = "app-table" style = {this.state.css2}>
+    <div className="app-table-first m-ellipses">{this.props.bedrooms} {this.props.type} {this.props.address} 
+        <Icon style ={{
+            marginLeft:'auto',
+            color:'rgba(255,255,255,0.5)',  cursor:'pointer',
+            fontSize:'15px',
+                   
+        }} 
+          type = {this.state.css.overflow === "hidden" ? "arrows-alt" : "shrink"}
+          onClick = {this.resize}
+          />
+
+    
+    </div>
+        <div className="app-table-second" >
+            <span className = "app-super">&#8358; {this.props.rent ?this.props.rent.toLocaleString('en'): null}</span>
+            <span className = "app-mid">You applied on { moment(new Date(this.props.applicationDate)).format("MMM Do YY")}</span>
+        </div>
+        <div className = "app-arrow-hold"><div className = "app-arrow"/></div>
+            <div className="app-table-third" style = {this.state.css}>
+                {this.props.children}
+                </div>
+                <div className="app-table-fourth">
+                    <div className = "app-identity">
+                        <div className = "app-thumbnail" style = {{backgroundImage:'url('+this.props.landlordImage+')'}}/>
+                        <div className = "app-identity-words">
+                            <div className = "app-identity-h1 m-ellipses"><strong>Landlord :  </strong>{this.props.landlordName}</div>
+                            <div className = "app-identity-h2 m-ellipses">{this.props.applicants} Applicants</div>
+                            <div className = "t-md-10 t-flex"><Icon type = "star"/> <Icon type = "star"/> <Icon type = "star"/> <Icon type = "star"/> <Icon type = "star"/> </div>
+                            </div>
+                        </div>
+                        <NavLink to = {this.props.linkTo} className = "app-button">Manage</NavLink>
+                    </div>
+</div>
+     )
+ }
+ } 
+ AppWidget.PropTypes= {
+      applicants:PropTypes.string,
+      landlordName:PropTypes.string,
+      landlordImage:PropTypes.string,
+      bedrooms:PropTypes.string,
+      address:PropTypes.string,
+      type:PropTypes.string,
+      applicationDate:PropTypes.string,
+      rent:PropTypes.string,
+
+}
+
+export class AppDetail extends Component{
+  
+  constructor(props){     
+      super(props);
+  }
+componentWillReceiveProps(){
+
+
+    }
+
+    componentDidMount(){
+ 
+        
+         }
+    sendToParent(){
+
+    }
+
+render(){
+
+     return(
+    <div className = { this.props.done ? "app-detail app-active": "app-detail app-passive" }>
+        <div className = "app-pre-round">
+            <div className = "app-round">
+                {
+                    this.props.done ?
+            <Icon type = "check"/>
+            : 
+            <span className = "app-i">{this.props.position}</span>
+                }
+            
+            </div><div className = "app-dash"/></div>
+    
+        <div className="app-detail-detail">
+            <div className = "app-detail-h1 "><strong>{this.props.header}</strong>
+            
+            {
+                this.props.done && this.props.date ?
+                 moment(new Date(this.props.date)).format("MMM Do YY")
+                 :
+                 null
+                 
+             }
+            </div>
+            <span className = "app-detail-span"><strong>Status :</strong>{this.props.status}</span>
+            </div>
+    
+        </div>
+     )
+}
+ } 
+ AppWidget.PropTypes= {
+      done:PropTypes.bool,
+      postion:PropTypes.number,
+      header:PropTypes.string,
+      status:PropTypes.string,
+      date:PropTypes.string
+
+}
 
 
 
