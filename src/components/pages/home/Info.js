@@ -35,7 +35,7 @@ export const info = {
     happyText: "It is fun and easy to rent or list a property using RentRight.",
     featureText: "This is the best featured offer based on your location and your searches, sign in to see more of these offers.",
     feature:"Best Featured Offer",
-
-
+    newestproHeader: "Professionals Nearby",
+    newestproDetails: " Need a trusted professional to help you fix your property, these are many professionals rendering different services on Rentright.",
 
 }
