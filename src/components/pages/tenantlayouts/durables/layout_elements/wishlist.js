@@ -16,26 +16,30 @@ import { notification } from 'antd';
 export default class Wishlist extends Component{
     constructor(props){
         super(props);
-        this.state = {wished:false, loading:false, style:{}, id:null }
+        this.state = {wished:false, loading:false, style:{}, id: null }
         this.clicked = this.clicked.bind(this);
         this.likeAction = this.likeAction.bind(this);
     }
     clicked = (context)=>{
-        this.props.clicked(context);
+        if (this.props.clicked) {
+            this.props.clicked(context);
+        }
+
     }
     likeAction(){
-    this.setState({loading:true});
-    let api = new apiActions("https://rentright.herokuapp.com/api/rentright/users/wishlist/list/");
-    let path = this.props.uuid;
+        this.setState({loading:true});
+        let api = new apiActions("https://rentright.herokuapp.com/api/rentright/users/wishlist/list/");
+        let path = this.props.uuid;
         if (! this.state.wished){
-            api.posturl(path, {identifier:this.props.uuid, unit_id:this.props.unit_id}).then((obj)=>{
+            api.posturl(path, {identifier_id:this.props.uuid, unit_id:this.props.unit_id}).then((obj)=>{
                 console.log(obj.results.id, 'id');
                 this.setState({id:obj.results.id});
                 this.setState({wished:true})
                 this.clicked(true);
                 this.setState({loading:false});
             }).catch((err)=>{
-               this.setState({loading:false});
+                console.log(err)
+                this.setState({loading:false});
                 this.setState({wished:false});
             })
         }else{
@@ -54,18 +58,19 @@ export default class Wishlist extends Component{
                 this.setState({loading:false});
             }
         }
-}
+    }
     componentDidMount(){
         this.props.style ? this.setState({style:this.props.style}) : this.setState({style:{}})
-        let api = new apiActions("https://rentright.herokuapp.com/api/rentright/users/wishlist/list/")
-        let path = this.props.uuid ;
+        let api = new apiActions("https://rentright.herokuapp.com/api/rentright/users/wishlist/get/")
+                let path = this.props.uuid ;
         api.geturl(path,true).then((item)=>{
-             let liked = item.results.results;
+            console.log(item, 'new wishlist')
+            let liked = item.results;
             console.log(liked, 'liked def')
             console.log(liked.length, 'liked')
             if (liked.length > 0) {
 
-                let checkExist = parseInt(liked.findIndex(i => parseInt(i.unit_id) == parseInt(this.props.unit_id)))
+                let checkExist = parseInt(liked.findIndex(i => parseInt(i.unit_id) === parseInt(this.props.unit_id)))
 
                 console.log(checkExist, 'checked');
                 if (checkExist != -1) {
@@ -81,18 +86,19 @@ export default class Wishlist extends Component{
 
     render (){
         if ( !this.state.loading){
-        return (
-            <Icon type ={ this.state.wished ? "heart" : "heart-o"}
-                  title = { ! this.state.wished ? "Add to your wishlist": "Remove from your wishlist"}
-                  style = { this.state.wished?{color:'#ed4956',...this.state.style}:{color:'#fff',...this.state.style}}
-                  onClick = {this.likeAction}
+            return (
+                <Icon type ={ this.state.wished ? "heart" : "heart-o"}
+                      title = { ! this.state.wished ? "Add to your wishlist": "Remove from your wishlist"}
+                      style = { this.state.wished?{color:'#ed4956',...this.state.style}:{color:'#fff',...this.state.style}}
+                      onClick = {this.likeAction}
 
 
-            />
-        )
+
+                />
+            )
         }else{
             return(
-            <Icon type ="loading"  title = "loading"/>
+                <Icon type ="loading"  title = "loading"/>
             )
 
         }
@@ -104,5 +110,5 @@ export default class Wishlist extends Component{
 Wishlist.PropTypes = {
     uuid:PropTypes.string,
     unit_id:PropTypes.number,
-    clicked:PropTypes.func,
+
 }

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Button, Card, Badge, Avatar, Icon, Modal} from 'antd';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
-import {getAllLease} from "../../../../../../../state/actions/leaseAction";
+import {getAllLease, signLease} from "../../../../../../../state/actions/leaseAction";
 import Loader from "../../../../../../shared/Loader";
 import shortid from 'shortid';
 import {formatCurrency} from "../../../../../../../state/actions/PaymentActions";
@@ -86,21 +86,35 @@ class Dashboard extends Component {
 
 class PendingLease extends Component {
 
-    state = {visible: false}
-
-    handleOk = (e) => {
-        console.log(e);
-        this.setState({
-            visible: false,
-        });
-    };
+    state = {
+        visible: false,
+        signing: false,
+    }
 
     handleCancel = (e) => {
-        console.log(e);
-        this.setState({
-            visible: false,
-        });
+        if (!this.state.signing) {
+            this.setState({
+                visible: false,
+            });
+        }
     };
+
+    handleSigning(data_uri) {
+        //set the signing state of the app
+        this.setState({signing: true});
+
+        const params = {
+            data_uri,
+            lease_uuid: this.context.router.route.match.params.id,
+            include: 'signatures'
+        }
+
+        signLease(params, this.onLeaseSignCallback);
+    }
+
+    onLeaseSignCallback(status, data) {
+
+    }
 
     onSendLease() {
         this.setState({
@@ -152,6 +166,18 @@ class PendingLease extends Component {
             </div>
         </div>;
 
+        let actionBtn = undefined;
+
+        if (this.props.lease.has_landlord_signature) {
+            actionBtn = <button onClick={() => this.onSendLease()}
+                                className="d-button white-text purple darken-2 block">Send lease to tenants  to sign
+                        </button>;
+        } else {
+            actionBtn = <button onClick={() => this.onSendLease()}
+                                className="d-button white-text purple darken-2 block">Sign lease so your tenants can sign
+                        </button>;
+        }
+
         return (
             <div className="col s12 m6">
                 <Card style={{marginTop: '20px'}}>
@@ -162,11 +188,10 @@ class PendingLease extends Component {
                         title="Sign your lease electronically"
                         width={'60%'}
                         visible={this.state.visible}
-                        onOk={this.handleOk}
                         onCancel={this.handleCancel}
                         footer={null}>
 
-                        <SignPad onSignatureReceived={(url=>alert(url))}/>
+                        <SignPad onSignatureReceived={this.handleSigning.bind(this)} loading={this.state.signing}/>
 
                     </Modal>;
                     <div className="row">
@@ -177,10 +202,7 @@ class PendingLease extends Component {
                     </div>
                     <div className="row">
                         <div className="col s12">
-                            <button onClick={() => this.onSendLease()}
-                                    className="d-button white-text purple darken-2 block">Send lease to tenants
-                                to sign
-                            </button>
+                            {actionBtn}
                         </div>
                     </div>
                 </Card>

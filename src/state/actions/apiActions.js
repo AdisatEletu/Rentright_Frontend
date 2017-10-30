@@ -19,8 +19,7 @@ export default class apiActions {
       
     }else{
       path = this.url;
-    }
-    
+    }    
     return fetch(path).then(response => {
       return response.json();
     }).catch(error => {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getLeaseUrl,getAllLeaseUrl,updateLeaseUrl} from "../../utils/ApiManager";
+import {getLeaseUrl,getAllLeaseUrl,updateLeaseUrl,signLeaseUrl} from "../../utils/ApiManager";
 
 export function getLease(params,callback) {
     return axios.get(getLeaseUrl(params.lease_uuid),{params}).then(
@@ -35,5 +35,17 @@ export function updateLease(params,callback){
         }
     ).catch(
         err => callback(false,err)
-    )
+    );
+}
+
+export function signLease(params,callback){
+    axios.post(signLeaseUrl(params.lease_uuid),params).then(
+        res => {
+            callback(true,res.data.data);
+        }
+    ).catch(
+        err => {
+            callback(false,err);
+        }
+    );
 }

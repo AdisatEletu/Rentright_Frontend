@@ -66,7 +66,7 @@ class SignPad extends Component {
                     <div className={'col s12 m1 d-npd-left control-panel'}>
                         <ul>
                             <li>
-                                <Icon type="edit" style={{fontSize:'25px'}} />
+                                <b><Icon type="upload" style={{fontSize:'25px'}} /></b>
                             </li>
                             <li className={'active'}>
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZBAMAAAA2x5hQAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAnUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN0S+bUAAAANdFJOUwTROu+n/RJe5I8pdb+Szr1UAAAAzklEQVQYGWNgQAOTAxUQIomhrWYI3lEplnA4jzswgTsazuMIYuAMZ1gE5ZceYOAJYgkVgHCnFjCkGrh2REF4RxcwlDpFJIZBeKIJDKKa0UsFshUYqhcwtDKwBzJGuW44aqAROoFBNIExnCMogiU0yPR4AoNrwdYDjKHhU5uDI4FaS0+ZLuAMnRm8ONQByEuOiGQAOtWIJwRkKnuoALupcMwChgQILzQ0BMwC8VSjD7cogBhg0FoAZYApT2QOGlsJCSxgCEUCDgwuSGADqj4A6ow2kFDG8d0AAAAASUVORK5CYII="/>
@@ -77,7 +77,7 @@ class SignPad extends Component {
                             </li>
                         </ul>
                     </div>
-                    <div className={'col s12 m11'}>
+                    <div className={'col s12 m11 d-npd-right'}>
                         <div className="signature-pad--body">
                             <h4 style={{marginBottom:'10px'}} className={'center'}>Sign in the box below</h4>
                             <canvas/>
@@ -94,7 +94,8 @@ class SignPad extends Component {
 
                     </div>
                     <div className={'col s6'}>
-                        <button onClick={this.saveSignature.bind(this)} type="button" className="button save right" data-action="save-png">Accept Signature
+                        <button onClick={this.saveSignature.bind(this)} type="button" className="button save right" data-action="save-png">
+                            {this.props.loading ? <span><Icon type="loading" /> Signing...</span>  : 'Accept Signature'}
                         </button>
                     </div>
                 </div>

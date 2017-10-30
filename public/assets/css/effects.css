@@ -1187,6 +1187,27 @@ margin-top: 25px;
     margin-top: 15px;
 }
 
+.LESSR h2{
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.LESSR h3{
+    margin-bottom: 15px;
+}
+
+.LESSR .signWrap{
+    width: 100%;
+    display: block;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #999999;
+}
+
+.LESSR span{
+    display: block;
+    text-align: right;
+}
+
 #root,
 .landlord,
 .application,

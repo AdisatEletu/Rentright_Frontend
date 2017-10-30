@@ -13,6 +13,8 @@ export const updateApplicationUrl = (uuid) => {return BASE_URL+'applications/'+u
 
 export const getLeaseUrl = (uuid) => {return BASE_URL+'leases/'+uuid};
 export const updateLeaseUrl = (uuid) => {return BASE_URL+'leases/'+uuid};
+export const signLeaseUrl = (uuid) => {return BASE_URL+'leases/'+uuid+'/sign'};
+
 export const getAllLeaseUrl =  BASE_URL+'leases';
 
 export const getNotificationsUrl = BASE_URL+'user/notifications';

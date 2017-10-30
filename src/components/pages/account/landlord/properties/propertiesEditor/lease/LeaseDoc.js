@@ -7,7 +7,15 @@ import shortid from "shortid";
 class LeaseDoc extends Component {
 
     render() {
-        const {premises,terms,lessee,lessor,tenant_covenants,landlord_covenants,agreements} = this.props.lease;
+        const {premises,terms,lessee,lessor,tenant_covenants,landlord_covenants,agreements,signatures} = this.props.lease;
+
+        let landlord_signature =[];
+        let tenant_signature = [];
+
+        if(signatures.data && signatures.data.length > 0){
+            landlord_signature = signatures.data.filter(signature=>signature.signatory === 'landlord');
+            tenant_signature = signatures.data.filter(signature=>signature.signatory === 'tenant');
+        }
 
         return (
             <div>
@@ -142,6 +150,32 @@ class LeaseDoc extends Component {
                     {/*Agreements Section of the lease*/}
                     <Section title={'Agreements'}>
                         {agreements.data.map((clause)=><Clause key={shortid.generate()} title={clause.name} content={clause.statement}/>)}
+                    </Section>
+
+                    {/*Signatures Section of the lease*/}
+                    <Section title={'Signatures'}>
+                        <div className={'row'}>
+                            <div className={'col s6'}>
+                                <div className={'LESSR'}>
+                                    <h2>SIGNED SEALED AND DELIVERED</h2>
+                                    <h3>By the within named <b>LANDLORD</b></h3>
+                                    <div className={'signWrap'}>
+                                        {landlord_signature.length > 0 ? <img style={{height:'30px'}} src={landlord_signature[0].signature_encoded} alt={'landlord signature'}/> : <span style={{height:'35px'}} className={'red-text'}>Lease not yet signed by Landlord</span>}
+                                    </div>
+                                    <span>{lessor.data.last_name} {lessor.data.first_name}</span>
+                                </div>
+                            </div>
+                            <div style={{borderLeft:'1px solid #cccccc'}} className={'col s6'}>
+                                <div className={'LESSR'}>
+                                    <h2>SIGNED SEALED AND DELIVERED</h2>
+                                    <h3>By the within named <b>Tenant</b></h3>
+                                    <div className={'signWrap'}>
+                                        {tenant_signature.length > 0 ? <img style={{height:'30px'}} src={tenant_signature[0].signature_encoded} alt={'landlord signature'}/> : <span style={{height:'35px'}} className={'red-text'}>Lease not yet signed by Tenant</span>}
+                                        </div>
+                                    <span>{lessee.data.last_name} {lessee.data.first_name}</span>
+                                </div>
+                            </div>
+                        </div>
                     </Section>
                 </div>
             </div>

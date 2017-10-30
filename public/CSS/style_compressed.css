@@ -3129,7 +3129,7 @@
 
 /*--------------------------------------------Signature pad styling--------------------------------------*/
 .signature-pad .signature-pad--body{
-    padding: 0 15px;
+    padding: 0 0 0 15px;
 }
 .signature-pad .signature-pad--body canvas{
     width: 100%;
