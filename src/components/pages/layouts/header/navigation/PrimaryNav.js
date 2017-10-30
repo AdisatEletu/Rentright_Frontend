@@ -49,7 +49,7 @@ import {Icon} from 'antd';
                             <div className="dropdown-content">
                                 <Link to ='/landlord'>Landlord</Link>
                                 <Link to ='/tenant'>Tenant</Link>
-                                <Link to ='/'>Agent</Link>
+                                <Link to ='/agent'>Agent</Link>
                             </div>
                         </div> : <Link to="/Register" className="Iconstyle"><Icon type="user" /> <span>Register</span></Link>}
                         </span>

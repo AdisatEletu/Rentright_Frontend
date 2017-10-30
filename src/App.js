@@ -5,6 +5,7 @@ import {connectToSocket} from './state/actions/tenantAction';
 import {bindActionCreators} from 'redux';  
 import {connect} from 'react-redux';
 import Home from '../src/components/pages/Home';
+import Agent from '../src/components/pages/agent/Agent'
 import Login from '../src/components/pages/auth/Login';
 import Register from '../src/components/pages/Register';
 import LandLord from "./components/pages/account/LandLord";
@@ -55,6 +56,7 @@ class App extends Component {
                   <Route path="/tenant" component={Tenant} />
                   <Route path="/landlord-guide" component={LandlordGuide} />
                   <Route path="/generalsearch/:param" component={MapPage} />
+                  <Route path="/agent" component={Agent} />
               </Switch>
           </Router>
           </LocaleProvider>

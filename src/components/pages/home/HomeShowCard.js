@@ -68,7 +68,7 @@ class HomeShowCard extends Component{
                         <div className="home-property-pict t-fullheight t-flex t-md-10 t-flex-column ">
                             <div className="t-flex t-flex-row">
                                 <span className="t-flex home-newest-property-price t-md-3 t-justify-left t-align-center"> &#8358; {unit.monthly_rent.toLocaleString('en')}</span>
-                                <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center ">
+                                <span className="t-flex home-newest-property-fav t-md-7 t-justify-right t-align-center wishpad">
                                     {
                                         this.props.auth.user.uuid ?
                                             <Wishlist uuid = {this.props.auth.user.uuid}
@@ -76,7 +76,7 @@ class HomeShowCard extends Component{
                                                       unit_id = {unit.id}
                                                        />
                                         :
-                                            <NavLink to = "sign-in"><Icon type="heart-o"/></NavLink>
+                                            <NavLink to = "sign-in"><Icon type="heart-o "/></NavLink>
 
                                     }
 
