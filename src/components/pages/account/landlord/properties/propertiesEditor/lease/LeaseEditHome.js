@@ -8,18 +8,11 @@ class LeaseEditHome extends Component {
 
     constructor(props){
         super(props);
+        const preview = queryString.parse(props.location.search).preview ? queryString.parse(props.location.search).preview : false;
+
         this.state = {
-            isPreview: false,
+            isPreview: (preview && preview !== 'false'),
         }
-    }
-
-    componentDidMount() {
-        const is_preview = queryString.parse(this.props.location.search).preview ? queryString.parse(this.props.location.search).preview : false;
-
-        if(is_preview && is_preview !== 'false'){
-            this.setState({isPreview: true});
-        }
-
     }
 
     render() {

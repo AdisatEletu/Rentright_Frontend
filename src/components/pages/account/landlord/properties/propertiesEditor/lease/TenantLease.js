@@ -1,34 +1,74 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Button, Card, Icon, Avatar, Steps} from 'antd';
 import LeaseDoc from "./LeaseDoc";
+import {getLease} from "../../../../../../../state/actions/leaseAction";
+import Loader from "../../../../../../shared/Loader";
 
 
 const Step = Steps.Step;
 
 class TenantLease extends Component {
 
+    constructor(props){
+        super(props);
+
+        this.state = {
+            fetching: true,
+        }
+
+        this.onLeaseReceivedCallback = this.onLeaseReceivedCallback.bind(this);
+    }
+
+
     componentDidMount(){
-        console.log('props', this.props)
+        const lease_uuid = this.context.router.route.match.params.leaseId;
+        console.log('mounted');
+        const params = {
+            lease_uuid,
+            compiled: true,
+        }
+
+        getLease(params,this.onLeaseReceivedCallback)
+    }
+
+    componentWillUnmount(){
+        console.log('unmounted')
+    }
+
+    onLeaseReceivedCallback(status,data){
+        if(status){
+            this.setState({
+                fetching:false,
+                fetched:true,
+                lease:data
+            });
+        }
     }
 
     render() {
+        if(this.state.fetching){
+            return <Loader/>;
+        }
 
-        return (
-            <div style={{marginTop: '50px'}}>
-                <div className="row" style={{height: '100%'}}>
-                    <div className="col m8" id="lease-view">
-                        <div className="card-panel">
-                            <LeaseDoc/>
+        if(!this.state.fetching && this.state.fetched){
+            return (
+                <div style={{marginTop: '50px'}}>
+                    <div className="row" style={{height: '100%'}}>
+                        <div className="col m8" id="lease-view">
+                            <div className="card-panel">
+                                <LeaseDoc lease={this.state.lease}/>
+                            </div>
+                        </div>
+                        <div className="col m4" id="lease-sidebar">
+                            <PreviewSideBar/>
                         </div>
                     </div>
-                    <div className="col m4" id="lease-sidebar">
-                        <PreviewSideBar/>
-                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        //display error to user
+
     }
 
 }
@@ -102,15 +142,9 @@ function TableOfContent(props) {
     );
 }
 
-
-function mapStateToProps(state) {
-    return {
-        activeProperty: state.user.activeProperty,
-    }
+TenantLease.contextTypes = {
+   router: PropTypes.object.isRequired,
 }
 
-TenantLease.propTypes = {
-    activeProperty: PropTypes.object.isRequired,
-}
-export default connect(mapStateToProps)(TenantLease);
+export default TenantLease;
 

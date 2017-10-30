@@ -17,6 +17,7 @@ import LandlordGuide from './components/pages/LandordGuide';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 import { notification } from 'antd';
+import SignPad from "./components/shared/SignPad";
 class App extends Component {
     constructor(props){
         super(props);

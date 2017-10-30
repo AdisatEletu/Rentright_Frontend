@@ -49,6 +49,7 @@
     "redux-thunk": "^2.2.0",
     "rxjs": "^5.4.3",
     "shortid": "^2.2.8",
+    "signature_pad": "^2.3.2",
     "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "socket.io": "^2.0.3",
     "sweetalert": "^1.1.3",

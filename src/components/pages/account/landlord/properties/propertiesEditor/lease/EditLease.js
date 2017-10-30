@@ -14,7 +14,7 @@ import Loader from "../../../../../../shared/Loader";
 import {getLease, updateLease} from "../../../../../../../state/actions/leaseAction";
 import moment from 'moment'
 import LandlordCovenant from "./LandlordConvenant";
-import {isEqual} from "lodash";
+import isEqual from "lodash/isEqual";
 import {showAlert} from "../../../../../../../state/actions/uiAction";
 
 
@@ -33,7 +33,6 @@ class EditLease extends Component {
 
         this.onLeaseRetrieved = this.onLeaseRetrieved.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
-        this.onChange = this.onChange.bind(this);
         this.onUpdateCallback = this.onUpdateCallback.bind(this);
     }
 
@@ -61,6 +60,7 @@ class EditLease extends Component {
                 agreements: data.clause.data.filter((clause) => clause.type === 'agreement'),
                 /*warning:{},*/
                 contact: {
+                    section:'contact',
                     street_name: data.landlord.data.work_address.data.street_name,
                     community: data.landlord.data.work_address.data.community,
                     state: data.landlord.data.work_address.data.state,
@@ -84,6 +84,7 @@ class EditLease extends Component {
                 agreements: data.clause.data.filter((clause) => clause.type === 'agreement'),
                 /*warning:{},*/
                 contact: {
+                    section:'contact',
                     street_name: data.landlord.data.work_address.data.street_name,
                     community: data.landlord.data.work_address.data.community,
                     state: data.landlord.data.work_address.data.state,
@@ -100,7 +101,6 @@ class EditLease extends Component {
                 initial,
                 present
             });
-            console.log('states', this.state)
         }
     }
 
@@ -112,6 +112,9 @@ class EditLease extends Component {
         switch (position) {
             case 1:
                 present.term[e.target.name] = e.target.value;
+                break;
+            case 5:
+                present.contact[e.target.name] = e.target.value;
                 break;
         }
 
@@ -165,6 +168,14 @@ class EditLease extends Component {
                 }
                 break;
 
+            case 5:
+                if (!isEqual(this.state.initial.contact, this.state.present.contact)) {
+                    equal = false;
+                    data = this.state.present.contact;
+                    data['include'] = 'landlord.work_address'
+                }
+                break;
+
             default:
                 break;
         }
@@ -210,6 +221,33 @@ class EditLease extends Component {
                     presentTerm[data.section] = termPresent;
 
                     this.setState({initial: initialTerm, present: presentTerm});
+                    console.log('state initial', this.state.initial);
+                    console.log('state present', this.state.present);
+                    break;
+
+                case 'contact':
+                    const contactInitial = {
+                        section:'contact',
+                        street_name: data.landlord.data.work_address.data.street_name,
+                        community: data.landlord.data.work_address.data.community,
+                        state: data.landlord.data.work_address.data.state,
+                        country: data.landlord.data.work_address.data.country,
+                    }
+
+                    const contactPresent = {
+                        section:'contact',
+                        street_name: data.landlord.data.work_address.data.street_name,
+                        community: data.landlord.data.work_address.data.community,
+                        state: data.landlord.data.work_address.data.state,
+                        country: data.landlord.data.work_address.data.country,
+                    }
+
+                    const initialContact = {...this.state.initial};
+                    initialContact[data.section] = contactInitial;
+                    const presentContact = {...this.state.present};
+                    presentContact[data.section] = contactPresent;
+
+                    this.setState({initial: initialContact, present: presentContact});
                     console.log('state initial', this.state.initial);
                     console.log('state present', this.state.present);
                     break;
@@ -263,7 +301,7 @@ class EditLease extends Component {
                         <div className="card-panel">
                             <VelocityTransitionGroup enter={{animation: "fadeIn"}} leave={{animation: "fadeOut"}}>
                                 {this.state.current_step === 1 ?
-                                    <LeaseTerm onDateChange={this.onDateChange} onChange={this.onChange}
+                                    <LeaseTerm onDateChange={this.onDateChange} onChange={this.onChange.bind(this)}
                                                lease={this.state.lease} term={this.state.present.term}/> : undefined}
                                 {this.state.current_step === 2 ? <LeaseClauses onChange={this.onChange.bind(this)}
                                                                                clauses={this.state.present.clause}/> : undefined}
@@ -275,17 +313,17 @@ class EditLease extends Component {
                                 {this.state.current_step === 5 ? <LeaseContact onChange={this.onChange.bind(this)}
                                                                                contact={this.state.present.contact}/> : undefined}
                                 {this.state.current_step === 6 ?
-                                    <Lessees onChange={this.onChange.bind(this)} lease={this.state.lease}/> : undefined}
+                                    <Lessees onChange={this.onChange.bind(this)} tenant={this.state.tenant}/> : undefined}
                             </VelocityTransitionGroup>
                         </div>
                         <div className="row">
                             <div className="col m6">
-                                <button className="action-button primary-color" onClick={this.previous.bind(this)}>
+                                <button className="action-button primary-color" onClick={this.previous}>
                                     previous
                                 </button>
                             </div>
                             <div className="col m6">
-                                <button className="action-button primary-color" onClick={this.next.bind(this)}>next
+                                <button className="action-button primary-color" onClick={this.next}>next
                                 </button>
                             </div>
                         </div>
@@ -348,11 +386,13 @@ function TableOfContent(props) {
             <h6 className="center-align"><b>Got 10 minutes?</b></h6><br/>
             <p style={{marginBottom: '25px'}}>
                 That's all it should take to create a lease and have it sent over to your tenants to sign.
-                And with this <b>step-by-step guide</b>, you're already off to a good start.
             </p>
             <Steps direction="vertical" size="small" current={props.current}>
                 <Step title="Setting the lease term"/>
-                <Step title="Review and edit the lease clauses"/>
+                <Step title="Tenant Covenants"/>
+                <Step title="Landlord Covenants"/>
+                <Step title="Conditions of Agreement"/>
+                <Step title="Landlord Contact"/>
                 <Step title="Adding Lessee"/>
             </Steps>
             <p>

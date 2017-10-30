@@ -69,5 +69,8 @@ export function getPaystackBankList(callback) {
 }
 
 export function formatCurrency(value) {
+    if(value === 0 || value === "0"){
+        return 0.00;
+    }
     return '₦' + (parseFloat(value).toFixed(2)).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }

@@ -9,7 +9,9 @@ class Lessees extends Component {
         super(props);
         this.state = {
             added_tenants:[
+/*
                 {id:shortid.generate()}
+*/
             ]
         }
     }
@@ -42,7 +44,7 @@ class Lessees extends Component {
                     }
                 </VelocityTransitionGroup>
 
-                <div className="row">
+                <div className="row" style={{display:'none'}}>
                     <div className="s12 tertiary-color-text center" style={{textDecoration: 'underline', fontSize: '14px'}}>
                         <span style={{cursor: 'pointer'}} onClick={this.addTenant.bind(this)}><Icon type="user-add" /> Add Tenant</span>
                     </div>
