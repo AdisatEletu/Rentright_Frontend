@@ -32,10 +32,6 @@ class TenantLease extends Component {
         getLease(params,this.onLeaseReceivedCallback)
     }
 
-    componentWillUnmount(){
-        console.log('unmounted')
-    }
-
     onLeaseReceivedCallback(status,data){
         if(status){
             this.setState({
@@ -44,6 +40,10 @@ class TenantLease extends Component {
                 lease:data
             });
         }
+    }
+
+    edit(){
+        window.location.href = this.context.router.route.location.pathname;
     }
 
     render() {
@@ -61,7 +61,7 @@ class TenantLease extends Component {
                             </div>
                         </div>
                         <div className="col m4" id="lease-sidebar">
-                            <PreviewSideBar/>
+                            <PreviewSideBar toEdit={this.edit.bind(this)}/>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@ class TenantLease extends Component {
 
 }
 
-function PreviewSideBar(){
+function PreviewSideBar(props){
     const signHeader = <span className="sign-head"><Icon type="mail"/> Ready for your tenants to sign?</span>
     const contentHeader = <span className="content-head center">Table of Content</span>
 
@@ -82,7 +82,7 @@ function PreviewSideBar(){
             <div className="center" style={{marginBottom: '10px'}}>
                             <span className="d-mrgn-right"><Button icon={"delete"} type="danger"
                                                                    ghost>Delete</Button></span>
-                <span className="d-mrgn-right"><Button icon={"edit"} type="primary"
+                <span className="d-mrgn-right"><Button onClick={props.toEdit} icon={"edit"} type="primary"
                                                        ghost>Edit</Button></span>
                 <span className="d-mrgn-right"><Button icon={"download"} type={"primary"}
                                                        ghost>Download</Button></span>

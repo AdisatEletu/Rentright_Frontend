@@ -69,7 +69,6 @@ class EditLease extends Component {
                 tenant: data.tenant.data,
             };
 
-            console.log(data);
             const present = {
                 term: {
                     section: 'term',
@@ -265,6 +264,10 @@ class EditLease extends Component {
         }
     }
 
+    preview(){
+        window.location.href = this.context.router.route.location.pathname+'?preview=true';
+    }
+
     render() {
         const {current_step} = this.state;
 
@@ -315,7 +318,7 @@ class EditLease extends Component {
                                 {this.state.current_step === 5 ? <LeaseContact onChange={this.onChange.bind(this)}
                                                                                contact={this.state.present.contact}/> : undefined}
                                 {this.state.current_step === 6 ?
-                                    <Lessees onChange={this.onChange.bind(this)} tenant={this.state.tenant}/> : undefined}
+                                    <Lessees onChange={this.onChange.bind(this)} tenant={this.state.present.tenant}/> : undefined}
                             </VelocityTransitionGroup>
                         </div>
                         <div className="row">
@@ -335,7 +338,7 @@ class EditLease extends Component {
                             <div className="center" style={{marginBottom: '10px'}}>
                             <span className="d-mrgn-right"><Button icon={"delete"} type="danger"
                                                                    ghost>Delete</Button></span>
-                                <span className="d-mrgn-right"><Button icon={"file"} type="primary"
+                                <span className="d-mrgn-right"><Button onClick={this.preview.bind(this)} icon={"file"} type="primary"
                                                                        ghost>Preview</Button></span>
                                 <span className="d-mrgn-right"><Button icon={"download"} type={"primary"}
                                                                        ghost>Download</Button></span>

@@ -197,16 +197,18 @@ class PendingLease extends Component {
         </div>;
 
         let actionBtn = undefined;
+        let isSignedNotification = undefined;
 
         if (this.props.lease.has_landlord_signature) {
             actionBtn = <button onClick={() => this.onSendLease()}
                                 className="d-button white-text purple darken-2 block">Send lease to tenants to sign
-            </button>;
+            </button>
+            isSignedNotification = <div className={'center s12'}  style={{color:'green'}}><Icon type="check-circle" /> You have signed this lease</div>
         } else {
             actionBtn = <button onClick={() => this.onSignLease()}
-                                className="d-button white-text purple darken-2 block">Sign lease so your tenants can
-                sign
-            </button>;
+                                className="d-button white-text purple darken-2 block">Sign lease so your tenants can sign
+            </button>
+            isSignedNotification = <div className={'center s12'} style={{color:'red'}}><Icon type="check-circle" /> You are yet to sign this lease</div>
         }
 
         if (this.props.lease.state === 'final') {
@@ -231,10 +233,7 @@ class PendingLease extends Component {
 
                     </Modal>;
                     <div className="row">
-                        <div className="s12 tertiary-color-text center"
-                             style={{textDecoration: 'underline', fontSize: '14px'}}>
-                            <span style={{cursor: 'pointer'}}><Icon type="user-add"/> Add Tenant</span>
-                        </div>
+                        {isSignedNotification}
                     </div>
                     <div className="row">
                         <div className="col s12">
