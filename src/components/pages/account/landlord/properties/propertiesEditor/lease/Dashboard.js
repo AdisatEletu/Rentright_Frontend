@@ -33,6 +33,19 @@ class Dashboard extends Component {
         }
     }
 
+    onLeaseChange(newLease) {
+        const {leases} = this.state;
+        const filteredLease = leases.filter(lease => lease.id !== newLease.id);
+
+        //get the index of the changed application
+        const index = leases.findIndex(lease => lease.id === newLease.id);
+
+        //filtered
+        filteredLease.splice(index, 0, newLease);
+
+        this.setState({leases: filteredLease});
+    }
+
     render() {
         if (this.state.loading) {
             return <Loader/>;
@@ -69,7 +82,8 @@ class Dashboard extends Component {
                             {pending.map((lease) => {
                                 return <PendingLease key={shortid.generate()} lease={lease}
                                                      name={lease.tenant.data.first_name + '' + lease.tenant.data.last_name}
-                                                     email={lease.tenant.data.email} type={"Draft"}/>
+                                                     email={lease.tenant.data.email} type={"Draft"}
+                                                     onLeaseChange={this.onLeaseChange.bind(this)}/>
                             })}
                         </div>
                     </div>
@@ -105,18 +119,30 @@ class PendingLease extends Component {
 
         const params = {
             data_uri,
-            lease_uuid: this.context.router.route.match.params.id,
-            include: 'signatures'
+            signatory: 'landlord',
+            lease_uuid: this.props.lease.uuid,
+            include: 'tenant'
         }
 
-        signLease(params, this.onLeaseSignCallback);
+        signLease(params, this.onLeaseSignCallback.bind(this));
     }
 
     onLeaseSignCallback(status, data) {
-
+        if (status) {
+            //set the signing state of the app
+            this.setState({signing: true});
+            this.props.onLeaseChange(data);
+            this.setState({
+                visible: false,
+            });
+        }
     }
 
     onSendLease() {
+
+    }
+
+    onSignLease() {
         this.setState({
             visible: true,
         });
@@ -138,17 +164,21 @@ class PendingLease extends Component {
                 status={type === "Final" ? "success" : "warning"} text={type}/></b></div>
         </div>
 
+        let edit = undefined;
+
+        if(this.props.lease.state === 'draft'){
+            edit = <a href={"lease/" + this.props.lease.uuid + "/edit"} className="d-mrgn-left right">
+                <Button ghost shape="circle" icon="edit" type={"primary"}/>
+            </a>;
+        }
+
         const actionsRow = <div className="row">
             <div className="col m12">
                 <span className="d-mrgn-left right"><Button ghost shape="circle" icon="delete" type={"danger"}/></span>
-                <a href={"lease/" + this.props.lease.uuid + "/edit?preview=true"} className="d-mrgn-left right"><Button
-                    ghost shape="circle"
-                    icon="eye-o"
-                    type={"primary"}/></a>
-                <a href={"lease/" + this.props.lease.uuid + "/edit"} className="d-mrgn-left right"><Button ghost
-                                                                                                           shape="circle"
-                                                                                                           icon="edit"
-                                                                                                           type={"primary"}/></a>
+                <a href={"lease/" + this.props.lease.uuid + "/edit?preview=true"} className="d-mrgn-left right">
+                    <Button ghost shape="circle" icon="eye-o" type={"primary"}/>
+                </a>
+                {edit}
             </div>
         </div>
 
@@ -170,12 +200,18 @@ class PendingLease extends Component {
 
         if (this.props.lease.has_landlord_signature) {
             actionBtn = <button onClick={() => this.onSendLease()}
-                                className="d-button white-text purple darken-2 block">Send lease to tenants  to sign
-                        </button>;
+                                className="d-button white-text purple darken-2 block">Send lease to tenants to sign
+            </button>;
         } else {
-            actionBtn = <button onClick={() => this.onSendLease()}
-                                className="d-button white-text purple darken-2 block">Sign lease so your tenants can sign
-                        </button>;
+            actionBtn = <button onClick={() => this.onSignLease()}
+                                className="d-button white-text purple darken-2 block">Sign lease so your tenants can
+                sign
+            </button>;
+        }
+
+        if (this.props.lease.state === 'final') {
+            actionBtn =
+                <div className={'center'} style={{padding: '15px', background:'#cccccc'}}>This lease cant be edited at this time</div>;
         }
 
         return (

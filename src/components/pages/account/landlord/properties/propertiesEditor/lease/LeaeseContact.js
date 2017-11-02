@@ -6,11 +6,6 @@ class LeaseContact extends Component {
 
     constructor(props) {
         super(props);
-        console.log(props)
-    }
-
-    componentWillReceiveProps(nextProps){
-        console.log('new props',nextProps)
     }
 
     render() {
@@ -70,13 +65,17 @@ class LeaseContact extends Component {
                 <div className="row">
                     <div className="input-field col s12 m6">
                     <select id={'state'} name={'state'} value={this.props.contact.state} onChange={this.props.onChange}>
+                        <option value=''>Select State</option>
                         <option value='lagos'>Lagos</option>
+                        <option value='abuja'>Abuja</option>
+                        <option value='portharcourt'>Portharcourt</option>
                     </select>
                         <label className={'active'} htmlFor={'state'}>State</label>
                     </div>
 
                     <div className="input-field col s12 m6">
                     <select id={'country'} name={'country'} value={this.props.contact.country} onChange={this.props.onChange}>
+                        <option value=''>Select Country</option>
                         <option value='Nigeria'>Nigeria</option>
                     </select>
 

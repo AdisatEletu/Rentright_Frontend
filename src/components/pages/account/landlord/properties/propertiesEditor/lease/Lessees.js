@@ -7,13 +7,6 @@ class Lessees extends Component {
 
     constructor(props){
         super(props);
-        this.state = {
-            added_tenants:[
-/*
-                {id:shortid.generate()}
-*/
-            ]
-        }
     }
 
     addTenant = () => {
@@ -29,6 +22,8 @@ class Lessees extends Component {
     }
 
     render() {
+        const {tenant} = this.props;
+
         return (
             <div>
                 <h2 className="fs-title">Lessees</h2>
@@ -36,13 +31,13 @@ class Lessees extends Component {
                     who will be living in the property as well as any cosigners.
                     Each person listed below is expected to sign the lease..</h3><br/>
 
-                <Tenants name="Odaibo Amadosi" email="Odaiboamadosi@gmail.com"/>
+                <Tenants name={tenant.last_name+' '+tenant.first_name} email={tenant.email}/>
 
-                <VelocityTransitionGroup enter={{animation: "fadeIn"}} leave={{animation: "fadeOut"}}>
+                {/*<VelocityTransitionGroup enter={{animation: "fadeIn"}} leave={{animation: "fadeOut"}}>
                     {
                         this.state.added_tenants.map((tenant) => <AddTenant key={shortid.generate()} keyId={tenant.id} onClose={this.handleClose.bind(this)}/>)
                     }
-                </VelocityTransitionGroup>
+                </VelocityTransitionGroup>*/}
 
                 <div className="row" style={{display:'none'}}>
                     <div className="s12 tertiary-color-text center" style={{textDecoration: 'underline', fontSize: '14px'}}>

@@ -61,13 +61,15 @@ class EditLease extends Component {
                 /*warning:{},*/
                 contact: {
                     section:'contact',
-                    street_name: data.landlord.data.work_address.data.street_name,
-                    community: data.landlord.data.work_address.data.community,
-                    state: data.landlord.data.work_address.data.state,
-                    country: data.landlord.data.work_address.data.country,
+                    street_name: data.landlord.data.work_address ? data.landlord.data.work_address.data.street_name : '',
+                    community: data.landlord.data.work_address ? data.landlord.data.work_address.data.community : '',
+                    state: data.landlord.data.work_address ? data.landlord.data.work_address.data.state : '',
+                    country: data.landlord.data.work_address ? data.landlord.data.work_address.data.country : '' ,
                 },
                 tenant: data.tenant.data,
             };
+
+            console.log(data);
             const present = {
                 term: {
                     section: 'term',
@@ -85,10 +87,10 @@ class EditLease extends Component {
                 /*warning:{},*/
                 contact: {
                     section:'contact',
-                    street_name: data.landlord.data.work_address.data.street_name,
-                    community: data.landlord.data.work_address.data.community,
-                    state: data.landlord.data.work_address.data.state,
-                    country: data.landlord.data.work_address.data.country,
+                    street_name: data.landlord.data.work_address ? data.landlord.data.work_address.data.street_name : '',
+                    community: data.landlord.data.work_address ? data.landlord.data.work_address.data.community : '',
+                    state: data.landlord.data.work_address ? data.landlord.data.work_address.data.state : '',
+                    country: data.landlord.data.work_address ? data.landlord.data.work_address.data.country : '' ,
                 },
                 tenant: data.tenant.data,
             };
