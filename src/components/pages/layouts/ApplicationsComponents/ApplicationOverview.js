@@ -54,7 +54,7 @@ const  dateFormat = 'YYYY-MM-DD';
 
     }
     componentWillMount(){  
-      this.runLoadQuery = this.runLoadQuery.bind(this);     
+      //this.runLoadQuery = this.runLoadQuery.bind(this);     
      let tenant_id = this.props.match.params.id;
     let unit_uuid = this.props.match.params.uuid;
     let address = this.props.match.params.address;
@@ -265,7 +265,11 @@ const  dateFormat = 'YYYY-MM-DD';
       </div>
      <div className = "kingslanding-mid t-flex t-justify-center"><span className = "deeplanisters smx">Applied on<span className = "thinlanisters smx">&nbsp;&nbsp;
         { moment(new Date(this.props.activeApplication.created_at)).format("MMM Do YY")}</span></span> </div>
-      <div className = "kingslanding-bottom t-flex t-align-center t-justify-center"><span className = "lanisters lgx">Manage Application</span></div>
+      <NavLink 
+       to = {  "/tenant/confirmprofile/"+this.props.auth.user.uuid+"/"+this.state.unit.address.address.address}
+       className = "kingslanding-bottom t-flex t-align-center t-justify-center">
+        <span className = "lanisters lgx">Manage Application</span>
+      </NavLink>
   </div>
   :
   <div className = "whitewalkers">

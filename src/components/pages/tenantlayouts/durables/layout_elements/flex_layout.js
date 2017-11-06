@@ -138,14 +138,18 @@ export class Profiler extends Component{
     constructor(props){
         super(props)
         this.clcked = this.clicked.bind(this)
+        this.routeaway = this.routeaway.bind(this);
          }
 clicked = ()=>{
     this.props.clicked()
 }
+routeaway = (path)=>{
+  this.props.routeaway(path)
+}
         render (){
    return ( 
     
-     <div className = "event-cards" style  = {this.props.style ? this.props.style : null }>
+     <div  className = "event-cards" style  = {this.props.style ? this.props.style : null }>
      <div className = {this.props.imageclass ? this.props.imageclass + "  event-cards-image" : " person1 event-cards-image"  }
     style = {this.props.notdummy ? this.props.height ?  {height:'50%',backgroundImage:'url('+this.props.img+')'}: {backgroundImage:'url('+this.props.img+')'}:null}
     >
@@ -156,7 +160,7 @@ clicked = ()=>{
      <div className = "t-white" style = {{height:'auto', paddingBottom:'10', boxSizing:'border-box'}}>
      <div className = "secondreview">
        <div className = "studded"><Icon type = "star"/><Icon type = "star"/><Icon type = "star-o"/><Icon type = "star-o"/><Icon type = "star-o"/><span className = "starsbb"> 5 Reviews</span>
-       <div className = "ll">Explore</div>
+       <div className = "ll" onClick  =  { () => this.routeaway(this.props.path)} >Explore</div>
        </div>
      <div className = "starsb"  style = {{fontSize:'13px'}}  >0 Upvotes | 0 Down Votes</div>
     </div>

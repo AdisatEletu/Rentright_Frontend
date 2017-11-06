@@ -151,5 +151,26 @@ box-shadow: 1px 2px 12px -1px rgba(0,0,0,0.48);}
   .right-band-item h1{font-size:14px;  line-height:16px; height:auto; font-family:Museo; font-weight:500; padding:0; margin:0; color:rgb(85,163,42); margin-bottom:7px; }
    .right-band-item p{font-size:12px; font-family:Proxima Nova; font-weight:500; padding:0; margin:0; color:#222; margin-bottom:7px; }
       .right-band-item l1{font-size:14px; font-family:Proxima Nova; font-weight:300; padding:0; margin:0; color:#666;  }
+      .m-thick{font-weight:500!important; width:98%!important; opacity:0.4; display:flex; align-items:center; align-content:center;}
+      .m-optional {color:#D24130; opacity:0.6; } .m-editing{color:#55A32A!important; opacity:0.6; }
+      .m-editing{opacity:1!important; transform:scale(1.1);}
+ .m-thick i{font-size:15px; color:#ccc; width:25px; height:25px;
+    border:solid 1px #d2d2d2;  border-radius:2px;
+    line-height:25px; box-sizing:border-box;  margin-right:5px;}
+    .m-thick-done{opacity:1!important;  transform:scale(1);  color:#666; }
+.li {margin:0px!important; padding:0px!important;  }
+.m-thick {transition:0.3s;}
+.clock{text-shadow: 0.6px 0.6px 0.6px rgba(150, 150, 150, 0.5); display:flex;  font-family:Helvetica; color:#47aa5b; }
+.clock .h1{margin:10px 0px; font-size:64px;  display:block; width:100%; text-align:center; letter-spacing:4px;  line-height:90px; }
+.clock .h2{margin:5px 0px; font-size:24px;  display:block; width:100%; text-align:center;   letter-spacing:2px;  line-height:40px; }
+.virgin{color:#ccc; opacity:0.8;}
+.clock, 
+.ant-time-picker-panel-input,
+.ant-time-picker-panel-clear-btn,
+.ant-time-picker-panel-inner,
+.ant-time-picker-panel-combobox,
+.ant-time-picker-panel-inner,
+.ant-time-picker-panel-inner,{-webkit-transition: none!important; transition:none!important; -o-transition:none!important; -moz-transition:none!important;}
+.ant-time-picker-icon {margin-top:-14px!important; line-height:12px;  margin-left:10px;}
 
 
