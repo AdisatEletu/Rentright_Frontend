@@ -16,6 +16,7 @@ import {Modal, Button , Col,AutoComplete,Cascader,TimePicker, notification, Slid
 import moment from 'moment';
 import Agreement_modal  from '../Agreement_modal'
 import 'moment/locale/en-gb';
+
 import  apiActions from '../../tenantlayouts/durables/controllers/apiActions';
 import ModalForms from '../modal_forms';
 import Advert from '../../tenantlayouts/advert'
@@ -189,7 +190,11 @@ onChange(time,timeString){
                    { this.props.update ?
                  <div className = "mnapply t-md-2" style = {{marginTop:'auto', marginLeft:'auto'}}><Icon type = "paper-clip"/>Sign Lease agreement </div>
                  :
-                 null}
+                 null
+                 
+                 
+                 }
+
             </div>
       )
     }

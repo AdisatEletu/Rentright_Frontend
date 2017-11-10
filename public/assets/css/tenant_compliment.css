@@ -38,7 +38,7 @@ div {
 body{font-family:Rooto;}
 .m-prf{width:7vw; height:7vw; border:solid 8px #eaeaea; box-sizing:border-box; overflow:hidden; }
 .m-prf2{width:4vw; height:4vw; border:solid 8px #fff; box-sizing:border-box; overflow:hidden; }
-/** {  -webkit-transition: all 0.3s ease;  -moz-transition:    all 0.3s ease;  -ms-transition:     all 0.3s ease;  -o-transition:      all 0.3s ease;}*/
+ *{  -webkit-transition: all 0.3s ease;  -moz-transition:    all 0.3s ease;  -ms-transition:     all 0.3s ease;  -o-transition:      all 0.3s ease;}**
 .m-logo{background-image:url('img/logo.png'); height:10vh; margin-bottom:5vh; }
 .m-cover{background-color:rgba(0,0,0,0); color:rgba(0,0,0,0); font-size:15px; cursor:pointer;  text-align:center;}
 .m-cover:hover{background-color:rgba(255,255,255,0.6); color:#b2d234; font-size:15px;}

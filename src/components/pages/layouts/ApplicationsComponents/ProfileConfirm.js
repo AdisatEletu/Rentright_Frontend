@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 import {bindActionCreators} from 'redux';  
 import FormElements  from '../../tenantlayouts/form_elements';
-import { loadAllTenants, loadSpecificTenant,post_my_application,
-      load_my_query, load_my_applications,
+import { loadAllTenants, loadSpecificTenant, post_my_application,
+      load_my_query, load_my_applications, 
         sendSocketPost,patchSpecificTenant, deleteSpecificTenant,
         showLoading, getFormStruct, hideLoading, errorLoading,
          breakFormToComponents,  getProfileStruct,         
@@ -23,6 +23,7 @@ import enUS from 'antd/lib/locale-provider/en_US';
 import TenantModal from '../Tenant_Modal';
 import ApplicationsConfirm from './applicationsConfirmForm';
 import InspectionForm from './inspectionForm';
+import  PayWithPaystack from '../../tenantlayouts/durables/controllers/Paystack';
 import LeaseSigningForm from './leaseSigningForm';
 import RightPanel from './rightPanel';
 import LeftPanel from './leftPanel';
@@ -37,7 +38,8 @@ const mode =   ['profile','inspection','lease','pay','beginLease','maintainance'
          this.setInspection = this.setInspection.bind(this);
          this.getInspection = this.getInspection.bind(this);
          this.getLease = this.getLease.bind(this);
-
+         this.postApplications = this.postApplications.bind(this);
+         this.signed = this.signed.bind(this);
     
     }
     selectMode=(item)=>{
@@ -52,8 +54,10 @@ const mode =   ['profile','inspection','lease','pay','beginLease','maintainance'
    
        }
     componentDidMount(){ 
+       if (this.props.activeUnit){
           this.getInspection();
           this.getLease();
+     
         this.setState({
             profilePicture: this.props.myProfile.tenants.tenant_bio.profile_picture ?  this.props.myProfile.tenants.tenant_bio.profile_picture : "",
             displayPicture1: this.props.activeUnit && this.props.activeUnit.unit_images[0]  ?  "url(https://rentright-api-gateway.herokuapp.com/user/units/image/"  + this.props.activeUnit.unit_images[0].id: '',
@@ -61,6 +65,7 @@ const mode =   ['profile','inspection','lease','pay','beginLease','maintainance'
             displayPicture3: this.props.activeUnit.unit_images[2]  && this.props.activeUnit ?  "url(https://rentright-api-gateway.herokuapp.com/user/units/image/"  + this.props.activeUnit.unit_images[2].id: '',
     
     })
+          }
      }
      componentDidUpdate(prevProps, prevState) {
 
@@ -95,6 +100,11 @@ const mode =   ['profile','inspection','lease','pay','beginLease','maintainance'
      }
     }
 
+   signed(params){
+        this.setState({params});
+        this.selectMode('pay');
+
+    }
 setInspection(obj){
     console.log(obj, 'setInspection');
     let url = "https://rentright.herokuapp.com/api/rentright/inspection/" 
@@ -132,18 +142,25 @@ getInspection(){
 
 getLease(){
     this.setState({Lease : {loading:true} });
-    let api = new apiActions("https://rentright-api-gateway.herokuapp.com/leases/")
-    api.geturl_with_headers(this.props.activeUnit.uuid+"?compiled=true" , true, this.state.token).then((obj)=>{
-         this.setState({ Lease: {loading : false}});  
-        console.log('lease object',obj)
-    }).catch((err)=>{
+    let api = new apiActions("https://rentright-api-gateway.herokuapp.com/")
+    api.geturl_with_headers("applications/"+this.props.activeApplication.uuid+"?include=lease" , true, this.state.token).then((obj)=>{
+         api.geturl_with_headers("leases/"+obj.data.lease.data.uuid+"?compiled=true", true, this.state.token).then((obj2)=>{         
+        console.log('lease object',obj2)
+         this.setState({ Lease: {loading : false, lease:obj2.data}});  
+
+        }).catch((err)=>{
         console.log('lease error',err);
+     
+    });
+    }).catch((err)=>{
+        console.log('applications error',err);
         this.setState({ Lease: {loading : false}});  
     })
 }
   postApplications(obj){
+    let th = this;
     console.log(obj);
-    this.props.post_my_application(obj).then((it)=>{   
+    th.props.post_my_application(obj).then((it)=>{   
      let data = {};
      data.peer_id = obj.unit_manager;
      data.message = obj.leasee_first_name +" " +obj.leasee_first_name + " applied for the apartment " +obj.property;
@@ -206,6 +223,7 @@ getLease(){
                 activeApplication = {this.props.activeApplication}
                  auth = {this.props.auth}  
                 mode = {this.state.mode}
+            
                 />    
             :
            this.state.mode == "lease" ?
@@ -215,11 +233,24 @@ getLease(){
                 activeUnit = {this.props.activeUnit}
                 structure = {this.props.structure}
                 activeApplication = {this.props.activeApplication}
-                 auth = {this.props.auth}  
+                auth = {this.props.auth} 
+                activeLease = {this.state.Lease.lease} 
+                loading = {this.state.Lease.loading}
                 mode = {this.state.mode}
+                selectMode = {this.selectMode}
+                    signed = {this.signed}
                 />  
                 :
-                null
+         this.state.mode == "pay" ?
+     <div className = "u-section">
+        <div className = "d-h1 u-line-head" >Pay Rent</div>
+        <div className = "d-span">Pay a total rent of {this.state.Lease.lease.terms.data.rent_amount}</div>
+        <div className = "u-section" style = {{marginTop: '100px'}}>
+        <PayWithPaystack  selectMode = {this.selectMode} amount = {this.state.Lease.lease.terms.data.rent_amount}  status = {this.state.status} tenantEmail = {this.state.Lease.lease.lessee.data.email} /> 
+        </div>  
+        </div>            
+            :
+            null
         
         }     
         </div>
@@ -228,12 +259,15 @@ getLease(){
              <RightPanel 
              applicationsPostIndicator ={this.props.applicationsPostIndicator}
              postApplications = {this.postApplications}
+            post_my_application = {this.props.post_my_application}
              activeApplication = {this.props.activeApplication}
-             applicationPost = {this.props.applicationsPost}
+             applicationsPost = {this.props.applicationsPostIndicator}
+             applicationsPostIndicator = {this.props.applicationsPostIndicator}
              myProfile = {this.props.myProfile}
              activeUnit = {this.props.activeUnit}
-            mode = {this.state.mode}
+              mode = {this.state.mode}
              auth = {this.props.auth}   
+          
              />
         </div>
        </div>     

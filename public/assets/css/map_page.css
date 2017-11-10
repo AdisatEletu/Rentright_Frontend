@@ -172,5 +172,28 @@ box-shadow: 1px 2px 12px -1px rgba(0,0,0,0.48);}
 .ant-time-picker-panel-inner,
 .ant-time-picker-panel-inner,{-webkit-transition: none!important; transition:none!important; -o-transition:none!important; -moz-transition:none!important;}
 .ant-time-picker-icon {margin-top:-14px!important; line-height:12px;  margin-left:10px;}
+.provisioned-h2{margin: 10px 0px!important; font-weight:500; color:#222; font-size:14px; line-height:17px!important; font-weight: 400;  
+    padding-bottom: 0px!important;}
+.u-line-head{display:block; width:100%; box-sizing:border-box; padding:15px 0px; border-bottom:solid 1px #ccc;}
+.u-up-border{border-top:solid 1px #ccc; box-sizing:border-box; padding-top:15px;}
+.u-bottom-border{border-bottom:solid 1px #ccc; padding-bottom:15px;}
+.u-padding-small{padding:10px; } .u-padding-mid{padding:20px; } .u-padding-large{padding:30px;}
+.bx{box-sizing:border-box; } .u-black{ color:black;}
+.u-diamond{padding:0px 10px; font-size:26px; color:#222; }
+.u-trans{-webkit-transition: all 0.7s ease;  -moz-transition:    all 0.7s ease;  -ms-transition:     all 0.7s ease;  -o-transition:      all 0.7s ease;}
+.u-section{margin-top:5px; margin-bottom:10px;  padding:2px; box-sizing:border-box; }
+.u-strong{font-weight:700; letter-spacing:1.5px;  font-size:20px;}
+.u-highlight{font-size:18px; letter-spacing:1.5px;  text-transform:capitalize; color:#47AA5B; font-weight:500; }
+.u-identity-thumbnail{width:60px; margin-bottom:20px;  height:60px; background-size:cover; background-position:center;}
+.u-section .d-span{font-size:18px!important;  font-weight:500!important; color:#222!important; }
+.u-textarea{padding:10px;  margin-top:20px; width:100%; margin-bottom:10px; border:solid 1px #eaeaea; font-size:18px!important;  font-weight:500!important; color:#000!important;  font-family:Proxima nova;}
+.u-margin-bottom{margin-bottom:20px;}.m-top-large{margin-top:100px;}
+.agreement{font-size:18px; line-height:20px; color:#222; font-weight:500; font-family:Proxima nova; text-decoration-style:italics;}
+.paystack{height:150px;  display:flex; width:100%;  align-items:center; justify-content: center; }
+.paystack span{width:60%; height:150px; align-items:center; justify-content: center;  border:solid 1px #d2d2d2; display:flex;  align-items:center; justify-content: center; }
+.paystack button{ width:180px; cursor:pointer; border-radius:3px;  font-family:Museo; box-shadow:none; font-size:16px; font-weight: 300;
+    height:45px;  line-height:45px;border:solid 1px #CCC;   background-color:#fff; color: #333; 
 
+}
+#PayContainer{height:800px!important;}
 
