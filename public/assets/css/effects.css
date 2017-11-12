@@ -109,10 +109,12 @@ main.d-main{
     margin: 0 0 0 0 !important;
 }*/
 
+/*
 .d-input:active,.d-input:focus,.d-input::after{
     border-bottom: none !important;
     box-shadow: none!important;
 }
+*/
 
 
 ul.side-nav.fixed li.logo {
@@ -601,14 +603,37 @@ ul.DAWl li.PEN span{
     margin: 5% auto 5px;
 }
 
+.DSSR{
+    display: flex;
+}
+
+.DSI.SCNT{
+    flex: 2;
+}
+
+.DSI.VC{
+    flex: 1;
+    background-color: green;
+    margin-left: .75rem;
+}
+
+.DSI.OC{
+    flex: 1;
+    background-color: red;
+    margin-left: .50rem;
+}
+
+.SCNT{
+    width: calc(66.6666666667% - .50rem);
+}
+
 .dashboard-prp-srch{
-    display: table-cell;
+    display: table;
     vertical-align: middle;
     white-space: nowrap;
     color: #85929e;
     background-color: #ffffff;
-    width: 700px;
-    /*font-size: 2.5em !important;*/
+    width: 100%;
 }
 
 .dashboard-prp-srch .prop-srch{
@@ -625,11 +650,34 @@ ul.DAWl li.PEN span{
     -webkit-appearance: none;
 }
 
+
 .prop-srch::placeholder{
     font-size: 1em !important;
 }
 .dashboard-prp-srch i{
     cursor: pointer;
+}
+
+.dashboard-prp-srch .autcom-cont{
+    width: 100%;
+    background:#fff;
+    position:absolute;
+    z-index: 5;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+}
+
+.dashboard-prp-srch .autcom-cont .ACI{
+    padding: 10px 15px;
+    font-family: Museo !important;
+    font-size: 1.5em !important;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ACI:hover{
+    background-color: #f5f5f5;
 }
 
 .DSi{
@@ -1206,6 +1254,126 @@ margin-top: 25px;
 .LESSR span{
     display: block;
     text-align: right;
+}
+
+.landlord .LPS-SHC{
+    background-color: #fff;
+    margin-bottom: 30px;
+    margin-left:10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow:4px 4px 6px rgba(0,0,0,0.1);
+}
+
+.detailsLayer{
+    width: 100%;
+    padding: 10px;
+    text-align: right;
+}
+
+.detailsLayer .tag span{
+    color: #fff;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-right: -10px;
+    padding: 0 10px 0 10px;
+    font-size: 15px;
+    background-color: #ee6e73;
+}
+
+.detailsLayer div.IT{
+    display:block;
+}
+
+.detailsLayer div.unit-count{
+    color: #43a047;
+    line-height: 40px;
+}
+.detailsLayer div.unit-count,
+.detailsLayer div.property-name{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.detailsLayer div.property-name{
+    padding-left: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.detailsLayer div.unit-count span{
+    font-size: 45px;
+}
+
+.LPS-SHC div.SH-TOP{
+    border-bottom: 2px solid #EEEEEE;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}
+
+.LPS-SHC div.SH-TOP .house-img{
+    height: 140px;
+    width: 140px;
+    margin-left:-10px;
+    margin-top: 10px;
+    position: absolute;
+    border-radius: 3px;
+    background: #ffffff url("http://localhost:3000/CSS/img/housefine.jpg") no-repeat scroll center;
+    background-size: cover;
+    box-shadow:4px 4px 6px rgba(0,0,0,0.1);
+}
+
+.LPS-SHC div.SHC-MENU ul{
+    display: inline-flex;
+    width: 100%;
+    border-bottom: 2px solid #EEEEEE;
+}
+
+.LPS-SHC div.SHC-MENU ul li{
+    flex: 1;
+    text-align: center;
+    border-right: 2px solid #EEEEEE;
+    cursor: pointer;
+}
+
+.LPS-SHC div.SHC-MENU ul li a{
+    display:block;
+    padding-top: 5px;
+    color: #2a2a2a;
+    padding-bottom: 5px;
+
+}
+
+.LPS-SHC div.SHC-MENU ul li:hover{
+    background: #EEEEEE;
+}
+
+.LPS-SHC div.SHC-MENU ul li:last-child {
+    border-right: none !important;
+}
+
+.LPS-SHC div.SHC-MENU ul li i{
+    display: block;
+    font-size: 20px;
+    color: #43a047 !important;
+}
+
+.LPS-SHC div.SHC-MENU ul li span{
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.LPS-SHC div.SHC-FOOTER{
+    background: #F9F9F9;
+    padding:5px 10px;
+    text-align: right;
+    font-weight: 500;
+}
+
+.LPS-SHC div.SHC-FOOTER a{
+    cursor: pointer;
 }
 
 #root,

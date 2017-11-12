@@ -208,7 +208,7 @@ class PendingLease extends Component {
             actionBtn = <button onClick={() => this.onSignLease()}
                                 className="d-button white-text purple darken-2 block">Sign lease so your tenants can sign
             </button>
-            isSignedNotification = <div className={'center s12'} style={{color:'red'}}><Icon type="check-circle" /> You are yet to sign this lease</div>
+            isSignedNotification = <div className={'center s12'} style={{color:'red'}}><Icon type="frown" /> You are yet to sign this lease</div>
         }
 
         if (this.props.lease.state === 'final') {

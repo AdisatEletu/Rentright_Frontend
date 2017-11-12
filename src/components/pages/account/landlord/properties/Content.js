@@ -96,15 +96,9 @@ class Content extends Component {
 
 }
 
-function mapStateToProps(state){
-    return {
-        property: state.user.activeProperty,
-    }
-}
-
 Content.propTypes = {
     resetHeader: PropTypes.func.isRequired,
     setHeader: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps,{resetHeader,setHeader})(Content)
+export default connect(null,{resetHeader,setHeader})(Content)

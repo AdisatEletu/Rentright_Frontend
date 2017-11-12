@@ -11,28 +11,18 @@ class TopSection extends Component {
         super(props);
 
         this.state = {
-            fetching: true,
-            properties: [],
+            fetching: false,
+            properties: props.properties || [],
             current_index: 0,
             current_unit: 0,
         }
-        this.onPropertyReceivedCallback = this.onPropertyReceivedCallback.bind(this);
     }
 
 
     componentDidMount(){
-        const params = {
-            include: 'units.applications'
-        }
-        getPropertiesNoDispatch(params,this.onPropertyReceivedCallback);
+
     }
 
-    onPropertyReceivedCallback = (status,data) => {
-        console.log(data);
-        if(status){
-            this.setState({fetching:false,properties:data});
-        }
-    }
 
     getPropertyAnalysis(index){
         const property = {...this.state.properties[index]};
