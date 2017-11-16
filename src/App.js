@@ -57,6 +57,7 @@ class App extends Component {
                   <Route path="/landlord-guide" component={LandlordGuide} />
                   <Route path="/generalsearch/:param" component={MapPage} />
                   <Route path="/agent" component={Agent} />
+
               </Switch>
           </Router>
           </LocaleProvider>
