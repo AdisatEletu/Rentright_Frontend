@@ -91,7 +91,7 @@ function PropertyShowCard(props) {
                         <li>
                             <a href={'/landlord/properties/' + property.uuid+'/tenants'} style={{width: '100%', height: '100%'}}>
                                 <i className={'fa fa-user-o'}/>
-                                <span>Tenants</span>
+                                <span>Agent</span>
                             </a>
                         </li>
                         <li>

@@ -28,6 +28,33 @@ export default class apiActions {
    
   })
   };
+   geturl_with_headers= (api_path = null, append = false, token) =>{
+    let path;
+    if (api_path){ 
+      if (append){
+       api_path =api_path
+      }else{
+      api_path = api_path + '/';
+      }
+      path =  this.url + api_path
+      
+    }else{
+      path = this.url;
+    }    
+    return fetch(path , {
+      headers:{
+        'Authorization':'Bearer '+token
+      }
+
+      }
+    
+    ).then(response => {
+      return response.json();
+    }).catch(error => {
+      throw error
+      return error;
+    }); 
+  };
    geturl_cors = (api_path = null, append = false) =>{
     return new Promise((resolve, reject)=>{
     let path;

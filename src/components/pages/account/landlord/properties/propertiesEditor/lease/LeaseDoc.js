@@ -74,8 +74,8 @@ class LeaseDoc extends Component {
                             </div>
                             <div className={'col s6'}>
                                 <div className={'row'}>
-                                    <div className={'col s6'} style={{fontWeight: 'bold'}}>Late rent fee</div>
-                                    <div className={'col s6 underline'}><span className={'right'}>{formatCurrency(terms.data.late_rent)}</span></div>
+                                    <div className={'col s6'} style={{fontWeight: 'bold'}}>Rental tax</div>
+                                    <div className={'col s6 underline'}><span className={'right'}>{formatCurrency(terms.data.tax)}</span></div>
                                 </div>
                             </div>
                         </div>
@@ -83,10 +83,18 @@ class LeaseDoc extends Component {
                         <div style={{marginTop: '10px'}} className={'row'}>
                             <div className={'col s6'}>
                                 <div className={'row'}>
+                                    <div className={'col s6'} style={{fontWeight: 'bold'}}>Late rent fee</div>
+                                    <div className={'col s6 underline'}><span className={'right'}>{formatCurrency(terms.data.late_rent)}</span></div>
+                                </div>
+                            </div>
+                            <div className={'col s6'}>
+                                <div className={'row'}>
                                     <div className={'col s6'} style={{fontWeight: 'bold'}}>Security Deposit</div>
                                     <div className={'col s6 underline'}><span className={'right'}>{formatCurrency(terms.data.security_deposit)}</span></div>
                                 </div>
                             </div>
+                        </div>
+                        <div className={'row'}>
                             <div className={'col s6'}>
                                 <div className={'row'}>
                                     <div className={'col s6'}  style={{fontWeight: 'bold'}}>Move in fee</div>
@@ -94,6 +102,7 @@ class LeaseDoc extends Component {
                                 </div>
                             </div>
                         </div>
+
                         <div>
                             <h2 style={{fontSize: '20px'}}><b>Now It Is Hereby Agreed as Follows</b></h2>
                             <div style={{padding:'15px', backgroundColor:'#eee'}}>

@@ -25,8 +25,8 @@ class PropertyInfo extends Component {
                     </div>
                 </div>
                 <div className={'row'}>
-                    <div className="input-field col s12 m6">
-                        <label>Whats type of property is this</label>
+                    <div className="input-field col s12 m12">
+                        <label className={'active'}>Whats type of property is this</label>
                         <select name={"unit_type"} className="browser-default"
                                 value={info.unit_type} onChange={this.props.onChange}>
                             <option value="apartment">Apartment</option>

@@ -51,9 +51,11 @@ class EditLease extends Component {
                     move_in_fee: data.move_in_fee,
                     late_rent_fee: data.late_rent_fee,
                     rent_amount: data.rent_amount,
+                    rent_type: data.rent_type,
                     tenor: data.tenor,
                     tenor_type: data.tenor_type,
-                    security_deposit: data.security_deposit
+                    security_deposit: data.security_deposit,
+                    inclusive_of_tax: data.inclusive_of_tax || false,
                 },
                 clause: data.clause.data.filter((clause) => clause.type === 'clause'),
                 covenant: data.clause.data.filter((clause) => clause.type === 'landlord_covenant'),
@@ -76,9 +78,11 @@ class EditLease extends Component {
                     move_in_fee: data.move_in_fee,
                     late_rent_fee: data.late_rent_fee,
                     rent_amount: data.rent_amount,
+                    rent_type: data.rent_type,
                     tenor: data.tenor,
                     tenor_type: data.tenor_type,
-                    security_deposit: data.security_deposit
+                    security_deposit: data.security_deposit,
+                    inclusive_of_tax: data.inclusive_of_tax || false,
                 },
                 clause: data.clause.data.filter((clause) => clause.type === 'clause'),
                 covenant: data.clause.data.filter((clause) => clause.type === 'landlord_covenant'),
@@ -112,7 +116,12 @@ class EditLease extends Component {
 
         switch (position) {
             case 1:
-                present.term[e.target.name] = e.target.value;
+                if(e.target.name === 'inclusive_of_tax'){
+                    present.term[e.target.name] = e.target.checked;
+                }else{
+                    present.term[e.target.name] = e.target.value;
+                }
+
                 break;
             case 5:
                 present.contact[e.target.name] = e.target.value;
@@ -200,9 +209,11 @@ class EditLease extends Component {
                         move_in_fee: data.move_in_fee,
                         late_rent_fee: data.late_rent_fee,
                         rent_amount: data.rent_amount,
+                        rent_type: data.rent_type,
                         tenor: data.tenor,
                         tenor_type: data.tenor_type,
-                        security_deposit: data.security_deposit
+                        security_deposit: data.security_deposit,
+                        inclusive_of_tax: data.inclusive_of_tax || false,
                     }
 
                     const termPresent = {
@@ -211,9 +222,11 @@ class EditLease extends Component {
                         move_in_fee: data.move_in_fee,
                         late_rent_fee: data.late_rent_fee,
                         rent_amount: data.rent_amount,
+                        rent_type: data.rent_type,
                         tenor: data.tenor,
                         tenor_type: data.tenor_type,
-                        security_deposit: data.security_deposit
+                        security_deposit: data.security_deposit,
+                        inclusive_of_tax: data.inclusive_of_tax || false,
                     }
 
                     const initialTerm = {...this.state.initial};

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 import {bindActionCreators} from 'redux';  
 import FormElements  from '../../tenantlayouts/form_elements';
-import { loadAllTenants, loadSpecificTenant,post_my_application,
-      load_my_query, load_my_applications,
+import { loadAllTenants, loadSpecificTenant, post_my_application,
+      load_my_query, load_my_applications, 
         sendSocketPost,patchSpecificTenant, deleteSpecificTenant,
         showLoading, getFormStruct, hideLoading, errorLoading,
          breakFormToComponents,  getProfileStruct,         
@@ -21,49 +21,51 @@ import ModalForms from '../modal_forms';
 import Advert from '../../tenantlayouts/advert'
 import enUS from 'antd/lib/locale-provider/en_US';
 import TenantModal from '../Tenant_Modal';
+import ApplicationsConfirm from './applicationsConfirmForm';
+import InspectionForm from './inspectionForm';
+import  PayWithPaystack from '../../tenantlayouts/durables/controllers/Paystack';
+import LeaseSigningForm from './leaseSigningForm';
+import RightPanel from './rightPanel';
+import LeftPanel from './leftPanel';
 import $ from 'jquery';
-import {
-  ShareButtons,
-  ShareCounts,
-  generateShareIcon
-} from 'react-share';
-const {
-  FacebookShareButton,
-  GooglePlusShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  PinterestShareButton,
-  VKShareButton,
-  OKShareButton,
-  RedditShareButton,
-  EmailShareButton,
-} = ShareButtons;
-const FacebookIcon = generateShareIcon('facebook');
-var _ = require('lodash');
-const InputGroup = Input.Group;
-const Option = Select.Option;
-const { TextArea } = Input;
-const RadioGroup = Radio.Group;
-const RadioButton = Radio.Button;
-const { OptGroup } = Select;
-const { MonthPicker, RangePicker } = DatePicker;
-const  dateFormat = 'YYYY-MM-DD';
 
+const mode =   ['profile','inspection','lease','pay','beginLease','maintainance'];
  class ProfileConfirm extends Component{
     constructor(props) {  
     super(props) 
-         this.state = {loading:false, showModal:false, promoted:{loading:false, error:false, results:undefined},data:{}};
-
+         this.state = {loading:false, mode:'profile', Lease : null, token:null, update:false, showModal:false, inspectionState:null, promoted:{loading:false, error:false, results:undefined},data:{}};
+         this.selectMode = this.selectMode.bind(this)
+         this.setInspection = this.setInspection.bind(this);
+         this.getInspection = this.getInspection.bind(this);
+         this.getLease = this.getLease.bind(this);
+         this.postApplications = this.postApplications.bind(this);
+         this.signed = this.signed.bind(this);
     
     }
+    selectMode=(item)=>{
+        this.setState({mode:item});
+    }
     componentWillMount(){  
+        this.setState({ token:localStorage.getItem("rs_token")}, ()=>{
+
+       
+        })
+
    
        }
     componentDidMount(){ 
-   
-        
+       if (this.props.activeUnit){
+          this.getInspection();
+          this.getLease();
+     
+        this.setState({
+            profilePicture: this.props.myProfile.tenants.tenant_bio.profile_picture ?  this.props.myProfile.tenants.tenant_bio.profile_picture : "",
+            displayPicture1: this.props.activeUnit && this.props.activeUnit.unit_images[0]  ?  "url(https://rentright-api-gateway.herokuapp.com/user/units/image/"  + this.props.activeUnit.unit_images[0].id: '',
+            displayPicture2: this.props.activeUnit && this.props.activeUnit.unit_images[2]   ?  "url(https://rentright-api-gateway.herokuapp.com/user/units/image/"  + this.props.activeUnit.unit_images[1].id: '',
+            displayPicture3: this.props.activeUnit.unit_images[2]  && this.props.activeUnit ?  "url(https://rentright-api-gateway.herokuapp.com/user/units/image/"  + this.props.activeUnit.unit_images[2].id: '',
+    
+    })
+          }
      }
      componentDidUpdate(prevProps, prevState) {
 
@@ -98,10 +100,67 @@ const  dateFormat = 'YYYY-MM-DD';
      }
     }
 
+   signed(params){
+        this.setState({params});
+        this.selectMode('pay');
 
+    }
+setInspection(obj){
+    console.log(obj, 'setInspection');
+    let url = "https://rentright.herokuapp.com/api/rentright/inspection/" 
+    let api = new apiActions(url);
+     this.setState({loading:true});
+      this.setState({ inspectionState: { loading : true}});
+      api.patchurl (this.props.activeUnit.uuid,
+        { inspection_day:obj.date,
+          inspection_time:obj.time
+        })
+        .then((obji)=>{
+            console.log(obji,'respose')
+    this.setState({ inspectionState: { loading : false}});
+      this.setState({loading:false, update:obji});
+      }).catch((err)=>{
+        console.log(err, "could not complete update")
+       this.setState({loading:false, update:false})
+       this.setState({ inspectionState: { loading : false}});
+      })
+}
+getInspection(){
+    this.setState({inspectionState : {loading:true, inspection_day:null, inspection_time:null} });
+    let api = new apiActions("https://rentright.herokuapp.com/api/rentright/inspection/")
+    api.geturl(this.props.activeUnit.uuid, false).then((obj)=>{
+        this.setState({ inspectionState: {inspect_day : obj.inspection_day , inspection_time: obj.inspection_time, loading : false}});    
+         this.setState({loading:false, update:obj});
+    }).catch((err)=>{
+        console.log(err);
+        this.setState({ inspectionState: {loading : false}});  
+    })
+
+    
+
+}
+
+getLease(){
+    this.setState({Lease : {loading:true} });
+    let api = new apiActions("https://rentright-api-gateway.herokuapp.com/")
+    api.geturl_with_headers("applications/"+this.props.activeApplication.uuid+"?include=lease" , true, this.state.token).then((obj)=>{
+         api.geturl_with_headers("leases/"+obj.data.lease.data.uuid+"?compiled=true", true, this.state.token).then((obj2)=>{         
+        console.log('lease object',obj2)
+         this.setState({ Lease: {loading : false, lease:obj2.data}});  
+
+        }).catch((err)=>{
+        console.log('lease error',err);
+     
+    });
+    }).catch((err)=>{
+        console.log('applications error',err);
+        this.setState({ Lease: {loading : false}});  
+    })
+}
   postApplications(obj){
+    let th = this;
     console.log(obj);
-    this.props.post_my_application(obj).then((it)=>{   
+    th.props.post_my_application(obj).then((it)=>{   
      let data = {};
      data.peer_id = obj.unit_manager;
      data.message = obj.leasee_first_name +" " +obj.leasee_first_name + " applied for the apartment " +obj.property;
@@ -123,319 +182,93 @@ const  dateFormat = 'YYYY-MM-DD';
 
   
  render(){  
-    if (this.props.activeUnit && this.props.activeApplication.none){
-    console.log(this.props.structure , " structure");
+    if (this.props.activeUnit ){
   return (
     
     <div className = "t-md-10 t-fullheight t-white bord">
+
         <div className = "sieve">
-        <div className = "d-left correct ">      
-         <div className = "cc-lefter t-flex t-flex-row t-flex-space-between">
-            <div className = "d-img2" style = { this.props.myProfile.tenants.tenant_bio.profile_picture ?  {backgroundImage:"url(" +this.props.myProfile.tenants.tenant_bio.profile_picture+ ")"}
-             :  null }  /> 
-             { this.props.activeUnit.unit_images.slice(0,4).map((iy,ind) =>{
-                 return(
-              <div className = "d-img2" style = {{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/" +iy.id+ ")"}} ></div>
-                 )
-             })
-             }
-            </div> 
-
-        <div className = "d-sidebar">  
-        <ul>
-        <li><span className = "d-sidebar-header">{this.props.auth.user.first_name} {this.props.auth.user.last_name}</span></li>  
-        <li className = "applying">Applying For </li>
-        <li><span className = "d-sidebar-header">{this.props.activeUnit.title}</span></li>  
-        <li><span className = "">Located at {this.props.activeUnit.address.address.address}</span></li> 
-         <li><span className = "">About Me {this.props.auth.user.about_me}</span></li> 
-       
-        </ul>
-        </div>
+        <div className = "d-left correct d-fixed">    
+           <LeftPanel 
+           myProfile = {this.props.myProfile}
+             activeUnit = {this.props.activeUnit}
+              auth = {this.props.auth}  
+              mode = {this.state.mode}
+              selectMode = {this.selectMode}
+            activeApplication = {this.props.activeApplication}
+           />
 
 
         </div>
+
         <div className = "pub-right ">
-            <div className = "public-profile-top ">
-            <div className = "pub-m-logo"></div>
-            <h1 className = "d-h1 t-center-f" style = {{marginBottom:'10px'}}>Public Profile</h1>
-            <div className = "p t-center-f dp"> Your information will be sent accross as supporting documents, for this application for  {this.props.activeUnit.title}  at 
-                 {this.props.activeUnit.address.address.address}, please ensure all you information is correctly represented because properly completed profile does contribute to 
-                 your chances of winning the bid for lease.
-            </div>
-        </div>
-               <div className = "pub-completion">
-                   
-                   { 
-                       this.props.structure  ?
-                        <div className = "t-md-10">
-
-                       {
-                           this.props.structure.structure.tenant_bio.length > 0  ? 
-                       <div className = "t-md-10">
-                       <div className = "t-md-10 t-flex t-md-10 t-flex-row t-justify-space-betweeen bgtr h-40px ">
-                         <div className = "blockf">
-                         <h1 className = "d-h1" style = {{fontSize:'20px'}}>Bio information</h1>
-                        </div>
-                        <div className = "blockf">
-                        <div className = "d-btn d-a" onClick = {(e)=>this.showModal("tenant_bio")}>Edit this section</div>
-                        </div>
-                        </div>
-                            <div className = "t-md-10 t-flex t-flex-row tjsp t-flex-wrap">
-                       {  this.props.structure.structure.tenant_bio.map((item, index)=>{
-                           return(
-                         
-                            <div className = "blockf">
-                           <div className = "d-label strong"> <strong>{item.keyname} </strong></div>
-                            <div className = "p">{item.value}</div>
-                            </div>
-                          
-                             )
-                    
-                   
-                       }) 
-
-                       }
-                         </div>
-                         </div>
-                         :
-                         null
-                       }
-                     {
-                           this.props.structure.structure.general_info.length > 0  ? 
-                       <div className = "t-md-10">
-                       <div className = "t-md-10 t-flex t-md-10 t-flex-row t-justify-space-betweeen bgtr h-40px ">
-                         <div className = "blockf">
-                         <h1 className = "d-h1" style = {{fontSize:'20px'}}>General information</h1>
-                        </div>
-                        <div className = "blockf">
-                        <div className = "d-btn d-a" onClick = {(e)=>this.showModal("general_info")}>Edit this section</div>
-                        </div>
-                        </div>
-                            <div className = "t-md-10 t-flex t-flex-row tjsp t-flex-wrap">
-                       {  this.props.structure.structure.general_info.map((item, index)=>{
-                           return(
-                         
-                            <div className = "blockf">
-                           <div className = "d-label strong"> <strong>{item.keyname} </strong></div>
-                            <div className = "p">{item.value}</div>
-                            </div>
-                          
-                             )
-                    
-                   
-                       }) 
-
-                       }
-                         </div>
-                         </div>
-                         :
-                         null
-                       }
-
-                       {
-                           this.props.structure.structure.tenant_employment_history.length > 0  ? 
-                       <div className = "t-md-10">
-                       <div className = "t-md-10 t-flex t-md-10 t-flex-row t-justify-space-betweeen bgtr h-40px ">
-                         <div className = "blockf">
-                         <h1 className = "d-h1" style = {{fontSize:'20px'}}>Emplyment History</h1>
-                        </div>
-                        <div className = "blockf">
-                        <div className = "d-btn d-a" onClick = {(e)=>this.showModal("tenant_employment_history")}>Edit this section</div>
-                        </div>
-                        </div>
-                            <div className = "t-md-10 t-flex t-flex-row tjsp t-flex-wrap">
-                       {  this.props.structure.structure.tenant_employment_history.map((item, index)=>{
-                           return(
-                         
-                            <div className = "blockf">
-                           <div className = "d-label strong"> <strong>{item.keyname} </strong></div>
-                            <div className = "p">{item.value}</div>
-                            </div>
-                          
-                             )
-                    
-                   
-                       }) 
-
-                       }
-                         </div>
-                         </div>
-                         :
-                         null
-                       }
-                               {
-                           this.props.structure.structure.tenant_residence_history.length > 0  ? 
-                       <div className = "t-md-10">
-                       <div className = "t-md-10 t-flex t-md-10 t-flex-row t-justify-space-betweeen bgtr h-40px ">
-                         <div className = "blockf">
-                         <h1 className = "d-h1" style = {{fontSize:'20px'}}>Residential History</h1>
-                        </div>
-                        <div className = "blockf">
-                        <div className = "d-btn d-a" onClick = {(e)=>this.showModal("tenant_residence_history")}>Edit this section</div>
-                        </div>
-                        </div>
-                            <div className = "t-md-10 t-flex t-flex-row tjsp t-flex-wrap">
-                       {  this.props.structure.structure.tenant_residence_history.map((item, index)=>{
-                           return(
-                         
-                            <div className = "blockf">
-                           <div className = "d-label strong"> <strong>{item.keyname} </strong></div>
-                            <div className = "p">{item.value}</div>
-                            </div>
-                          
-                             )
-                    
-                   
-                       }) 
-
-                       }
-                         </div>
-                         </div>
-                         :
-                         null
-                       }
-
-
-                     {
-                        this.props.structure.structure.tenant_immigration_history.length > 0  ? 
-                       <div className = "t-md-10">
-                       <div className = "t-md-10 t-flex t-md-10 t-flex-row t-justify-space-betweeen bgtr h-40px ">
-                         <div className = "blockf">
-                         <h1 className = "d-h1" style = {{fontSize:'20px'}}>Immigration History</h1>
-                        </div>
-                        <div className = "blockf">
-                        <div className = "d-btn d-a" onClick = {(e)=>this.showModal("tenant_immigration_history")}>Edit this section</div>
-                        </div>
-                        </div>
-                            <div className = "t-md-10 t-flex t-flex-row tjsp t-flex-wrap">
-                       {  this.props.structure.structure.tenant_immigration_history.map((item, index)=>{
-                           return(
-                         
-                            <div className = "blockf">
-                           <div className = "d-label strong"> <strong>{item.keyname} </strong></div>
-                            <div className = "p">{item.value}</div>
-                            </div>
-                          
-                             )
-                    
-                   
-                       }) 
-
-                       }
-                         </div>
-                         </div>
-                         :
-                         null
-                       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                      </div>
-
-
-
-
-                      
-                       :
-                       null
-                   }
-                     {this.state.showModal ? <ModalForms selected = {this.selected} hideModal = {this.hideModal}/> :null}
-                   </div>
-            </div>
-        <div className = "t-md-2 t-flex-column smp t-flex">
-        <Progress type="circle" status = {this.props.myProfile.tenants.completed < 50 ? "exception" : null} percent = {this.props.myProfile.tenants.completed} />
-        <span className = "d-h1 zero-marg less">Profile completion score </span>
-        <div className = "t-md-10 t-flex  t-flex-column t-justify-center t-align-center t-align-content-center" style = {{marginTop:'40px'}}>
-           
-           {
-           
-            !this.props.applicationsPostIndicator.Loading &&  !this.props.applicationsPostIndicator.Error && !this.props.activeUnit.applied &&  this.props.applicationsPost &&  !this.props.applicationsPost.success
-            ?
-            <div className = "d-btn d-a"
-                        onClick = { (e)=>this.postApplications({units:this.props.activeUnit.id,
-                            unit_tenant:this.props.auth.user.id,
-                            unit_manager:this.props.activeUnit.unit_manager ,
-                            leasee_first_name:this.props.auth.user.first_name,
-                            leasee_last_name:this.props.auth.user.last_name,
-                            property:this.props.activeUnit.title})} >
-                <Icon type = "check" style = {{marginRight:'10px'}}/>
-                <span>Apply for this Unit</span>
-            </div>
-             :
-                !this.props.activeApplication.none ||  this.props.applicationsPost && this.props.applicationsPost.success 
-                ?
-             <div className = "mnapply">                      
-                <Icon type = "clock-circle"/>
-                <span>You Applied For this Property</span>
-            </div>
+        {
+            this.state.mode == "profile" ?
+        <ApplicationsConfirm 
+                activeUnit = {this.props.activeUnit}
+                structure = {this.props.structure}
+                activeApplication = {this.props.activeApplication}
+                 auth = {this.props.auth}  
+                mode = {this.state.mode}
+                />   
                 :
-            this.props.applicationsPostIndicator && this.props.applicationsPostIndicator.Loading    &&  !this.props.applicationsPost.success    && !this.props.activeUnit.applied          
-            ?
-            <div className = "mnapply">                      
-                <Icon type = "loading"/>
-                <span>Applying For property</span>
-            </div>
+            this.state.mode == "inspection" ?
+             <InspectionForm 
+                inspectionState = {this.state.inspectionState}
+                update = {this.state.update}
+                loading = {this.state.loading}
+                setInspection = {this.setInspection}
+                activeUnit = {this.props.activeUnit}
+                structure = {this.props.structure}
+                activeApplication = {this.props.activeApplication}
+                 auth = {this.props.auth}  
+                mode = {this.state.mode}
+            
+                />    
             :
-            this.props.applicationsPostIndicator && !this.props.applicationsPostIndicator.Loading && this.props.applicationsPost.Error
-            ?
-         <div className = "mnapply errorapply"
-                        onClick = { (e)=>this.postApplications({units:this.props.activeUnit.id,
-                            unit_tenant:this.props.auth.user.id,
-                            unit_manager:this.props.activeUnit.unit_manager ,
-                            leasee_first_name:this.props.auth.user.first_name,
-                            leasee_last_name:this.props.auth.user.last_name,
-                            property:this.props.activeUnit.title})} >                      
-            <Icon type = "close-circle"/>
-                <span>Error Aply again</span>
-            </div>
+           this.state.mode == "lease" ?
+             <LeaseSigningForm
+                token = {this.state.token}
+                setInspection = {this.setInspection}
+                activeUnit = {this.props.activeUnit}
+                structure = {this.props.structure}
+                activeApplication = {this.props.activeApplication}
+                auth = {this.props.auth} 
+                activeLease = {this.state.Lease.lease} 
+                loading = {this.state.Lease.loading}
+                mode = {this.state.mode}
+                selectMode = {this.selectMode}
+                    signed = {this.signed}
+                />  
+                :
+         this.state.mode == "pay" ?
+     <div className = "u-section">
+        <div className = "d-h1 u-line-head" >Pay Rent</div>
+        <div className = "d-span">Pay a total rent of {this.state.Lease.lease.terms.data.rent_amount}</div>
+        <div className = "u-section" style = {{marginTop: '100px'}}>
+        <PayWithPaystack  selectMode = {this.selectMode} amount = {this.state.Lease.lease.terms.data.rent_amount}  status = {this.state.status} tenantEmail = {this.state.Lease.lease.lessee.data.email} /> 
+        </div>  
+        </div>            
             :
             null
-            }
-            {
-               !this.props.activeApplication.none ||  this.props.applicationsPost && this.props.applicationsPost.success 
-                ?
-                <div className = "t-md-10 t-flex t-flex-column">                
-                <p className = "p  t-center-f t-flex t-flex-column"> 
-                    <h1 className = "strong t-center-f">Your Application was successful</h1>
-                    You can sit back and we will duly notify you if and when you application as being accepted or rejected as the case may be </p>
-                <NavLink to = "/tenant/profile" style = {{marginTop:'40px', width:'100%'}} > <div className = "d-btn d-a">Go back to your profile</div></NavLink>
-                     <h1 className = "strong t-center-f" style= {{marginTop:'50px', marginBottom:'30px'}}>Share this experience on facebook</h1>
+        
+        }     
+        </div>
 
-                     <div className = "t-md-10 t-flex t-flex-center t-justify-center">
-                        <FacebookShareButton
-                            url="https://rentright.herokuapp.com"
-                            quote="Rentright"
-                            className="Demo__some-network__share-button"
-                           title = {this.props.auth.first_name + "  just applied for a property on rent right"}
-                         description  = "Rentright is a platform where landlords and tenants can come together and dash dash dash dash"
-                         picture = {"https://rentright-api-gateway.herokuapp.com/user/units/image/" + this.props.activeUnit.unit_images[0].id}>
-                            <FacebookIcon
-                            size={32}
-                            round />
-                          </FacebookShareButton>
-                       </div>
-                
-                </div>
-                   :
-                null
-               }
-               
-            </div>
+        <div className = "t-md-2 t-flex-column smp t-flex">
+             <RightPanel 
+             applicationsPostIndicator ={this.props.applicationsPostIndicator}
+             postApplications = {this.postApplications}
+            post_my_application = {this.props.post_my_application}
+             activeApplication = {this.props.activeApplication}
+             applicationsPost = {this.props.applicationsPostIndicator}
+             applicationsPostIndicator = {this.props.applicationsPostIndicator}
+             myProfile = {this.props.myProfile}
+             activeUnit = {this.props.activeUnit}
+              mode = {this.state.mode}
+             auth = {this.props.auth}   
+          
+             />
         </div>
        </div>     
       </div>

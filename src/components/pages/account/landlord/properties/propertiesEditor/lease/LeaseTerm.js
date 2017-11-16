@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import PropsTypes from 'prop-types';
 import {Input} from 'react-materialize';
 import moment from "moment";
+import {Checkbox} from "antd";
 
 class LeaseTerm extends Component {
     componentDidMount(){
@@ -61,6 +62,16 @@ class LeaseTerm extends Component {
                     </div>
                 </div>
                 <div className="row">
+                    <div className="col m6" style={{paddingTop: '10px'}}>Rent Type<span className="red-text">*</span></div>
+                    <div className="input-field col s6">
+                        <select onChange={this.props.onChange} value={this.props.term.rent_type} dir="rtl" className={'right-align tenor_type'} name='rent_type' >
+                            <option style={{ direction:'rtl'}} value={'weekly'}>Weekly</option>
+                            <option style={{ direction:'rtl'}} value={'monthly'}>Monthly</option>
+                            <option style={{ direction:'rtl'}} value={'yearly'}>Yearly</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="row">
                     <div className="col m6" style={{paddingTop: '20px'}}>Security Deposit</div>
                     <div className="input-field col m6" style={{marginTop: '0'}}>
                         <input className="right-align" style={{margin: '0'}} placeholder="0.00" name="security_deposit" id="security_deposit" onChange={this.props.onChange} value={this.props.term.security_deposit}/>
@@ -77,6 +88,19 @@ class LeaseTerm extends Component {
                     <div className="col m6" style={{paddingTop: '20px'}}>Late Rent Fee</div>
                     <div className="col m6" style={{marginTop: '0'}}>
                         <input className="right-align" style={{margin: '0'}} placeholder="0.00" name="late_rent_fee" id="late_rent_fee" onChange={this.props.onChange} value={this.props.term.late_rent_fee}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col m12" style={{paddingTop: '20px'}}>
+                        <h2>Is this lease inclusive of tax?</h2>
+                        Checking the box below indicates that the tenant is responsible for all rental tax on this property,
+                        and will be billed separate from the rent.<br/>
+                        <Checkbox
+                            checked={this.props.term.inclusive_of_tax}
+                            onChange={this.props.onChange}
+                            name={'inclusive_of_tax'}>
+                            Inclusive of tax
+                        </Checkbox>
                     </div>
                 </div>
             </div>

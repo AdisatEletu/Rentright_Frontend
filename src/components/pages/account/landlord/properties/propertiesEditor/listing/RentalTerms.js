@@ -13,11 +13,20 @@ class RentalTerms extends Component {
                 <h3 className="fs-subtitle">Lets know what your terms for rent are</h3><br/>
 
                 <div className="row">
-                    <div className=" input-field col s12">
-                        <label className={'active'} htmlFor="bedroom-field">Whats the monthly rent amount?</label>
+                    <div className=" input-field col s8">
+                        <label className={'active'} htmlFor="bedroom-field">Whats the rent amount?</label>
                         <input type="text" className="form-control" id="monthly-rent"
                                value={this.props.terms.monthly_rent} onChange={this.props.onChange}
                                name="monthly_rent" placeholder="Rent Amount"/>
+                    </div>
+                    <div className=" input-field col s4">
+                        <label className={'active'}>Rent type</label>
+                        <select name={"rent_type"} className="browser-default"
+                                value={this.props.terms.rent_type} onChange={this.props.onChange}>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
                     </div>
                     <div className=" input-field col s12">
                         <label className={'active'} htmlFor="security-deposit">Whats the security deposit?</label>
@@ -35,7 +44,7 @@ class RentalTerms extends Component {
                     </div>
 
                     <div className="input-field col s12 m4">
-                        <label>Term type</label>
+                        <label className={'active'}>Term type</label>
                         <select name={"minimum_lease_term_type"} className="browser-default"
                                 value={this.props.terms.minimum_lease_term_type} onChange={this.props.onChange}>
                             <option value="weeks">Weeks</option>

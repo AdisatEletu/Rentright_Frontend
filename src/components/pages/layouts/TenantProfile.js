@@ -23,6 +23,7 @@ class TenantProfile extends Component{
         this.showModal = this.showModal.bind(this);
         this.queryForPromotions = this.queryForPromotions.bind(this);
         this.onTransmit = this.onTransmit.bind(this);
+        this.routeaway = this.routeaway.bind(this);
         this.props.loadTenant('/'+this.props.auth.user.uuid).then(()=>{
         this.props.getFormStruct();         
            this.uuid = '/'+this.props.match.params.id;
@@ -41,6 +42,9 @@ class TenantProfile extends Component{
       this.setState({promoted:{loading:false, error:true, results:undefined}});
     })
    }
+  routeaway = (path)=>{
+    this.context.router.history.push(path); 
+  }
     onTransmit=(item)=>{
       console.log(item);
        if (item.loading){
@@ -123,6 +127,12 @@ class TenantProfile extends Component{
               this.state.promoted.results && this.state.promoted.results.results ? this.state.promoted.results.results.units.slice(0,4).map((itemm,i)=>{    
                   return(
                     <Profiler  key = {i} notdummy = {true}
+                    routeaway = {this.routeaway}
+                    path = { this.props.auth.user.uuid ?
+                                 "/tenant/applications/"+
+                                 this.props.auth.user.uuid+"/"+
+                                itemm.address.address.address +"/"+
+                                itemm.id+"/overview" : ""}
                     img = {itemm.unit_images[1] ?"https://rentright-api-gateway.herokuapp.com/user/units/image/"+itemm.unit_images[1].id: undefined}
                     paragraph = {itemm.bedrooms+ " bedroom apartment, located in " + itemm.title+ " .Rent goes for " + 
                                   itemm.monthly_rent}

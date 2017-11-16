@@ -131,6 +131,7 @@ class Listing extends Component {
                     const termInitial = {
                         section: 'terms',
                         monthly_rent: data.monthly_rent || 0.00,
+                        rent_type: data.rent_type || '',
                         security_deposits: data.security_deposits || 0.00,
                         minimum_lease_term: data.minimum_lease_term || 0,
                         minimum_lease_term_type: data.minimum_lease_term_type || '',
@@ -139,6 +140,7 @@ class Listing extends Component {
                     const termPresent = {
                         section: 'terms',
                         monthly_rent: data.monthly_rent || 0.00,
+                        rent_type: data.rent_type || 'monthly',
                         security_deposits: data.security_deposits || 0.00,
                         minimum_lease_term: data.minimum_lease_term || 0,
                         minimum_lease_term_type: data.minimum_lease_term_type || '',
@@ -272,6 +274,7 @@ class Listing extends Component {
                 terms: {
                     section: 'terms',
                     monthly_rent: data.monthly_rent || 0.00,
+                    rent_type: data.rent_type || '',
                     security_deposits: data.security_deposits || 0.00,
                     minimum_lease_term: data.minimum_lease_term || 0,
                     minimum_lease_term_type: data.minimum_lease_term_type || '',
@@ -309,6 +312,7 @@ class Listing extends Component {
                 terms: {
                     section: 'terms',
                     monthly_rent: data.monthly_rent || 0.00,
+                    rent_type: data.rent_type || 'monthly',
                     security_deposits: data.security_deposits || 0.00,
                     minimum_lease_term: data.minimum_lease_term || 0,
                     minimum_lease_term_type: data.minimum_lease_term_type || '',

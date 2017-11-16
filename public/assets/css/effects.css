@@ -624,7 +624,7 @@ ul.DAWl li.PEN span{
 }
 
 .SCNT{
-    width: calc(66.6666666667% - .50rem);
+    /*width: calc(66.6666666667% - .50rem);*/
 }
 
 .dashboard-prp-srch{
@@ -1375,6 +1375,149 @@ margin-top: 25px;
 .LPS-SHC div.SHC-FOOTER a{
     cursor: pointer;
 }
+
+/*Override for fullcalendar js on landlord*/
+
+.landlord .fc button{
+    background: #3a87ad;
+    color:white;
+    outline: none;
+    text-shadow: none !important;
+}
+
+.landlord .fc-state-active{
+    background: #0A3b61 !important;
+}
+/*end Override for full Calendar js on landlord*/
+
+.add-schdl-btn{
+    width: 100%;
+    outline: none;
+    background: transparent;
+    height: 60px;
+    font-size: 20px;
+    color: #3a87ad;
+    border: 2px solid #3a87ad;
+    cursor: pointer;
+}
+
+.add-schdl-btn:hover{
+    background: #3a87ad;
+    color: #fff;
+}
+
+.schdl-dip-stl i{
+    font-size:40px;
+    line-height: 55px;
+}
+
+.schdl-dip-stl div{
+    background: transparent;
+    color: #3a87ad;
+    border: 2px solid #3a87ad;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.schdl-dip-stl div:hover,
+.schdl-dip-stl div.state-active{
+    background: #3a87ad;
+    color: #fff;
+}
+
+.schdl-dip-stl div.lis{
+    margin-right: 5px;
+}
+
+.schdl-dip-stl div.cal{
+    margin-right: 5px;
+}
+
+.schdl-lst-view div.schdl-lst-view-item:last-child{
+    border-bottom: none !important;
+}
+
+.schdl-lst-view .schdl-lst-view-item{
+    padding-bottom: 20px;
+    padding-top: 15px;
+    display: table;
+    width:100%;
+}
+
+.lst-view-row{
+    display:table-row;
+    width:100%;
+}
+
+.schdl-lst-view-item div.outer{
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.schdl-lst-view-item .list-image{
+    width: 150px;
+    height: 100px;
+}
+
+.schdl-lst-view-item .list-image img{
+    width: 80px;
+    height: 80px;
+    margin: auto
+}
+
+.schdl-lst-view-item .list-details{
+    width: 400px;
+}
+
+.schdl-lst-view-item .list-details .title{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.schdl-lst-view-item .list-details .description{
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.schdl-lst-view-item .list-timing{
+    width: 300px;
+}
+
+.schdl-lst-view-item .list-timing h2.priority{
+    border-radius: 2px;
+    padding: 1px;
+    text-transform: capitalize;
+    margin-bottom: 8px;
+}
+
+.schdl-lst-view-item .list-calendar .cal-wrap{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #2e7d32;
+    width: 130px;
+    margin: auto;
+}
+
+.list-calendar .cal-wrap .mnth{
+    background:#2e7d32;
+    padding:5px 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.list-calendar .cal-wrap .day{
+     font-size: 40px;
+     line-height: 30px;
+     padding-top: 15px;
+ }
+
+.list-calendar .cal-wrap .year{
+    padding: 10px 0 15px 0;
+}
+
 
 #root,
 .landlord,

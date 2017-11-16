@@ -68,7 +68,7 @@ function AccountHeader(props) {
                         <NavLink to="/landlord/reports" activeClassName={"active"} className="item"><i className="fa fa-file-text-o" aria-hidden="true"/> Reports</NavLink>
                         <NavLink to="/landlord/my-team" activeClassName={"active"} className="item"><i className="fa fa-users" aria-hidden="true"/> My Team</NavLink>
                         <NavLink to="/landlord/guide" activeClassName={"active"} className="item"><i className="fa fa-book" aria-hidden="true"/> Landlord Guide</NavLink>
-                        <div className="section-header">Properties <Link className="pull-right" to="/landlord/new_property"><i className="fa fa-plus"/></Link></div>
+                        <div className="section-header"><a href={'/landlord/properties'}>Properties</a> <Link className="pull-right" to="/landlord/new_property"><i className="fa fa-plus"/></Link></div>
                         <PropertyMenu/>
                     </div>
                 </li>
