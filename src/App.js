@@ -18,6 +18,7 @@ import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 import { notification } from 'antd';
 import SignPad from "./components/shared/SignPad";
+import LandlordProfile from "./components/pages/public/LandlordProfile";
 class App extends Component {
     constructor(props){
         super(props);
@@ -55,9 +56,11 @@ class App extends Component {
                   <Route path="/sign-in" component={Login}/>
                   <Route path="/tenant-guide" component={NewTenantInfo}/>
                   <Route path="/tenant" component={Tenant} />
+                  <Route path="/landlord-profile" component={LandlordProfile}/>
                   <Route path="/landlord-guide" component={LandlordGuide} />
                   <Route path="/generalsearch/:param" component={MapPage} />
                   <Route path="/agent" component={Agent} />
+
               </Switch>
           </Router>
           </LocaleProvider>

@@ -31,7 +31,7 @@
 }
 
 d-npd{
-    padding: 0 !important;
+    padding: 0 0 0 0 !important;
 }
 
 .d-npd-left{
@@ -1518,6 +1518,129 @@ margin-top: 25px;
     padding: 10px 0 15px 0;
 }
 
+/*Public profile section*/
+.LLPP{
+    height: 100%;
+    width: 100%;
+}
+
+.LLPP .banner{
+    height: 400px;
+    width:100%;
+    position: relative;
+    background-size: cover !important;
+    background: rgba(0, 0, 0, 0.9) url("http://garymcdonaldhomes.com/wp-content/uploads/2015/06/slide5.jpg") center no-repeat;
+}
+
+.LLPP .banner .BCO{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    height: 400px;
+    width:100%;
+}
+
+.LLPP .banner .BIANS{
+    position: absolute;
+    display: inline-flex;
+    margin-left: 10%;
+    padding-bottom: 30px;
+    bottom: 0;
+    z-index: 1;
+}
+
+.BIANS img.BAVTR{
+    height: 120px;
+    width: 120px;
+    border: 4px solid #fff;
+    border-radius: 50%;
+}
+
+.BIANS .BNSCT div{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.BIANS .BNSCT{
+    display: table;
+    height: 120px;
+    margin-left: 15px;
+}
+
+.BIANS .BNSCT div span{
+    display: block;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.LLPP .banner .BMBTN{
+    position: absolute;
+    right: 0;
+    margin-right: 10%;
+    height:40px;
+    width:40px;
+    text-align: center;
+    bottom: 0;
+    color: #ffffff;
+    margin-bottom: 30px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.BMBTN i{
+    font-size: 30px;
+    padding-top: 2px;
+    font-weight: bold;
+}
+
+.LLPP .LPPBDY{
+    padding: 0 10%;
+    background: #f9f9f9;
+}
+
+.LLPP .LPBN .MENU{
+    width: 100%;
+    display: flex;
+    margin: 10px 0;
+}
+
+.LPBN .MENU .item{
+    padding: 10px 0;
+    text-align:center;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    flex: 1;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+.LPBN .MENU .item:last-child{
+    margin-right: 0 !important;
+}
+
+.LPBN .MENU .item:hover,
+.LPBN .MENU .item.active{
+    background-color: #3a87ad;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+    color: #ffffff;
+}
+
+.LLPDESC .LLPDESC-HDR{
+    background-color: #EEEEEE;
+    padding:10px 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.LLPDESC .LLPDESC-BDY{
+    padding:10px 10px;
+}
+
+.LLPDESC-BDY span{
+    font-size: 17px;
+}
 
 #root,
 .landlord,

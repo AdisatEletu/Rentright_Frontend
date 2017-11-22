@@ -23,10 +23,6 @@ html, body {
     font-family: Roboto !important;
 }
 
-#root {
-    height: 100% !important;
-    /*overflow-x: hidden;*/
-}
 
 .t-zeropadding-margin {
     padding:0;

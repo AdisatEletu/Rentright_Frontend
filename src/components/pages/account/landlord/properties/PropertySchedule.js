@@ -5,7 +5,7 @@ import {getProperty} from "../../../../../state/actions/userActions";
 import PropTypes from 'prop-types';
 import Loader from "../../../../shared/Loader";
 import moment from 'moment';
-import {Icon,Modal,Input} from 'antd';
+import {Icon,Modal,Input, Alert} from 'antd';
 import shortid from 'shortid';
 import $ from 'jquery';
 import 'fullcalendar/dist/fullcalendar.css';
@@ -22,9 +22,14 @@ class PropertySchedule extends Component {
             fetching: true,
             fetched: false,
             property: {},
+            eventPop: false,
+            eventEdit: 'New',
+            toEdit: {},
         }
 
         this.onPropertyReceivedCallback = this.onPropertyReceivedCallback.bind(this);
+        this.onEventEdit = this.onEventEdit.bind(this);
+        this.onEventEditClose = this.onEventEditClose.bind(this);
     }
 
     componentDidMount() {
@@ -57,8 +62,23 @@ class PropertySchedule extends Component {
         this.setState({view});
     }
 
+    onEventEdit(event){
+        this.setState({
+            eventPop: true,
+            eventEdit: 'Edit',
+            toEdit: event,
+        });
+    }
+    onEventEditClose(){
+        this.setState({
+            eventPop: false,
+            eventEdit: 'New',
+            toEdit: {},
+        });
+    }
+
     render() {
-        const {fetching, fetched, property,view} = this.state;
+        const {fetching, fetched, property,view,eventEdit,toEdit,eventPop} = this.state;
 
         if (fetching) {
             return <Loader/>;
@@ -105,11 +125,11 @@ class PropertySchedule extends Component {
                     <div className={'col m12'}>
                         <div className={'card-panel'}>
                             { view===1 ? <CalendarView events={property.schedule.data}/> : undefined}
-                            { view===0 ? <ListView events={property.schedule.data}/> : undefined}
+                            { view===0 ? <ListView onEdit={this.onEventEdit} events={property.schedule.data}/> : undefined}
                         </div>
                     </div>
                 </div>
-                <EventEdit/>
+                {eventPop ? <EventEdit onEditClose={this.onEventEditClose} type={eventEdit} event={toEdit}/> : undefined}
             </div>
         );
     }
@@ -174,17 +194,18 @@ class ListView extends Component{
 
     render(){
         const {events} = this.state;
+        const {onEdit} = this.props;
 
         return(
             <div className={'schdl-lst-view'}>
                 {
-                    events.map(event=> ListView.listItem(event))
+                    events.map(event=> ListView.listItem(event,onEdit))
                 }
             </div>
         );
     }
 
-    static listItem(item){
+    static listItem(item,onEdit){
         let img = undefined;
         let tagColor = 'grey-text darken-3';
 
@@ -214,7 +235,7 @@ class ListView extends Component{
                     <div className={'outer list-details'}>
                             <div className={'title'}>{item.title}</div>
                             <div className={'description'}>{item.description}</div>
-                            <div className={'edit'}><b><a>Edit <i className={'fa fa-angle-right'}/></a></b></div>
+                            <div className={'edit'}><b><a href={''} onClick={(e)=>{e.preventDefault(); onEdit(item)}}>Edit <i className={'fa fa-angle-right'}/></a></b></div>
                     </div>
 
                     <div className={'center outer list-timing'}>
@@ -248,18 +269,52 @@ class EventEdit extends Component{
         super(props);
 
         this.state = {
+            saving:false,
+            hasError: false,
+            message:'',
             type: props.type || 'New',
-            event: props.event || {
-                title: '',
-                description: '',
-                type: 'inspection',
-                priority: 'normal',
-                start_date: moment().format('D MMMM YYYY'),
-                start_time: moment().format('hh:mm:ss'),
-                end_date: moment().format('D MMMM YYYY'),
-                end_time: moment().format('hh:mm:ss'),
+            event: EventEdit.formatEvent(props.event),
+        }
+
+        this.handleCancel = this.handleCancel.bind(this);
+        this.handleOk = this.handleOk.bind(this);
+        this.onChange = this.onChange.bind(this);
+    }
+
+    static formatEvent(event){
+        if(event){
+            return {
+                id: event.id,
+                title: event.title,
+                description: event.description,
+                type: event.type,
+                priority: event.priority,
+                start_date: moment(event.start_at).format('D MMMM YYYY'),
+                start_time: moment(event.start_at).format('hh:mm:ss'),
+                end_date: moment(event.end_at).format('D MMMM YYYY'),
+                end_time: moment(event.end_at).format('hh:mm:ss'),
             }
         }
+
+        return {
+            title: '',
+            description: '',
+            type: 'inspection',
+            priority: 'normal',
+            start_date: moment().format('D MMMM YYYY'),
+            start_time: moment().format('hh:mm:ss'),
+            end_date: moment().format('D MMMM YYYY'),
+            end_time: moment().format('hh:mm:ss'),
+        }
+    }
+
+    onChange(e){
+        const event = {
+            ...this.state.event,
+            [e.target.name]: e.target.value,
+        }
+
+        this.setState({event});
     }
 
     componentDidMount(){
@@ -267,38 +322,96 @@ class EventEdit extends Component{
         window.$('.start_date').pickadate(
             {
                 format: 'dd mmmm yyyy',
-                onSet: (context)=>this.props.onDateChange(context.select),
+                onSet: (context)=>{
+                    const event = {
+                        ...this.state.event,
+                        start_date: context.select,
+                    }
+
+                    this.setState({event});
+                },
             }
         );
 
-        window.$('.start_time').pickatime();
+        window.$('.start_time').pickatime({
+            format: 'h A',
+            interval: 60,
+            onSet: (context)=>{
+                const hour = parseInt(context.select/60);
+
+                const event = {
+                    ...this.state.event,
+                    start_time: hour,
+                }
+                this.setState({event});
+            }
+        });
 
         window.$('.end_date').pickadate(
             {
                 format: 'dd mmmm yyyy',
-                onSet: (context)=>this.props.onDateChange(context.select),
+                onSet: (context)=>{
+                    const event = {
+                        ...this.state.event,
+                        end_date: context.select,
+                    }
+
+                    this.setState({event});
+                },
             }
         );
 
-        window.$('.end_time').pickatime()
+        window.$('.end_time').pickatime({
+            format: 'h A',
+            interval: 60,
+            onSet: (context)=>{
+                const hour = parseInt(context.select/60);
+
+                const event = {
+                    ...this.state.event,
+                    end_time: hour,
+                }
+                this.setState({event});
+            }
+        })
 
     }
 
     handleOk(){
-        //save the edited or created
+        const {event} = this.state;
+
+        const keys = Object.keys(event);
+
+        for(let i = 0; i<keys.length; i++){
+            if(!event[keys[i]]){
+                this.setState({
+                    hasError: true,
+                    message: 'The '+keys[i]+' field is required'
+                });
+                return;
+            }
+        }
+
+        //fix the start_at and end_at format
+        const start_at = moment(event.start_date).format('YYYY-MM-DD')+' '+moment(event.start_time,'HH').format('hh:mm:ss');
+        const end_at = moment(event.end_date).format('YYYY-MM-DD')+' '+moment(event.end_time,'HH').format('hh:mm:ss');
+
+        this.setState({event:{...event,start_at,end_at}});
+
+        //update the time for that schedule
     }
 
     handleCancel(){
         //cancel the edit
-    }
-
-    onChange(e){
-
+        const {saving} = this.state;
+        if(!saving){
+            this.props.onEditClose();
+        }
     }
 
     render(){
 
-        const {type,event} = this.state;
+        const {type,event,hasError,message} = this.state;
 
         return (
             <Modal
@@ -307,6 +420,8 @@ class EventEdit extends Component{
                 visible={true}
                 onOk={this.handleOk}
                 onCancel={this.handleCancel}>
+                {hasError ? <Alert type="error" message={message} banner /> : undefined}
+
                 <div className="row">
                     <div className=" input-field col s12">
                         <label className={'active'} htmlFor="title">Event Title</label>
@@ -317,7 +432,7 @@ class EventEdit extends Component{
                 </div>
                 <div className={'row'}>
                     <div className={'col s12'}>
-                        <TextArea placeholder={'Enter the event description here'} name={'description'} rows={4}/>
+                        <TextArea value={event.description} onChange={this.onChange} placeholder={'Enter the event description here'} name={'description'} rows={4}/>
                     </div>
                 </div>
 
@@ -325,13 +440,13 @@ class EventEdit extends Component{
                     <div className=" input-field col s8">
                         <label className={'active'} htmlFor="title">Start Date</label>
                         <input type="text" id="start_date" className={'start_date'} name="start_date"
-                               value={event.start_date} onChange={this.onChange}
+                               defaultValue={event.start_date} onChange={this.onChange}
                                placeholder="Event start date"/>
                     </div>
                     <div className=" input-field col s4">
                         <label className={'active'} htmlFor="title">Start Time</label>
                         <input type="text" id="start_time" className={'start_time'} name="start_time"
-                               value={event.start_time} onChange={this.onChange}
+                               defaultValue={event.start_time} onChange={this.onChange}
                                placeholder="Event Start Time"/>
                     </div>
                 </div>
@@ -340,13 +455,13 @@ class EventEdit extends Component{
                     <div className=" input-field col s8">
                         <label className={'active'} htmlFor="end_date">End Date</label>
                         <input type="text" id="end_date" className={'end_date'} name="end_date"
-                               value={event.end_date} onChange={this.onChange}
+                               defaultValue={event.end_date} onChange={this.onChange}
                                placeholder="Event End date"/>
                     </div>
                     <div className=" input-field col s4">
                         <label className={'active'} htmlFor="end_time">End Time</label>
                         <input type="text" id="end_time" className={'end_time'} name="end_time"
-                               value={event.start_time} onChange={this.onChange}
+                               defaultValue={event.end_time} onChange={this.onChange}
                                placeholder="Event End Time"/>
                     </div>
                 </div>
@@ -359,6 +474,7 @@ class EventEdit extends Component{
                             <option value="inspection">Inspection</option>
                             <option value="maintenance">Maintenance</option>
                             <option value="reminders">Reminder</option>
+                            <option value="agent meet up">Agent Meet Up</option>
                         </select>
                     </div>
                 </div>
@@ -366,7 +482,7 @@ class EventEdit extends Component{
                 <div className="row">
                     <div className="input-field col s12">
                         <label className={'active'}>Event Priority</label>
-                        <select name={"type"}
+                        <select name={"priority"}
                                 value={event.priority} onChange={this.onChange}>
                             <option value="low">Low</option>
                             <option value="normal">Normal</option>

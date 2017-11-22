@@ -12,7 +12,7 @@ import {info} from "./home/Info";
 export default class NewHome extends Component {
     constructor(props) {
         super(props);
-        this.state = {loading: true, unit: this.props.unit || {}, index: 0}
+        this.state = {loading: true, unit: this.props.unit || {}, index: 0, }
         this.loadingStatus = this.loadingStatus.bind(this)
         this.searchFunc = this.searchFunc.bind(this);
         this.myapi = this.myapi.bind(this);

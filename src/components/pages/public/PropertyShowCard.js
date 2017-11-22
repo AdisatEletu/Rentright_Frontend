@@ -1,33 +1,63 @@
 import React, {Component} from 'react';
-import {Icon, notification} from "antd";
-import {NavLink} from 'react-router-dom';
+import Wishlist from "../tenantlayouts/durables/layout_elements/wishlist";
+import {NavLink} from "react-router-dom";
+import {Icon} from "antd";
 import {connect} from 'react-redux';
-import {BindActionCreators} from 'redux';
-import Wishlist from '../tenantlayouts/durables/layout_elements/wishlist';
 
-class HomeShowCard extends Component{
+class PropertyShowCard extends Component {
 
     constructor(props){
         super(props);
-        this.clicked = this.clicked.bind(this)
+        this.clicked = this.clicked.bind(this);
         this.state = {
-            unit: props.unit || {},
+            unit: props.unit || {
+                unit_manager:30,
+                unit_type:"Flat",
+                updated_at: null,
+                uuid:"2f253bc3-167c-4276-aa8b-aa81845a85d1",
+                address:{
+                    address:{
+                        address:"17 omorinre johnson,lekki phase 1,lagos,NIgeria",
+                        latitude:6.436515099999999,
+                        longitude:3.4609299,
+                    }
+                },
+                authenticated:false,
+                availability:false,
+                bathrooms:4,
+                bedrooms:5,
+                created_at:null,
+                description:"a scerenic Flat / Apartment atchevron chevron Lekki Lagos",
+                id:9,
+                minimum_lease_term:20,
+                minimum_lease_term_type:null,
+                monthly_rent:1700000,
+                number:"3",
+                parking_no:0,
+                security_deposits:170000,
+                square_footage:350,
+                status:null,
+                title:"Flat / Apartment at chevron chevron Lekki Lagos",
+                applications:[
+                    "https://rentright.s3.amazonaws.com/piclist2/2017/09/19/George.jpg"
+                ],
+                unit_images: [
+                    {created_at:"2017-09-22T09:12:34",
+                        id:47,
+                        section:"others",
+                        source:"units/2f253bc3-167c-4276-aa8b-aa81845a85d1/o2KHtJYzNfsbPmuUcUTuJA3i7Rj4Bf66SXPDLH92.jpeg",
+                        unit_id:9,
+                        updated_at:"2017-09-22T09:12:34"}
+                ]
+            },
             index: 0,
         }
     }
-    clicked(context){
-       /* let message = ""
-        if (context){
-           message = "You just liked a property, it has being added to your wishlist";
-        }else{
-            message = "You just unliked a property, it has being removed from your wishlist"
-        }
-        notification["success"]({
-            message,
-            description: "Your info has being updated"
-        })
-*/
+
+    clicked(){
+
     }
+
     navImage(action){
         const unit_images = [...this.state.unit.unit_images];
         const image_count = unit_images.length;
@@ -43,7 +73,7 @@ class HomeShowCard extends Component{
                     this.setState({index:0});
                 }
                 break;
-                
+
             case 'previous':
                 if(index > 0){
                     this.setState({index: index-1});
@@ -58,9 +88,9 @@ class HomeShowCard extends Component{
 
     render(){
         const {unit} = this.state;
-        console.log(unit.address.address.address);
+
         return(
-            <div className="home-property1 t-flex t-md-48 t-flex-column">
+            <div className="home-property1 t-flex t-md-48 t-flex-column" style={{margin:'5px'}}>
                 <div className="home-property-picture1 t-flex t-md-10" style = {unit.unit_images.length > 0 ?{backgroundImage:"url(https://rentright-api-gateway.herokuapp.com/user/units/image/"+unit.unit_images[this.state.index].id+ ")"}:undefined}>
 
                     <div className="home-new-property-cover t-md-10 t-fullheight">
@@ -74,8 +104,8 @@ class HomeShowCard extends Component{
                                             <Wishlist uuid = {this.props.auth.user.uuid}
                                                       clicked = {this.clicked}
                                                       unit_id = {unit.id}
-                                                       />
-                                        :
+                                            />
+                                            :
                                             <NavLink to = "sign-in"><Icon type="heart-o "/></NavLink>
 
                                     }
@@ -88,17 +118,17 @@ class HomeShowCard extends Component{
                                     to = {
                                         this.props.auth.user.uuid ?
                                             "tenant/applications/"+
-                                    this.props.auth.user.uuid+"/"+
-                                    unit.address.address.address +"/"+
-                                    unit.id+"/overview"
+                                            this.props.auth.user.uuid+"/"+
+                                            unit.address.address.address +"/"+
+                                            unit.id+"/overview"
 
 
-                                    :
-                                    "/sign-in"
+                                            :
+                                            "/sign-in"
                                     }
 
 
-                                        className="bbb">Explore</NavLink></div>
+                                    className="bbb">Explore</NavLink></div>
                                 <div className = "e-a-right" onClick = {()=>this.navImage('next')}><Icon type = "right"/></div>
                             </div>
                             {  /* <div className="t-flex t-justify-center t-align-content-center  t-md-10">
@@ -169,5 +199,8 @@ function matchStateToProps(state){
     return {
         auth:state.user.auth
     }
+
 }
-export default connect(matchStateToProps, {}) (HomeShowCard);
+
+export default connect(matchStateToProps) (PropertyShowCard);
+
