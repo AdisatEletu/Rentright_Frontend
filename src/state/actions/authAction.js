@@ -16,7 +16,7 @@ export function login(data,callback){
     return dispatch => {
         dispatch(showLoading());
 
-        return axios.post("https://rentright-api-gateway.herokuapp.com/auth/login",data).then(res => {
+        return axios.post("https://rentright-api-gateway.herokuapp.com/auth",data).then(res => {
 
             const status = res.data.status;
 
@@ -27,7 +27,7 @@ export function login(data,callback){
             }
 
             const token = res.data.data.token;
-            const user = res.data.data.user;
+            const user = res.data.data.user.data;
             // add token to local storage
             localStorage.setItem('rs_token',token);
             //add token to request header

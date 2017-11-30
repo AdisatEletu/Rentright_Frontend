@@ -7,6 +7,7 @@ import AccountLayout from "../layouts/AccountLayout";
 import BankAccounts from "./landlord/profile/BankAccounts";
 import NewUnit from "./landlord/properties/NewUnit";
 import Dashboard from "./landlord/Dashboard";
+import MyTeam from "./landlord/MyTeam";
 
 class LandLord extends Component {
 
@@ -16,6 +17,7 @@ class LandLord extends Component {
                 <AccountLayout>
                     <Switch>
                         <Route exact path='/landlord' component={Dashboard}/>
+                        <Route exact path='/landlord/my-team' component={MyTeam}/>
                         <Route path='/landlord/profile' component={Profile}/>
                         <Route path='/landlord/settings' component={Profile}/>
                         <Route path='/landlord/bank_accounts' component={BankAccounts}/>
